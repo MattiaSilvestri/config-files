@@ -1,2 +1,2 @@
-# Configuration files for the HAL9000 machine.
+# Configuration files.
 Some text. Some new text.
