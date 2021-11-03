@@ -1,2 +1,2 @@
-# Configuration files.
-Some text. Some new text.
+# Configuration files
+Add description...
