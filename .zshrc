@@ -285,6 +285,9 @@ alias robbot="mount.cifs //192.168.240.42/ROBBOT /mnt/ROBBOT"
 #Matlab server
 alias matserver="/home/mattia/vim/daeyun/vim-matlab/scripts/vim-matlab-server.py" 
 
+# Ranger
+alias fm="ranger"
+
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()
@@ -318,9 +321,11 @@ ex ()
 
 macchina
 TERM=xterm-kitty
+. /home/mattia/.config/ranger/plugins/z/z.sh
 
 bindkey -v
 
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/usr/bin/site_perl:$PATH"
 export PATH="/usr/bin/vendor_perl:$PATH"
