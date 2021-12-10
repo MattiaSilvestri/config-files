@@ -288,6 +288,14 @@ alias matserver="/home/mattia/vim/daeyun/vim-matlab/scripts/vim-matlab-server.py
 # Ranger
 alias fm="ranger"
 
+# Git 
+alias s="git status"
+alias a="git add"
+alias c="git commit"
+alias p="git push"
+alias pl="git pull"
+alias rs="git reset"
+
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()
