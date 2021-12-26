@@ -1,296 +1,349 @@
-;;; init.lisp --- StumpWM demo configuration
-
-;; Copyright © 2020-2021 James McCabe
-
-;; Author: James McCabe <james.mccab3(at)gmail.com>
-;; URL: https://github.com/jamesmccabe/stumpwm-demo-config
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-;;
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-;;; Commentary:
-
-;; This is a basic StumpWM configuration for my demo video.
-
-;;; Code:
-
-
+;;; -*-  mode: lisp; -*-
 (in-package :stumpwm)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Basic settings                                                          ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Helper Functions
+(defun file-readable-p (file)
+  "Return t, if FILE is available for reading."
+  (handler-case
+      (with-open-file (f file)
+        (and (read-line f) t))
+    (stream-error () nil)))
 
-;; Set data-dir for module loading
-(setf *data-dir* (make-pathname :directory "/home/mattia/.config/stumpwm/modules" ))
+(defun executable-p (name)
+  "Tell if given executable is present in PATH."
+  (let ((which-out (string-trim '(#\  #\linefeed) (run-shell-command (concat "which " name) t))))
+    (unless (string-equal "" which-out) which-out)))
 
-;; load Stump contrib modules
-;(mapc #'load-module
-;      '("ttf-fonts"
-;	"swm-gaps"))
-
-;; set prefix key
-(set-prefix-key (kbd "C-z"))
-
-;; set desktop background color
-(setf (xlib:window-background (screen-root (current-screen))) #x47456d)
-;; set wallpaper
-;; (run-shell-command "feh --bg-fill ~/Pictures/wallpaper.png")
-
-;; font settings
-;(set-font (list
-;	   (make-instance 'xft:font
-;			  :family "DejaVu Sans Mono"
-;			  :subfamily "Bold"
-;			  :size 13)
-;	   (make-instance 'xft:font
-;			  :family "FontAwesome"
-;			  :subfamily "Regular"
-;			  :size 12)))
-
-;; setup groups
-(grename "Base")
-(gnewbg "Extra")
-(gnewbg-float "Float")
-;(gnewbg ".scratchpad") ; hidden group / scratchpad
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Color settings                                                          ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; My own personal theme with random colors taken from
-;; various Doom Emacs themes and also Dracula theme
-;; You can set 10 colors in total (8 default plus 2 extra)
+;;; Theme
 (setf *colors*
-      '("#ffffff"        ; ^0 ; White
-	"#131220"        ; ^1 ; Dark Blue
-	"#f72f33"        ; ^2 ; Red
-	"#689d6a"        ; ^3 ; Light Green
-	"#62bfef"        ; ^4 ; Light Blue
-        "#fabd2f"        ; ^5 ; Yellow / Help map keys
-	"#a644bf"        ; ^6 ; Magenta
-	"#cc4a0e"        ; ^7 ; Brown
-	"#56b6c2"))      ; ^8 ; Cyan  
-	
-(defparameter *mode-line-bg-color* (nth 1 *colors*))
-(defparameter *mode-line-fg-color* (nth 0 *colors*))
-(defparameter *msg-bg-color* (nth 1 *colors*))
-(defparameter *msg-fg-color* (nth 0 *colors*))
-(defparameter *msg-border-color* (nth 2 *colors*))
+      '("#000000"   ;black
+        "#BF6262"   ;red
+        "#a1bf78"   ;green
+        "#dbb774"   ;yellow
+        "#7D8FA3"   ;blue
+        "#ff99ff"   ;magenta
+        "#53cdbd"   ;cyan
+        "#b7bec9")) ;white
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; General settings                                                        ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setf *default-bg-color* "#e699cc")
 
-;; mouse pointer
+(update-color-map (current-screen))
+
+(setf *window-format* "%m%s%50t")
+
+;;; Basic Settings
+(setf *mode-line-background-color* (car *colors*)
+      *mode-line-foreground-color* (car (last *colors*))
+      *mode-line-timeout* 1)
+
+(setf *message-window-gravity* :center
+      *input-window-gravity* :center
+      *window-border-style* :thin
+      *message-window-padding* 3
+      *maxsize-border-width* 2
+      *normal-border-width* 2
+      *transient-border-width* 2
+      stumpwm::*float-window-border* 1
+      stumpwm::*float-window-title-height* 1)
+
+;; Focus Follow Mouse
+(setf *mouse-focus-policy* :sloppy)
+
+;;; Startup Commands
 (run-shell-command "xsetroot -cursor_name left_ptr")
 
-;; messages display time
-(setf *timeout-wait* 7)
+;;; Bindings
+(set-prefix-key (kbd "M-ESC"))
 
-;; ignore window hints
-(setf *ignore-wm-inc-hints* t)
+;; General Top Level Bindings
+(define-key *top-map* (kbd "s-n") "pull-hidden-next")
+(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
+(define-key *top-map* (kbd "s-TAB") "fnext")
+(define-key *top-map* (kbd "s-ISO_Left_Tab") "fprev")
 
-;; window name format (truncate name after 20 letters)
-(setf *window-format* "%m%n%s%20t")
+(setf *resize-increment* 25)
+(define-key *top-map* (kbd "s-H") "move-window left")
+(define-key *top-map* (kbd "s-J") "move-window down")
+(define-key *top-map* (kbd "s-K") "move-window up")
+(define-key *top-map* (kbd "s-L") "move-window right")
+(define-key *top-map* (kbd "s-f") "fullscreen")
+(define-key *top-map* (kbd "s-q") "only")
+(define-key *top-map* (kbd "s-RET") "exec emacsclient -c -a 'emacs'")
+(define-key *top-map* (kbd "s-=")  "exec menu_connection_manager.sh")
+(define-key *top-map* (kbd "s-X")  "exec power_menu.sh")
 
-;; input focus is transferred to the window you click on
-(setf *mouse-focus-policy* :click)
+;;; Volume Stuff
+(let ((vdown "exec cm down 5")
+      (vup "exec cm up 5")
+      (m *top-map*))
+  (define-key m (kbd "s-C-a")                vdown)
+  (define-key m (kbd "XF86AudioLowerVolume") vdown)
+  (define-key m (kbd "s-C-f")                vup)
+  (define-key m (kbd "XF86AudioRaiseVolume") vup))
 
-;; message and input window location
-(setf *message-window-gravity* :center)
-(setf *input-window-gravity* :center)
+;;; Brightness
+(when *initializing*
+  (defconstant backlightfile "/sys/class/backlight/intel_backlight/brightness"))
 
-;; message/input bar colors
-(set-bg-color *msg-bg-color*)
-(set-fg-color *msg-fg-color*)
-(set-border-color *msg-border-color*)
+;; Xbacklight broak so I made this
+(defcommand brighten (val) ((:number "Change brightness by: "))
+  (with-open-file (fp backlightfile
+                      :if-exists :overwrite
+                      :direction :io)
+                      (write-sequence (write-to-string (+ (parse-integer (read-line fp nil)) val))
+                                      fp)))
 
-;; message/input bar settings
-(set-msg-border-width 3)
-(setf *message-window-padding* 6)
+(let ((bdown "brighten -1000")
+      (bup   "brighten  1000")
+      (m *top-map*))
+  (define-key m (kbd "s-C-s")                 bdown)
+  (define-key m (kbd "XF86MonBrightnessDown") bdown)
+  (define-key m (kbd "s-C-d")                 bup)
+  (define-key m (kbd "XF86MonBrightnessUp")   bup))
 
-;;; gaps settings
-;; inner gaps run along all the 4 borders of a frame
-; (setf swm-gaps:*inner-gaps-size* 10)
-;; outer gaps add more padding to the outermost borders
-;; (touching the screen border)
-; (setf swm-gaps:*outer-gaps-size* 10)
+;;; General Root Level Bindings
+(defcommand term (&optional prg) ()
+  (run-shell-command (if prg
+                         (format nil "st -e ~A" prg)
+                       "st")))
+(define-key *root-map* (kbd "c")   "term")
+(define-key *root-map* (kbd "C-c") "term")
+(define-key *root-map* (kbd "y") "eval (term \"cm\")")
+(define-key *root-map* (kbd "w") "exec ducksearch")
 
-;; startup message
-(setf *startup-message* "^5    Stump Window Manager ^0has initialized!
-Press ^2Ctrl+z ? ^0for Help. ^5Never Stop Hacking!^n
-          Powered with ^02 Common Lisp ")
+(define-key *root-map* (kbd "b") "pull-from-windowlist")
+(define-key *root-map* (kbd "r") "remove")
+(define-key *root-map* (kbd "R") "iresize")
+(define-key *root-map* (kbd "f") "fullscreen")
+(define-key *root-map* (kbd "Q") "quit-confirm")
+(define-key *root-map* (kbd "q") "only")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Swank settings                                                          ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-key *root-map* (kbd "M-o") "fnext")
+(define-key *root-map* (kbd "SPC") "exec cabl -c")
+;; more usful alternatives to i and I
+(define-key *root-map* (kbd "i") "show-window-properties")
+(define-key *root-map* (kbd "I") "list-window-properties")
 
-;(require :swank)
-;(swank-loader:init)
-;
-;(defparameter *port-number* 4004
-;  "My default port number for Swank")
-;
-;(defvar *swank-server-p* nil
-;  "Keep track of swank server, turned off by default on startup")
-;
-;(defcommand start-swank () ()
-;  "Start Swank if it is not already running"
-;  (if *swank-server-p*
-;      (message "Swank server is already active on Port^5 ~a^n" *port-number*)
-;      (progn
-;	(swank:create-server :port *port-number*
-;			     :style swank:*communication-style*
-;			     :dont-close t)
-;	(setf *swank-server-p* t)
-;	(message "Swank server is now active on Port^5 ~a^n.
-;Use^4 M-x slime-connect^n in Emacs. 
-;Type^2 (in-package :stumpwm)^n in Slime REPL." *port-number*))))
-;
-;(defcommand stop-swank () ()
-;  "Stop Swank"
-;  (swank:stop-server *port-number*)
-;  (setf *swank-server-p* nil)
-;  (message "Stopping Swank Server! Closing Port^5 ~a^n." *port-number*))
-;
-;(defcommand toggle-swank () ()
-;  (if *swank-server-p*
-;      (run-commands "stop-swank")
-;      (run-commands "start-swank")))
-;
-;(define-key *top-map* (kbd "s-s") "toggle-swank")
-;
-;;; modeline status
-;(defun get-swank-status ()
-;  (if *swank-server-p*
-;      (setf *swank-ml-status* (format nil "Swank ^3^f1^f0^n Port:^5 ~a^n " *port-number*))
-;      (setf *swank-ml-status* "")))
-;
-;(defun ml-fmt-swank-status (ml)
-;  (declare (ignore ml))
-;  (get-swank-status))
-;
-;(add-screen-mode-line-formatter #\S #'ml-fmt-swank-status)
+;;; Groups
+(grename "main")
+(gnewbg ".trash") ;hidden group
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Keybindings                                                             ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Don't jump between groups when switching apps
+(setf *run-or-raise-all-groups* nil)
+(define-key *groups-map* (kbd "d") "gnew-dynamic")
+(define-key *groups-map* (kbd "s") "gselect")
 
-;; navigation
-;; cycle forward and back through groups
-(define-key *root-map* (kbd ".") "gnext")
-(define-key *root-map* (kbd ",") "gprev")
-(define-key *top-map* (kbd "s-Up") "gnext")
-(define-key *top-map* (kbd "s-Down") "gprev")
+(load-module "globalwindows")
+(define-key *groups-map* (kbd "b") "global-pull-windowlist")
 
-;; cycle through windows using Super key + arrows
-(define-key *top-map* (kbd "s-Right") "pull-hidden-next")
-(define-key *top-map* (kbd "s-Left") "pull-hidden-previous")
 
-;; send window to next/previous groups
-(define-key *root-map* (kbd "s-Right") "gnext-with-window")
-(define-key *root-map* (kbd "s-Left") "gprev-with-window")
+;;;; Hide and Show Windows
+(defun window-menu-format (w)
+  (list (format-expand *window-formatters* *window-format* w) w))
 
-(define-key *top-map* (kbd "s-SPC") "fnext")
+(defun window-from-menu (windows)
+  (when windows
+    (second (select-from-menu
+             (group-screen (window-group (car windows)))
+             (mapcar 'window-menu-format windows)))))
 
-;;others
-;; run or raise firefox
-(defcommand firefox () ()
-  "Start Forefox or switch to it, if it is already running"
-  (run-or-raise "firefox" '(:class "Firefox")))
+(defun windows-in-group (group)
+  (group-windows (find group (screen-groups (current-screen))
+                       :key 'group-name :test 'equal)))
 
-(define-key *root-map* (kbd "b") "firefox")
+(defcommand pull-from-trash () ()
+  (let* ((windows (windows-in-group ".trash"))
+         (window  (window-from-menu windows)))
+    (when window
+      (move-window-to-group window (current-group))
+      (stumpwm::pull-window window))))
 
-;; open terminal
-(define-key *root-map* (kbd "Return") "exec urxvt")
-(define-key *root-map* (kbd "c") "exec urxvt")
-(define-key *root-map* (kbd "C-c") "exec urxvt")
+(defcommand move-to-trash () ()
+  (stumpwm:run-commands "gmove .trash"))
 
-;; toggle useless gaps keybinding (Super + u)
-(define-key *top-map* (kbd "s-u") "toggle-gaps")
+(define-key *top-map* (kbd "s-]") "move-to-trash")
+(define-key *top-map* (kbd "s-[") "pull-from-trash")
+;;; Floating Windows
+;; slop taken from https://github.com/lepisma/cfg
+(defun floatingp (window)
+  "Return T if WINDOW is floating and NIL otherwise"
+  (typep window 'stumpwm::float-window))
 
-;; hard restart keybinding (Super + r)
-(define-key *top-map* (kbd "s-r") "restart-hard")
+(defun slop-get-pos ()
+  (mapcar #'parse-integer (ppcre:split "[^0-9]" (run-shell-command "slop -f \"%x %y %w %h\"" t))))
 
-;; allows me to continously have control of Prefix key
-;; by unmapping it from 'pull-hidden-other
-(undefine-key *tile-group-root-map* (kbd "C-z"))
-(define-key *root-map* (kbd "C-z") "abort")
+(defun slop ()
+  "Slop the current window or just float if slop cli not present."
+  (if (executable-p "slop")
+      (let ((win    (current-window))
+            (group  (current-group))
+            (screen (current-screen))
+            (pos    (slop-get-pos)))
+        (stumpwm::float-window win group)
+        (stumpwm::float-window-move-resize win
+                                  :x (nth 0 pos)
+                                  :y (nth 1 pos)
+                                  :width (nth 2 pos)
+                                  :height (nth 3 pos))
+        ;; TODO use method from toggle-always-on-top instead
+        (stumpwm::always-show-window win screen))))
 
-;; take screenshot
-(defcommand stump-screenshot () ()
-  (run-shell-command "exec scrot")
-  (sleep 0.5)
-  (message "Screenshot taken!"))
+(defcommand toggle-slop-this () ()
+  (let ((win    (current-window))
+        (group  (current-group))
+        (screen (current-screen)))
+    (if (floatingp win)
+        (progn (stumpwm::disable-always-show-window win screen)
+               (stumpwm::unfloat-window win group))
+      (slop))))
 
-(define-key *top-map* (kbd "Print") "stump-screenshot")
+(define-key *top-map* (kbd "s-z") "toggle-slop-this")
+(define-key *root-map* (kbd "z")  "toggle-slop-this")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Modeline settings                                                       ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Splits
+(defcommand hsplit-and-focus () ()
+  "create a new frame on the right and focus it."
+  (hsplit)
+  (move-focus :right))
 
-(setf *mode-line-timeout* 1)
-(setf *mode-line-border-width* 0)
+(defcommand vsplit-and-focus () ()
+  "create a new frame below and focus it."
+  (vsplit)
+  (move-focus :down))
+(define-key *root-map* (kbd "v") "hsplit-and-focus")
+(define-key *root-map* (kbd "s") "vsplit-and-focus")
+(loop for i in '("hsplit-and-focus"
+                 "vsplit-and-focus"))
+;; do (dyn-blacklist-command i))
 
-(setf *mode-line-background-color* *mode-line-bg-color*)
-(setf *mode-line-border-color* *mode-line-bg-color*)
-(setf *mode-line-foreground-color* *mode-line-fg-color*)
+;;; Mode-Line
+(load-module "battery-portable")
 
-(setf *time-modeline-string* "^2^f1^f0^n %H:%M")
+;; Get Fit
+(defvar *reps* 0)
+(defcommand add-reps (reps) ((:number "Enter reps: "))
+  (when reps
+    (setq *reps* (+ *reps* reps))))
+(defcommand reset-reps () ()
+  (setq *reps* 0))
 
-(defparameter *battery-percent* "")
-
-(defun get-battery-status ()
-  (let* ((batgetcap (run-shell-command "cat /sys/class/power_supply/BAT0/capacity | tr -d '\\r\\n'" t)))
-    (setf *battery-percent* (format nil "^4^f1^f0^n ~a% " batgetcap))))
-
-(defun battery-percentage (ml)
-  (declare (ignore ml))
-  *battery-percent*)
-  
-(run-with-timer 0 10 #'get-battery-status)
-(add-screen-mode-line-formatter #\B #'battery-percentage)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defvar *gym-map*
+  (let ((m (make-sparse-keymap)))
+    (define-key m (kbd "a") "add-reps")
+    (define-key m (kbd "r") "reset-reps")
+    m))
+(define-key *root-map* (kbd "ESC") '*gym-map*)
 
 (setf *screen-mode-line-format*
-      (list "^5[%g]^n "       ; groups
-	    "%W"              ; windows
-	    "^>"              ; right align
-	    "%S"              ; swank status
-	    "%B"              ; battery percentage
-            "%d"))            ; time/date
+      (list
+       ;; Groups
+       " ^7[^B^4%n^7^b]"
+       ;; Pad to right
+       "^>"
+       '(:eval (if (> *reps* 0) (format nil "^1^B(Reps ~A)^n " *reps*)))
+       ;; Date
+       "^7"
+       '(:eval (run-shell-command "date +\"%a, %b %d %I:%M%p\" | tr '\\n' ' '" t))
+       " ^7[^n%B^7]^n "))
 
-;; turn on the mode line
-(if (not (head-mode-line (current-head)))
-    (toggle-mode-line (current-screen) (current-head)))
+(defun enable-mode-line-everywhere ()
+  (loop for screen in *screen-list* do
+    (loop for head in (screen-heads screen) do
+	    (enable-mode-line screen head t))))
+(enable-mode-line-everywhere)
+;; turn on/off the mode line for the current head only.
+(define-key *root-map* (kbd "B") "mode-line")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Overrides                                                               ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Font
+(set-font "-xos4-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*")
 
-;; This file when loaded overrides some Stump behavior
-;; which are personal preferences I prefer to the defaults
-(load "~/.stumpwm.d/overrides.lisp")
+;;; Gaps
+(load-module "swm-gaps")
+(setf swm-gaps:*inner-gaps-size* 13
+      swm-gaps:*outer-gaps-size* 7
+      swm-gaps:*head-gaps-size* 7)
+(when *initializing*
+  (swm-gaps:toggle-gaps))
+(define-key *groups-map* (kbd "g") "toggle-gaps")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Debugging                                                               ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Remaps
+(define-remapped-keys
+  '(("(discord|Element)"
+     ("C-a"       . "Home")
+     ("C-e"       . "End")
+     ("C-n"       . "Down")
+     ("C-p"       . "Up")
+     ("C-f"       . "Right")
+     ("C-b"       . "Left")
+     ("C-v"       . "Next")
+     ("M-v"       . "Prior")
+     ("M-w"       . "C-c")
+     ("C-w"       . "C-x")
+     ("C-y"       . "C-v")
+     ("M-<"       . "Home")
+     ("M->"       . "End")
+     ("C-M-b"     . "M-Left")
+     ("C-M-f"     . "M-Right")
+     ("M-f"       . "C-Right")
+     ("M-b"       . "C-Left")
+     ("C-s"       . "C-f")
+     ("C-j"       . "C-k")
+     ("C-/"       . "C-z")
+     ("C-k"       . ("C-S-End" "C-x"))
+     )))
 
-;(redirect-all-output (data-dir-file "debug-output" "txt"))
-;(setf stumpwm:*debug-level* 10)
+;;; Undo And Redo Functionality
+;; (load-module "winner-mode")
+;; (define-key *root-map* (kbd "u") "winner-undo")
+;; (define-key *root-map* (kbd "C-r") "winner-redo")
+;; (add-hook *post-command-hook* (lambda (command)
+;;                                 (when (member command winner-mode:*default-commands*)
+;;                                   (winner-mode:dump-group-to-file))))
 
-;(load "~/.stumpwm.d/test.lisp")
+;;; Emacs integration
+(defcommand emacs () () ; override default emacs command
+  "Start emacs if emacsclient is not running and focus emacs if it is
+running in the current group"
+  (run-or-raise "emacsclient -c -a 'emacs'" '(:class "Emacs")))
+;; Treat emacs splits like Xorg windows
+(defun is-emacs-p (win)
+  "nil if the WIN"
+  (when win
+    (string-equal (window-class win) "Emacs")))
 
-;;; init.lisp ends here
+(defun exec-el (expression)
+  "execute emacs lisp do not collect it's output"
+  (run-shell-command (concat "emacsclient -e '" (write-to-string
+                                                 expression) "'") nil))
+
+(defun eval-string-as-el (expression)
+  "evaluate a string as emacs lisp"
+  (run-shell-command (concat "emacsclient -e '" expression "'") t))
+
+(defun eval-el (expression)
+  "evaluate emacs lisp and collect it's output"
+  (eval-string-as-el (write-to-string expression)))
+
+(defun emacs-winmove (direction)
+  "executes the emacs function winmove-DIRECTION where DIRECTION is a string"
+  (eval-string-as-el (concat "(windmove-" direction ")")))
+
+(defun better-move-focus (ogdir)
+  "Similar to move-focus but also treats emacs windows as Xorg windows"
+  (let ((mv `(move-focus ,(intern (string ogdir) "KEYWORD"))))
+    (if (is-emacs-p (current-window))
+        (when
+            ;; There is not emacs window in that direction
+            (= (length (emacs-winmove
+                        (string-downcase (string ogdir))))
+               1)
+          (eval mv))
+        (eval mv))))
+
+(defcommand my-mv (dir) ((:direction "Enter direction: "))
+  (when dir
+    (better-move-focus (string-upcase dir))))
+(define-key *top-map* (kbd "s-h") "my-mv left")
+(define-key *top-map* (kbd "s-j") "my-mv down")
+(define-key *top-map* (kbd "s-k") "my-mv up")
+(define-key *top-map* (kbd "s-l") "my-mv right")
