@@ -1,5 +1,3 @@
-
-
 #!/bin/bash
 
 function run {
@@ -25,7 +23,7 @@ run "redshift-gtk"
 # run "conky -c /home/mattia/.config/conky/conkyDate.conf"
 #run "conky -c /home/mattia/.config/conky/conkyCPU2.conf"
 # run "conky -c /home/mattia/.config/conky/calendar.conf"
-run "/usr/bin/setxkbmap -option "caps:swapescape""
 run "nm-applet"
 # run "emacs --daemon"
-run "picom --experimental-backends --config  $HOME/.config/awesome/configuration/picom.conf"
+run "picom --experimental-backends --config  /home/mattia/.config/herbstluftwm/picom.conf"
+run "flashfocus"

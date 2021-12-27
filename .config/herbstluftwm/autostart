@@ -56,7 +56,7 @@ hc keybind $Mod-Shift-l or / shift right / \
 # splitting frames
 # create an empty frame at the specified direction
 hc keybind $Mod-a       split   bottom  0.5
-hc keybind $Mod-w       split   right   0.5
+hc keybind $Mod-s       split   right   0.5
 # let the current frame explode into subframes
 hc keybind $Mod-Control-space split explode
 
@@ -93,12 +93,15 @@ hc keybind Mod1-Control-Left  use_index -1 --skip-visible
 
 # layouting
 hc keybind $Mod-z remove
-hc keybind $Mod-s floating toggle
+hc keybind $Mod-Control-s floating toggle
 hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-Control-s set_attr clients.focus.floating toggle
+hc keybind $Mod-Shift-s set_attr clients.focus.floating toggle
 hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
 hc keybind $Mod-Control-m jumpto last-minimized
 hc keybind $Mod-p pseudotile toggle
+hc keybind $Mod-w set_layout max
+hc keybind $Mod-d set_layout horizontal
+hc keybind $Mod-Shift-d set_layout vertical
 
 #hc set_layout max
 hc set default_frame_layout 2
@@ -128,9 +131,10 @@ hc keybind XF86AudioMute spawn pamixer -t
 
 # focus
 hc keybind $Mod-BackSpace   cycle_monitor
-hc keybind $Mod-Tab         cycle_all +1
-hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-c cycle
+hc keybind Mod1-d   cycle_all +1
+hc keybind Mod1-a   cycle_all -1
+hc keybind $Mod-Tab cycle +1
+hc keybind $Mod-Shift-Tab cycle -1
 hc keybind $Mod-i jumpto urgent
 hc set focus_follows_mouse true
 
@@ -144,7 +148,7 @@ hc set frame_bg_active_color '#987191aa'
 hc set frame_border_width 0
 hc set always_show_frame on
 hc set frame_bg_transparent on
-hc set frame_transparent_width 2
+hc set frame_transparent_width 0
 hc set frame_gap 8
 
 hc attr theme.title_height 0
@@ -182,8 +186,8 @@ hc set mouse_recenter_gap 0
 hc set hide_covered_windows true
 hc set tabbed_max true
 #Padding for Wbar and Conky 
-hc pad 0 32 0 0 0 # First _monitor
-hc pad 1 32 0 0 0 # Second monitor
+hc pad 0 30 0 0 0 # First _monitor
+hc pad 1 30 0 0 0 # Second monitor
 
 # rules
 hc unrule -F
@@ -208,15 +212,19 @@ hc keybind $Mod-e spawn "emacs"
 hc keybind $Mod-v spawn "vivaldi-stable"
 
 # Startup commands
+/home/mattia/.dotfiles/.config/herbstluftwm/autostart.sh &
 setxkbmap -option "caps:swapescape" &
-nitrogen --restore &
-blueman-applet &
-nm-applet &
-picom --experimental-backends --config  /home/mattia/.config/herbstluftwm/picom.conf &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-flashfocus &
+# nitrogen --restore &
+# blueman-applet &
+# nm-applet &
+# picom --experimental-backends --config  /home/mattia/.config/herbstluftwm/picom.conf &
+# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# flashfocus &
 # redshift-gtk &
-xfce4-power-manager &
+# xfce4-power-manager &
+~/.config/polybar/launch.sh --forest &
+# conky -c /home/mattia/.config/conky/conky_sidepane2.conf &
+# conky -c /home/mattia/.config/conky/calendar.conf &
 
 # unlock, just to be sure
 hc unlock
@@ -229,12 +237,12 @@ hc set swap_monitors_to_get_tag false
 
 
 # find the panel
-panel=~/.config/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/home/mattia/.config/polybar/launch.sh
-for monitor in 1 ; do
-    # start it on each monitor
-    "$panel" "$monitor" &
-done
+# panel=~/.config/herbstluftwm/panel.sh
+# [ -x "$panel" ] || panel=/home/mattia/.config/polybar/launch.sh --forest
+# for monitor in 1 ; do
+#     # start it on each monitor
+#     "$panel" "$monitor" &
+# done
 # for monitor in $(hc list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     # "$panel" "$monitor" &
