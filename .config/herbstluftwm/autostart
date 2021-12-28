@@ -22,6 +22,7 @@ hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind Mod1-q close
 hc keybind $Mod-t spawn bash -c "kitty -e tmux" 
+hc keybind $Mod-Shift-t spawn "kitty" 
 
 # basic movement in tiling and floating mode
 # focusing clients
@@ -96,8 +97,8 @@ hc keybind $Mod-z remove
 hc keybind $Mod-Control-s floating toggle
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-Shift-s set_attr clients.focus.floating toggle
-hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
-hc keybind $Mod-Control-m jumpto last-minimized
+hc keybind Mod1-w set_attr clients.focus.minimized true
+hc keybind Mod1-s jumpto last-minimized
 hc keybind $Mod-p pseudotile toggle
 hc keybind $Mod-w set_layout max
 hc keybind $Mod-d set_layout horizontal
@@ -125,9 +126,12 @@ hc mousebind $Mod-Button2 zoom
 hc mousebind $Mod-Button3 resize
 
 # Volume
-hc keybind XF86AudioRaiseVolume spawn pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +5%
-hc keybind XF86AudioLowerVolume spawn pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5%
-hc keybind XF86AudioMute spawn pamixer -t
+hc keybind XF86AudioRaiseVolume spawn bash -c "volume_up.sh"
+hc keybind XF86AudioLowerVolume spawn bash -c "volume_down.sh"
+hc keybind XF86AudioMute spawn bash -c "volume_mute.sh"
+# Brightness
+hc keybind XF86MonBrightnessUp spawn bash -c "brightness.sh up"
+hc keybind XF86MonBrightnessDown spawn bash -c "brightness.sh down"
 
 # focus
 hc keybind $Mod-BackSpace   cycle_monitor
@@ -210,11 +214,12 @@ hc keybind Shift-space spawn bash -c "rofi -combi-modi drun,run,ssh,file-browser
 hc keybind Mod1-space spawn bash -c "rofi -show window -window-thumbnail -font 'hack 12' -icon-theme Yaru -show-icons -no-default-config"
 hc keybind $Mod-e spawn "emacs"
 hc keybind $Mod-v spawn "vivaldi-stable"
+hc keybind $Mod-n spawn bash -c "nitrogen --restore"
 
 # Startup commands
 /home/mattia/.dotfiles/.config/herbstluftwm/autostart.sh &
 setxkbmap -option "caps:swapescape" &
-# nitrogen --restore &
+nitrogen --restore &
 # blueman-applet &
 # nm-applet &
 # picom --experimental-backends --config  /home/mattia/.config/herbstluftwm/picom.conf &
@@ -223,8 +228,8 @@ setxkbmap -option "caps:swapescape" &
 # redshift-gtk &
 # xfce4-power-manager &
 ~/.config/polybar/launch.sh --forest &
-# conky -c /home/mattia/.config/conky/conky_sidepane2.conf &
-# conky -c /home/mattia/.config/conky/calendar.conf &
+conky -c /home/mattia/.config/conky/conky_sidepane2.conf &
+conky -c /home/mattia/.config/conky/calendar.conf &
 
 # unlock, just to be sure
 hc unlock

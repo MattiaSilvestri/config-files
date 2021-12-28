@@ -7,15 +7,15 @@ function run {
   fi
 }
 run "xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1"
-run "conky -c /home/mattia/.config/conky/conky_sidepane2.conf"
-run "conky -c /home/mattia/.config/conky/calendar.conf"
+# run "conky -c /home/mattia/.config/conky/conky_sidepane2.conf"
+# run "conky -c /home/mattia/.config/conky/calendar.conf"
 # run "conky -c /home/mattia/.config/conky/conkyKeys.conf"
 # run "pamac-tray"
 run "xfce4-power-manager"
 run "blueman-applet"
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 run "numlockx off"
-run "volumeicon"
+# run "volumeicon"
 run "nitrogen --restore"
 #run "megasync"
 run "redshift-gtk"
