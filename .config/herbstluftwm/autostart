@@ -73,24 +73,63 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-tag_names=( {1..9} )
+mon0_names=( 0_{1..5} ) # tag names for monitor 1
+mon1_names=( 1_{1..5} ) # tag names for monitor 2
+# fallback_names=( {1..5} ) # tag names for all other monitors
 tag_keys=( {1..9} 0 )
 
-hc rename default "${tag_names[0]}" || true
-for i in "${!tag_names[@]}" ; do
-    hc add "${tag_names[$i]}"
+hc rename default "${mon0_names[0]}" || true
+for tag in "${mon0_names[@]}" "${mon1_names[@]}" "${fallback_names[@]}" ; do
+    hc try silent add "$tag"
+done
+
+for i in ${!tag_keys[@]} ; do
     key="${tag_keys[$i]}"
-    if ! [ -z "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
-        hc keybind "$Mod-Shift-$key" move_index "$i"
-    fi
+    # the keybinding works as follows: the or executes the commands separated by
+    # CASE and stops executing them after the first of those succeeds.
+    # the first command is: check that we are on monitor 3 and can switch to tag "${mon1_names[$i]}"
+    # if only one of these two steps fail, try the second one (and so one).
+    # The setup for two monitors is as follows:
+    hc keybind "$Mod-$key" \
+        or CASE and . compare monitors.focus.index = 0 . use "${mon0_names[$i]}" \
+           CASE and . compare monitors.focus.index = 1 . use "${mon1_names[$i]}" \
+           CASE use "${fallback_names[$i]}"
+    hc keybind "$Mod-Shift-$key" \
+        or CASE and . compare monitors.focus.index = 0 . move "${mon0_names[$i]}" \
+           CASE and . compare monitors.focus.index = 1 . move "${mon1_names[$i]}" \
+           CASE move "${fallback_names[$i]}"
 done
 
 # cycle through tags
-hc keybind Mod1-Control-l use_index +1 --skip-visible
-hc keybind Mod1-Control-h  use_index -1 --skip-visible
-hc keybind Mod1-Control-Right use_index +1 --skip-visible
-hc keybind Mod1-Control-Left  use_index -1 --skip-visible
+# add additional information in order to cycle only through a monitor's tags
+# and not through all tags
+define-tag-cycle() {
+    local n=$#
+    local tags=( "$@" )
+    for i in "${!tags[@]}" ; do
+        local t="${tags[$i]}"
+        hc chain , new_attr string tags.by-name."$t".my_previous_tag \
+                 , set_attr tags.by-name."$t".my_previous_tag "${tags[$(((i - 1 + n) % n))]}" \
+                 , new_attr string tags.by-name."$t".my_next_tag \
+                 , set_attr tags.by-name."$t".my_next_tag "${tags[$(((i + 1) % n))]}"
+    done
+}
+
+define-tag-cycle "${mon0_names[@]}"
+define-tag-cycle "${mon1_names[@]}"
+define-tag-cycle "${fallback_names[@]}"
+
+# cycle through tags
+# check whether the current tag as a custom "next tag" configured
+# if yes, jump to that one, otherwise fall back to ordinary use_index +1
+hc keybind Mod1-Control-l or , substitute NEXT tags.focus.my_next_tag use NEXT  \
+                          , use_index +1 --skip-visible
+hc keybind Mod1-Control-h  or , substitute PREV tags.focus.my_previous_tag use PREV  \
+                          , use_index +1 --skip-visible
+hc keybind Mod1-Control-Right or , substitute NEXT tags.focus.my_next_tag use NEXT  \
+                          , use_index +1 --skip-visible
+hc keybind Mod1-Control-Left  or , substitute PREV tags.focus.my_previous_tag use PREV  \
+                          , use_index +1 --skip-visible
 
 # layouting
 hc keybind $Mod-z remove
@@ -183,7 +222,7 @@ hc attr theme.background_color '#141414'
 
 # General settings
 hc set window_gap 8
-hc set frame_padding 0
+hc set frame_padding -8
 hc set smart_window_surroundings on
 hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
@@ -207,16 +246,38 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 hc set tree_style '╾│ ├└╼─┐'
 
-# Launching apps #
-# ---------------#
+# do multi monitor setup here, e.g.:
+# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+# or simply:
+hc detect_monitors
+hc set swap_monitors_to_get_tag false
+
+hc keybind $Mod-Shift-o spawn bash -c "xrandr --output eDP-1 --mode 1920x1080 --rate 60.00 --primary --output HDMI-1 --right-of eDP-1 --mode 1280x1024 --rate 60.02 & \
+	 				 												 		 herbstclient reload"
+hc keybind $Mod-Shift-m spawn bash -c "xrandr --output eDP-1 --mode 1920x1080 --rate 60.00 --primary --output HDMI-1 --right-of eDP-1 --mode 1920x1200 --rate 59.95 & \
+	 				 												 		 herbsclient reload"
+hc keybind Mod1-h spawn bash -c "xrandr --output HDMI-1 --off & herbstclient remove_monitor 1"
+hc keybind $Mod-o cycle_monitor 
+
+# Launchers #
+# ----------#
+
 # Rofi
-hc keybind Shift-space spawn bash -c "rofi -combi-modi drun,run,ssh,file-browser -font 'hack 12' -show combi -icon-theme Yaru -show-icons -no-default-config"
-hc keybind Mod1-space spawn bash -c "rofi -show window -window-thumbnail -font 'hack 12' -icon-theme Yaru -show-icons -no-default-config"
+hc keybind Shift-space spawn bash -c "rofi -theme "/home/mattia/.config/rofi_themes/rofi-breeze-theme/arc-dark.rasi" -combi-modi drun,run,ssh,file-browser -font 'hack 12' -show combi -icon-theme Yaru -show-icons -no-default-config"
+hc keybind Mod1-Tab spawn bash -c "rofi -theme "/home/mattia/.config/rofi_themes/rofi-breeze-theme/arc-dark.rasi" -show window -window-thumbnail -font 'hack 12' -icon-theme Yaru -show-icons -no-default-config"
+hc keybind $Mod-x spawn bash -c "/home/mattia/.config/rofi/bin/menu_powermenu"
+# Emacs
 hc keybind $Mod-e spawn "emacs"
+# Browser
 hc keybind $Mod-v spawn "vivaldi-stable"
+# Set wallpaper
 hc keybind $Mod-n spawn bash -c "nitrogen --restore"
+# Kill conky
+hc keybind Mod1-k spawn bash -c "killall -q conky"
 
 # Startup commands
+killall -q conky
+
 /home/mattia/.dotfiles/.config/herbstluftwm/autostart.sh &
 setxkbmap -option "caps:swapescape" &
 nitrogen --restore &
@@ -227,19 +288,12 @@ nitrogen --restore &
 # flashfocus &
 # redshift-gtk &
 # xfce4-power-manager &
-~/.config/polybar/launch.sh --forest &
+~/.config/polybar/forest/launch.sh &
 conky -c /home/mattia/.config/conky/conky_sidepane2.conf &
 conky -c /home/mattia/.config/conky/calendar.conf &
 
 # unlock, just to be sure
 hc unlock
-
-# do multi monitor setup here, e.g.:
-# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
-# or simply:
-hc detect_monitors
-hc set swap_monitors_to_get_tag false
-
 
 # find the panel
 # panel=~/.config/herbstluftwm/panel.sh

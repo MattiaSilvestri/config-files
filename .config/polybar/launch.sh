@@ -13,11 +13,7 @@ launch_bar() {
 	# Launch the bar
 	if [[ "$style" == "hack" || "$style" == "cuts" ]]; then
 		polybar -q top -c "$dir/$style/config.ini" &
-		polybar -q bottom -c "$dir/$style/config.ini" &
-	elif [[ "$style" == "pwidgets" ]]; then
-		bash "$dir"/pwidgets/launch.sh --main
-	else
-		polybar -q main -c "$dir/$style/config.ini" &	
+		polybar -q bottom -c "$dir/$style/config.ini" & elif [[ "$style" == "pwidgets" ]]; then bash "$dir"/pwidgets/launch.sh --main else polybar -q main -c "$dir/$style/config.ini" &	
 	fi
 }
 
@@ -59,6 +55,10 @@ elif [[ "$1" == "--colorblocks" ]]; then
 
 elif [[ "$1" == "--forest" ]]; then
 	style="forest"
+	launch_bar
+
+elif [[ "$1" == "--forest_HDMI" ]]; then
+	style="forest_HDMI"
 	launch_bar
 
 elif [[ "$1" == "--pwidgets" ]]; then
