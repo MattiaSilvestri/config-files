@@ -239,7 +239,9 @@ hc rule focus=on # normally focus new clients
 hc rule floatplacement=smart
 #hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
-#hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+# hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+hc rule class=MEGAsync floating=on
+hc rule class=Blueman-manager floating=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
@@ -274,6 +276,8 @@ hc keybind $Mod-v spawn "vivaldi-stable"
 hc keybind $Mod-n spawn bash -c "nitrogen --restore"
 # Kill conky
 hc keybind Mod1-k spawn bash -c "killall -q conky"
+# Swap caps to escape
+hc keybind $Mod-Shift-e spawn bash -c "setxkbmap -option "caps:swapescape""
 
 # Startup commands
 killall -q conky
@@ -291,6 +295,7 @@ nitrogen --restore &
 ~/.config/polybar/forest/launch.sh &
 conky -c /home/mattia/.config/conky/conky_sidepane2.conf &
 conky -c /home/mattia/.config/conky/calendar.conf &
+xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
 
 # unlock, just to be sure
 hc unlock
