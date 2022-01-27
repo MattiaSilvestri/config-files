@@ -1,0 +1,55 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("herbstluftwm"
+ (filename . "~/.dotfiles/.config/herbstluftwm/autostart")
+ (front-context-string . "# or simply:\nhc ")
+ (rear-context-string . "280x1024+1280+0\n")
+ (position . 8568))
+("picom"
+ (filename . "~/.dotfiles/.config/herbstluftwm/picom.conf")
+ (front-context-string . "################")
+ (rear-context-string)
+ (position . 1))
+("ranger-g"
+ (filename . "/mnt/08542B6A542B59A8/Work/Git/")
+ (front-context-string . "gridclock/\n  drw")
+ (rear-context-string . " 4k 12-14 18:59 ")
+ (position . 82))
+("ranger-w"
+ (filename . "/mnt/08542B6A542B59A8/MEGA/Work/")
+ (front-context-string . "Dependences/\n  d")
+ (rear-context-string . "  0 10-27 12:23 ")
+ (position . 82))
+("org-refile-last-stored"
+ (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/20210613181952-papers.org")
+ (front-context-string . "** Liu et al. (2")
+ (rear-context-string . "f1c92f][link]])\n")
+ (position . 1316))
+("org-capture-last-stored"
+ (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/20211012174949-task_listd.org")
+ (front-context-string . "#+filetags: :gri")
+ (rear-context-string . "itle: Task list\n")
+ (position . 87))
+("Hub-Filosofia"
+ (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/20210612094917-roam_hub_pensieri.org")
+ (front-context-string . "\n* Capire la rea")
+ (rear-context-string . "TARTUP: showall\n")
+ (position . 114))
+("Hub-Knowledge"
+ (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/20210525155129-roam_hub_knowledge.org")
+ (front-context-string . ":PROPERTIES:\n:ID")
+ (rear-context-string)
+ (position . 1))
+("awesome-keys"
+ (filename . "~/.config/awesome/configuration/keys.lua")
+ (front-context-string . "-- keys.lua\n-- C")
+ (rear-context-string)
+ (position . 1))
+("init.el"
+ (filename . "~/.config/emacs/init.el")
+ (front-context-string . ";(tooltip-mode -")
+ (rear-context-string . "artup messagge.\n")
+ (position . 84))
+)
