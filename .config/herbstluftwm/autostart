@@ -257,8 +257,8 @@ hc set swap_monitors_to_get_tag false
 
 hc keybind $Mod-Shift-o spawn bash -c "xrandr --output eDP-1 --mode 1920x1080 --rate 60.00 --primary --output HDMI-1 --right-of eDP-1 --mode 1280x1024 --rate 60.02 & \
 	 				 												 		 herbstclient reload"
-hc keybind $Mod-Shift-m spawn bash -c "xrandr --output eDP-1 --mode 1920x1080 --rate 60.00 --primary --output HDMI-1 --right-of eDP-1 --mode 1920x1200 --rate 59.95 & \
-	 				 												 		 herbsclient reload"
+hc keybind $Mod-Shift-m spawn bash -c "xrandr --output eDP-1 --mode 1920x1080 --rate 60.00 --primary --output HDMI-1 --right-of eDP-1 --mode 2560x1440 --rate 59.95 & \
+	 				 												 		 herbstclient reload"
 hc keybind Mod1-h spawn bash -c "xrandr --output HDMI-1 --off & herbstclient remove_monitor 1"
 hc keybind $Mod-o cycle_monitor 
 
@@ -294,8 +294,10 @@ nitrogen --restore &
 # redshift-gtk &
 # xfce4-power-manager &
 ~/.config/polybar/forest/launch.sh &
-conky -c /home/mattia/.config/conky/conky_sidepane2.conf &
-conky -c /home/mattia/.config/conky/calendar.conf &
+conky -c /home/mattia/.config/conky/Actual_conky/sidepane.conf &
+conky -c /home/mattia/.config/conky/Actual_conky/calendar.conf &
+conky -c /home/mattia/.config/conky/Actual_conky/sidepane_HDMI.conf &
+conky -c /home/mattia/.config/conky/Actual_conky/calendar_HDMI.conf &
 xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
 
 # unlock, just to be sure

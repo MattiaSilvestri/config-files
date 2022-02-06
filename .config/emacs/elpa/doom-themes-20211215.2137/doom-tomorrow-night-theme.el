@@ -15,8 +15,8 @@ determine the exact padding."
   "A theme based off of Chris Kempson's Tomorrow Dark."
 
   ;; name        gui       256       16
-  ((bg         '("#1d1f21" nil       nil          ))
-   (bg-alt     '("#161719" nil       nil          ))
+  ((bg         '("#131d28" nil       nil          ))
+   (bg-alt     '("#1b2631" nil       nil          ))
    (base0      '("#0d0d0d" "black"   "black"      ))
    (base1      '("#1b1b1b" "#1b1b1b"              ))
    (base2      '("#212122" "#1e1e1e"              ))
@@ -26,7 +26,7 @@ determine the exact padding."
    (base6      '("#757878" "#6b6b6b" "brightblack"))
    (base7      '("#969896" "#979797" "brightblack"))
    (base8      '("#ffffff" "#ffffff" "white"      ))
-   (fg         '("#c5c8c6" "#c5c5c5" "white"))
+   (fg         '("#EBDBB2" "#c5c5c5" "white"))
    (fg-alt     (doom-darken fg 0.4))
 
    (grey       '("#5a5b5a" "#5a5a5a" "brightblack"))
@@ -45,7 +45,7 @@ determine the exact padding."
    ;; face categories
    (highlight      blue)
    (vertical-bar   base0)
-   (selection      `(,(car (doom-lighten bg 0.1)) ,@(cdr base4)))
+   (selection      `(,(car (doom-lighten bg 0.15)) ,@(cdr base4)))
    (builtin        blue)
    (comments       grey)
    (doc-comments   (doom-lighten grey 0.14))
@@ -67,9 +67,9 @@ determine the exact padding."
    (vc-deleted     red)
 
    ;; custom categories
-   (modeline-bg     `(,(doom-darken (car bg-alt) 0.3) ,@(cdr base3)))
+   (modeline-bg     `(,(doom-lighten (car bg-alt) 0.05) ,@(cdr base3)))
    (modeline-bg-alt `(,(car bg) ,@(cdr base1)))
-   (modeline-fg     base8)
+   (modeline-fg     fg)
    (modeline-fg-alt comments)
    (-modeline-pad
     (when doom-tomorrow-night-padded-modeline

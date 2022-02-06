@@ -11,7 +11,10 @@
 ;; (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 140 :weight 'regular)
 
 ;; Global Theme
-(load-theme 'doom-nord t)
+(load-theme 'doom-tomorrow-night t)
+;; Background colors
+;; (add-to-list 'default-frame-alist '(background-color . "#131d28"))
+
 ;;Treemacs Theme
 ;; (treemacs-load-theme "Default")
 
@@ -69,7 +72,10 @@
 ;;                 eshell-mode-hook))
 ;;   (add-hook mode (lambda () (linum-mode 0)))) ;;Disable linum numbers
 ;(set-face-background 'linum "#000000")
-(set-face-background 'line-number "#373f4d")
+
+;Line comlumn background
+;; (set-face-background 'line-number "#373f4d")
+(set-face-background 'line-number "#1b2631")
 
 ;;Raibow delimeters
 (use-package rainbow-delimiters
@@ -126,6 +132,8 @@
 ;; Frame transparency
 (set-frame-parameter (selected-frame) 'alpha '(80 . 80))
 (add-to-list 'default-frame-alist '(alpha . (80 . 80)))
+;; (set-frame-parameter (selected-frame) 'alpha '(100 . 100))
+;; (add-to-list 'default-frame-alist '(alpha . (100 . 100)))
 
 ;; Tab bar mode
 (tab-bar-mode 1)
@@ -379,6 +387,11 @@
   (setq doom-modeline-minor-modes t)
   :custom
   (doom-modeline-height 30))
+;; (require 'spaceline-config)
+;; (require 'spaceline)
+;; (spaceline-emacs-theme)
+;; (setq powerline-default-separator 'wave)
+
 
 ;(use-package general)
   ;:config  
@@ -1215,15 +1228,72 @@ If all failed, try to complete the common part with `company-complete-common'"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+	 [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+	 ["#171717" "#E2434C" "#86B187" "#E0D063" "#8AC6F2" "#E18Cbb" "cyan" "#F6F3E8"])
+ '(background-color "#202020")
+ '(background-mode dark)
+ '(beacon-color "#cc6666")
  '(company-box-icons-alist 'company-box-icons-images)
  '(company-show-quick-access t nil nil "Customized with use-package company")
+ '(cursor-color "#cccccc")
  '(custom-safe-themes
 	 '("f94110b35f558e4c015b2c680f150bf8a19799d775f8352c957d9d1054b0a210" "fce3524887a0994f8b9b047aef9cc4cc017c5a93a5fb1f84d300391fba313743" default))
+ '(exwm-floating-border-color "#3c3847")
+ '(fci-rule-color "#635770")
+ '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
+ '(foreground-color "#cccccc")
+ '(frame-background-mode 'dark)
+ '(highlight-tail-colors ((("#222622") . 0) (("cyan") . 20)))
  '(inhibit-startup-screen t)
+ '(jdee-db-active-breakpoint-face-colors (cons "#1D1D1D" "#8AC6F2"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1D1D1D" "#86B187"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1D1D1D" "#433F4f"))
+ '(lsp-ui-imenu-colors '("#7FC1CA" "#A8CE93"))
  '(mlint-programs
 	 '("/home/mattia/.config/emacs/elpa/matlab-mode-20210410.1340/mlint.el" "glnxa64/mlint"))
+ '(nrepl-message-colors
+	 '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
+ '(objed-cursor-color "#E2434C")
  '(package-selected-packages
-	 '(sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy)))
+	 '(spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
+ '(pdf-view-midnight-colors (cons "#F6F3E8" "#171717"))
+ '(pos-tip-background-color "#1A3734")
+ '(pos-tip-foreground-color "#FFFFC8")
+ '(rustic-ansi-faces
+	 ["#171717" "#E2434C" "#86B187" "#E0D063" "#8AC6F2" "#E18Cbb" "cyan" "#F6F3E8"])
+ '(tetris-x-colors
+	 [[229 192 123]
+		[97 175 239]
+		[209 154 102]
+		[224 108 117]
+		[152 195 121]
+		[198 120 221]
+		[86 182 194]])
+ '(vc-annotate-background "#171717")
+ '(vc-annotate-color-map
+	 (list
+		(cons 20 "#86B187")
+		(cons 40 "#a3bb7b")
+		(cons 60 "#c2c56f")
+		(cons 80 "#E0D063")
+		(cons 100 "#e3bd59")
+		(cons 120 "#e6aa50")
+		(cons 140 "#EA9847")
+		(cons 160 "#e7946d")
+		(cons 180 "#e39094")
+		(cons 200 "#E18Cbb")
+		(cons 220 "#e17396")
+		(cons 240 "#e15b71")
+		(cons 260 "#E2434C")
+		(cons 280 "#ba424c")
+		(cons 300 "#92414d")
+		(cons 320 "#6a404e")
+		(cons 340 "#635770")
+		(cons 360 "#635770")))
+ '(vc-annotate-very-old-color nil)
+ '(window-divider-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
