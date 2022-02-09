@@ -1,2 +1,0 @@
-;;; Generated package description from /home/mattia/.config/emacs/elpa/emacsql-libsqlite3-20211209.1243/emacsql-libsqlite3.el  -*- no-byte-compile: t -*-
-(define-package "emacsql-libsqlite3" "20211209.1243" "EmacSQL back-end for SQLite using a module" '((emacs "25.1") (emacsql "3.0.0") (emacsql-sqlite "3.0.0") (sqlite "0")) :commit "d3e401750410979be50cab3fee0ec8d0d2a9998c" :authors '(("Jonas Bernoulli" . "jonas@bernoul.li")) :maintainer '("Jonas Bernoulli" . "jonas@bernoul.li") :keywords '("mail") :url "https://github.com/emacscollective/emacsql-libsqlite3")

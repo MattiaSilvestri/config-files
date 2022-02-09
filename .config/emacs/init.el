@@ -75,7 +75,8 @@
 
 ;Line comlumn background
 ;; (set-face-background 'line-number "#373f4d")
-(set-face-background 'line-number "#1b2631")
+;; (set-face-background 'line-number "#1b2631")
+;; (set-face-background 'line-number "#091928")
 
 ;;Raibow delimeters
 (use-package rainbow-delimiters
@@ -130,10 +131,10 @@
  (setq table-cell-intersection-char ?\u254B)
 
 ;; Frame transparency
-(set-frame-parameter (selected-frame) 'alpha '(80 . 80))
-(add-to-list 'default-frame-alist '(alpha . (80 . 80)))
-;; (set-frame-parameter (selected-frame) 'alpha '(100 . 100))
-;; (add-to-list 'default-frame-alist '(alpha . (100 . 100)))
+;; (set-frame-parameter (selected-frame) 'alpha '(80 . 80))
+;; (add-to-list 'default-frame-alist '(alpha . (80 . 80)))
+(set-frame-parameter (selected-frame) 'alpha '(100 . 100))
+(add-to-list 'default-frame-alist '(alpha . (100 . 100)))
 
 ;; Tab bar mode
 (tab-bar-mode 1)
@@ -265,6 +266,20 @@
 (global-set-key (kbd "M-n d") 'deft)
 (global-set-key (kbd "C-` d") 'bookmark-delete)
 (global-set-key (kbd "C-c p k") 'package-install)
+
+(define-prefix-command 'ring-map)
+(global-set-key (kbd "C-w") 'ring-map)
+(global-set-key (kbd "C-w h") 'windmove-left)
+(global-set-key (kbd "C-w l") 'windmove-right)
+(global-set-key (kbd "C-w j") 'windmove-down)
+(global-set-key (kbd "C-w k") 'windmove-up)
+;; (bind-keys :map global-map
+;; 						:prefix "C-w"
+;; 						:prefix-map my-prefix-map
+;; 						("h" . windmove-left)
+;; 						("j" . windmove-down)
+;; 						("k" . windmove-up)
+;; 						("l" . windmove-right))
 ;(define-key emacs-lisp-mode-map (kbd "C-x M-t") 'counsel-load-theme') ;Example to set keys for specific modes
 
 ;; Packages ---------------------------------------------------------
@@ -466,9 +481,9 @@
   :hook
 	((LaTex-mode latex-mode java-mode python-mode go-mode js-mode js2-mode typescript-mode web-mode
           c-mode c++-mode objc-mode ess-r-mode) . lsp)
-  (lsp-mode . (lambda()
+  ((lsp-mode matlab-mode) . (lambda()
 								(auto-fill-mode 1)
-								(display-fill-column-indicator-mode 1)))) ; Display vertical line at 80th position.
+								(display-fill-column-indicator-mode 1)))) ; Display vertical line (guides) at 80th position.
 
   ;:config
     ;(setq lsp-auto-configure t)
@@ -666,6 +681,7 @@ If all failed, try to complete the common part with `company-complete-common'"
   (auto-fill-mode 1)
   (visual-line-mode 0)
 	(flyspell-mode t)
+	(svg-tag-mode t)
   (setq evil-auto-indent t)
   )
 
@@ -1120,6 +1136,14 @@ If all failed, try to complete the common part with `company-complete-common'"
 ;; (require 'eaf-file-manager)
 
 (quelpa '(pdf-continuous-scroll-mode :fetcher github :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
+(use-package pdf-continuous-scroll-mode
+	:ensure t
+	;; :bind (("j" . pdf-continuous-scroll-forward)
+	;; 			 ("k" . pdf-continuous-scroll-backward))
+	:hook
+  ((pdf-continuous-scroll-mode) . (lambda()
+								(turn-off-evil-mode))) 
+	)
 
 (use-package ranger
 	:ensure t
@@ -1132,6 +1156,86 @@ If all failed, try to complete the common part with `company-complete-common'"
 	(setq ranger-preview-file t)
 	(setq ranger-width-preview 0.55)
 	)
+
+;; SVG-tags
+(require 'svg-tag-mode)
+
+(defconst date-re "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}")
+(defconst time-re "[0-9]\\{2\\}:[0-9]\\{2\\}")
+(defconst day-re "[A-Za-z]\\{3\\}")
+
+(defun svg-progress-percent (value)
+  (svg-image (svg-lib-concat
+              (svg-lib-progress-bar (/ (string-to-number value) 100.0)
+                                nil :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+              (svg-lib-tag (concat value "%")
+                           nil :stroke 0 :margin 0)) :ascent 'center))
+
+(defun svg-progress-count (value)
+  (let* ((seq (mapcar #'string-to-number (split-string value "/")))
+         (count (float (car seq)))
+         (total (float (cadr seq))))
+  (svg-image (svg-lib-concat
+              (svg-lib-progress-bar (/ count total) nil
+                                    :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+              (svg-lib-tag value nil
+                           :stroke 0 :margin 0)) :ascent 'center)))
+
+(setq svg-tag-tags
+      `(
+        ;; Org tags
+        (":\\([A-Za-z0-9]+\\)" . ((lambda (tag) (svg-tag-make tag))))
+        (":\\([A-Za-z0-9]+[ \-]\\)" . ((lambda (tag) tag)))
+        
+        ;; Task priority
+        ("\\[#[A-Z]\\]" . ( (lambda (tag)
+                              (svg-tag-make tag :face 'org-priority 
+                                            :beg 2 :end -1 :margin 0))))
+
+        ;; Progress
+        ("\\(\\[[0-9]\\{1,3\\}%\\]\\)" . ((lambda (tag)
+                                            (svg-progress-percent (substring tag 1 -2)))))
+        ("\\(\\[[0-9]+/[0-9]+\\]\\)" . ((lambda (tag)
+                                          (svg-progress-count (substring tag 1 -1)))))
+        
+        ;; TODO / DONE
+        ("TODO" . ((lambda (tag) (svg-tag-make "TODO" :face 'org-todo :inverse t :margin 0))))
+        ("DONE" . ((lambda (tag) (svg-tag-make "DONE" :face 'org-done :margin 0))))
+
+        ;; Citation of the form [cite:@Knuth:1984] 
+        ("\\(\\[cite:@[A-Za-z]+:\\)" . ((lambda (tag)
+                                          (svg-tag-make tag
+                                                        :inverse t
+                                                        :beg 7 :end -1
+                                                        :crop-right t))))
+        ("\\[cite:@[A-Za-z]+:\\([0-9]+\\]\\)" . ((lambda (tag)
+                                                (svg-tag-make tag
+                                                              :end -1
+                                                              :crop-left t))))
+        ;; Active date (without day name, with or without time)
+        (,(format "\\(<%s>\\)" date-re) .
+         ((lambda (tag)
+            (svg-tag-make tag :beg 1 :end -1 :margin 0))))
+        (,(format "\\(<%s *\\)%s>" date-re time-re) .
+         ((lambda (tag)
+            (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0))))
+        (,(format "<%s *\\(%s>\\)" date-re time-re) .
+         ((lambda (tag)
+            (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0))))
+
+        ;; Inactive date  (without day name, with or without time)
+         (,(format "\\(\\[%s\\]\\)" date-re) .
+          ((lambda (tag)
+             (svg-tag-make tag :beg 1 :end -1 :margin 0 :face 'org-date))))
+         (,(format "\\(\\[%s *\\)%s\\]" date-re time-re) .
+          ((lambda (tag)
+             (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0 :face 'org-date))))
+         (,(format "\\[%s *\\(%s\\]\\)" date-re time-re) .
+          ((lambda (tag)
+             (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0 :face 'org-date))))))
+
+(svg-tag-mode t)
+
 ;; ;; EXWM Configuration -----------------------------
 (defun efs/exwm-update-class ()
   (exwm-workspace-rename-buffer exwm-class-name))
@@ -1257,7 +1361,7 @@ If all failed, try to complete the common part with `company-complete-common'"
 	 '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(objed-cursor-color "#E2434C")
  '(package-selected-packages
-	 '(spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
+	 '(deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
  '(pdf-view-midnight-colors (cons "#F6F3E8" "#171717"))
  '(pos-tip-background-color "#1A3734")
  '(pos-tip-foreground-color "#FFFFC8")
