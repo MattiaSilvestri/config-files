@@ -296,6 +296,10 @@ alias p="git push"
 alias pl="git pull"
 alias rs="git reset"
 
+# Music
+alias music='tmux new-session -s $$ "tmux source-file ~/.ncmpcpp/tsession"'
+alias ncm="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"
+
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()

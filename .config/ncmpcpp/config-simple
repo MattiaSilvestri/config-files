@@ -16,7 +16,7 @@ mpd_crossfade_time = 5
         format          "44100:16:2"
  }
 
-# song_list_format = "$6{%a »$4 %t$/r$R}|{%f}"
+# song_list_format = " $6{%a »$4 %t$/r$R}|{%f}"
 # song_list_format = " 		   {{%a - %t}|{%f}}{$R%l} "
 #song_status_format = {%a - %t}|{%f}
 #song_status_format = "{{%a{ "%b"{ (%y)}} - }{%t$/b}}|{$b%f$/b}"
@@ -32,90 +32,76 @@ header_visibility = yes
 statusbar_visibility = yes
 titles_visibility = no
 
+visualizer_in_stereo = yes
+visualizer_type = wave
+visualizer_fps = 30
+visualizer_autoscale = yes
+visualizer_output_name = "Visualizer feed"
+# visualizer_sync_interval = 30
+# visualizer_look = ●▮
+# visualizer_look = ●┃
+# visualizer_look = ▉▋
+visualizer_look = ||
+# visualizer_look = "▋▋"
+# visualizer_look = █┇
+# visualizer_look = ●┃
+# visualizer_look = "  "           
+# startup_slave_screen = playlist  
+# startup_slave_screen_focus = yes 
+# locked_screen_width_part = 30    
+startup_screen = playlist
+#song_list_format = {%a - }{%t}|{$8%f$9}$R{$3%l$9}
+#
+#song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
+#
+#song_library_format = {%n - }{%t}|{%f}
+#
+#alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
+#
+#alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
+#
+#current_item_prefix = $(yellow)$r
+#
+#current_item_suffix = $/r$(end)
+#
+#current_item_inactive_column_prefix = $(white)$r
+#
+#current_item_inactive_column_suffix = $/r$(end)
+#
+#now_playing_prefix = $b
+#
+#now_playing_suffix = $/b
+#
+#browser_playlist_prefix = "$2playlist$9 "
+#
+#selected_item_prefix = $6
+#
+#selected_item_suffix = $9
+#
+#modified_item_prefix = $3> $9
+browser_sort_mode = type
+#
+browser_sort_format = {%a - }{%t}|{%f} {%l}
+#
+##### columns settings #####
 song_list_format = " $5%n $1• $8%y $1• $8%b $1• $8%t $R$0%A $1 $3%l"
 song_columns_list_format = "(3)[]{}(92)[white]{t} (4)[red]{l}"
 song_status_format = "$b $8%A $8•$3• $3%t $3•$5• $5%b $5•$2• $2%y"
 playlist_display_mode = "classic" (classic/columns)
 search_engine_display_mode = classic
 playlist_editor_display_mode = classic
-visualizer_type = wave
-#visualizer_look = ●▮
-visualizer_look = "  "           # First we make the visualizer invisible       
-startup_screen = visualizer
-startup_slave_screen = playlist  
-startup_slave_screen_focus = yes 
-locked_screen_width_part = 25    
-## %l - length
-## %f - filename
-## %D - directory
-## %a - artist
-## %A - album artist
-## %t - title
-## %b - album
-## %y - date
-## %n - track number (01/12 -> 01)
-## %N - full track info (01/12 -> 01/12)
-## %g - genre
-## %c - composer
-## %p - performer
-## %d - disc
-## %C - comment
-## %P - priority
-## $R - begin right alignment
-## In addition, formats support markers used for text attributes.  They are
-## followed by character '$'. After that you can put:
-##
-## - 0 - default window color (discards all other colors)
-## - 1 - black
-## - 2 - red
-## - 3 - green
-## - 4 - yellow
-## - 5 - blue
-## - 6 - magenta
-## - 7 - cyan
-## - 8 - white
-## - 9 - end of current color
-## - b - bold text
-## - u - underline text
-## - r - reverse colors
-## - a - use alternative character set
-##
-browser_sort_mode = type
-browser_sort_format = {%a - }{%t}|{%f} {%l}
-##### columns settings #####
-execute_on_song_change = "~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
-playlist_separate_albums = no
+playlist_separate_albums = yes
 progressbar_look = "▂▂▂"
+
+## Available values: database, playlist.
+##
+#default_place_to_search_in = database
+#
+## Available values: classic, alternative.
+##
 user_interface = alternative
 #
 #data_fetching_delay = yes
-#
-## Available values: artist, album_artist, date, genre, composer, performer.
-##
-#media_library_primary_tag = artist
-#
-#media_library_albums_split_by_date = yes
-#
-#media_library_hide_album_dates = no
-#
-## Available values: wrapped, normal.
-##
-#default_find_mode = wrapped
-#
-#default_tag_editor_pattern = %n - %t
-#
-#header_visibility = yes
-#
-#statusbar_visibility = yes
-#
-## Show the "Connected to ..." message on startup
-#connected_message_on_startup = yes
-#
-#titles_visibility = yes
-#
-#header_text_scrolling = yes
-#
-#cyclic_scrolling = no
 #
 #lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 #
@@ -130,54 +116,6 @@ user_interface = alternative
 #allow_for_physical_item_deletion = no
 #
 ##
-## Note: If you set this variable, ncmpcpp will try to get info from last.fm in
-## language you set and if it fails, it will fall back to english. Otherwise it
-## will use english the first time.
-##
-## Note: Language has to be expressed as an ISO 639 alpha-2 code.
-##
-#lastfm_preferred_language = en
-#
-#space_add_mode = add_remove
-#
-#show_hidden_files_in_local_browser = no
-#
-##
-## How shall screen switcher work?
-##
-## - "previous" - switch between the current and previous screen.
-## - "screen1,...,screenN" - switch between given sequence of screens.
-##
-## Screens available for use: help, playlist, browser, search_engine,
-## media_library, playlist_editor, tag_editor, outputs, visualizer, clock,
-## lyrics, last_fm.
-##
-#screen_switcher_mode = playlist, browser
-#
-##
-## Note: You can define startup screen by choosing screen from the list above.
-##
-#
-##
-## Note: You can define startup slave screen by choosing screen from the list
-## above or an empty value for no slave screen.
-##
-#startup_slave_screen = ""
-#
-#startup_slave_screen_focus = no
-#
-##
-## Default width of locked screen (in %).  Acceptable values are from 20 to 80.
-##
-#
-#locked_screen_width_part = 50
-#
-#ask_for_locked_screen_width_part = yes
-#
-#jump_to_now_playing_song_at_start = yes
-#
-#ask_before_clearing_playlists = yes
-#
 #clock_display_seconds = no
 #
 #display_volume_level = yes
@@ -239,8 +177,7 @@ user_interface = alternative
 #
 #external_editor = nano
 #
-## Note: set to yes if external editor is a console application.
-##
+## Note: set to yes if external editor is a console application. ##
 #use_console_editor = yes
 #
 ##### colors definitions #####
