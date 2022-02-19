@@ -1,0 +1,18 @@
+pane	0	0	:sh	0	:-	0	:/mnt/08542B6A542B59A8/MEGA/Work/GridMagination/Analysis/Adaptation	1	nvim	:nvim
+pane	0	1	:python	1	:*	0	:/mnt/08542B6A542B59A8/MEGA/UNIVERSITA(M)/Thesis	1	sh	:/bin/sh /home/mattia/.bin/vifmrun
+pane	0	1	:python	1	:*	1	:/home/mattia	0	sh	:/bin/sh /home/mattia/.bin/vifmrun
+pane	0	2	:python	0	:	0	:/home/mattia	1	zsh	:
+pane	0	3	:python	0	:	0	:/home/mattia	1	zsh	:
+pane	1	0	:zsh	1	:*	0	:/home/mattia	1	zsh	:
+pane	2	0	:zsh	1	:*	0	:/home/mattia	1	zsh	:
+pane	3	0	:zsh	1	:*	0	:/home/mattia	1	zsh	:
+pane	4	0	:zsh	1	:*	0	:/home/mattia	1	zsh	:
+window	0	0	0	:-	cd3e,191x48,0,0,1
+window	0	1	1	:*	ea48,191x48,0,0[191x24,0,0,2,191x23,0,25,3]
+window	0	2	0	:	bf41,191x54,0,0,4
+window	0	3	0	:	bf42,191x54,0,0,5
+window	1	0	1	:*	bf43,191x54,0,0,6
+window	2	0	1	:*	bf44,191x54,0,0,7
+window	3	0	1	:*	bf45,191x54,0,0,8
+window	4	0	1	:*	bf46,191x54,0,0,9
+state	0	

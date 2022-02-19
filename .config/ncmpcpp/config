@@ -83,7 +83,7 @@ locked_screen_width_part = 25
 browser_sort_mode = type
 browser_sort_format = {%a - }{%t}|{%f} {%l}
 ##### columns settings #####
-execute_on_song_change = "~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
+execute_on_song_change = "~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh && dunstify "Now Playing ♫" "$(mpc current)""
 playlist_separate_albums = no
 progressbar_look = "▂▂▂"
 user_interface = alternative
