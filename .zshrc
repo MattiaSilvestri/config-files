@@ -346,6 +346,8 @@ export PATH="/usr/bin/core_perl:$PATH"
 export PATH="/home/mattia/.local/share/gem/ruby/3.0.0/bin:$PATH"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
+export EDITOR=nvim
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
