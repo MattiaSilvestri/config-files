@@ -1,0 +1,46 @@
+;; Object semanticdb-project-database-file-15591562af8c
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-15591562af8c"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-15591562af6c"
+      :major-mode python-mode
+      :tags nil
+      :file "KeybindsManager.py"
+      :pointmax 81
+      :fsize 80
+      :lastmodtime '(25189 30006 842163 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-15591562afdc"
+      :major-mode python-mode
+      :tags 
+        '( ("sys" include nil nil [135 145])
+            ("PyQt5.QtWidgets" include nil nil [147 187])
+            ("PyQt5.QtWidgets" include nil nil [188 222])
+            ("PyQt5.QtWidgets" include nil nil [223 258])
+            ("PyQt5.QtGui" include nil nil [259 288])
+            ("calendar" include nil nil [289 304])
+            ("datetime" include nil nil [305 320])
+            ("app" variable nil nil [362 390])
+            ("day" variable nil nil [426 462])
+            ("month" variable nil nil [463 498])
+            ("year" variable nil nil [499 532])
+            ("cal_month" variable nil nil [533 598])
+            ("window" variable nil nil [649 667])
+            ("window" code nil nil [668 702])
+            ("window" code nil nil [703 741])
+            ("window" code nil nil [742 761])
+            ("font" variable nil nil [762 791])
+            ("window" code nil nil [792 812])
+            ("helloMsg" variable nil nil [813 856])
+            ("helloMsg" code nil nil [858 879])
+            ("window" code nil nil [914 927])
+            ("sys" code nil nil [983 1004]))          
+      :file "Calendar.py"
+      :pointmax 1005
+      :fsize 1004
+      :lastmodtime '(25189 28801 373875 900000)
+      :unmatched-syntax nil))
+  :file "!mnt!Data!MEGA!Python!Training_project!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,2 +1,0 @@
-;;; Generated package description from /home/mattia/.config/emacs/elpa/pdf-continuous-scroll-mode-20220206.1020/pdf-continuous-scroll-mode.el  -*- no-byte-compile: t -*-
-(define-package "pdf-continuous-scroll-mode" "20220206.1020" "Continuous scroll for pdf-tools" '((emacs "27.1")) :authors '(("Daniel Laurens Nicolai" . "dalanicolai@gmail.com")) :maintainer '("Daniel Laurens Nicolai" . "dalanicolai@gmail.com") :keywords '("pdf-tools") :url "https://github.com/dalanicolai/pdf-continuous-scroll-mode.el")

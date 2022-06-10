@@ -4,7 +4,7 @@
 (toggle-scroll-bar -1) ; Disable vertical scrollbar
 
 ;; Font size
-(set-face-attribute 'default nil :font "DejaVu Sans Mono" :height 130)
+(set-face-attribute 'default nil :font "Fira Code Light" :height 135)
 (set-fontset-font "fontset-default" '(#x5d0 . #x5ff) "all-the-icons") 
 ;; Set the font face based on platform
 ;; (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 130)
@@ -86,11 +86,14 @@
 (setq-default truncate-lines t)
 
 ;; Globals ------------------------------------------------------------------
+;; Set line spacing
+(setq line-spacing 0.0)
 (latex-preview-pane-enable)
 (global-undo-tree-mode 1)
 (autopair-global-mode 1)
 ;(global-auto-complete-mode t)
 (global-hl-line-mode 1)
+(set-face-background 'hl-line "#24303c")
 (global-display-line-numbers-mode)
 (show-paren-mode 1)
 (rainbow-delimiters-mode 1)
@@ -470,6 +473,7 @@
   (setq lsp-headerline-breadcrumb-enable t)
   (setq lsp-headerline-breadcrumb-segments '(project file symbols))
   (setq lsp-headerline-breadcrumb-icons-enable t)
+	(setq lsp-enable-symbol-highlighting nil)
   :defer t
   :commands lsp
   :custom
@@ -479,9 +483,9 @@
   (read-process-output-max (* 1024 1024))
   (lsp-eldoc-hook nil)
   :custom-face
-  (lsp-face-highlight-read ((t (:background "dark slate grey"))))
-  (lsp-face-highlight-write ((t (:background "dark slate grey"))))
-  (lsp-face-highlight-textual ((t (:background "dark slate grey"))))
+  (lsp-face-highlight-read ((t (:underline t :background "color" :foreground "color"))))
+  (lsp-face-highlight-write ((t (:background "color" :foreground "color"))))
+  (lsp-face-highlight-textual ((t (:underline t :background "color" :foreground "color"))))
   ;; :config
   ;; (setq lsp-diagnostics-provider :none)
   :bind (:map lsp-mode-map 
@@ -492,7 +496,7 @@
   :hook
 	((LaTex-mode latex-mode java-mode python-mode go-mode js-mode js2-mode typescript-mode web-mode
           c-mode c++-mode objc-mode ess-r-mode) . lsp)
-  ((lsp-mode matlab-mode) . (lambda()
+  ((lsp-mode matlab-mode pyton-mode) . (lambda()
 								(auto-fill-mode 1)
 								(display-fill-column-indicator-mode 1)))) ; Display vertical line (guides) at 80th position.
 
@@ -619,6 +623,9 @@ If all failed, try to complete the common part with `company-complete-common'"
   :mode "\\.py\\'"
   :hook
 	(python-mode . lsp-deferred)
+	(python-mode . (lambda ()
+									 (semantic-mode 1)
+									 (setq flycheck-checker 'python-pylint)))
 	:config
 	(require 'dap-python)
 	(setq python-shell-completion-native-enable nil)
@@ -952,20 +959,20 @@ If all failed, try to complete the common part with `company-complete-common'"
   (flycheck-indication-mode 'left-fringe)
 )
 
-(use-package pdf-tools
-  :ensure t
-	:hook
-	(pdf-view-mode . (lambda()
-										 (display-line-numbers-mode 0)))
-  :config
-  (pdf-tools-install)
-  (setq-default pdf-view-display-size 'fit-page)
-  (setq pdf-annot-activate-created-annotations nil)
-  (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-  (define-key pdf-view-mode-map (kbd "C-r") 'isearch-backward)
-  ;; (add-hook 'pdf-view-mode-hook (lambda ()
-  ;; 				  (bms/pdf-midnite-amber))) ; automatically turns on midnight-mode for pdfs
-  )
+;; (use-package pdf-tools
+;;   :ensure t
+;; 	:hook
+;; 	(pdf-view-mode . (lambda()
+;; 										 (display-line-numbers-mode 0)))
+;;   :config
+;;   (pdf-tools-install)
+;;   (setq-default pdf-view-display-size 'fit-page)
+;;   (setq pdf-annot-activate-created-annotations nil)
+;;   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+;;   (define-key pdf-view-mode-map (kbd "C-r") 'isearch-backward)
+;;   ;; (add-hook 'pdf-view-mode-hook (lambda ()
+;;   ;; 				  (bms/pdf-midnite-amber))) ; automatically turns on midnight-mode for pdfs
+;;   )
 
 (use-package auctex-latexmk
   :ensure t
@@ -1146,15 +1153,15 @@ If all failed, try to complete the common part with `company-complete-common'"
 ;; (require 'eaf-music-player)
 ;; (require 'eaf-file-manager)
 
-(quelpa '(pdf-continuous-scroll-mode :fetcher github :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
-(use-package pdf-continuous-scroll-mode
-	:ensure t
-	;; :bind (("j" . pdf-continuous-scroll-forward)
-	;; 			 ("k" . pdf-continuous-scroll-backward))
-	:hook
-  ((pdf-continuous-scroll-mode) . (lambda()
-								(turn-off-evil-mode))) 
-	)
+;; (quelpa '(pdf-continuous-scroll-mode :fetcher github :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
+;; (use-package pdf-continuous-scroll-mode
+;; 	:ensure t
+;; 	;; :bind (("j" . pdf-continuous-scroll-forward)
+;; 	;; 			 ("k" . pdf-continuous-scroll-backward))
+;; 	:hook
+;;   ((pdf-continuous-scroll-mode) . (lambda()
+;; 								(turn-off-evil-mode))) 
+;; 	)
 
 (use-package ranger
 	:ensure t
@@ -1414,9 +1421,9 @@ If all failed, try to complete the common part with `company-complete-common'"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(lsp-face-highlight-read ((t (:background "dark slate grey"))))
- '(lsp-face-highlight-textual ((t (:background "dark slate grey"))))
- '(lsp-face-highlight-write ((t (:background "dark slate grey"))))
+ '(lsp-face-highlight-read ((t (:underline t :background "color" :foreground "color"))))
+ '(lsp-face-highlight-textual ((t (:underline t :background "color" :foreground "color"))))
+ '(lsp-face-highlight-write ((t (:background "color" :foreground "color"))))
  '(lsp-ui-doc-background ((t (:background nil))))
  '(lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic)))))
  '(org-block ((t (:inherit fixed-pitch))))

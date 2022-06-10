@@ -23,10 +23,10 @@
  (rear-context-string . "  0 10-27 12:23 ")
  (position . 82))
 ("org-refile-last-stored"
- (filename . "/mnt/Data/MEGA/Notes/Roam/20210613181952-papers.org")
- (front-context-string . "** [cite:@Wittin")
- (rear-context-string . "f79883][link]])\n")
- (position . 1530))
+ (filename . "/mnt/Data/MEGA/Notes/Roam/20211012174949-task_listd.org")
+ (front-context-string . "** Differentiate")
+ (rear-context-string . "earning effect\n\n")
+ (position . 2671))
 ("org-capture-last-stored"
  (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/20211012174949-task_listd.org")
  (front-context-string . "#+filetags: :gri")

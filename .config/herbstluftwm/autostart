@@ -184,8 +184,8 @@ hc set focus_follows_mouse true
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
-hc set frame_border_active_color '#222222cc'
-hc set frame_border_normal_color '#101010cc'
+hc set frame_border_active_color '#987191'
+hc set frame_border_normal_color '#10101000'
 hc set frame_bg_normal_color '#565656aa'
 hc set frame_bg_active_color '#987191aa'
 hc set frame_border_width 0
@@ -198,7 +198,7 @@ hc attr theme.title_height 0
 hc attr theme.title_font 'Ubuntu:pixelsize=12'  # example using Xft
 # hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
 hc attr theme.padding_top 0  # space below the title's baseline (i.e. text depth)
-hc attr theme.active.color '#987191ef'
+hc attr theme.active.color '#987191'
 hc attr theme.title_color '#ffffff'
 hc attr theme.normal.color '#323232dd'
 hc attr theme.urgent.color '#7811A1dd'
@@ -226,7 +226,7 @@ hc set frame_padding -8
 hc set smart_window_surroundings on
 hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
-hc set hide_covered_windows true
+hc set hide_covered_windows false
 hc set tabbed_max true
 #Padding for Wbar and Conky 
 hc pad 0 30 0 0 0 # First _monitor
@@ -244,6 +244,7 @@ hc rule class=MEGAsync floating=on
 hc rule class=Blueman-manager floating=on
 hc rule class=xpad floating=on
 hc rule class=Dragon-drag-and-drop floating=on
+hc rule class=zoom floating=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off

@@ -1,0 +1,28 @@
+;; Object semanticdb-project-database-file-157fb3f8a3e0
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-157fb3f8a3e0"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-157fb4043a14"
+      :major-mode python-mode
+      :tags 
+        '( ("\"\"\"The machinery of importlib: finders, loaders, hooks, etc.\"\"\"" code nil nil [1 64])
+            ("ModuleSpec" include nil nil [83 100])
+            ("BuiltinImporter" include nil nil [118 140])
+            ("FrozenImporter" include nil nil [158 179])
+            ("" code nil nil [213 365])
+            ("WindowsRegistryFinder" include nil nil [392 420])
+            ("PathFinder" include nil nil [447 464])
+            ("FileFinder" include nil nil [491 508])
+            ("SourceFileLoader" include nil nil [535 558])
+            ("SourcelessFileLoader" include nil nil [585 612])
+            ("ExtensionFileLoader" include nil nil [639 665])
+            ("all_suffixes" function (:documentation "Returns a list of all recognized module suffixes for this process") nil [668 832]))          
+      :file "machinery.py"
+      :pointmax 832
+      :fsize 831
+      :lastmodtime '(25147 42948 0 0)
+      :unmatched-syntax '((FROM 613 . 617) (PERIOD 618 . 619) (FROM 559 . 563) (PERIOD 564 . 565) (FROM 509 . 513) (PERIOD 514 . 515) (FROM 465 . 469) (PERIOD 470 . 471) (FROM 421 . 425) (PERIOD 426 . 427) (FROM 366 . 370) (PERIOD 371 . 372) (FROM 180 . 184) (PERIOD 185 . 186) (FROM 141 . 145) (PERIOD 146 . 147) (FROM 101 . 105) (PERIOD 106 . 107) (FROM 66 . 70) (PERIOD 71 . 72))))
+  :file "!usr!lib!python3.10!importlib!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
