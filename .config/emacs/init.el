@@ -33,6 +33,7 @@
 (add-hook 'conf-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
+(add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
 (setq-default
  display-line-numbers-current-absolute t
  display-line-numbers-type 'visual
@@ -118,7 +119,7 @@
 ;; LSP mode tweaks
 (setq gc-cons-threshold 100000000)
 (setq read-process-output-max (* 1024 1024))
-(setq lsp-idle-delay 0.500)
+(setq lsp-idle-delay 0)
 
 ;; Org-mode
 (setq org-src-preserve-indentation t)
@@ -159,6 +160,10 @@
 
 ;; Start emacs server
 (server-start)
+
+;; Ein settings
+(setq buffer-file-name "test")
+(setq poly-ein-polymode t)
 
 ;; Tweaks
 (when (featurep 'project)
@@ -691,6 +696,16 @@ If all failed, try to complete the common part with `company-complete-common'"
  )
 
 (use-package all-the-icons)
+
+(defun mn/md-setup ()
+	(mixed-pitch-mode 1)
+	(flyspell-mode t)
+	)
+;; Markdown configuratino
+(use-package markdown-mode
+	:defer t
+	:hook (markdown-mode . mn/md-setup)
+	)
 
 ;; Turn on indentation and auto-fill mode for Org files
 (defun dw/org-mode-setup ()
@@ -1362,6 +1377,7 @@ If all failed, try to complete the common part with `company-complete-common'"
  '(cursor-color "#cccccc")
  '(custom-safe-themes
 	 '("f94110b35f558e4c015b2c680f150bf8a19799d775f8352c957d9d1054b0a210" "fce3524887a0994f8b9b047aef9cc4cc017c5a93a5fb1f84d300391fba313743" default))
+ '(ein:output-area-inlined-images t)
  '(exwm-floating-border-color "#3c3847")
  '(fci-rule-color "#635770")
  '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
@@ -1379,7 +1395,7 @@ If all failed, try to complete the common part with `company-complete-common'"
 	 '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(objed-cursor-color "#E2434C")
  '(package-selected-packages
-	 '(all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
+	 '(elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
  '(pdf-view-midnight-colors (cons "#F6F3E8" "#171717"))
  '(pos-tip-background-color "#1A3734")
  '(pos-tip-foreground-color "#FFFFC8")

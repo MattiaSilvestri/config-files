@@ -229,8 +229,8 @@ hc set mouse_recenter_gap 0
 hc set hide_covered_windows false
 hc set tabbed_max true
 #Padding for Wbar and Conky 
-hc pad 0 30 0 0 0 # First _monitor
-hc pad 1 30 0 0 0 # Second monitor
+hc pad 0 45 5 5 5 # First _monitor
+hc pad 1 45 5 5 5 # Second monitor
 
 # rules
 hc unrule -F
@@ -245,9 +245,10 @@ hc rule class=Blueman-manager floating=on
 hc rule class=xpad floating=on
 hc rule class=Dragon-drag-and-drop floating=on
 hc rule class=zoom floating=on
+hc rule class=Gnome-screenshot floating=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DESKTOP)' manage=off
 
 hc set tree_style '╾│ ├└╼─┐'
 
@@ -281,6 +282,8 @@ hc keybind $Mod-n spawn bash -c "nitrogen --restore"
 hc keybind Mod1-k spawn bash -c "killall -q conky"
 # Swap caps to escape
 hc keybind $Mod-Shift-e spawn bash -c "setxkbmap -option "caps:swapescape""
+# Take screenshot
+hc keybind Mod1-s spawn bash -c "gnome-screenshot -a"
 
 # Startup commands
 killall -q conky

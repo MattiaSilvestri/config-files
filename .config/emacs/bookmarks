@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("herbstluftwm"
+(("piom"
+ (filename . "/mnt/Data/Work/Git/gridclock/PI_Behavioural/lmm.R")
+ (front-context-string . "the mixed model\n")
+ (rear-context-string . " factor)\n## Run ")
+ (position . 12546))
+("herbstluftwm"
  (filename . "~/.dotfiles/.config/herbstluftwm/autostart")
  (front-context-string . "# or simply:\nhc ")
  (rear-context-string . "280x1024+1280+0\n")

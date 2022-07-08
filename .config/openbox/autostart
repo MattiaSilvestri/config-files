@@ -10,4 +10,14 @@ xfce4-power-manager &
 
 setxkbmap -option "caps:swapescape" &
 
-picom --experimental-backends --config  /home/mattia/.config/openbox/picom.conf
+picom --experimental-backends --config  /home/mattia/.config/openbox/picom.conf &
+
+nm-applet &
+
+megasync &
+
+volumeicon &
+
+redshift-gtk &
+
+dunst &
