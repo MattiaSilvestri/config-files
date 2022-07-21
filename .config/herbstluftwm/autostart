@@ -283,7 +283,7 @@ hc keybind Mod1-k spawn bash -c "killall -q conky"
 # Swap caps to escape
 hc keybind $Mod-Shift-e spawn bash -c "setxkbmap -option "caps:swapescape""
 # Take screenshot
-hc keybind Mod1-s spawn bash -c "gnome-screenshot -a"
+hc keybind Mod1-Shift-s spawn bash -c "gnome-screenshot -a"
 
 # Startup commands
 killall -q conky

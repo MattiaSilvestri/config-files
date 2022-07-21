@@ -94,7 +94,7 @@
 (autopair-global-mode 1)
 ;(global-auto-complete-mode t)
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#24303c")
+(set-face-background 'hl-line "#25252f")
 (global-display-line-numbers-mode)
 (show-paren-mode 1)
 (rainbow-delimiters-mode 1)
@@ -112,8 +112,12 @@
 
 (setq make-backup-files nil) ; stop creating ~ files
 
-(setq bibtex-completion-bibliography
-    '("/mnt/08542B6A542B59A8/MEGA/UNIVERSITA(M)/Thesis/library.bib"))
+;; Citations
+;; (require 'org-ref)
+;; (require 'org-ref-ivy)
+;; (setq bibtex-completion-bibliography
+;; 			'("/home/mattia/Documents/bibliography.bib"
+;; 				"/home/mattia/Documents/My Library.bib"))
 (setq ivy-bibtex-default-action 'ivy-bibtex-insert-key)
 
 ;; LSP mode tweaks
@@ -123,7 +127,7 @@
 
 ;; Org-mode
 (setq org-src-preserve-indentation t)
-(setq org-startup-folded t)
+;; (setq org-startup-folded nil)
 
 ;; Org-Roam
 ;; (setq org-roam-graph-executable "dot")
@@ -164,6 +168,9 @@
 ;; Ein settings
 (setq buffer-file-name "test")
 (setq poly-ein-polymode t)
+
+;; Start yas-minor-mode
+(setq yas-minor-mode 1)
 
 ;; Tweaks
 (when (featurep 'project)
@@ -568,7 +575,7 @@
   ;; Don't use company in the following modes
   (company-global-modes '(not shell-mode eaf-mode))
   ;; Trigger completion immediately.
-  (company-idle-delay 0.0)
+  (company-idle-delay 0.2)
   ;; Number the candidates (use M-1, M-2 etc to select completions).
   (company-show-numbers t)
   :config
@@ -730,7 +737,7 @@ If all failed, try to complete the common part with `company-complete-common'"
         org-edit-src-content-indentation 2
         org-hide-block-startup nil
         org-src-preserve-indentation nil
-        org-startup-folded 'content
+        org-startup-folded 'showeverything
         org-cycle-separator-lines 2
         org-capture-bookmark nil)
 
@@ -807,8 +814,8 @@ If all failed, try to complete the common part with `company-complete-common'"
 '(org-code ((t (:inherit (shadow fixed-pitch)))))
 '(org-document-info ((t (:foreground "dark orange"))))
 '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-;; '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-'(org-link ((t (:inherit fixed-pitch :foreground "SkyBlue2" :underline t :bold nil))))
+'(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+'(org-link ((t (:inherit mixed-pitch :foreground "SkyBlue2" :underline t :bold nil :weigth regular :height 0.9))))
 '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
 '(org-property-value ((t (:inherit fixed-pitch))) t)
 '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
@@ -1134,6 +1141,8 @@ If all failed, try to complete the common part with `company-complete-common'"
                           (agenda . 5)
                           ))
   (setq dashboard-set-navigator t))
+	(setq dashboard-footer-messages '("I feel like I'm a smart shopper."
+																		"I really save money."))
   ;; To disable shortcut "jump" indicators for each section, set
   ;; (setq dashboard-show-shortcuts nil))
 
@@ -1151,22 +1160,23 @@ If all failed, try to complete the common part with `company-complete-common'"
               (speedbar-change-initial-expansion-list "quick buffers")))
 	)
 
-;; (use-package eaf
-;;   :load-path "/home/mattia/.config/emacs/site-lisp/emacs-application-framework/" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
-;;   :custom
-;;   ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
-;;   (eaf-browser-continue-where-left-off t)
-;;   (eaf-browser-enable-adblocker t)
-;;   (browse-url-browser-function 'eaf-open-browser)
-;; 	:bind
-;;   (("C-c h" . eaf-py-proxy-add_annot_highlight))	
-;;   :config
-;; 	(setq eaf-pdf-dark-mode nil))
+(use-package eaf
+  :load-path "/home/mattia/.config/emacs/site-lisp/emacs-application-framework/" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
+  :custom
+  ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
+  (eaf-browser-continue-where-left-off t)
+  (eaf-browser-enable-adblocker t)
+  (browse-url-browser-function 'eaf-open-browser)
+  :config
+  (defalias 'browse-web #'eaf-open-browser)
+	(setq eaf-pdf-dark-mode nil))
+	;; :bind
+  ;; (("C-c h" . eaf-py-proxy-add_annot_highlight)))
 
-;; (require 'eaf-browser)
-;; (require 'eaf-pdf-viewer)
-;; (require 'eaf-music-player)
-;; (require 'eaf-file-manager)
+(require 'eaf-browser)
+(require 'eaf-pdf-viewer)
+(require 'eaf-music-player)
+(require 'eaf-file-manager)
 
 ;; (quelpa '(pdf-continuous-scroll-mode :fetcher github :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
 ;; (use-package pdf-continuous-scroll-mode
@@ -1189,6 +1199,51 @@ If all failed, try to complete the common part with `company-complete-common'"
 	(setq ranger-preview-file t)
 	(setq ranger-width-preview 0.55)
 	)
+
+;; Org-ref
+(use-package ivy-bibtex
+  :init
+  (setq bibtex-completion-bibliography '("/home/mattia/Documents/bibliography.bib")
+	bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+
+	bibtex-completion-additional-search-fields '(keywords)
+	bibtex-completion-display-formats
+	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
+	bibtex-completion-pdf-open-function
+	(lambda (fpath)
+	  (call-process "open" nil 0 nil fpath))))
+
+(use-package org-ref
+  :ensure nil
+  :init
+  (require 'bibtex)
+  (setq bibtex-autokey-year-length 4
+	bibtex-autokey-name-year-separator "-"
+	bibtex-autokey-year-title-separator "-"
+	bibtex-autokey-titleword-separator "-"
+	bibtex-autokey-titlewords 2
+	bibtex-autokey-titlewords-stretch 1
+	bibtex-autokey-titleword-length 5)
+  (define-key bibtex-mode-map (kbd "H-b") 'org-ref-bibtex-hydra/body)
+  (define-key org-mode-map (kbd "C-c ]") 'org-ref-insert-link)
+  (define-key org-mode-map (kbd "s-[") 'org-ref-insert-link-hydra/body)
+  (require 'org-ref-ivy)
+  (require 'org-ref-arxiv)
+  (require 'org-ref-scopus)
+  (require 'org-ref-wos))
+
+
+(use-package org-ref-ivy
+  :ensure nil
+  :init (setq org-ref-insert-link-function 'org-ref-insert-link-hydra/body
+	      org-ref-insert-cite-function 'org-ref-cite-insert-ivy
+	      org-ref-insert-label-function 'org-ref-insert-label-link
+	      org-ref-insert-ref-function 'org-ref-insert-ref-link
+	      org-ref-cite-onclick-function (lambda (_) (org-ref-citation-hydra/body))))
 
 ;; SVG-tags
 (require 'svg-tag-mode)
@@ -1395,7 +1450,7 @@ If all failed, try to complete the common part with `company-complete-common'"
 	 '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(objed-cursor-color "#E2434C")
  '(package-selected-packages
-	 '(elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
+	 '(org-ref-prettify org-ref dirvish company-org-block elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
  '(pdf-view-midnight-colors (cons "#F6F3E8" "#171717"))
  '(pos-tip-background-color "#1A3734")
  '(pos-tip-foreground-color "#FFFFC8")
@@ -1431,6 +1486,8 @@ If all failed, try to complete the common part with `company-complete-common'"
 		(cons 340 "#635770")
 		(cons 360 "#635770")))
  '(vc-annotate-very-old-color nil)
+ '(warning-suppress-log-types '((comp)))
+ '(warning-suppress-types '((comp)))
  '(window-divider-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -1446,7 +1503,7 @@ If all failed, try to complete the common part with `company-complete-common'"
  '(org-code ((t (:inherit (shadow fixed-pitch)))))
  '(org-document-info ((t (:foreground "dark orange"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
- '(org-link ((t (:inherit fixed-pitch :foreground "SkyBlue2" :underline t :bold nil))))
+ '(org-link ((t (:inherit mixed-pitch :foreground "SkyBlue2" :underline t :bold nil :weigth regular :height 0.9))))
  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
  '(org-property-value ((t (:inherit fixed-pitch))) t)
  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))

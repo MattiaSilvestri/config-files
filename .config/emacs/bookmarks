@@ -1,13 +1,8 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("piom"
- (filename . "/mnt/Data/Work/Git/gridclock/PI_Behavioural/lmm.R")
- (front-context-string . "the mixed model\n")
- (rear-context-string . " factor)\n## Run ")
- (position . 12546))
-("herbstluftwm"
+(("herbstluftwm"
  (filename . "~/.dotfiles/.config/herbstluftwm/autostart")
  (front-context-string . "# or simply:\nhc ")
  (rear-context-string . "280x1024+1280+0\n")
@@ -28,10 +23,10 @@
  (rear-context-string . "  0 10-27 12:23 ")
  (position . 82))
 ("org-refile-last-stored"
- (filename . "/mnt/Data/MEGA/Notes/Roam/20211012174949-task_listd.org")
- (front-context-string . "** Differentiate")
- (rear-context-string . "earning effect\n\n")
- (position . 2671))
+ (filename . "/mnt/Data/MEGA/Notes/Roam/20210613181952-papers.org")
+ (front-context-string . "** [cite:@Kuntz:")
+ (rear-context-string . "afcd91][link]])\n")
+ (position . 645))
 ("org-capture-last-stored"
  (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/20211012174949-task_listd.org")
  (front-context-string . "#+filetags: :gri")

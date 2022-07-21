@@ -1,69 +1,68 @@
 {
-    "pacman": [
-        "wmctrl",
-        "python-pyqt5",
-        "python-pyqt5-sip",
-        "python-pyqtwebengine"
+  "pacman": [
+    "wmctrl",
+    "nodejs",
+    "npm"
+  ],
+  "emerge": [
+    "x11-misc/wmctrl",
+    "dev-python/gssapi",
+    "net-libs/nodejs"
+  ],
+  "apt": [
+    "wmctrl",
+    "nodejs",
+    "npm"
+  ],
+  "dnf": [
+    "wmctrl",
+    "nodejs",
+    "npm"
+  ],
+  "pkg": [
+    "wmctrl",
+    "node",
+    "npm"
+  ],
+  "zypper": [
+    "wmctrl",
+    "nodejs16",
+    "npm16"
+  ],
+  "brew": [
+    "node"
+  ],
+  "pip": {
+    "linux": [
+      "epc",
+      "tld",
+      "lxml",
+      "PyQt6",
+      "PyQt6-Qt6",
+      "PyQt6-sip",
+      "PyQt6-WebEngine",
+      "PyQt6-WebEngine-Qt6"
     ],
-    "apt": [
-        "wmctrl",
-        "nodejs",
-        "npm",
-        "libglib2.0-dev",
-        "python3-pyqt5",
-        "python3-sip",
-        "python3-pyqt5.qtwebengine",
-        "python3-pygit2"
+    "win32": [
+      "epc",
+      "tld",
+      "lxml",
+      "PyQt6",
+      "PyQt6-Qt6",
+      "PyQt6-sip",
+      "PyQt6-WebEngine",
+      "PyQt6-WebEngine-Qt6"
     ],
-    "dnf": [
-        "wmctrl",
-        "nodejs",
-        "npm",
-        "glib2-devel",
-        "python3-qt5",
-        "python3-pyqt5-sip",
-        "pyqtwebengine-devel",
-        "python3-pygit2"
-    ],
-    "pkg": [
-        "wmctrl",
-        "node",
-        "npm",
-        "glib",
-        "py38-qt5-sip",
-        "py38-qt5-webengine"
-    ],
-    "zypper": [
-        "wmctrl",
-        "nodejs16",
-        "npm16",
-        "glib2-devel",
-        "python38-qt5",
-        "python38-qt5-sip",
-        "python38-qtwebengine-qt5",
-        "python38-pygit2",
-        "libqt5-qtwebengine"
-    ],
-    "brew": [
-        "node"
-    ],
-    "pip": {
-        "linux": [
-            "epc",
-            "lxml"
-        ],
-        "win32": [
-            "pyqt5",
-            "pyqt5-sip",
-            "pyqtwebengine",
-            "pygetwindow"
-        ],
-        "darwin": [
-            "epc",
-            "pyqt5",
-            "pyqt5-sip",
-            "pyqtwebengine",
-            "mac-app-frontmost"
-        ]
-    }
+    "darwin": [
+      "epc",
+      "tld",
+      "lxml",
+      "mac-app-frontmost",
+      "PyQt6",
+      "PyQt6-Qt6",
+      "PyQt6-sip",
+      "PyQt6-WebEngine",
+      "PyQt6-WebEngine-Qt6"
+    ]
+  }
 }

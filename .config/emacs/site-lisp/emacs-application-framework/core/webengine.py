@@ -19,21 +19,24 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtCore import QUrl, Qt, QEvent, QEventLoop, QVariant, QTimer, QFile
-from PyQt5.QtGui import QColor, QScreen
-from PyQt5.QtNetwork import QNetworkCookie
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, QWebEngineScript, QWebEngineProfile, QWebEngineSettings
-from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtWebChannel import QWebChannel
+from PyQt6 import QtCore
+from PyQt6.QtCore import QUrl, Qt, QEvent, QEventLoop, QTimer, QFile, QPointF, QPoint
+from PyQt6.QtWebChannel import QWebChannel
+from PyQt6.QtWebEngineWidgets import QWebEngineView
+from PyQt6.QtWebEngineCore import QWebEnginePage, QWebEngineScript, QWebEngineProfile, QWebEngineSettings
+from PyQt6.QtWidgets import QApplication, QWidget
 from core.buffer import Buffer
-from core.utils import touch, string_to_base64, popen_and_call, call_and_check_code, interactive, abstract, eval_in_emacs, message_to_emacs, clear_emacs_message, open_url_in_background_tab, duplicate_page_in_new_tab, open_url_in_new_tab, open_url_in_new_tab_other_window, focus_emacs_buffer, atomic_edit, get_emacs_config_dir, to_camel_case, get_emacs_vars
-from functools import partial
-from urllib.parse import urlparse, parse_qs, urlunparse, urlencode
+from core.utils import (touch, string_to_base64, popen_and_call,
+                        call_and_check_code, interactive,
+                        eval_in_emacs, message_to_emacs, clear_emacs_message,
+                        open_url_in_background_tab, duplicate_page_in_new_tab,
+                        open_url_in_new_tab, open_url_in_new_tab_other_window,
+                        focus_emacs_buffer, atomic_edit, get_emacs_config_dir,
+                        to_camel_case, get_emacs_vars, PostGui)
+from urllib.parse import urlparse, parse_qs
 import base64
 import os
 import platform
-import sqlite3
 
 MOUSE_LEFT_BUTTON = 1
 MOUSE_WHEEL_BUTTON = 4
@@ -49,21 +52,18 @@ class BrowserView(QWebEngineView):
 
         self.installEventFilter(self)
         self.buffer_id = buffer_id
-        self.config_dir = get_emacs_config_dir()
+        self.is_button_press = False
 
         self.web_page = BrowserPage()
         self.setPage(self.web_page)
-
-        self.cookie_store = self.page().profile().cookieStore()
-        self.cookie_storage = BrowserCookieStorage(self.config_dir)
-        self.cookie_store.cookieAdded.connect(self.cookie_storage.add_cookie)
 
         self.url_hovered = ""
         self.page().linkHovered.connect(self.link_hovered)
 
         self.selectionChanged.connect(self.select_text_change)
 
-        self.load_cookie()
+        # Cookie init.
+        self.cookies_manager = CookiesManager(self)
 
         self.search_term = ""
 
@@ -76,17 +76,26 @@ class BrowserView(QWebEngineView):
         self.select_input_text_js = None
         self.get_selection_text_js = None
         self.focus_input_js = None
+        self.simulated_wheel_event = False
 
-        (self.scroll_behavior, self.default_zoom, self.show_hover_link, self.marker_letters, self.marker_fontsize) = get_emacs_vars(
-            ["eaf-browser-scroll-behavior",
-             "eaf-browser-default-zoom",
+        (self.default_zoom, self.show_hover_link,
+         self.marker_letters, self.marker_fontsize,
+         self.scroll_step) = get_emacs_vars(
+            ["eaf-webengine-default-zoom",
              "eaf-webengine-show-hover-link",
              "eaf-marker-letters",
-             "eaf-marker-fontsize"])
+             "eaf-marker-fontsize",
+             "eaf-webengine-scroll-step"])
+
+    def delete_all_cookies(self):
+        self.cookies_manager.delete_all_cookies()
+
+    def delete_cookie(self):
+        self.cookies_manager.delete_cookie()
 
     def load_css(self, path, name):
         path = QFile(path)
-        if not path.open(QFile.ReadOnly | QtCore.QFile.Text):
+        if not path.open(QFile.OpenModeFlag.ReadOnly | QFile.OpenModeFlag.Text):
             return
         css = path.readAll().data().decode("utf-8")
         SCRIPT = """
@@ -102,12 +111,12 @@ class BrowserView(QWebEngineView):
         """ % (name, css)
 
         script = QWebEngineScript()
-        self.web_page.runJavaScript(SCRIPT, QWebEngineScript.ApplicationWorld)
+        self.web_page.runJavaScript(SCRIPT, QWebEngineScript.ScriptWorldId.ApplicationWorld)
         script.setName(name)
         script.setSourceCode(SCRIPT)
-        script.setInjectionPoint(QWebEngineScript.DocumentReady)
+        script.setInjectionPoint(QWebEngineScript.InjectionPoint.DocumentReady)
         script.setRunsOnSubFrames(True)
-        script.setWorldId(QWebEngineScript.ApplicationWorld)
+        script.setWorldId(QWebEngineScript.ScriptWorldId.ApplicationWorld)
         self.web_page.scripts().insert(script)
 
     def remove_css(self, name, immediately):
@@ -119,7 +128,7 @@ class BrowserView(QWebEngineView):
         })()
          """ % (name)
         if immediately:
-            self.web_page.runJavaScript(SCRIPT, QWebEngineScript.ApplicationWorld)
+            self.web_page.runJavaScript(SCRIPT, QWebEngineScript.ScriptWorldId.ApplicationWorld)
 
         script = self.web_page.scripts().findScript(name)
         self.web_page.scripts().remove(script)
@@ -137,6 +146,8 @@ class BrowserView(QWebEngineView):
             filtered = dict((k, v) for k, v in qd.items() if k.startswith("q"))
         else:
             filtered = dict((k, v) for k, v in qd.items())
+
+        from urllib.parse import urlunparse, urlencode
 
         return urlunparse([
             parsed.scheme,
@@ -167,7 +178,7 @@ class BrowserView(QWebEngineView):
     def clean_search_and_select(self):
         self.search_term = ""
         self.web_page.findText("")
-        QTimer().singleShot(0, lambda : self.triggerPageAction(self.web_page.Unselect))
+        QTimer().singleShot(0, lambda : self.triggerPageAction(self.web_page.WebAction.Unselect))
 
     def clean_search(self):
         self.search_term = ""
@@ -177,11 +188,10 @@ class BrowserView(QWebEngineView):
         self.search_term = text
 
         if is_backward:
-            self.web_page.findText(self.search_term, self.web_page.FindBackward,
+            self.web_page.findText(self.search_term, self.web_page.FindFlag.FindBackward,
                                    self.callback_text_search)
         else:
-            self.web_page.findText(self.search_term, self.web_page.FindFlags(),
-                                   self.callback_text_search)
+            self.web_page.findText(self.search_term, resultCallback = self.callback_text_search)
 
     @interactive
     def search_text_forward(self):
@@ -215,13 +225,8 @@ class BrowserView(QWebEngineView):
         # Only translate text when not in caret mode.
         if not self.buffer.caret_browsing_mode:
             modifiers = QApplication.keyboardModifiers()
-            if modifiers == Qt.ControlModifier and self.selectedText().strip() != "":
+            if modifiers == Qt.KeyboardModifier.ControlModifier and self.selectedText().strip() != "":
                 self.translate_selected_text.emit(self.selectedText())
-
-    def load_cookie(self):
-        ''' Load cookies.'''
-        for cookie in self.cookie_storage.load_cookie():
-            self.cookie_store.setCookie(cookie)
 
     def createWindow(self, window_type):
         ''' Create new browser window.'''
@@ -229,7 +234,7 @@ class BrowserView(QWebEngineView):
 
     def event(self, event):
         ''' Catch event.'''
-        if event.type() == QEvent.ChildAdded:
+        if event.type() == QEvent.Type.ChildAdded:
             obj = event.child()
             if isinstance(obj, QWidget):
                 obj.installEventFilter(self)
@@ -243,22 +248,30 @@ class BrowserView(QWebEngineView):
         #     import time
         #     print(time.time(), event.type(), self.rect())
 
+        if event.type() in [QEvent.Type.MouseButtonPress]:
+            self.is_button_press = True
+        elif event.type() in [QEvent.Type.MouseButtonRelease]:
+            self.is_button_press = False
+
         # Focus emacs buffer when user click view.
-        event_type = [QEvent.MouseButtonPress, QEvent.MouseButtonRelease, QEvent.MouseButtonDblClick]
+        event_type = [QEvent.Type.MouseButtonPress, QEvent.Type.MouseButtonRelease, QEvent.Type.MouseButtonDblClick]
         if platform.system() != "Darwin":
-            event_type += [QEvent.Wheel]
+            event_type += [QEvent.Type.Wheel]
 
         if event.type() in event_type:
-            focus_emacs_buffer(self.buffer_id)
+            if self.simulated_wheel_event:
+               self.simulated_wheel_event = False
+            else:
+                focus_emacs_buffer(self.buffer_id)
 
-        if event.type() == QEvent.MouseButtonPress:
+        if event.type() == QEvent.Type.MouseButtonPress:
 
             if platform.system() == "Darwin":
                 eval_in_emacs('eaf-activate-emacs-window', [])
 
             if event.button() == MOUSE_FORWARD_BUTTON:
                 modifiers = QApplication.keyboardModifiers()
-                if modifiers == Qt.ControlModifier:
+                if modifiers == Qt.KeyboardModifier.ControlModifier:
                     self.switch_to_next_webpage_buffer()
                 else:
                     self.forward()
@@ -268,7 +281,7 @@ class BrowserView(QWebEngineView):
 
             elif event.button() == MOUSE_BACK_BUTTON:
                 modifiers = QApplication.keyboardModifiers()
-                if modifiers == Qt.ControlModifier:
+                if modifiers == Qt.KeyboardModifier.ControlModifier:
                     self.switch_to_previous_webpage_buffer()
                 else:
                     self.back()
@@ -278,7 +291,7 @@ class BrowserView(QWebEngineView):
 
             elif event.button() == MOUSE_LEFT_BUTTON:
                 modifiers = QApplication.keyboardModifiers()
-                if modifiers == Qt.ControlModifier and self.url_hovered:
+                if modifiers == Qt.KeyboardModifier.ControlModifier and self.url_hovered:
                     self.open_url_background_buffer(self.url_hovered)
                     return True
 
@@ -288,9 +301,9 @@ class BrowserView(QWebEngineView):
                     return True
 
 
-        if event.type() == QEvent.Wheel:
+        if event.type() == QEvent.Type.Wheel:
             modifiers = QApplication.keyboardModifiers()
-            if modifiers == Qt.ControlModifier:
+            if modifiers == Qt.KeyboardModifier.ControlModifier:
                 if event.angleDelta().y() > 0:
                     self.zoom_in()
                 else:
@@ -366,7 +379,7 @@ class BrowserView(QWebEngineView):
     @interactive(insert_or_do=True)
     def zoom_reset(self):
         ''' Reset the magnification.'''
-        self.setZoomFactor(self.default_zoom)
+        self.setZoomFactor(float(self.default_zoom))
 
     def eval_js(self, js):
         ''' Run JavaScript.'''
@@ -385,30 +398,88 @@ class BrowserView(QWebEngineView):
         '''
         return self.web_page.execute_javascript(js)
 
+    def eval_js_function(self, *args):
+        import json
+
+        function_name = args[0]
+        function_args = args[1:]
+
+        format_string = ""
+
+        for index, arg in enumerate(function_args):
+            if type(arg) == str:
+                format_string += '\"{}\"'.format(arg)
+            else:
+                format_string += '{}'.format(json.dumps(arg))
+
+            if index != len(function_args) - 1:
+                format_string += ","
+
+        format_string = function_name + "(" + format_string + ");"
+
+        self.web_page.runJavaScript(format_string)
+
+    def scroll_wheel(self, x_offset, y_offset):
+        from PyQt6.QtGui import QWheelEvent
+
+        self.simulated_wheel_event = True
+
+        pos = self.rect().center()
+        global_pos = self.mapToGlobal(pos)
+
+        event = QWheelEvent(
+            QPointF(pos),
+            QPointF(global_pos),
+            QPoint(x_offset, y_offset),
+            QPoint(x_offset, y_offset),
+            Qt.MouseButton.NoButton,
+            Qt.KeyboardModifier.NoModifier,
+            Qt.ScrollPhase.NoScrollPhase,
+            False
+        )
+
+        for widget in self.buffer.get_key_event_widgets():
+            QApplication.postEvent(widget, event)
+
     @interactive(insert_or_do=True)
     def scroll_left(self):
         ''' Scroll to left side.'''
-        self.eval_js("document.scrollingElement.scrollBy(-35, 0)")
+        self.scroll_wheel(-35, 0)
 
     @interactive(insert_or_do=True)
     def scroll_right(self):
         ''' Scroll to right side.'''
-        self.eval_js("document.scrollingElement.scrollBy(35, 0)")
+        self.scroll_wheel(35, 0)
 
     @interactive(insert_or_do=True)
     def scroll_up(self):
         ''' Scroll up.'''
-        self.eval_js("document.scrollingElement.scrollBy(0, 50)")
+        self.scroll_wheel(0, -self.scroll_step)
 
     @interactive(insert_or_do=True)
     def scroll_down(self):
         ''' Scroll down.'''
-        self.eval_js("document.scrollingElement.scrollBy(0, -50)")
+        self.scroll_wheel(0, self.scroll_step)
 
     @interactive
     def scroll_up_page(self):
         ''' Scroll page up.'''
-        self.eval_js("document.scrollingElement.scrollBy({left: 0, top: window.innerHeight/1.1, behavior: '" + self.scroll_behavior + "'})")
+        self.scroll_wheel(0, -self.rect().height())
+
+    @interactive(insert_or_do=True)
+    def scroll_down_page(self):
+        ''' Scroll down a page.'''
+        self.scroll_wheel(0, self.rect().height())
+
+    @interactive(insert_or_do=True)
+    def scroll_to_begin(self):
+        ''' Scroll to the beginning.'''
+        self.scroll_wheel(0, 1000000)
+
+    @interactive(insert_or_do=True)
+    def scroll_to_bottom(self):
+        ''' Scroll to the bottom.'''
+        self.scroll_wheel(0, -1000000)
 
     @interactive
     def insert_or_scroll_up_page(self):
@@ -418,24 +489,9 @@ class BrowserView(QWebEngineView):
         Otherwise, scroll page up.
         '''
         if self.buffer.is_focus() or self.buffer.is_fullscreen:
-            self.buffer.fake_key_event(self.buffer.current_event_string)
+            self.buffer.send_key(self.buffer.current_event_string)
         else:
             self.scroll_up_page()
-
-    @interactive(insert_or_do=True)
-    def scroll_down_page(self):
-        ''' Scroll down a page.'''
-        self.eval_js("document.scrollingElement.scrollBy({left: 0, top: -window.innerHeight/1.1, behavior: '" + self.scroll_behavior + "'})")
-
-    @interactive(insert_or_do=True)
-    def scroll_to_begin(self):
-        ''' Scroll to the beginning.'''
-        self.eval_js("document.scrollingElement.scrollTo({left: 0, top: 0, behavior: '" + self.scroll_behavior + "'})")
-
-    @interactive(insert_or_do=True)
-    def scroll_to_bottom(self):
-        ''' Scroll to the bottom.'''
-        self.eval_js("document.scrollingElement.scrollTo({left: 0, top: document.body.scrollHeight, behavior: '" + self.scroll_behavior + "'})")
 
     @interactive
     def get_selection_text(self):
@@ -456,47 +512,47 @@ class BrowserView(QWebEngineView):
     @interactive(insert_or_do=True)
     def copy_text(self):
         ''' Copy selected text.'''
-        self.triggerPageAction(self.web_page.Copy)
+        self.triggerPageAction(self.web_page.WebAction.Copy)
         if self.buffer.caret_browsing_mode and self.buffer.caret_browsing_mark_activated:
             self.buffer.caret_exit()
 
     @interactive()
     def yank_text(self):
         ''' Paste selected text.'''
-        self.triggerPageAction(self.web_page.Paste)
+        self.triggerPageAction(self.web_page.WebAction.Paste)
         message_to_emacs("Yank selected text.")
 
     @interactive()
     def kill_text(self):
         ''' Cut selected text.'''
-        self.triggerPageAction(self.web_page.Cut)
+        self.triggerPageAction(self.web_page.WebAction.Cut)
         message_to_emacs("Kill selected text.")
 
     @interactive
     def undo_action(self):
         ''' Undo action.'''
-        self.triggerPageAction(self.web_page.Undo)
+        self.triggerPageAction(self.web_page.WebAction.Undo)
 
     @interactive
     def redo_action(self):
         ''' Redo action.'''
-        self.triggerPageAction(self.web_page.Redo)
+        self.triggerPageAction(self.web_page.WebAction.Redo)
 
     @interactive
     def exit_fullscreen(self):
         ''' Exit full screen.'''
-        self.triggerPageAction(self.web_page.ExitFullScreen)
+        self.triggerPageAction(self.web_page.WebAction.ExitFullScreen)
 
     @interactive(insert_or_do=True)
     def view_source(self):
         ''' View source.'''
-        self.triggerPageAction(self.web_page.ViewSource)
+        self.triggerPageAction(self.web_page.WebAction.ViewSource)
 
     def select_all(self):
         ''' Select all text.'''
         # We need window focus before select all text.
         self.eval_js("window.focus()")
-        self.triggerPageAction(self.web_page.SelectAll)
+        self.triggerPageAction(self.web_page.WebAction.SelectAll)
 
     def select_input_text(self):
         ''' Select input text.'''
@@ -591,11 +647,16 @@ class BrowserView(QWebEngineView):
         self.eval_js("Marker.gotoMarker('%s', (e) => window.getSelection().collapse(e, 0))" % str(marker))
         self.cleanup_links_dom()
 
-        self.eval_js("CaretBrowsing.setInitialCursor(true);")
+        markEnabled = self.execute_js("CaretBrowsing.markEnabled")
+        # reset to clear caret state so the next sentence can be marked
+        if markEnabled:
+            self.eval_js("CaretBrowsing.shutdown();")
+
+        self.buffer.caret_enable_mark()
+        self.buffer.caret_next_sentence()
         self.buffer.caret_browsing_mode = True
-        eval_in_emacs('eaf--toggle-caret-browsing', ["'t" if self.buffer.caret_browsing_mode else "'nil"])
-        self.buffer.caret_toggle_mark()
-        self.buffer.caret_next_word()
+
+        eval_in_emacs('eaf--toggle-caret-browsing', ["'t"])
 
     def copy_code_content(self, marker):
         ''' Copy the code content according to marker.'''
@@ -614,6 +675,8 @@ class BrowserView(QWebEngineView):
     @interactive
     def set_focus_text(self, new_text):
         ''' Set the focus text.'''
+        new_text = base64.b64decode(new_text).decode("utf-8")
+
         if self.set_focus_text_raw == None:
             self.set_focus_text_raw = self.read_js_content("set_focus_text.js")
 
@@ -636,19 +699,33 @@ class BrowserView(QWebEngineView):
 
         self.eval_js(self.clear_focus_js)
 
-    @interactive
-    def load_dark_mode_js(self):
-        self.eval_js('''if (typeof DarkReader === 'undefined') {{ {} }} '''.format(self.dark_mode_js))
+    def init_dark_mode_js(self, module_path, selection_color="auto"):
+        js_string = open(os.path.join(os.path.dirname(module_path), "node_modules", "darkreader", "darkreader.js")).read()
+
+        if selection_color != "auto":
+            js_string = js_string.replace("selectionColor: 'auto'", "selectionColor: '" + selection_color + "'")
+
+        js_string += """DarkReader.setFetchMethod(window.fetch); DarkReader.enable({brightness: 100, contrast: 90, sepia: 10});"""
+
+        self.dark_mode_inject_js = QWebEngineScript()
+        self.dark_mode_inject_js.setInjectionPoint(QWebEngineScript.InjectionPoint.DocumentCreation)
+        self.dark_mode_inject_js.setWorldId(QWebEngineScript.ScriptWorldId.MainWorld)
+        self.dark_mode_inject_js.setName("dark_mode_inject.js")
+        self.dark_mode_inject_js.setRunsOnSubFrames(True)
+        self.dark_mode_inject_js.setSourceCode(js_string)
+
+        if self.buffer.dark_mode_is_enabled():
+            self.enable_dark_mode()
 
     @interactive(insert_or_do=True)
     def enable_dark_mode(self):
         ''' Dark mode support.'''
-        self.eval_js("""DarkReader.setFetchMethod(window.fetch); DarkReader.enable({brightness: 100, contrast: 90, sepia: 10});""")
+        self.page().scripts().insert(self.dark_mode_inject_js)
 
     @interactive(insert_or_do=True)
     def disable_dark_mode(self):
         ''' Remove dark mode support.'''
-        self.eval_js("""DarkReader.disable();""")
+        self.page().scripts().remove(self.dark_mode_inject_js)
 
 class BrowserPage(QWebEnginePage):
     def __init__(self):
@@ -656,55 +733,31 @@ class BrowserPage(QWebEnginePage):
 
     def execute_javascript(self, script_src):
         ''' Execute JavaScript.'''
-        # Build event loop.
-        self.loop = QEventLoop()
+        if hasattr(self, "loop") and self.loop.isRunning():
+            # NOTE:
+            #
+            # Just return None is QEventLoop is busy, such as press 'j' key not release on webpage.
+            # Otherwise will got error 'RecursionError: maximum recursion depth exceeded while calling a Python object'.
+            #
+            # And don't warry, API 'execute_javascript' is works well for programming purpse since we just call this interface occasionally.
+            return None
+        else:
+            # Build event loop.
+            self.loop = QEventLoop()
 
-        # Run JavaScript code.
-        self.runJavaScript(script_src, self.callback_js)
+            # Run JavaScript code.
+            self.runJavaScript(script_src, self.callback_js)
 
-        # Execute event loop, and wait event loop quit.
-        self.loop.exec()
+            # Execute event loop, and wait event loop quit.
+            self.loop.exec()
 
-        # Return JavaScript function result.
-        return self.result
+            # Return JavaScript function result.
+            return self.result
 
     def callback_js(self, result):
         ''' Callback of JavaScript, call loop.quit to jump code after loop.exec.'''
         self.result = result
         self.loop.quit()
-
-class BrowserCookieStorage:
-    def __init__(self, config_dir):
-        self.cookie_file = os.path.join(config_dir, "browser", "cookie", "cookie")
-
-        touch(self.cookie_file)
-
-    def load_cookie(self):
-        ''' Load cookies.'''
-        with open(self.cookie_file, 'rb+') as store:
-            cookies = store.read()
-            return QNetworkCookie.parseCookies(cookies)
-
-    def save_cookie(self, cookie):
-        ''' Save cookies.'''
-        with open(self.cookie_file, 'wb+') as store:
-            store.write(cookie + b'\n' if cookie is not None else b'')
-
-    def add_cookie(self, cookie):
-        ''' Add cookies.'''
-        raw = cookie.toRawForm()
-        self.save_cookie(raw)
-
-    def clear_cookies(self, cookie_store):
-        ''' Clear cookies.'''
-        cookie_store.deleteAllCookies()
-        open(self.cookie_file, 'w').close()
-
-class HistoryPage():
-    def __init__(self, title, url, hit):
-        self.title = title
-        self.url = url
-        self.hit = float(hit)
 
 class BrowserBuffer(Buffer):
 
@@ -723,20 +776,34 @@ class BrowserBuffer(Buffer):
 
         self.zoom_data = ZoomSizeDb(os.path.join(os.path.dirname(self.config_dir), "browser", "zoom_data.db"))
 
-        (self.pc_user_agent, self.phone_user_agent,
+        (self.pc_user_agent,
+         self.phone_user_agent,
          self.font_family,
-         self.enable_plugin, self.enable_javascript, self.enable_scrollbar,
+         self.fixed_font_family,
+         self.serif_font_family,
+         self.font_size,
+         self.fixed_font_size,
+         self.enable_plugin,
+         self.enable_javascript,
+         self.enable_javascript_access_clipboard,
+         self.enable_scrollbar,
          self.unknown_url_scheme_policy,
-         self.download_path, self.default_zoom) = get_emacs_vars(
-             ["eaf-browser-pc-user-agent",
-              "eaf-browser-phone-user-agent",
-              "eaf-browser-font-family",
-              "eaf-browser-enable-plugin",
-              "eaf-browser-enable-javascript",
-              "eaf-browser-enable-scrollbar",
-              "eaf-browser-unknown-url-scheme-policy",
-              "eaf-browser-download-path",
-              "eaf-browser-default-zoom"])
+         self.download_path,
+         self.default_zoom) = get_emacs_vars(
+             ["eaf-webengine-pc-user-agent",
+              "eaf-webengine-phone-user-agent",
+              "eaf-webengine-font-family",
+              "eaf-webengine-fixed-font-family",
+              "eaf-webengine-serif-font-family",
+              "eaf-webengine-font-size",
+              "eaf-webengine-fixed-font-size",
+              "eaf-webengine-enable-plugin",
+              "eaf-webengine-enable-javascript",
+              "eaf-webengine-enable-javascript-access-clipboard",
+              "eaf-webengine-enable-scrollbar",
+              "eaf-webengine-unknown-url-scheme-policy",
+              "eaf-webengine-download-path",
+              "eaf-webengine-default-zoom"])
 
         self.profile = QWebEngineProfile(self.buffer_widget)
         self.profile.defaultProfile().setHttpUserAgent(self.pc_user_agent)
@@ -756,34 +823,44 @@ class BrowserBuffer(Buffer):
         self.buffer_widget.web_page.pdfPrintingFinished.connect(self.notify_print_message)
         self.profile.defaultProfile().downloadRequested.connect(self.handle_download_request)
 
-        self.settings = QWebEngineSettings.globalSettings()
+        self.settings = self.buffer_widget.settings()
         try:
+
             if self.font_family:
                 for ff in (
-                        self.settings.StandardFont,
-                        self.settings.FixedFont,
-                        self.settings.SerifFont,
-                        self.settings.SansSerifFont,
-                        self.settings.CursiveFont,
-                        self.settings.FantasyFont,
-                        self.settings.PictographFont
-                ):
+                        self.settings.FontFamily.StandardFont,
+                        self.settings.FontFamily.CursiveFont,
+                        self.settings.FontFamily.FantasyFont,
+                        self.settings.FontFamily.PictographFont):
                     self.settings.setFontFamily(ff, self.font_family)
 
-            self.settings.setAttribute(QWebEngineSettings.FullScreenSupportEnabled, True)
-            self.settings.setAttribute(QWebEngineSettings.DnsPrefetchEnabled, True)
-            self.settings.setAttribute(QWebEngineSettings.FocusOnNavigationEnabled, True)
-            self.settings.setAttribute(QWebEngineSettings.PlaybackRequiresUserGesture, False)
-            self.settings.setAttribute(QWebEngineSettings.PluginsEnabled, self.enable_plugin)
-            self.settings.setAttribute(QWebEngineSettings.JavascriptEnabled, self.enable_javascript)
-            self.settings.setAttribute(QWebEngineSettings.ShowScrollBars, self.enable_scrollbar)
+            if self.fixed_font_family:
+                self.settings.setFontFamily(self.settings.FontFamily.FixedFont, self.fixed_font_family)
+
+            if self.serif_font_family:
+                for ff in (
+                        self.settings.FontFamily.SerifFont,
+                        self.settings.FontFamily.SansSerifFont):
+                    self.settings.setFontFamily(ff, self.serif_font_family)
+
+            self.settings.setFontSize(QWebEngineSettings.FontSize.DefaultFontSize, self.font_size)
+            self.settings.setFontSize(QWebEngineSettings.FontSize.DefaultFixedFontSize, self.fixed_font_size)
+
+            self.settings.setAttribute(QWebEngineSettings.WebAttribute.FullScreenSupportEnabled, True)
+            self.settings.setAttribute(QWebEngineSettings.WebAttribute.DnsPrefetchEnabled, True)
+            self.settings.setAttribute(QWebEngineSettings.WebAttribute.FocusOnNavigationEnabled, True)
+            self.settings.setAttribute(QWebEngineSettings.WebAttribute.PlaybackRequiresUserGesture, False)
+            self.settings.setAttribute(QWebEngineSettings.WebAttribute.PluginsEnabled, self.enable_plugin)
+            self.settings.setAttribute(QWebEngineSettings.WebAttribute.JavascriptEnabled, self.enable_javascript)
+            self.settings.setAttribute(QWebEngineSettings.WebAttribute.JavascriptCanAccessClipboard, self.enable_javascript_access_clipboard)
+            self.settings.setAttribute(QWebEngineSettings.WebAttribute.ShowScrollBars, self.enable_scrollbar)
 
             if self.unknown_url_scheme_policy == "DisallowUnknownUrlSchemes":
-                self.settings.setUnknownUrlSchemePolicy(self.settings.DisallowUnknownUrlSchemes)
+                self.settings.setUnknownUrlSchemePolicy(self.settings.UnknownUrlSchemePolicy.DisallowUnknownUrlSchemes)
             elif self.unknown_url_scheme_policy == "AllowUnknownUrlSchemesFromUserInteraction":
-                self.settings.setUnknownUrlSchemePolicy(self.settings.AllowUnknownUrlSchemesFromUserInteraction)
+                self.settings.setUnknownUrlSchemePolicy(self.settings.UnknownUrlSchemePolicy.AllowUnknownUrlSchemesFromUserInteraction)
             elif self.unknown_url_scheme_policy == "AllowAllUnknownUrlSchemes":
-                self.settings.setUnknownUrlSchemePolicy(self.settings.AllowAllUnknownUrlSchemes)
+                self.settings.setUnknownUrlSchemePolicy(self.settings.UnknownUrlSchemePolicy.AllowAllUnknownUrlSchemes)
 
         except Exception:
             import traceback
@@ -901,6 +978,8 @@ class BrowserBuffer(Buffer):
         self.send_input_message("Save current webpage as PDF?", "save_as_pdf", "yes-or-no")
 
     def _save_as_single_file(self):
+        from functools import partial
+
         parsed = urlparse(self.url)
         qd = parse_qs(parsed.query, keep_blank_values=True)
         file_path = os.path.join(os.path.expanduser(self.download_path), "{}.html".format(parsed.netloc))
@@ -1117,6 +1196,17 @@ class BrowserBuffer(Buffer):
                 self.buffer_widget.eval_js("CaretBrowsing.rotateSelection();")
 
     @interactive
+    def caret_enable_mark(self):
+        ''' Toggle mark in caret browsing.'''
+        if self.caret_browsing_mode:
+            self.caret_browsing_mark_activated = True
+            if not self.buffer_widget.execute_js("CaretBrowsing.markEnabled"):
+                self.buffer_widget.eval_js("CaretBrowsing.toggleMark();")
+                message_to_emacs("Caret Mark set")
+        else:
+            message_to_emacs("Not in Caret Browsing mode!")
+
+    @interactive
     def caret_toggle_mark(self):
         ''' Toggle mark in caret browsing.'''
         if self.caret_browsing_mode:
@@ -1240,7 +1330,7 @@ class BrowserBuffer(Buffer):
             for row in result:
                 zoom_factor = float(row[0])
 
-            self.buffer_widget.setZoomFactor(zoom_factor)
+            self.buffer_widget.setZoomFactor(float(zoom_factor))
 
     def atomic_edit(self):
         ''' Edit the focus text.'''
@@ -1256,7 +1346,7 @@ class BrowserBuffer(Buffer):
 
     @interactive(insert_or_do=True)
     def duplicate_page(self):
-        duplicate_page_in_new_tab(self.current_url)
+        duplicate_page_in_new_tab(self.url)
 
     @interactive(insert_or_do=True)
     def open_browser(self):
@@ -1301,11 +1391,13 @@ class BrowserBuffer(Buffer):
     @interactive
     def toggle_dark_mode(self):
         self.is_dark_mode_enabled = not self.is_dark_mode_enabled
-        self.buffer_widget.load_dark_mode_js()
+
         if self.is_dark_mode_enabled:
             self.buffer_widget.enable_dark_mode()
         else:
             self.buffer_widget.disable_dark_mode()
+
+        self.buffer_widget.reload()
 
     @interactive(insert_or_do=True)
     def history_forward(self):
@@ -1375,6 +1467,14 @@ class BrowserBuffer(Buffer):
         else:
             return self.buffer_widget.execute_js('''{}({})'''.format(to_camel_case(function_name), function_arguments))
 
+    def eval_js_code(self, js_code):
+        ''' Eval JavaScript code.'''
+        self.buffer_widget.eval_js(js_code)
+
+    def execute_js_code(self, js_code):
+        ''' Execute JavaScript code and return result.'''
+        return self.buffer_widget.execute_js(js_code)
+
     def init_app(self):
         pass
 
@@ -1399,6 +1499,7 @@ class BrowserBuffer(Buffer):
             el.attrib['href'] = "{}{}".format(dist_dir, el.attrib['href'])
         for el in root.iter('script'):
             el.attrib['src'] = "{}{}".format(dist_dir, el.attrib['src'])
+            el.attrib['type'] = "text/javascript"
         for el in root.iter('body'):
             el.attrib['style'] = "background: {}; color: {}".format(self.theme_background_color, self.theme_foreground_color)
 
@@ -1412,6 +1513,16 @@ class BrowserBuffer(Buffer):
         # Web page background follow Emacs's background.
         self.buffer_widget.web_page.setBackgroundColor(self.background_color)
 
+    @interactive(insert_or_do=True)
+    def change_url(self, url):
+        # _change_url use PostGui make sure change url in main thread.
+        self._change_url(url)
+
+    @PostGui()
+    def _change_url(self, url):
+        self.buffer_widget.stop()
+        self.buffer_widget.setUrl(QUrl(url))
+
     def marker_offset_x(self):
         return 0
 
@@ -1420,6 +1531,11 @@ class BrowserBuffer(Buffer):
 
 class ZoomSizeDb(object):
     def __init__(self, dbpath):
+        import sqlite3
+
+        if not os.path.exists(os.path.dirname(dbpath)):
+            os.makedirs(os.path.dirname(dbpath))
+
         self._conn = sqlite3.connect(dbpath)
         self._conn.execute("""
         CREATE TABLE IF NOT EXISTS ZoomSize
@@ -1456,3 +1572,146 @@ class ZoomSizeDb(object):
         WHERE Host=?
         """, (host,))
         self._conn.commit()
+
+class CookiesManager(object):
+    def __init__(self, browser_view):
+        self.browser_view = browser_view
+
+        self.cookies_dir = os.path.join(get_emacs_config_dir(), "browser", "cookies")
+
+        # Both session and persistent cookies are stored in memory
+        self.browser_view.page().profile().setPersistentCookiesPolicy(QWebEngineProfile.PersistentCookiesPolicy.NoPersistentCookies)
+
+        self.cookie_store = self.browser_view.page().profile().cookieStore()
+
+        self.cookie_store.cookieAdded.connect(self.add_cookie)      # save cookie to disk when captured cookieAdded signal
+        self.cookie_store.cookieRemoved.connect(self.remove_cookie) # remove cookie stored on disk when captured cookieRemoved signal
+        self.browser_view.loadStarted.connect(self.load_cookie)     # load disk cookie to QWebEngineView instance when page start load
+
+
+    def add_cookie(self, cookie):
+        '''Store cookie on disk.'''
+        cookie_domain = cookie.domain()
+        if not cookie.isSessionCookie():
+            cookie_file = os.path.join(self.cookies_dir, cookie_domain, self._generate_cookie_filename(cookie))
+            touch(cookie_file)
+
+            # Save newest cookie to disk.
+            with open(cookie_file, "wb") as f:
+                f.write(cookie.toRawForm())
+
+    def load_cookie(self):
+        ''' Load cookie file from disk.'''
+        if not os.path.exists(self.cookies_dir):
+            return
+
+        all_cookies_domain = os.listdir(self.cookies_dir)
+
+        for domain in filter(self.domain_matching, all_cookies_domain):
+            from PyQt6.QtNetwork import QNetworkCookie
+
+            domain_dir = os.path.join(self.cookies_dir, domain)
+
+            for cookie_file in os.listdir(domain_dir):
+                with open(os.path.join(domain_dir, cookie_file), "rb") as f:
+                    for cookie in QNetworkCookie.parseCookies(f.read()):
+                        if not domain.startswith('.'):
+                            if self.browser_view.url().host() == domain:
+                                # restore host-only cookie
+                                cookie.setDomain('')
+                                self.cookie_store.setCookie(cookie, self.browser_view.url())
+                        else:
+                            self.cookie_store.setCookie(cookie)
+
+    def remove_cookie(self, cookie):
+        ''' Delete cookie file.'''
+        if not cookie.isSessionCookie():
+            cookie_file = os.path.join(self.cookies_dir, cookie.domain(), self._generate_cookie_filename(cookie))
+
+            if os.path.exists(cookie_file):
+                os.remove(cookie_file)
+
+    def delete_all_cookies(self):
+        ''' Simply delete all cookies stored on memory and disk.'''
+        self.cookie_store.deleteAllCookies()
+        if os.path.exists(self.cookies_dir):
+            import shutil
+            shutil.rmtree(self.cookies_dir)
+
+    def delete_cookie(self):
+        ''' Delete all cookie used by current site except session cookies.'''
+        from PyQt6.QtNetwork import QNetworkCookie
+        import shutil
+
+        cookies_domain = os.listdir(self.cookies_dir)
+
+        for domain in filter(self.get_relate_domains, cookies_domain):
+            domain_dir = os.path.join(self.cookies_dir, domain)
+
+            for cookie_file in os.listdir(domain_dir):
+                with open(os.path.join(domain_dir, cookie_file), "rb") as f:
+                    for cookie in QNetworkCookie.parseCookies(f.read()):
+                        self.cookie_store.deleteCookie(cookie)
+            shutil.rmtree(domain_dir)
+
+    def domain_matching(self, cookie_domain):
+        ''' Check if a given cookie's domain is matching for host string.'''
+
+        cookie_is_hostOnly = True
+        if cookie_domain.startswith('.'):
+            # get rid of prefixing dot when matching domains
+            cookie_domain = cookie_domain[1:]
+            cookie_is_hostOnly = False
+
+        host_string = self.browser_view.url().host()
+
+        if cookie_domain == host_string:
+            # The domain string and the host string are identical
+            return True
+
+        if len(host_string) < len(cookie_domain):
+            # For obvious reasons, the host string cannot be a suffix if the domain
+            # is shorter than the domain string
+            return False
+
+        if host_string.endswith(cookie_domain) and host_string[:-len(cookie_domain)][-1] == '.' and not cookie_is_hostOnly:
+            # The domain string should be a suffix of the host string,
+            # The last character of the host string that is not included in the
+            # domain string should be a %x2E (".") character.
+            # and cookie domain not have prefixing dot (host-only cookie is not for subdomains)
+            return True
+
+        return False
+
+    def get_relate_domains(self, cookie_domain):
+        ''' Check whether the cookie domain is located under the same root host as the current URL host.'''
+        import tld, re
+
+        host_string = self.browser_view.url().host()
+
+        if cookie_domain.startswith('.'):
+            cookie_domain = cookie_domain[1:]
+
+        base_domain = tld.get_fld(host_string, fix_protocol=True, fail_silently=True)
+
+        if not base_domain:
+            # check whether host string is an IP address
+            if re.compile('^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$').match(host_string) and host_string == cookie_domain:
+                return True
+            return  False
+
+        if cookie_domain == base_domain:
+            return True
+
+        if cookie_domain.endswith(base_domain) and cookie_domain[:-len(base_domain)][-1] == '.':
+            return True
+
+        return False
+
+    def _generate_cookie_filename(self, cookie):
+        ''' Gets the name of the cookie file stored on the hard disk.'''
+        name = cookie.name().data().decode("utf-8")
+        domain = cookie.domain()
+        encode_path = cookie.path().replace("/", "|")
+
+        return name + "+" + domain + "+" + encode_path

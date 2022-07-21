@@ -19,13 +19,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt5 import QtCore
-from PyQt5.QtCore import Qt, QEvent, QPoint
-from PyQt5.QtGui import QPainter, QWindow, QBrush, QColor
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QGraphicsView, QFrame
-from core.utils import eval_in_emacs, focus_emacs_buffer
-import platform
-import os
+from PyQt6.QtCore import Qt, QEvent, QPoint
+from PyQt6.QtGui import QPainter, QWindow, QBrush
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QGraphicsView, QFrame
+from core.utils import eval_in_emacs, focus_emacs_buffer, get_emacs_func_cache_result
 
 class View(QWidget):
 
@@ -35,35 +32,36 @@ class View(QWidget):
         self.buffer = buffer
 
         # Init widget attributes.
-        if platform.system() == "Darwin":
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.NoDropShadowWindowHint)
+        if get_emacs_func_cache_result("eaf-emacs-running-in-wayland-native", []):
+            self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.BypassWindowManagerHint)
+        elif get_emacs_func_cache_result("eaf-emacs-not-use-reparent-technology", []):
+            self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.NoDropShadowWindowHint)
         else:
-            self.setWindowFlags(Qt.FramelessWindowHint)
+            self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
 
-        self.setAttribute(Qt.WA_X11DoNotAcceptFocus, True)
+        self.setAttribute(Qt.WidgetAttribute.WA_X11DoNotAcceptFocus, True)
         self.setContentsMargins(0, 0, 0, 0)
         self.installEventFilter(self)
 
         # Init attributes.
         self.view_info = view_info
         (self.buffer_id, self.emacs_xid, self.x, self.y, self.width, self.height) = view_info.split(":")
-        self.emacs_xid = int(self.emacs_xid)
-        self.x = int(self.x)
-        self.y = int(self.y)
-        self.width = int(self.width)
-        self.height = int(self.height)
+        self.x: int = int(self.x)
+        self.y: int = int(self.y)
+        self.width: int = int(self.width)
+        self.height: int = int(self.height)
 
         # Build QGraphicsView.
-        self.layout = QVBoxLayout(self)
+        self.layout: QVBoxLayout = QVBoxLayout(self)
         self.layout.setSpacing(0)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.graphics_view = QGraphicsView(buffer, self)
 
         # Remove border from QGraphicsView.
-        self.graphics_view.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.graphics_view.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.graphics_view.setRenderHints(QPainter.Antialiasing | QPainter.SmoothPixmapTransform | QPainter.TextAntialiasing)
-        self.graphics_view.setFrameStyle(QFrame.NoFrame)
+        self.graphics_view.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.graphics_view.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.graphics_view.setRenderHints(QPainter.RenderHint.Antialiasing | QPainter.RenderHint.SmoothPixmapTransform | QPainter.RenderHint.TextAntialiasing)
+        self.graphics_view.setFrameStyle(QFrame.Shape.NoFrame)
 
         # Fill background color.
         self.graphics_view.setBackgroundBrush(QBrush(buffer.background_color))
@@ -83,7 +81,7 @@ class View(QWidget):
         # Fit content to view rect just when buffer fit_to_view option is enable.
         if self.buffer.fit_to_view:
             if event.oldSize().isValid():
-                self.graphics_view.fitInView(self.graphics_view.scene().sceneRect(), Qt.KeepAspectRatio)
+                self.graphics_view.fitInView(self.graphics_view.scene().sceneRect(), Qt.AspectRatioMode.KeepAspectRatio)
                 QWidget.resizeEvent(self, event)
 
     def adjust_aspect_ratio(self):
@@ -100,23 +98,23 @@ class View(QWidget):
             horizontal_padding = (widget_width - view_width) / 2
             vertical_padding = self.buffer.vertical_padding_ratio * widget_height
 
-            self.buffer.buffer_widget.resize(view_width, view_height)
+            self.buffer.buffer_widget.resize(int(view_width), int(view_height))
 
-            self.layout.setContentsMargins(
-                horizontal_padding, vertical_padding,
-                horizontal_padding, vertical_padding)
+            self.layout.setContentsMargins(int(horizontal_padding), int(vertical_padding), int(horizontal_padding), int(vertical_padding))
 
     def eventFilter(self, obj, event):
         # import time
         # print(time.time(), event.type())
+        
+        import platform
 
-        if event.type() in [QEvent.ShortcutOverride]:
+        if event.type() in [QEvent.Type.ShortcutOverride]:
             eval_in_emacs('eaf-activate-emacs-window', [self.buffer_id])
 
         # Focus emacs buffer when user click view.
-        event_type = [QEvent.MouseButtonPress, QEvent.MouseButtonRelease, QEvent.MouseButtonDblClick]
+        event_type = [QEvent.Type.MouseButtonPress, QEvent.Type.MouseButtonRelease, QEvent.Type.MouseButtonDblClick]
         if platform.system() != "Darwin":
-            event_type += [QEvent.Wheel]
+            event_type += [QEvent.Type.Wheel]
 
         if event.type() in event_type:
             focus_emacs_buffer(self.buffer_id)
@@ -127,6 +125,8 @@ class View(QWidget):
 
     def showEvent(self, event):
         # NOTE: we must reparent after widget show, otherwise reparent operation maybe failed.
+        import platform
+        
         self.reparent()
 
         if platform.system() in ["Windows", "Darwin"]:
@@ -140,10 +140,20 @@ class View(QWidget):
         # print("Reparent: ", self.buffer.url)
         qwindow = self.windowHandle()
 
-        if platform.system() != "Darwin":
-            qwindow.setParent(QWindow.fromWinId(self.emacs_xid))
+        if not get_emacs_func_cache_result("eaf-emacs-not-use-reparent-technology", []):
+            qwindow.setParent(QWindow.fromWinId(int(self.emacs_xid)))    # type: ignore
 
         qwindow.setPosition(QPoint(self.x, self.y))
+
+    def try_show_top_view(self):
+        if get_emacs_func_cache_result("eaf-emacs-not-use-reparent-technology", []):
+            self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, True)
+            self.show()
+
+    def try_hide_top_view(self):
+        if get_emacs_func_cache_result("eaf-emacs-not-use-reparent-technology", []):
+            self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, False)
+            self.hide()
 
     def destroy_view(self):
         # print("Destroy: ", self.buffer.url)

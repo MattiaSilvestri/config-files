@@ -7,7 +7,7 @@
 ;; Copyright (C) 2018, Andy Stewart, all rights reserved.
 ;; Created: 2018-06-15 14:10:12
 ;; Version: 0.5
-;; Last-Updated: Sun Oct 24 01:42:08 2021 (-0400)
+;; Last-Updated: Fri Apr  8 12:23:33 2022 (-0400)
 ;;           By: Mingde (Matthew) Zeng
 ;; URL: https://github.com/emacs-eaf/emacs-application-framework
 ;; Keywords:
@@ -79,6 +79,8 @@
 (require 'subr-x)
 (require 'bookmark)
 
+(declare-function straight--symlink-recursively "straight")
+
 (define-obsolete-function-alias 'eaf-setq 'setq "Version 0.5, Commit d8abd23"
   "See https://github.com/emacs-eaf/emacs-application-framework/issues/734.
 for more information.
@@ -113,56 +115,51 @@ A bookmark handler function is used as
 A new app can use this to configure extensions which should
 handled by it.")
 
-(defun eaf-add-subdirs-to-load-path ()
-  "Recursively add all subdirectories of `default-directory' to `load-path'.
-More precisely, this uses only the subdirectories whose names
-start with letters or digits; it excludes any subdirectory named `RCS'
-or `CVS', and any subdirectory that contains a file named `.nosearch'."
-  (let (dirs
-        attrs
-        (pending (list (file-name-directory (locate-library "eaf")))))
-    ;; This loop does a breadth-first tree walk on DIR's subtree,
-    ;; putting each subdir into DIRS as its contents are examined.
-    (while pending
-      (push (pop pending) dirs)
-      (let* ((this-dir (car dirs))
-             (contents (directory-files this-dir))
-             (default-directory this-dir)
-             (canonicalized (if (fboundp 'w32-untranslated-canonical-name)
-                                (w32-untranslated-canonical-name this-dir))))
-        ;; The Windows version doesn't report meaningful inode numbers, so
-        ;; use the canonicalized absolute file name of the directory instead.
-        (setq attrs (or canonicalized
-                        (nthcdr 10 (file-attributes this-dir))))
-        (unless (member attrs normal-top-level-add-subdirs-inode-list)
-          (push attrs normal-top-level-add-subdirs-inode-list)
-          (dolist (file contents)
-            (and
-             ;; NOTE:
-             ;; Don't scan node_modules directories, such as EAF npm subdirectories.
-             (not (string-match-p "/node_modules" this-dir))
-             (not (string-match-p "/dist" this-dir))
+(defvar eaf-build-dir (file-name-directory (locate-library "eaf")))
+(defvar eaf-source-dir (file-name-directory (file-truename (concat eaf-build-dir "eaf.el"))))
 
-             (string-match "\\`[[:alnum:]]" file)
-             ;; The lower-case variants of RCS and CVS are for DOS/Windows.
-             (not (member file '("RCS" "CVS" "rcs" "cvs")))
-             (file-directory-p file)
-             (let ((expanded (expand-file-name file)))
-               (or (file-exists-p (expand-file-name ".nosearch" expanded))
-                   (setq pending (nconc pending (list expanded))))))))))
-    (normal-top-level-add-to-load-path (cdr (nreverse dirs)))))
+;; Helper functions for generating the defcustom entry for the list of apps
+(defun eaf--alist-to-defcustom-const (entry)
+  "Map an alist for an app to an entry for the defcustom set"
+  `(const :tag ,(cdr (assoc 'name entry)) ,(car entry)))
 
-(defun eaf-add-app-dirs-to-load-path ()
-  "Add EAF app directories where .el exists to `load-path'."
-  (let ((default-directory (file-name-directory (locate-library "eaf"))))
-    (add-to-list 'load-path default-directory)
-    (eaf-add-subdirs-to-load-path)
-    (dolist (path load-path)
-      (when (or (string-match-p "/node_modules" path)
-                (string-match-p "/dist" path))
-        (setq load-path (delete path load-path))))))
+(defun eaf--json-to-defcustom-set ()
+  "Generate the 'set choice for the defcustom entry"
+  (let ((apps-alist
+         (with-temp-buffer
+           (insert-file-contents (concat eaf-build-dir "applications.json"))
+           (goto-char 0)
+           (json-parse-buffer :object-type 'alist))))
+    (cons 'set (mapcar 'eaf--alist-to-defcustom-const (cdr apps-alist)))))
 
-(eaf-add-app-dirs-to-load-path)
+(defcustom eaf-apps-to-install nil
+  "List of applications to install"
+  :group 'eaf
+  :type (eaf--json-to-defcustom-set))
+
+(defun eaf-add-subdirs-to-load-path (search-dir)
+  (interactive)
+  (let* ((dir (file-name-as-directory search-dir)))
+    (dolist (subdir
+             (cl-remove-if
+              #'(lambda (subdir)
+                  (or
+                   (not (file-directory-p (concat dir subdir)))
+                   (member subdir '("." ".."
+                                    "dist" "node_modules" "__pycache__"
+                                    "RCS" "CVS" "rcs" "cvs" ".git" ".github"))))
+              (directory-files dir)))
+      (let ((subdir-path (concat dir (file-name-as-directory subdir))))
+        (when (cl-some #'(lambda (subdir-file)
+                           (and (file-regular-p (concat subdir-path subdir-file))
+                                (member (file-name-extension subdir-file) '("el" "so" "dll"))))
+                       (directory-files subdir-path))
+          (add-to-list 'load-path subdir-path t))
+
+        (eaf-add-subdirs-to-load-path subdir-path)))))
+
+;; Add EAF app directories where .el exists to `load-path'.
+(eaf-add-subdirs-to-load-path eaf-build-dir)
 
 (require 'eaf-epc)
 
@@ -295,34 +292,25 @@ been initialized."
           (eaf-epc-server-start
            (lambda (mngr)
              (let ((mngr mngr))
-               (eaf-epc-define-method mngr 'eval-in-emacs 'eval-in-emacs-func)
-               (eaf-epc-define-method mngr 'get-emacs-var 'get-emacs-var-func)
-               (eaf-epc-define-method mngr 'get-emacs-vars 'get-emacs-vars-func)
+               (eaf-epc-define-method mngr 'eval-in-emacs 'eaf--eval-in-emacs)
+               (eaf-epc-define-method mngr 'get-emacs-func-result 'eaf--get-emacs-func-result)
+               (eaf-epc-define-method mngr 'get-emacs-var 'eaf--get-emacs-var)
+               (eaf-epc-define-method mngr 'get-emacs-vars 'eaf--get-emacs-vars)
                ))))
     (if eaf-server
         (setq eaf-server-port (process-contact eaf-server :service))
       (error "[EAF] eaf-server failed to start")))
   eaf-server)
 
-(when noninteractive
-  ;; Start "event loop".
-  (cl-loop repeat 600
-           do (sleep-for 0.1)))
+(defun eaf--get-emacs-func-result (sexp-string)
+  (eval (read sexp-string)))
 
-(defun eval-in-emacs-func (&rest args)
-  (apply (read (car args))
-         (mapcar
-          (lambda (arg)
-            (let ((arg (eaf--decode-string arg)))
-              (cond ((string-prefix-p "'" arg) ;; single quote
-                     (read (substring arg 1)))
-                    ((and (string-prefix-p "(" arg)
-                          (string-suffix-p ")" arg)) ;; list
-                     (split-string (substring arg 1 -1) " "))
-                    (t arg))))
-          (cdr args))))
+(defun eaf--eval-in-emacs (sexp-string)
+  (eval (read sexp-string))
+  ;; Return nil to avoid epc error `Got too many arguments in the reply'.
+  nil)
 
-(defun get-emacs-var-func (var-name)
+(defun eaf--get-emacs-var (var-name)
   (let* ((var-symbol (intern var-name))
          (var-value (symbol-value var-symbol))
          ;; We need convert result of booleanp to string.
@@ -330,8 +318,8 @@ been initialized."
          (var-is-bool (prin1-to-string (booleanp var-value))))
     (list var-value var-is-bool)))
 
-(defun get-emacs-vars-func (&rest vars)
-  (mapcar #'(lambda (var-name) (symbol-value (intern var-name))) vars))
+(defun eaf--get-emacs-vars (&rest vars)
+  (mapcar #'eaf--get-emacs-var vars))
 
 (defun get-emacs-face-foregrounds (&rest faces)
   (mapcar #'(lambda (face-name) (eaf-color-name-to-hex (face-attribute (intern face-name) :foreground))) faces))
@@ -360,11 +348,9 @@ been initialized."
 (defvar eaf-last-frame-height 0)
 
 (when (eq system-type 'darwin)
-  (defvar eaf--mac-switch-to-python nil
-    "Record if Emacs switchs to Python process")
-
-  (defvar eaf--mac-has-focus t
-    "Record if Emacs has focus"))
+  (defcustom eaf--mac-enable-rosetta nil
+    "Execute EAF Python process under Rosetta2"
+    :type 'boolean))
 
 (defcustom eaf-name "*eaf*"
   "Name of EAF buffer."
@@ -398,7 +384,7 @@ been initialized."
   ""
   :type 'boolean)
 
-(defcustom eaf-find-file-ext-blacklist '("md" "org" "html" "htm")
+(defcustom eaf-find-file-ext-blacklist '("md" "org" "html" "htm" "epub")
   "A blacklist of extensions to avoid when opening `find-file' file using EAF."
   :type 'cons)
 
@@ -412,6 +398,66 @@ been initialized."
 
 (defcustom eaf-proxy-type ""
   "Proxy Type used by EAF Browser.  The value is either \"http\" or \"socks5\"."
+  :type 'string)
+
+(defcustom eaf-webengine-default-zoom 1.0
+  "Set the default zoom factor for EAF Browser."
+  :type 'float)
+
+(defcustom eaf-webengine-scroll-step 400
+  "Set the scroll step for EAF Browser, increase/decrease for bigger/smaller steps."
+  :type 'float)
+
+(defcustom eaf-webengine-pc-user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:85.0) Gecko/20100101 Firefox/85.0"
+  "Simulate a PC User-Agent for EAF Browser."
+  :type 'string)
+
+(defcustom eaf-webengine-phone-user-agent "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A5370a Safari/604.1"
+  "Simulate a Phone User-Agent for EAF Browser."
+  :type 'string)
+
+(defcustom eaf-webengine-font-family ""
+  "Set font family for EAF Browser."
+  :type 'string)
+
+(defcustom eaf-webengine-font-size 16
+  "Set font size for EAF Browser."
+  :type 'integer)
+
+(defcustom eaf-webengine-fixed-font-family ""
+  "Set fixed font family for EAF Browser."
+  :type 'string)
+
+(defcustom eaf-webengine-fixed-font-size 16
+  "Set fixed font size for EAF Browser."
+  :type 'integer)
+
+(defcustom eaf-webengine-serif-font-family ""
+  "Set serif font family for EAF Browser."
+  :type 'string)
+
+(defcustom eaf-webengine-enable-plugin t
+  "If non-nil, enable QtWebEngine plugins for EAF Browser."
+  :type 'boolean)
+
+(defcustom eaf-webengine-enable-javascript t
+  "If non-nil, enable javascript for EAF Browser."
+  :type 'boolean)
+
+(defcustom eaf-webengine-enable-javascript-access-clipboard t
+  "If non-nil, enable javascript access user clipboard for EAF Browser."
+  :type 'boolean)
+
+(defcustom eaf-webengine-enable-scrollbar nil
+  "If non-nil, enable scroll bar for EAF Browser."
+  :type 'boolean)
+
+(defcustom eaf-webengine-unknown-url-scheme-policy "AllowUnknownUrlSchemesFromUserInteraction"
+  "Allowed options: DisallowUnknownUrlSchemes, AllowUnknownUrlSchemesFromUserInteraction, or AllowAllUnknownUrlSchemes."
+  :type 'string)
+
+(defcustom eaf-webengine-download-path "~/Downloads"
+  "Set the download path for EAF Browser."
   :type 'string)
 
 (defcustom eaf-enable-debug nil
@@ -458,6 +504,18 @@ Please fill an issue if it still doesn't work."
 
 Turn on this option will improve start speed."
   :type 'boolean)
+
+(defcustom eaf-byte-compile-apps nil
+  "If this option turn on, EAF will byte-compile elisp code.")
+
+(defcustom eaf-clean-duplicate-buffers t
+  "Clean duplicate file manager buffers."
+  :type 'boolean)
+
+(defcustom eaf-duplicate-buffer-survival-time 60
+  "If file manager buffer not show in current frame, and existence time exceeds than 60 seconds,
+EAF will remove the duplicate file manager buffer."
+  :type 'integer)
 
 (defvar eaf--monitor-configuration-p t
   "When this variable is non-nil, `eaf-monitor-configuration-change' executes.
@@ -552,6 +610,11 @@ A hashtable, key is url and value is title.")
   "Call Python EPC function METHOD and ARGS synchronously."
   (eaf-epc-call-sync eaf-epc-process (read method) args))
 
+(defun eaf--called-from-wsl-on-windows-p ()
+  "Check whether eaf is called by Emacs on WSL and is running on Windows."
+  (and (eq system-type 'gnu/linux)
+       (string-match-p ".exe" eaf-python-command)))
+
 (defun eaf-get-emacs-xid (frame)
   "Get Emacs FRAME xid."
   (if (eaf--called-from-wsl-on-windows-p)
@@ -559,16 +622,30 @@ A hashtable, key is url and value is title.")
     (frame-parameter frame 'window-id)))
 
 (defun eaf--follow-system-dpi ()
-  (if (and (getenv "WAYLAND_DISPLAY") (not (string= (getenv "WAYLAND_DISPLAY") "")))
-      (progn
-        ;; We need manually set scale factor when at Gnome/Wayland environment.
-        ;; It is important to set QT_AUTO_SCREEN_SCALE_FACTOR=0
-        ;; otherwise Qt which explicitly force high DPI enabling get scaled TWICE.
-        (setenv "QT_AUTO_SCREEN_SCALE_FACTOR" "0")
-        ;; Set EAF application scale factor.
-        (setenv "QT_SCALE_FACTOR" "1")
-        ;; Force xwayland to ensure SWay works.
-        (setenv "QT_QPA_PLATFORM" "xcb"))
+  ;; Turn on DEBUG info when `eaf-enable-debug' is non-nil.
+  (when eaf-enable-debug
+    (setenv "QT_DEBUG_PLUGINS" "1"))
+
+  (unless (eq system-type 'darwin)
+    (cond
+     ((eaf-emacs-running-in-wayland-native)
+      ;; Wayland native need to set QT_AUTO_SCREEN_SCALE_FACTOR=1
+      ;; otherwise Qt window only have half of screen.
+      (setenv "QT_AUTO_SCREEN_SCALE_FACTOR" "1"))
+     (t
+      ;; XWayland need to set QT_AUTO_SCREEN_SCALE_FACTOR=0
+      ;; otherwise Qt which explicitly force high DPI enabling get scaled TWICE.
+      (setenv "QT_AUTO_SCREEN_SCALE_FACTOR" "0")))
+
+    ;; Make sure EAF application scale support 4k screen.
+    (setenv "QT_SCALE_FACTOR" "1")
+    (setenv "QT_FONT_DPI" "96")
+
+    ;; Use XCB for input event transfer.
+    ;; Only enable this option on Linux platform.
+    (when (eq system-type 'gnu/linux)
+      (setenv "QT_QPA_PLATFORM" "xcb"))
+
     (setq process-environment
           (seq-filter
            (lambda (var)
@@ -601,9 +678,14 @@ A hashtable, key is url and value is title.")
       ;; Start python process.
       (let ((process-connection-type (not (eaf--called-from-wsl-on-windows-p))))
         (setq eaf-internal-process
-              (apply 'start-process
-                     eaf-name eaf-name
-                     eaf-internal-process-prog eaf-internal-process-args)))
+              (if (and (eq system-type 'darwin)
+                       eaf--mac-enable-rosetta)
+                  (apply 'start-process
+                         eaf-name eaf-name
+                         "arch" (append (list "-x86_64" eaf-internal-process-prog) eaf-internal-process-args))
+                (apply 'start-process
+                       eaf-name eaf-name
+                       eaf-internal-process-prog eaf-internal-process-args))))
       (set-process-query-on-exit-flag eaf-internal-process nil))))
 
 (run-with-idle-timer
@@ -689,10 +771,6 @@ If RESTART is non-nil, cached URL and app-name will not be cleared."
   ;; Start EAF process, EAF will restore page in `eaf--first-start-app-buffers'.
   (eaf-start-process))
 
-(defun eaf--decode-string (str)
-  "Decode string STR with UTF-8 coding using Base64."
-  (decode-coding-string (base64-decode-string str) 'utf-8))
-
 (defun eaf--encode-string (str)
   "Encode string STR with UTF-8 coding using Base64."
   (base64-encode-string (encode-coding-string str 'utf-8)))
@@ -740,6 +818,13 @@ buffer."
     (let ((this-command cmd))
       (call-interactively cmd))))
 
+(defun eaf-copy-to-clipboard (string)
+  (if (version< "29.0" emacs-version)
+      (progn
+        (kill-new string)
+        string)
+    (kill-new string)))
+
 (defun eaf-get-path-or-url ()
   "Get the current file path or web URL.
 
@@ -747,14 +832,14 @@ When called interactively, copy to ‘kill-ring’."
   (interactive)
   (if (derived-mode-p 'eaf-mode)
       (if (called-interactively-p 'any)
-          (message "%s" (kill-new (eaf-call-sync "call_function" eaf--buffer-id "get_url")))
-        (eaf-call-sync "call_function" eaf--buffer-id "get_url"))
+          (message "%s" (eaf-copy-to-clipboard (eaf-call-sync "execute_function" eaf--buffer-id "get_url")))
+        (eaf-call-sync "execute_function" eaf--buffer-id "get_url"))
     (user-error "This command can only be called in an EAF buffer!")))
 
 (defun eaf-toggle-fullscreen ()
   "Toggle fullscreen."
   (interactive)
-  (eaf-call-async "execute_function" eaf--buffer-id "toggle_fullscreen" (key-description (this-command-keys-vector))))
+  (eaf-call-async "eval_function" eaf--buffer-id "toggle_fullscreen" (key-description (this-command-keys-vector))))
 
 (defun eaf--make-py-proxy-function (fun)
   "Define elisp command which can call Python function string FUN."
@@ -765,7 +850,7 @@ When called interactively, copy to ‘kill-ring’."
           (interactive)
           ;; Ensure this is only called from EAF buffer
           (if (derived-mode-p 'eaf-mode)
-              (eaf-call-async "execute_function" eaf--buffer-id fun (key-description (this-command-keys-vector)))
+              (eaf-call-async "eval_function" eaf--buffer-id fun (key-description (this-command-keys-vector)))
             (message "%s command can only be called in an EAF buffer!" sym)))
         (format
          "Proxy function to call \"%s\" on the Python side.
@@ -803,24 +888,24 @@ to edit EAF keybindings!" fun fun)))
             (set-keymap-parent map eaf-mode-map*))
           (cl-loop for (key . fun) in (reverse keybinding)
                    do (define-key map (kbd key)
-                                  (cond
-                                   ;; If command is normal symbol, just call it directly.
-                                   ((symbolp fun)
-                                    fun)
+                        (cond
+                         ;; If command is normal symbol, just call it directly.
+                         ((symbolp fun)
+                          fun)
 
-                                   ;; If command is string and include - , it's elisp function, use `intern' build elisp function from function name.
-                                   ((string-match "-" fun)
-                                    (intern fun))
+                         ;; If command is string and include - , it's elisp function, use `intern' build elisp function from function name.
+                         ((string-match "-" fun)
+                          (intern fun))
 
-                                   ;; If command prefix with js_, call JavaScript function directly.
-                                   ((string-prefix-p "js_" fun)
-                                    (eaf--make-js-proxy-function fun))
+                         ;; If command prefix with js_, call JavaScript function directly.
+                         ((string-prefix-p "js_" fun)
+                          (eaf--make-js-proxy-function fun))
 
-                                   ;; If command is not built-in function and not include char '-'
-                                   ;; it's command in python side, build elisp proxy function to call it.
-                                   (t
-                                    (eaf--make-py-proxy-function fun))
-                                   ))
+                         ;; If command is not built-in function and not include char '-'
+                         ;; it's command in python side, build elisp proxy function to call it.
+                         (t
+                          (eaf--make-py-proxy-function fun))
+                         ))
                    finally return map))))
 
 (defun eaf--get-app-bindings (app-name)
@@ -845,6 +930,10 @@ keybinding variable to eaf-app-binding-alist."
          (url-directory (or (file-name-directory url) url)))
     (with-current-buffer eaf-buffer
       (eaf-mode)
+
+      ;; Don't promt user when exist EAF python process.
+      (setq-local confirm-kill-processes nil)
+
       (when (file-accessible-directory-p url-directory)
         (setq-local default-directory url-directory)
 
@@ -902,47 +991,130 @@ Including title-bar, menu-bar, offset depends on window system, and border."
       (+ (eaf--frame-top frame) (eaf--frame-internal-height frame))
     0))
 
+(defun eaf-emacs-not-use-reparent-technology ()
+  "When Emacs running in macOS、Wayland native or terminal environment,
+we can't use 'cross-process reparent' technicality like we does in X11, XWayland or Windows.
+
+In this situation, we use 'stay on top' technicality that show EAF window when Emacs get focus, hide EAF window when Emacs lost focus.
+
+'Stay on top' technicality is not perfect like 'cross-process reparent' technicality,
+provide at least one way to let everyone experience EAF. ;)"
+  (or (eq system-type 'darwin)              ;macOS
+      (eaf-emacs-running-in-wayland-native) ;Wayland native
+      (not (display-graphic-p))             ;Terminal emulator
+      ))
+
+(defun eaf-emacs-running-in-wayland-native ()
+  (and (eq window-system 'pgtk)
+       (fboundp 'pgtk-backend-display-class)
+       (string-equal (pgtk-backend-display-class) "GdkWaylandDisplay")))
+
 (eval-when-compile
-  (when (eq system-type 'darwin)
-    (defun eaf--mac-focus-change ()
-      "Manage Emacs's focus change"
-      (cond
-       ((string= "Python\n" (shell-command-to-string "app-frontmost --name"))
-        (setq eaf--mac-switch-to-python t))
+  (when (eaf-emacs-not-use-reparent-technology)
+    (cond
+     ((eq system-type 'darwin)
+      (defcustom eaf--mac-safe-focus-change t
+        "Whether to verify the active application on Emacs frame focus change.
 
-       ((string= "Emacs\n" (shell-command-to-string "app-frontmost --name"))
-        (cond
-         (eaf--mac-switch-to-python
-          (setq eaf--mac-switch-to-python nil))
-         ((not eaf--mac-has-focus)
-          (run-with-timer 0.1 nil #'eaf--mac-focus-in)
-          )
-         (eaf--mac-has-focus
-          (eaf--mac-focus-out))))
-       (t (eaf--mac-focus-out))))
+Only set this to nil if you do not use the mouse inside EAF buffers.
+The benefit of setting this to nil is that application switching
+is a lot faster but could be buggy."
+        :type 'boolean)
 
-    (defun eaf--mac-replace-eaf-buffers ()
-      (dolist (window (window-list))
-        (select-window window)
-        (when (eq major-mode 'eaf-mode)
-          (get-buffer-create "*eaf temp*")
-          (switch-to-buffer "*eaf temp*" t))))
+      (defvar eaf--mac-switch-to-python nil
+        "Record if Emacs should switch to Python process.")
 
-    (defun eaf--mac-focus-in ()
-      (setq eaf--mac-has-focus t)
-      (ignore-errors
-        (set-window-configuration (frame-parameter (selected-frame) 'eaf--mac-frame))
-        (bury-buffer "*eaf temp*")))
+      (defvar eaf--mac-has-focus t
+        "Record if Emacs has focus.")
 
-    (defun eaf--mac-focus-out (&optional frame)
-      (when eaf--mac-has-focus
-        (setq eaf--mac-has-focus nil)
-        (set-frame-parameter (or frame (selected-frame)) 'eaf--mac-frame (current-window-configuration))
-        (eaf--mac-replace-eaf-buffers)))
+      (defvar eaf--mac-unsafe-focus-change-timer nil
+        "Use timer to ignore spurious focus events.
 
-    (add-function :after after-focus-change-function #'eaf--mac-focus-change)
-    (add-to-list 'delete-frame-functions #'eaf--mac-focus-out)
-    ))
+This is only used when `eaf--mac-safe-focus-change' is nil.
+
+See
+https://old.reddit.com/r/emacs/comments/\
+kxsgtn/ignore_spurious_focus_events_for/")
+
+      (defun eaf--mac-unsafe-focus-change-handler ()
+        ;; ignore errors related to
+        ;; (wrong-type-argument eaf-epc-manager nil)
+        (ignore-errors
+          (if (frame-focus-state)
+              (eaf--mac-unsafe-focus-in)
+            (eaf--mac-unsafe-focus-out)))
+        (setq eaf--mac-unsafe-focus-change-timer nil))
+
+      (defun eaf--mac-focus-change ()
+        "Manage Emacs's focus change."
+        (if eaf--mac-safe-focus-change
+            (if (executable-find "app-frontmost")
+                (let ((front (shell-command-to-string "app-frontmost --name")))
+                  (cond
+                   ((member front (list "Python\n" "python3\n"))
+                    (setq eaf--mac-switch-to-python t))
+
+                   ((string= "Emacs\n" front)
+                    (cond
+                     (eaf--mac-switch-to-python
+                      (setq eaf--mac-switch-to-python nil))
+                     ((not eaf--mac-has-focus)
+                      (run-with-timer 0.1 nil #'eaf--mac-focus-in))
+                     (eaf--mac-has-focus
+                      (eaf--mac-focus-out))))
+                   (t (eaf--mac-focus-out))))
+              (message "Please install app-frontmost from https://pypi.org/project/mac-app-frontmost/ to make EAF works with macOS platform."))
+          (setq eaf--mac-unsafe-focus-change-timer
+                (unless eaf--mac-unsafe-focus-change-timer
+                  (run-at-time 0.06 nil
+                               #'eaf--mac-unsafe-focus-change-handler)))))
+
+      (defun eaf--mac-replace-eaf-buffers ()
+        (dolist (window (window-list))
+          (select-window window)
+          (when (eq major-mode 'eaf-mode)
+            (get-buffer-create "*eaf temp*")
+            (switch-to-buffer "*eaf temp*" t))))
+
+      (defun eaf--mac-focus-in ()
+        (setq eaf--mac-has-focus t)
+        (ignore-errors
+          (set-window-configuration
+           (frame-parameter (selected-frame) 'eaf--mac-frame))
+          (bury-buffer "*eaf temp*")))
+
+      (defun eaf--mac-focus-out (&optional frame)
+        (when eaf--mac-has-focus
+          (setq eaf--mac-has-focus nil)
+          (set-frame-parameter (or frame (selected-frame))
+                               'eaf--mac-frame (current-window-configuration))
+          (eaf--mac-replace-eaf-buffers)))
+
+      (defun eaf--mac-unsafe-focus-in ()
+        (eaf-call-async "show_top_views")
+        (set-window-configuration
+         (frame-parameter (selected-frame) 'eaf--mac-frame)))
+
+      (defun eaf--mac-unsafe-focus-out (&optional frame)
+        (eaf-call-async "hide_top_views")
+        (set-frame-parameter (or frame (selected-frame)) 'eaf--mac-frame
+                             (current-window-configuration)))
+
+      (defun eaf--mac-delete-frame-handler (frame)
+        (if eaf--mac-safe-focus-change
+            (eaf--mac-focus-out frame)
+          (eaf--mac-unsafe-focus-out frame)))
+
+      (add-function :after after-focus-change-function #'eaf--mac-focus-change)
+      (add-to-list 'delete-frame-functions #'eaf--mac-delete-frame-handler))
+     (t
+      (defun eaf--wayland-focus-change ()
+        "Manage Emacs's focus change."
+        (if (frame-focus-state)
+            (eaf-call-async "show_top_views")
+          (eaf-call-async "hide_top_views")))
+      (add-function :after after-focus-change-function #'eaf--wayland-focus-change)
+      ))))
 
 (defun eaf-monitor-configuration-change (&rest _)
   "EAF function to respond when detecting a window configuration change."
@@ -955,7 +1127,7 @@ Including title-bar, menu-bar, offset depends on window system, and border."
             (with-current-buffer (window-buffer window)
               (when (derived-mode-p 'eaf-mode)
                 ;; When `eaf-fullscreen-p' is non-nil, and only the EAF window is present, use frame size
-                (if (and eaf-fullscreen-p (equal (length (window-list frame)) 1))
+                (if (and eaf-fullscreen-p (equal (length (cl-remove-if #'window-dedicated-p (window-list frame))) 1))
                     (push (format "%s:%s:%s:%s:%s:%s"
                                   eaf--buffer-id
                                   (eaf-get-emacs-xid frame)
@@ -1125,7 +1297,6 @@ of `eaf--buffer-app-name' inside the EAF buffer."
   (let* ((buffer (eaf-get-buffer buffer-id)))
     (when buffer
       (kill-buffer buffer)
-      (eaf-goto-right-tab)
       t)))
 
 (defun eaf--first-start (eaf-epc-port)
@@ -1174,20 +1345,20 @@ WEBENGINE-INCLUDE-PRIVATE-CODEC is only useful when app-name is video-player."
 (defvar eaf-search-input-buffer-id nil)
 (defvar eaf-search-input-callback-tag nil)
 
-(defun eaf--input-message (input-buffer-id interactive-string callback-tag interactive-type initial-content)
+(defun eaf--input-message (input-buffer-id interactive-string callback-tag interactive-type initial-content completion-list)
   "Handles input message INTERACTIVE-STRING on the Python side given INPUT-BUFFER-ID and CALLBACK-TYPE."
   (when (string-equal interactive-type "search")
     (setq eaf-search-input-active-p t)
     (setq eaf-search-input-buffer-id input-buffer-id)
     (setq eaf-search-input-callback-tag callback-tag))
 
-  (let* ((input-message (eaf-read-input (concat "[EAF/" eaf--buffer-app-name "] " interactive-string) interactive-type initial-content)))
+  (let* ((input-message (eaf-read-input (concat "[EAF/" eaf--buffer-app-name "] " interactive-string) interactive-type initial-content completion-list)))
     (if input-message
         (eaf-call-async "handle_input_response" input-buffer-id callback-tag input-message)
       (eaf-call-async "cancel_input_response" input-buffer-id callback-tag))
     (setq eaf-search-input-active-p nil)))
 
-(defun eaf-read-input (interactive-string interactive-type initial-content)
+(defun eaf-read-input (interactive-string interactive-type initial-content completion-list)
   "EAF's multi-purpose read-input function which read an INTERACTIVE-STRING with INITIAL-CONTENT, determines the function base on INTERACTIVE-TYPE."
   (condition-case nil
       (cond ((or (string-equal interactive-type "string")
@@ -1196,22 +1367,36 @@ WEBENGINE-INCLUDE-PRIVATE-CODEC is only useful when app-name is video-player."
              (read-string interactive-string initial-content))
             ((string-equal interactive-type "file")
              (expand-file-name (read-file-name interactive-string initial-content)))
+            ((string-equal interactive-type "directory")
+             (expand-file-name (read-directory-name interactive-string initial-content)))
             ((string-equal interactive-type "yes-or-no")
-             (yes-or-no-p interactive-string)))
+             (yes-or-no-p interactive-string))
+            ((string-equal interactive-type "list")
+             (completing-read interactive-string completion-list)))
     (quit nil)))
 
 (defun eaf--open-internal (url app-name args)
   "Open an EAF application internally with URL, APP-NAME and ARGS."
   (let* ((buffer (eaf--create-buffer url app-name args)))
-    (with-current-buffer buffer
-      (eaf-call-async "new_buffer" eaf--buffer-id
-                      (if (eaf--called-from-wsl-on-windows-p)
-                          (eaf--translate-wsl-url-to-windows url)
-                        url)
-                      (eaf--get-app-module-path app-name)
-                      args)
-      (eaf--update-modeline-icon))
-    (eaf--preview-display-buffer app-name buffer)))
+    (eaf--open-new-buffer buffer)))
+
+(defun eaf--open-new-buffer (buffer)
+  (with-current-buffer buffer
+    (eaf-call-async "new_buffer"
+                    eaf--buffer-id
+                    (if (eaf--called-from-wsl-on-windows-p)
+                        (eaf--translate-wsl-url-to-windows eaf--buffer-url)
+                      eaf--buffer-url)
+                    (eaf--get-app-module-path eaf--buffer-app-name)
+                    eaf--buffer-args)
+    (eaf--update-modeline-icon)
+    (eaf--preview-display-buffer eaf--buffer-app-name buffer)))
+
+(defun eaf--rebuild-buffer ()
+  (when (derived-mode-p 'eaf-mode)
+    (eaf-start-process)
+    (eaf--open-new-buffer (current-buffer))
+    (eaf-monitor-configuration-change)))
 
 (defun eaf--update-modeline-icon ()
   "Update modeline icon if used"
@@ -1250,11 +1435,6 @@ WEBENGINE-INCLUDE-PRIVATE-CODEC is only useful when app-name is video-player."
 (defun eaf-get-file-name-extension (file)
   "A wrapper around `file-name-extension' that downcases the extension of the FILE."
   (downcase (file-name-extension file)))
-
-(defun eaf--called-from-wsl-on-windows-p ()
-  "Check whether eaf is called by Emacs on WSL and is running on Windows."
-  (and (eq system-type 'gnu/linux)
-       (string-match-p ".exe" eaf-python-command)))
 
 (defun eaf--translate-wsl-url-to-windows (path)
   "Translate from a WSL PATH to a Windows path."
@@ -1314,7 +1494,7 @@ When called interactively, URL accepts a file that can be opened by EAF."
   ;; Open URL with EAF application
   (if (eaf-epc-live-p eaf-epc-process)
       (let (exists-eaf-buffer)
-        ;; Try to open buffer
+        ;; Try to open buffer           ; ;
         (catch 'found-eaf
           (eaf-for-each-eaf-buffer
            (when (and (string= eaf--buffer-url url)
@@ -1379,7 +1559,7 @@ So multiple EAF buffers visiting the same file do not sync with each other."
   (let ((confirm-function (cdr (assoc eaf-edit-confirm-action eaf-edit-confirm-function-alist))))
     (if confirm-function
         (funcal confirm-function)
-      (eaf-call-async "update_focus_text" eaf--buffer-id (eaf--encode-string (kill-new (buffer-string))))))
+      (eaf-call-async "set_focus_text" eaf--buffer-id (eaf--encode-string (eaf-copy-to-clipboard (buffer-string))))))
 
   ;; Close confirm window.
   (kill-buffer)
@@ -1391,7 +1571,7 @@ So multiple EAF buffers visiting the same file do not sync with each other."
   (eaf-monitor-configuration-change)
   (when (and eaf-browser-fullscreen-move-cursor-corner
              (string= eaf--buffer-app-name "browser"))
-    (eaf-call-async "execute_function" eaf--buffer-id "move_cursor_to_corner" (key-description (this-command-keys-vector)))))
+    (eaf-call-async "eval_function" eaf--buffer-id "move_cursor_to_corner" (key-description (this-command-keys-vector)))))
 
 ;; Update and load the theme
 (defun eaf-get-theme-mode ()
@@ -1429,7 +1609,7 @@ So multiple EAF buffers visiting the same file do not sync with each other."
           ;; Emacs window cannot get the focus normally if mouse in EAF buffer area.
           ;;
           ;; So we move mouse to frame bottom of Emacs, to make EAF receive input event.
-          (eaf-call-async "execute_function" (or eaf--buffer-id buffer_id) "move_cursor_to_corner" (key-description (this-command-keys-vector)))
+          (eaf-call-async "eval_function" (or eaf--buffer-id buffer_id) "move_cursor_to_corner" (key-description (this-command-keys-vector)))
 
         ;; Activate the window by `wmctrl' when possible
         (if (executable-find "wmctrl")
@@ -1452,20 +1632,15 @@ So multiple EAF buffers visiting the same file do not sync with each other."
         (eq system-type 'berkeley-unix))
     (eaf--activate-emacs-linux-window buffer_id))))
 
-(defun eaf--change-default-directory (directory)
+(defun eaf--change-default-directory (buffer-id directory)
   "Change default directory to DIRECTORY."
-  (when (file-accessible-directory-p (or (file-name-directory directory) directory))
-    (setq-local default-directory directory)))
+  (let ((buffer (eaf-get-buffer buffer-id)))
+    (when buffer
+      (with-current-buffer buffer
+        (when (file-accessible-directory-p (or (file-name-directory directory) directory))
+          (setq-local default-directory directory))))))
 
 ;;;;;;;;;;;;;;;;;;;; Utils ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun eaf-get-view-info ()
-  (let* ((window-allocation (eaf-get-window-allocation (selected-window)))
-         (x (nth 0 window-allocation))
-         (y (nth 1 window-allocation))
-         (w (nth 2 window-allocation))
-         (h (nth 3 window-allocation)))
-    (format "%s:%s:%s:%s:%s" eaf--buffer-id x y w h)))
-
 (defun eaf-generate-keymap-doc (var)
   "This command use for generate keybindings document Wiki."
   (interactive "vEAF keybinding variable: ")
@@ -1533,6 +1708,13 @@ You can configure a blacklist using `eaf-find-file-ext-blacklist'"
       (eaf-open (eaf-get-path-or-url) "airshare")
     (message "You should install EAF application 'airshare' first.")))
 
+(defun eaf-open-devtool-page ()
+  "Use EAF Browser to open the devtools page."
+  (delete-other-windows)
+  (split-window (selected-window) (round (* (nth 3 (eaf-get-window-allocation (selected-window))) 0.618)) nil t)
+  (other-window 1)
+  (eaf-open "about:blank" "browser" "devtools"))
+
 ;;;;;;;;;;;;;;;;;;;; Advice ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; FIXME: In the code below we should use `save-selected-window' (or even
@@ -1543,7 +1725,7 @@ You can configure a blacklist using `eaf-find-file-ext-blacklist'"
   (other-window +1)
   (if (derived-mode-p 'eaf-mode)
       (progn
-        (eaf-call-async "scroll_other_buffer" (eaf-get-view-info) "up"
+        (eaf-call-async "scroll_other_buffer" eaf--buffer-id "up"
                         (if arg "line" "page"))
         (other-window -1))
     (other-window -1)
@@ -1555,7 +1737,7 @@ You can configure a blacklist using `eaf-find-file-ext-blacklist'"
   (other-window +1)
   (if (derived-mode-p 'eaf-mode)
       (progn
-        (eaf-call-async "scroll_other_buffer" (eaf-get-view-info) "down"
+        (eaf-call-async "scroll_other_buffer" eaf--buffer-id "down"
                         (if arg "line" "page"))
         (other-window -1))
     (other-window -1)
@@ -1568,7 +1750,7 @@ You can configure a blacklist using `eaf-find-file-ext-blacklist'"
   (other-window +1)
   (if (derived-mode-p 'eaf-mode)
       (progn
-        (eaf-call-async "scroll_other_buffer" (eaf-get-view-info)
+        (eaf-call-async "scroll_other_buffer" eaf--buffer-id
                         (if (string-equal direction "up") "up" "down")
                         (if line "line" "page"))
         (other-window -1))
@@ -1594,14 +1776,98 @@ It currently identifies PDF, videos, images, and mindmap file extensions."
 (advice-add #'find-file :around #'eaf--find-file-advisor)
 
 ;;;###autoload
-(defun eaf-install-and-update ()
+(defun eaf-install-and-update (&rest apps)
   "Interactively run `install-eaf.py' to install/update EAF apps.
 
 For a full `install-eaf.py' experience, refer to `--help' and run in a terminal."
   (interactive)
-  (let* ((eaf-dir (file-name-directory (locate-library "eaf")))
-         (default-directory eaf-dir))
-    (shell-command (concat eaf-python-command " install-eaf.py" "&"))))
+  (let* ((default-directory eaf-source-dir)
+         (output-buffer (generate-new-buffer "*EAF installation*"))
+         (apps (or apps eaf-apps-to-install))
+         (proc
+          (progn
+            (async-shell-command (concat
+                                  eaf-python-command " install-eaf.py"
+                                  (when (and apps (> (length apps) 0)) " --install ")
+                                  (mapconcat 'symbol-name apps " "))
+                                 output-buffer)
+            (get-buffer-process output-buffer))))
+    (if (process-live-p proc)
+        (set-process-sentinel proc #'eaf--post-install-sentinel)
+      (eaf--post-install))))
+
+(defun eaf--post-install-sentinel (process string-signal)
+  (when (memq (process-status process) '(exit signal))
+    (message "Running post install")
+    (eaf--post-install)
+    (shell-command-sentinel process string-signal)))
+
+(defun eaf--symlink-directory (old new)
+  (if (fboundp 'straight--symlink-recursively)
+      (straight--symlink-recursively old new)
+    (make-symbolic-link old new)))
+
+(defun eaf--post-install ()
+  ;; If user use Straight package manager, then `eaf-source-dir' is not equal `eaf-build-dir'
+  (when (not (string= eaf-source-dir eaf-build-dir))
+    (message "Symlinking app directory")
+    (eaf--symlink-directory
+     (expand-file-name "app" eaf-source-dir)
+     (expand-file-name "app" eaf-build-dir)))
+
+  (when eaf-byte-compile-apps
+    (message "Byte-compiling")
+    (byte-recompile-directory eaf-build-dir 0))
+
+  (message "Updating load path")
+  (eaf-add-subdirs-to-load-path eaf-build-dir)
+  (message "Done"))
+
+(defvar eaf--last-visit-buffer nil)
+
+(defun eaf-monitor-window-buffer-change ()
+  ;; We record last visit time for EAF buffer.
+  (when (derived-mode-p 'eaf-mode)
+    (setq-local eaf--last-visit-time (current-time)))
+
+  ;; Clean file manager buffer when buffer or window changed.
+  (unless (eq (current-buffer)
+              eaf--last-visit-buffer)
+    (when eaf-clean-duplicate-buffers
+      (eaf-clean-file-manager-buffers)))
+
+  (unless (or (minibufferp)
+              (string-equal (buffer-name) "*Messages*"))
+    (setq eaf--last-visit-buffer (current-buffer))))
+
+(add-hook 'post-command-hook 'eaf-monitor-window-buffer-change)
+
+(defun eaf-clean-file-manager-buffers ()
+  (let ((now (current-time)))
+    (eaf-for-each-eaf-buffer
+     (when (and
+            ;; Must be EAF file manager buffer.
+            (string-equal eaf--buffer-app-name "file-manager")
+            (boundp 'eaf--last-visit-time)
+            ;; Not show in frame.
+            (not (memq buffer (mapcar #'window-buffer (window-list))))
+            ;; Found duplicate buffer.
+            (eaf-has-duplicate-path-buffer-p buffer)
+            ;; Existing time exceeds than `eaf-duplicate-buffer-survival-time'
+            (> (float-time (time-subtract now eaf--last-visit-time)) eaf-duplicate-buffer-survival-time))
+       ;; Just log in *messages* buffer silently, don't disturb users.
+       (let ((inhibit-message t))
+         (message "[EAF] Clean duplicate file manager buffer: %s" buffer))
+       (kill-buffer buffer)))))
+
+(defun eaf-has-duplicate-path-buffer-p (eaf-buffer)
+  (cl-remove-if-not
+   (lambda (buffer)
+     (and
+      (not (eq buffer eaf-buffer))
+      (string-equal (with-current-buffer eaf-buffer eaf--buffer-url)
+                    (with-current-buffer buffer eaf--buffer-url))))
+   (eaf--get-eaf-buffers)))
 
 (define-obsolete-function-alias 'eaf-install 'eaf-install-and-update
   "Please use M-x eaf-install-and-update instead.")

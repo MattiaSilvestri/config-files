@@ -1,1 +1,4 @@
+Web of Science - Open URL Accessᛝhttp://ws.isiknowledge.com/cps/openurl_web/OpenURLNoRecord.htmlᛡ3.25
 GitHub - emacs-eaf/emacs-application-framework: A free/libre and open-source extensible framework that revolutionizes the graphical capabilities of Emacs, the key to ultimately Live in Emacsᛝhttps://github.com/emacs-eaf/emacs-application-frameworkᛡ1.5
+Crossref Metadata Searchᛝhttps://search.crossref.org/?q=ᛡ1.5
+Understanding NLP Word Embeddings — Text Vectorization | by Prabhu | Towards Data Scienceᛝhttps://towardsdatascience.com/understanding-nlp-word-embeddings-text-vectorization-1a23744f7223?gi=d78704a2b105ᛡ1.5
