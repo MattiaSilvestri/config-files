@@ -246,6 +246,7 @@ hc rule class=xpad floating=on
 hc rule class=Dragon-drag-and-drop floating=on
 hc rule class=zoom floating=on
 hc rule class=Gnome-screenshot floating=on
+hc rule class=Shutter floating=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DESKTOP)' manage=off
@@ -283,7 +284,7 @@ hc keybind Mod1-k spawn bash -c "killall -q conky"
 # Swap caps to escape
 hc keybind $Mod-Shift-e spawn bash -c "setxkbmap -option "caps:swapescape""
 # Take screenshot
-hc keybind Mod1-Shift-s spawn bash -c "gnome-screenshot -a"
+hc keybind Mod1-Shift-s spawn bash -c "shutter -s"
 
 # Startup commands
 killall -q conky
