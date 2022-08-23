@@ -1,0 +1,54 @@
+(undo-tree-save-format-version . 1)
+"895fc6db3798af4a67ef08b53ef7e19675f83f80"
+[nil nil nil nil (25319 40912 409228 217000) 0 nil]
+([nil nil (("* Default
+** SinusoidDecomposition
+ - path :: /mnt/Data/Work/Git/gridclock/GridClock/SinusoidalModulation/SinusoidDecomposition
+" . 1) (t 25219 48944 56897 726000)) nil (25319 40912 758611 814000) 0 nil])
+([nil nil ((1 . 34) (t 25319 40912 763091 382000)) nil (25319 40973 551558 872000) 0 nil])
+([nil nil ((1 . 34) ("* Default
+** mnt
+ - path :: /mnt
+" . 1) (t 25319 40973 556516 850000)) nil (25320 3851 20806 101000) 0 nil])
+([nil nil (("* Default
+** mnt
+ - path :: /mnt
+" . 1) (t 25320 3851 26316 435000)) nil (25320 59448 5485 691000) 0 nil])
+([nil nil ((1 . 64) (t 25320 59448 11737 37000)) nil (25320 59448 300721 793000) 0 nil])
+([nil nil (("* Default
+** EA225666225637B1
+ - path :: /mnt/EA225666225637B1
+" . 1) (t 25320 59448 301737 446000)) nil (25320 59498 347409 749000) 0 nil])
+([nil nil ((1 . 34) (t 25320 59498 355141 390000)) nil (25320 59498 562075 922000) 0 nil])
+([nil nil (("* Default
+** mnt
+ - path :: /mnt
+" . 1) (t 25320 59498 568475 24000)) nil (25320 59519 335164 551000) 0 nil])
+([nil nil ((1 . 40) (t 25320 59519 341837 669000)) nil (25320 59519 551386 371000) 0 nil])
+([nil nil (("* Default
+** Data
+ - path :: /mnt/Data
+" . 1) (t 25320 59519 558504 641000)) nil (25320 59548 564539 248000) 0 nil])
+([nil nil ((1 . 45) (t 25320 59548 565212 239000)) nil (25320 59548 813620 785000) 0 nil])
+([nil nil (("* Default
+** Work
+ - path :: /mnt/Data/Work
+" . 1) (t 25320 59548 818545 930000)) nil (25320 59560 796626 497000) 0 nil])
+([nil nil ((1 . 48) (t 25320 59560 801896 175000)) nil (25320 59561 17352 225000) 0 nil])
+([nil nil ((1 . 48) ("* Default
+** Git
+ - path :: /mnt/Data/Work/Git
+" . 1) (t 25320 59561 21896 485000)) nil (25321 4258 361494 153000) 0 nil])
+([nil nil ((1 . 48) ("* Default
+** Git
+ - path :: /mnt/Data/Work/Git
+" . 1) (t 25321 4258 366564 376000)) nil (25321 15013 377741 463000) 0 nil])
+([nil nil ((1 . 48) ("* Default
+** Git
+ - path :: /mnt/Data/Work/Git
+" . 1) (t 25321 15013 383487 640000)) nil (25347 34145 927138 267000) 0 nil])
+([nil current ((1 . 48) ("* Default
+** Git
+ - path :: /mnt/Data/Work/Git
+" . 1) (t 25347 34145 933411 878000)) nil (25347 57650 679096 336000) 0 nil])
+nil

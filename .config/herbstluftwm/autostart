@@ -284,7 +284,8 @@ hc keybind Mod1-k spawn bash -c "killall -q conky"
 # Swap caps to escape
 hc keybind $Mod-Shift-e spawn bash -c "setxkbmap -option "caps:swapescape""
 # Take screenshot
-hc keybind Mod1-Shift-s spawn bash -c "shutter -s"
+hc keybind Mod1-Shift-s spawn bash -c "gnome-screenshot -a"
+hc keybind $Mod-g spawn bash -c "gnome-screenshot -i"
 
 # Startup commands
 killall -q conky
@@ -300,10 +301,10 @@ nitrogen --restore &
 # redshift-gtk &
 # xfce4-power-manager &
 ~/.config/polybar/forest/launch.sh &
-conky -c /home/mattia/.config/conky/Actual_conky/sidepane.conf &
-conky -c /home/mattia/.config/conky/Actual_conky/calendar.conf &
-conky -c /home/mattia/.config/conky/Actual_conky/sidepane_HDMI.conf &
-conky -c /home/mattia/.config/conky/Actual_conky/calendar_HDMI.conf &
+conky -c /home/mattia/.config/conky/Actual_conky/sidepane.conf -p=10 &
+conky -c /home/mattia/.config/conky/Actual_conky/calendar.conf -p=10 &
+conky -c /home/mattia/.config/conky/Actual_conky/sidepane_HDMI.conf -p=10 &
+conky -c /home/mattia/.config/conky/Actual_conky/calendar_HDMI.conf -p=10 &
 xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
 
 # unlock, just to be sure

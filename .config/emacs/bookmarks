@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("herbstluftwm"
+(("hern"
+ (filename . "/mnt/Data/MEGA/Notes/Roam/20211012174949-task_listd.org")
+ (front-context-string . "** TODO Reproduc")
+ (rear-context-string . "\n* ColorEmotion\n")
+ (position . 11400))
+("herbstluftwm"
  (filename . "~/.dotfiles/.config/herbstluftwm/autostart")
  (front-context-string . "# or simply:\nhc ")
  (rear-context-string . "280x1024+1280+0\n")
@@ -28,7 +33,7 @@
  (rear-context-string . "afcd91][link]])\n")
  (position . 645))
 ("org-capture-last-stored"
- (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/20211012174949-task_listd.org")
+ (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/")
  (front-context-string . "#+filetags: :gri")
  (rear-context-string . "itle: Task list\n")
  (position . 87))

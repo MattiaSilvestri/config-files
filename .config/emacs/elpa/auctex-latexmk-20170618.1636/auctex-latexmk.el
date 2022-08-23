@@ -56,8 +56,8 @@
 
 ;;; Code:
 
-(require 'tex-buf)
 (require 'latex)
+(require 'tex-buf nil t)
 
 (defgroup auctex-latexmk nil
   "Add LatexMk support to AUCTeX."

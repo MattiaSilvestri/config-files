@@ -94,7 +94,7 @@
 (autopair-global-mode 1)
 ;(global-auto-complete-mode t)
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#25252f")
+(set-face-background 'hl-line "#29323e")
 (global-display-line-numbers-mode)
 (show-paren-mode 1)
 (rainbow-delimiters-mode 1)
@@ -508,7 +508,7 @@
   :hook
 	((LaTex-mode latex-mode java-mode python-mode go-mode js-mode js2-mode typescript-mode web-mode
           c-mode c++-mode objc-mode ess-r-mode) . lsp)
-  ((lsp-mode matlab-mode pyton-mode) . (lambda()
+  ((lsp-mode matlab-mode pyton-mode ess-r-mode) . (lambda()
 								(auto-fill-mode 1)
 								(display-fill-column-indicator-mode 1)))) ; Display vertical line (guides) at 80th position.
 
@@ -722,6 +722,7 @@ If all failed, try to complete the common part with `company-complete-common'"
   (visual-line-mode 0)
 	(flyspell-mode t)
 	(svg-tag-mode t)
+	(minimap-mode 0)
   (setq evil-auto-indent t)
   )
 
@@ -1168,7 +1169,7 @@ If all failed, try to complete the common part with `company-complete-common'"
   (eaf-browser-enable-adblocker t)
   (browse-url-browser-function 'eaf-open-browser)
   :config
-  (defalias 'browse-web #'eaf-open-browser)
+  ;; (defalias 'browse-web #'eaf-open-browser)
 	(setq eaf-pdf-dark-mode nil))
 	;; :bind
   ;; (("C-c h" . eaf-py-proxy-add_annot_highlight)))
@@ -1324,6 +1325,36 @@ If all failed, try to complete the common part with `company-complete-common'"
 
 (svg-tag-mode t)
 
+;; EIN
+(use-package ein
+	:ensure t
+	:bind
+	(("C-M-j" . ein:worksheet-move-cell-down-km)
+	 ("C-M-k" . ein:worksheet-move-cell-up-km)
+	 ("C-c C-p" . ein:worksheet-goto-prev-input-km)
+	 ("C-c C-n" . ein:worksheet-goto-next-input-km)
+	 )
+	 :hook
+	 ((poly-ein-mode) . (lambda()
+	 								 (auto-fill-mode t)
+	 								 (display-fill-column-indicator-mode t)
+									 (autopair-mode t)
+	 								 (display-line-numbers-mode t)))
+	)
+
+;; Minimap
+(use-package minimap
+	:ensure t
+	:config
+	(setq minimap-window-location 'right)
+	(setq minimap-width-fraction 0.07)
+	(setq minimap-minimum-width 5)
+	(setq minimap-disable-mode-line t)
+	:hook
+	((prog-mode python-mode ess-r-mode LaTex-mode
+		latex-mode) . (lambda() (minimap-mode)))
+	)
+
 ;; ;; EXWM Configuration -----------------------------
 (defun efs/exwm-update-class ()
   (exwm-workspace-rename-buffer exwm-class-name))
@@ -1449,8 +1480,14 @@ If all failed, try to complete the common part with `company-complete-common'"
  '(nrepl-message-colors
 	 '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(objed-cursor-color "#E2434C")
+ '(org-file-apps
+	 '((auto-mode . emacs)
+		 (directory . emacs)
+		 ("\\.mm\\'" . default)
+		 ("\\.x?html?\\'" . default)
+		 ("\\.pdf\\'" . "okular %s")))
  '(package-selected-packages
-	 '(org-ref-prettify org-ref dirvish company-org-block elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
+	 '(sublimity minimap org-ref-prettify org-ref dirvish company-org-block elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
  '(pdf-view-midnight-colors (cons "#F6F3E8" "#171717"))
  '(pos-tip-background-color "#1A3734")
  '(pos-tip-foreground-color "#FFFFC8")
@@ -1494,6 +1531,7 @@ If all failed, try to complete the common part with `company-complete-common'"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ein:basecell-input-area-face ((t (:extend t :background "#28313d"))))
  '(lsp-face-highlight-read ((t (:underline t :background "color" :foreground "color"))))
  '(lsp-face-highlight-textual ((t (:underline t :background "color" :foreground "color"))))
  '(lsp-face-highlight-write ((t (:background "color" :foreground "color"))))
@@ -1503,6 +1541,7 @@ If all failed, try to complete the common part with `company-complete-common'"
  '(org-code ((t (:inherit (shadow fixed-pitch)))))
  '(org-document-info ((t (:foreground "dark orange"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
  '(org-link ((t (:inherit mixed-pitch :foreground "SkyBlue2" :underline t :bold nil :weigth regular :height 0.9))))
  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
  '(org-property-value ((t (:inherit fixed-pitch))) t)

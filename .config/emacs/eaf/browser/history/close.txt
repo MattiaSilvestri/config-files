@@ -3,3 +3,7 @@ http://ws.isiknowledge.com/cps/openurl_web/OpenURLNoRecord.html
 https://search.crossref.org/?q=
 http://ws.isiknowledge.com/cps/openurl_web/OpenURLNoRecord.html
 https://towardsdatascience.com/understanding-nlp-word-embeddings-text-vectorization-1a23744f7223
+http://localhost:35901/
+http://localhost:35901/
+http://localhost:35901/
+http://localhost:35901/
