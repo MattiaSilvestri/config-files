@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-156d6934892c
+;; Object semanticdb-project-database-file-156e6a93f608
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-156d6934892c"
+(semanticdb-project-database-file "semanticdb-project-database-file-156e6a93f608"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-156d6934890c"
+    (semanticdb-table "semanticdb-table-156e6a93f5e8"
       :major-mode python-mode
       :tags 
         '( ("students_count" variable nil nil [1 22])
@@ -517,6 +517,202 @@
       :pointmax 38478
       :fsize 39924
       :lastmodtime '(25177 36284 376957 900000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-156e6a93f630"
+      :major-mode python-mode
+      :tags nil
+      :file "Exercises_edx.py"
+      :pointmax 40
+      :fsize 39
+      :lastmodtime '(25097 30678 995532 700000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-156e683ed30a"
+      :major-mode python-mode
+      :tags 
+        '( ("print" code nil nil [79 326])
+            ("math" include nil nil [333 352])
+            ("sys" include nil nil [353 363])
+            ("print" code nil nil [364 405])
+            ("print" code nil nil [406 450])
+            ("os" include nil nil [456 465])
+            ("os" code nil nil [466 495])
+            ("datetime" include nil nil [502 531])
+            ("now" variable nil nil [532 554])
+            ("print" code nil nil [555 631])
+            ("math" include nil nil [637 656])
+            ("radius" variable nil nil [658 669])
+            ("while" code nil nil [670 814])
+            ("name" variable nil nil [820 858])
+            ("reverse" variable nil nil [859 887])
+            ("reverse_name" variable nil nil [888 920])
+            ("print" code nil nil [921 958])
+            ("list_in" variable nil nil [965 1016])
+            ("comma_list" variable nil nil [1017 1048])
+            ("comma_tuple" variable nil nil [1049 1088])
+            ("print" code nil nil [1089 1148])
+            ("file_in" variable nil nil [1155 1191])
+            ("extension" variable nil nil [1192 1222])
+            ("print" code nil nil [1223 1257])
+            ("exam_st_date" variable nil nil [1264 1291])
+            ("print" code nil nil [1292 1413])
+            ("calendar" include nil nil [1421 1436])
+            ("dates" variable nil nil [1437 1479])
+            ("print" code nil nil [1480 1521])
+            ("datetime" include nil nil [1529 1544])
+            ("first_date" variable nil nil [1545 1591])
+            ("second_date" variable nil nil [1592 1639])
+            ("first_date" variable nil nil [1640 1755])
+            ("second_date" variable nil nil [1756 1875])
+            ("print" code nil nil [1876 1923])
+            ("numbers" variable nil nil [1931 1974])
+            ("numbers" variable nil nil [1975 2008])
+            ("if" code nil nil [2009 2158])
+            ("list_in" variable nil nil [2245 2288])
+            ("list_in" variable nil nil [2289 2322])
+            ("count19" variable nil nil [2323 2334])
+            ("count5" variable nil nil [2335 2345])
+            ("for" code nil nil [2346 2438])
+            ("print" code nil nil [2439 2474]))          
+      :file "Exercises.py"
+      :pointmax 2475
+      :fsize 2474
+      :lastmodtime '(25177 39017 402835 900000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-156e682b125e"
+      :major-mode python-mode
+      :tags nil
+      :file "Object Oriented Python.py"
+      :pointmax 4
+      :fsize 3
+      :lastmodtime '(24399 64258 583688 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-156e683062a2"
+      :major-mode python-mode
+      :tags 
+        '( ("psychopy.visual" include nil nil [18 40])
+            ("psychopy.event" include nil nil [78 99])
+            ("win" variable nil nil [100 186])
+            ("text" variable nil nil [187 257])
+            ("text" code nil nil [258 269])
+            ("win" code nil nil [311 321])
+            ("psychopy" code nil nil [322 347])
+            ("win" code nil nil [657 668])
+            ("psychopy.visual" include nil nil [775 797])
+            ("psychopy.event" include nil nil [836 857])
+            ("win" variable nil nil [858 944])
+            ("psychopy" code nil nil [945 970])
+            ("text" variable nil nil [1281 1351])
+            ("text" code nil nil [1352 1363])
+            ("win" code nil nil [1405 1415])
+            ("psychopy" code nil nil [1417 1442])
+            ("win" code nil nil [1443 1469])
+            ("text" variable nil nil [1492 1565])
+            ("text" code nil nil [1566 1577])
+            ("win" code nil nil [1619 1629])
+            ("psychopy" code nil nil [1631 1656])
+            ("win" code nil nil [1657 1668])
+            ("psychopy.visual" include nil nil [1795 1817])
+            ("psychopy.event" include nil nil [1856 1877])
+            ("time" include nil nil [1878 1889])
+            ("win" variable nil nil [1890 1975])
+            ("psychopy" code nil nil [1976 2001])
+            ("text" variable nil nil [2312 2384])
+            ("text" code nil nil [2385 2396])
+            ("win" code nil nil [2438 2448])
+            ("time" code nil nil [2449 2462])
+            ("win" code nil nil [2464 2490])
+            ("time" code nil nil [2491 2504])
+            ("text" variable nil nil [2506 2578])
+            ("text" code nil nil [2579 2590])
+            ("win" code nil nil [2632 2642])
+            ("time" code nil nil [2643 2656])
+            ("win" code nil nil [2658 2684])
+            ("time" code nil nil [2685 2698])
+            ("text" variable nil nil [2700 2772])
+            ("text" code nil nil [2773 2784])
+            ("win" code nil nil [2826 2836])
+            ("time" code nil nil [2837 2850])
+            ("win" code nil nil [2852 2878])
+            ("time" code nil nil [2879 2892])
+            ("win" code nil nil [2893 2904]))          
+      :file "Script visual linguistic stim.py"
+      :pointmax 2905
+      :fsize 2904
+      :lastmodtime '(24366 56858 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-156e68c9db5c"
+      :major-mode python-mode
+      :tags 
+        '( ("calendar" include nil nil [1 16])
+            ("datetime" include nil nil [17 32])
+            ("month" variable nil nil [68 103])
+            ("year" variable nil nil [104 137])
+            ("CustomCal" type
+               (:superclasses ("calendar")
+                :members 
+                  ( ("formatday" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [196 200])
+                            ("day" variable nil (reparse-symbol function_parameters) [202 205])
+                            ("weekday" variable nil (reparse-symbol function_parameters) [207 214])
+                            ("width" variable nil (reparse-symbol function_parameters) [216 221]))                          
+                        :documentation "
+        Returns a formatted day.
+        ")
+                        (reparse-symbol indented_block_body) [182 438]))                  
+                :type "class")
+                nil [138 438])
+            ("cal_month" variable nil nil [440 505])
+            ("cal_month" variable nil nil [506 561])
+            ("print" code nil nil [562 578]))          
+      :file "Test.py"
+      :pointmax 579
+      :fsize 578
+      :lastmodtime '(25182 57043 691010 200000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-156e697797c4"
+      :major-mode python-mode
+      :tags 
+        '( ("psychopy.visual" include nil nil [1 23])
+            ("psychopy.event" include nil nil [24 45])
+            ("win" variable nil nil [47 152])
+            ("line" variable nil nil [153 238])
+            ("line" variable nil nil [239 263])
+            ("line" variable nil nil [450 476])
+            ("line" variable nil nil [477 495])
+            ("line" variable nil nil [496 516])
+            ("line" code nil nil [517 528])
+            ("win" code nil nil [529 539])
+            ("psychopy" code nil nil [540 565])
+            ("win" code nil nil [567 578])
+            ("psychopy.visual" include nil nil [627 649])
+            ("psychopy.event" include nil nil [650 671])
+            ("win" variable nil nil [673 778])
+            ("line" variable nil nil [779 864])
+            ("line" variable nil nil [865 889])
+            ("bar_horiz_offset" variable nil nil [1076 1097])
+            ("bar_vert_offset" variable nil nil [1098 1118])
+            ("for" code nil nil [1119 1284])
+            ("pers_far_horiz_offset" variable nil nil [1285 1312])
+            ("pers_near_horiz_offset" variable nil nil [1313 1340])
+            ("pers_vert_offset" variable nil nil [1341 1363])
+            ("for" code nil nil [1364 1545])
+            ("win" code nil nil [1546 1556])
+            ("psychopy" code nil nil [1557 1582])
+            ("win" code nil nil [1584 1595]))          
+      :file "Script geometric forms.py"
+      :pointmax 1596
+      :fsize 1595
+      :lastmodtime '(24369 46001 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-156e68b9d528"
+      :major-mode python-mode
+      :tags nil
+      :file "NumPy.py"
+      :pointmax 1318
+      :fsize 1317
+      :lastmodtime '(24399 40537 234735 0)
       :unmatched-syntax nil))
   :file "!mnt!Data!MEGA!Python!semantic.cache"
   :semantic-tag-version "2.0"

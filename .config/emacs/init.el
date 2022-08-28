@@ -33,7 +33,7 @@
 (add-hook 'conf-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
-(add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
+;; (add-hook 'evil-local-mode-hook 'turn-on-undo-tree-mode)
 (setq-default
  display-line-numbers-current-absolute t
  display-line-numbers-type 'visual
@@ -90,7 +90,8 @@
 ;; Set line spacing
 (setq line-spacing 0.0)
 (latex-preview-pane-enable)
-(global-undo-tree-mode 1)
+;; (global-undo-tree-mode 1)
+;; (setq undo-tree-history-directory-alist '("." . "/home/mattia/.undo-tree"))
 (autopair-global-mode 1)
 ;(global-auto-complete-mode t)
 (global-hl-line-mode 1)
@@ -100,6 +101,7 @@
 (rainbow-delimiters-mode 1)
 (setq show-paren-delay 0)
 (setq process-connection-type 'nil)
+(good-scroll-mode 1)
 
 (require 'workgroups)
 (workgroups-mode 1)
@@ -465,6 +467,8 @@
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+  (evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-file)
+  (evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
   (evil-define-key 'insert global-map (kbd "C-j") 'evil-next-line)
   (evil-define-key 'insert global-map (kbd "C-k") 'evil-previous-line)
   (evil-define-key 'insert global-map (kbd "C-l") 'evil-forward-char)
@@ -974,6 +978,8 @@ If all failed, try to complete the common part with `company-complete-common'"
   (:map global-map
         ("C-x t t"   . treemacs)
         ("C-x t C-t" . treemacs-find-file)
+        ("C-M-k" . treemacs-root-up)
+        ("C-M-j" . treemacs-root-down)
         ("C-x h" . treemacs-toggle-show-dotfiles)))
 
 (use-package flycheck
@@ -1331,8 +1337,8 @@ If all failed, try to complete the common part with `company-complete-common'"
 	:bind
 	(("C-M-j" . ein:worksheet-move-cell-down-km)
 	 ("C-M-k" . ein:worksheet-move-cell-up-km)
-	 ("C-c C-p" . ein:worksheet-goto-prev-input-km)
-	 ("C-c C-n" . ein:worksheet-goto-next-input-km)
+	 ("C-k" . ein:worksheet-goto-prev-input-km)
+	 ("C-j" . ein:worksheet-goto-next-input-km)
 	 )
 	 :hook
 	 ((poly-ein-mode) . (lambda()
@@ -1344,16 +1350,68 @@ If all failed, try to complete the common part with `company-complete-common'"
 
 ;; Minimap
 (use-package minimap
-	:ensure t
 	:config
 	(setq minimap-window-location 'right)
 	(setq minimap-width-fraction 0.07)
 	(setq minimap-minimum-width 5)
 	(setq minimap-disable-mode-line t)
-	:hook
-	((prog-mode python-mode ess-r-mode LaTex-mode
-		latex-mode) . (lambda() (minimap-mode)))
+	:bind
+	(("C-c m c" . minimap-create))
 	)
+
+;; Undo-tree
+(use-package undo-tree
+  :defer t
+  :diminish undo-tree-mode
+  :init (global-undo-tree-mode)
+  :custom
+  (undo-tree-visualizer-diff t)
+  (undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo")))
+  (undo-tree-visualizer-timestamps t))
+
+(use-package dirvish
+  :init
+  (dirvish-override-dired-mode)
+  :custom
+  (dirvish-quick-access-entries
+   '(("h" "~/"                          "Home")
+     ("d" "~/Downloads/"                "Downloads")
+     ("m" "/mnt/"                       "Drives")
+     ("t" "~/.local/share/Trash/files/" "TrashCan")))
+  :config
+  (dirvish-peek-mode) ; Preview files in minibuffer
+  ;; (setq dirvish-hide-details nil) ; show details at startup like `dired'
+  (setq dirvish-mode-line-format
+        '(:left (sort file-time " " file-size symlink) :right (omit yank index)))
+  (setq dirvish-attributes
+        '(all-the-icons file-size collapse subtree-state vc-state git-msg))
+  (setq delete-by-moving-to-trash t)
+  (setq dired-listing-switches
+        "-l --almost-all --human-readable --time-style=long-iso --group-directories-first --no-group")
+	(setq dirvish-preview-dispatchers
+				(cl-substitute 'pdf-preface 'pdf dirvish-preview-dispatchers))
+  :bind ; Bind `dirvish|dirvish-side|dirvish-dwim' as you see fit
+  (("C-c f" . dirvish-fd)
+	 ("C-c q" . dirvish-quit)
+   :map dirvish-mode-map ; Dirvish inherits `dired-mode-map'
+   ("a"   . dirvish-quick-access)
+   ("f"   . dirvish-file-info-menu)
+   ("y"   . dirvish-yank-menu)
+   ("N"   . dirvish-narrow)
+   ("^"   . dirvish-history-last)
+	 ("h"   . dirvish-up-directory-ad)
+	 ("l"   . dirvish-find-entry-ad)
+   ("s"   . dirvish-quicksort)    ; remapped `dired-sort-toggle-or-edit'
+   ("v"   . dirvish-vc-menu)      ; remapped `dired-view-file'
+   ("TAB" . dirvish-subtree-toggle)
+   ("M-f" . dirvish-history-go-forward)
+   ("M-b" . dirvish-history-go-backward)
+   ("M-l" . dirvish-ls-switches-menu)
+   ("M-m" . dirvish-mark-menu)
+   ("M-t" . dirvish-layout-toggle)
+   ("M-s" . dirvish-setup-menu)
+   ("M-e" . dirvish-emerge-menu)
+   ("M-j" . dirvish-fd-jump)))
 
 ;; ;; EXWM Configuration -----------------------------
 (defun efs/exwm-update-class ()
@@ -1487,7 +1545,7 @@ If all failed, try to complete the common part with `company-complete-common'"
 		 ("\\.x?html?\\'" . default)
 		 ("\\.pdf\\'" . "okular %s")))
  '(package-selected-packages
-	 '(sublimity minimap org-ref-prettify org-ref dirvish company-org-block elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
+	 '(svg-clock iceberg-theme good-scroll sublimity minimap org-ref-prettify org-ref dirvish company-org-block elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
  '(pdf-view-midnight-colors (cons "#F6F3E8" "#171717"))
  '(pos-tip-background-color "#1A3734")
  '(pos-tip-foreground-color "#FFFFC8")
@@ -1524,7 +1582,9 @@ If all failed, try to complete the common part with `company-complete-common'"
 		(cons 360 "#635770")))
  '(vc-annotate-very-old-color nil)
  '(warning-suppress-log-types '((comp)))
- '(warning-suppress-types '((comp)))
+ '(warning-suppress-types
+	 '(((python python-shell-completion-native-turn-on-maybe))
+		 (comp)))
  '(window-divider-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

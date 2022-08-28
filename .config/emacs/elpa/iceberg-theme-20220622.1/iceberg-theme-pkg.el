@@ -1,0 +1,2 @@
+;;; Generated package description from iceberg-theme.el  -*- no-byte-compile: t -*-
+(define-package "iceberg-theme" "20220622.1" "Well-designed, eye-friendly, dark blue color scheme" '((emacs "26.1") (solarized-theme "1.3")) :commit "c9fdf9a8f5ff417c206730a84731f64a95483935" :authors '(("Naoya Yamashita" . "conao3@gmail.com")) :maintainer '("Naoya Yamashita" . "conao3@gmail.com") :keywords '("convenience") :url "https://github.com/conao3/iceberg-theme.el")

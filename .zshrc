@@ -278,7 +278,8 @@ alias downgrada="sudo downgrade --ala-url https://bike.seedhost.eu/arcolinux/"
 alias probe="sudo -E hw-probe -all -upload"
 
 #VPN
-alias vpn="/home/mattia/Documents/Shell-scripts/vpnUnitn.sh"
+#alias vpn="/home/mattia/Documents/Shell-scripts/vpnUnitn.sh"
+alias vpn="sudo openconnect --user=mattia.silvestri-1@unitn.it --csd-wrapper /usr/lib/openconnect/hipreport.sh --protocol=gp vpn.icts.unitn.it/gateway"
 
 #ROBBOT
 alias robbot="mount.cifs //192.168.240.42/ROBBOT /mnt/ROBBOT"

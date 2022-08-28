@@ -1,0 +1,50 @@
+;; Object semanticdb-project-database-file-158251b963ea
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-158251b963ea"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-158251b9638a"
+      :major-mode python-mode
+      :tags 
+        '( ("random" include nil nil [62 75])
+            ("os" include nil nil [76 85])
+            ("re" include nil nil [86 95])
+            ("rps_dict" variable nil nil [97 166])
+            ("score" variable nil nil [168 211])
+            ("k" variable nil nil [212 233])
+            ("f" variable nil nil [235 328])
+            ("lines" variable nil nil [329 350])
+            ("for" code nil nil [352 412])
+            ("while" code nil nil [437 1556]))          
+      :file "game.py"
+      :pointmax 1556
+      :fsize 1555
+      :lastmodtime '(25354 16323 80060 700000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-158251b963aa"
+      :major-mode python-mode
+      :tags nil
+      :file ".game.py.~undo-tree~"
+      :pointmax 15605
+      :fsize 15612
+      :lastmodtime '(25350 20296 352018 900000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-158251b963ca"
+      :major-mode python-mode
+      :tags 
+        '( ("random" include nil nil [62 75])
+            ("os" include nil nil [76 85])
+            ("re" include nil nil [86 95])
+            ("rps_dict" variable nil nil [97 166])
+            ("f" variable nil nil [168 261])
+            ("lines" variable nil nil [262 283])
+            ("for" code nil nil [285 345])
+            ("while" code nil nil [346 748]))          
+      :file "flycheck_game.py"
+      :pointmax 754
+      :fsize 753
+      :lastmodtime '(25353 4829 541147 0)
+      :unmatched-syntax nil))
+  :file "!mnt!Data!MEGA!Python!Training_project!RockPaperScissors!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

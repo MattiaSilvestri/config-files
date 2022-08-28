@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("hern"
+(("doom-tomorrow-night-theme"
+ (filename . "~/.dotfiles/.config/emacs/elpa/doom-themes-20220727.853/doom-tomorrow-night-theme.el")
+ (front-context-string . "(require 'doom-t")
+ (rear-context-string . "compile: t; -*-\n")
+ (position . 82))
+("hern"
  (filename . "/mnt/Data/MEGA/Notes/Roam/20211012174949-task_listd.org")
  (front-context-string . "** TODO Reproduc")
  (rear-context-string . "\n* ColorEmotion\n")
