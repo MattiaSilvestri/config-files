@@ -1,0 +1,60 @@
+;; Object semanticdb-project-database-file-1589060e80f0
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1589060e80f0"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1589063ec4f0"
+      :major-mode python-mode
+      :tags 
+        '( ("\"\"\"
+This program is a CLI interface where the used can insert a time and a youtube
+video will be played at that time as an alarm.
+--------------------------------------------------------------------------------
+\"\"\"" code nil nil [1 215])
+            ("datetime" include nil nil [235 250])
+            ("os" include nil nil [251 260])
+            ("time" include nil nil [261 272])
+            ("random" include nil nil [273 286])
+            ("pafy" include nil nil [287 298])
+            ("vlc" include nil nil [299 309])
+            ("re" include nil nil [310 319])
+            ("schedule" include nil nil [320 335])
+            ("if" code nil nil [377 608])
+            ("while" code nil nil [610 1994]))          
+      :file "alarm.py"
+      :pointmax 2661
+      :fsize 2578
+      :lastmodtime '(25369 48567 990322 200000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-1589063ec510"
+      :major-mode python-mode
+      :tags 
+        '( ("\"\"\"
+This program is a CLI interface where the used can insert a time and a youtube
+video will be played at that time as an alarm.
+--------------------------------------------------------------------------------
+\"\"\"" code nil nil [1 215])
+            ("datetime" include nil nil [235 250])
+            ("os" include nil nil [251 260])
+            ("time" include nil nil [261 272])
+            ("random" include nil nil [273 286])
+            ("pafy" include nil nil [287 298])
+            ("vlc" include nil nil [299 309])
+            ("re" include nil nil [310 319])
+            ("if" code nil nil [360 591])
+            ("date_in" variable nil nil [608 663])
+            ("time_in" variable nil nil [664 722])
+            ("current_date" variable nil nil [723 759])
+            ("check_datetime" function (:arguments 
+              ( ("current_date" variable nil (reparse-symbol function_parameters) [850 862])
+                ("time" variable nil (reparse-symbol function_parameters) [864 868]))              ) nil [831 1301])
+            ("try" code nil nil [1306 1697])
+            ("try" code nil nil [1710 1941]))          
+      :file "flycheck_alarm.py"
+      :pointmax 1942
+      :fsize 1941
+      :lastmodtime '(25360 50970 96922 900000)
+      :unmatched-syntax nil))
+  :file "!mnt!Data!MEGA!Python!Training_project!Alaram!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

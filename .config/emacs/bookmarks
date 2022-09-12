@@ -34,9 +34,9 @@
  (position . 82))
 ("org-refile-last-stored"
  (filename . "/mnt/Data/MEGA/Notes/Roam/20210613181952-papers.org")
- (front-context-string . "** [cite:@Kuntz:")
- (rear-context-string . "afcd91][link]])\n")
- (position . 645))
+ (front-context-string . "** [cite:@Stoewe")
+ (rear-context-string . "b189f6][link]])\n")
+ (position . 719))
 ("org-capture-last-stored"
  (filename . "/mnt/08542B6A542B59A8/MEGA/Notes/Roam/")
  (front-context-string . "#+filetags: :gri")

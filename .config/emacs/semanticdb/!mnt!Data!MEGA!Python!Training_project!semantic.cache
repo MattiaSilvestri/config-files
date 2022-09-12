@@ -1,17 +1,10 @@
-;; Object semanticdb-project-database-file-15591562af8c
+;; Object semanticdb-project-database-file-158905e60ab6
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-15591562af8c"
+(semanticdb-project-database-file "semanticdb-project-database-file-158905e60ab6"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-15591562af6c"
-      :major-mode python-mode
-      :tags nil
-      :file "KeybindsManager.py"
-      :pointmax 81
-      :fsize 80
-      :lastmodtime '(25189 30006 842163 0)
-      :unmatched-syntax nil)
-    (semanticdb-table "semanticdb-table-15591562afdc"
+
+    (semanticdb-table "semanticdb-table-158905e60a96"
       :major-mode python-mode
       :tags 
         '( ("sys" include nil nil [135 145])
@@ -40,7 +33,18 @@
       :pointmax 1005
       :fsize 1004
       :lastmodtime '(25189 28801 373875 900000)
-      :unmatched-syntax nil))
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-158905ef8742"
+      :major-mode python-mode
+      :tags 
+        '( ("test" variable nil nil [1 51])
+            ("test" code nil nil [52 92])
+            ("print" code nil nil [93 111]))          
+      :file "main.py"
+      :pointmax 124
+      :fsize 123
+      :lastmodtime '(25177 35993 454435 700000)
+      :unmatched-syntax '((NAME 112 . 116) ($EOI 124 . 124))))
   :file "!mnt!Data!MEGA!Python!Training_project!semantic.cache"
   :semantic-tag-version "2.0"
   :semanticdb-version "2.2")

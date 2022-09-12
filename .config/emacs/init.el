@@ -643,8 +643,8 @@ If all failed, try to complete the common part with `company-complete-common'"
 									 (semantic-mode 1)
 									 (setq flycheck-checker 'python-pylint)))
 	:config
-	(require 'dap-python)
 	(setq python-shell-completion-native-enable nil)
+	(require 'dap-python)
 	:bind
 	("C-c s r" . python-shell-send-region)
 	("C-c r p" . run-python)
@@ -1335,10 +1335,12 @@ If all failed, try to complete the common part with `company-complete-common'"
 (use-package ein
 	:ensure t
 	:bind
-	(("C-M-j" . ein:worksheet-move-cell-down-km)
-	 ("C-M-k" . ein:worksheet-move-cell-up-km)
+	(("M-S-j" . ein:worksheet-move-cell-down-km)
+	 ("M-S-k" . ein:worksheet-move-cell-up-km)
 	 ("C-k" . ein:worksheet-goto-prev-input-km)
 	 ("C-j" . ein:worksheet-goto-next-input-km)
+	 ("M-RET" . ein:worksheet-execute-cell-km)
+	 ("C-M-RET" . ein:worksheet-execute-cell-and-goto-next-km)
 	 )
 	 :hook
 	 ((poly-ein-mode) . (lambda()

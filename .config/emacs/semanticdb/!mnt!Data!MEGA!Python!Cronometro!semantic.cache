@@ -1,0 +1,16 @@
+;; Object semanticdb-project-database-file-158906121cee
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-158906121cee"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-158906121cf8"
+      :major-mode python-mode
+      :tags nil
+      :file "Meta_Chronometer_examples.py"
+      :pointmax 927
+      :fsize 926
+      :lastmodtime '(24589 59066 276688 0)
+      :unmatched-syntax nil))
+  :file "!mnt!Data!MEGA!Python!Cronometro!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

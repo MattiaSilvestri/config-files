@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-158251b963ea
+;; Object semanticdb-project-database-file-1563d33a58e4
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-158251b963ea"
+(semanticdb-project-database-file "semanticdb-project-database-file-1563d33a58e4"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-158251b9638a"
+    (semanticdb-table "semanticdb-table-1563d33a5884"
       :major-mode python-mode
       :tags 
         '( ("random" include nil nil [62 75])
@@ -15,13 +15,14 @@
             ("f" variable nil nil [235 328])
             ("lines" variable nil nil [329 350])
             ("for" code nil nil [352 412])
-            ("while" code nil nil [437 1556]))          
+            ("input" code nil nil [413 447])
+            ("try" code nil nil [449 1811]))          
       :file "game.py"
-      :pointmax 1556
-      :fsize 1555
-      :lastmodtime '(25354 16323 80060 700000)
+      :pointmax 1813
+      :fsize 1812
+      :lastmodtime '(25357 58799 774607 700000)
       :unmatched-syntax nil)
-    (semanticdb-table "semanticdb-table-158251b963aa"
+    (semanticdb-table "semanticdb-table-1563d33a58a4"
       :major-mode python-mode
       :tags nil
       :file ".game.py.~undo-tree~"
@@ -29,7 +30,7 @@
       :fsize 15612
       :lastmodtime '(25350 20296 352018 900000)
       :unmatched-syntax nil)
-    (semanticdb-table "semanticdb-table-158251b963ca"
+    (semanticdb-table "semanticdb-table-1563d33a58c4"
       :major-mode python-mode
       :tags 
         '( ("random" include nil nil [62 75])
