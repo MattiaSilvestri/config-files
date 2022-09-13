@@ -1004,7 +1004,7 @@ for_window [workspace="5"] floating enable
 
 #Startup
 exec redshift-gtk -t 6500:3700
-exec no-startup-id kitty -e /usr/bin/setxkbmap -option "caps:swapescape"
+exec no-startup-id kitty -e setxkbmap -option "caps:swapescape"
 
 #Keyboard layout
 bindsym Mod1+Ctrl+i exec setxkbmap -layout it
