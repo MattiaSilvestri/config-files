@@ -40,7 +40,9 @@ bspc config gapless_monocle true
 bspc config paddingless_monocle true
 bspc config single_monocle false
 bspc config focus_follows_pointer true
-
+bspc config pointer_follows_monitor true
+bspc config pointer_follows_focus false
+bspc config top_padding 33
 
 ## Window rules -------------------------------#
 
@@ -120,11 +122,33 @@ exec mpd &
 # Caps to esc
 setxkbmap -option "caps:swapescape"
 
+# Launch authentication agent
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Network manager
+nm-applet &
+
+# Tap to click
+xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
+
+# Megasync
+nz.mega.MEGAsync &
+
+# Redshift
+pgrep redshift-gtk || redshift-gtk &
+
+# Window switcher
+alttab -mk Super_L -sc 1 -d 1
+
+# Conky
+killall -q conky
+/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh
+
 # Start bspwm scripts
 bspcolors
 bspcomp
 bspbar
-bspfloat &
+# bspfloat &
 
 # Issue Tracker (Don't Remove IT)
 issue_tracker.sh

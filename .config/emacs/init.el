@@ -480,6 +480,7 @@
   (evil-define-key 'visual global-map (kbd "<") 'my/evil-shift-left))
 
 (use-package evil-collection
+	:ensure t
   :after evil
   :config
   (evil-collection-init))
