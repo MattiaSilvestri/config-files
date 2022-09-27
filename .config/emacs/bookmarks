@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("doom-tomorrow-night-theme"
+(("bspwmrc"
+ (filename . "~/.dotfiles/.config/bspwm/bspwmrc")
+ (front-context-string . "#!/bin/bash\n\n## ")
+ (rear-context-string)
+ (position . 1))
+("sxhkdrc"
+ (filename . "~/.dotfiles/.config/sxhkd/sxhkdrc")
+ (front-context-string . "a/bin/menu_power")
+ (rear-context-string . "onfig/rofi.matti")
+ (position . 354))
+("doom-tomorrow-night-theme"
  (filename . "~/.dotfiles/.config/emacs/elpa/doom-themes-20220727.853/doom-tomorrow-night-theme.el")
  (front-context-string . "(require 'doom-t")
  (rear-context-string . "compile: t; -*-\n")

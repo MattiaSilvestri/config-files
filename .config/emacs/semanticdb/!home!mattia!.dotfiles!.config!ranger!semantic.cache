@@ -1,0 +1,39 @@
+;; Object semanticdb-project-database-file-1588faa32d6c
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1588faa32d6c"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1588faa32d82"
+      :major-mode python-mode
+      :tags 
+        '( ("" code nil nil [420 463])
+            ("os" include nil nil [511 520])
+            ("ranger.api.commands" include nil nil [601 640])
+            ("my_edit" type
+               (:documentation ":my_edit <filename>
+
+    A sample command for demonstration purposes that opens a file in an editor.
+    "
+                :superclasses ("Command")
+                :members 
+                  ( ("execute" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [1140 1144]))                          )
+                        (reparse-symbol indented_block_body) [1128 2382])
+                    ("tab" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [2582 2586])
+                            ("tabnum" variable nil (reparse-symbol function_parameters) [2588 2594]))                          )
+                        (reparse-symbol indented_block_body) [2574 2764]))                  
+                :type "class")
+                nil [775 2764]))          
+      :file "commands.py"
+      :pointmax 2764
+      :fsize 2763
+      :lastmodtime '(24518 17214 976595 0)
+      :unmatched-syntax nil))
+  :file "!home!mattia!.dotfiles!.config!ranger!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

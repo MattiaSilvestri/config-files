@@ -1382,7 +1382,7 @@ If all failed, try to complete the common part with `company-complete-common'"
      ("m" "/mnt/"                       "Drives")
      ("t" "~/.local/share/Trash/files/" "TrashCan")))
   :config
-  (dirvish-peek-mode) ; Preview files in minibuffer
+  ;; (dirvish-peek-mode) ; Preview files in minibuffer
   ;; (setq dirvish-hide-details nil) ; show details at startup like `dired'
   (setq dirvish-mode-line-format
         '(:left (sort file-time " " file-size symlink) :right (omit yank index)))

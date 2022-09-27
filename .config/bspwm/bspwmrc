@@ -26,7 +26,7 @@ bspc monitor eDP-1 -d 1 2 3 4 5
 bspc monitor HDMI-1 -d 6 7 8 9 10
 
 
-bspc config border_width 1
+bspc config border_width 0
 bspc config window_gap 10
 bspc config split_ratio 0.50
 
@@ -126,7 +126,8 @@ setxkbmap -option "caps:swapescape"
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Network manager
-nm-applet &
+killall -q nm-tray
+nm-tray &
 
 # Tap to click
 xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
@@ -138,11 +139,15 @@ nz.mega.MEGAsync &
 pgrep redshift-gtk || redshift-gtk &
 
 # Window switcher
-alttab -mk Super_L -sc 1 -d 1
+killall -q alttab
+alttab -mk Control_L -sc 1 -d 1 &
 
 # Conky
 killall -q conky
-/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh
+/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
+
+# Bluetooth manager
+blueman-applet &
 
 # Start bspwm scripts
 bspcolors

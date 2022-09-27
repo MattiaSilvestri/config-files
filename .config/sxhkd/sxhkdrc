@@ -20,25 +20,32 @@ super + n
 
 # Rofi Menus
 super + x
-	sh ~/.config/bspwm/rofi/bin/powermenu
+	sh /home/mattia/.config/rofi.mattia/bin/menu_powermenu
 
 ctrl + alt + {s,n,t}
 	sh ~/.config/bspwm/rofi/bin/{screenshot,network,themes}
 
 shift + space
-	rofi -theme "/home/mattia/.config/rofi_themes/rofi-breeze-theme/arc-dark.rasi" -combi-modi drun,run,ssh,file-browser -font 'hack 12' -show combi -icon-theme Flat-Remix-Teal-Dark -show-icons -no-default-config
+	/home/mattia/.config/rofi/launchers/type-1/launcher.sh
+	# rofi -theme "/home/mattia/.config/rofi_themes/rofi-breeze-theme/arc-dark.rasi" -combi-modi drun,run,ssh,file-browser -font 'hack 12' -show combi -icon-theme Flat-Remix-Teal-Dark -show-icons -no-default-config
+
+super + Tab
+	rofi -theme "/home/mattia/.config/rofi_themes/rofi-breeze-theme/arc-dark.rasi" -show window -window-thumbnail -font 'hack 12' -icon-theme Flat-Remix-Teal-Dark -show-icons -no-default-config
 
 ##---------- Applications ----------##
 
 # Launch Apps
 super + shift + {f,w,e}
 	{pcmanfm,midori,geany}
+super + e
+	emacs
+super + v
+	vivaldi
 
 ##---------- System ----------##
 
 # Take a screenshot
-Print
-	scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
+Print scrot 'Screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
 	
 # Take a screenshot in 5 second
 alt + Print	
@@ -84,7 +91,11 @@ ctrl + alt + Escape
 # Fullscreen or Monocle
 super + f
 	bspc node -t "~"{fullscreen,tiled}
- 	# bspc desktop -l next
+# super + f
+# 	if bspc query -N -n focused.fullscreen > /dev/null; \
+# 		then bspc node next.local -f -t fullscreen; \
+# 		else bspc node -t fullscreen; \
+# 	fi
 
 # Split horizontal, vertical or cancel
 super + {a,s,q}
@@ -140,7 +151,7 @@ super + {_,shift + }{Left,Down,Up,Right}
 
 # Change focus to next window, including floating window
 alt + {_,shift + }Tab
-	bspc node -f {next.local,prev.local}
+	bspc node -f {next, prev}.local.!hidden.window
 
 # Switch workspace
 ctrl + alt + {h,l}
@@ -186,6 +197,10 @@ super + {_,shift + }{h,j,k,l}
 # Hide/Unhide Window
 super + shift + i
 	winmask		
+
+# Caps to esc
+super + shift + e
+	setxkbmap -option "caps:swapescape" &
 
 # Dual monitor setup ------------------------
 super + shift + m

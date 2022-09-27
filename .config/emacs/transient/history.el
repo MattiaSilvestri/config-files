@@ -1,5 +1,6 @@
 ((dirvish-dispatch nil)
- (magit-commit nil)
+ (magit-commit
+	("--all"))
  (magit-diff
 	(("--" "SomeAttempts/DataOverview.ipynb")
 	 "--no-ext-diff" "--stat")
@@ -8,6 +9,7 @@
  (magit-log
 	("-n256" "--graph" "--decorate"))
  (magit-pull nil)
+ (magit-push nil)
  (magit-stash
 	("--include-untracked"))
  (magit:-- "SomeAttempts/DataOverview.ipynb" ""))
