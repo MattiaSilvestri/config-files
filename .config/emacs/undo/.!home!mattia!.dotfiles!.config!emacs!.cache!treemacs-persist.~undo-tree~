@@ -207,8 +207,20 @@
  - path :: /mnt/Data/MEGA/Python
 " . 1) (t 25368 38690 584596 209000)) nil (25368 38692 713585 818000) 0 nil])
 ([nil nil ((1 . 81) (t 25368 38692 721238 432000)) nil (25368 38693 78162 447000) 0 nil])
-([nil current ((1 . 81) ("* Default
+([nil nil ((1 . 81) ("* Default
 ** Training_project
  - path :: /mnt/Data/MEGA/Python/Training_project
 " . 1) (t 25368 38693 84567 640000)) nil (25370 26452 759168 103000) 0 nil])
+([nil nil ((1 . 81) ("* Default
+** Training_project
+ - path :: /mnt/Data/MEGA/Python/Training_project
+" . 1) (t 25370 26452 794319 0)) nil (25395 10914 864706 215000) 0 nil])
+([nil nil ((1 . 81) ("* Default
+** Training_project
+ - path :: /mnt/Data/MEGA/Python/Training_project
+" . 1) (t 25395 10914 945342 643000)) nil (25396 36198 338721 959000) 0 nil])
+([nil current ((1 . 81) ("* Default
+** Training_project
+ - path :: /mnt/Data/MEGA/Python/Training_project
+" . 1) (t 25396 36198 342978 963000)) nil (25400 26929 458194 70000) 0 nil])
 nil

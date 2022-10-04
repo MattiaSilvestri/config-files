@@ -2,11 +2,11 @@
 
 # Terminal (termite)
 super + t
-	kitty -e tmux
+	kitty 
 
 # Floating terminal
 super + shift + t
-	kitty
+	kitty -e tmux
 
 ##---------- Rofi Launcher & Menus ----------##
 
@@ -40,7 +40,7 @@ super + shift + {f,w,e}
 super + e
 	emacs
 super + v
-	vivaldi
+	vivaldi-stable
 
 ##---------- System ----------##
 
@@ -122,7 +122,7 @@ super + m
     bsp-layout set tall -- --master-size 0.6
 super + u
     bsp-layout set wide -- --master-size 0.6
-super + e
+super + d
     bsp-layout set tiled -- --master-size 0.6
 super + w
     bsp-layout set monocle 
@@ -199,7 +199,7 @@ super + shift + i
 	winmask		
 
 # Caps to esc
-super + shift + e
+super + alt + e
 	setxkbmap -option "caps:swapescape" &
 
 # Dual monitor setup ------------------------

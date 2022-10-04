@@ -15,7 +15,7 @@ configuration {
 	scroll-method: 0;
 	normalize-match: true;
 	show-icons: true;
-	icon-theme: "Papirus";
+	icon-theme: "Material-2-Originals-green-dark";
 /*	cache-dir: ;*/
 	steal-focus: false;
 /*	dpi: -1;*/

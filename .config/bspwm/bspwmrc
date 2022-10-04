@@ -120,7 +120,7 @@ nitrogen --restore
 exec mpd &
 
 # Caps to esc
-setxkbmap -option "caps:swapescape"
+# setxkbmap -option "caps:swapescape"
 
 # Launch authentication agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

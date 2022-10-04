@@ -6,6 +6,7 @@
 	 "--no-ext-diff" "--stat")
 	("--no-ext-diff" "--stat"))
  (magit-dispatch nil)
+ (magit-fetch nil)
  (magit-log
 	("-n256" "--graph" "--decorate"))
  (magit-pull nil)
