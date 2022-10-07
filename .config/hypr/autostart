@@ -12,7 +12,8 @@ $scripts/launch_waybar &
 $scripts/tools/dynamic &
 
 # wallpaper
-$scripts/wall $config/wallpapers/cloud.png &
+# $scripts/wall $config/wallpapers/cloud.png &
+hyprpaper &
 
 # effects
 $scripts/rgb &
@@ -20,3 +21,17 @@ $scripts/rgb &
 # other
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+
+# Conky
+killall -q conky
+/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
+
+# Bluetooth manager
+blueman-applet &
+
+# Network manager
+killall -q nm-tray
+nm-tray &
+
+# Megasync
+nz.mega.MEGAsync &

@@ -1,8 +1,10 @@
 {
     "position": "top", 
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["custom/spotify"],
-    "modules-right": ["network", "custom/vpn", "pulseaudio", "battery", "clock"],
+		"height": 30,
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["wlr/taskbar"],
+    "modules-right": ["temperature","backlight","pulseaudio", "battery", "clock", "tray"],
+
     // Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -23,9 +25,36 @@
         "format-icons": {
             "default": "",
             "urgent": "",
-            "focused": "",
+            "focused": ""
          }
      },
+
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 15,
+		"icon-theme": "Numix-Circle",
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"all-outputs": "false"
+	},
+
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "format-active": " {icon} ",
+        "on-click": "activate"
+        // "format-icons":{
+        //     "10":"10"
+        // }
+    },
+    "tray": {
+	    // "icon-size": 21,
+	    "spacing": 10
+	},
+    "temperature": {
+	    "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
+		  "format": "<span foreground='#C6AAE8'> </span>{temperatureC}°C" 
+	},
     "custom/vpn": {
     	"format": "{}",
         "interval": 1,
@@ -69,10 +98,20 @@
         "format-disconnected": "<span size='13000' foreground='#F2CECF'> </span>Disconnected",
 		"tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
 	},
+	"backlight": {
+		"on-scroll-up": "brightness.sh up",
+		"on-scroll-down": "brightness.sh down",
+		"format": "<span foreground='#EBDDAA'>{icon}</span> {percent}%",
+		"format-icons": {
+					 "default": ["", "", ""]
+		},
+	},
 	"pulseaudio": {
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"format": "<span size='13000' foreground='#EBDDAA'>{icon}</span> {volume}%",
-        "format-muted": "<span size='14000' foreground='#EBDDAA'></span> Muted",
+		"on-scroll-up": "volume_up.sh",
+		"on-scroll-down": "volume_down.sh",
+		"format": "<span foreground='#EBDDAA'>{icon}</span> {volume}%",
+        "format-muted": "<span size='14000' foreground='#EBDDAA'></span> Muted",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -80,7 +119,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", ""]
+            "default": ["", ""]
         },
     },
 }

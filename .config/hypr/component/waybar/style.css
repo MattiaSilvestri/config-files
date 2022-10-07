@@ -1,7 +1,7 @@
 * {
     border-radius: 0;
-    font-family: 'Operator Mono SSm Book';
-    font-size: 12pt;
+    font-family: 'Iosevka Aile';
+    font-size: 11pt;
     min-height: 0;
 }
 
@@ -12,8 +12,8 @@ window#waybar {
 
 tooltip {
 	background: #1E1E28;
-	border-radius: 15px;
-	border-width: 2px;
+	border-radius: 5px;
+	border-width: 0px;
 	border-style: solid;
 	border-color: #a4b9ef;
 	}
@@ -23,7 +23,7 @@ tooltip {
     margin-left: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 #workspaces button {
@@ -33,8 +33,10 @@ tooltip {
     color: #DADAE8;
 }
 
-#workspaces button.focused {
-    color: #A4B9EF;
+#workspaces button.active {
+    color: #DADAE8;
+    background: #4D698C;
+    border-radius: 5px 5px 5px 5px
 }
 
 #workspaces button.urgent {
@@ -46,7 +48,6 @@ tooltip {
     border-color: #332e41;
 	color: #A4B9EF;
 }
-
 #clock, #battery, #pulseaudio, #workspaces, #mpd  {
 	padding: 2px 10px;
     background: #332E41;
@@ -58,7 +59,7 @@ tooltip {
     padding-left: 15px;
     padding-right: 2px;
     background: #332E41;
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 5px 0px 0px 5px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -73,7 +74,7 @@ tooltip {
 #clock {
     padding-right: 15px;
     margin-right: 5px;
-    border-radius: 0px 15px 15px 0px;
+    border-radius: 0px 5px 5px 0px;
 }
 
 #custom-spotify {
@@ -83,4 +84,23 @@ tooltip {
     padding-right: 15px;
     padding-left: 15px;
     border-radius: 15px;
+}
+
+#taskbar button.active {
+    background: #332E41;
+}
+
+#backlight {
+		background: #332E41;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding-left: 15;
+}
+
+#temperature {
+		background: #332E41;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding-left: 15;
+		border-radius: 5px 0px 0px 5px;
 }
