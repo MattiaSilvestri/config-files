@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("bspwmrc"
+(("hyprland.conf"
+ (filename . "~/.dotfiles/.config/hypr/hyprland.conf")
+ (front-context-string . "monitor=,preferr")
+ (rear-context-string)
+ (position . 1))
+("bspwmrc"
  (filename . "~/.dotfiles/.config/bspwm/bspwmrc")
  (front-context-string . "#!/bin/bash\n\n## ")
  (rear-context-string)

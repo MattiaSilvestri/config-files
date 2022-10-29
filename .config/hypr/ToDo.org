@@ -1,0 +1,17 @@
+* TODO Hyprland improvements [4/11]
+
+ * [X] Functioning system tray
+ * [X] Reload config with two monitors
+ * [X] Use zoom
+ * [ ] Use conky (or substitute with eww)
+ * [ ] Taskbar for current workspaces only
+ * [ ] Move windows in specific positions without using mouse (like bspwm Shift
+ Super m)
+ * [ ] Taskbar shows only active windows even in groups
+ * [ ] Shadow on top bar
+ * [ ] Better previous in ranger
+ * [ ] Better dialog windows
+ * [X] Use media keys
+ * [ ] megasync in system tray
+ * [ ] network-manager in system tray
+

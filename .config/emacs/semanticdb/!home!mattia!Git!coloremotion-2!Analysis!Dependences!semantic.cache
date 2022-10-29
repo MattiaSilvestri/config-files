@@ -1,0 +1,98 @@
+;; Object semanticdb-project-database-file-159260d24bf0
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-159260d24bf0"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-159260d24bd0"
+      :major-mode python-mode
+      :tags 
+        '( ("\"\"\" Tool for mixing and analyse multidimensional word vectors. \"\"\"" code nil nil [40 106])
+            ("sklearn.metrics.pairwise" include nil nil [108 162])
+            ("pandas" include nil nil [164 183])
+            ("sklearn.manifold" include nil nil [184 216])
+            ("matplotlib" include nil nil [217 253])
+            ("seaborn" include nil nil [254 275])
+            ("collections" include nil nil [276 311])
+            ("numpy" include nil nil [312 330])
+            ("dimCombine" function
+               (:documentation "Compute cosine simlarity of two-dimensional word vectors
+
+    This function takes a pair of indices, a dictionary with words vectors and
+    a copmarison similarity matrix as
+    inputs. It returns both a similarity matrix between all the words and the
+    correlation between this matrix and the average comparison matrix, where for each
+    similarity matrix is computed using cosine similarity. 
+
+    words only the subset of dimensions specified by the index are selected. The
+    - 'index': must be a list of length 2 indicating the indices for selectig
+      the pairs of dimensions.
+    - 'word_vec': must be a dictionary where every key is a word and every
+      value is a numpy.array, these are the vectors generated artificially, the
+      ones to compare with the human ones.
+    - 'compare': human-generated similarity matrix as a 2D numpy.array object.
+
+    "
+                :arguments 
+                  ( ("index" variable nil (reparse-symbol function_parameters) [347 352])
+                    ("word_vec" variable nil (reparse-symbol function_parameters) [354 362])
+                    ("compare" variable nil (reparse-symbol function_parameters) [364 371]))                  )
+                nil [332 1837])
+            ("mapData" function
+               (:documentation "Compute and plot MDS on dissimilarity matrix
+
+    The function takes a normalised dissimilarity matrix plus some parameters as
+    input and and applies MDS to it. It then plots the results in a 2D space.
+
+    - 'norm_matrix': pandas dataframe, normalised dissimilarity matrix. 
+    - 'metric': whether or not to perform metric MDS, boolean.
+    - 'dissimilarity': dissimalrity measure used to compute the dissimilarity
+      matrix. String, can be either 'euclidean' or 'precomputed'.
+    - 'title': string, title of the plot.
+    - 'annot': list of strings containing the annotation for each point.
+
+    "
+                :arguments 
+                  ( ("norm_matrix" variable nil (reparse-symbol function_parameters) [1859 1870])
+                    ("metric" variable nil (reparse-symbol function_parameters) [1872 1878])
+                    ("dissimilarity" variable nil (reparse-symbol function_parameters) [1880 1893])
+                    ("title" variable nil (reparse-symbol function_parameters) [1894 1899])
+                    ("annot" variable nil (reparse-symbol function_parameters) [1901 1906]))                  )
+                nil [1847 3015])
+            ("formatVec" function
+               (:documentation " Prepare word vectors for correlation analysis
+
+    The function takes a dictionary containing the embeddings of all the words,
+    both colors and emtion words, and also a list of string with the specific
+    words we need (emtion or colors). It give a better formatted version of
+    these objects in output.
+    Inputs:
+    - 'all_words' = dictionary, list of words with their embeddings.
+    - 'select' = list of strings, words to select form the dictionary. 
+
+    "
+                :arguments 
+                  ( ("all_words" variable nil (reparse-symbol function_parameters) [3031 3040])
+                    ("select" variable nil (reparse-symbol function_parameters) [3042 3048]))                  )
+                nil [3017 3855])
+            ("meanMatrix" function
+               (:documentation "Compute average similarity matrix across participants
+
+    The function averages the simmetrical similarity matrices given as input.
+    Parameters:
+    - 'sim_matrix': dictionary, each key is a subject id and each value is a
+    symmetrial similarity matrix.
+    - 'names': list of strings, names for the to axis of the matrix.
+
+    "
+                :arguments 
+                  ( ("sim_matrix" variable nil (reparse-symbol function_parameters) [3872 3882])
+                    ("names" variable nil (reparse-symbol function_parameters) [3884 3889]))                  )
+                nil [3857 4679]))          
+      :file "ce_utils.py"
+      :pointmax 4679
+      :fsize 4678
+      :lastmodtime '(25435 64290 896049 474000)
+      :unmatched-syntax nil))
+  :file "!home!mattia!Git!coloremotion-2!Analysis!Dependences!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

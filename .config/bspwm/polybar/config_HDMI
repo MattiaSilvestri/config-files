@@ -20,7 +20,7 @@ margin-top = 0
 include-file = ~/.config/bspwm/polybar/colors
 
 [bar/main]
-monitor = HDMI-1
+monitor = HDMI-A-1
 ;; monitor-strict = false
 override-redirect = false
 

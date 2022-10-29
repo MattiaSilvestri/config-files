@@ -23,15 +23,14 @@ $scripts/rgb &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 
 # Conky
-killall -q conky
-/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
+#killall -q conky
+#/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
 
 # Bluetooth manager
 blueman-applet &
 
 # Network manager
-killall -q nm-tray
 nm-tray &
 
 # Megasync
-nz.mega.MEGAsync &
+megasync &
