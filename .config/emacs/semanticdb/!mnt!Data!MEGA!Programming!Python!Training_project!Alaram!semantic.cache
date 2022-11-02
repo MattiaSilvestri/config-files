@@ -1,0 +1,32 @@
+;; Object semanticdb-project-database-file-1586d1ce3540
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1586d1ce3540"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1586d1ce356c"
+      :major-mode python-mode
+      :tags 
+        '( ("\"\"\"
+This program is a CLI interface where the used can insert a time and a youtube
+video will be played at that time as an alarm.
+\"\"\"" code nil nil [1 134])
+            ("datetime" include nil nil [154 169])
+            ("os" include nil nil [170 179])
+            ("time" include nil nil [180 191])
+            ("random" include nil nil [192 205])
+            ("pafy" include nil nil [206 217])
+            ("vlc" include nil nil [218 228])
+            ("re" include nil nil [229 238])
+            ("schedule" include nil nil [239 254])
+            ("if" code nil nil [296 527])
+            ("trigger" variable nil nil [528 542])
+            ("while" code nil nil [543 2380])
+            ("now" variable nil nil [2473 2502]))          
+      :file "alarm.py"
+      :pointmax 3168
+      :fsize 3167
+      :lastmodtime '(25437 26824 495452 100000)
+      :unmatched-syntax '((INDENT_BLOCK 2346 . 2380) (NEWLINE 2345 . 2346) (COLON 2344 . 2345) (TRY 1507 . 1510) (AS 2340 . 2342) (INDENT_BLOCK 1098 . 1174) (NEWLINE 1097 . 1098) (TRY 871 . 874) (IF 1080 . 1082) (COLON 1096 . 1097))))
+  :file "!mnt!Data!MEGA!Programming!Python!Training_project!Alaram!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -38,7 +38,7 @@ astronvim.vim_opts(astronvim.user_plugin_opts("options", {
   },
   g = {
     highlighturl_enabled = true, -- highlight URLs by default
-    mapleader = " ", -- set leader key
+    -- mapleader = " ", -- set leader key
     zipPlugin = false, -- disable zip
     load_black = false, -- disable black
     loaded_2html_plugin = true, -- disable 2html
