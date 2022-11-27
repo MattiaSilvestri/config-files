@@ -1,157 +1,17 @@
 (undo-tree-save-format-version . 1)
-"d4d047c58d690407164faf641947bf6db01964bc"
-[nil nil nil nil (25417 9199 249434 241000) 0 nil]
-([nil nil ((nil rear-nonsticky nil 3213 . 3214) (nil fontified nil 3207 . 3214) (3207 . 3214) 3214 (#("#29323e" 0 7 (fontified t face ((:foreground "white") (:background "#29323e")))) . 3207) (undo-tree-id74 . -7) (undo-tree-id75 . -6) (undo-tree-id76 . -6) (undo-tree-id77 . -7) (undo-tree-id78 . -6) (undo-tree-id79 . -6) (undo-tree-id80 . -6) (undo-tree-id81 . -6) (undo-tree-id82 . -6) (undo-tree-id83 . -6) (undo-tree-id84 . -6) (undo-tree-id85 . -7) 3214 (t 25410 42080 818201 464000)) nil (25417 9199 249431 450000) 0 nil])
-([nil nil ((nil rear-nonsticky nil 3213 . 3214) (nil fontified nil 3207 . 3214) (3207 . 3214) 3214 (#("#3f404c" 0 6 (fontified t face ((:foreground "white") (:background "#3f404c"))) 6 7 (fontified t rear-nonsticky t face ((:foreground "white") (:background "#3f404c")))) . 3207) (undo-tree-id43 . -7) (undo-tree-id44 . -6) (undo-tree-id45 . -6) (undo-tree-id46 . -6) (undo-tree-id47 . -6) (undo-tree-id48 . -6) (undo-tree-id49 . -6) (undo-tree-id50 . -6) (undo-tree-id51 . -6) (undo-tree-id52 . -6) (undo-tree-id53 . -6) (undo-tree-id54 . -6) (undo-tree-id55 . -6) (undo-tree-id56 . -6) (undo-tree-id57 . -6) (undo-tree-id58 . -6) (undo-tree-id59 . -6) (undo-tree-id60 . -6) (undo-tree-id61 . -6) (undo-tree-id62 . -6) (undo-tree-id63 . -6) (undo-tree-id64 . -6) (undo-tree-id65 . -7) (undo-tree-id66 . -6) (undo-tree-id67 . -6) (undo-tree-id68 . -6) (undo-tree-id69 . -6) (undo-tree-id70 . -6) (undo-tree-id71 . -6) (undo-tree-id72 . -6) (undo-tree-id73 . -7) 3214) nil (25417 9199 249414 183000) 0 nil])
-([nil nil ((nil rear-nonsticky nil 3213 . 3214) (nil fontified nil 3207 . 3214) (3207 . 3214) 3214 (#("#424553" 0 6 (fontified t face ((:foreground "white") (:background "#424553"))) 6 7 (fontified t rear-nonsticky t face ((:foreground "white") (:background "#424553")))) . 3207) (undo-tree-id19 . -7) (undo-tree-id20 . -6) (undo-tree-id21 . -6) (undo-tree-id22 . -6) (undo-tree-id23 . -6) (undo-tree-id24 . -6) (undo-tree-id25 . -6) (undo-tree-id26 . -6) (undo-tree-id27 . -6) (undo-tree-id28 . -6) (undo-tree-id29 . -6) (undo-tree-id30 . -6) (undo-tree-id31 . -6) (undo-tree-id32 . -6) (undo-tree-id33 . -6) (undo-tree-id34 . -7) (undo-tree-id35 . -6) (undo-tree-id36 . -6) (undo-tree-id37 . -6) (undo-tree-id38 . -6) (undo-tree-id39 . -6) (undo-tree-id40 . -6) (undo-tree-id41 . -6) (undo-tree-id42 . -7) 3214) nil (25417 9199 249372 818000) 0 nil])
-([nil nil ((nil rear-nonsticky nil 3213 . 3214) (nil fontified nil 3207 . 3214) (3207 . 3214) 3214 (#("#3f404b" 0 6 (fontified t face ((:foreground "white") (:background "#3f404b"))) 6 7 (fontified t rear-nonsticky t face ((:foreground "white") (:background "#3f404b")))) . 3207) (undo-tree-id0 . -7) (undo-tree-id1 . -6) (undo-tree-id2 . -6) (undo-tree-id3 . -6) (undo-tree-id4 . -6) (undo-tree-id5 . -6) (undo-tree-id6 . -6) (undo-tree-id7 . -6) (undo-tree-id8 . -6) (undo-tree-id9 . -6) (undo-tree-id10 . -7) (undo-tree-id11 . -6) (undo-tree-id12 . -6) (undo-tree-id13 . -6) (undo-tree-id14 . -6) (undo-tree-id15 . -6) (undo-tree-id16 . -6) (undo-tree-id17 . -6) (undo-tree-id18 . -7) 3214) nil (25417 9199 249339 144000) 0 nil])
-([nil nil ((nil rear-nonsticky nil 3213 . 3214) (nil fontified nil 3207 . 3214) (3207 . 3214) 3214 (#("#343544" 0 6 (fontified t face ((:foreground "white") (:background "#343544"))) 6 7 (fontified t rear-nonsticky t face ((:foreground "white") (:background "#343544")))) . 3207) (undo-tree-id86 . -7) (undo-tree-id87 . -6) (undo-tree-id88 . -6) (undo-tree-id89 . -6) 3214 (t 25417 9199 257754 246000)) nil (25420 30401 225292 536000) 0 nil])
-([nil nil ((58596 . 60072) (#("(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ein:basecell-input-area-face ((t (:extend t :background \"#28313d\"))))
- '(lsp-face-highlight-read ((t (:underline t :background \"color\" :foreground \"color\"))))
- '(lsp-face-highlight-textual ((t (:underline t :background \"color\" :foreground \"color\"))))
- '(lsp-face-highlight-write ((t (:background \"color\" :foreground \"color\"))))
- '(lsp-ui-doc-background ((t (:background nil))))
- '(lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic)))))
- '(org-block ((t (:inherit fixed-pitch))))
- '(org-code ((t (:inherit (shadow fixed-pitch)))))
- '(org-document-info ((t (:foreground \"dark orange\"))))
- '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
- '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
- '(org-link ((t (:inherit mixed-pitch :foreground \"SkyBlue2\" :underline t :bold nil :weigth regular :height 0.9))))
- '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-property-value ((t (:inherit fixed-pitch))) t)
- '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
- '(org-table ((t (:inherit fixed-pitch :foreground \"#83a598\"))))
- '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
- '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))" 0 1476 (fontified nil)) . -58596) (58565 . 58595) (58556 . 58558) (#("
-" 0 1 (fontified nil)) . -58563) (58555 . 58556) (58562 . 58563) (58554 . 58555) (#("
-" 0 1 (fontified nil)) . 58554) (58554 . 58555) (#(" " 0 1 (fontified nil)) . -58554) (58494 . 58562) (#(" " 0 1 (fontified nil)) . 58494) (58391 . 58495) (58368 . 58370) (#(" " 0 1 (fontified nil)) . 58368) (58345 . 58347) (#(" " 0 1 (fontified nil)) . 58345) (58322 . 58324) (#(" " 0 1 (fontified nil)) . 58322) (58299 . 58301) (#(" " 0 1 (fontified nil)) . 58299) (58276 . 58278) (#(" " 0 1 (fontified nil)) . 58276) (58253 . 58255) (#(" " 0 1 (fontified nil)) . 58253) (58230 . 58232) (#(" " 0 1 (fontified nil)) . 58230) (58207 . 58209) (#(" " 0 1 (fontified nil)) . 58207) (58184 . 58186) (#(" " 0 1 (fontified nil)) . 58184) (58161 . 58163) (#(" " 0 1 (fontified nil)) . 58161) (58138 . 58140) (#(" " 0 1 (fontified nil)) . 58138) (58115 . 58117) (#(" " 0 1 (fontified nil)) . 58115) (58092 . 58094) (#(" " 0 1 (fontified nil)) . 58092) (58069 . 58071) (#(" " 0 1 (fontified nil)) . 58069) (58047 . 58049) (#(" " 0 1 (fontified nil)) . 58047) (58025 . 58027) (#(" " 0 1 (fontified nil)) . 58025) (58003 . 58005) (#(" " 0 1 (fontified nil)) . 58003) (57981 . 57983) (#(" " 0 1 (fontified nil)) . 57981) (#("
-" 0 1 (fontified nil)) . -58373) (58351 . 58352) (58329 . 58330) (58307 . 58308) (58285 . 58286) (58263 . 58264) (58241 . 58242) (58219 . 58220) (58197 . 58198) (58175 . 58176) (58153 . 58154) (58131 . 58132) (58109 . 58110) (58087 . 58088) (58065 . 58066) (58044 . 58045) (58023 . 58024) (58002 . 58003) (57981 . 57982) (58355 . 58356) (58333 . 58334) (#("
-" 0 1 (fontified nil)) . 58333) (58333 . 58334) (#(" " 0 1 (fontified nil)) . -58333) (58312 . 58313) (#("
-" 0 1 (fontified nil)) . 58312) (58312 . 58313) (#(" " 0 1 (fontified nil)) . -58312) (58291 . 58292) (#("
-" 0 1 (fontified nil)) . 58291) (58291 . 58292) (#(" " 0 1 (fontified nil)) . -58291) (58270 . 58271) (#("
-" 0 1 (fontified nil)) . 58270) (58270 . 58271) (#(" " 0 1 (fontified nil)) . -58270) (58249 . 58250) (#("
-" 0 1 (fontified nil)) . 58249) (58249 . 58250) (#(" " 0 1 (fontified nil)) . -58249) (58228 . 58229) (#("
-" 0 1 (fontified nil)) . 58228) (58228 . 58229) (#(" " 0 1 (fontified nil)) . -58228) (58207 . 58208) (#("
-" 0 1 (fontified nil)) . 58207) (58207 . 58208) (#(" " 0 1 (fontified nil)) . -58207) (58186 . 58187) (#("
-" 0 1 (fontified nil)) . 58186) (58186 . 58187) (#(" " 0 1 (fontified nil)) . -58186) (58165 . 58166) (#("
-" 0 1 (fontified nil)) . 58165) (58165 . 58166) (#(" " 0 1 (fontified nil)) . -58165) (58144 . 58145) (#("
-" 0 1 (fontified nil)) . 58144) (58144 . 58145) (#(" " 0 1 (fontified nil)) . -58144) (58123 . 58124) (#("
-" 0 1 (fontified nil)) . 58123) (58123 . 58124) (#(" " 0 1 (fontified nil)) . -58123) (58102 . 58103) (#("
-" 0 1 (fontified nil)) . 58102) (58102 . 58103) (#(" " 0 1 (fontified nil)) . -58102) (58081 . 58082) (#("
-" 0 1 (fontified nil)) . 58081) (58081 . 58082) (#(" " 0 1 (fontified nil)) . -58081) (58060 . 58061) (#("
-" 0 1 (fontified nil)) . 58060) (58060 . 58061) (#(" " 0 1 (fontified nil)) . -58060) (58040 . 58041) (#("
-" 0 1 (fontified nil)) . 58040) (58040 . 58041) (#(" " 0 1 (fontified nil)) . -58040) (58020 . 58021) (#("
-" 0 1 (fontified nil)) . 58020) (58020 . 58021) (#(" " 0 1 (fontified nil)) . -58020) (58000 . 58001) (#("
-" 0 1 (fontified nil)) . 58000) (58000 . 58001) (#(" " 0 1 (fontified nil)) . -58000) (57980 . 57981) (#(" " 0 1 (fontified nil)) . 57980) (57972 . 58355) (#(" " 0 1 (fontified nil)) . 57972) (57909 . 57973) (57894 . 57896) (#(" " 0 1 (fontified nil)) . 57894) (57878 . 57880) (#(" " 0 1 (fontified nil)) . 57878) (57862 . 57864) (#(" " 0 1 (fontified nil)) . 57862) (57846 . 57848) (#(" " 0 1 (fontified nil)) . 57846) (57830 . 57832) (#(" " 0 1 (fontified nil)) . 57830) (57815 . 57817) (#(" " 0 1 (fontified nil)) . 57815) (#("
-" 0 1 (fontified nil)) . -57903) (57889 . 57890) (57874 . 57875) (57859 . 57860) (57844 . 57845) (57829 . 57830) (57815 . 57816) (57897 . 57898) (57883 . 57884) (#("
-" 0 1 (fontified nil)) . 57883) (57883 . 57884) (#(" " 0 1 (fontified nil)) . -57883) (57869 . 57870) (#("
-" 0 1 (fontified nil)) . 57869) (57869 . 57870) (#(" " 0 1 (fontified nil)) . -57869) (57855 . 57856) (#("
-" 0 1 (fontified nil)) . 57855) (57855 . 57856) (#(" " 0 1 (fontified nil)) . -57855) (57841 . 57842) (#("
-" 0 1 (fontified nil)) . 57841) (57841 . 57842) (#(" " 0 1 (fontified nil)) . -57841) (57827 . 57828) (#("
-" 0 1 (fontified nil)) . 57827) (57827 . 57828) (#(" " 0 1 (fontified nil)) . -57827) (57814 . 57815) (#("
-" 0 1 (fontified nil)) . 57814) (57814 . 57815) (#(" " 0 1 (fontified nil)) . -57814) (57797 . 57897) (#(" " 0 1 (fontified nil)) . 57797) (57777 . 57798) (#("
-" 0 1 (fontified nil)) . -57777) (57696 . 57778) (#(" " 0 1 (fontified nil)) . 57696) (57540 . 57697) (#("
-" 0 1 (fontified nil)) . -57540) (55705 . 57541) (#(" " 0 1 (fontified nil)) . 55705) (55675 . 55706) (55645 . 55647) (55614 . 55616) (55588 . 55590) (55565 . 55567) (#("
-" 0 1 (fontified nil)) . -55667) (55638 . 55639) (55609 . 55610) (55585 . 55586) (55564 . 55565) (55663 . 55664) (55634 . 55635) (#("
-" 0 1 (fontified nil)) . 55634) (55634 . 55635) (#(" " 0 1 (fontified nil)) . -55634) (55606 . 55607) (#("
-" 0 1 (fontified nil)) . 55606) (55606 . 55607) (#(" " 0 1 (fontified nil)) . -55606) (55583 . 55584) (#("
-" 0 1 (fontified nil)) . 55583) (55583 . 55584) (#(" " 0 1 (fontified nil)) . -55583) (55563 . 55564) (#("
-" 0 1 (fontified nil)) . 55563) (55563 . 55564) (#(" " 0 1 (fontified nil)) . -55563) (55539 . 55663) (#(" " 0 1 (fontified nil)) . 55539) (55488 . 55540) (#("
-" 0 1 (fontified nil)) . -55488) (55403 . 55489) (#(" " 0 1 (fontified nil)) . 55403) (55378 . 55404) (#("
-" 0 1 (fontified nil)) . -55378) (55288 . 55379) (#(" " 0 1 (fontified nil)) . 55288) (54689 . 55289) (#("
-" 0 1 (fontified nil)) . -54689) (54542 . 54690) (#(" " 0 1 (fontified nil)) . 54542) (54277 . 54543) (#("
-" 0 1 (fontified nil)) . -54277) (54196 . 54278) (#(" " 0 1 (fontified nil)) . 54196) (54168 . 54197) (#("
-" 0 1 (fontified nil)) . -54168) (54105 . 54169) (#(" " 0 1 (fontified nil)) . 54105) (53834 . 54106) (#("(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-	 [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector
-	 [\"#171717\" \"#E2434C\" \"#86B187\" \"#E0D063\" \"#8AC6F2\" \"#E18Cbb\" \"cyan\" \"#F6F3E8\"])
- '(background-color \"#202020\")
- '(background-mode dark)
- '(beacon-color \"#cc6666\")
- '(company-box-icons-alist 'company-box-icons-images)
- '(company-show-quick-access t nil nil \"Customized with use-package company\")
- '(cursor-color \"#cccccc\")
- '(custom-safe-themes
-	 '(\"f94110b35f558e4c015b2c680f150bf8a19799d775f8352c957d9d1054b0a210\" \"fce3524887a0994f8b9b047aef9cc4cc017c5a93a5fb1f84d300391fba313743\" default))
- '(ein:output-area-inlined-images t)
- '(exwm-floating-border-color \"#3c3847\")
- '(fci-rule-color \"#635770\")
- '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
- '(foreground-color \"#cccccc\")
- '(frame-background-mode 'dark)
- '(highlight-tail-colors (((\"#222622\") . 0) ((\"cyan\") . 20)))
- '(inhibit-startup-screen t)
- '(jdee-db-active-breakpoint-face-colors (cons \"#1D1D1D\" \"#8AC6F2\"))
- '(jdee-db-requested-breakpoint-face-colors (cons \"#1D1D1D\" \"#86B187\"))
- '(jdee-db-spec-breakpoint-face-colors (cons \"#1D1D1D\" \"#433F4f\"))
- '(lsp-ui-imenu-colors '(\"#7FC1CA\" \"#A8CE93\"))
- '(mlint-programs
-	 '(\"/home/mattia/.config/emacs/elpa/matlab-mode-20210410.1340/mlint.el\" \"glnxa64/mlint\"))
- '(nrepl-message-colors
-	 '(\"#CC9393\" \"#DFAF8F\" \"#F0DFAF\" \"#7F9F7F\" \"#BFEBBF\" \"#93E0E3\" \"#94BFF3\" \"#DC8CC3\"))
- '(objed-cursor-color \"#E2434C\")
- '(org-file-apps
-	 '((auto-mode . emacs)
-		 (directory . emacs)
-		 (\"\\\\.mm\\\\'\" . default)
-		 (\"\\\\.x?html?\\\\'\" . default)
-		 (\"\\\\.pdf\\\\'\" . \"okular %s\")))
- '(package-selected-packages
-	 '(impatient-mode svg-clock iceberg-theme good-scroll sublimity minimap org-ref-prettify org-ref dirvish company-org-block elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
- '(pdf-view-midnight-colors (cons \"#F6F3E8\" \"#171717\"))
- '(pos-tip-background-color \"#1A3734\")
- '(pos-tip-foreground-color \"#FFFFC8\")
- '(rustic-ansi-faces
-	 [\"#171717\" \"#E2434C\" \"#86B187\" \"#E0D063\" \"#8AC6F2\" \"#E18Cbb\" \"cyan\" \"#F6F3E8\"])
- '(tetris-x-colors
-	 [[229 192 123]
-		[97 175 239]
-		[209 154 102]
-		[224 108 117]
-		[152 195 121]
-		[198 120 221]
-		[86 182 194]])
- '(vc-annotate-background \"#171717\")
- '(vc-annotate-color-map
-	 (list
-		(cons 20 \"#86B187\")
-		(cons 40 \"#a3bb7b\")
-		(cons 60 \"#c2c56f\")
-		(cons 80 \"#E0D063\")
-		(cons 100 \"#e3bd59\")
-		(cons 120 \"#e6aa50\")
-		(cons 140 \"#EA9847\")
-		(cons 160 \"#e7946d\")
-		(cons 180 \"#e39094\")
-		(cons 200 \"#E18Cbb\")
-		(cons 220 \"#e17396\")
-		(cons 240 \"#e15b71\")
-		(cons 260 \"#E2434C\")
-		(cons 280 \"#ba424c\")
-		(cons 300 \"#92414d\")
-		(cons 320 \"#6a404e\")
-		(cons 340 \"#635770\")
-		(cons 360 \"#635770\")))
- '(vc-annotate-very-old-color nil)
- '(warning-suppress-log-types '((comp)))
- '(warning-suppress-types
-	 '(((python python-shell-completion-native-turn-on-maybe))
-		 (comp)))
- '(window-divider-mode nil))" 0 4755 (fontified nil)) . -53834) (t 25420 30404 17189 167000)) nil (25438 37987 763230 609000) 0 nil] [nil nil ((#(";" 0 1 (face font-lock-comment-delimiter-face fontified t)) . 84) (t 25417 9423 38037 710000)) ((84 . 85) (t 25420 30356 930453 637000)) (25420 30356 923239 390000) 0 nil])
-([nil nil ((#("
-" 0 1 (fontified t)) . -22591) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . 1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) (undo-tree-id7 . -1) (undo-tree-id8 . -1) (undo-tree-id9 . -1) (undo-tree-id10 . -1) (undo-tree-id11 . -1) (undo-tree-id12 . -1) (undo-tree-id13 . -1) (undo-tree-id14 . -1) (undo-tree-id15 . -1) (undo-tree-id16 . -1) 22592 (22591 . 22592) (22590 . 22591) (t 25438 37987 772253 517000) 22590) nil (25438 38347 818808 4000) 0 nil])
+"7e6021c7454fdabf114b276ccb51575fcc4dbe38"
+[nil nil nil nil (25454 35748 205592 796000) 0 nil]
+([nil nil ((4158 . 4159) (t 25454 3627 793125 309000) 4157) nil (25457 13202 890469 888000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 4199 . 4200) (nil fontified nil 4159 . 4200) (4159 . 4200)) nil (25457 13202 890461 651000) 0 nil])
+([nil nil ((#(" " 0 1 (fontified t)) . -62064) (undo-tree-id140 . -1) (undo-tree-id141 . -1) (undo-tree-id142 . -1) (undo-tree-id143 . -1) (undo-tree-id144 . -1) (undo-tree-id145 . -1) (undo-tree-id146 . -1) (undo-tree-id147 . -1) (undo-tree-id148 . -1) (undo-tree-id149 . -1) (undo-tree-id150 . -1) (undo-tree-id151 . -1) (undo-tree-id152 . -1) (undo-tree-id153 . -1) (undo-tree-id154 . -1) (undo-tree-id155 . -1) (undo-tree-id156 . -1) (undo-tree-id157 . -1) (undo-tree-id158 . -1) (undo-tree-id159 . -1) (undo-tree-id160 . -1) (undo-tree-id161 . -1) (undo-tree-id162 . -1) (undo-tree-id163 . -1) (undo-tree-id164 . -1) (undo-tree-id165 . -1) (undo-tree-id166 . -1) (undo-tree-id167 . -1) (undo-tree-id168 . -1) (undo-tree-id169 . -1) (undo-tree-id170 . -1) (undo-tree-id171 . -1) 62065 (62063 . 62065) (t 25457 13202 910072 922000) 62060) nil (25457 13480 30229 754000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 62118 . 62119) (nil fontified nil 62064 . 62119) (62064 . 62119)) nil (25457 13480 29568 345000) 0 nil])
+([nil nil ((62075 . 62076) (#("
+" 0 1 (fontified t)) . -62075) (undo-tree-id24 . -1) (undo-tree-id25 . -1) (undo-tree-id26 . -1) (undo-tree-id27 . -1) (undo-tree-id28 . -1) (undo-tree-id29 . -1) (undo-tree-id30 . -1) (undo-tree-id31 . -1) (undo-tree-id32 . -1) (undo-tree-id33 . -1) (undo-tree-id34 . -1) (undo-tree-id35 . -1) (undo-tree-id36 . -1) (undo-tree-id37 . -1) (undo-tree-id38 . -1) (undo-tree-id39 . -1) (undo-tree-id40 . -1) (undo-tree-id41 . -1) (undo-tree-id42 . -1) (undo-tree-id43 . -1) (undo-tree-id44 . -1) (undo-tree-id45 . -1) (undo-tree-id46 . -1) (undo-tree-id47 . -1) (undo-tree-id48 . -1) (undo-tree-id49 . -1) (undo-tree-id50 . -1) (undo-tree-id51 . -1) (undo-tree-id52 . -1) (undo-tree-id53 . -1) (undo-tree-id54 . -1) (undo-tree-id55 . -1) (undo-tree-id56 . -1) (undo-tree-id57 . -1) (undo-tree-id58 . -1) (undo-tree-id59 . -1) (undo-tree-id60 . -1) (undo-tree-id61 . -1) (undo-tree-id62 . -1) (undo-tree-id63 . -1) (undo-tree-id64 . -1) (undo-tree-id65 . -1) (undo-tree-id66 . -1) (undo-tree-id67 . -1) (undo-tree-id68 . -1) (undo-tree-id69 . -1) (undo-tree-id70 . -1) (undo-tree-id71 . -1) (#(" " 0 1 (fontified t highlight-indent-guides-prop (0 nil t 1 (character nil (face highlight-indent-guides-character-face display "│")) ((#<marker at 62096 in init.el> . #<marker at 62841 in init.el>))) display "│" face highlight-indent-guides-character-face)) . -62076) (undo-tree-id72 . -1) (undo-tree-id73 . -1) (undo-tree-id74 . -1) (undo-tree-id75 . -1) (undo-tree-id76 . -1) (undo-tree-id77 . -1) (undo-tree-id78 . -1) (undo-tree-id79 . -1) (undo-tree-id80 . -1) (undo-tree-id81 . -1) (undo-tree-id82 . -1) (undo-tree-id83 . -1) (undo-tree-id84 . -1) (undo-tree-id85 . -1) (undo-tree-id86 . -1) (undo-tree-id87 . -1) (undo-tree-id88 . -1) (undo-tree-id89 . -1) (undo-tree-id90 . -1) (undo-tree-id91 . -1) (undo-tree-id92 . -1) (undo-tree-id93 . -1) (undo-tree-id94 . -1) (undo-tree-id95 . -1) (undo-tree-id96 . -1) (undo-tree-id97 . -1) (undo-tree-id98 . -1) (undo-tree-id99 . -1) (undo-tree-id100 . -1) (undo-tree-id101 . -1) (undo-tree-id102 . -1) (undo-tree-id103 . -1) (#(" " 0 1 (fontified t highlight-indent-guides-prop (0 nil nil 1 nil ((#<marker at 62096 in init.el> . #<marker at 62841 in init.el>))))) . -62077) (undo-tree-id104 . -1) (undo-tree-id105 . -1) (undo-tree-id106 . -1) (undo-tree-id107 . -1) (undo-tree-id108 . -1) (undo-tree-id109 . -1) (undo-tree-id110 . -1) (undo-tree-id111 . -1) (undo-tree-id112 . -1) (undo-tree-id113 . -1) (undo-tree-id114 . -1) (undo-tree-id115 . -1) (undo-tree-id116 . -1) (undo-tree-id117 . -1) (undo-tree-id118 . -1) (undo-tree-id119 . -1) (undo-tree-id120 . -1) (undo-tree-id121 . -1) (undo-tree-id122 . -1) (undo-tree-id123 . -1) (undo-tree-id124 . -1) (#(" " 0 1 (fontified t highlight-indent-guides-prop (0 nil nil 1 nil ((#<marker at 62096 in init.el> . #<marker at 62841 in init.el>))))) . -62078) (undo-tree-id125 . -1) (undo-tree-id126 . -1) (undo-tree-id127 . -1) (undo-tree-id128 . -1) (undo-tree-id129 . -1) (undo-tree-id130 . -1) (undo-tree-id131 . -1) (undo-tree-id132 . -1) (undo-tree-id133 . -1) (undo-tree-id134 . -1) (undo-tree-id135 . -1) (undo-tree-id136 . -1) (undo-tree-id137 . -1) (undo-tree-id138 . -1) (undo-tree-id139 . -1) 62079) nil (25457 13480 30484 373000) 0 nil])
+([nil nil ((62064 . 62065)) nil (25457 29430 398105 22000) 0 nil] [nil nil ((nil rear-nonsticky nil 62100 . 62101) (nil fontified nil 62094 . 62101) (62094 . 62101) 62101 (#("#EFF0F1" 0 7 (fontified t face ((:foreground "black") (:background "#EFF0F1")))) . 62094) (undo-tree-id0 . -7) (undo-tree-id1 . -6) (undo-tree-id2 . -7) (undo-tree-id3 . -7) (undo-tree-id4 . -7) (undo-tree-id5 . -7) (undo-tree-id6 . -7) (undo-tree-id7 . -7) (undo-tree-id8 . -1) (undo-tree-id9 . -1) (undo-tree-id10 . -1) (undo-tree-id11 . -1) (undo-tree-id12 . -1) (undo-tree-id13 . -1) (undo-tree-id14 . -6) (undo-tree-id15 . -7) (undo-tree-id16 . -6) (undo-tree-id17 . -6) (undo-tree-id18 . -6) (undo-tree-id19 . -6) (undo-tree-id20 . -6) (undo-tree-id21 . -6) (undo-tree-id22 . -6) (undo-tree-id23 . -7) 62101) ((62094 . 62101) (#("#28313d" 0 6 (fontified nil face ((:foreground "white") (:background "#28313d"))) 6 7 (fontified nil rear-nonsticky nil face ((:foreground "white") (:background "#28313d")))) . 62094) (undo-tree-id172 . -6) (nil rear-nonsticky t 62100 . 62101)) (25457 13480 18872 202000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 62101 . 62102) (nil fontified nil 62095 . 62102) (62095 . 62102) 62102 (#("#EFF0F1" 0 7 (fontified t face ((:foreground "black") (:background "#EFF0F1")))) . 62095) (undo-tree-id192 . -7) (undo-tree-id193 . -6) (undo-tree-id194 . -6) (undo-tree-id195 . -6) 62102) nil (25457 29430 398101 243000) 0 nil])
 nil
-([nil nil ((nil rear-nonsticky nil 23011 . 23012) (nil fontified nil 22591 . 23012) (22591 . 23012)) nil (25438 38347 818775 985000) 0 nil])
-([nil current ((23012 . 23013) 23011) nil (25438 38347 818770 719000) 0 nil])
+([nil nil ((62071 . 62072) (62060 . 62071) (#(":back" 0 5 (fontified t face font-lock-builtin-face)) . -62060) (undo-tree-id187 . -5) (undo-tree-id188 . -5) (undo-tree-id189 . -5) (undo-tree-id190 . -5) 62065 (62063 . 62065) (#("k" 0 1 (fontified t face font-lock-builtin-face)) . -62063) (undo-tree-id191 . -1) 62064 (62059 . 62064)) nil (25457 29430 398093 174000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 62090 . 62091) (nil fontified nil 62072 . 62091) (62072 . 62091) 62071) nil (25457 29430 398084 622000) 0 nil])
+([nil current ((#(" '(org-block ((t (:background \"#28313d\" :extend t))))
+" 0 1 (highlight-indent-guides-prop (0 nil t 1 (character nil (face highlight-indent-guides-character-face display "│")) ((#<marker at 61351 in init.el> . #<marker at 62841 in init.el>))) display "│" fontified t face highlight-indent-guides-character-face) 1 2 (fontified t) 2 3 (fontified t face (rainbow-delimiters-depth-2-face)) 3 13 (fontified t) 13 14 (fontified t face (rainbow-delimiters-depth-3-face)) 14 15 (fontified t face (rainbow-delimiters-depth-4-face)) 15 17 (fontified t) 17 18 (fontified t face (rainbow-delimiters-depth-5-face)) 18 29 (fontified t face font-lock-builtin-face) 29 30 (fontified t) 30 31 (fontified t face font-lock-string-face) 31 37 (fontified t face ((:foreground "white") (:background "#28313d"))) 37 38 (rear-nonsticky t fontified t face ((:foreground "white") (:background "#28313d"))) 38 39 (fontified t face font-lock-string-face) 39 40 (fontified t) 40 47 (fontified t face font-lock-builtin-face) 47 49 (fontified t) 49 50 (fontified t face (rainbow-delimiters-depth-5-face)) 50 51 (fontified t face (rainbow-delimiters-depth-4-face)) 51 52 (fontified t face (rainbow-delimiters-depth-3-face)) 52 53 (rear-nonsticky t fontified t face (rainbow-delimiters-depth-2-face)) 53 54 (fontified t)) . 62096) (undo-tree-id173 . -12) (undo-tree-id174 . -30) (undo-tree-id175 . 5) (undo-tree-id176 . -31) (undo-tree-id177 . -31) (undo-tree-id178 . -31) (undo-tree-id179 . -37) (undo-tree-id180 . -54) (undo-tree-id181 . -52) (undo-tree-id182 . -48) (undo-tree-id183 . 2) (undo-tree-id184 . -53) (undo-tree-id185 . 52) (undo-tree-id186 . -3) 62148) nil (25457 29430 398077 381000) 0 nil])
 nil

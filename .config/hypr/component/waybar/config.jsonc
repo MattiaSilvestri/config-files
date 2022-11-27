@@ -156,7 +156,7 @@
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
         "on-click": "kitty -e sudo pacman -Syyu", // update system
         "signal": 8,
-        "max-length": 5,
+        "max-length": 8,
         "min-length": 3
     },
     "custom/weather": {

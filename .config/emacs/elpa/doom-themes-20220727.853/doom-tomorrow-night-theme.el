@@ -15,8 +15,8 @@ determine the exact padding."
   "A theme based off of Chris Kempson's Tomorrow Dark."
 
   ;; name        gui       256       16
-  ((bg         '("#202231" nil       nil          ))
-   (bg-alt     '("#252e39" nil       nil          ))
+  ((bg         '("#181c26" nil       nil          ))
+   (bg-alt     '("#181c26" nil       nil          ))
    (base0      '("#0d0d0d" "black"   "black"      ))
    (base1      '("#1b1b1b" "#1b1b1b"              ))
    (base2      '("#212122" "#1e1e1e"              ))
@@ -26,21 +26,21 @@ determine the exact padding."
    (base6      '("#757878" "#6b6b6b" "brightblack"))
    (base7      '("#969896" "#979797" "brightblack"))
    (base8      '("#ffffff" "#ffffff" "white"      ))
-   (fg         '("#EBDBB2" "#c5c5c5" "white"))
+   (fg         '("#abb2bf" "#c5c5c5" "white"))
    ;; (fg         '("#dfdfdf" "#c5c5c5" "white"))
    (fg-alt     (doom-darken fg 0.4))
 
    (grey       '("#5a5b5a" "#5a5a5a" "brightblack"))
-   (red        '("#cc6666" "#cc6666" "red"))
+   (red        '("#e06c75" "#e06c75" "red"))
    (orange     '("#de935f" "#dd9955" "brightred"))
    (yellow     '("#f0c674" "#f0c674" "yellow"))
-   (green      '("#b5bd68" "#b5bd68" "green"))
-   (blue       '("#81a2be" "#88aabb" "brightblue"))
+   (green      '("#89b06d" "#89b06d" "green"))
+   (blue       '("#90c7f3" "#90c7f3" "brightblue"))
    (dark-blue  '("#41728e" "#41728e" "blue"))
    (teal       blue) ; FIXME replace with real teal
-   (magenta    '("#c9b4cf" "#c9b4cf" "magenta"))
-   (violet     '("#b294bb" "#b294bb" "brightmagenta"))
-   (cyan       '("#8abeb7" "#8abeb7" "cyan"))
+   (magenta    '("#d39ede" "#d39ede" "magenta"))
+   (violet     '("#a9a1e1" "#a9a1e1" "brightmagenta"))
+   (cyan       '("#88cbd4" "#88cbd4" "cyan"))
    (dark-cyan  (doom-darken cyan 0.4))
 
    ;; face categories

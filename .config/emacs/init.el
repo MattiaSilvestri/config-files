@@ -95,7 +95,7 @@
 (autopair-global-mode 1)
 ;(global-auto-complete-mode t)
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#2e2f3e")
+(set-face-background 'hl-line "#22232e")
 (global-display-line-numbers-mode)
 (show-paren-mode 1)
 (rainbow-delimiters-mode 1)
@@ -129,6 +129,8 @@
 
 ;; Org-mode
 (setq org-src-preserve-indentation t)
+(setq org-edit-src-content-indentation 0)
+(setq org-image-actual-width nil)
 ;; (setq org-startup-folded nil)
 
 ;; Org-Roam
@@ -181,6 +183,8 @@
 			(if (fboundp 'project-roots)
 					(car (project-roots project))
 				(project-root project)))))
+
+(setq confirm-kill-processes nil)
 
    ;; (if (get 'project-roots 'byte-obsolete-info)
    ;;     'project-root
@@ -270,6 +274,23 @@
 		(format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://ndossougbe.github.io/strapdown/dist/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
 	(current-buffer)))
 
+ (defun nf-compile-current-c/c++-file ()
+    "Compiles a C/C++ file on the fly."
+    (interactive)
+    (let* ((clang-choices '(("c" . "clang") ("cpp" . "clang++")))
+	   (filename (file-name-nondirectory buffer-file-name))
+	   (file-ext (file-name-extension buffer-file-name))
+	   (compile-choice (cdr (assoc file-ext clang-choices))))
+      (compile (concat compile-choice " -Wall " filename " -o " (file-name-sans-extension filename)))))
+
+(defun nf-run-exec-file ()
+    "Runs an executable file named after the buffer if it exists."
+    (interactive)
+    (if (file-executable-p (file-name-sans-extension buffer-file-name))
+	(async-shell-command
+	 (concat "./" (file-name-nondirectory (file-name-sans-extension buffer-file-name))))))
+
+
 ;; Keybingings -----------------------------------------------------
 ;Set super as meta key
 ;; (setq  x-meta-keysym 'super
@@ -295,6 +316,9 @@
 (global-set-key (kbd "C-w l") 'windmove-right)
 (global-set-key (kbd "C-w j") 'windmove-down)
 (global-set-key (kbd "C-w k") 'windmove-up)
+(global-set-key (kbd "C-c g") 'nf-compile-current-c/c++-file)
+(global-set-key (kbd "C-c r g") 'nf-run-exec-file)
+(global-set-key (kbd "C-c v") 'org-download-clipboard)
 ;; (bind-keys :map global-map
 ;; 						:prefix "C-w"
 ;; 						:prefix-map my-prefix-map
@@ -329,7 +353,7 @@
   :init (which-key-mode)
   :diminish which-key-mode
   :config
-  (setq which-key-idle-delay 0))
+  (setq which-key-idle-delay 1.0))
 
 (use-package ivy
   :demand t
@@ -489,6 +513,10 @@
   :after evil
   :config
   (evil-collection-init))
+
+;; Disable evil in magit.
+;; (eval-after-load 'evil-core
+;;   '(evil-set-initial-state 'magit-popup-mode 'emacs))
 
 (use-package lsp-mode
   :init
@@ -844,6 +872,7 @@ If all failed, try to complete the common part with `company-complete-common'"
 '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
 '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
 )
+(require 'org-download)
 ;; Old org mode config ------------------------------------------------
 ;; (use-package org
 ;; 	:hook (org-mode . dw/org-mode-setup)
@@ -1431,6 +1460,34 @@ If all failed, try to complete the common part with `company-complete-common'"
    ("M-e" . dirvish-emerge-menu)
    ("M-j" . dirvish-fd-jump)))
 
+;; (use-package cc-mode
+;;   :ensure nil
+;;   :config
+;;   (defun nf-compile-current-c/c++-file ()
+;;     "Compiles a C/C++ file on the fly."
+;;     (interactive)
+;;     (let* ((clang-choices '(("c" . "clang") ("cpp" . "clang++")))
+;; 	   (filename (file-name-nondirectory buffer-file-name))
+;; 	   (file-ext (file-name-extension buffer-file-name))
+;; 	   (compile-choice (cdr (assoc file-ext clang-choices))))
+;;       (compile (concat compile-choice " -Wall " filename " -o " (file-name-sans-extension filename))))))
+
+;;   (defun nf-run-exec-file ()
+;;     "Runs an executable file named after the buffer if it exists."
+;;     (interactive)
+;;     (if (file-executable-p (file-name-sans-extension buffer-file-name))
+;; 	(async-shell-command
+;; 	 (concat "./" (file-name-nondirectory (file-name-sans-extension buffer-file-name))))))
+
+;;   :bind ((:map c++-mode-map
+;; 	       ("C-c C-c" . nf-compile-current-c/c++-file)
+;; 	       ("C-c e" . nf-run-exec-file))
+;; 	 (:map c-mode-map
+;; 	       ("C-c C-c" . nf-compile-current-c/c++-file)
+;; 	       ("C-c e" . nf-run-exec-file))
+;; 	 (:map c-mode-base-map
+;;     	       ("C-c C-r" . recompile)))
+
 ;; ;; EXWM Configuration -----------------------------
 (defun efs/exwm-update-class ()
   (exwm-workspace-rename-buffer exwm-class-name))
@@ -1563,7 +1620,7 @@ If all failed, try to complete the common part with `company-complete-common'"
 		 ("\\.x?html?\\'" . default)
 		 ("\\.pdf\\'" . "okular %s")))
  '(package-selected-packages
-	 '(vterm impatient-mode svg-clock iceberg-theme good-scroll sublimity minimap org-ref-prettify org-ref dirvish company-org-block elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
+	 '(quickrun vterm impatient-mode svg-clock iceberg-theme good-scroll sublimity minimap org-ref-prettify org-ref dirvish company-org-block elpy ein jupyter markdown-preview-mode all-the-icons-ivy-rich deadgrep svg-tag-mode svg-lib spaceline-config sourcerer-theme soft-charcoal-theme smyx-theme color-theme-sanityinc-tomorrow railscasts-reloaded-theme railscasts-theme peacock-theme panda-theme obsidian-theme northcode-theme noctilux-theme mellow-theme mbo70s-theme jazz-theme idea-darkula-theme hamburg-theme gruvbox-theme darktooth-theme vscdark-theme dream-theme darkburn-theme dakrone-theme creamsody-theme challenger-deep-theme caroline-theme base16-theme avk-emacs-themes twilight-theme kaolin-themes spaceline sql-indent emacsql-mysql emacsql-psql sqlite3 emacsql-libsqlite3 org-roam-ui pdf-tools pdf-continuous-scroll-mode quelpa project-root magithub treemacs-magit magit treemacs-projectile dap-mode ivy-posframe mini-frame ipython-shell-send mixed-pitch setup atom-one-dark-theme ujelly-theme sr-speedbar dashboard projectile page-break-lines helm buffer-move exwm yasnippet-classic-snippets zones graphviz-dot-mode rainbow-mode org-roam deft org-tree-slide ranger company-box ivy-bibtex company-bibtex auto-dictionary auctex-latexmk company-auctex auctex latex-math-preview latex-preview-pane lsp-latex latex-unicode-math-mode textx-mode lsp-treemacs flycheck multiple-cursors treemacs-evil treemacs helpful lsp-pyright python-mode centaur-tabs workgroups persp-mode tabbar visual-fill-column visual-fill org-superstar org-bullets unicode-fonts highlight-indent-guides highlight-indentation company-lua luarocks lua-mode lsp-jedi company-quickhelp lsp-ui ess auto-complete matlab-mode evil-collection autopair undo-tree evil general which-key rainbow-delimiters nlinum-relative all-the-icons doom-modeline counsel use-package ivy))
  '(pdf-view-midnight-colors (cons "#F6F3E8" "#171717"))
  '(pos-tip-background-color "#1A3734")
  '(pos-tip-foreground-color "#FFFFC8")
@@ -1615,7 +1672,7 @@ If all failed, try to complete the common part with `company-complete-common'"
  '(lsp-face-highlight-write ((t (:background "color" :foreground "color"))))
  '(lsp-ui-doc-background ((t (:background nil))))
  '(lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic)))))
- '(org-block ((t (:inherit fixed-pitch))))
+ '(org-block ((t (:inherit fixed-pitch :background "#28313d" :extend t))))
  '(org-code ((t (:inherit (shadow fixed-pitch)))))
  '(org-document-info ((t (:foreground "dark orange"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))

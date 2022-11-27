@@ -11,7 +11,7 @@ maps.n["<leader>q"] = { "<cmd>q<cr>", desc = "Quit" }
 maps.n["<leader>h"] = { "<cmd>nohlsearch<cr>", desc = "No Highlight" }
 maps.n["<leader>fn"] = { "<cmd>enew<cr>", desc = "New File" }
 maps.n["gx"] = { function() astronvim.url_opener() end, desc = "Open the file under cursor with system app" }
-maps.n["<C-s>"] = { "<cmd>w!<cr>", desc = "Force write" }
+-- maps.n["<C-s>"] = { "<cmd>w!<cr>", desc = "Force write" }
 maps.n["<C-q>"] = { "<cmd>q!<cr>", desc = "Force quit" }
 maps.n["Q"] = "<Nop>"
 
@@ -83,7 +83,7 @@ if is_available "neovim-session-manager" then
   maps.n["<leader>Sd"] = { "<cmd>SessionManager! delete_session<cr>", desc = "Delete session" }
   maps.n["<leader>Sf"] = { "<cmd>SessionManager! load_session<cr>", desc = "Search sessions" }
   maps.n["<leader>S."] =
-    { "<cmd>SessionManager! load_current_dir_session<cr>", desc = "Load current directory session" }
+  { "<cmd>SessionManager! load_current_dir_session<cr>", desc = "Load current directory session" }
 end
 
 -- Package Manager
@@ -147,12 +147,12 @@ if is_available "telescope.nvim" then
   maps.n["<leader>fm"] = { function() require("telescope.builtin").marks() end, desc = "Search marks" }
   maps.n["<leader>fo"] = { function() require("telescope.builtin").oldfiles() end, desc = "Search history" }
   maps.n["<leader>fc"] =
-    { function() require("telescope.builtin").grep_string() end, desc = "Search for word under cursor" }
+  { function() require("telescope.builtin").grep_string() end, desc = "Search for word under cursor" }
   maps.n["<leader>sb"] = { function() require("telescope.builtin").git_branches() end, desc = "Git branches" }
   maps.n["<leader>sh"] = { function() require("telescope.builtin").help_tags() end, desc = "Search help" }
   maps.n["<leader>sm"] = { function() require("telescope.builtin").man_pages() end, desc = "Search man" }
   maps.n["<leader>sn"] =
-    { function() require("telescope").extensions.notify.notify() end, desc = "Search notifications" }
+  { function() require("telescope").extensions.notify.notify() end, desc = "Search notifications" }
   maps.n["<leader>sr"] = { function() require("telescope.builtin").registers() end, desc = "Search registers" }
   maps.n["<leader>sk"] = { function() require("telescope.builtin").keymaps() end, desc = "Search keymaps" }
   maps.n["<leader>sc"] = { function() require("telescope.builtin").commands() end, desc = "Search commands" }
@@ -168,7 +168,7 @@ if is_available "telescope.nvim" then
     desc = "Search symbols",
   }
   maps.n["<leader>lG"] =
-    { function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Search workspace symbols" }
+  { function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Search workspace symbols" }
   maps.n["<leader>lR"] = { function() require("telescope.builtin").lsp_references() end, desc = "Search references" }
   maps.n["<leader>lD"] = { function() require("telescope.builtin").diagnostics() end, desc = "Search diagnostics" }
 end

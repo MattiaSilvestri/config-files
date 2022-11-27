@@ -1,6 +1,7 @@
 ((dirvish-dispatch nil)
- (magit-commit
-	("--all"))
+ (magit-branch nil)
+ (magit-commit nil
+							 ("--all"))
  (magit-diff
 	(("--" "SomeAttempts/DataOverview.ipynb")
 	 "--no-ext-diff" "--stat")
