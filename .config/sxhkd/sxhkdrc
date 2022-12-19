@@ -1,11 +1,11 @@
 ##---------- Keybindings for bspwm ----------##
 
 # Terminal (termite)
-super + t
+super + Return
 	kitty 
 
 # Floating terminal
-super + shift + t
+super + shift + Return
 	kitty -e tmux
 
 ##---------- Rofi Launcher & Menus ----------##

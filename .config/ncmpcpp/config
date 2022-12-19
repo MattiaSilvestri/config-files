@@ -4,8 +4,8 @@ mpd_host = localhost
 mpd_port = 6600
 # mpd_password = ""
 mpd_connection_timeout = 5
-mpd_music_dir = /run/media/mattia/Elements/MUSICA
-# mpd_music_dir = /run/media/mattia/4T/MUSICA
+# mpd_music_dir = /run/media/mattia/Elements/MUSICA
+mpd_music_dir = /mnt/Data/Music
 
 mpd_crossfade_time = 5
 

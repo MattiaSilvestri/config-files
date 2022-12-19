@@ -48,8 +48,8 @@
 @define-color temp #332E41;
 @define-color layout #5e81ac;
 @define-color battery #332E41;
-@define-color date #332E41;
-@define-color time #332E41;
+@define-color date #96CDFB;
+@define-color time #96CDFB;
 @define-color backlight #332E41;
 @define-color nord_bg #332E41;
 @define-color nord_bg_blue #332E41;
@@ -62,15 +62,15 @@
 /* Reset all styles */
 * {
     border: none;
-    border-radius: 3px;
+    border-radius: 15px;
     min-height: 0;
     margin: 0.1em 0.2em 0.1em 0.2em;
 }
 
 /* The whole bar */
 #waybar {
-    background: @bg;
-    color: @light;
+    background-color: @bg;
+    /* color: @light; */
     font-family: "Cantarell", "Font Awesome 5 Pro";
     font-size: 12px;
     font-weight: normal;
@@ -102,14 +102,12 @@
 /* Each module that should blink */
 #mode,
 #memory,
-#temperature,
 #battery {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 		margin-left: 0px;
-		margin-right: 0px;
-		border-radius: 0px 0px 0px 0px;
+		border-radius: 0px 15px 15px 0px;
 		background: @status;
 }
 
@@ -240,9 +238,9 @@
 }
 #temperature {
     background-color: @status;
+    margin-right: 0px;
     color: #D8DEE9;
-		margin-right: 0px;
-		border-radius: 3px 0px 0px 3px;
+		border-radius: 15px 0px 0px 15px;
 }
 #temperature.critical {
     background:  @critical;
@@ -254,7 +252,7 @@
 #backlight {
     background: @status;
 	margin-left: 0px;
-	border-radius: 0px 3px 3px 0px;
+	border-radius: 0px 15px 15px 0px;
 }
 
 #clock {
@@ -273,8 +271,7 @@
     background: @status;
     color: #D8DEE9;
 		margin-right: 0px;
-		margin-left: 0px;
-		border-radius: 0px 0px 0px 0px;
+		border-radius: 15px 0px 0px 15px;
 }
 
 #pulseaudio.muted {
@@ -326,14 +323,14 @@
 @define-color col_border_solid rgba(120, 120, 120, 1);
 @define-color col_border_trans rgba(120, 120, 120, 0);
 
-#waybar > box:nth-child(2) > box:nth-child(3) > * > label {
-  padding: 0 10px;
-}
+/* #waybar > box:nth-child(2) > box:nth-child(3) > * > label { */
+/*   padding: 0 10px; */
+/* } */
 
 #pulseaudio {
-	background-image:
-		linear-gradient(@col_border_solid 65%, @col_border_solid 55%)
-	;
+	/* background-image: */
+	/* 	linear-gradient(@col_border_solid 65%, @col_border_solid 55%) */
+	/* ; */
 	background-size:1px 60%;
 	background-position:0 50%;
 	background-repeat:no-repeat;

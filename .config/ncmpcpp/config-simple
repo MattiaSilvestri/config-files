@@ -4,7 +4,7 @@ mpd_host = localhost
 mpd_port = 6600
 # mpd_password = ""
 mpd_connection_timeout = 5
-mpd_music_dir = /run/media/mattia/Elements/MUSICA
+mpd_music_dir = /mnt/Data/Music
 # mpd_music_dir = /run/media/mattia/4T/MUSICA
 
 mpd_crossfade_time = 5
@@ -90,7 +90,7 @@ song_status_format = "$b $8%A $8•$3• $3%t $3•$5• $5%b $5•$2• $2%y"
 playlist_display_mode = "classic" (classic/columns)
 search_engine_display_mode = classic
 playlist_editor_display_mode = classic
-playlist_separate_albums = yes
+playlist_separate_albums = no
 progressbar_look = "▂▂▂"
 
 ## Available values: database, playlist.

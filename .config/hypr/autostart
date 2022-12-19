@@ -34,3 +34,6 @@ nm-tray &
 
 # Megasync
 megasync &
+
+# Blue-light filter
+wlsunset &
