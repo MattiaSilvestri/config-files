@@ -1,1 +1,1 @@
-{"class": "none", "text": ""}
+{"class": "playing", "text": "Red Hot Chili Peppers - I'm with You - Did I Let You Know (02:59/04:22) ", "tooltip": "Did I Let You Know\nby Red Hot Chili Peppers\nfrom I'm with You\n(spotify)"}

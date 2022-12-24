@@ -333,7 +333,7 @@ ex ()
 
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
-macchina
+nitch
 TERM=xterm-kitty
 . /home/mattia/.config/ranger/plugins/z/z.sh
 
@@ -346,6 +346,7 @@ export PATH="/usr/bin/vendor_perl:$PATH"
 export PATH="/usr/bin/core_perl:$PATH"
 export PATH="/home/mattia/.local/share/gem/ruby/3.0.0/bin:$PATH"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+export QT_QPA_PLATFORM=wayland
 
 export EDITOR=nvim
 
