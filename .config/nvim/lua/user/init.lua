@@ -207,18 +207,22 @@ local config = {
                         ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
                         ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
                         ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-                        ["<leader>mc"] = { "<cmd>!g++ -o %< %<cr>", desc = "Compile C++ code" },
+                        ["<leader>mc"] = { "<cmd>!g++ -std=c++20 -fmodules-ts -o %< %<cr>", desc = "Compile C++ code" },
                         ["<leader>mr"] = { "<cmd>!%<<cr>", desc = "Run C++ code" },
                         ["<leader>r"] = { "<cmd>Ranger<cr>", desc = "Open Ranger file manager" },
                         ["<leader>ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope fuzzy find" },
                         ["<C-s>"] = { "<cmd>Swoop<cr>i", desc = "Swoop finder" },
                         ["<S-s>"] = { "<cmd>bd! swoopBuf<cr>", desc = "Close swoop buffer" },
+                        ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
                         --quick save
                         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
                 },
                 t = {
                         -- setting a mapping to false will disable it
                         -- ["<esc>"] = false,
+                },
+                v = {
+                        ["p"] = { "\"0p", desc = "Normal paste" },
                 },
         },
 
@@ -236,6 +240,7 @@ local config = {
                         { "pelodelfuego/vim-swoop" },
                         { "mg979/vim-visual-multi" },
                         { "tpope/vim-surround" },
+                        { "folke/trouble.nvim" },
                         -- {
                         --   "ray-x/lsp_signature.nvim",
                         --   event = "BufRead",

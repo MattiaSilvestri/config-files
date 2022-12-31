@@ -2,6 +2,7 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
+		"margin-bottom": 0,
     // Archived modules
     // "custom/gpu", "bluetooth",  "custom/weather", "temperature", "sway/window"
     // Choose the order of the modules
@@ -44,26 +45,26 @@
 		"backlight": {
 			"on-scroll-up": "brightness.sh up",
 			"on-scroll-down": "brightness.sh down",
-			"format": "<span foreground='#EBDDAA'>{icon}</span> {percent}%",
+			"format": "{icon} {percent}%",
 			"format-icons": {
 						"default": ["", "", ""]
 			},
 		},
-		"battery": {
-					"states": {
-							"warning": 30,
-							"critical": 15,
-						},
-					"format": "<span size='13000' foreground='#00B19F'>{icon}</span> {capacity}%",
-					"format-warning": "<span size='13000' foreground='#EC407A'>{icon} </span>{capacity}%",
-					"format-critical": "<span size='13000' foreground='#EC407A'>{icon} </span>{capacity}%",
-					"format-charging": "<span size='13000' foreground='#78866b'></span> {capacity}%",
-					"format-plugged": "<span size='13000' foreground='#78866b'></span> {capacity}%",
-					"format-alt": "<span size='13000' foreground='#78866b'>{icon}</span> {time}",
-					"format-full": "<span size='13000' foreground='#78866b'></span> {capacity}%",
-						"format-icons": ["", "", "", "", ""],
-							"tooltip-format": "{time}"
-		},
+	"battery": {
+				"states": {
+						"warning": 30,
+						"critical": 15,
+					},
+				"format": "{icon} {capacity}%",
+				"format-warning": "{icon} {capacity}%",
+				"format-critical": "{icon} {capacity}%",
+				"format-charging": " {capacity}%",
+				"format-plugged": " {capacity}%",
+				"format-alt": "{icon} {time}",
+				"format-full": " {capacity}%",
+					"format-icons": ["", "", "", "", ""],
+						"tooltip-format": "{time}"
+	},
     "bluetooth": {
         "interval": 30,
         "format": "{icon}",
@@ -119,7 +120,7 @@
     "network": {
         // "interface": "wlan0", // (Optional) To force the use of this interface,
         "format-wifi": "   {essid}",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-ethernet": "Connected  ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "",
         "family": "ipv4",
@@ -150,13 +151,13 @@
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
     },
     "custom/pacman": {
-        "format": "<big> </big>  {}",
+        "format": "<big>    Updates:</big>  {}",
         "interval": 3600,                     // every hour
         "exec": "checkupdates | wc -l",       // # of updates
         "exec-if": "exit 0",                  // always run; consider advanced run conditions
         "on-click": "kitty -e sudo pacman -Syyu", // update system
         "signal": 8,
-        "max-length": 8,
+        "max-length": 25,
         "min-length": 3
     },
     "custom/weather": {
