@@ -42,23 +42,31 @@
 @define-color workspacesfocused #ca9ee6;
 @define-color tray 	#414559;
 @define-color sound #EBCB8B;
-@define-color network #332E41;
+@define-color sound_fg #a6d189;
+@define-color network transparent;
 @define-color memory #546484;
 @define-color cpu #332E41;
 @define-color temp #332E41;
-@define-color controls #a6d189;
+@define-color temp_fg #e5c890;
+@define-color controls transparent;
 @define-color battery #332E41;
-@define-color date #99d1db;
+@define-color battery_fg #e5c890;
+@define-color date transparent;
+@define-color date_fg #99d1db;
 @define-color time	#81c8be;
+@define-color time_fg	#81c8be;
 @define-color backlight #332E41;
+@define-color backlight_fg #a6d189;
 @define-color nord_bg #332E41;
 @define-color nord_bg_blue #332E41;
 @define-color nord_light #D8DEE9;
 @define-color nord_light_font #D8DEE9;
-@define-color nord_dark_font #292c3c;
-@define-color status #e5c890;
-@define-color network #81c8be;
-@define-color pacman #e78284;
+@define-color nord_dark_font #D8DEE9;
+@define-color status transparent;
+@define-color network transparent;
+@define-color network_fg #81c8be;
+@define-color pacman transparent;
+@define-color pacman_fg #e78284;
 
 /* Reset all styles */
 * {
@@ -70,7 +78,7 @@
 
 /* The whole bar */
 #waybar {
-    background-color: transparent;
+    background-color: #1f2329;
     /* color: @light; */
     font-family: "Cantarell", "Font Awesome 5 Pro";
     font-size: 12px;
@@ -115,7 +123,7 @@
 		margin-left: 0px;
 		border-radius: 0px 15px 15px 0px;
 		background: @status;
-		color: @nord_dark_font;
+		color: @battery_fg;
 }
 
 /* Each critical module */
@@ -189,7 +197,7 @@
 }
 #custom-pacman {
     background: @pacman;
-    color: @nord_dark_font;
+    color: @pacman_fg;
     font-weight: bold;
 }
 #custom-scratchpad-indicator {
@@ -210,7 +218,7 @@
 
 #network {
     background: @network;
-		color: @nord_dark_font;
+    color: @network_fg;
 }
 
 #memory {
@@ -241,7 +249,7 @@
 #temperature {
     background-color: @status;
     margin-right: 0px;
-    color: @nord_dark_font;
+    color: @temp_fg;
 		border-radius: 15px 0px 0px 15px;
 }
 #temperature.critical {
@@ -253,9 +261,9 @@
 
 #backlight {
   background: @controls;
-	margin-left: 0px;
-	border-radius: 0px 15px 15px 0px;
-	color: @nord_dark_font;
+  margin-left: 0px;
+  border-radius: 0px 15px 15px 0px;
+  color: @backlight_fg;
 }
 
 #clock {
@@ -264,15 +272,17 @@
 }
 #clock.date {
     background: @date;
+    color: @date_fg;
 }
 
 #clock.time {
     background: @mode;
+    color: @time_fg;
 }
 
 #pulseaudio { /* Unsused but kept for those who needs it */
     background: @controls;
-    color: @nord_dark_font;
+    color: @sound_fg;
 		margin-right: 0px;
 		border-radius: 15px 0px 0px 15px;
 }
