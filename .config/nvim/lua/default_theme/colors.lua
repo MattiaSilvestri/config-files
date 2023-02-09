@@ -1,7 +1,7 @@
 local colors = {
   none = "NONE",
   fg = "#abb2bf",
-  bg = "#181c26",
+  bg = "#1e222a",
   bg_1 = "#303742",
   black = "#181a1f",
   black_1 = "#1f1f25",
@@ -76,6 +76,7 @@ local colors = {
   woff2 = "#abb2bf",
   zip = "#f9d71c",
   md = "#519aba",
+  pkg = "#d39ede",
 }
 
 return astronvim.user_plugin_opts("default_theme.colors", colors)

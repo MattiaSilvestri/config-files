@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'catppuccin)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -79,7 +79,7 @@
 ;; Personal config
 
 ;; Fonts
-(set-face-attribute 'default nil :font "RobotoMono Nerd Font" :height 120)
+(set-face-attribute 'default nil :font "RobotoMono Nerd Font" :height 110)
 (set-fontset-font "fontset-default" '(#x5d0 . #x5ff) "all-the-icons")
 
 ;; Globals ------------------------------------------------------------------
@@ -98,6 +98,29 @@
 
 (setq-default truncate-lines t)
 (global-page-break-lines-mode t)
+
+;; LSP
+;; (setq lsp-idle-delay 0)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+;; Functions ------------------------------------------------------------------
+ (defun nf-compile-current-c/c++-file ()
+    "Compiles a C/C++ file on the fly."
+    (interactive)
+    (let* ((clang-choices '(("c" . "clang") ("cpp" . "clang++")))
+	   (filename (file-name-nondirectory buffer-file-name))
+	   (file-ext (file-name-extension buffer-file-name))
+	   (compile-choice (cdr (assoc file-ext clang-choices))))
+      (compile (concat compile-choice " -Wall " filename " -o " (file-name-sans-extension filename)))))
+
+(defun nf-run-exec-file ()
+    "Runs an executable file named after the buffer if it exists."
+    (interactive)
+    (if (file-executable-p (file-name-sans-extension buffer-file-name))
+	(async-shell-command
+	 (concat "./" (file-name-nondirectory (file-name-sans-extension buffer-file-name))))))
+
+(global-set-key (kbd "C-c C-m") 'nf-compile-current-c/c++-file)
 
 ;; ------------------------------------------------------------------------------
 ;; Packages
@@ -172,34 +195,16 @@
   (setq lsp-headerline-breadcrumb-enable t)
   (setq lsp-headerline-breadcrumb-segments '(project file symbols))
   (setq lsp-headerline-breadcrumb-icons-enable t)
-	(setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-enable-symbol-highlighting nil)
+
   :defer t
-  :commands lsp
-  :custom
-  (lsp-auto-guess-root nil)
-  (lsp-prefer-flymake nil) ; Use flycheck instead of flymake
-  (lsp-file-watch-threshold 2000)
-  (read-process-output-max (* 1024 1024))
-  (lsp-eldoc-hook nil)
-  :custom-face
-  (lsp-face-highlight-read ((t (:underline t :background "color" :foreground "color"))))
-  (lsp-face-highlight-write ((t (:background "color" :foreground "color"))))
-  (lsp-face-highlight-textual ((t (:underline t :background "color" :foreground "color"))))
-  ;; :config
-  ;; (setq lsp-diagnostics-provider :none)
-  :bind (:map lsp-mode-map
-	      ("C-c C-f" . lsp-format-buffer)
-	      ("C-l f" . lsp-find-references)
-				("C-c t s" . lsp-treemacs-symbols)
-	      ("C-l r" . lsp-rename))
   :hook
-	((LaTex-mode latex-mode java-mode python-mode go-mode js-mode js2-mode typescript-mode web-mode
-          c-mode c++-mode objc-mode ess-r-mode css-mode mhtml-mode) . lsp)
-  ((lsp-mode matlab-mode pyton-mode ess-r-mode) . (lambda()
-								(auto-fill-mode 1)
-								(auto-complete-mode 1)
-								(emmet-mode 1)
-								(display-fill-column-indicator-mode 1)))) ; Display vertical line (guides) at 80th position.
+  ((lsp-mode) . (lambda()
+                        (auto-fill-mode 1)
+                        ;; (auto-complete-mode 1)
+                        (emmet-mode 1)
+                        (display-fill-column-indicator-mode 1))) ; Display vertical line (guides) at 80th position.
+)
 
 (use-package! org-roam
       :ensure t
@@ -376,3 +381,82 @@
    ("M-s" . dirvish-setup-menu)
    ("M-e" . dirvish-emerge-menu)
    ("M-j" . dirvish-fd-jump)))
+
+;; SVG-tags
+(require 'svg-tag-mode)
+
+(defconst date-re "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}")
+(defconst time-re "[0-9]\\{2\\}:[0-9]\\{2\\}")
+(defconst day-re "[A-Za-z]\\{3\\}")
+
+(defun svg-progress-percent (value)
+  (svg-image (svg-lib-concat
+              (svg-lib-progress-bar (/ (string-to-number value) 100.0)
+                                nil :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+              (svg-lib-tag (concat value "%")
+                           nil :stroke 0 :margin 0)) :ascent 'center))
+
+(defun svg-progress-count (value)
+  (let* ((seq (mapcar #'string-to-number (split-string value "/")))
+         (count (float (car seq)))
+         (total (float (cadr seq))))
+  (svg-image (svg-lib-concat
+              (svg-lib-progress-bar (/ count total) nil
+                                    :margin 0 :stroke 2 :radius 3 :padding 2 :width 11)
+              (svg-lib-tag value nil
+                           :stroke 0 :margin 0)) :ascent 'center)))
+
+(setq svg-tag-tags
+      `(
+        ;; Org tags
+        (":\\([A-Za-z0-9]+\\)" . ((lambda (tag) (svg-tag-make tag))))
+        (":\\([A-Za-z0-9]+[ \-]\\)" . ((lambda (tag) tag)))
+
+        ;; Task priority
+        ("\\[#[A-Z]\\]" . ( (lambda (tag)
+                              (svg-tag-make tag :face 'org-priority
+                                            :beg 2 :end -1 :margin 0))))
+
+        ;; Progress
+        ("\\(\\[[0-9]\\{1,3\\}%\\]\\)" . ((lambda (tag)
+                                            (svg-progress-percent (substring tag 1 -2)))))
+        ("\\(\\[[0-9]+/[0-9]+\\]\\)" . ((lambda (tag)
+                                          (svg-progress-count (substring tag 1 -1)))))
+
+        ;; TODO / DONE
+        ("TODO" . ((lambda (tag) (svg-tag-make "TODO" :face 'org-todo :inverse t :margin 0))))
+        ("DONE" . ((lambda (tag) (svg-tag-make "DONE" :face 'org-done :margin 0))))
+
+        ;; Citation of the form [cite:@Knuth:1984]
+        ("\\(\\[cite:@[A-Za-z]+:\\)" . ((lambda (tag)
+                                          (svg-tag-make tag
+                                                        :inverse t
+                                                        :beg 7 :end -1
+                                                        :crop-right t))))
+        ("\\[cite:@[A-Za-z]+:\\([0-9]+\\]\\)" . ((lambda (tag)
+                                                (svg-tag-make tag
+                                                              :end -1
+                                                              :crop-left t))))
+        ;; Active date (without day name, with or without time)
+        (,(format "\\(<%s>\\)" date-re) .
+         ((lambda (tag)
+            (svg-tag-make tag :beg 1 :end -1 :margin 0))))
+        (,(format "\\(<%s *\\)%s>" date-re time-re) .
+         ((lambda (tag)
+            (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0))))
+        (,(format "<%s *\\(%s>\\)" date-re time-re) .
+         ((lambda (tag)
+            (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0))))
+
+        ;; Inactive date  (without day name, with or without time)
+         (,(format "\\(\\[%s\\]\\)" date-re) .
+          ((lambda (tag)
+             (svg-tag-make tag :beg 1 :end -1 :margin 0 :face 'org-date))))
+         (,(format "\\(\\[%s *\\)%s\\]" date-re time-re) .
+          ((lambda (tag)
+             (svg-tag-make tag :beg 1 :inverse nil :crop-right t :margin 0 :face 'org-date))))
+         (,(format "\\[%s *\\(%s\\]\\)" date-re time-re) .
+          ((lambda (tag)
+             (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0 :face 'org-date))))))
+
+(svg-tag-mode t)

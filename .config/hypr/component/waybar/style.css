@@ -5,8 +5,7 @@
     }
 
     to {
-        color: @light;
-        background-color: @warning;
+        color: @warning;
     }
 }
 
@@ -16,8 +15,7 @@
     }
 
     to {
-        color: @light;
-        background-color: @critical;
+        color: @critical;
     }
 }
 
@@ -39,7 +37,7 @@
 /*@define-color workspaces @bg;*/
 /*@define-color workspaces @nord_dark_font;*/
 /*@define-color workspacesfocused #434C5E;*/
-@define-color workspacesfocused #ca9ee6;
+@define-color workspacesfocused #332E41;
 @define-color tray 	#414559;
 @define-color sound #EBCB8B;
 @define-color sound_fg #a6d189;
@@ -78,7 +76,7 @@
 
 /* The whole bar */
 #waybar {
-    background-color: #1f2329;
+    background-color: #181C26;
     /* color: @light; */
     font-family: "Cantarell", "Font Awesome 5 Pro";
     font-size: 12px;
@@ -149,8 +147,8 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning {
-    background: @warning;
-    color: @nord_dark_font;
+    animation-name: blink-warning;
+    animation-duration: 2s;
 }
 
 /* Each warning that should blink */
@@ -250,10 +248,10 @@
     background-color: @status;
     margin-right: 0px;
     color: @temp_fg;
-		border-radius: 15px 0px 0px 15px;
+    border-radius: 15px 0px 0px 15px;
 }
 #temperature.critical {
-    background:  @critical;
+    background:  transparent;
 }
 #custom-layout {
     background: @layout;
@@ -304,7 +302,8 @@
     margin-top: 0px;
     margin-bottom: 0px;
     font-weight: bold;
-		padding-bottom: 0px;
+    padding-bottom: 0px;
+    color: @nord_light;
 }
 
 #workspaces button{
@@ -315,7 +314,6 @@
 
 #workspaces button.active{
 		background: @workspacesfocused;
-		color: @bg;
 }
 
 #taskbar {
