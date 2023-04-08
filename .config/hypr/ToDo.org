@@ -1,4 +1,4 @@
-* TODO Hyprland improvements [4/11]
+* TODO Hyprland improvements [5/13]
 
  * [X] Functioning system tray
  * [X] Reload config with two monitors
@@ -8,7 +8,7 @@
  * [ ] Move windows in specific positions without using mouse (like bspwm Shift
  Super m)
  * [ ] Taskbar shows only active windows even in groups
- * [ ] Shadow on top bar
+ * [X] Shadow on top bar
  * [ ] Better previous in ranger
  * [ ] Better dialog windows
  * [X] Use media keys

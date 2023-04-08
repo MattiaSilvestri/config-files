@@ -5,7 +5,6 @@
 -- normal format is "key = value". These also handle array like data structures
 -- where a value with no key simply has an implicit numeric key
 local config = {
-
     -- Configure AstroNvim updates
     updater = {
         remote = "origin", -- remote to use
@@ -24,10 +23,8 @@ local config = {
         --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
         -- },
     },
-
     -- Set colorscheme to use
     colorscheme = "catppuccin",
-
     -- Add highlight groups in any theme
     highlights = {
         -- init = { -- this table overrides highlights in all themes
@@ -37,7 +34,6 @@ local config = {
         --   Normal = { bg = "#000000" },
         -- },
     },
-
     -- set vim options here (vim.<first_key>.<second_key> =  value)
     options = {
         opt = {
@@ -85,7 +81,6 @@ local config = {
         "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
         "    ██   ████   ████   ██ ██      ██",
     },
-
     -- Default theme configuration
     default_theme = {
         -- Modify the color palette for the default theme
@@ -129,13 +124,11 @@ local config = {
             ["which-key"] = true,
         },
     },
-
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-        virtual_text = true,
+        virtual_text = false,
         underline = true,
     },
-
     -- Extend LSP configuration
     lsp = {
         -- enable servers that you already have installed without mason
@@ -156,7 +149,7 @@ local config = {
             disabled = { -- disable formatting capabilities for the listed language servers
                 -- "sumneko_lua",
             },
-            timeout_ms = 1000, -- default format timeout
+            timeout_ms = 50, -- default format timeout
             -- filter = function(client) -- fully override the default formatting function
             --   return true
             -- end
@@ -178,6 +171,17 @@ local config = {
 
         -- Add overrides for LSP server settings, the keys are the name of the server
         ["server-settings"] = {
+            pyright = {
+                settings = {
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            useLibraryCodeForTypes = true,
+                            diagnosticMode = 'openFilesOnly',
+                        },
+                    },
+                },
+            }
             -- example for addings schemas to yamlls
             -- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
             --   settings = {
@@ -192,7 +196,6 @@ local config = {
             -- },
         },
     },
-
     -- Mapping data with "desc" stored directly by vim.keymap.set().
     --
     -- Please use this mappings table to set keyboard mapping since this is the
@@ -225,7 +228,6 @@ local config = {
             ["p"] = { "\"0p", desc = "Normal paste" },
         },
     },
-
     -- Configure plugins
     plugins = {
         init = {
@@ -241,24 +243,40 @@ local config = {
             { "mg979/vim-visual-multi" },
             { "tpope/vim-surround" },
             { "folke/trouble.nvim" },
-            { "catppuccin/nvim", as = "catppuccin",
-                require("catppuccin").setup {
-                    color_overrides = {
-                        all = {
-                            -- base = "#181C26",
-                        }
-                    }
-                }
+            { "catppuccin/nvim" },
+            --{ "catppuccin/nvim", as = "catppuccin",
+            --    require("catppuccin").setup {
+            --        color_overrides = {
+            --            all = {
+            --                -- base = "#181C26",
+            --            }
+            --        }
+            --    }
+            --},
+            { "natecraddock/workspaces.nvim",
+                require("workspaces").setup(),
             },
-            { "ahmedkhalf/project.nvim",
-                config = function()
-                    require("project_nvim").setup {
-                        -- your configuration comes here
-                        -- or leave it empty to use the default settings
-                        -- refer to the configuration section below
-                    }
-                end
-            }
+            -- { "ahmedkhalf/project.nvim",
+            --     config = function()
+            --         require("project_nvim").setup {
+            --             -- your configuration comes here
+            --             -- or leave it empty to use the default settings
+            --             -- refer to the configuration section below
+            --             require('telescope').load_extension('projects'),
+            --             require 'telescope'.extensions.projects.projects {}
+            --         }
+            --     end
+            -- },
+            -- { "nvim-treesitter/nvim-treesitter",
+            --     require("nvim-treesitter").setup({
+            --         sync_root_with_cwd = true,
+            --         respect_buf_cwd = true,
+            --         update_focused_file = {
+            --             enable = true,
+            --             update_root = true
+            --         },
+            --     })
+            -- },
             -- {
             --   "ray-x/lsp_signature.nvim",
             --   event = "BufRead",
@@ -302,7 +320,6 @@ local config = {
             -- ensure_installed = { "prettier", "stylua" },
         },
     },
-
     -- LuaSnip Options
     luasnip = {
         -- Add paths for including more VS Code style snippets in luasnip
@@ -312,7 +329,6 @@ local config = {
             -- javascript = { "javascriptreact" },
         },
     },
-
     -- CMP Source Priorities
     -- modify here the priorities of default cmp sources
     -- higher value == higher priority
@@ -327,7 +343,6 @@ local config = {
             path = 250,
         },
     },
-
     -- Modify which-key registration (Use this with mappings table in the above.)
     ["which-key"] = {
         -- Add bindings which show up as group name
@@ -344,7 +359,6 @@ local config = {
             },
         },
     },
-
     -- This function is run last and is a good place to configuring
     -- augroups/autocommands and custom filetypes also this just pure lua so
     -- anything that doesn't fit in the normal config locations above can go here

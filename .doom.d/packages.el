@@ -23,6 +23,7 @@
 (package! svg-tag-mode)
 (package! lsp-treemacs)
 (package! elpy)
+(package! fancy-dabbrev)
 
 
 ;; To install a package directly from a remote git repo, you must specify a

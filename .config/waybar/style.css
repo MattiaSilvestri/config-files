@@ -69,7 +69,7 @@
 
 /* The whole bar */
 #waybar {
-    background: @bg;
+    background: transparent;
     color: @light;
     font-family: "Cantarell", "Font Awesome 5 Pro";
     font-size: 12px;
@@ -278,13 +278,14 @@
 }
 
 #pulseaudio.muted {
-    background: #BF616A;
-    /*color: #BF616A;*/
+    background: @status;
+    color: #BF616A;
     /* No styles */
+
 }
 #pulseaudio.source-muted {
-    background: #D08770;
-    color: #D8DEE9;
+    background: @status;
+    color: #BF616A;
     /* No styles */
 }
 #tray {

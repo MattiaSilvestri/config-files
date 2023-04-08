@@ -27,7 +27,7 @@
 /* COLORS */
 
 /* Nord */
-@define-color bg #292c3c;
+@define-color bg transparent;
 /*@define-color bg #353C4A;*/
 @define-color light #D8DEE9;
 /*@define-color dark @nord_dark_font;*/
@@ -69,19 +69,19 @@
 /* Reset all styles */
 * {
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     min-height: 0;
-    margin: 0.01em 0.35em 0.35em 0.35em;
+    margin: 0.01em 0.30em 0.30em 0.25em;
 }
 
 /* The whole bar */
 #waybar {
-    background-color: #181C26;
+    background-color: @bg;
     /* color: @light; */
     font-family: "Cantarell", "Font Awesome 5 Pro";
     font-size: 12px;
     font-weight: bold;
-		border-width: 0px 0px 10px 0px;
+		border-width: 0px 0px 8px 0px;
 		border-style: solid;
 		border-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4),
 																	rgba(0,0,0,0)) 0% 0% 70% 0%;
@@ -286,8 +286,8 @@
 }
 
 #pulseaudio.muted {
-    background: #BF616A;
-    /*color: #BF616A;*/
+    background: @bg;
+    color: #BF616A;
     /* No styles */
 }
 #pulseaudio.source-muted {
@@ -296,7 +296,7 @@
     /* No styles */
 }
 #tray {
-    background: @tray;
+    background: @bg;
 }
 #workspaces {
     margin-top: 0px;
@@ -310,10 +310,13 @@
     margin-left: 0.1em;
     margin-right: 0.1em;
 	padding-bottom: 0px;
+    border-radius: 0px;
 }
 
 #workspaces button.active{
-		background: @workspacesfocused;
+	background: @workspacesfocused;
+	padding-bottom: 0px;
+    border-radius: 0px;
 }
 
 #taskbar {
@@ -324,8 +327,8 @@
 #taskbar button {
     margin-left: 0.1em;
     margin-right: 0.1em;
-		border-radius: 0px;
-    padding: 0 5 0 5px;
+	border-radius: 0px;
+    padding: 0 3 0 3px;
 }
 
 #taskbar button.active {

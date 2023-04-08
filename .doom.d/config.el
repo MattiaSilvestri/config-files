@@ -32,7 +32,9 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'catppuccin)
+(setq doom-theme 'doom-one)
+;; (setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
+;; (catppuccin-reload)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -79,7 +81,7 @@
 ;; Personal config
 
 ;; Fonts
-(set-face-attribute 'default nil :font "RobotoMono Nerd Font" :height 110)
+(set-face-attribute 'default nil :font "RobotoMono Nerd Font" :height 120)
 (set-fontset-font "fontset-default" '(#x5d0 . #x5ff) "all-the-icons")
 
 ;; Globals ------------------------------------------------------------------
@@ -98,6 +100,18 @@
 
 (setq-default truncate-lines t)
 (global-page-break-lines-mode t)
+
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#232336")
+(setq company-dabbrev-downcase 0)
+(setq company-idle-delay 0)
+
+(global-fancy-dabbrev-mode 1)
+
+;; LaTex
+;; (setq-default TeX-engine 'xelatex)
+;; (setq latex-run-command "xelatex")
+(setq pdf-latex-command "xelatex")
 
 ;; LSP
 ;; (setq lsp-idle-delay 0)
@@ -121,6 +135,9 @@
 	 (concat "./" (file-name-nondirectory (file-name-sans-extension buffer-file-name))))))
 
 (global-set-key (kbd "C-c C-m") 'nf-compile-current-c/c++-file)
+;; fancy-dabbrev
+(global-set-key (kbd "TAB") 'fancy-dabbrev-expand-or-indent)
+(global-set-key (kbd "<backtab>") 'fancy-dabbrev-backward)
 
 ;; ------------------------------------------------------------------------------
 ;; Packages
@@ -192,10 +209,11 @@
 
 (use-package! lsp-mode
   :init
-  (setq lsp-headerline-breadcrumb-enable t)
+  ;; (setq lsp-headerline-breadcrumb-enable t)
   (setq lsp-headerline-breadcrumb-segments '(project file symbols))
   (setq lsp-headerline-breadcrumb-icons-enable t)
   (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-flycheck-live-reporting nil)
 
   :defer t
   :hook
@@ -203,6 +221,7 @@
                         (auto-fill-mode 1)
                         ;; (auto-complete-mode 1)
                         (emmet-mode 1)
+                        (fancy-dabbrev-mode 1)
                         (display-fill-column-indicator-mode 1))) ; Display vertical line (guides) at 80th position.
 )
 
@@ -233,7 +252,6 @@
   (visual-line-mode 0)
 	(flyspell-mode t)
 	(svg-tag-mode t)
-	(minimap-mode 0)
   (setq evil-auto-indent t)
   )
 
