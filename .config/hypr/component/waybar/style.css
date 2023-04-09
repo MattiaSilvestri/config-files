@@ -63,7 +63,7 @@
 @define-color network #332E41;
 @define-color network_fg #cba6f7;
 @define-color pacman transparent;
-@define-color pacman_fg #e78284;
+@define-color pacman_fg #D8DEE9;
 
 /* Reset all styles */
 * {
