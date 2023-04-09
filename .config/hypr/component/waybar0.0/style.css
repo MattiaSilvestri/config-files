@@ -27,7 +27,7 @@
 /* COLORS */
 
 /* Nord */
-@define-color bg #1e1e2e;
+@define-color bg transparent;
 /*@define-color bg #353C4A;*/
 @define-color light #D8DEE9;
 /*@define-color dark @nord_dark_font;*/
@@ -40,28 +40,29 @@
 @define-color workspacesfocused #332E41;
 @define-color tray 	#414559;
 @define-color sound #EBCB8B;
-@define-color sound_fg #f9e2af;
+@define-color sound_fg #a6d189;
+@define-color network transparent;
 @define-color memory #546484;
 @define-color cpu #332E41;
 @define-color temp #332E41;
-@define-color temp_fg #81c8be;
-@define-color controls #332E41;
+@define-color temp_fg #332E41;
+@define-color controls transparent;
 @define-color battery #332E41;
-@define-color battery_fg #81c8be;
+@define-color battery_fg #e5c890;
 @define-color date transparent;
 @define-color date_fg #99d1db;
 @define-color time	#81c8be;
 @define-color time_fg	#81c8be;
 @define-color backlight #332E41;
-@define-color backlight_fg #f9e2af;
+@define-color backlight_fg #a6d189;
 @define-color nord_bg #332E41;
 @define-color nord_bg_blue #332E41;
 @define-color nord_light #D8DEE9;
 @define-color nord_light_font #D8DEE9;
 @define-color nord_dark_font #D8DEE9;
-@define-color status #332E41;
-@define-color network #332E41;
-@define-color network_fg #cba6f7;
+@define-color status #cba6f7;
+@define-color network transparent;
+@define-color network_fg #81c8be;
 @define-color pacman transparent;
 @define-color pacman_fg #e78284;
 
@@ -70,7 +71,7 @@
     border: none;
     border-radius: 10px;
     min-height: 0;
-    margin: 0em 0.30em 0.30em 0.25em;
+    margin: 0.01em 0.30em 0.30em 0.25em;
 }
 
 /* The whole bar */
@@ -246,7 +247,6 @@
 #temperature {
     background-color: @status;
     margin-right: 0px;
-    padding-right: 0em;
     color: @temp_fg;
     border-radius: 10px 0px 0px 10px;
 }
@@ -260,7 +260,7 @@
 #backlight {
   background: @controls;
   margin-left: 0px;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 15px 15px 0px;
   color: @backlight_fg;
 }
 
@@ -282,22 +282,21 @@
     background: @controls;
     color: @sound_fg;
 		margin-right: 0px;
-		border-radius: 10px 0px 0px 10px;
+		border-radius: 15px 0px 0px 15px;
 }
 
 #pulseaudio.muted {
-    background: @controls;
+    background: @bg;
     color: #BF616A;
     /* No styles */
 }
 #pulseaudio.source-muted {
-    background: @controls;
-    color: #D08770;
+    background: #D08770;
+    color: #D8DEE9;
     /* No styles */
 }
 #tray {
     background: @bg;
-    padding-top: 5px;
 }
 #workspaces {
     margin-top: 0px;
@@ -311,7 +310,6 @@
     margin-left: 0.1em;
     margin-right: 0.1em;
 	padding-bottom: 0px;
-	padding-top: 7px;
     border-radius: 0px;
 }
 
@@ -322,15 +320,15 @@
 }
 
 #taskbar {
+    margin-top: 0px;
     margin-bottom: 0px;
 }
 
 #taskbar button {
     margin-left: 0.1em;
     margin-right: 0.1em;
-    margin-top: 0.1em;
 	border-radius: 0px;
-    padding: 5 3 0 3px;
+    padding: 0 3 0 3px;
 }
 
 #taskbar button.active {

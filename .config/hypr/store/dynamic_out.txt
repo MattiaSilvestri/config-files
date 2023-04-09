@@ -1,1 +1,1 @@
-{"class": "paused", "text": "\u25b6 ", "tooltip": "\n(chromium.instance1771)"}
+{"class": "none", "text": ""}

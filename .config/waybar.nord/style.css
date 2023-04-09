@@ -5,7 +5,8 @@
     }
 
     to {
-        color: @warning;
+        color: @light;
+        background-color: @warning;
     }
 }
 
@@ -15,7 +16,8 @@
     }
 
     to {
-        color: @critical;
+        color: @light;
+        background-color: @critical;
     }
 }
 
@@ -27,7 +29,7 @@
 /* COLORS */
 
 /* Nord */
-@define-color bg #1e1e2e;
+@define-color bg #1E1E28;
 /*@define-color bg #353C4A;*/
 @define-color light #D8DEE9;
 /*@define-color dark @nord_dark_font;*/
@@ -37,53 +39,41 @@
 /*@define-color workspaces @bg;*/
 /*@define-color workspaces @nord_dark_font;*/
 /*@define-color workspacesfocused #434C5E;*/
-@define-color workspacesfocused #332E41;
-@define-color tray 	#414559;
+@define-color workspacesfocused #4C566A;
+@define-color tray @workspacesfocused;
 @define-color sound #EBCB8B;
-@define-color sound_fg #f9e2af;
+@define-color network #332E41;
 @define-color memory #546484;
 @define-color cpu #332E41;
 @define-color temp #332E41;
-@define-color temp_fg #81c8be;
-@define-color controls #332E41;
+@define-color layout #5e81ac;
 @define-color battery #332E41;
-@define-color battery_fg #81c8be;
-@define-color date transparent;
-@define-color date_fg #99d1db;
-@define-color time	#81c8be;
-@define-color time_fg	#81c8be;
+@define-color date #332E41;
+@define-color time #332E41;
 @define-color backlight #332E41;
-@define-color backlight_fg #f9e2af;
 @define-color nord_bg #332E41;
 @define-color nord_bg_blue #332E41;
 @define-color nord_light #D8DEE9;
 @define-color nord_light_font #D8DEE9;
-@define-color nord_dark_font #D8DEE9;
+@define-color nord_dark_font #434C5E;
 @define-color status #332E41;
 @define-color network #332E41;
-@define-color network_fg #cba6f7;
-@define-color pacman transparent;
-@define-color pacman_fg #e78284;
 
 /* Reset all styles */
 * {
     border: none;
-    border-radius: 10px;
+    border-radius: 3px;
     min-height: 0;
-    margin: 0em 0.30em 0.30em 0.25em;
+    margin: 0.1em 0.2em 0.1em 0.2em;
 }
 
 /* The whole bar */
 #waybar {
-    background-color: @bg;
-    /* color: @light; */
+    background: transparent;
+    color: @light;
     font-family: "Cantarell", "Font Awesome 5 Pro";
     font-size: 12px;
     font-weight: normal;
-		border-width: 0px 0px 8px 0px;
-		border-style: solid;
-		border-image: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4),
-																	rgba(0,0,0,0)) 0% 0% 70% 0%;
 		border-radius: 0px;
 }
 
@@ -105,22 +95,22 @@
 #backlight,
 #language,
 #custom-cpugovernor {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    /* box-shadow: rgba(0, 0, 0, 0.500) 2 2 2 1px; */
+    padding-left: 0.6em;
+    padding-right: 0.6em;
 }
 
 /* Each module that should blink */
 #mode,
 #memory,
+#temperature,
 #battery {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 		margin-left: 0px;
-		border-radius: 0px 10px 10px 0px;
+		margin-right: 0px;
+		border-radius: 0px 0px 0px 0px;
 		background: @status;
-		color: @battery_fg;
 }
 
 /* Each critical module */
@@ -146,8 +136,8 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning {
-    animation-name: blink-warning;
-    animation-duration: 2s;
+    background: @warning;
+    color: @nord_dark_font;
 }
 
 /* Each warning that should blink */
@@ -165,17 +155,22 @@
 
 /* Workspaces stuff */
 
+#workspaces {
+ /*   color: #D8DEE9;
+    margin-right: 10px;*/
+}
+
 #workspaces button.urgent {
     border-color: #c9545d;
     color: #c9545d;
     opacity: 1;
 }
 
-/* #window { */
-/*     margin-right: 40px; */
-/*     margin-left: 40px; */
-/*     font-weight: normal; */
-/* } */
+#window {
+    margin-right: 40px;
+    margin-left: 40px;
+    font-weight: normal;
+}
 #bluetooth {
     background: @nord_bg_blue;
     font-size: 1.2em;
@@ -193,9 +188,10 @@
     padding: 0 0.6em;
 }
 #custom-pacman {
-    background: @pacman;
-    color: @pacman_fg;
-    font-weight: normal;
+    background: @nord_light;
+    color: @nord_dark_font;
+    font-weight: bold;
+    padding: 0 0.6em;
 }
 #custom-scratchpad-indicator {
     background: @nord_light;
@@ -215,7 +211,6 @@
 
 #network {
     background: @network;
-    color: @network_fg;
 }
 
 #memory {
@@ -245,96 +240,83 @@
 }
 #temperature {
     background-color: @status;
-    margin-right: 0px;
-    padding-right: 0em;
-    color: @temp_fg;
-    border-radius: 10px 0px 0px 10px;
+    color: #D8DEE9;
+		margin-right: 0px;
+		border-radius: 3px 0px 0px 3px;
 }
 #temperature.critical {
-    background:  @status;
+    background:  @critical;
 }
 #custom-layout {
     background: @layout;
 }
 
 #backlight {
-  background: @controls;
-  margin-left: 0px;
-  border-radius: 0px 10px 10px 0px;
-  color: @backlight_fg;
+    background: @status;
+	margin-left: 0px;
+	border-radius: 0px 3px 3px 0px;
 }
 
 #clock {
-    background: @date;
-    color: @nord_dark_font;
+    background: @nord_bg_blue;
+    color: #D8DEE9;
 }
 #clock.date {
     background: @date;
-    color: @date_fg;
 }
 
 #clock.time {
     background: @mode;
-    color: @time_fg;
 }
 
 #pulseaudio { /* Unsused but kept for those who needs it */
-    background: @controls;
-    color: @sound_fg;
+    background: @status;
+    color: #D8DEE9;
 		margin-right: 0px;
-		border-radius: 10px 0px 0px 10px;
+		margin-left: 0px;
+		border-radius: 0px 0px 0px 0px;
 }
 
 #pulseaudio.muted {
-    background: @controls;
+    background: @status;
+    color: #BF616A;
+    /* No styles */
+
+}
+#pulseaudio.source-muted {
+    background: @status;
     color: #BF616A;
     /* No styles */
 }
-#pulseaudio.source-muted {
-    background: @controls;
-    color: #D08770;
-    /* No styles */
-}
 #tray {
-    background: @bg;
-    padding-top: 5px;
+    background: #434C5E;
 }
 #workspaces {
+    background: #1E1E28;
+    margin-left: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    font-weight: bold;
-    padding-bottom: 0px;
-    color: @nord_light;
-}
-
-#workspaces button{
-    margin-left: 0.1em;
-    margin-right: 0.1em;
-	padding-bottom: 0px;
-	padding-top: 7px;
     border-radius: 0px;
 }
 
 #workspaces button.active{
-	background: @workspacesfocused;
-	padding-bottom: 0px;
-    border-radius: 0px;
+		background: #332E41;
 }
 
 #taskbar {
+    margin-top: 0px;
     margin-bottom: 0px;
 }
 
 #taskbar button {
-    margin-left: 0.1em;
-    margin-right: 0.1em;
-    margin-top: 0.1em;
-	border-radius: 0px;
-    padding: 5 3 0 3px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #taskbar button.active {
     background: #332E41;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #custom-separator {
@@ -345,16 +327,15 @@
 @define-color col_border_solid rgba(120, 120, 120, 1);
 @define-color col_border_trans rgba(120, 120, 120, 0);
 
-/* #waybar > box:nth-child(2) > box:nth-child(3) > * > label { */
-/*   padding: 0 10px; */
-/* } */
+#waybar > box:nth-child(2) > box:nth-child(3) > * > label {
+  padding: 0 10px;
+}
 
 #pulseaudio {
-	/* background-image: */
-	/* 	linear-gradient(@col_border_solid 65%, @col_border_solid 55%) */
-	/* ; */
+	background-image:
+		linear-gradient(@col_border_solid 65%, @col_border_solid 55%)
+	;
 	background-size:1px 60%;
 	background-position:0 50%;
 	background-repeat:no-repeat;
 }
-
