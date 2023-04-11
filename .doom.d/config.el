@@ -103,6 +103,7 @@
 
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#232336")
+
 (setq company-dabbrev-downcase 0)
 (setq company-idle-delay 0)
 

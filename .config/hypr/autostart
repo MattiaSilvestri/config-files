@@ -29,14 +29,15 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 # Bluetooth manager
 blueman-applet &
 
-# Megasync
-megasync &
-
 # Blue-light filter
 wlsunset &
 
-#swayidle daemon
-swayidle &
+#swayidle daemon and inhibitor
+swayidle -w &
+sway-audio-idle-inhibit &
 
 # nordvpn service
 systemctl start nordvpnd.service &
+
+# Megasync
+sleep 10 && megasync &

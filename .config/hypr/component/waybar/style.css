@@ -40,28 +40,30 @@
 @define-color workspacesfocused #332E41;
 @define-color tray 	#414559;
 @define-color sound #EBCB8B;
-@define-color sound_fg #f9e2af;
+@define-color sound_fg @bg;
 @define-color memory #546484;
 @define-color cpu #332E41;
 @define-color temp #332E41;
-@define-color temp_fg #81c8be;
-@define-color controls #332E41;
+@define-color temp_fg #1e1e2e;
 @define-color battery #332E41;
-@define-color battery_fg #81c8be;
-@define-color date transparent;
-@define-color date_fg #99d1db;
-@define-color time	#81c8be;
-@define-color time_fg	#81c8be;
+@define-color battery_fg #1e1e2e;
+@define-color date_fg @bg;
+@define-color time	#89b4fa;
+@define-color time_fg	@bg;
 @define-color backlight #332E41;
-@define-color backlight_fg #f9e2af;
+@define-color backlight_fg @bg;
 @define-color nord_bg #332E41;
 @define-color nord_bg_blue #332E41;
 @define-color nord_light #D8DEE9;
 @define-color nord_light_font #D8DEE9;
 @define-color nord_dark_font #D8DEE9;
-@define-color status #332E41;
-@define-color network #332E41;
-@define-color network_fg #cba6f7;
+@define-color status #b5bd68;
+@define-color controls #8abeb7;
+@define-color network #de935f;
+@define-color date #b294bb;
+@define-color cava #332E41;
+@define-color cava_fg #b294bb;
+@define-color network_fg @bg;
 @define-color pacman transparent;
 @define-color pacman_fg #D8DEE9;
 
@@ -77,7 +79,7 @@
 #waybar {
     background-color: @bg;
     /* color: @light; */
-    font-family: "Cantarell", "Font Awesome 5 Pro";
+    font-family: "monospace", "Font Awesome 5 Pro";
     font-size: 12px;
     font-weight: normal;
 		border-width: 0px 0px 8px 0px;
@@ -104,9 +106,12 @@
 #tray,
 #backlight,
 #language,
+#custom-cava-internal,
 #custom-cpugovernor {
     padding-left: 0.5em;
     padding-right: 0.5em;
+    margin-bottom: 0.5em;
+    margin-top: 0.3em;
     /* box-shadow: rgba(0, 0, 0, 0.500) 2 2 2 1px; */
 }
 
@@ -118,7 +123,7 @@
     animation-iteration-count: infinite;
     animation-direction: alternate;
 		margin-left: 0px;
-		border-radius: 0px 10px 10px 0px;
+		border-radius: 0px 5px 5px 0px;
 		background: @status;
 		color: @battery_fg;
 }
@@ -216,6 +221,7 @@
 #network {
     background: @network;
     color: @network_fg;
+    border-radius: 5px 5px 5px 5px;
 }
 
 #memory {
@@ -248,7 +254,7 @@
     margin-right: 0px;
     padding-right: 0em;
     color: @temp_fg;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 5px 0px 0px 5px;
 }
 #temperature.critical {
     background:  @status;
@@ -260,13 +266,14 @@
 #backlight {
   background: @controls;
   margin-left: 0px;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0px 5px 5px 0px;
   color: @backlight_fg;
 }
 
 #clock {
     background: @date;
-    color: @nord_dark_font;
+    color: @date_fg;
+    border-radius: 5px 5px 5px 5px;
 }
 #clock.date {
     background: @date;
@@ -282,7 +289,14 @@
     background: @controls;
     color: @sound_fg;
 		margin-right: 0px;
-		border-radius: 10px 0px 0px 10px;
+		border-radius: 5px 0px 0px 5px;
+}
+
+#custom-cava-internal {
+    font-family: monospace;
+    border-radius: 5px;
+    color: @cava_fg;
+    background: @cava;
 }
 
 #pulseaudio.muted {
