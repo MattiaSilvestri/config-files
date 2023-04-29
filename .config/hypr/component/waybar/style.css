@@ -57,10 +57,10 @@
 @define-color nord_light #D8DEE9;
 @define-color nord_light_font #D8DEE9;
 @define-color nord_dark_font #D8DEE9;
-@define-color status #b5bd68;
-@define-color controls #8abeb7;
-@define-color network #de935f;
-@define-color date #b294bb;
+@define-color status #77ad95;
+@define-color controls #f7e2a9;
+@define-color network #b294bb;
+@define-color date #e39e83;
 @define-color cava #332E41;
 @define-color cava_fg #b294bb;
 @define-color network_fg @bg;
@@ -79,7 +79,7 @@
 #waybar {
     background-color: @bg;
     /* color: @light; */
-    font-family: "monospace", "Font Awesome 5 Pro";
+    font-family: "Cantarell", "Font Awesome 5 Pro";
     font-size: 12px;
     font-weight: normal;
 		border-width: 0px 0px 8px 0px;

@@ -55,10 +55,10 @@
 				"format": "{icon} {capacity}%",
 				"format-warning": "{icon}{capacity}%",
 				"format-critical": "{icon}{capacity}%",
-				"format-charging": "{capacity}%",
-				"format-plugged": "{capacity}%",
-				"format-alt": "{icon}{time}",
-				"format-full": "{capacity}%",
+				"format-charging": " {capacity}%",
+				"format-plugged": " {capacity}%",
+				"format-alt": "{icon} {time}",
+				"format-full": " {capacity}%",
 					"format-icons": ["", "", "", "", ""],
 						"tooltip-format": "{time}"
 	},
@@ -90,7 +90,7 @@
         "spacing": 5
     },
     "clock": {
-        "format": " {:%H:%M   %e %b}",
+        "format": "  {:%H:%M     %e %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "today-format": "<b>{}</b>",
         "on-click": "gnome-calendar"
@@ -108,7 +108,7 @@
         "interval": "4",
         "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
         "critical-threshold": 74,
-        "format-critical": "{temperatureC}°C",
+        "format-critical": " {temperatureC}°C",
         "format": "{icon}{temperatureC}°C",
         "format-icons": ["", "", ""],
         "max-length": 7,
@@ -119,7 +119,7 @@
         "format-wifi": " {essid}",
         "format-ethernet": " Eth",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "",
+        "format-disconnected": " Down",
         "family": "ipv4",
         "on-click": "gnome-control-center",
         "tooltip-format-wifi": " {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
@@ -128,17 +128,17 @@
     "pulseaudio": {
         "scroll-step": 3, // %, can be a float
         "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon}{volume}% ",
-        "format-bluetooth-muted": " {icon} ",
+        "format-bluetooth": "{icon}  {volume}% ",
+        "format-bluetooth-muted": "婢 {icon} ",
         //"format-source": "{volume}% ",
         //"format-source-muted": "",
-        "format-source": "",
+        "format-source": " ",
         "format-source-muted": "",
         "format-muted": "婢 Muted",
         "format-icons": {
-            "headphone": " ",
+            "headphone": "",
             "hands-free": "",
-            "headset": " ",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -148,7 +148,7 @@
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
     },
     "custom/pacman": {
-        "format": "<big> Updates:</big> {}",
+        "format": "<big>   Updates:</big> {}",
         "interval": 3600,                     // every hour
         "exec": "checkupdates | wc -l",       // # of updates
         "exec-if": "exit 0",                  // always run; consider advanced run conditions

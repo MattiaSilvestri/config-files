@@ -345,6 +345,7 @@ export PATH="/usr/bin/site_perl:$PATH"
 export PATH="/usr/bin/vendor_perl:$PATH"
 export PATH="/usr/bin/core_perl:$PATH"
 export PATH="/home/mattia/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH="/home/mattia/.cargo/bin:$PATH"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 export QT_QPA_PLATFORM=wayland
 

@@ -13,7 +13,7 @@ $scripts/tools/dynamic &
 
 # wallpaper
 # $scripts/wall $config/wallpapers/cloud.png &
-hyprpaper &
+# hyprpaper &
 
 # effects
 $scripts/rgb &
@@ -30,14 +30,24 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 blueman-applet &
 
 # Blue-light filter
-wlsunset &
+wlsunset -t 3500 -T 6000 &
 
 #swayidle daemon and inhibitor
-swayidle -w &
-sway-audio-idle-inhibit &
+swayidle -w \
+  timeout 600 'gtklock' \
+  before-sleep 'gtklock' \
+  after-resume 'hyprpaper &' &
+
+wl-mpris-idle-inhibit &
 
 # nordvpn service
 systemctl start nordvpnd.service &
 
 # Megasync
 sleep 10 && megasync &
+
+# Automatic mounting
+udiskie &
+
+# Launch swww and wallpaper script
+swww init && ~/.local/bin/wallpaper ~/.config/wallpapers/ &

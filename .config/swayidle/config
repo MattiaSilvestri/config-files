@@ -1,3 +1,0 @@
-timeout 300 'gtklock' \\
-before-sleep 'gtklock' \\
-after-resume 'hyprpaper &'
