@@ -108,18 +108,22 @@
         "interval": "4",
         "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
         "critical-threshold": 74,
-        "format-critical": " {temperatureC}°C",
-        "format": "{icon}{temperatureC}°C",
+        "format-critical": "  {temperatureC}°C",
+        "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""],
         "max-length": 7,
         "min-length": 7
     },
     "network": {
         // "interface": "wlan0", // (Optional) To force the use of this interface,
-        "format-wifi": " {essid}",
+        "format-wifi": "{icon} {essid}",
         "format-ethernet": " Eth",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": " Down",
+        "format-disconnected": "{icon} Down",
+        "format-icons": {
+            "wifi": "",
+            "disconnected": ""
+        },
         "family": "ipv4",
         "on-click": "gnome-control-center",
         "tooltip-format-wifi": " {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",

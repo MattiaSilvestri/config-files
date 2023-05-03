@@ -81,7 +81,7 @@
 ;; Personal config
 
 ;; Fonts
-(set-face-attribute 'default nil :font "RobotoMono Nerd Font" :height 120)
+(set-face-attribute 'default nil :font "monospace" :height 110)
 (set-fontset-font "fontset-default" '(#x5d0 . #x5ff) "all-the-icons")
 
 ;; Globals ------------------------------------------------------------------
@@ -479,3 +479,19 @@
              (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0 :face 'org-date))))))
 
 (svg-tag-mode t)
+
+(use-package eaf
+  :load-path "~/.config/emacs/site-lisp/emacs-application-framework"
+  :custom
+  ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
+  (eaf-browser-continue-where-left-off t)
+  (eaf-browser-enable-adblocker t)
+  (browse-url-browser-function 'eaf-open-browser)
+  :config
+  (defalias 'browse-web #'eaf-open-browser))
+
+;; (require 'eaf-browser)
+;; (require 'eaf-pdf-viewer)
+
+(use-package org-logseq
+    :custom (org-logseq-dir "/mnt/Data/MEGA/Notes"))

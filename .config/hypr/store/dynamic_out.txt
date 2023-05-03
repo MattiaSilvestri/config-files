@@ -1,1 +1,1 @@
-{"class": "playing", "text": "Meditation Sounds - 8 Hours of Light Rainforest Sounds for Ultimate Relaxation, Meditation, Focus, Concentration, Work, and Stress Relief (274:45/495:29) ", "tooltip": "8 Hours of Light Rainforest Sounds for Ultimate Relaxation, Meditation, Focus, Concentration, Work, and Stress Relief\nfrom Meditation Sounds\n(spotify)"}
+{"class": "playing", "text": "Fabrizio De Andr\u00e9 - Volume 8 - Oceano (00:04/03:09) ", "tooltip": "Oceano\nby Fabrizio De Andr\u00e9\nfrom Volume 8\n(spotify)"}
