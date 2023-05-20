@@ -27,12 +27,13 @@ return {
     ["<C-s>"] = { "<cmd>Swoop<cr>i", desc = "Swoop finder" },
     ["<S-s>"] = { "<cmd>bd! swoopBuf<cr>", desc = "Close swoop buffer" },
     ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
+    ["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
   v = {
-      ["p"] = { "\"0p", desc = "Normal paste" },
+      -- ["p"] = { "\"0p", desc = "Normal paste" },
   },
 }

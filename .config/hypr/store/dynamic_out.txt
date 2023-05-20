@@ -1,1 +1,1 @@
-{"class": "playing", "text": "Fabrizio De Andr\u00e9 - Volume 8 - Oceano (02:22/03:09) ", "tooltip": "Oceano\nby Fabrizio De Andr\u00e9\nfrom Volume 8\n(spotify)"}
+{"class": "paused", "text": "\u25b6 ", "tooltip": "\n(chromium.instance3165)"}

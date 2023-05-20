@@ -43,11 +43,13 @@ wl-mpris-idle-inhibit &
 # nordvpn service
 systemctl start nordvpnd.service &
 
-# Megasync
-sleep 10 && megasync &
+# Megasync and pcloud
+sleep 5 && pcloud &
+sleep 5 && env QT_QPA_PLATFORM=xcb megasync &
 
 # Automatic mounting
 udiskie &
 
 # Launch swww and wallpaper script
 swww init && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+

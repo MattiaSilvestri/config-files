@@ -14,7 +14,15 @@ return {
   {"dyng/ctrlsf.vim", lazy = false},
   {"pelodelfuego/vim-swoop", cmd = "Swoop"},
   {"mg979/vim-visual-multi", lazy = false},
-  {"tpope/vim-surround", lazy = false},
+  {"tpope/vim-surround"},
+  {"ixru/nvim-markdown", lazy = false},
+  {"christoomey/vim-tmux-navigator", lazy = false},
+  {"folke/todo-comments.nvim", lazy = false,
+    requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup {
+        }
+      end},
   {"folke/trouble.nvim", cmd = {"Trouble", "TroubleToggle"}},
   {"catppuccin/nvim", name = "catppuccin"}
 }

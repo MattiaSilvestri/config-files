@@ -8,6 +8,8 @@ return {
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
     textwidth = 80,
+    clipboard=unnamedplus,
+    -- autochdir=true,
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
