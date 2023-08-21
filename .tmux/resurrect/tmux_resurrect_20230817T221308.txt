@@ -1,0 +1,10 @@
+pane	0	1	0	:	1	nvim	:/home/mattia	0	nvim	:nvim
+pane	0	1	0	:	2	exit	:/home/mattia/Git/tui-csvreader	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	0	1	0	:	3	mattia@HAL9000:~/Git/tui-csvreader/bin	:/home/mattia/Git/tui-csvreader/bin	0	zsh	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	0	2	0	:-Z	1	nvim	:/home/mattia/Git/cfetch	1	nvim	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	0	2	0	:-Z	2	exit	:/home/mattia/Git/cfetch/config	0	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	0	3	1	:*	1	nvim	:/home/mattia	1	nvim	:nvim
+window	0	1	:python	0	:	f348,192x44,0,0{96x44,0,0,0,95x44,97,0[95x22,97,0,1,95x21,97,23,2]}	:
+window	0	2	:nvim	0	:-Z	c7fe,192x44,0,0{96x44,0,0,3,95x44,97,0,4}	:
+window	0	3	:nvim	1	:*	bdc2,192x44,0,0,5	:
+state	0	

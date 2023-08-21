@@ -30,13 +30,12 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 blueman-applet &
 
 # Blue-light filter
-wlsunset -t 3500 -T 6000 &
+wlsunset -t 3500 -T 5000 &
 
 #swayidle daemon and inhibitor
 swayidle -w \
   timeout 600 'gtklock' \
-  before-sleep 'gtklock' \
-  after-resume 'hyprpaper &' &
+  before-sleep 'gtklock' &
 
 wl-mpris-idle-inhibit &
 
@@ -44,7 +43,7 @@ wl-mpris-idle-inhibit &
 systemctl start nordvpnd.service &
 
 # Megasync and pcloud
-sleep 5 && pcloud &
+# sleep 5 && ~/AppImages/pcloud &
 sleep 5 && env QT_QPA_PLATFORM=xcb megasync &
 
 # Automatic mounting

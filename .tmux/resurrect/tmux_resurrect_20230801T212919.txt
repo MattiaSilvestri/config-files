@@ -1,0 +1,11 @@
+pane	0	1	1	:*	1	~/.local/bin/ranger.py	:/home/mattia/Git/movie-suggestions/src/utils	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	1	1	0	:-	1	Ga=q,i=1,f=24,t=f,s=1,v=1,S=3,m=0;L3RtcC90bXAwYm85bTNzcQ==	:/home/mattia/Documents	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	1	2	1	:*	1	~/.local/bin/ranger.py	:/home/mattia	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	2	1	0	:-	1	Ga=q,i=1,f=24,t=f,s=1,v=1,S=3,m=0;L3RtcC90bXByMW81Y29vcQ==	:/home/mattia/Documents	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	2	2	1	:*	1	mattia@HAL9000:~	:/home/mattia	1	zsh	:
+window	0	1	:python	1	:*	cb7e,140x67,0,0,1	:
+window	1	1	:python	0	:-	afff,122x60,0,0,2	:
+window	1	2	:python	1	:*	b000,122x60,0,0,3	:
+window	2	1	:python	0	:-	b001,122x60,0,0,4	:
+window	2	2	:zsh	1	:*	b003,122x60,0,0,6	:
+state	2	

@@ -1,3 +1,0 @@
-pane	0	0	:python	1	:*	0	:/mnt/08542B6A542B59A8/Work/Documents	1	python	:/usr/bin/python -O /usr/bin/ranger
-window	0	0	1	:*	bcdd,66x26,0,0,0
-state	0	

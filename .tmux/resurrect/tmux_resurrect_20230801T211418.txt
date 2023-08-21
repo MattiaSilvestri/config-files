@@ -1,0 +1,5 @@
+pane	0	1	1	:*	1	~/.local/bin/ranger.py	:/home/mattia/Git/movie-suggestions/src/utils	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	1	1	1	:*	1	HAL9000	:/home/mattia	1	grep	:
+window	0	1	:python	1	:*	cb7e,140x67,0,0,1	:
+window	1	1	:zsh	1	:*	afff,122x60,0,0,2	:
+state	1	

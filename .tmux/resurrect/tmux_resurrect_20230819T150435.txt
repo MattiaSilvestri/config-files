@@ -1,0 +1,4 @@
+pane	0	1	1	:*	1	~/.local/bin/ranger.py	:/home/mattia/.dotfiles/.config/nvim/lua/user	0	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	0	1	1	:*	2	~/.local/bin/ranger.py	:/home/mattia/.dotfiles/.config/nvim/lua/user	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+window	0	1	:python	1	:*	3add,284x71,0,0{142x71,0,0,0,141x71,143,0,1}	:
+state	0	

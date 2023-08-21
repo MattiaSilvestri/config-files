@@ -8,7 +8,12 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       if not opts.ensure_installed then opts.ensure_installed = {} end
       require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        -- "lua_ls",
+        "jedi_language_server",
+        "lua_ls",
+        "clangd",
+        "ltex",
+        "marksman",
+        "html",
       })
     end,
   },
@@ -20,8 +25,11 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       if not opts.ensure_installed then opts.ensure_installed = {} end
       require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        -- "prettier",
-        -- "stylua",
+        "prettier",
+        "stylua",
+        "clangd-format",
+        "clandg_check",
+        "black",
       })
     end,
   },
@@ -32,7 +40,8 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       if not opts.ensure_installed then opts.ensure_installed = {} end
       require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        -- "python",
+        "python",
+        "cppdbg",
       })
     end,
   },
