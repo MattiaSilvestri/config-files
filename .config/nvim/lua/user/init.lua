@@ -53,11 +53,6 @@ return {
     servers = {
       -- "pyright"
     },
-    settings = {
-      ltex = {
-        language = "it",
-      },
-    },
   },
   -- Configure require("lazy").setup() options
   lazy = {
@@ -87,6 +82,7 @@ return {
     --   },
     -- }
     --
+    -- TODO: Loop throught LSP setting folder and read all settings files.
     require("lspconfig").ltex.setup {
       settings = {
         ltex = {

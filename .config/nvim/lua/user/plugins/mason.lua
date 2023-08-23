@@ -42,6 +42,7 @@ return {
       require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "python",
         "cppdbg",
+        "codelldb",
       })
     end,
   },

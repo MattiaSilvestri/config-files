@@ -1,1 +1,1 @@
-{"class": "paused", "text": "\u25b6 ", "tooltip": "\n(chromium.instance2780)"}
+{"class": "paused", "text": "\u25b6 Dreams of Code - The perfect Neovim setup for C++ (17:07/17:44) ", "tooltip": "The perfect Neovim setup for C++\nby Dreams of Code\n(chromium.instance2093)"}

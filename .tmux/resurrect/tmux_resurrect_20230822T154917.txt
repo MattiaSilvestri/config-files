@@ -1,0 +1,8 @@
+pane	0	1	0	:	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	0	2	0	:-Z	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	0	2	0	:-Z	2	~/.local/bin/ranger.py	:/home/mattia/Git/cfetch	0	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+pane	0	3	1	:*	1	~/.local/bin/ranger.py	:/home/mattia/mnt/redonion/Git/coloremotion-2/Analysis/src	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
+window	0	1	:nvim	0	:	d25d,213x59,0,0,0	:
+window	0	2	:nvim	0	:-Z	2392,213x59,0,0{106x59,0,0,1,106x59,107,0,2}	:
+window	0	3	:python	1	:*	d260,213x59,0,0,3	:
+state	0	

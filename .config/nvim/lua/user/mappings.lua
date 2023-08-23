@@ -11,10 +11,9 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
-          require("astronvim.utils.buffer").close(
-            bufnr)
-        end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
@@ -33,19 +32,24 @@ return {
     ["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
     ["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
     ["<leader>a"] = { "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
-    ["]p"] =
-    { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
+    ["]p"] = {
+      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+      desc = "Next buffer",
+    },
     ["[p"] = {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
-    }
+    },
+    ["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
+    ["[o"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
   v = {
-    ["p"] = { "\"0p", desc = "Normal paste" },
+    ["p"] = { '"0p', desc = "Normal paste" },
+    ["P"] = { '"*p', desc = "Normal paste from clipboard" },
     ["<"] = { "<gv", desc = "Persistend indent left" },
     [">"] = { ">gv", desc = "Persistend indent right" },
   },

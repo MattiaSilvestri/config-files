@@ -19,15 +19,15 @@ return {
   --     }
   --   end
   -- }
-  { "francoiscabrol/ranger.vim", cmd = "Ranger" },
-  { "rbgrouleff/bclose.vim", lazy = false },
-  { "dyng/ctrlsf.vim", event = "User AstroFile" },
-  { "pelodelfuego/vim-swoop", cmd = "Swoop" },
-  { "mg979/vim-visual-multi", event = "User AstroFile" },
+  { "francoiscabrol/ranger.vim",      cmd = "Ranger" },
+  { "rbgrouleff/bclose.vim",          lazy = false },
+  { "dyng/ctrlsf.vim",                event = "User AstroFile" },
+  { "pelodelfuego/vim-swoop",         cmd = "Swoop" },
+  { "mg979/vim-visual-multi",         event = "User AstroFile" },
   -- { "tpope/vim-surround" },
-  { "ixru/nvim-markdown", event = "User AstroFile" },
+  { "ixru/nvim-markdown",             event = "User AstroFile" },
   { "christoomey/vim-tmux-navigator", lazy = false },
-  { "kevinhwang91/rnvimr", cmd = "RnvimrToggle" },
+  { "kevinhwang91/rnvimr",            cmd = "RnvimrToggle" },
   {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
@@ -48,7 +48,7 @@ return {
       }
     end,
   },
-  { "catppuccin/nvim", name = "catppuccin" },
+  { "catppuccin/nvim",    name = "catppuccin" },
   { "lervag/vimtex" },
   {
     "Exafunction/codeium.vim",
@@ -74,5 +74,29 @@ return {
       "PeekOpen",
       "PeekClose",
     },
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
+    requires = { "mfussenegger/nvim-dap" },
+    config = function()
+      local dap = require("dap")
+      local dapui = require("dapui")
+      dapui.setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end
+  },
+  {
+    "folke/neodev.nvim",
+    event = "VeryLazy",
+    opts = { library = { plugins = { "nvim-dap-ui" }, types = true } },
   },
 }
