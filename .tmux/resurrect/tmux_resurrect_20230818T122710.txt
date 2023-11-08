@@ -1,7 +1,0 @@
-pane	0	1	0	:	1	~/.local/bin/ranger.py	:/home/mattia/.dotfiles/.config/nvim/lua/user/plugins	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
-pane	0	2	0	:-	1	~/.local/bin/ranger.py	:/home/mattia/Git/cfetch	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
-pane	0	3	1	:*	1	~/.local/bin/ranger.py	:/home/mattia/Git/cfetch/src/modules	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
-window	0	1	:python	0	:	bbfd,160x44,0,0,0	:
-window	0	2	:python	0	:-	bbfe,160x44,0,0,1	:
-window	0	3	:python	1	:*	bbff,160x44,0,0,2	:
-state	0	

@@ -1,6 +1,0 @@
-pane	0	1	1	:*	1	nvim	:/home/mattia	1	nvim	:nvim
-pane	0	2	0	:-Z	1	nvim	:/home/mattia	1	nvim	:nvim
-pane	0	2	0	:-Z	2	mattia@HAL9000:~/Git/cfetch	:/home/mattia/Git/cfetch	0	zsh	:/usr/bin/python -O /home/mattia/.local/bin/ranger.py
-window	0	1	:nvim	1	:*	bdbd,192x44,0,0,0	:
-window	0	2	:nvim	0	:-Z	c7f5,192x44,0,0{96x44,0,0,1,95x44,97,0,2}	:
-state	0	

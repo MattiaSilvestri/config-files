@@ -1,0 +1,5 @@
+pane	0	1	1	:*	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	0	1	1	:*	2	exit	:/home/mattia/Git/energy-monitor	0	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger
+pane	0	1	1	:*	3	mattia@HAL9000:~/Git/energy-monitor	:/home/mattia/Git/energy-monitor	0	zsh	:
+window	0	1	:nvim	1	:*	2f3a,282x71,0,0{141x71,0,0,0,140x71,142,0[140x35,142,0,1,140x35,142,36,3]}	:
+state	0	

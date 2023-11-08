@@ -43,7 +43,7 @@ wl-mpris-idle-inhibit &
 systemctl start nordvpnd.service &
 
 # Megasync and pcloud
-# sleep 5 && ~/AppImages/pcloud &
+sleep 5 && ~/AppImages/pcloud &
 sleep 5 && env QT_QPA_PLATFORM=xcb megasync &
 
 # Automatic mounting

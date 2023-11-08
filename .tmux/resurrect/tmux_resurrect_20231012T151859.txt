@@ -1,0 +1,8 @@
+pane	0	1	0	:	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	0	2	0	:-	1	ranger	:/mnt/Data/MEGA/Racconti	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger
+pane	0	3	1	:*	1	ranger	:/home/mattia/Git/energy-monitor/energy_monitor	0	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger
+pane	0	3	1	:*	2	mattia@HAL9000:~/Git/energy-monitor/energy_monitor	:/home/mattia/Git/energy-monitor/energy_monitor	1	zsh	:
+window	0	1	:nvim	0	:	d3bd,192x59,0,0,0	:
+window	0	2	:python	0	:-	d3be,192x59,0,0,1	:
+window	0	3	:zsh	1	:*	a590,192x59,0,0{96x59,0,0,2,95x59,97,0,3}	:
+state	0	

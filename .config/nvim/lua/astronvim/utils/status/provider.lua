@@ -17,6 +17,7 @@ local status_utils = require "astronvim.utils.status.utils"
 local utils = require "astronvim.utils"
 local extend_tbl = utils.extend_tbl
 local get_icon = utils.get_icon
+local luv = vim.uv or vim.loop -- TODO: REMOVE WHEN DROPPING SUPPORT FOR Neovim v0.9
 
 --- A provider function for the fill string
 ---@return string # the statusline string for filling the empty space
@@ -40,13 +41,18 @@ end
 -- @see astronvim.utils.status.utils.stylize
 function M.numbercolumn(opts)
   opts = extend_tbl({ thousands = false, culright = true, escape = false }, opts)
-  return function()
+  return function(self)
     local lnum, rnum, virtnum = vim.v.lnum, vim.v.relnum, vim.v.virtnum
     local num, relnum = vim.opt.number:get(), vim.opt.relativenumber:get()
+    local signs = vim.opt.signcolumn:get():find "nu"
+      and vim.fn.sign_getplaced(self.bufnr or vim.api.nvim_get_current_buf(), { group = "*", lnum = lnum })[1].signs
     local str
-    if not num and not relnum then
-      str = ""
-    elseif virtnum ~= 0 then
+    if virtnum ~= 0 then
+      str = "%="
+    elseif signs and #signs > 0 then
+      local sign = vim.fn.sign_getdefined(signs[1].name)[1]
+      str = "%=%#" .. sign.texthl .. "#" .. sign.text .. "%*"
+    elseif not num and not relnum then
       str = "%="
     else
       local cur = relnum and (rnum > 0 and rnum or (num and lnum or 0)) or lnum
@@ -287,13 +293,14 @@ end
 -- @see astronvim.utils.status.utils.stylize
 function M.filename(opts)
   opts = extend_tbl({
-    fallback = "Empty",
+    fallback = "Untitled",
     fname = function(nr) return vim.api.nvim_buf_get_name(nr) end,
     modify = ":t",
   }, opts)
   return function(self)
-    local filename = vim.fn.fnamemodify(opts.fname(self and self.bufnr or 0), opts.modify)
-    return status_utils.stylize((filename == "" and opts.fallback or filename), opts)
+    local path = opts.fname(self and self.bufnr or 0)
+    local filename = vim.fn.fnamemodify(path, opts.modify)
+    return status_utils.stylize((path == "" and opts.fallback or filename), opts)
   end
 end
 
@@ -345,7 +352,7 @@ function M.unique_path(opts)
     local unique_path = ""
     -- check for same buffer names under different dirs
     local current
-    for _, value in ipairs(vim.t.bufs) do
+    for _, value in ipairs(vim.t.bufs or {}) do
       if name == opts.buf_name(value) and value ~= opts.bufnr then
         if not current then current = path_parts(opts.bufnr) end
         local other = path_parts(value)
@@ -402,11 +409,11 @@ function M.file_icon(opts)
   return function(self)
     local devicons_avail, devicons = pcall(require, "nvim-web-devicons")
     if not devicons_avail then return "" end
-    local ft_icon, _ = devicons.get_icon(
-      vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self and self.bufnr or 0), ":t"),
-      nil,
-      { default = true }
-    )
+    local bufnr = self and self.bufnr or 0
+    local ft_icon, _ = devicons.get_icon(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t"))
+    if not ft_icon then
+      ft_icon, _ = devicons.get_icon_by_filetype(vim.bo[bufnr].filetype, { default = true })
+    end
     return status_utils.stylize(ft_icon, opts)
   end
 end
@@ -456,24 +463,14 @@ end
 -- @usage local heirline_component = { provider = require("astronvim.utils.status").provider.lsp_progress() }
 -- @see astronvim.utils.status.utils.stylize
 function M.lsp_progress(opts)
+  local spinner = utils.get_spinner("LSPLoading", 1) or { "" }
   return function()
-    local Lsp = vim.lsp.util.get_progress_messages()[1]
-    return status_utils.stylize(
-      Lsp
-        and (
-          get_icon("LSP" .. ((Lsp.percentage or 0) >= 70 and { "Loaded", "Loaded", "Loaded" } or {
-            "Loading1",
-            "Loading2",
-            "Loading3",
-          })[math.floor(vim.loop.hrtime() / 12e7) % 3 + 1], 1)
-          .. table.concat({
-            Lsp.title or "",
-            Lsp.message or "",
-            Lsp.percentage and "(" .. Lsp.percentage .. "%)" or "",
-          }, " ")
-        ),
-      opts
-    )
+    local _, Lsp = next(astronvim.lsp.progress)
+    return status_utils.stylize(Lsp and (spinner[math.floor(luv.hrtime() / 12e7) % #spinner + 1] .. table.concat({
+      Lsp.title or "",
+      Lsp.message or "",
+      Lsp.percentage and "(" .. Lsp.percentage .. "%)" or "",
+    }, " ")), opts)
   end
 end
 

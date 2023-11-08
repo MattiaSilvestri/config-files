@@ -14,6 +14,10 @@ return {
         "ltex",
         "marksman",
         "html",
+        "tsserver",
+        -- "custom_elements_ls",
+        -- "emmet_ls",
+        -- "emmet_language_server",
       })
     end,
   },
@@ -26,10 +30,12 @@ return {
       if not opts.ensure_installed then opts.ensure_installed = {} end
       require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "prettier",
+        "prettierd",
         "stylua",
         "clangd-format",
         "clandg_check",
         "black",
+        "eslint_d",
       })
     end,
   },

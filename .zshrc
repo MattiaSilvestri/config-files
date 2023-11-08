@@ -16,7 +16,7 @@ export ZSH=/usr/share/oh-my-zsh/
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # source /home/mattia/.zsh-themes/headline.zsh-theme
-# ZSH_THEME="fino"
+# ZSH_THEME="smoothmonkey"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -69,7 +69,7 @@ export ZSH=/usr/share/oh-my-zsh/
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=~/.config/zsh
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -288,7 +288,7 @@ alias robbot="mount.cifs //192.168.240.42/ROBBOT /mnt/ROBBOT"
 alias matserver="/home/mattia/vim/daeyun/vim-matlab/scripts/vim-matlab-server.py" 
 
 # Ranger
-alias fm="~/.local/bin/ranger.py"
+alias fm="ranger"
 
 # Git 
 alias s="git status"
@@ -333,6 +333,7 @@ ex ()
 
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
+# Startup
 nitch
 TERM=xterm-kitty
 . /home/mattia/.config/ranger/plugins/z/z.sh
@@ -350,6 +351,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 export QT_QPA_PLATFORM=wayland
 
 export EDITOR=nvim
+export VISUAL=nvim
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -1,0 +1,7 @@
+pane	0	1	0	:-	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	0	2	1	:*	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	1	1	1	:*	1	mattia@HAL9000:~	:/home/mattia	1	zsh	:
+window	0	1	:nvim	0	:-	c49d,284x74,0,0,0	:
+window	0	2	:nvim	1	:*	b79e,282x71,0,0,1	:
+window	1	1	:zsh	1	:*	c49f,284x74,0,0,2	:
+state	1	

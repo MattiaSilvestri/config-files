@@ -1,5 +1,0 @@
-pane	0	1	0	:-	1	nvim	:/home/mattia	1	nvim	:nvim
-pane	0	2	1	:*	1	nvim	:/home/mattia	1	nvim	:nvim
-window	0	1	:nvim	0	:-	ba5d,213x53,0,0,0	:
-window	0	2	:nvim	1	:*	bdbe,192x44,0,0,1	:
-state	0	

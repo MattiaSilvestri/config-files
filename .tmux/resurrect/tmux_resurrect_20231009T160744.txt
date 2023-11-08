@@ -1,0 +1,8 @@
+pane	0	1	0	:-	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	0	2	1	:*Z	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	0	2	1	:*Z	2	npm start	:/mnt/Data/Learning/Computer\ Science/Online/JavaScript/Exercises/test	0	npm	:/usr/bin/python -O /home/mattia/.local/bin/ranger
+pane	0	3	0	:	1	mattia@HAL9000:~	:/home/mattia	1	zsh	:
+window	0	1	:nvim	0	:-	d3bd,192x59,0,0,0	:
+window	0	2	:nvim	1	:*Z	33e8,192x59,0,0[192x44,0,0,1,192x14,0,45,2]	:
+window	0	3	:zsh	0	:	d3c0,192x59,0,0,3	:
+state	0	

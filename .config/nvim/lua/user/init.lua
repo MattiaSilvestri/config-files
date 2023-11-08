@@ -44,7 +44,7 @@ return {
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
       },
-      timeout_ms = 1000, -- default format timeout
+      timeout_ms = 6000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
@@ -87,6 +87,25 @@ return {
       settings = {
         ltex = {
           language = "it",
+        },
+      },
+    }
+
+    -- Emmet ls
+    local lspconfig = require "lspconfig"
+    local configs = require "lspconfig.configs"
+    configs.html = {
+      default_config = {
+        filetypes = {
+          "html",
+          "css",
+          "scss",
+          "javascript",
+          "javascriptreact",
+          "typescriptreact",
+          "tsx",
+          "xml",
+          "svelte",
         },
       },
     }

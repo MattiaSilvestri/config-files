@@ -22,7 +22,7 @@ return {
     defaultWinSwoopHeight = 10,
     swoopAutoInsertMode = 1,
     rnvimr_enable_picker = 1,
-    vimtex_view_general_viewer = 'flatpak run com.github.ahrm.sioyek',
+    vimtex_view_general_viewer = "flatpak run com.github.ahrm.sioyek",
   },
 }
 -- If you need more control, you can use the function()...end notation

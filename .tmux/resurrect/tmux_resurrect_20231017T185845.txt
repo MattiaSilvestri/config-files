@@ -1,0 +1,4 @@
+pane	0	1	1	:*Z	1	nvim	:/home/mattia	1	nvim	:nvim
+pane	0	1	1	:*Z	2	ranger	:/home/mattia/Git/energy-monitor	0	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger
+window	0	1	:nvim	1	:*Z	c85e,284x74,0,0{142x74,0,0,0,141x74,143,0,1}	:
+state	0	

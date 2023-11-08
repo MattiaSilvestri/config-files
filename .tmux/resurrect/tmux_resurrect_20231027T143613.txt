@@ -1,0 +1,4 @@
+pane	0	1	1	:*	1	nvim	:/home/mattia	0	nvim	:nvim
+pane	0	1	1	:*	2	ranger	:/home/mattia/mnt	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger
+window	0	1	:python	1	:*	54da,284x74,0,0[284x37,0,0,0,284x36,0,38,1]	:
+state	0	
