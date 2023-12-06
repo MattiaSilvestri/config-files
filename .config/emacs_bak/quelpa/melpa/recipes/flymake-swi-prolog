@@ -1,1 +1,0 @@
-(flymake-swi-prolog :url "https://git.sr.ht/~eshel/flymake-swi-prolog" :fetcher git)

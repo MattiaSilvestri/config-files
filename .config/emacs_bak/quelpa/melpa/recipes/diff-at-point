@@ -1,3 +1,0 @@
-(diff-at-point
- :url "https://codeberg.org/ideasman42/emacs-diff-at-point.git"
- :fetcher git)

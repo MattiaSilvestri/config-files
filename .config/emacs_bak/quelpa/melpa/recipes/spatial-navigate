@@ -1,3 +1,0 @@
-(spatial-navigate
- :url "https://codeberg.org/ideasman42/emacs-spatial-navigate.git"
- :fetcher git)

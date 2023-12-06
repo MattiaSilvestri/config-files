@@ -1,8 +1,0 @@
-pane	0	1	1	:*Z	1	mattia@HAL9000:~	:/home/mattia	1	zsh	:
-pane	0	1	1	:*Z	2	ranger	:/home/mattia/mnt/redonion/Git/coloremotion-2/.git	0	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger
-pane	0	2	0	:-	1	ranger	:/home/mattia/Git/coloremotion-2	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger
-pane	0	3	0	:	1	mattia@HAL9000:~	:/home/mattia	1	zsh	:
-window	0	1	:zsh	1	:*Z	a588,192x59,0,0{96x59,0,0,0,95x59,97,0,3}	:
-window	0	2	:python	0	:-	d3be,192x59,0,0,1	:
-window	0	3	:zsh	0	:	d3bf,192x59,0,0,2	:
-state	0	

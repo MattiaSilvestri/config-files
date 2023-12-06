@@ -1,3 +1,0 @@
-pane	0	1	1	:*	1	nvim	:/home/mattia	1	nvim	:nvim
-window	0	1	:nvim	1	:*	ccdd,210x58,0,0,0	:
-state	0	

@@ -1,4 +1,0 @@
-(consult-projectile
- :repo "OlMon/consult-projectile"
- :fetcher gitlab
- :files ("consult-projectile.el"))

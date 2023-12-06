@@ -1,7 +1,0 @@
-(undo-tree-save-format-version . 1)
-"8f37aab928ce3b7e0675b75aea0e32a8de0f77cc"
-[nil nil nil nil (25358 9567 536519 206000) 0 nil]
-([nil nil ((198 . 199) (197 . 198) (196 . 197) (124 . 196) (123 . 124) (122 . 123) (t 25302 49770 582021 200000) 94) nil (25447 41122 42024 264000) 0 nil])
-([nil current ((#("
-" 0 1 (wrap-prefix "" line-prefix "" fontified t)) . 199) (undo-tree-id0 . -1) (undo-tree-id1 . 1)) nil (25447 41122 42015 484000) 0 nil])
-nil

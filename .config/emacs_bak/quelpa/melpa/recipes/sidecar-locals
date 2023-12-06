@@ -1,3 +1,0 @@
-(sidecar-locals
- :url "https://codeberg.org/ideasman42/emacs-sidecar-locals.git"
- :fetcher git)

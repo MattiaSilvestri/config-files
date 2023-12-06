@@ -1,3 +1,0 @@
-(undo-fu-session
- :url "https://codeberg.org/ideasman42/emacs-undo-fu-session.git"
- :fetcher git)

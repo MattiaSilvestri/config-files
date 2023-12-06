@@ -1,3 +1,0 @@
-(workroom
- :fetcher git
- :url "https://codeberg.org/akib/emacs-workroom.git")

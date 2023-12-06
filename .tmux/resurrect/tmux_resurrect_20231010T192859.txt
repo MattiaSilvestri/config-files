@@ -1,4 +1,0 @@
-pane	0	1	1	:*	1	nvim	:/home/mattia	1	nvim	:nvim
-pane	0	1	1	:*	2	mattia@HAL9000:~	:/home/mattia	0	zsh	:
-window	0	1	:nvim	1	:*	ed66,256x71,0,0[256x53,0,0,0,256x17,0,54,1]	:
-state	0	

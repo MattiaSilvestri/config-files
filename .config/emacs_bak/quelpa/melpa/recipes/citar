@@ -1,3 +1,0 @@
-(citar :repo "bdarcus/citar"
-       :fetcher github
-       :old-names (bibtex-actions))

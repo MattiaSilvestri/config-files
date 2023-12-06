@@ -1,3 +1,0 @@
-(idle-highlight-mode
- :url "https://codeberg.org/ideasman42/emacs-idle-highlight-mode.git"
- :fetcher git)

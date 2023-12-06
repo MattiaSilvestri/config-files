@@ -1,8 +1,0 @@
-(undo-tree-save-format-version . 1)
-"278d57d55c79444c713019160c91135c62f07dc3"
-[nil current nil nil (25512 25834 849937 168000) 0 nil]
-([nil nil ((42 . 45) (#("png" 0 3 (fontified t)) . 42) (undo-tree-id63 . -2) (undo-tree-id65 . -2) (undo-tree-id67 . -2) (undo-tree-id69 . -1) (undo-tree-id71 . -1) (undo-tree-id73 . -1) (t 25512 21204 65421 71000)) ((42 . 45) (#("jpg" 0 3 (fontified t)) . 42)) (25512 25834 390186 252000) 0 nil])
-([nil nil ((151 . 154) (#("g" 0 1 (fontified nil)) . 151) (#("n" 0 1 (fontified nil)) . 151) (#("p" 0 1 (fontified nil)) . 151) (#("l" 0 1 (fontified nil)) . 151) (151 . 152) (95 . 98) (#("png" 0 3 (fontified t)) . 95)) ((95 . 98) (#("jpg" 0 3 (fontified t)) . 95) (#("l" 0 1 (fontified nil)) . 151) (151 . 152) (151 . 152) (151 . 152) (151 . 152) (#("jpg" 0 3 (fontified t)) . 151) (t 25512 21362 22539 555000)) (25512 21359 848728 982000) 0 nil])
-([nil nil ((42 . 44) (#("jpg" 0 3 (fontified t)) . 42) (undo-tree-id26 . -2) (undo-tree-id27 . -2) (undo-tree-id28 . -2) (undo-tree-id29 . -2) (undo-tree-id30 . -2) (undo-tree-id31 . -2) (undo-tree-id32 . -2) (undo-tree-id33 . -1) (undo-tree-id34 . -1) (undo-tree-id35 . -1) (undo-tree-id36 . -1) (undo-tree-id37 . -1) (undo-tree-id38 . -1) (t 25512 20888 731153 520000)) ((42 . 45) (#("pn" 0 2 (fontified t)) . 42) (undo-tree-id39 . -2) (undo-tree-id40 . -1) (undo-tree-id41 . -1) (undo-tree-id42 . -1) (undo-tree-id43 . -1) (undo-tree-id44 . -1) (undo-tree-id45 . -1) (undo-tree-id46 . -1) (undo-tree-id47 . -1) (undo-tree-id48 . -1)) (25512 21201 440372 634000) 0 nil])
-([nil nil ((44 . 45)) ((#("g" 0 1 (fontified t)) . 44)) (25512 21201 440275 787000) 0 nil])
-nil

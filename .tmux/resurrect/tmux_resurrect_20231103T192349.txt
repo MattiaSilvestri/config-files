@@ -1,6 +1,0 @@
-pane	0	1	0	:-	1	nvim	:/home/mattia	1	nvim	:nvim
-pane	0	2	1	:*	1	nvim	:/home/mattia	0	nvim	:nvim
-pane	0	2	1	:*	2	mattia@HAL9000:/mnt/Data/Learning/Computer Science/Online/JavaScript/Exercises/test	:/mnt/Data/Learning/Computer\ Science/Online/JavaScript/Exercises/test	1	zsh	:/usr/bin/python -O /home/mattia/.local/bin/ranger
-window	0	1	:nvim	0	:-	b85d,213x62,0,0,0	:
-window	0	2	:zsh	1	:*	f967,210x52,0,0[210x41,0,0,1,210x10,0,42,2]	:
-state	0	

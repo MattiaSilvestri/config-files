@@ -1,3 +1,0 @@
-(filldent
- :fetcher github
- :repo "duckwork/filldent.el")

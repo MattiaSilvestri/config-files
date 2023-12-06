@@ -1,2 +1,0 @@
-(kuronami-theme :repo "super3ggo/kuronami"
-                :fetcher github)

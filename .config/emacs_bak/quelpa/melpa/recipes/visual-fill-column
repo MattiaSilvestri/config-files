@@ -1,3 +1,0 @@
-(visual-fill-column
- :fetcher git
- :url "https://codeberg.org/joostkremers/visual-fill-column.git")

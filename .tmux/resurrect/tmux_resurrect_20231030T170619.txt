@@ -1,5 +1,0 @@
-pane	0	1	0	:-	1	nvim	:/home/mattia	1	nvim	:nvim
-pane	0	2	1	:*	1	ranger	:/home/mattia/.dotfiles/.doom.d	1	python	:/usr/bin/python -O /home/mattia/.local/bin/ranger
-window	0	1	:nvim	0	:-	b85d,213x62,0,0,0	:
-window	0	2	:python	1	:*	b85f,213x62,0,0,2	:
-state	0	

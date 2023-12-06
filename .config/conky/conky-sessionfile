@@ -1,1 +1,0 @@
-conky -c /home/mattia/.config/conky/wo-conky-system-lua/WO-conky-system-lua-v3.conkyrc & sleep 1s

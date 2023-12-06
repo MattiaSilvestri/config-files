@@ -1,3 +1,0 @@
-(ancient-one-dark-theme
- :fetcher github
- :repo "holodata/ancient-one-dark-emacs")

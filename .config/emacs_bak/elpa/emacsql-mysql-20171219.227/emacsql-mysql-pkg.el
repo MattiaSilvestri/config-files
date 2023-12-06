@@ -1,2 +1,0 @@
-;;; Generated package description from /home/mattia/.config/emacs/elpa/emacsql-mysql-20171219.227/emacsql-mysql.el  -*- no-byte-compile: t -*-
-(define-package "emacsql-mysql" "20171219.227" "EmacSQL back-end for MySQL" '((emacs "25.1") (emacsql "2.0.0")) :commit "c82a0e6b4d256a3743b718cfb640fa9efc045f6e" :authors '(("Christopher Wellons" . "wellons@nullprogram.com")) :maintainer '("Christopher Wellons" . "wellons@nullprogram.com") :url "https://github.com/skeeto/emacsql")

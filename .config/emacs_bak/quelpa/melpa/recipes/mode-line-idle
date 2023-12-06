@@ -1,3 +1,0 @@
-(mode-line-idle
- :url "https://codeberg.org/ideasman42/emacs-mode-line-idle.git"
- :fetcher git)
