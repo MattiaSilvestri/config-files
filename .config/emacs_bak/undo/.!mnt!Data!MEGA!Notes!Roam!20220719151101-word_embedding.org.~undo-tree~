@@ -1,0 +1,16 @@
+(undo-tree-save-format-version . 1)
+"235947bc595b1a49e0e936229961b5a3dd9157a9"
+[nil nil nil nil (25447 41099 310730 926000) 0 nil]
+([nil nil ((122 . 194) (121 . 122) (116 . 121) (114 . 116) (#("*" 0 1 (fontified t line-prefix "" wrap-prefix "")) . -114) (undo-tree-id17 . -1) (undo-tree-id18 . -1) (#(" " 0 1 (fontified t line-prefix "" wrap-prefix #("* " 0 2 (face org-indent)) face org-level-1)) . -115) (undo-tree-id19 . -1) (undo-tree-id20 . -1) 116 (114 . 116) (114 . 115) (#("O" 0 1 (fontified t line-prefix "" wrap-prefix "")) . -114) (undo-tree-id21 . -1) (undo-tree-id22 . -1) (undo-tree-id23 . -1) 115 (114 . 115) (113 . 114) (t 25327 41785 276341 800000) 113) nil (25447 41099 310725 742000) 0 nil])
+([nil nil ((nil face org-link 194 . 195) (nil font-lock-multiline t 194 . 195) (nil fontified t 194 . 195) (nil line-prefix #("  " 0 2 (face org-indent)) 194 . 195) (nil wrap-prefix #("  " 0 2 (face org-indent)) 194 . 195) (194 . 195) 191) nil (25447 41099 310706 485000) 0 nil])
+([nil nil ((195 . 196)) nil (25447 41099 310702 922000) 0 nil])
+([nil nil ((195 . 196)) nil (25447 41099 310701 39000) 0 nil])
+([nil nil ((#("p" 0 1 (fontified t line-prefix #("  " 0 2 (face org-indent)) wrap-prefix #("  " 0 2 (face org-indent)))) . 195)) nil (25447 41099 310699 417000) 0 nil])
+([nil nil ((195 . 196)) nil (25447 41099 310697 932000) 0 nil])
+([nil nil ((#("" 0 1 (fontified t line-prefix #("  " 0 2 (face org-indent)) wrap-prefix #("  " 0 2 (face org-indent)))) . 196)) nil (25447 41099 310696 162000) 0 nil])
+([nil nil ((196 . 197) 195) nil (25447 41099 310694 315000) 0 nil])
+([nil nil ((#("* Topic
+" 0 1 (fontified t line-prefix "" wrap-prefix #("* " 0 2 (face org-indent)) face (org-superstar-header-bullet org-level-1) composition (0 1 [9673])) 1 2 (fontified t line-prefix "" wrap-prefix #("* " 0 2 (face org-indent)) face org-level-1) 2 7 (fontified t line-prefix "" wrap-prefix #("* " 0 2 (face org-indent)) face org-level-1) 7 8 (fontified t line-prefix "" wrap-prefix #("* " 0 2 (face org-indent)))) . 114) (undo-tree-id9 . -8) (undo-tree-id10 . -8) (undo-tree-id11 . -8) (undo-tree-id12 . -8) (undo-tree-id13 . -8) (undo-tree-id14 . -8) (undo-tree-id15 . -8) (undo-tree-id16 . -8)) nil (25447 41099 310690 506000) 0 nil])
+([nil current ((#("
+" 0 1 (fontified t line-prefix "" wrap-prefix "")) . 189) (undo-tree-id0 . -1) (undo-tree-id1 . 1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) (undo-tree-id7 . -1) (undo-tree-id8 . -1)) nil (25447 41099 310671 751000) 0 nil])
+nil

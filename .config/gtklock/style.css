@@ -1,0 +1,16 @@
+window {
+   background-image: url("Lock.png");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: black;
+}
+
+#clock-label {
+   font-family: "Cantarell";
+}
+
+#input-label {
+   font-family: "Cantarell";
+   font-size: 14pt;
+}

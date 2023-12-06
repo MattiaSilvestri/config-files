@@ -1,0 +1,10 @@
+ls 
+ls -la
+cd R/
+ls
+sudo emacs ArcoLinux-Darkish.rasi 
+:q
+cbonsai 
+pipes-rs
+fm
+ranger

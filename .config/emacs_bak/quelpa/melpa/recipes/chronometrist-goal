@@ -1,0 +1,3 @@
+(chronometrist-goal
+ :url "https://codeberg.org/contrapunctus/chronometrist-goal.git"
+ :fetcher git)

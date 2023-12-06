@@ -1,0 +1,8 @@
+(undo-tree-save-format-version . 1)
+"73741b2f50f23db404d21f0c4a3e102a064ed643"
+[nil nil nil nil (25356 47999 900015 287000) 0 nil]
+([nil nil (("nmap [[ :pHead
+nmap ]] :nHead
+" . 48) (undo-tree-id0 . -15) (undo-tree-id1 . -30) (undo-tree-id2 . -24) (undo-tree-id3 . -9) (undo-tree-id4 . -9) (undo-tree-id5 . -9) (undo-tree-id6 . -9) (undo-tree-id7 . -9) (undo-tree-id8 . -24) (undo-tree-id9 . -9) (undo-tree-id10 . -24) (undo-tree-id11 . -30) (undo-tree-id12 . -9) (undo-tree-id13 . -24) (undo-tree-id14 . -9) (undo-tree-id15 . -9) (undo-tree-id16 . -9) (undo-tree-id17 . -9) (undo-tree-id18 . -9) (undo-tree-id19 . -24) (undo-tree-id20 . -24) (undo-tree-id21 . -24) (undo-tree-id22 . -24) (undo-tree-id23 . -24) (undo-tree-id24 . -24) 72 (t 25356 47909 849091 400000)) nil (25356 47999 900009 565000) 0 nil])
+([nil current ((41 . 42) ("Dollar" . 41)) nil (25356 47999 899958 264000) 0 nil])
+nil

@@ -1,0 +1,4 @@
+(async-backup
+ :fetcher git
+ :url "https://codeberg.org/contrapunctus/async-backup.git"
+ :branch "development")
