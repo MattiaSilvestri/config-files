@@ -7,6 +7,8 @@
 ;; it should have a lower threshold too.
 (add-to-list 'doom-large-file-size-alist '("\\.\\(?:clj[sc]?\\|dtm\\|edn\\)\\'" . 0.5))
 
+(defvar +clojure-load-clj-refactor-with-lsp nil
+  "Whether or not to include clj-refactor along with clojure-lsp.")
 
 ;;
 ;;; Packages
@@ -14,6 +16,8 @@
 (use-package! clojure-mode
   :hook (clojure-mode . rainbow-delimiters-mode)
   :config
+  (set-formatter! 'cljfmt '("cljfmt" "fix" "-") :modes '(clojure-mode clojurec-mode clojurescript-mode))
+
   (when (modulep! +lsp)
     (add-hook! '(clojure-mode-local-vars-hook
                  clojurec-mode-local-vars-hook
@@ -27,10 +31,24 @@
                    clojurec-mode
                    clojurescript-mode
                    clojurex-mode))
-        (add-to-list 'lsp-language-id-configuration (cons m "clojure"))))))
+        (add-to-list 'lsp-language-id-configuration (cons m "clojure")))))
+
+  (when (modulep! +tree-sitter)
+    (add-hook! '(clojure-mode-local-vars-hook
+                 clojurec-mode-local-vars-hook
+                 clojurescript-mode-local-vars-hook)
+               :append
+               #'tree-sitter!)
+    ;; TODO: PR this upstream
+    (after! tree-sitter-langs
+      (add-to-list 'tree-sitter-major-mode-language-alist '(clojurec-mode . clojure))
+      (add-to-list 'tree-sitter-major-mode-language-alist '(clojurescript-mode . clojure)))))
 
 
-(use-package! cider
+;; `cider-mode' is used instead of the typical `cider' package due to the main
+;; library being loaded only when is absolutely needed, which is too late for
+;; our purposes
+(use-package! cider-mode
   ;; NOTE if `org-directory' doesn't exist, `cider-jack' in won't work
   :hook (clojure-mode-local-vars . cider-mode)
   :init
@@ -118,7 +136,7 @@
       "Update repl icon on modeline with cider information."
       (setq cider-modeline-icon (concat
                                  " "
-                                 (+modeline-format-icon 'faicon "terminal" "" face label -0.0575)
+                                 (+modeline-format-icon 'faicon "nf-fa-terminal" "" face label -0.0575)
                                  " "))
       (add-to-list 'global-mode-string
                    '(t (:eval cider-modeline-icon))
@@ -130,7 +148,7 @@
       (defun +clojure--cider-connected-update-modeline ()
         "Update modeline with cider connection state."
         (let* ((connected (cider-connected-p))
-               (face (if connected 'warning 'breakpoint-disabled))
+               (face (if connected 'warning 'shadow))
                (label (if connected "Cider connected" "Cider disconnected")))
           (+clojure--cider-set-modeline face label))))
 
@@ -241,13 +259,12 @@
 
 
 (use-package! clj-refactor
+  :when (or (not (modulep! +lsp))
+            +clojure-load-clj-refactor-with-lsp)
   :hook (clojure-mode . clj-refactor-mode)
   :config
-  (unless (modulep! +lsp)
-    (set-lookup-handlers! 'clj-refactor-mode
-      :references #'cljr-find-usages))
-  (when (modulep! +lsp)
-    (setq cljr-add-ns-to-blank-clj-files nil))
+  (set-lookup-handlers! 'clj-refactor-mode
+    :references #'cljr-find-usages)
   (map! :map clojure-mode-map
         :localleader
         :desc "refactor" "R" #'hydra-cljr-help-menu/body))
@@ -256,5 +273,24 @@
 ;; clojure-lsp already uses clj-kondo under the hood
 (use-package! flycheck-clj-kondo
   :when (and (modulep! :checkers syntax)
+             (not (modulep! :checkers syntax +flymake))
              (not (modulep! +lsp)))
   :after flycheck)
+
+
+(use-package! neil
+  :commands (neil-find-clojure-package)
+  :config
+  (setq neil-prompt-for-version-p nil
+        neil-inject-dep-to-project-p t)
+  (map! :map (clojure-mode-map clojurescript-mode-map clojurec-mode-map)
+        :localleader
+        "f"  #'neil-find-clojure-package))
+
+
+(use-package! jet
+  :commands (jet)
+  :config
+  (map! :map (clojure-mode-map clojurescript-mode-map clojurec-mode-map)
+        :localleader
+        "j" #'jet))

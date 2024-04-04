@@ -66,7 +66,7 @@
 
 (use-package! git-gutter
   :unless (modulep! +diff-hl)
-  :commands git-gutter:revert-hunk git-gutter:stage-hunk
+  :commands git-gutter:revert-hunk git-gutter:stage-hunk git-gutter:previous-hunk git-gutter:next-hunk
   :init
   (add-hook! 'find-file-hook
     (defun +vc-gutter-init-maybe-h ()
@@ -116,6 +116,11 @@ is deferred until the file is saved. Respects `git-gutter:disabled-modes'."
   ;; UX: update git-gutter on focus (in case I was using git externally)
   (add-hook 'focus-in-hook #'git-gutter:update-all-windows)
 
+  ;; Stop git-gutter doing things when we don't want
+  (remove-hook 'post-command-hook #'git-gutter:post-command-hook)
+  (advice-remove #'quit-window #'git-gutter:quit-window)
+  (advice-remove #'switch-to-buffer #'git-gutter:switch-to-buffer)
+
   (add-hook! '(doom-escape-hook doom-switch-window-hook) :append
     (defun +vc-gutter-update-h (&rest _)
       "Refresh git-gutter on ESC. Return nil to prevent shadowing other
@@ -129,6 +134,9 @@ is deferred until the file is saved. Respects `git-gutter:disabled-modes'."
   ;; UX: update git-gutter when using magit commands
   (advice-add #'magit-stage-file   :after #'+vc-gutter-update-h)
   (advice-add #'magit-unstage-file :after #'+vc-gutter-update-h)
+
+  ;; UX: update git-gutter after reverting a buffer
+  (add-hook 'after-revert-hook #'+vc-gutter-update-h)
 
   ;; FIX: stop git-gutter:{next,previous}-hunk from jumping to random hunks.
   (defadvice! +vc-gutter--fix-linearity-of-hunks-a (diffinfos is-reverse)
@@ -150,6 +158,7 @@ is deferred until the file is saved. Respects `git-gutter:disabled-modes'."
   :hook (vc-dir-mode  . diff-hl-dir-mode)
   :hook (dired-mode   . diff-hl-dired-mode)
   :hook (diff-hl-mode . diff-hl-flydiff-mode)
+  :commands diff-hl-stage-current-hunk diff-hl-revert-hunk diff-hl-next-hunk diff-hl-previous-hunk
   :config
   (set-popup-rule! "^\\*diff-hl" :select nil :size '+popup-shrink-to-fit)
 

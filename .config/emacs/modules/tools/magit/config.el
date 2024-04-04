@@ -21,7 +21,7 @@ Only has an effect in GUI Emacs.")
   :defer-incrementally (dash f s with-editor git-commit package eieio transient)
   :init
   (setq magit-auto-revert-mode nil)  ; we do this ourselves further down
-  ;; Must be set early to prevent ~/.emacs.d/transient from being created
+  ;; Must be set early to prevent ~/.config/emacs/transient from being created
   (setq transient-levels-file  (concat doom-data-dir "transient/levels")
         transient-values-file  (concat doom-data-dir "transient/values")
         transient-history-file (concat doom-data-dir "transient/history"))
@@ -49,10 +49,6 @@ Only has an effect in GUI Emacs.")
     (+magit-mark-stale-buffers-h))
   ;; ...then refresh the rest only when we switch to them, not all at once.
   (add-hook 'doom-switch-buffer-hook #'+magit-revert-buffer-maybe-h)
-
-  ;; Center the target file, because it's poor UX to have it at the bottom of
-  ;; the window after invoking `magit-status-here'.
-  (advice-add #'magit-status-here :after #'doom-recenter-a)
 
   ;; The default location for git-credential-cache is in
   ;; ~/.cache/git/credential. However, if ~/.git-credential-cache/ exists, then
@@ -222,10 +218,6 @@ ensure it is built when we actually use Forge."
   (define-key magit-todos-section-map "j" nil))
 
 
-(use-package! magit-gitflow
-  :hook (magit-mode . turn-on-magit-gitflow))
-
-
 (use-package! evil-collection-magit
   :when (modulep! :editor evil +everywhere)
   :defer t
@@ -280,13 +272,7 @@ ensure it is built when we actually use Forge."
         (setcar desc (cdr key))))
     (evil-define-key* evil-collection-magit-state git-rebase-mode-map
       "gj" #'git-rebase-move-line-down
-      "gk" #'git-rebase-move-line-up))
-
-  (after! magit-gitflow
-    (evil-define-key* '(normal visual) magit-mode-map
-      "%" #'magit-gitflow-popup)
-    (transient-append-suffix 'magit-dispatch 'magit-worktree
-      '("%" "Gitflow" magit-gitflow-popup))))
+      "gk" #'git-rebase-move-line-up)))
 
 
 (use-package! evil-collection-magit-section

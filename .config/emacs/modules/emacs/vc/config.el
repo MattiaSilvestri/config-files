@@ -133,6 +133,14 @@ otherwise in default state."
   ;; using commit hashes rather than branch names.
   (setq browse-at-remote-prefer-symbolic nil)
 
+  ;; Add codeberg.org support
+  ;; TODO: PR this upstream?
+  (add-to-list 'browse-at-remote-remote-type-regexps '(:host "^codeberg\\.org$" :type "codeberg"))
+  ;; Expand recognition for gitlab hosts besides gitlab.org or gitlab.gnome.org
+  ;; which are presumably hosted in a gitlab.* subdomain.
+  ;; TODO: PR this upstream?
+  (add-to-list 'browse-at-remote-remote-type-regexps '(:host "^gitlab\\." :type "gitlab") 'append)
+
   ;; HACK `browse-at-remote' produces urls with `nil' in them, when the repo is
   ;;      detached. This creates broken links. I think it is more sensible to
   ;;      fall back to master in those cases.

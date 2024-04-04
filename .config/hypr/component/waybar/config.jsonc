@@ -12,8 +12,8 @@
   "modules-left": [
     "hyprland/workspaces",
     "custom/pacman",
-    // "custom/cava-internal",
-    "cava"
+    "custom/cava-internal"
+    // "cava"
   ],
   "modules-center": ["wlr/taskbar"],
   "modules-right": [

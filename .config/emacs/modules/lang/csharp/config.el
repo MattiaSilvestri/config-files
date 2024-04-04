@@ -3,6 +3,7 @@
 (use-package! csharp-mode
   :hook (csharp-mode . rainbow-delimiters-mode)
   :config
+  (set-formatter! 'csharpier '("dotnet-csharpier") :modes '(csharp-mode))
   (set-electric! 'csharp-mode :chars '(?\n ?\}))
   (set-rotate-patterns! 'csharp-mode
     :symbols '(("public" "protected" "private")
@@ -35,9 +36,6 @@
   (when (modulep! +lsp)
     (add-hook 'csharp-mode-local-vars-hook #'lsp! 'append))
 
-  (when (modulep! +tree-sitter)
-    (add-hook 'csharp-mode-local-vars-hook #'tree-sitter! 'append))
-
   (defadvice! +csharp-disable-clear-string-fences-a (fn &rest args)
     "This turns off `c-clear-string-fences' for `csharp-mode'. When
 on for `csharp-mode' font lock breaks after an interpolated string
@@ -45,6 +43,17 @@ or terminating simple string."
     :around #'csharp-disable-clear-string-fences
     (unless (eq major-mode 'csharp-mode)
       (apply fn args))))
+
+
+(use-package! csharp-tree-sitter
+  :when (modulep! +tree-sitter)
+  :defer t
+  :init
+  (add-hook 'csharp-mode-local-vars-hook #'tree-sitter! 'append)
+  (when (fboundp #'csharp-tree-sitter-mode)
+    (add-to-list 'auto-mode-alist '("\\.cs\\'" . csharp-tree-sitter-mode))
+    (when (modulep! +lsp)
+      (add-hook 'csharp-tree-sitter-mode-local-vars-hook #'lsp! 'append))))
 
 
 ;; Unity shaders

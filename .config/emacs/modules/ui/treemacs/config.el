@@ -29,9 +29,11 @@ This must be set before `treemacs' has loaded.")
   ;; Don't follow the cursor
   (treemacs-follow-mode -1)
 
+  (set-popup-rule! "^ ?\\*Treemacs" :ignore t)
   (when +treemacs-git-mode
     ;; If they aren't supported, fall back to simpler methods
     (when (and (memq +treemacs-git-mode '(deferred extended))
+               (not treemacs-python-executable)
                (not (executable-find "python3")))
       (setq +treemacs-git-mode 'simple))
     (treemacs-git-mode +treemacs-git-mode)
@@ -39,6 +41,11 @@ This must be set before `treemacs' has loaded.")
           (if (memq +treemacs-git-mode '(extended deferred))
               3
             0))))
+
+
+(use-package! treemacs-nerd-icons
+  :after treemacs
+  :config (treemacs-load-theme "nerd-icons"))
 
 
 (use-package! treemacs-evil

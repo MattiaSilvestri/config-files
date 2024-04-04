@@ -1,4 +1,4 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; tools/make/packages.el
 
-(package! makefile-executor :pin "d0a34c355fb80a8616ae7ed5eebbda8507aa14ac")
+(package! makefile-executor :pin "d1d98eaf522a767561f6c7cbd8d2526be58b3ec5")

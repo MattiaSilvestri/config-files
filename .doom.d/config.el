@@ -480,15 +480,15 @@
 
 (svg-tag-mode t)
 
-(use-package eaf
-  :load-path "~/.config/emacs/site-lisp/emacs-application-framework"
-  :custom
-  ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
-  (eaf-browser-continue-where-left-off t)
-  (eaf-browser-enable-adblocker t)
-  (browse-url-browser-function 'eaf-open-browser)
-  :config
-  (defalias 'browse-web #'eaf-open-browser))
+;; (use-package eaf
+;;   :load-path "~/.config/emacs/site-lisp/emacs-application-framework"
+;;   :custom
+;;   ; See https://github.com/emacs-eaf/emacs-application-framework/wiki/Customization
+;;   (eaf-browser-continue-where-left-off t)
+;;   (eaf-browser-enable-adblocker t)
+;;   (browse-url-browser-function 'eaf-open-browser)
+;;   :config
+;;   (defalias 'browse-web #'eaf-open-browser))
 
 ;; (require 'eaf-browser)
 ;; (require 'eaf-pdf-viewer)

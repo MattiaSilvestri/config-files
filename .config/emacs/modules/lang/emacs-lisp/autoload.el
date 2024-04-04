@@ -102,15 +102,18 @@ if it's callable, `apropos' otherwise."
   (cond ((when-let (module (+emacs-lisp--module-at-point))
            (doom/help-modules (car module) (cadr module))
            (when (eq major-mode 'org-mode)
+             (goto-char (point-min))
              (with-demoted-errors "%s"
                (re-search-forward
                 (if (caddr module)
-                    "\\* Module flags$"
-                  "\\* Description$"))
+                    "^\\*+ Module flags"
+                  "^\\* Description"))
                (when (caddr module)
                  (re-search-forward (format "=\\%s=" (caddr module))
                                     nil t))
-               (when (invisible-p (point))
+               (when (memq (get-char-property (line-end-position)
+                                              'invisible)
+                           '(outline org-fold-outline))
                  (org-show-hidden-entry))))
            'deferred))
         (thing (helpful-symbol (intern thing)))
@@ -392,7 +395,7 @@ Intended as :around advice for `elisp-demos--search'."
     (or (funcall fn symbol)
         (with-file-contents! (doom-path doom-docs-dir "examples.org")
           (save-excursion
-            (when (re-search-backward
+            (when (re-search-forward
                    (format "^\\*+[ \t]+\\(?:TODO \\)?%s$"
                            (regexp-quote (symbol-name symbol)))
                    nil t)
@@ -413,7 +416,7 @@ Intended as :around advice for `elisp-demos--search'."
 
 Intended as :override advice for `calculate-lisp-indent'.
 
-Adapted from 'https://www.reddit.com/r/emacs/comments/d7x7x8/finally_fixing_indentation_of_quoted_lists/'."
+Adapted from URL `https://www.reddit.com/r/emacs/comments/d7x7x8/finally_fixing_indentation_of_quoted_lists/'."
   ;; This line because `calculate-lisp-indent-last-sexp` was defined with
   ;; `defvar` with it's value ommited, marking it special and only defining it
   ;; locally. So if you don't have this, you'll get a void variable error.

@@ -20,7 +20,8 @@
   (mapc (doom-rpartial #'make-directory 'parents)
         (list doom-local-dir
               doom-data-dir
-              doom-cache-dir))
+              doom-cache-dir
+              doom-state-dir))
 
   ;; HACK: Load `cl' and site files manually to prevent polluting logs and
   ;;   stdout with deprecation and/or file load messages.
@@ -54,6 +55,9 @@
   ;; Load just the... bear necessities~
   (require 'seq)
   (require 'map)
+
+  ;; Suppress any possible coding system prompts during CLI sessions.
+  (set-language-environment "UTF-8")
 
   ;; Load and set up our debugger first, so backtraces can be made more
   ;; presentable and logged to file.
@@ -229,7 +233,7 @@ If nil, falls back to less.")
 Only applies if (exit! :pager) or (exit! :pager?) are called.")
 
 ;;; Logger settings
-(defvar doom-cli-log-file-format (expand-file-name "logs/cli.%s.%s.%s" doom-local-dir)
+(defvar doom-cli-log-file-format (expand-file-name "logs/cli.%s.%s.%s" doom-state-dir)
   "Where to write any output/log file to.
 
 Must have two arguments, one for session id and the other for log type.")
@@ -1233,6 +1237,7 @@ Emacs' batch library lacks an implementation of the exec system call."
                                     ("EMACSDIR" . ,doom-emacs-dir)
                                     ("DOOMDIR" . ,doom-user-dir)
                                     ("DEBUG" . ,(if init-file-debug "1"))
+                                    ("__DOOMSTEP" . ,(number-to-string (doom-cli-context-step context)))
                                     ("__DOOMCONTEXT" . ,context-file))
                                if val
                                concat (format "%s=%s \\\n" envvar (shell-quote-argument val)))

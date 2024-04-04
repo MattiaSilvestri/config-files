@@ -64,9 +64,10 @@
 ;; offensive) optimizations, and load the minimum for all Doom sessions.
 ;;
 ;;; Code:
+
+;; For `when-let' and `if-let' on versions of Emacs before they were autoloaded.
 (eval-when-compile (require 'subr-x))
 
-;;; Version checks
 (eval-and-compile  ; Check version at both compile and runtime.
   ;; Doom's minimum supported version of Emacs is 27.1. Its my goal to support
   ;; one major version below the stable release, for about a year or until
@@ -107,15 +108,20 @@
                 emacs-version old-version)))
 
 ;;; Custom features
-;; Since `system-configuration-features's docs state not to rely on it to test
-;; for features, let's give users an easier way to detect them.
+;; Emacs needs a more consistent way to detect build features, and the docs
+;; claim `system-configuration-features' is not da way. Some features (that
+;; don't represent packages) can be found in `features' (which `featurep'
+;; consults), but aren't consistent, so I'll impose some consistency:
 (if (bound-and-true-p module-file-suffix)
     (push 'dynamic-modules features))
 (if (fboundp #'json-parse-string)
     (push 'jansson features))
-;; `native-compile' exists whether or not it is functional (e.g. libgcc is
-;; available or not). This seems silly, so pretend it doesn't exist if it
-;; isn't available.
+(let ((inhibit-changing-match-data t))
+  (if (string-match "HARFBUZZ" system-configuration-features) ; no alternative
+      (push 'harfbuzz features)))
+;; The `native-compile' feature exists whether or not it is functional (e.g.
+;; libgcc is available or not). This seems silly, so pretend it doesn't exist if
+;; it isn't functional.
 (if (featurep 'native-compile)
     (if (not (native-comp-available-p))
         (delq 'native-compile features)))
@@ -155,13 +161,14 @@
 
 (defgroup doom nil
   "An Emacs framework for the stubborn martian hacker."
-  :link '(url-link "https://doomemacs.org"))
+  :link '(url-link "https://doomemacs.org")
+  :group 'emacs)
 
 (defconst doom-version "3.0.0-pre"
   "Current version of Doom Emacs core.")
 
 ;; DEPRECATED: Remove these when the modules are moved out of core.
-(defconst doom-modules-version "22.10.0-pre"
+(defconst doom-modules-version "23.12.0-pre"
   "Current version of Doom Emacs.")
 
 (defvar doom-init-time nil
@@ -487,7 +494,7 @@ All valid contexts:
   sandbox    -- This session was launched from Doom's sandbox.
   packages   -- when packagedefs are being read
   reload     -- while reloading doom")
-(put 'doom-context 'valid-values '(cli compile eval init modules packages reload sandbox))
+(put 'doom-context 'valid-values '(cli compile eval init modules packages reload doctor sandbox))
 (put 'doom-context 'risky-local-variable t)
 
 (defun doom-context--check (context)
@@ -583,6 +590,14 @@ Otherwise, `en/disable-command' (in novice.el.gz) is hardcoded to write them to
   (setq native-comp-async-report-warnings-errors init-file-debug
         native-comp-warning-on-missing-source init-file-debug)
 
+  ;; HACK: native-comp-deferred-compilation-deny-list is replaced in later
+  ;;   versions of Emacs 29, and with no deprecation warning. I alias them to
+  ;;   ensure backwards compatibility for packages downstream that may have not
+  ;;   caught up yet. I avoid marking it obsolete because obsolete warnings are
+  ;;   unimportant to end-users. It's the package devs that should be informed.
+  (unless (boundp 'native-comp-deferred-compilation-deny-list)
+    (defvaralias 'native-comp-deferred-compilation-deny-list 'native-comp-jit-compilation-deny-list))
+
   ;; UX: By default, native-comp uses 100% of half your cores. If you're
   ;;   expecting this this should be no issue, but the sudden (and silent) spike
   ;;   of CPU and memory utilization can alarm folks, overheat laptops, or
@@ -592,7 +607,15 @@ Otherwise, `en/disable-command' (in novice.el.gz) is hardcoded to write them to
     (and (null comp-num-cpus)
          (zerop native-comp-async-jobs-number)
          (setq comp-num-cpus
-               (max 1 (/ (num-processors) (if noninteractive 1 4)))))))
+               (max 1 (/ (num-processors) (if noninteractive 1 4))))))
+
+  (define-advice comp-run-async-workers (:around (fn &rest args) dont-litter-tmpdir)
+    "Normally, native-comp writes a ton to /tmp. This advice forces it to write
+to `doom-cache-dir'/comp/ instead, so that Doom can safely clean it up as part
+of 'doom sync' or 'doom gc'."
+    (let ((temporary-file-directory (expand-file-name "comp/" doom-profile-cache-dir)))
+      (make-directory temporary-file-directory t)
+      (apply fn args))))
 
 ;;; Suppress package.el
 ;; Since Emacs 27, package initialization occurs before `user-init-file' is
@@ -664,7 +687,7 @@ but long before your modules and $DOOMDIR/config.el are loaded."
 (defcustom doom-after-init-hook ()
   "A hook run once Doom's core and modules, and the user's config are loaded.
 
-This triggers at the absolutel atest point in the eager startup process, and
+This triggers at the absolute latest point in the eager startup process, and
 runs in both interactive and non-interactive sessions, so guard hooks
 appropriately against `noninteractive' or the `cli' context."
   :group 'doom
@@ -673,6 +696,16 @@ appropriately against `noninteractive' or the `cli' context."
 
 ;;
 ;;; Last minute initialization
+
+(when (daemonp)
+  (message "Starting Doom Emacs in daemon mode!")
+  (unless doom-inhibit-log
+    (add-hook! 'doom-after-init-hook :depth 106
+      (unless doom-inhibit-log
+        (setq doom-inhibit-log (not (or noninteractive init-file-debug))))
+      (message "Disabling verbose mode. Have fun!"))
+    (add-hook! 'kill-emacs-hook :depth 110
+      (message "Killing Emacs. Sayonara!"))))
 
 (add-hook! 'doom-before-init-hook :depth -105
   (defun doom--begin-init-h ()

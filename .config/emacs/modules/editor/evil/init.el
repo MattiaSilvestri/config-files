@@ -40,15 +40,16 @@
       free-keys
       helm
       help
-      indent
       image
+      indent
       kotlin-mode
+      lispy
       outline
       replace
       shortdoc
       simple
       slime
-      lispy)
+      tab-bar)
     "A list of `evil-collection' modules to ignore. See the definition of this
 variable for an explanation of the defaults (in comments). See
 `evil-collection-mode-list' for a list of available options.")
@@ -102,11 +103,13 @@ variable for an explanation of the defaults (in comments). See
       calendar
       cider
       cmake-mode
+      color-rg
       comint
       company
       compile
       consult
       corfu
+      crdt
       (custom cus-edit)
       cus-theme
       daemons
@@ -121,6 +124,7 @@ variable for an explanation of the defaults (in comments). See
       dired
       dired-sidebar
       disk-usage
+      distel
       doc-view
       docker
       ebib
@@ -129,9 +133,11 @@ variable for an explanation of the defaults (in comments). See
       edebug
       ediff
       eglot
+      elpaca
+      ement
       explain-pause-mode
-      elfeed
       eldoc
+      elfeed
       elisp-mode
       elisp-refs
       elisp-slime-nav
@@ -153,6 +159,7 @@ variable for an explanation of the defaults (in comments). See
       geiser
       ggtags
       git-timemachine
+      gited
       gnus
       go-mode
       grep
@@ -164,7 +171,7 @@ variable for an explanation of the defaults (in comments). See
       hg-histedit
       hungry-delete
       ibuffer
-      image
+      (image image-mode)
       image-dired
       image+
       imenu
@@ -176,6 +183,7 @@ variable for an explanation of the defaults (in comments). See
       js2-mode
       leetcode
       lispy
+      lms
       log-edit
       log-view
       lsp-ui-imenu
@@ -235,6 +243,7 @@ variable for an explanation of the defaults (in comments). See
       snake
       so-long
       speedbar
+      tab-bar
       tablist
       tar-mode
       telega
@@ -276,7 +285,7 @@ and complains if a module is loaded too early (during startup)."
     (unless (memq (or (car-safe module) module) disabled-list)
       (doom-log "editor:evil: loading evil-collection-%s %s"
                 (or (car-safe module) module)
-                (if doom-init-time "" "(too early!)"))
+                (if after-init-time "" "(too early!)"))
       (with-demoted-errors "evil-collection error: %s"
         (evil-collection-init (list module)))))
 

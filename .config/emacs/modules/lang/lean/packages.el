@@ -1,7 +1,7 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; lang/lean/packages.el
 
-(package! lean-mode :pin "c1c68cc946eb31b6ba8faefdceffce1f77ca52df")
+(package! lean-mode :pin "99d6a34dc5b12f6e996e9217fa9f6fe4a6af037a")
 
 (when (modulep! :completion company)
-  (package! company-lean :pin "c1c68cc946eb31b6ba8faefdceffce1f77ca52df"))
+  (package! company-lean :pin "99d6a34dc5b12f6e996e9217fa9f6fe4a6af037a"))

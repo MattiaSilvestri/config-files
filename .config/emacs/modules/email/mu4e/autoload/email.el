@@ -52,7 +52,7 @@ default/fallback account."
 (add-hook 'mu4e-main-mode-hook #'+mu4e-init-h)
 
 ;;;###autoload
-(defun =mu4e ()
+(defun =mu4e (&optional background)
   "Start email client."
   (interactive)
   (require 'mu4e)
@@ -91,7 +91,7 @@ default/fallback account."
           (switch-to-buffer view-buffer)
         (if (and headers-buffer (not (eq headers-buffer (current-buffer))))
             (switch-to-buffer headers-buffer)
-          (mu4e))))))
+          (mu4e background))))))
 
 ;;;###autoload
 (defun +mu4e/compose ()
@@ -113,37 +113,47 @@ will also be the width of all other printable characters."
       (insert str)
       (car (window-text-pixel-size)))))
 
-(cl-defun +mu4e-normalised-icon (name &key set color height v-adjust)
+(cl-defun +mu4e-normalised-icon (name &key set color height v-adjust space-right)
   "Convert :icon declaration to icon"
-  (let* ((icon-set (intern (concat "all-the-icons-" (or set "faicon"))))
+  (let* ((icon-set (intern (concat "nerd-icons-" (or set "faicon"))))
          (v-adjust (or v-adjust 0.02))
          (height (or height 0.8))
          (icon (if color
-                   (apply icon-set `(,name :face ,(intern (concat "all-the-icons-" color)) :height ,height :v-adjust ,v-adjust))
+                   (apply icon-set `(,name :face ,(intern (concat "nerd-icons-" color)) :height ,height :v-adjust ,v-adjust))
                  (apply icon-set `(,name  :height ,height :v-adjust ,v-adjust))))
          (icon-width (+mu4e--get-string-width icon))
          (space-width (+mu4e--get-string-width " "))
-         (space-factor (- 2 (/ (float icon-width) space-width))))
-    (concat (propertize " " 'display `(space . (:width ,space-factor))) icon)))
+         (space-factor (- 2 (/ (float icon-width) space-width)))
+         ;; always pad the left
+         (space-left (propertize " " 'display `(space . (:width ,space-factor))))
+         ;; optionally pad the right
+         (space-right (if space-right space-left "")))
+    (format "%s%s%s" space-left icon space-right)))
 
 ;; Set up all the fancy icons
 ;;;###autoload
 (defun +mu4e-initialise-icons ()
   (setq mu4e-use-fancy-chars t
-        mu4e-headers-draft-mark      (cons "D" (+mu4e-normalised-icon "pencil"))
-        mu4e-headers-flagged-mark    (cons "F" (+mu4e-normalised-icon "flag"))
-        mu4e-headers-new-mark        (cons "N" (+mu4e-normalised-icon "sync" :set "material" :height 0.8 :v-adjust -0.10))
-        mu4e-headers-passed-mark     (cons "P" (+mu4e-normalised-icon "arrow-right"))
-        mu4e-headers-replied-mark    (cons "R" (+mu4e-normalised-icon "reply"))
+
+        mu4e-modeline-all-clear      (cons "C:" (+mu4e-normalised-icon "nf-md-check" :set "mdicon" :height 1.0 :space-right t)) ;;󰄬
+        mu4e-modeline-all-read       (cons "R:" (+mu4e-normalised-icon "nf-md-email_check" :set "mdicon" :height 1.0 :space-right t)) ;;󰪱
+        mu4e-modeline-unread-items   (cons "U:" (+mu4e-normalised-icon "nf-md-email_alert" :set "mdicon" :height 1.0 :space-right t)) ;;󰛏
+        mu4e-modeline-new-items      (cons "N:" (+mu4e-normalised-icon "nf-md-sync" :set "mdicon" :height 1.0 :space-right t)) ;;󰓦
+
+        mu4e-headers-draft-mark      (cons "D" (+mu4e-normalised-icon "nf-fa-pencil"))
+        mu4e-headers-flagged-mark    (cons "F" (+mu4e-normalised-icon "nf-fa-flag"))
+        mu4e-headers-new-mark        (cons "N" (+mu4e-normalised-icon "nf-md-sync" :set "mdicon" :v-adjust -0.10))
+        mu4e-headers-passed-mark     (cons "P" (+mu4e-normalised-icon "nf-fa-arrow_right"))
+        mu4e-headers-replied-mark    (cons "R" (+mu4e-normalised-icon "nf-fa-reply"))
         mu4e-headers-seen-mark       (cons "S" "") ;(+mu4e-normalised-icon "eye" :height 0.6 :v-adjust 0.07 :color "dsilver"))
-        mu4e-headers-trashed-mark    (cons "T" (+mu4e-normalised-icon "trash"))
-        mu4e-headers-attach-mark     (cons "a" (+mu4e-normalised-icon "file-text-o" :color "silver"))
-        mu4e-headers-encrypted-mark  (cons "x" (+mu4e-normalised-icon "lock"))
-        mu4e-headers-signed-mark     (cons "s" (+mu4e-normalised-icon "certificate" :height 0.7 :color "dpurple"))
-        mu4e-headers-unread-mark     (cons "u" (+mu4e-normalised-icon "eye-slash" :v-adjust 0.05))
-        mu4e-headers-list-mark       (cons "l" (+mu4e-normalised-icon "sitemap" :set "faicon"))
-        mu4e-headers-personal-mark   (cons "p" (+mu4e-normalised-icon "user"))
-        mu4e-headers-calendar-mark   (cons "c" (+mu4e-normalised-icon "calendar"))))
+        mu4e-headers-trashed-mark    (cons "T" (+mu4e-normalised-icon "nf-fa-trash"))
+        mu4e-headers-attach-mark     (cons "a" (+mu4e-normalised-icon "nf-fa-file_text_o" :color "silver"))
+        mu4e-headers-encrypted-mark  (cons "x" (+mu4e-normalised-icon "nf-fa-lock"))
+        mu4e-headers-signed-mark     (cons "s" (+mu4e-normalised-icon "nf-fa-certificate" :height 0.7 :color "dpurple"))
+        mu4e-headers-unread-mark     (cons "u" (+mu4e-normalised-icon "nf-fa-eye_slash" :v-adjust 0.05))
+        mu4e-headers-list-mark       (cons "l" (+mu4e-normalised-icon "nf-fa-sitemap" :set "faicon"))
+        mu4e-headers-personal-mark   (cons "p" (+mu4e-normalised-icon "nf-fa-user"))
+        mu4e-headers-calendar-mark   (cons "c" (+mu4e-normalised-icon "nf-fa-calendar"))))
 
 (defun +mu4e-colorize-str (str &optional unique herring)
   "Apply a face from `+mu4e-header-colorized-faces' to STR.
@@ -157,23 +167,23 @@ a quoted symbol for a alist of current strings and faces provided."
    'face
    (list
     (if (not unique)
-       (+mu4e--str-color-face herring str)
-     (let ((unique-alist (eval unique)))
-       (unless (assoc herring unique-alist)
-         (if (> (length unique-alist) (length +mu4e-header-colorized-faces))
-             (push (cons herring (+mu4e--str-color-face herring)) unique-alist)
-           (let ((offset 0) color color?)
-             (while (not color)
-               (setq color? (+mu4e--str-color-face herring offset))
-               (if (not (rassoc color? unique-alist))
-                   (setq color color?)
-                 (setq offset (1+ offset))
-                 (when (> offset (length +mu4e-header-colorized-faces))
-                   (message "Warning: +mu4e-colorize-str was called with non-unique-alist UNIQUE-alist alist.")
-                   (setq color (+mu4e--str-color-face herring)))))
-             (push (cons herring color) unique-alist)))
-         (set unique unique-alist))
-       (cdr (assoc herring unique-alist))))
+        (+mu4e--str-color-face herring str)
+      (let ((unique-alist (eval unique)))
+        (unless (assoc herring unique-alist)
+          (if (> (length unique-alist) (length +mu4e-header-colorized-faces))
+              (push (cons herring (+mu4e--str-color-face herring)) unique-alist)
+            (let ((offset 0) color color?)
+              (while (not color)
+                (setq color? (+mu4e--str-color-face herring offset))
+                (if (not (rassoc color? unique-alist))
+                    (setq color color?)
+                  (setq offset (1+ offset))
+                  (when (> offset (length +mu4e-header-colorized-faces))
+                    (message "Warning: +mu4e-colorize-str was called with non-unique-alist UNIQUE-alist alist.")
+                    (setq color (+mu4e--str-color-face herring)))))
+              (push (cons herring color) unique-alist)))
+          (set unique unique-alist))
+        (cdr (assoc herring unique-alist))))
     'default)
    str)
   str)
@@ -370,9 +380,20 @@ preferred alias"
                           (mu4e-personal-addresses))))
     (setq user-mail-address
           (if mu4e-compose-parent-message
-              (let ((to (mapcar #'cdr (mu4e-message-field mu4e-compose-parent-message :to)))
-                    (from (mapcar #'cdr (mu4e-message-field mu4e-compose-parent-message :from))))
-                (or (car (seq-intersection to addresses))
-                   (car (seq-intersection from addresses))
-                   (completing-read "From: " addresses)))
+              (if (version<= "1.8" mu4e-mu-version)
+                  (let ((to (mu4e-message-field mu4e-compose-parent-message :to))
+                        (cc (mu4e-message-field mu4e-compose-parent-message :cc))
+                        (from (mu4e-message-field mu4e-compose-parent-message :from)))
+                    (or (car (cl-intersection
+                              (mapcar (lambda (adr) (plist-get adr :email))
+                                      (append to from cc))
+                              addresses
+                              :test #'equal))
+                        (completing-read "From: " addresses)))
+                (let ((to (mapcar #'cdr (mu4e-message-field mu4e-compose-parent-message :to)))
+                      (cc (mapcar #'cdr (mu4e-message-field mu4e-compose-parent-message :cc)))
+                      (from (mapcar #'cdr (mu4e-message-field mu4e-compose-parent-message :from))))
+                  (or (car (cl-intersection (append to from cc) addresses
+                                            :test #'equal))
+                      (completing-read "From: " addresses))))
             (completing-read "From: " addresses)))))

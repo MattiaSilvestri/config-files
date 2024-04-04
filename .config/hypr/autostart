@@ -34,8 +34,8 @@ wlsunset -t 3500 -T 5000 &
 
 #swayidle daemon and inhibitor
 swayidle -w \
-  timeout 600 'gtklock' \
-  before-sleep 'gtklock' &
+  timeout 600 'hyprlock' \
+  before-sleep 'hyprlock' &
 
 wl-mpris-idle-inhibit &
 

@@ -1,10 +1,10 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; editor/snippets/packages.el
 
-(package! yasnippet :pin "5cbdbf0d2015540c59ed8ee0fcf4788effdf75b6")
-(package! auto-yasnippet :pin "db9e0dd4335b2202cd5dac95bbbc87a1032d9bbe")
+(package! yasnippet :pin "76e1eee654ea9479ba1441f9c17567694e6a2096")
+(package! auto-yasnippet :pin "6a9e406d0d7f9dfd6dff7647f358cb05a0b1637e")
 (package! doom-snippets
   :recipe (:host github
            :repo "doomemacs/snippets"
            :files (:defaults "*"))
-  :pin "2d031f723164c6500ce68dcafe3dd30e6d3b23b1")
+  :pin "d490cba6d762e69b483be308bc387c1f785742f0")

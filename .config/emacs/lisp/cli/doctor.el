@@ -54,27 +54,27 @@ in."
 
   (print! (start "Checking your Emacs version..."))
   (print-group!
-    (cond ((or (> emacs-major-version 28)
-               (string-match-p ".\\(50\\|9[0-9]\\)$" emacs-version))
+    (cond ((or (> emacs-major-version 29)
+               (string-match-p ".\\([56]0\\|9[0-9]\\)$" emacs-version))
            (warn! "Detected a development version of Emacs (%s)" emacs-version)
-           (if (> emacs-major-version 28)
-               (explain! "This is the bleeding edge of Emacs. Doom does not support it because Emacs "
-                         "HEAD is in an especially unstable period of its development. If you've found "
-                         "a stable commit, great! But be cautious about updating too eagerly!\n")
-             (explain! "A .50 or .9x appended to the version string indicates that this is a version of "
-                       "Emacs in between stable releases. These are not well supported.\n"))
+           (if (> emacs-major-version 29)
+               (explain! "This is the bleeding edge of Emacs. As it is constantly changed, Doom will not "
+                         "(officially) support it. If you've found a stable commit, great! But be "
+                         "cautious about updating Emacs too eagerly!\n")
+             (explain! "A .50, .60, or .9X appended to the version string indicates that this is a version "
+                       "of Emacs in between stable releases. These are not well supported.\n"))
            (explain! "Because development builds are prone to random breakage, there will be a greater "
                      "burden on you to investigate and deal with issues. Please make extra sure that "
-                     "your issue is reproducible in 28.1 before reporting them to Doom's issue tracker!\n"
+                     "your issue is reproducible in 29.1 before reporting them to Doom's issue tracker!\n"
                      "\n"
                      "If this doesn't phase you, read the \"Why does Doom not support Emacs HEAD\" QnA "
                      "in Doom's FAQ. It offers some advice for debugging and surviving issues on the "
-                     "bleeding edge. Failing that, 28.1 is highly recommended and will always be "
+                     "bleeding edge. Failing that, 29.1 is highly recommended and will always be "
                      "Doom's best supported version of Emacs."))
           ((= emacs-major-version 27)
            (warn! "Emacs 27 is supported, but consider upgrading to 28.1")
            (explain! "Emacs 28.1 is better supported, faster, and more stable. Plus, Doom will drop "
-                     "27.x support sometime mid-2022."))))
+                     "27.x support sometime late-2023."))))
 
   (print! (start "Checking for Doom's prerequisites..."))
   (print-group!
@@ -96,48 +96,86 @@ in."
      (error! "Couldn't find the `rg' binary; this a hard dependecy for Doom, file searches may not work at all")))
 
   (print! (start "Checking for Emacs config conflicts..."))
-  (when (file-exists-p "~/.emacs")
-    (warn! "Detected an ~/.emacs file, which may prevent Doom from loading")
-    (explain! "If Emacs finds an ~/.emacs file, it will ignore ~/.emacs.d, where Doom is "
-              "typically installed. If you're seeing a vanilla Emacs splash screen, this "
-              "may explain why. If you use Chemacs, you may ignore this warning."))
+  (print-group!
+    (unless (or (file-equal-p doom-emacs-dir "~/.emacs.d")
+                (file-equal-p doom-emacs-dir "~/.config/emacs"))
+      (print! (warn "Doom is installed in a non-standard location"))
+      (explain! "The standard locations are ~/.config/emacs or ~/.emacs.d. Emacs will fail "
+                "to load Doom if it is not explicitly told where to look for it. In Emacs 29+, "
+                "this is possible with the --init-directory option:\n\n"
+                "  $ emacs --init-directory '" (abbreviate-file-name doom-emacs-dir) "'\n\n"
+                "However, Emacs 27-28 users have no choice but to move Doom to a standard "
+                "location.\n\n"
+                "Chemacs users may ignore this warning, however."))
+    (let (found?)
+      (dolist (file '("~/_emacs" "~/.emacs" "~/.emacs.el" "~/.emacs.d" "~/.config/emacs"))
+        (when (and (file-exists-p file)
+                   (not (file-equal-p file doom-emacs-dir)))
+          (setq found? t)
+          (print! (warn "Found another Emacs config: %s (%s)")
+                  file (if (file-directory-p file) "directory" "file"))))
+      (when found?
+        (explain! "Having multiple Emacs configs may prevent Doom from loading properly. Emacs "
+                  "will load the first it finds and ignore the rest. If Doom isn't starting up "
+                  "correctly (e.g. you get a vanilla splash screen), make sure that only one of "
+                  "these exist.\n\n"
+                  "Chemacs users may ignore this warning."))))
 
-  (print! (start "Checking for great Emacs features..."))
-  (unless (functionp 'json-serialize)
-    (warn! "Emacs was not built with native JSON support")
-    (explain! "Users will see a substantial performance gain by building Emacs with "
-              "jansson support (i.e. a native JSON library), particularly LSP users. "
-              "You must install a prebuilt Emacs binary with this included, or compile "
-              "Emacs with the --with-json option."))
-  (unless (featurep 'native-compile)
-    (warn! "Emacs was not built with native compilation support")
-    (explain! "Users will see a substantial performance gain by building Emacs with "
-              "native compilation support, availible in emacs 28+."
-              "You must install a prebuilt Emacs binary with this included, or compile "
-              "Emacs with the --with-native-compilation option."))
+  (print! (start "Checking for missing Emacs features..."))
+  (print-group!
+    (unless (functionp 'json-serialize)
+      (warn! "Emacs was not built with native JSON support")
+      (explain! "Users will see a substantial performance gain by building Emacs with "
+                "jansson support (i.e. a native JSON library), particularly LSP users. "
+                "You must install a prebuilt Emacs binary with this included, or compile "
+                "Emacs with the --with-json option."))
+    (unless (featurep 'native-compile)
+      (warn! "Emacs was not built with native compilation support")
+      (explain! "Users will see a substantial performance gain by building Emacs with "
+                "native compilation support, availible in emacs 28+."
+                "You must install a prebuilt Emacs binary with this included, or compile "
+                "Emacs with the --with-native-compilation option.")))
 
   (print! (start "Checking for private config conflicts..."))
-  (let* ((xdg-dir (concat (or (getenv "XDG_CONFIG_HOME")
-                              "~/.config")
-                          "/doom/"))
-         (doom-dir (or (getenv "DOOMDIR")
-                       "~/.doom.d/"))
-         (dir (if (file-directory-p xdg-dir)
-                  xdg-dir
-                doom-dir)))
-    (when (file-equal-p dir doom-emacs-dir)
-      (print! (error "Doom was cloned to %S, not ~/.emacs.d or ~/.config/emacs"
-                     (path dir)))
-      (explain! "Doom's source and your private Doom config have to live in separate directories. "
-                "Putting them in the same directory (without changing the DOOMDIR environment "
-                "variable) will cause errors on startup."))
-    (when (and (not (file-equal-p xdg-dir doom-dir))
-               (file-directory-p xdg-dir)
-               (file-directory-p doom-dir))
-      (print! (warn "Detected two private configs, in %s and %s")
-              (abbreviate-file-name xdg-dir)
-              doom-dir)
-      (explain! "The second directory will be ignored, as it has lower precedence.")))
+  (print-group!
+    (let* ((xdg-dir (concat (or (getenv "XDG_CONFIG_HOME")
+                                "~/.config")
+                            "/doom/"))
+           (doom-dir (or (getenv "DOOMDIR")
+                         "~/.doom.d/"))
+           (dir (if (file-directory-p xdg-dir)
+                    xdg-dir
+                  doom-dir)))
+      (when (file-equal-p dir doom-emacs-dir)
+        (print! (error "Doom was cloned to %S, not ~/.emacs.d or ~/.config/emacs"
+                       (path dir)))
+        (explain! "Doom's source and your private Doom config have to live in separate directories. "
+                  "Putting them in the same directory (without changing the DOOMDIR environment "
+                  "variable) will cause errors on startup."))
+      (when (and (not (file-equal-p xdg-dir doom-dir))
+                 (file-directory-p xdg-dir)
+                 (file-directory-p doom-dir))
+        (print! (warn "Detected two private configs, in %s and %s")
+                (abbreviate-file-name xdg-dir)
+                doom-dir)
+        (explain! "The second directory will be ignored, as it has lower precedence."))))
+
+  (print! (start "Checking for common environmental issues..."))
+  (when (string-match-p "/fish$" shell-file-name)
+    (print! (warn "Detected Fish as your $SHELL"))
+    (explain! "Fish (and possibly other non-POSIX shells) is known to inject garbage "
+              "output into some of the child processes that Emacs spawns. Many Emacs "
+              "packages/utilities will choke on this output, causing unpredictable issues. "
+              "To get around this, either:\n\n"
+              "  - Add the following to $DOOMDIR/config.el:\n\n"
+              "    (setq shell-file-name (executable-find \"bash\"))\n\n"
+              "  - Or change your default shell to a POSIX shell (like bash or zsh) "
+              "    and explicitly configure your terminal apps to use the shell you "
+              "    want.\n\n"
+              "If you opt for option 1 and use one of Emacs' terminal emulators, you "
+              "will also need to configure them to use Fish, e.g.\n\n"
+              "  (setq-default vterm-shell (executable-find \"fish\"))\n\n"
+              "  (setq-default explicit-shell-file-name (executable-find \"fish\"))\n"))
 
   (print! (start "Checking for stale elc files..."))
   (elc-check-dir doom-core-dir)
@@ -205,13 +243,13 @@ in."
           ;; Check for fonts
           (if (not (executable-find "fc-list"))
               (warn! "Warning: unable to detect fonts because fontconfig isn't installed")
-            ;; all-the-icons fonts
+            ;; nerd-icons fonts
             (when (and (pcase system-type
                          (`gnu/linux (concat (or (getenv "XDG_DATA_HOME")
                                                  "~/.local/share")
                                              "/fonts/"))
                          (`darwin "~/Library/Fonts/"))
-                       (require 'all-the-icons nil t))
+                       (require 'nerd-icons nil t))
               (with-temp-buffer
                 (let ((errors 0))
                   (cl-destructuring-bind (status . output)
@@ -219,15 +257,16 @@ in."
                     (if (not (zerop status))
                         (print! (error "There was an error running `fc-list'. Is fontconfig installed correctly?"))
                       (insert (cdr (doom-call-process "fc-list" "" "file")))
-                      (dolist (font all-the-icons-font-names)
+                      (dolist (font nerd-icons-font-names)
                         (if (save-excursion (re-search-backward font nil t))
                             (success! "Found font %s" font)
-                          (print! (warn "Warning: couldn't find %S font") font)))
+                          (print! (warn "%S font is not installed on your system") font)
+                          (cl-incf errors)))
                       (when (> errors 0)
-                        (explain! "Some all-the-icons fonts were missing.\n\n"
-                                  "You can install them by running `M-x all-the-icons-install-fonts' within Emacs.\n"
-                                  "This could also mean you've installed them in non-standard locations, in which "
-                                  "case feel free to ignore this warning.")))))))))
+                        (explain! "Some needed fonts are not properly installed on your system. To download and "
+                                  "install them, run `M-x nerd-icons-install-fonts' from within Doom Emacs. "
+                                  "However, on Windows this command will only download them; the fonts must "
+                                  "be installed manually afterwards.")))))))))
 
         (print! (start "Checking for stale elc files in your DOOMDIR..."))
         (when (file-directory-p doom-user-dir)
@@ -238,39 +277,42 @@ in."
           (print! (start "Checking your enabled modules..."))
           (advice-add #'require :around #'doom-shut-up-a)
           (pcase-dolist (`(,group . ,name) (doom-module-list))
-            (let (doom-local-errors
-                  doom-local-warnings)
-              (let (doom-doctor--errors
-                    doom-doctor--warnings)
-                (condition-case-unless-debug ex
-                    (doom-module-context-with (cons group name)
-                      (let ((doctor-file   (doom-module-expand-path group name "doctor.el"))
-                            (packages-file (doom-module-expand-path group name doom-module-packages-file)))
-                        (cl-loop with doom-output-indent = 6
-                                 for name in (doom-context-with 'packages
-                                               (let* (doom-packages
-                                                      doom-disabled-packages)
-                                                 (load packages-file 'noerror 'nomessage)
-                                                 (mapcar #'car doom-packages)))
-                                 unless (or (doom-package-get name :disable)
-                                            (eval (doom-package-get name :ignore))
-                                            (plist-member (doom-package-get name :recipe) :local-repo)
-                                            (locate-library (symbol-name name))
-                                            (doom-package-built-in-p name)
-                                            (doom-package-installed-p name))
-                                 do (print! (error "Missing emacs package: %S") name))))
-                  (let ((inhibit-message t))
-                    (load doctor-file 'noerror 'nomessage))
-                  (file-missing (error! "%s" (error-message-string ex)))
-                  (error (error! "Syntax error: %s" ex)))
-                (when (or doom-doctor--errors doom-doctor--warnings)
-                  (print-group!
-                    (print! (start (bold "%s %s")) group name)
-                    (print! "%s" (string-join (append doom-doctor--errors doom-doctor--warnings) "\n")))
-                  (setq doom-local-errors doom-doctor--errors
-                        doom-local-warnings doom-doctor--warnings)))
-              (appendq! doom-doctor--errors doom-local-errors)
-              (appendq! doom-doctor--warnings doom-local-warnings)))))
+            (doom-context-with 'doctor
+              (let (doom-local-errors
+                    doom-local-warnings)
+                (let (doom-doctor--errors
+                      doom-doctor--warnings)
+                  (condition-case-unless-debug ex
+                      (doom-module-context-with (cons group name)
+                        (let ((doctor-file   (doom-module-expand-path group name "doctor.el"))
+                              (packages-file (doom-module-expand-path group name doom-module-packages-file)))
+                          (when packages-file
+                            (cl-loop with doom-output-indent = 6
+                                     for name in (doom-context-with 'packages
+                                                   (let* (doom-packages
+                                                          doom-disabled-packages)
+                                                     (load packages-file 'noerror 'nomessage)
+                                                     (mapcar #'car doom-packages)))
+                                     unless (or (doom-package-get name :disable)
+                                                (eval (doom-package-get name :ignore))
+                                                (plist-member (doom-package-get name :recipe) :local-repo)
+                                                (locate-library (symbol-name name))
+                                                (doom-package-built-in-p name)
+                                                (doom-package-installed-p name))
+                                     do (print! (error "Missing emacs package: %S") name)))
+                          (when doctor-file
+                            (let ((inhibit-message t))
+                              (load doctor-file 'noerror 'nomessage)))))
+                    (file-missing (error! "%s" (error-message-string ex)))
+                    (error (error! "Syntax error: %s" ex)))
+                  (when (or doom-doctor--errors doom-doctor--warnings)
+                    (print-group!
+                      (print! (start (bold "%s %s")) group name)
+                      (print! "%s" (string-join (append doom-doctor--errors doom-doctor--warnings) "\n")))
+                    (setq doom-local-errors doom-doctor--errors
+                          doom-local-warnings doom-doctor--warnings)))
+                (appendq! doom-doctor--errors doom-local-errors)
+                (appendq! doom-doctor--warnings doom-local-warnings))))))
     (error
      (warn! "Attempt to load DOOM failed\n  %s\n"
             (or (cdr-safe ex) (car ex)))
@@ -282,7 +324,7 @@ in."
                      (list doom-doctor--errors "error" 'red)))
     (when (car msg)
       (print! (color (nth 2 msg)
-                     (if (cdr msg)
+                     (if (cdar msg)
                          "There are %d %ss!"
                        "There is %d %s!")
                      (length (car msg)) (nth 1 msg)))))

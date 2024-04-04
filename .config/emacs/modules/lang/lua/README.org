@@ -22,6 +22,10 @@ This module adds Lua support to Doom Emacs.
 - +lsp ::
   Enable LSP support for ~lua-mode~. Requires [[doom-module::tools lsp]] and a langserver
   (supports EmmyLua, lua-language-server, and lua-lsp).
+- +tree-sitter ::
+  Leverages tree-sitter for better syntax highlighting and structural text
+  editing. Requires [[doom-module::tools tree-sitter]]. Has support for both Lua and
+  Fennel.
 - +moonscript ::
   Enable support for the Moonscript language.
 
@@ -71,14 +75,18 @@ Eglot currently only supports one of the above servers out of the box:
   =$EMACSDIR/.local/etc/lsp/lua-language-server/=. See ~+lua-lsp-dir~ variable
   to change this.
 
+** Formatter
+
+Formatting is handled using the [[doom-module::editor format]] module via [[https://github.com/JohnnyMorganz/StyLua#installation][Stylua]].
+
 * TODO Usage
 #+begin_quote
- 🔨 This module has no usage documentation yet. [[doom-contrib-module:][Write some?]]
+ 󱌣 This module has no usage documentation yet. [[doom-contrib-module:][Write some?]]
 #+end_quote
 
 * TODO Configuration
 #+begin_quote
- 🔨 /This module's configuration documentation is incomplete./ [[doom-contrib-module:][Complete it?]]
+ 󱌣 /This module's configuration documentation is incomplete./ [[doom-contrib-module:][Complete it?]]
 #+end_quote
 
 - lua-lsp-dir :: This must be set when using [[doom-module:+lsp]] and using [[https://github.com/sumneko/lua-language-server][lua-language-server]].
@@ -97,5 +105,5 @@ lua-language-server on non-VSCode platforms.
 
 * TODO Appendix
 #+begin_quote
- 🔨 This module has no appendix yet. [[doom-contrib-module:][Write one?]]
+ 󱌣 This module has no appendix yet. [[doom-contrib-module:][Write one?]]
 #+end_quote

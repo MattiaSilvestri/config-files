@@ -58,7 +58,7 @@ This holy module brings the Vim editing model to Emacs.
 
 * TODO Usage
 #+begin_quote
- 🔨 /This module's usage documentation is incomplete./ [[doom-contrib-module:][Complete it?]]
+ 󱌣 /This module's usage documentation is incomplete./ [[doom-contrib-module:][Complete it?]]
 #+end_quote
 
 ** Ported vim plugins
@@ -138,7 +138,7 @@ And these are text objects added by this module:
 
 * TODO Configuration
 #+begin_quote
- 🔨 This module has no configuration documentation yet. [[doom-contrib-module:][Write some?]]
+ 󱌣 This module has no configuration documentation yet. [[doom-contrib-module:][Write some?]]
 #+end_quote
 
 * Troubleshooting
@@ -193,7 +193,7 @@ If you prefer the old behavior, it can be reversed with:
    are bound to [[kbd:][C-c]] and [[kbd:][C-c l]] by default.
 
 #+begin_quote
- 🚧 Ignore ~doom-leader-key~ and ~doom-localleader-key~, they don't apply to
+  Ignore ~doom-leader-key~ and ~doom-localleader-key~, they don't apply to
     non-evil sessions.
 #+end_quote
 
@@ -221,7 +221,25 @@ modify the syntax-table in all buffers of some mode, e.g.
 (add-hook! 'js2-mode-hook (modify-syntax-entry ?_ "w"))
 #+end_src
 
+** How do I disable synchronization between the kill ring and system clipboard?
+
+In vim, operations that put or delete text (kill and yank in Emacs terminology)
+act on the unnamed register by default. The unnamed register unrelated the
+system clipboard. Evil uses the kill ring instead of the unnamed register. As
+the kill ring is synchronized with the system clipboard by default, operations
+like [[kbd:][dd]] or [[kbd:][cw]] place the killed text in the system clipboard, surprisingly so for
+users who are used to the vim behavior.
+
+The synchronization between the system clipboard and kill ring can be disabled,
+making these operations behave closer to their vim counterparts:
+#+begin_src emacs-lisp
+(setq select-enable-clipboard nil)
+#+end_src
+
+Like in vim, the clipboard can still be accessed by using the [[kbd:][+]] register, e.g.
+[[kbd:]["+dd]] or [[kbd:]["+cw]].
+
 * TODO Appendix
 #+begin_quote
- 🔨 This module has no appendix yet. [[doom-contrib-module:][Write one?]]
+ 󱌣 This module has no appendix yet. [[doom-contrib-module:][Write one?]]
 #+end_quote

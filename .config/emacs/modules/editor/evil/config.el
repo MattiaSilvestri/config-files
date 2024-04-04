@@ -55,6 +55,14 @@ directives. By default, this only recognizes C directives.")
               ((modulep! :emacs undo) 'undo-fu)
               ((> emacs-major-version 27) 'undo-redo)))
 
+  ;; Fix #7141
+  (defadvice! +evil--persist-state-a (fn &rest args)
+    "When changing major modes, Evil's state is lost. This advice preserves it."
+    :around #'set-auto-mode
+    (if evil-state
+        (evil-save-state (apply fn args))
+      (apply fn args)))
+
   ;; Slow this down from 0.02 to prevent blocking in large or folded buffers
   ;; like magit while incrementally highlighting matches.
   (setq-hook! '(magit-mode-hook so-long-minor-mode-hook)
@@ -194,34 +202,6 @@ directives. By default, this only recognizes C directives.")
   (advice-add #'evil-open-above :around #'+evil--insert-newline-above-and-respect-comments-a)
   (advice-add #'evil-open-below :around #'+evil--insert-newline-below-and-respect-comments-a)
 
-  ;; --- custom interactive codes -----------
-  ;; These arg types will highlight matches in the current buffer
-  (evil-ex-define-argument-type regexp-match
-    :runner (lambda (flag &optional arg) (+evil-ex-regexp-match flag arg 'inverted)))
-  (evil-ex-define-argument-type regexp-global-match
-    :runner +evil-ex-regexp-match)
-
-  (defun +evil--regexp-match-args (arg)
-    (when (evil-ex-p)
-      (cl-destructuring-bind (&optional arg flags)
-          (evil-delimited-arguments arg 2)
-        (list arg (string-to-list flags)))))
-
-  ;; Other commands can make use of this
-  (evil-define-interactive-code "<//>"
-    :ex-arg regexp-match
-    (+evil--regexp-match-args evil-ex-argument))
-
-  (evil-define-interactive-code "<//!>"
-    :ex-arg regexp-global-match
-    (+evil--regexp-match-args evil-ex-argument))
-
-  ;; Forward declare these so that ex completion works, even if the autoloaded
-  ;; functions aren't loaded yet.
-  (evil-add-command-properties '+evil:align :ex-arg 'regexp-match)
-  (evil-add-command-properties '+evil:align-right :ex-arg 'regexp-match)
-  (evil-add-command-properties '+multiple-cursors:evil-mc :ex-arg 'regexp-global-match)
-
   ;; Lazy load evil ex commands
   (delq! 'evil-ex features)
   (add-transient-hook! 'evil-ex (provide 'evil-ex))
@@ -265,14 +245,22 @@ directives. By default, this only recognizes C directives.")
   :hook (org-mode . embrace-org-mode-hook)
   :hook (ruby-mode . embrace-ruby-mode-hook)
   :hook (emacs-lisp-mode . embrace-emacs-lisp-mode-hook)
-  :hook ((lisp-mode emacs-lisp-mode clojure-mode racket-mode hy-mode)
-         . +evil-embrace-lisp-mode-hook-h)
-  :hook ((c++-mode rustic-mode csharp-mode java-mode swift-mode typescript-mode)
+  :hook ((c++-mode c++-ts-mode rustic-mode csharp-mode java-mode swift-mode typescript-mode)
          . +evil-embrace-angle-bracket-modes-hook-h)
   :hook (scala-mode . +evil-embrace-scala-mode-hook-h)
   :init
   (after! evil-surround
     (evil-embrace-enable-evil-surround-integration))
+
+  ;; HACK: This must be done ASAP, before embrace has a chance to
+  ;;   buffer-localize `embrace--pairs-list' (which happens right after it calls
+  ;;   `embrace--setup-defaults'), otherwise any new, global default pairs we
+  ;;   define won't be in scope.
+  (defadvice! +evil--embrace-init-escaped-pairs-a (&rest args)
+    "Add escaped-sequence support to embrace."
+    :after #'embrace--setup-defaults
+    (embrace-add-pair-regexp ?\\ "\\[[{(]" "\\[]})]" #'+evil--embrace-escaped
+                             (embrace-build-help "\\?" "\\?")))
   :config
   (setq evil-embrace-show-help-p nil)
 
@@ -294,30 +282,12 @@ directives. By default, this only recognizes C directives.")
             embrace--pairs-list))
     (embrace-add-pair-regexp ?l "\\[a-z]+{" "}" #'+evil--embrace-latex))
 
-  (defun +evil-embrace-lisp-mode-hook-h ()
-    ;; Avoid `embrace-add-pair-regexp' because it would overwrite the default
-    ;; `f' rule, which we want for other modes
-    (push (cons ?f (make-embrace-pair-struct
-                    :key ?f
-                    :read-function #'+evil--embrace-elisp-fn
-                    :left-regexp "([^ ]+ "
-                    :right-regexp ")"))
-          embrace--pairs-list))
-
   (defun +evil-embrace-angle-bracket-modes-hook-h ()
     (let ((var (make-local-variable 'evil-embrace-evil-surround-keys)))
       (set var (delq ?< evil-embrace-evil-surround-keys))
       (set var (delq ?> evil-embrace-evil-surround-keys)))
     (embrace-add-pair-regexp ?< "\\_<[a-z0-9-_]+<" ">" #'+evil--embrace-angle-brackets)
-    (embrace-add-pair ?> "<" ">"))
-
-  ;; Add escaped-sequence support to embrace
-  (setf (alist-get ?\\ (default-value 'embrace--pairs-list))
-        (make-embrace-pair-struct
-         :key ?\\
-         :read-function #'+evil--embrace-escaped
-         :left-regexp "\\[[{(]"
-         :right-regexp "\\[]})]")))
+    (embrace-add-pair ?> "<" ">")))
 
 
 (use-package! evil-escape
@@ -395,7 +365,8 @@ directives. By default, this only recognizes C directives.")
   :config
   (pushnew! evil-traces-argument-type-alist
             '(+evil:align . evil-traces-global)
-            '(+evil:align-right . evil-traces-global))
+            '(+evil:align-right . evil-traces-global)
+            '(+multiple-cursors:evil-mc . evil-traces-substitute))
   (evil-traces-mode))
 
 
@@ -523,7 +494,11 @@ directives. By default, this only recognizes C directives.")
        (:after elfeed
         :map elfeed-search-mode-map
         :n "gr" #'elfeed-search-update--force
-        :n "gR" #'elfeed-search-fetch))
+        :n "gR" #'elfeed-search-fetch)
+       (:after eglot
+        :map eglot-mode-map
+        :nv "gd" #'+lookup/definition
+        :nv "gD" #'+lookup/references))
 
       ;; custom evil keybinds
       :nv "zn"    #'+evil:narrow-buffer
