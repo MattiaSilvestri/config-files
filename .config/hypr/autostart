@@ -37,7 +37,7 @@ swayidle -w \
   timeout 600 'hyprlock' \
   before-sleep 'hyprlock' &
 
-wl-mpris-idle-inhibit &
+# wl-mpris-idle-inhibit &
 
 # nordvpn service
 systemctl start nordvpnd.service &

@@ -1,0 +1,31 @@
+[[bookmark]]
+key = "g"
+path = "/home/mattia/Git"
+
+[[bookmark]]
+key = "q"
+path = "/home/mattia/.dotfiles"
+
+[[bookmark]]
+key = "h"
+path = "/home/mattia/.dotfiles/.config/hypr"
+
+[[bookmark]]
+key = "n"
+path = "/home/mattia/.dotfiles/.config/nvim"
+
+[[bookmark]]
+key = "r"
+path = "/"
+
+[[bookmark]]
+key = "e"
+path = "/etc"
+
+[[bookmark]]
+key = ","
+path = "/home/mattia/.config"
+
+[[bookmark]]
+key = "c"
+path = "/home/mattia/.config"
