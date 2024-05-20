@@ -1,10 +1,10 @@
 [[bookmark]]
-key = "g"
-path = "/home/mattia/Git"
-
-[[bookmark]]
 key = "q"
 path = "/home/mattia/.dotfiles"
+
+[[bookmark]]
+key = "g"
+path = "/home/mattia/Git"
 
 [[bookmark]]
 key = "h"
@@ -15,16 +15,20 @@ key = "n"
 path = "/home/mattia/.dotfiles/.config/nvim"
 
 [[bookmark]]
+key = ","
+path = "/home/mattia/.config"
+
+[[bookmark]]
 key = "r"
 path = "/"
 
 [[bookmark]]
-key = "e"
-path = "/etc"
+key = "a"
+path = "/home/mattia/.dotfiles/.config/astronvim_v4"
 
 [[bookmark]]
-key = ","
-path = "/home/mattia/.config"
+key = "e"
+path = "/etc"
 
 [[bookmark]]
 key = "c"

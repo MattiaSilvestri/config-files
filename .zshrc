@@ -307,6 +307,9 @@ alias rs="git reset"
 alias music='tmux new-session -s $$ "tmux source-file ~/.ncmpcpp/tsession"'
 alias ncm="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"
 
+# Text editor
+alias vim="NVIM_APPNAME=astronvim_v4 nvim"
+
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()
