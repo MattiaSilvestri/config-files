@@ -33,10 +33,14 @@ blueberry-tray &
 wlsunset -t 3500 -T 5000 &
 
 #swayidle daemon and inhibitor
-swayidle -w \
-  timeout 600 'hyprlock' \
-  before-sleep 'hyprlock' &
+# swayidle -w \
+#   timeout 600 'hyprlock' \
+#   before-sleep 'hyprlock' &
 
+# Hypridle and inhibitor
+hypridle &
+wayland-pipewire-idle-inhibit -w &
+caffeine &
 # wl-mpris-idle-inhibit &
 
 # nordvpn service

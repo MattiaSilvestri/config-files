@@ -48,19 +48,19 @@
 @define-color date_fg @bg;
 @define-color time #89b4fa;
 @define-color time_fg @bg;
-@define-color backlight #332E41;
 @define-color backlight_fg @bg;
 @define-color nord_bg #332E41;
 @define-color nord_bg_blue #332E41;
 @define-color nord_light #D8DEE9;
 @define-color nord_light_font #D8DEE9;
 @define-color nord_dark_font #D8DEE9;
-@define-color status #a6e3a1;
-@define-color controls #89b4fa;
 @define-color network #b294bb;
-@define-color date #fab387;
+@define-color controls #74c7ec;
+@define-color backlight #94e2d5;
+@define-color status #a6e3a1;
+@define-color date #f9e2af;
 @define-color slider_trough #1e1e2e;
-@define-color slider_highlight #546484;
+@define-color slider_highlight #c53b53;
 @define-color cava #332E41;
 @define-color cava_fg #cba6f7;
 @define-color network_fg @bg;
@@ -84,13 +84,10 @@
   font-weight: normal;
   border-width: 0px 0px 8px 0px;
   border-style: solid;
-  border-image: linear-gradient(
-      to bottom,
+  border-image: linear-gradient(to bottom,
       rgba(0, 0, 0, 0.8),
       rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0)
-    )
-    0% 0% 70% 0%;
+      rgba(0, 0, 0, 0)) 0% 0% 70% 0%;
   border-radius: 0px;
 }
 
@@ -265,8 +262,7 @@
   color: @nord_dark_font;
 }
 
-#custom-cpugovernor.perf {
-}
+#custom-cpugovernor.perf {}
 
 #temperature {
   background-color: @status;
@@ -285,7 +281,7 @@
 }
 
 #backlight {
-  background: @controls;
+  background: @backlight;
   margin-left: 0px;
   border-radius: 0px 5px 5px 0px;
   color: @backlight_fg;
@@ -311,9 +307,9 @@
   /* Unsused but kept for those who needs it */
   background: @controls;
   color: @sound_fg;
-  margin-right: 0px;
+  /* margin-right: 0px; */
   margin-left: 0px;
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 0px 5px 5px 0px;
 }
 
 #custom-cava-internal {
@@ -441,11 +437,11 @@
 }
 
 #backlight-slider {
-  background: @controls;
+  background: @backlight;
   padding-top: 5px;
   margin-right: 0px;
-  margin-left: 0px;
-  border-radius: 0px;
+  /* margin-left: 5px; */
+  border-radius: 5px 0 0 5px;
 }
 
 #backlight-slider slider {
