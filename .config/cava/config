@@ -116,8 +116,8 @@ method = ncurses
 # ncurses output method and a terminal that can change color definitions such as Gnome-terminal or rxvt.
 # if supported, ncurses mode will be forced on if user defined colors are used.
 # default is to keep current terminal color
-background = '#181C26'
-foreground = '#57647c'
+background = '#1e1e2e'
+foreground = '#89b4fa'
 
 # Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.

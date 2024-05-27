@@ -82,7 +82,27 @@ return {
       )
     end,
   },
-  { "francoiscabrol/ranger.vim", cmd = "Ranger" },
+  -- { "francoiscabrol/ranger.vim", cmd = "Ranger" },
+  {
+    "kelly-lin/ranger.nvim",
+    lazy = false,
+    config = function()
+      require("ranger-nvim").setup {
+        replace_netrw = true,
+        ui = {
+          border = "none",
+          height = 1,
+          width = 1,
+          x = 0.5,
+          y = 0.5,
+        },
+      }
+      vim.api.nvim_set_keymap("n", "<leader>sr", "", {
+        noremap = true,
+        callback = function() require("ranger-nvim").open(true) end,
+      })
+    end,
+  },
   { "rbgrouleff/bclose.vim", lazy = false },
   { "dyng/ctrlsf.vim", event = "User AstroFile" },
   { "mg979/vim-visual-multi", event = "User AstroFile" },
@@ -295,4 +315,18 @@ return {
       }
     end,
   },
+  {
+    "otavioschwanck/arrow.nvim",
+    lazy = false,
+    opts = {
+      show_icons = true,
+      leader_key = ";", -- Recommended to be a single key
+      buffer_leader_key = "m", -- Per Buffer Mappings
+    },
+  },
+  -- {
+  --   "ldelossa/nvim-ide",
+  --   lazy = false,
+  --   config = function() require("nvim-ide").setup {} end,
+  -- },
 }

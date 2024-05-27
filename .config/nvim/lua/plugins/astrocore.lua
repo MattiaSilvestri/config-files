@@ -65,10 +65,32 @@ return {
         ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+        ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
+        ["<leader>ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope fuzzy find" },
+        ["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
+        ["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
+        ["<leader>a"] = { "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
+        ["gt"] = {
+          function() require("astrocore.buffer").nav(vim.v.count1) end,
+          desc = "Next buffer",
+        },
+        ["gT"] = {
+          function() require("astrocore.buffer").nav(-vim.v.count1) end,
+          desc = "Previous buffer",
+        },
+        ["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
+        ["[o"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
+        -- ["<leader>r"] = { "<cmd>Ranger<cr>", desc = "Open Ranger file manager" },
       },
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
+      },
+      v = {
+        ["p"] = { '"0p', desc = "Normal paste" },
+        ["P"] = { '"*p', desc = "Normal paste from clipboard" },
+        ["<"] = { "<gv", desc = "Persistend indent left" },
+        [">"] = { ">gv", desc = "Persistend indent right" },
       },
     },
   },

@@ -36,7 +36,7 @@
 /*@define-color workspaces @nord_dark_font;*/
 /*@define-color workspacesfocused #434C5E;*/
 @define-color workspacesfocused #332E41;
-@define-color tray 	#414559;
+@define-color tray #414559;
 @define-color sound #EBCB8B;
 @define-color sound_fg @bg;
 @define-color memory #546484;
@@ -46,8 +46,8 @@
 @define-color battery #332E41;
 @define-color battery_fg #1e1e2e;
 @define-color date_fg @bg;
-@define-color time	#89b4fa;
-@define-color time_fg	@bg;
+@define-color time #89b4fa;
+@define-color time_fg @bg;
 @define-color backlight #332E41;
 @define-color backlight_fg @bg;
 @define-color nord_bg #332E41;
@@ -55,14 +55,14 @@
 @define-color nord_light #D8DEE9;
 @define-color nord_light_font #D8DEE9;
 @define-color nord_dark_font #D8DEE9;
-@define-color status #77ad95;
-@define-color controls #f7e2a9;
+@define-color status #a6e3a1;
+@define-color controls #89b4fa;
 @define-color network #b294bb;
-@define-color date #e39e83;
+@define-color date #fab387;
 @define-color slider_trough #1e1e2e;
-@define-color slider_highlight #BF616A;
+@define-color slider_highlight #546484;
 @define-color cava #332E41;
-@define-color cava_fg #b294bb;
+@define-color cava_fg #cba6f7;
 @define-color network_fg @bg;
 @define-color pacman transparent;
 @define-color pacman_fg #D8DEE9;
@@ -196,33 +196,39 @@
   font-weight: bold;
   padding: 0 0.6em;
 }
+
 #custom-gpu {
   background: @nord_bg;
   font-weight: bold;
   padding: 0 0.6em;
 }
+
 #custom-weather {
   background: @mode;
   font-weight: bold;
   padding: 0 0.6em;
 }
+
 #custom-pacman {
   background: @pacman;
   color: @pacman_fg;
   font-weight: normal;
 }
+
 #custom-scratchpad-indicator {
   background: @nord_light;
   color: @nord_dark_font;
   font-weight: bold;
   padding: 0 0.6em;
 }
+
 #idle_inhibitor {
   background: @mode;
   /*font-size: 1.6em;*/
   font-weight: bold;
   padding: 0 0.6em;
 }
+
 #custom-alsa {
   background: @sound;
 }
@@ -243,20 +249,25 @@
   margin-right: 0px;
   border-radius: 3px 0px 0px 3px;
 }
+
 #cpu.critical {
   color: @nord_dark_font;
 }
+
 #language {
   background: @nord_bg_blue;
   color: #d8dee9;
   padding: 0 0.4em;
 }
+
 #custom-cpugovernor {
   background-color: #3f5360;
   color: @nord_dark_font;
 }
+
 #custom-cpugovernor.perf {
 }
+
 #temperature {
   background-color: @status;
   margin-right: 0px;
@@ -264,9 +275,11 @@
   color: @temp_fg;
   border-radius: 5px 0px 0px 5px;
 }
+
 #temperature.critical {
   background: @status;
 }
+
 #custom-layout {
   background: @layout;
 }
@@ -283,6 +296,7 @@
   color: @date_fg;
   border-radius: 5px 5px 5px 5px;
 }
+
 #clock.date {
   background: @date;
   color: @date_fg;
@@ -321,15 +335,18 @@
   color: #bf616a;
   /* No styles */
 }
+
 #pulseaudio.source-muted {
   background: @controls;
   color: #d08770;
   /* No styles */
 }
+
 #tray {
   background: @bg;
   padding-top: 5px;
 }
+
 #workspaces {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -441,6 +458,7 @@
   margin: 0px;
   padding: 0px;
 }
+
 #backlight-slider trough {
   min-height: 5px;
   min-width: 85px;
@@ -449,9 +467,10 @@
   padding-left: 0px;
   margin: 0px;
 }
+
 #backlight-slider highlight {
   border-radius: 5px;
-  background-color: @status;
+  background-color: @slider_highlight;
   margin: 0px;
   padding: 0px;
 }

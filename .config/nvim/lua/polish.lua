@@ -24,7 +24,7 @@ require("lspconfig").ltex.setup {
       language = "it",
       diagnosticSeverity = "warning",
       completionEnabled = true,
-      enabled = { "latex", "markdown", "tex", "txt" },
+      enabled = { "latex", "markdown", "tex" },
     },
   },
 }

@@ -39,7 +39,7 @@ text_default = [
   ] },
 ]
 
-reader_default = [{ command = "okular", fork = true, silent = true }]
+reader_default = [{ command = "evince", fork = true, silent = true }]
 
 libreoffice_default = [{ command = "libreoffice", fork = true, silent = true }]
 

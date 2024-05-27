@@ -1,35 +1,39 @@
 [[bookmark]]
-key = "q"
-path = "/home/mattia/.dotfiles"
-
-[[bookmark]]
-key = "g"
-path = "/home/mattia/Git"
-
-[[bookmark]]
 key = "h"
 path = "/home/mattia/.dotfiles/.config/hypr"
-
-[[bookmark]]
-key = "n"
-path = "/home/mattia/.dotfiles/.config/nvim"
-
-[[bookmark]]
-key = ","
-path = "/home/mattia/.config"
 
 [[bookmark]]
 key = "r"
 path = "/"
 
 [[bookmark]]
-key = "a"
-path = "/home/mattia/.dotfiles/.config/astronvim_v4"
+key = "c"
+path = "/home/mattia/.config"
 
 [[bookmark]]
 key = "e"
 path = "/etc"
 
 [[bookmark]]
-key = "c"
+key = "n"
+path = "/home/mattia/.dotfiles/.config/nvim"
+
+[[bookmark]]
+key = "g"
+path = "/home/mattia/Git"
+
+[[bookmark]]
+key = "a"
+path = "/home/mattia/.dotfiles/.config/astronvim_v4"
+
+[[bookmark]]
+key = ","
 path = "/home/mattia/.config"
+
+[[bookmark]]
+key = "q"
+path = "/home/mattia/.dotfiles"
+
+[[bookmark]]
+key = "l"
+path = "/home/mattia/.local"
