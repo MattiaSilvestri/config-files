@@ -58,3 +58,6 @@ sleep 5 && swww init && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
 
 # Network manager
 nm-applet &
+
+# Set soruce volume
+pamixer --default-source --set-volume 30
