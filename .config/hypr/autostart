@@ -38,7 +38,7 @@ wlsunset -t 3500 -T 5000 &
 #   before-sleep 'hyprlock' &
 
 # Hypridle and inhibitor
-hypridle &
+# hypridle &
 wayland-pipewire-idle-inhibit -w &
 caffeine &
 # wl-mpris-idle-inhibit &
