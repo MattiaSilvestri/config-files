@@ -31,9 +31,9 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
+# zinit snippet OMZP::aws
+# zinit snippet OMZP::kubectl
+# zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 
 # Load completions
@@ -46,9 +46,15 @@ zinit cdreplay -q
 
 # Keybindings
 bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
+bindkey '^[k' history-search-backward
+bindkey '^[j' history-search-forward
+
+bindkey '^x' kill-region
+bindkey '^[l' autosuggest-accept
+bindkey '^[p' vi-forward-word
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(vi-forward-word)
 
 # History
 HISTSIZE=5000
@@ -72,7 +78,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
-alias vim='nvim'
 alias c='clear'
 
 # Shell integrations
@@ -261,8 +266,6 @@ ex ()
 # Startup
 TERM=xterm-kitty
 . /home/mattia/.config/ranger/plugins/z/z.sh
-
-bindkey -v
 
 export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
 export PATH="$HOME/.emacs.d/bin:$PATH"
