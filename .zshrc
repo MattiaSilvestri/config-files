@@ -218,6 +218,7 @@ alias c="git commit"
 alias p="git push"
 alias pl="git pull"
 alias rs="git reset"
+alias lg="lazygit"
 
 # Music
 alias music='tmux new-session -s $$ "tmux source-file ~/.ncmpcpp/tsession"'
