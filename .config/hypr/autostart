@@ -38,17 +38,20 @@ wlsunset -t 3500 -T 5000 &
 #   before-sleep 'hyprlock' &
 
 # Hypridle and inhibitor
-# hypridle &
-wayland-pipewire-idle-inhibit -w &
+hypridle &
 caffeine &
+# wayland-pipewire-idle-inhibit -w &
 # wl-mpris-idle-inhibit &
+
+# Cliboard manager
+wl-paste --type text --watch cliphist store &
+wl-paste --type image --watch cliphist store &
 
 # nordvpn service
 systemctl start nordvpnd.service &
 
 # Megasync and pcloud
 sleep 5 && ~/AppImages/pcloud &
-sleep 5 && env QT_QPA_PLATFORM=xcb megasync &
 
 # Automatic mounting
 udiskie &
