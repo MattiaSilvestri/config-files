@@ -46,15 +46,17 @@ zinit cdreplay -q
 
 # Keybindings
 bindkey -e
-bindkey '^[k' history-search-backward
-bindkey '^[j' history-search-forward
+bindkey '^[k' history-beginning-search-backward
+bindkey '^[j' history-beginning-search-forward
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 
 bindkey '^x' kill-region
 bindkey '^[l' autosuggest-accept
-bindkey '^[p' vi-forward-word
+bindkey '^[p' emacs-forward-word
 
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(vi-forward-word)
+# ZSH_AUTOSUGGEST_STRATEGY=(completion)
+# ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(vi-forward-word)
 
 # History
 HISTSIZE=5000
@@ -74,7 +76,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:mv:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cp:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' popup-min-size 60 8
 
 # Aliases
 alias ls='ls --color'
@@ -231,6 +237,9 @@ alias ncm="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"
 
 # Text editor
 alias vim="nvim"
+
+# Other
+alias disc="sudoedit /opt/discord/resources/build_info.json"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
