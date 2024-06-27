@@ -83,12 +83,13 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:*' popup-min-size 60 8
 
 # Aliases
+alias x='exit'
 alias ls='ls --color'
 alias c='clear'
 
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init --cmd cd zsh)"
 
 #list
 alias ls='ls --color=auto'
@@ -319,6 +320,14 @@ function joshuto() {
 	esac
 }
 
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
