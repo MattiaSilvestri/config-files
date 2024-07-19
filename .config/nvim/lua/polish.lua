@@ -56,6 +56,35 @@ require("lspconfig").eslint.setup {
     run_on = "type", -- or `save`
   },
 }
+
+-- Telescope
+require("telescope").setup {
+  extensions = {
+    ast_grep = {
+      command = {
+        "sg",
+        "--json=stream",
+      }, -- must have --json=stream
+      grep_open_files = false, -- search in opened files
+      lang = nil, -- string value, specify language for ast-grep `nil` for default
+    },
+  },
+}
+
+-- require("transparent").clear_prefix "BufferLine"
+-- require("transparent").clear_prefix "NeoTree"
+-- require("transparent").clear_prefix "Heirline"
+
+-- require("dap.ext.vscode").load_launchjs(nil, {})
+-- local dap = require "dap"
+-- table.insert(dap.configurations.python, {
+--   type = "python",
+--   request = "launch",
+--   name = "Django",
+--   program = vim.fn.getcwd() .. "/manage.py", -- NOTE: Adapt path to manage.py as needed
+--   args = { "runserver" },
+-- })
+
 -- local lspconfig = require "lspconfig"
 -- local configs = require "lspconfig.configs"
 -- configs.html = {

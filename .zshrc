@@ -1,4 +1,4 @@
-nitch
+rxfetch
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -46,14 +46,14 @@ zinit cdreplay -q
 
 # Keybindings
 bindkey -e
-bindkey '^[k' history-beginning-search-backward
-bindkey '^[j' history-beginning-search-forward
+bindkey '^k' history-beginning-search-backward
+bindkey '^j' history-beginning-search-forward
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
 bindkey '^x' kill-region
-bindkey '^[l' autosuggest-accept
-bindkey '^[p' emacs-forward-word
+bindkey '^l' autosuggest-accept
+bindkey '^p' emacs-forward-word
 
 # ZSH_AUTOSUGGEST_STRATEGY=(completion)
 # ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(vi-forward-word)
@@ -237,7 +237,11 @@ alias music='tmux new-session -s $$ "tmux source-file ~/.ncmpcpp/tsession"'
 alias ncm="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"
 
 # Text editor
-alias vim="nvim"
+# alias vim="nvim"
+alias vi="nvim"
+
+# Tmux
+alias a="tmux a"
 
 # Other
 alias disc="sudoedit /opt/discord/resources/build_info.json"
@@ -274,7 +278,7 @@ ex ()
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
 # Startup
-TERM=xterm-kitty
+# TERM=xterm-kitty
 . /home/mattia/.config/ranger/plugins/z/z.sh
 
 export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
@@ -285,8 +289,11 @@ export PATH="/usr/bin/core_perl:$PATH"
 export PATH="/home/mattia/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="/home/mattia/.cargo/bin:$PATH"
 export PATH="/home/mattia/.local/bin:$PATH"
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export QT_QPA_PLATFORM=wayland
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/bin/virtualenvwrapper.sh
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -345,3 +352,13 @@ unset __conda_setup
 # <<< conda initialize <<<
 # zmodload zsh/zprof
 # zprof
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk

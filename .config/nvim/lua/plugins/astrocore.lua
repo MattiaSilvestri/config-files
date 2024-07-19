@@ -15,7 +15,7 @@ return {
       large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics_mode = 2, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
       colorscheme = "catppuccin", -- colorscheme at start
@@ -67,6 +67,7 @@ return {
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
         ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
         ["<leader>ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope fuzzy find" },
+        ["<leader>sg"] = { "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
         ["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
         ["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
         ["<leader>a"] = { "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
@@ -78,19 +79,27 @@ return {
           function() require("astrocore.buffer").nav(-vim.v.count1) end,
           desc = "Previous buffer",
         },
+        ["<leader>bn"] = { function() vim.cmd.tabnew() end, desc = "New tab" },
         ["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
         ["[o"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
-        -- ["<leader>r"] = { "<cmd>Ranger<cr>", desc = "Open Ranger file manager" },
-      },
-      t = {
-        -- setting a mapping to false will disable it
-        -- ["<esc>"] = false,
-      },
-      v = {
-        ["p"] = { '"0p', desc = "Normal paste" },
-        ["P"] = { '"*p', desc = "Normal paste from clipboard" },
-        ["<"] = { "<gv", desc = "Persistend indent left" },
-        [">"] = { ">gv", desc = "Persistend indent right" },
+        ["<leader>dj"] = {
+          function()
+            -- (Re-)reads launch.json if present
+            require("dap.ext.vscode").load_launchjs(nil, {})
+            require("dap").continue()
+          end,
+          desc = "DAP start with .json",
+        },
+        t = {
+          -- setting a mapping to false will disable it
+          -- ["<esc>"] = false,
+        },
+        v = {
+          -- ["p"] = { '"0p', desc = "Normal paste" },
+          -- ["P"] = { '"*p', desc = "Normal paste from clipboard" },
+          -- ["<"] = { "<gv", desc = "Persistend indent left" },
+          -- [">"] = { ">gv", desc = "Persistend indent right" },
+        },
       },
     },
   },
