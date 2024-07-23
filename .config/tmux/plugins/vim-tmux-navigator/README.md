@@ -140,16 +140,16 @@ Add the following to your `~/.vimrc` to define your custom maps:
 ``` vim
 let g:tmux_navigator_no_mappings = 1
 
-noremap <silent> {Left-Mapping} :<C-U>TmuxNavigateLeft<cr>
-noremap <silent> {Down-Mapping} :<C-U>TmuxNavigateDown<cr>
-noremap <silent> {Up-Mapping} :<C-U>TmuxNavigateUp<cr>
-noremap <silent> {Right-Mapping} :<C-U>TmuxNavigateRight<cr>
-noremap <silent> {Previous-Mapping} :<C-U>TmuxNavigatePrevious<cr>
+nnoremap <silent> {Left-Mapping} :<C-U>TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :<C-U>TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :<C-U>TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :<C-U>TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :<C-U>TmuxNavigatePrevious<cr>
 ```
 
 *Note* Each instance of `{Left-Mapping}` or `{Down-Mapping}` must be replaced
 in the above code with the desired mapping. Ie, the mapping for `<ctrl-h>` =>
-Left would be created with `noremap <silent> <c-h> :<C-U>TmuxNavigateLeft<cr>`.
+Left would be created with `nnoremap <silent> <c-h> :<C-U>TmuxNavigateLeft<cr>`.
 
 ##### Autosave on leave
 
@@ -356,6 +356,27 @@ instead of having to use a different prefix (ctrl-a by default) which you may
 find convenient. If not, simply remove the lines that set/unset the prefix key
 from the code example above.
 
+#### netrw
+
+Vim's builtin file explorer, named the netrw plugin, has a default keymapping
+for `<C-l>`. When using `vim-tmux-navigator` with default settings,
+`vim-tmux-navigator` will try to override the netrw mapping so that `<C-l>` will
+still be mapped to `:TmuxNavigateRight` as it is for other buffers. If you
+prefer to keep the netrw mapping, set this variable in your vimrc:
+
+``` vim
+let g:tmux_navigator_disable_netrw_workaround = 1
+```
+
+Alternatively, if you prefer to work around the issue yourself, you can add the
+following to your vimrc:
+
+``` vim
+let g:tmux_navigator_disable_netrw_workaround = 1
+" g:Netrw_UserMaps is a list of lists. If you'd like to add other key mappings,
+" just add them like so: [['a', 'command1'], ['b', 'command2'], ...]
+let g:Netrw_UserMaps = [['<C-l>', '<C-U>TmuxNavigateRight<cr>']]
+```
 
 Troubleshooting
 ---------------

@@ -80,26 +80,20 @@ return {
           desc = "Previous buffer",
         },
         ["<leader>bn"] = { function() vim.cmd.tabnew() end, desc = "New tab" },
-        ["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
-        ["[o"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
-        ["<leader>dj"] = {
-          function()
-            -- (Re-)reads launch.json if present
-            require("dap.ext.vscode").load_launchjs(nil, {})
-            require("dap").continue()
-          end,
-          desc = "DAP start with .json",
-        },
-        t = {
-          -- setting a mapping to false will disable it
-          -- ["<esc>"] = false,
-        },
-        v = {
-          -- ["p"] = { '"0p', desc = "Normal paste" },
-          -- ["P"] = { '"*p', desc = "Normal paste from clipboard" },
-          -- ["<"] = { "<gv", desc = "Persistend indent left" },
-          -- [">"] = { ">gv", desc = "Persistend indent right" },
-        },
+        ["]p"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
+        ["[p"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
+        ["-"] = { "^", desc = "Move to first non-blank character of the line" },
+      },
+      t = {
+        -- setting a mapping to false will disable it
+        -- ["<esc>"] = false,
+      },
+      v = {
+        ["p"] = { '"0p', desc = "Normal paste" },
+        ["P"] = { '"*p', desc = "Normal paste from clipboard" },
+        ["<"] = { "<gv", desc = "Persistend indent left" },
+        [">"] = { ">gv", desc = "Persistend indent right" },
+        ["$"] = { "g_", desc = "Move to the last character of the line" },
       },
     },
   },

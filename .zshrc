@@ -242,6 +242,7 @@ alias vi="nvim"
 
 # Tmux
 alias a="tmux a"
+unset TMUX
 
 # Other
 alias disc="sudoedit /opt/discord/resources/build_info.json"

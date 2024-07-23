@@ -217,7 +217,7 @@ return {
           type = "python",
           request = "launch",
           program = "${workspaceFolder}/chirpstack.py",
-          args = { "configure", "-id=dd962157-6467-44ab-a982-679c06358361" },
+          args = { "configure", "--all" },
           justMyCode = true,
           pythonPath = function()
             local venv_path = os.getenv "VIRTUAL_ENV"
@@ -446,17 +446,13 @@ return {
     end,
   },
   {
-    "geg2102/nvim-python-repl",
-    dependencies = "nvim-treesitter",
+    "m4xshen/autoclose.nvim",
     event = "User AstroFile",
-    ft = { "python", "lua", "scala" },
-    config = function()
-      require("nvim-python-repl").setup {
-        execute_on_send = false,
-        vsplit = false,
-      }
-    end,
+    config = function() require("autoclose").setup() end,
   },
+  {
+    'echasnovski/mini.move', version = '*', event = "User Astrofile"
+  }
   -- {
   --   "xiyaowong/transparent.nvim",
   --   lazy = false,
