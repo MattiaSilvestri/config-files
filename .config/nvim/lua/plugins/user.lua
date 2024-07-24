@@ -108,7 +108,25 @@ return {
   { "mg979/vim-visual-multi", event = "User AstroFile" },
   -- { "tpope/vim-surround" },
   { "ixru/nvim-markdown", event = "User AstroFile" },
-  { "christoomey/vim-tmux-navigator", lazy = false },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
+  },
+  { "aserowy/tmux.nvim", lazy = false },
   { "kevinhwang91/rnvimr", cmd = "RnvimrToggle" },
   {
     "folke/todo-comments.nvim",
@@ -451,8 +469,10 @@ return {
     config = function() require("autoclose").setup() end,
   },
   {
-    'echasnovski/mini.move', version = '*', event = "User Astrofile"
-  }
+    "echasnovski/mini.move",
+    version = "*",
+    event = "User Astrofile",
+  },
   -- {
   --   "xiyaowong/transparent.nvim",
   --   lazy = false,
