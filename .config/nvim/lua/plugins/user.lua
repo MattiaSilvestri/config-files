@@ -472,6 +472,7 @@ return {
     "echasnovski/mini.move",
     version = "*",
     event = "User Astrofile",
+    config = function() require("mini.move").setup() end,
   },
   -- {
   --   "xiyaowong/transparent.nvim",

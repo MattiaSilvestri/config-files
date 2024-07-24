@@ -83,10 +83,15 @@ return {
         ["]p"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
         ["[p"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
         ["-"] = { "^", desc = "Move to first non-blank character of the line" },
+        ["tf"] = { '<Cmd>execute v:count . "ToggleTerm"<CR>', desc = "Toggle terminal float" },
+        ["th"] = { '<Cmd>execute v:count . "ToggleTerm direction=horizontal"<CR>', desc = "Toggle terminal horizontal" },
+        ["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
+        ["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
       },
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
+        ["<esc>"] = { "<C-\\><C-n>", desc = "Escape terminal mode" },
       },
       v = {
         ["p"] = { '"0p', desc = "Normal paste" },
