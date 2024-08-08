@@ -299,6 +299,8 @@ source /usr/bin/virtualenvwrapper.sh
 export EDITOR=nvim
 export VISUAL=nvim
 
+export DJANGO_SETTINGS_MODULE=jarvisui.settings.development
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

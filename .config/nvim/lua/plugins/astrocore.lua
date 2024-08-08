@@ -22,7 +22,7 @@ return {
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-      virtual_text = true,
+      virtual_text = false,
       underline = true,
     },
     -- vim options can be configured here
@@ -33,6 +33,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        textwidth = 88, -- sets vim.opt.textwidth
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -83,10 +84,12 @@ return {
         ["]p"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
         ["[p"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
         ["-"] = { "^", desc = "Move to first non-blank character of the line" },
-        ["tf"] = { '<Cmd>execute v:count . "ToggleTerm"<CR>', desc = "Toggle terminal float" },
+        ["tf"] = { '<Cmd>execute v:count . "ToggleTerm direction=float"<CR>', desc = "Toggle terminal float" },
         ["th"] = { '<Cmd>execute v:count . "ToggleTerm direction=horizontal"<CR>', desc = "Toggle terminal horizontal" },
         ["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
         ["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
+        ["~"] = { "Vyp", desc = "Yank and pase to next line" },
+        ["cw"] = { "ciw", desc = "Change word" },
       },
       t = {
         -- setting a mapping to false will disable it
@@ -99,6 +102,7 @@ return {
         ["<"] = { "<gv", desc = "Persistend indent left" },
         [">"] = { ">gv", desc = "Persistend indent right" },
         ["$"] = { "g_", desc = "Move to the last character of the line" },
+        ["gq"] = { "gw", desc = "Format lines" },
       },
     },
   },
