@@ -93,8 +93,8 @@ return {
       },
       t = {
         -- setting a mapping to false will disable it
-        -- ["<esc>"] = false,
-        ["<esc>"] = { "<C-\\><C-n>", desc = "Escape terminal mode" },
+        ["<esc>"] = false,
+        ["<C-\\>"] = { "<C-\\><C-n>", desc = "Escape terminal mode" },
       },
       v = {
         ["p"] = { '"0p', desc = "Normal paste" },

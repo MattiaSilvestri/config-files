@@ -15,17 +15,17 @@ vim.filetype.add {
   },
 }
 
-require("lspconfig").ltex.setup {
-  filetypes = { "markdown", "latex", "bib", "tex" },
-  settings = {
-    ltex = {
-      language = "it",
-      diagnosticSeverity = "warning",
-      completionEnabled = true,
-      enabled = { "latex", "markdown", "tex" },
-    },
-  },
-}
+-- require("lspconfig").ltex.setup {
+--   filetypes = { "markdown", "latex", "bib", "tex" },
+--   settings = {
+--     ltex = {
+--       language = "it",
+--       diagnosticSeverity = "warning",
+--       completionEnabled = true,
+--       enabled = { "latex", "markdown", "tex" },
+--     },
+--   },
+-- }
 
 -- HTML
 require("lspconfig").html.setup {
