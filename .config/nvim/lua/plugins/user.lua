@@ -530,6 +530,12 @@ return {
       },
     },
   },
+  {
+    "declancm/cinnamon.nvim",
+    version = "*", -- use latest release
+    lazy = false,
+    config = function() require("cinnamon").setup {} end,
+  },
   -- {
   --   "xiyaowong/transparent.nvim",
   --   lazy = false,
