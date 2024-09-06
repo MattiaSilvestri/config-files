@@ -329,7 +329,7 @@ run = "plugin bookmarks-persistence --args=save"
 desc = "Save current position as a bookmark"
 
 [[manager.prepend_keymap]]
-on = [ "u", "g" ]
+on = [ "`"]
 run = "plugin bookmarks-persistence --args=jump"
 desc = "Jump to a bookmark"
 

@@ -281,7 +281,7 @@
 }
 
 #backlight {
-  background: @backlight;
+  background: @controls;
   margin-left: 0px;
   border-radius: 0px 5px 5px 0px;
   color: @backlight_fg;
@@ -308,8 +308,8 @@
   background: @controls;
   color: @sound_fg;
   /* margin-right: 0px; */
-  margin-left: 0px;
-  border-radius: 0px 5px 5px 0px;
+  margin-right: 0px;
+  border-radius: 5px 0px 0px 5px;
 }
 
 #custom-cava-internal {

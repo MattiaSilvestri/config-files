@@ -51,7 +51,7 @@ wl-paste --type image --watch cliphist store &
 systemctl start nordvpnd.service &
 
 # Megasync and pcloud
-# sleep 5 && ~/AppImages/pcloud &
+sleep 5 && ~/AppImages/pcloud &
 
 # Automatic mounting
 udiskie &
@@ -64,3 +64,8 @@ nm-applet &
 
 # Set soruce volume
 pamixer --default-source --set-volume 30
+
+# Hyprland stuff
+hyprctl keyword general:layout "master" &
+hyprpm reload -n &
+

@@ -8,18 +8,16 @@
   "margin-left": 0,
   // Archived modules
   // "custom/gpu", "bluetooth",  "custom/weather", "temperature", "sway/window"
-  // Choose the order of the modules
   "modules-left": [
     "hyprland/workspaces",
-    "custom/pacman",
-    "custom/cava-internal"
+    "custom/pacman"
     // "cava"
   ],
-  "modules-center": ["wlr/taskbar"],
   "modules-right": [
-    "pulseaudio/slider",
+    // "pulseaudio/slider",
+    "custom/cava-internal",
     "pulseaudio",
-    "backlight/slider",
+    // "backlight/slider",
     "backlight",
     "temperature",
     "battery",
@@ -71,13 +69,40 @@
   },
 
   "hyprland/workspaces": {
-    "format": "{id}",
-    // "format-active": " {icon} ",
-    "on-click": "activate"
-    // "format-icons":{
-    //     "10":"10"
-    // }
+	  "format": "{icon} {windows}",
+    "format-window-separator": " ",
+      "window-rewrite-default": "",
+      "window-rewrite": {
+        "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+        "class<firefox>": "", // Windows whose classes are "firefox"
+        "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+        "kitty": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
+        "spotify": "",
+        "Discord": "",
+        "class<thunar>": "",
+        "class<nautilus>": "",
+        "class<nemo>": "",
+        "telegram": "",
+        "class<vivaldi-stable>": "",
+        "title<nvim>": "",
+        "code": "󰨞"
+	    },
+	  "format-icons": {
+		  // "1": "",
+		  // "2": "",
+		  // "3": "",
+		  // "4": "",
+		  // "5": "",
+		  "active": "",
+		  "persistent": "󰽤",
+		  "default": "󰽢"
+	  },
+    "persistent-workspaces": {
+         "*": 5, // 5 workspaces by default on every monitor
+         "HDMI-A-1": [11,12,13,14,15]
+    }
   },
+
   "backlight": {
     "on-scroll-up": "brightness.sh up",
     "on-scroll-down": "brightness.sh down",
@@ -204,7 +229,7 @@
     "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
   },
   "custom/pacman": {
-    "format": "<big>   Updates:</big> {}",
+    "format": "<big> </big> {}",
     "interval": 3600, // every hour
     "exec": "checkupdates | wc -l", // # of updates
     "exec-if": "exit 0", // always run; consider advanced run conditions

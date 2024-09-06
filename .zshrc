@@ -237,7 +237,9 @@ alias music='tmux new-session -s $$ "tmux source-file ~/.ncmpcpp/tsession"'
 alias ncm="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"
 
 # Text editor
-alias vim="nvim"
+alias vi="nvim"
+alias vim="vim"
+alias nvi="NVIM_APPNAME=nvim-vanilla nvim"
 
 # Other
 alias disc="sudoedit /opt/discord/resources/build_info.json"

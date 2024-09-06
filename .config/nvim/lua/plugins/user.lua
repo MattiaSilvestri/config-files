@@ -331,4 +331,53 @@ return {
   --   lazy = false,
   --   config = function() require("nvim-ide").setup {} end,
   -- },
+  ---@type LazySpec
+  {
+    "mikavilpas/yazi.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    event = "VeryLazy",
+    keys = {
+      -- 👇 in this section, choose your own keymappings!
+      {
+        "<leader>yy",
+        function() require("yazi").yazi() end,
+        desc = "Open the file manager",
+      },
+      {
+        -- Open in the current working directory
+        "<leader>yw",
+        function() require("yazi").yazi(nil, vim.fn.getcwd()) end,
+        desc = "Open the file manager in nvim's working directory",
+      },
+    },
+    ---@type YaziConfig
+    opts = {
+      open_for_directories = false,
+    },
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false, -- Recommended
+    -- ft = "markdown" -- If you decide to lazy-load anyway
+
+    dependencies = {
+      -- You will not need this if you installed the
+      -- parsers manually
+      -- Or if the parsers are in your $RUNTIMEPATH
+      "nvim-treesitter/nvim-treesitter",
+
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+  {
+    "declancm/cinnamon.nvim",
+    version = "*", -- use latest release
+    event = "User AstroFile",
+    config = function() require("cinnamon").setup() end,
+    opts = {
+      -- change default options here
+    },
+  },
 }
