@@ -18,7 +18,7 @@ return {
         -- "ltex",
         "marksman",
         "html",
-        "tsserver",
+        -- "tsserver",
         -- "r_language_server",
         -- "custom_elements_ls",
         -- "emmet_ls",

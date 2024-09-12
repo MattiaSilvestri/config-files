@@ -96,6 +96,9 @@ return {
         ["<esc>"] = false,
         ["<C-\\>"] = { "<C-\\><C-n>", desc = "Escape terminal mode" },
       },
+      i = {
+        ["<C-j>"] = { "<Down>", desc = "Move cursor down" },
+      },
       v = {
         ["p"] = { '"0p', desc = "Normal paste" },
         ["P"] = { '"*p', desc = "Normal paste from clipboard" },

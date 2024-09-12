@@ -4,12 +4,14 @@ keybinds {
     unbind "Ctrl q"
     unbind "Ctrl h"
     unbind "Ctrl n"
+    unbind "Ctrl j"
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
         unbind "Ctrl h"
         unbind "Ctrl o"
         unbind "Ctrl n"
+        unbind "Ctrl j"
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
