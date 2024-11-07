@@ -244,6 +244,10 @@ alias vi="nvim"
 alias a="tmux a"
 unset TMUX
 
+# Django
+alias mm="python manage.py makemigrations"
+alias mg="python manage.py migrate"
+
 # Other
 alias disc="sudoedit /opt/discord/resources/build_info.json"
 
