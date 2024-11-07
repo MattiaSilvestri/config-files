@@ -146,11 +146,6 @@ return {
     end,
   },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-  },
-  {
     "rose-pine/neovim",
     name = "rose-pine",
   },
@@ -192,8 +187,20 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
-    build = "cd app && yarn install",
-    cmd = "MarkdownPreview",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = function()
+      require("lazy").load { plugins = { "markdown-preview.nvim" } }
+      vim.fn["mkdp#util#install"]()
+    end,
+    keys = {
+      {
+        "<leader>cp",
+        ft = "markdown",
+        "<cmd>MarkdownPreviewToggle<cr>",
+        desc = "Markdown Preview",
+      },
+    },
+    config = function() vim.cmd [[do FileType]] end,
   },
   {
     "toppair/peek.nvim",
@@ -233,6 +240,20 @@ return {
           request = "launch",
           program = "${workspaceFolder}/src/chirpstack.py",
           args = { "configure", "-id=dd962157-6467-44ab-a982-679c06358361", "--all" },
+          justMyCode = true,
+          pythonPath = function()
+            local venv_path = os.getenv "VIRTUAL_ENV"
+            if venv_path then return venv_path .. "/bin/python" end
+            return "/usr/bin/python3"
+          end,
+        },
+        {
+          name = "Python: Jarvisui",
+          type = "python",
+          request = "launch",
+          program = "${workspaceFolder}/manage.py",
+          args = { "runserver", "--noreload", "0:8000" },
+          django = true,
           justMyCode = true,
           pythonPath = function()
             local venv_path = os.getenv "VIRTUAL_ENV"
@@ -370,15 +391,47 @@ return {
       global_bookmarks = true,
     },
   },
+  -- {
+  --   "DreamMaoMao/yazi.nvim",
+  --   dependencies = {
+  --     "nvim-telescope/telescope.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --
+  --   keys = {
+  --     { "<leader>yy", "<cmd>Yazi<CR>", desc = "Toggle Yazi" },
+  --   },
+  -- },
   {
-    "DreamMaoMao/yazi.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
     keys = {
-      { "<leader>yy", "<cmd>Yazi<CR>", desc = "Toggle Yazi" },
+      -- 👇 in this section, choose your own keymappings!
+      {
+        "<leader>yz",
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
+        -- Open in the current working directory
+        "<leader>yw",
+        "<cmd>Yazi cwd<cr>",
+        desc = "Open the file manager in nvim's working directory",
+      },
+      {
+        -- NOTE: this requires a version of yazi that includes
+        -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
+        "<leader>yy",
+        "<cmd>Yazi toggle<cr>",
+        desc = "Resume the last yazi session",
+      },
+    },
+    opts = {
+      -- if you want to open yazi instead of netrw, see below for more info
+      open_for_directories = false,
+      keymaps = {
+        show_help = "<f1>",
+      },
     },
   },
   {
@@ -441,11 +494,11 @@ return {
 
         padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
 
-        transparency = 50, -- disabled by default, allow floating win transparent value 1~100
+        transparency = 100, -- disabled by default, allow floating win transparent value 1~100
         shadow_blend = 36, -- if you using shadow as border use this set the opacity
         shadow_guibg = "Black", -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
         timer_interval = 200, -- default timer check interval set to lower value if you want to reduce latency
-        toggle_key = nil, -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
+        toggle_key = "<M-x>", -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
         toggle_key_flip_floatwin_setting = false, -- true: toggle floating_windows: true|false setting after toggle key pressed
         -- false: floating_windows setup will not change, toggle_key will pop up signature helper, but signature
         -- may not popup when typing depends on floating_window setting
@@ -531,12 +584,50 @@ return {
     },
   },
   {
-    "declancm/cinnamon.nvim",
-    version = "*", -- use latest release
-    lazy = false,
-    config = function() require("cinnamon").setup {} end,
+    "aaronhallaert/advanced-git-search.nvim",
+    cmd = { "AdvancedGitSearch" },
+    config = function()
+      -- optional: setup telescope before loading the extension
+      require("telescope").setup {}
+      require("telescope").load_extension "advanced_git_search"
+    end,
+    dependencies = { "tpope/vim-fugitive", "tpope/vim-rhubarb" },
   },
   { "wakatime/vim-wakatime", lazy = false },
+  {
+    "numToStr/Comment.nvim",
+    opts = {
+      pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      -- pre_hook = function(ctx)
+      --   -- Only change `commentstring` for htmldjango files
+      --   if vim.bo.filetype == "htmldjango" then vim.bo.commentstring = "{# %s #}" end
+      -- end,
+    },
+  },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+      "echasnovski/mini.pick", -- optional
+    },
+    config = true,
+  },
+
+  --   {
+  --   "folke/ts-comments.nvim",
+  --   opts = {
+  --       lang = {
+  --         htmldjango = "{# %s #}"
+  --       }
+  --     },
+  --   event = "VeryLazy",
+  --   enabled = vim.fn.has("nvim-0.10.0") == 1,
+  -- }
   -- {
   --   "xiyaowong/transparent.nvim",
   --   lazy = false,

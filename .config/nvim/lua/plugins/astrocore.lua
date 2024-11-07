@@ -33,7 +33,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
-        textwidth = 88, -- sets vim.opt.textwidth
+        -- textwidth = 88, -- sets vim.opt.textwidth
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
