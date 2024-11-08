@@ -68,6 +68,9 @@ return {
             analysis = {
               typeCheckingMode = "off",
               stubPath = "/home/mattia/.virtualenvs/jarvis/lib/python3.12/site-packages/django_stubs_ext",
+              diagnosticSeverityOverrides = {
+                reportUndefinedVariable = "error",
+              },
             },
           },
         },

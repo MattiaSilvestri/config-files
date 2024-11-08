@@ -1,0 +1,5 @@
+      {
+        key = "<leader>gP",
+        func = require("navigator.definition").type_definition_preview,
+        desc = "type definition preview",
+      },

@@ -72,14 +72,14 @@ return {
         ["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
         ["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
         ["<leader>a"] = { "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
-        ["gt"] = {
-          function() require("astrocore.buffer").nav(vim.v.count1) end,
-          desc = "Next buffer",
-        },
-        ["gT"] = {
-          function() require("astrocore.buffer").nav(-vim.v.count1) end,
-          desc = "Previous buffer",
-        },
+        -- ["gt"] = {
+        --   function() require("astrocore.buffer").nav(vim.v.count1) end,
+        --   desc = "Next buffer",
+        -- },
+        -- ["gT"] = {
+        --   function() require("astrocore.buffer").nav(-vim.v.count1) end,
+        --   desc = "Previous buffer",
+        -- },
         ["<leader>bn"] = { function() vim.cmd.tabnew() end, desc = "New tab" },
         ["]p"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
         ["[p"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
@@ -90,6 +90,10 @@ return {
         ["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
         ["~"] = { "Vyp", desc = "Yank and pase to next line" },
         ["cw"] = { "ciw", desc = "Change word" },
+        ["<leader>gP"] = {
+          "<cmd>lua require('goto-preview').goto_preview_definition()<cr>",
+          desc = "Go to definition preview",
+        },
       },
       t = {
         -- setting a mapping to false will disable it

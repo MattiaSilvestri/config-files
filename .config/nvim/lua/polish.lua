@@ -2,6 +2,14 @@
 -- things like custom filetypes. This just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
 
+vim.keymap.set("v", "<leader>y", require("osc52").copy_visual, { desc = "Copy to clipboard" })
+-- vim.keymap.set(
+--   "n",
+--   "<leader>gP",
+--   require("goto-preview").goto_preview_definition
+--   { desc = "Go to definition preview" }
+-- )
+--
 -- Set up custom filetypes
 vim.filetype.add {
   extension = {
