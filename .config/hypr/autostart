@@ -5,11 +5,12 @@ config=$HOME/.config/hypr
 scripts=$config/scripts
 
 # notification daemon
-dunst &
+# dunst &
 
 # waybar
-$scripts/launch_waybar &
+# $scripts/launch_waybar &
 $scripts/tools/dynamic &
+ags &
 
 # wallpaper
 # $scripts/wall $config/wallpapers/cloud.png &
@@ -30,7 +31,7 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 blueberry-tray &
 
 # Blue-light filter
-wlsunset -t 3500 -T 5000 &
+wlsunset -t 3500 -T 6500 -S 8:00 -s 18:00 &
 
 #swayidle daemon and inhibitor
 # swayidle -w \
@@ -57,7 +58,9 @@ sleep 5 && ~/AppImages/pcloud &
 udiskie &
 
 # Launch swww and wallpaper script
-sleep 5 && swww init && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+# sleep 5 && swww init && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+sleep 5 && swww init & 
+waypaper-engine daemon &
 
 # Network manager
 nm-applet &

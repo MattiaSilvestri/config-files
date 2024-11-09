@@ -347,3 +347,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 # zmodload zsh/zprof
 # zprof
+
+# bun completions
+[ -s "/home/mattia/.bun/_bun" ] && source "/home/mattia/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

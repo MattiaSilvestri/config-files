@@ -18,13 +18,13 @@ vim.filetype.add {
 }
 
 require("lspconfig").ltex.setup {
-  filetypes = { "markdown", "latex", "bib", "tex" },
+  filetypes = { "latex", "bib", "tex" },
   settings = {
     ltex = {
       language = "it",
       diagnosticSeverity = "warning",
       completionEnabled = true,
-      enabled = { "latex", "markdown", "tex" },
+      enabled = { "latex", "tex" },
     },
   },
 }

@@ -24,11 +24,11 @@ function brightness_notification {
 case $1 in
     up)
         brightnessctl s +5%
-        brightness_notification
+        # brightness_notification
         ;;
     down)
         brightnessctl s 5%-
-        brightness_notification
+        # brightness_notification
 	    ;;
     *)
         echo "Usage: $0 up | down "

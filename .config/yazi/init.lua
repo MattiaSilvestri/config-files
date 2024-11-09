@@ -48,21 +48,22 @@ function Header:host()
 	return ui.Line({ ui.Span(ya.user_name() .. "@" .. ya.host_name()):fg("lightgreen"):bold(true), ui.Span(":") })
 end
 
-function Header:render(area)
-	self.area = area
-
-	local right = ui.Line({ self:count(), self:tabs() })
-	local left = ui.Line({
-		self:host(),
-		self:cwd(math.max(0, area.w - right:width())):fg("blue"),
-		ui.Span("/"):fg("blue"):bold(true),
-		ui.Span(tostring(cx.active.current.hovered.name)):fg("white"):bold(true),
-	})
-	return {
-		ui.Paragraph(area, { left }),
-		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
-	}
-end
+--
+-- function Header:render(area)
+-- 	self.area = area
+--
+-- 	local right = ui.Line({ self:count(), self:tabs() })
+-- 	local left = ui.Line({
+-- 		self:host(),
+-- 		self:cwd(math.max(0, area.w - right:width())):fg("blue"),
+-- 		ui.Span("/"):fg("blue"):bold(true),
+-- 		ui.Span(tostring(cx.active.current.hovered.name)):fg("white"):bold(true),
+-- 	})
+-- 	return {
+-- 		ui.Paragraph(area, { left }),
+-- 		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
+-- 	}
+-- end
 
 -- Show symlink path in status bar
 function Status:name()

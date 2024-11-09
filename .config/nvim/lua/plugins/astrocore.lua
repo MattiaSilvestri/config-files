@@ -22,7 +22,7 @@ return {
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-      virtual_text = true,
+      virtual_text = false,
       underline = true,
     },
     -- vim options can be configured here
@@ -33,11 +33,14 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        -- textwidth = 88, -- sets vim.opt.textwidth
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+        mkdp_browser = "qutebrowser",
+        mkdp_theme = "dark",
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -67,6 +70,7 @@ return {
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
         ["U"] = { "<cmd>redo<cr>", desc = "Redo" },
         ["<leader>ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope fuzzy find" },
+        ["<leader>sg"] = { "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
         ["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
         ["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
         ["<leader>a"] = { "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
@@ -80,6 +84,12 @@ return {
         },
         ["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab" },
         ["[o"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab" },
+        ["-"] = { "^", desc = "Move to first non-blank character of the line" },
+        ["tf"] = { '<Cmd>execute v:count . "ToggleTerm direction=float"<CR>', desc = "Toggle terminal float" },
+        ["th"] = { '<Cmd>execute v:count . "ToggleTerm direction=horizontal"<CR>', desc = "Toggle terminal horizontal" },
+        ["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
+        ["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
+        ["~"] = { "Vyp", desc = "Yank and pase to next line" },
         -- ["<leader>r"] = { "<cmd>Ranger<cr>", desc = "Open Ranger file manager" },
       },
       t = {

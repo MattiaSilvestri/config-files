@@ -163,8 +163,9 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
-    build = "cd app && yarn install",
-    cmd = "MarkdownPreview",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
     "toppair/peek.nvim",
@@ -176,6 +177,9 @@ return {
     cmd = {
       "PeekOpen",
       "PeekClose",
+    },
+    opts = {
+      app = "firefox",
     },
   },
   -- {
@@ -357,27 +361,24 @@ return {
       open_for_directories = false,
     },
   },
+  -- {
+  --   "OXY2DEV/markview.nvim",
+  --   lazy = false, -- Recommended
+  --   -- ft = "markdown" -- If you decide to lazy-load anyway
+  --
+  --   dependencies = {
+  --     -- You will not need this if you installed the
+  --     -- parsers manually
+  --     -- Or if the parsers are in your $RUNTIMEPATH
+  --     "nvim-treesitter/nvim-treesitter",
+  --
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  -- },
   {
-    "OXY2DEV/markview.nvim",
-    lazy = false, -- Recommended
-    -- ft = "markdown" -- If you decide to lazy-load anyway
-
-    dependencies = {
-      -- You will not need this if you installed the
-      -- parsers manually
-      -- Or if the parsers are in your $RUNTIMEPATH
-      "nvim-treesitter/nvim-treesitter",
-
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
-  {
-    "declancm/cinnamon.nvim",
-    version = "*", -- use latest release
-    event = "User AstroFile",
-    config = function() require("cinnamon").setup() end,
-    opts = {
-      -- change default options here
-    },
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {},
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   },
 }
