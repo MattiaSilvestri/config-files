@@ -33,6 +33,8 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        guifont = "Inconsolata Nerd Font:h12:w0:#h-normal",
+        linespace = 3,
         -- textwidth = 88, -- sets vim.opt.textwidth
       },
       g = { -- vim.g.<key>
@@ -41,6 +43,17 @@ return {
         -- This can be found in the `lua/lazy_setup.lua` file
         mkdp_browser = "qutebrowser",
         mkdp_theme = "dark",
+        neovide_padding_top = 6,
+        neovide_padding_bottom = 4,
+        neovide_padding_right = 6,
+        neovide_padding_left = 6,
+        neovide_floating_blur_amount_x = 5.0,
+        neovide_floating_blur_amount_y = 5.0,
+        neovide_floating_corner_radius = 0.3,
+        neovide_cursor_animation_length = 0,
+        neovide_cursor_vfx_mode = "",
+        neovide_text_gamma = 1.3,
+        neovide_text_contrast = 0.3,
       },
     },
     -- Mappings can be configured through AstroCore as well.

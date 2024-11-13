@@ -130,7 +130,6 @@ return {
       }
     end,
   },
-  { "catppuccin/nvim", name = "catppuccin" },
   {
     "lervag/vimtex",
     event = "User AstroFile",

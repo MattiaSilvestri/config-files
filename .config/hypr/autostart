@@ -40,7 +40,7 @@ wlsunset -t 3500 -T 6500 -S 8:00 -s 18:00 &
 
 # Hypridle and inhibitor
 hypridle &
-caffeine &
+# caffeine &
 # wayland-pipewire-idle-inhibit -w &
 # wl-mpris-idle-inhibit &
 
