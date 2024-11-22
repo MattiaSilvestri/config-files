@@ -10,7 +10,7 @@ scripts=$config/scripts
 # waybar
 # $scripts/launch_waybar &
 $scripts/tools/dynamic &
-ags &
+agsv1 &
 
 # wallpaper
 # $scripts/wall $config/wallpapers/cloud.png &
