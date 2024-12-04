@@ -1,0 +1,6 @@
+[submodule ".config/ags"]
+	path = .config/ags
+	url = https://github.com/Jas-SinghFSU/HyprPanel.git
+[submodule ".config/rofi/catppuccin"]
+	path = .config/rofi/catppuccin
+	url = git@github.com:catppuccin/rofi.git
