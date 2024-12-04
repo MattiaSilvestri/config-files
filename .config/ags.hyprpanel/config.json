@@ -1,0 +1,7 @@
+{
+    "*": {
+        "left": ["dashboard", "workspaces", "updates"],
+        "middle": ["windowtitle"],
+        "right": ["volume", "network", "bluetooth", "clock", "systray", "notifications"]
+    }
+}
