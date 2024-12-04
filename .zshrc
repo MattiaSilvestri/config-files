@@ -276,7 +276,7 @@ ex ()
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
 # Startup
-TERM=xterm-kitty
+# TERM=xterm-kitty
 . /home/mattia/.config/ranger/plugins/z/z.sh
 
 export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
