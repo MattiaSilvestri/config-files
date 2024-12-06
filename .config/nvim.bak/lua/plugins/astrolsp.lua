@@ -12,7 +12,7 @@ return {
   opts = {
     -- Configuration table of features provided by AstroLSP
     features = {
-      autoformat = true, -- enable or disable auto formatting on start
+      autoformat = false, -- enable or disable auto formatting on start
       codelens = true, -- enable/disable codelens refresh on start
       inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
@@ -21,17 +21,17 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = false, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
+          "lua",
         },
       },
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
+        "lua_ls",
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -45,7 +45,36 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      pylsp = {
+        enabled = false,
+        settings = {
+          pylsp = {
+            plugins = {
+              mccabe = { enabled = false },
+              flake8 = { enabled = true },
+              pycodestyle = { enabled = false },
+              autopep8 = { enabled = false },
+              pyflakes = { enabled = false },
+              yapf = { enabled = false },
+              pylint = { enabled = false },
+            },
+          },
+        },
+      },
+      pyright = {
+        autostart = true,
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "off",
+              stubPath = "/home/mattia/.virtualenvs/jarvis/lib/python3.12/site-packages/django_stubs_ext",
+              diagnosticSeverityOverrides = {
+                reportUndefinedVariable = "error",
+              },
+            },
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {

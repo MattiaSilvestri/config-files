@@ -10,3 +10,7 @@
 /home/mattia/.dotfiles/.config/yazi/keymap.toml
 /home/mattia/.dotfiles/.config/kitty/kitty.conf
 /home/mattia/.config/foot/foot.ini
+/home/mattia/.dotfiles/.config/wezterm/wezterm.lua
+/home/mattia/.config/alacritty/fonts.toml
+/home/mattia/Projects/JarvisServer/jarvisui/inventory/views.py
+/home/mattia/Projects/JarvisServer/jarvisui/inventory/models.py

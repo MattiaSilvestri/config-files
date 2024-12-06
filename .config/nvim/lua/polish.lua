@@ -17,45 +17,55 @@ vim.filetype.add {
   },
 }
 
-require("lspconfig").ltex.setup {
-  filetypes = { "latex", "bib", "tex" },
-  settings = {
-    ltex = {
-      language = "it",
-      diagnosticSeverity = "warning",
-      completionEnabled = true,
-      enabled = { "latex", "tex" },
-    },
-  },
-}
+local original_notify = vim.notify
 
--- HTML
-require("lspconfig").html.setup {
-  init_options = {
-    provideFormatter = false,
-  },
-}
+vim.notify = function(msg, level, opts)
+  -- Suppress specific warning
+  if msg:match "offset_encoding is required, using the offset_encoding from the first client" then return end
 
--- eslint
-require("lspconfig").eslint.setup {
-  bin = "eslint", -- or `eslint_d`
-  code_actions = {
-    enable = true,
-    apply_on_save = {
-      enable = true,
-      types = { "directive", "problem", "suggestion", "layout" },
-    },
-    disable_rule_comment = {
-      enable = true,
-      location = "separate_line", -- or `same_line`
-    },
-  },
-  diagnostics = {
-    enable = true,
-    report_unused_disable_directives = false,
-    run_on = "type", -- or `save`
-  },
-}
+  -- Call the original notify function for other messages
+  original_notify(msg, level, opts)
+end
+
+-- require("lspconfig").ltex.setup {
+--   filetypes = { "latex", "bib", "tex" },
+--   settings = {
+--     ltex = {
+--       language = "it",
+--       diagnosticSeverity = "warning",
+--       completionEnabled = true,
+--       enabled = { "latex", "tex" },
+--     },
+--   },
+-- }
+--
+-- -- HTML
+-- require("lspconfig").html.setup {
+--   init_options = {
+--     provideFormatter = false,
+--   },
+-- }
+--
+-- -- eslint
+-- require("lspconfig").eslint.setup {
+--   bin = "eslint", -- or `eslint_d`
+--   code_actions = {
+--     enable = true,
+--     apply_on_save = {
+--       enable = true,
+--       types = { "directive", "problem", "suggestion", "layout" },
+--     },
+--     disable_rule_comment = {
+--       enable = true,
+--       location = "separate_line", -- or `same_line`
+--     },
+--   },
+--   diagnostics = {
+--     enable = true,
+--     report_unused_disable_directives = false,
+--     run_on = "type", -- or `save`
+--   },
+-- }
 -- local lspconfig = require "lspconfig"
 -- local configs = require "lspconfig.configs"
 -- configs.html = {
