@@ -241,6 +241,12 @@ alias vi="nvim"
 alias vim="vim"
 alias nvi="NVIM_APPNAME=nvim-vanilla nvim"
 
+# Django
+alias mm="python manage.py makemigrations"
+alias mg="python manage.py migrate"
+alias jrun="python manage.py runserver 0:8000"
+alias sh="python manage.py shell_plus"
+
 # Other
 alias disc="sudoedit /opt/discord/resources/build_info.json"
 
@@ -276,8 +282,8 @@ ex ()
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
 # Startup
-TERM=xterm-kitty
-. /home/mattia/.config/ranger/plugins/z/z.sh
+# TERM=xterm-kitty
+# . /home/mattia/.config/ranger/plugins/z/z.sh
 
 export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -287,7 +293,7 @@ export PATH="/usr/bin/core_perl:$PATH"
 export PATH="/home/mattia/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="/home/mattia/.cargo/bin:$PATH"
 export PATH="/home/mattia/.local/bin:$PATH"
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export QT_QPA_PLATFORM=wayland
 
 export EDITOR=nvim
@@ -354,3 +360,11 @@ unset __conda_setup
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+#Virtualenvwrapper settings:
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_VIRTUALENV=virtualenv
+source /usr/bin/virtualenvwrapper.sh
+
+export DJANGO_SETTINGS_MODULE=jarvisui.settings.development

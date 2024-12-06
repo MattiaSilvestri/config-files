@@ -40,7 +40,7 @@ return {
   },
 
   -- You can disable default plugins as follows:
-  { "max397574/better-escape.nvim", enabled = false },
+  { "max397574/better-escape.nvim", enabled = true },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
@@ -119,7 +119,6 @@ return {
       { "<leader>sa", "<cmd>TodoTelescope<cr>", desc = "List TODOs" },
     },
   },
-  { "folke/trouble.nvim", cmd = { "Trouble", "TroubleToggle" } },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -249,6 +248,7 @@ return {
   },
   {
     "ray-x/web-tools.nvim",
+    enabled = false,
     event = "User AstroFile",
     config = function()
       require("web-tools").setup {
@@ -296,28 +296,28 @@ return {
       }
     end,
   },
-  {
-    "NvChad/nvim-colorizer.lua",
-    event = "User AstroFile",
-    init = require("colorizer").setup(),
-    config = function()
-      require("colorizer").setup {
-        filetypes = { "*" },
-        user_default_options = {
-          RGB = true,
-          RRGGBB = true,
-          names = false,
-          RRGGBBAA = true,
-          AARRGGBB = true,
-          rgb_fn = true,
-          hsl_fn = true,
-          css = true,
-          css_fn = true,
-          mode = "background",
-        },
-      }
-    end,
-  },
+  -- {
+  --   "NvChad/nvim-colorizer.lua",
+  --   event = "User AstroFile",
+  --   init = require("colorizer").setup(),
+  --   config = function()
+  --     require("colorizer").setup {
+  --       filetypes = { "*" },
+  --       user_default_options = {
+  --         RGB = true,
+  --         RRGGBB = true,
+  --         names = false,
+  --         RRGGBBAA = true,
+  --         AARRGGBB = true,
+  --         rgb_fn = true,
+  --         hsl_fn = true,
+  --         css = true,
+  --         css_fn = true,
+  --         mode = "background",
+  --       },
+  --     }
+  --   end,
+  -- },
   {
     "otavioschwanck/arrow.nvim",
     lazy = false,
@@ -334,32 +334,6 @@ return {
   --   lazy = false,
   --   config = function() require("nvim-ide").setup {} end,
   -- },
-  ---@type LazySpec
-  {
-    "mikavilpas/yazi.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    event = "VeryLazy",
-    keys = {
-      -- 👇 in this section, choose your own keymappings!
-      {
-        "<leader>yy",
-        function() require("yazi").yazi() end,
-        desc = "Open the file manager",
-      },
-      {
-        -- Open in the current working directory
-        "<leader>yw",
-        function() require("yazi").yazi(nil, vim.fn.getcwd()) end,
-        desc = "Open the file manager in nvim's working directory",
-      },
-    },
-    ---@type YaziConfig
-    opts = {
-      open_for_directories = false,
-    },
-  },
   -- {
   --   "OXY2DEV/markview.nvim",
   --   lazy = false, -- Recommended
@@ -380,4 +354,5 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use the mini.nvim suite
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   },
+  { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
 }
