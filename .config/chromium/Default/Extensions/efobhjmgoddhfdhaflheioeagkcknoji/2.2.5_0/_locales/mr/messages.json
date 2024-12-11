@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "गटात टॅब जोडा",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "नवीन गटामध्ये टॅब जोडा",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "गटामध्ये टॅब जोडा",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "नवीन गटामध्ये टॅब जोडा",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "मला एक कॉफी विकत दे",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "स्थिती बदला",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "शॉर्टकट बदला",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "बंद करा",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "गट बंद करा",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "इतर टॅब बंद करा",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "खाली टॅब बंद करा",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "संक्षिप्त दृश्य",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "डुप्लिकेट",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "बाजूच्या पॅनेलमध्ये अनुलंब टॅब व्यवस्थापक",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - अनुलंब टॅब",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "गटाला नवीन विंडोमध्ये हलवा",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "टॅबला दुसऱ्या विंडोमध्ये हलवा",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "नवीन विंडोमध्ये टॅब हलवा",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "टॅब दुसऱ्या विंडोमध्ये हलवा",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "नवीन विंडोमध्ये टॅब हलवा",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "साइट निःशब्द करा",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "साइट्स नि:शब्द करा",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "या गटाला नाव द्या",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "नवीन गट",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "खाली नवीन टॅब",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "गटात नवीन टॅब",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "नवीन विंडो",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "पिन",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "चिन्ह म्हणून पिन केलेले टॅब",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "रेट विस्तार",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "रीलोड करा",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "गटातून काढून टाका",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "शोधा",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "पूर्ण URL दर्शवा",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "बग/वैशिष्ट्य सबमिट करा",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ आणि $count$ इतर टॅब",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ आणि $count$ इतर टॅब",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "गट रद्द करा",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "साइट अनम्यूट करा",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "साइट्स अनम्यूट करा",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "अनपिन करा",
+      "placeholders": {
+      }
+   }
+}

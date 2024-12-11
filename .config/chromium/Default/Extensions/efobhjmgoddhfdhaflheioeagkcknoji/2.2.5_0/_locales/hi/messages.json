@@ -1,0 +1,207 @@
+{
+   "add_tab_to_group": {
+      "message": "समूह में टैब जोड़ें",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "नए समूह में टैब जोड़ें",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "समूह में टैब जोड़ें",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "नए समूह में टैब जोड़ें",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "मेरे लिए एक कॉफ़ी खरीदो",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "स्थिति बदलें",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "शॉर्टकट बदलें",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "बंद करना",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "समूह बंद करें",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "अन्य टैब बंद करें",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "नीचे टैब बंद करें",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "कॉम्पैक्ट दृश्य",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "डुप्लिकेट",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "साइड पैनल में वर्टिकल टैब मैनेजर",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - लंबवत टैब",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "समूह को नई विंडो पर ले जाएं",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "टैब को दूसरी विंडो पर ले जाएं",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "टैब को नई विंडो पर ले जाएं",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "टैब को दूसरी विंडो पर ले जाएं",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "टैब को नई विंडो पर ले जाएं",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "साइट म्यूट करें",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "साइटें म्यूट करें",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "इस समूह को नाम दें",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "नया समूह",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "नीचे नया टैब",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "समूह में नया टैब",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "नई विंडो",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "नत्थी करना",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "आइकन के रूप में पिन किए गए टैब",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "दर विस्तार",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "पुनः लोड करें",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "समूह से हटाएँ",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "खोज",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "पूरा यूआरएल दिखाएँ",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "बग/सुविधा सबमिट करें",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "{शीर्षक} और {गिनती} अन्य टैब",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "{शीर्षक} और {गिनती} अन्य टैब",
+      "placeholders": {
+      }
+   },
+   "ungroup": {
+      "message": "असमूहीकृत",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "साइट को अनम्यूट करें",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "साइटें अनम्यूट करें",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "अनपिन",
+      "placeholders": {
+      }
+   }
+}

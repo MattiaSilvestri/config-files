@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Tambahkan tab ke grup",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Tambahkan Tab ke Grup Baru",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Tambahkan tab ke grup",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Tambahkan Tab ke Grup Baru",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Belikan aku kopi",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Ubah posisi",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Ubah pintasan",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Menutup",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Tutup grup",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Tutup Tab Lainnya",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Tutup Tab Di Bawah",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Tampilan ringkas",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplikat",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Manajer tab vertikal di panel samping",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Tab Vertikal",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Pindahkan grup ke jendela baru",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Pindahkan Tab ke Jendela Lain",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Pindahkan Tab ke Jendela Baru",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Pindahkan Tab ke Jendela Lain",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Pindahkan Tab ke Jendela Baru",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Bisukan Situs",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Bisukan Situs",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Beri Nama Grup Ini",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Grup Baru",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Tab Baru Di Bawah",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Tab baru di grup",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Jendela Baru",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Tab yang disematkan sebagai ikon",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Ekstensi tarif",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Muat ulang",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Hapus dari Grup",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Mencari",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Tampilkan URL lengkap",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Kirim bug/fitur",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ dan $count$ tab lainnya",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ dan $count$ tab lainnya",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Pisahkan",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Suarakan Situs",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Suarakan Situs",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Membuka peniti",
+      "placeholders": {
+      }
+   }
+}

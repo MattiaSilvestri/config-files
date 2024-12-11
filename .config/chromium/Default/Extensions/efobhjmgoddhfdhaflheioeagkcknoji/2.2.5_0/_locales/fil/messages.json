@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Magdagdag ng tab sa pangkat",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Magdagdag ng Tab sa Bagong Grupo",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Magdagdag ng mga tab sa pangkat",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Magdagdag ng Mga Tab sa Bagong Grupo",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Bilhan mo ako ng kape",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Baguhin ang posisyon",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Baguhin ang shortcut",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Isara",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Isara ang grupo",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Isara ang Iba Pang Mga Tab",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Isara ang Mga Tab sa Ibaba",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Compact na view",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicate",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertical na tab manager sa side panel",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Mga Vertical na Tab",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Ilipat ang pangkat sa bagong window",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Ilipat ang Tab sa Ibang Window",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Ilipat ang Tab sa Bagong Window",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Ilipat ang Mga Tab sa Ibang Window",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Ilipat ang Mga Tab sa Bagong Window",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "I-mute ang Site",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "I-mute ang Mga Site",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Pangalanan ang Grupong Ito",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Bagong Grupo",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Bagong Tab sa ibaba",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Bagong tab sa pangkat",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Bagong Bintana",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Mga naka-pin na tab bilang mga icon",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Extension ng rate",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "I-reload",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Alisin sa Grupo",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Maghanap",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Ipakita ang buong URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Isumite ang bug/tampok",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ at $count$ iba pang tab",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ at $count$ iba pang mga tab",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Alisin sa pangkat",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "I-unmute ang Site",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "I-unmute ang Mga Site",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "I-unpin",
+      "placeholders": {
+      }
+   }
+}

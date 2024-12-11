@@ -1,0 +1,25 @@
+2024/11/21-15:40:39.877 c473 Reusing MANIFEST /home/mattia/.config/chromium/Default/IndexedDB/https_imgur.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/21-15:40:39.878 c473 Recovering log #16
+2024/11/21-15:40:39.878 c473 Reusing old log /home/mattia/.config/chromium/Default/IndexedDB/https_imgur.com_0.indexeddb.leveldb/000016.log 
+2024/11/21-15:40:39.878 c473 Delete type=2 #15
+2024/11/21-15:40:40.033 c475 Level-0 table #21: started
+2024/11/21-15:40:40.038 c475 Level-0 table #21: 661 bytes OK
+2024/11/21-15:40:40.047 c475 Delete type=0 #16
+2024/11/21-15:40:40.047 c474 Manual compaction at level-0 from '\x00\x09\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x09\x00\x00\x05' @ 445 : 1
+2024/11/21-15:40:40.048 c474 Compacting 1@0 + 1@1 files
+2024/11/21-15:40:40.053 c474 Generated table #22@0: 58 keys, 1911 bytes
+2024/11/21-15:40:40.053 c474 Compacted 1@0 + 1@1 files => 1911 bytes
+2024/11/21-15:40:40.062 c474 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/11/21-15:40:40.062 c474 Delete type=2 #21
+2024/11/21-15:40:40.063 c474 Manual compaction at level-0 from '\x00\x09\x00\x00\x05' @ 445 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/11/21-15:40:40.923 c473 Level-0 table #24: started
+2024/11/21-15:40:40.928 c473 Level-0 table #24: 2369 bytes OK
+2024/11/21-15:40:40.936 c473 Delete type=2 #18
+2024/11/21-15:40:40.937 c473 Delete type=0 #20
+2024/11/21-15:40:40.937 c473 Manual compaction at level-0 from '\x00\x0a\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0b\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0a\x00\x00\xc8\x06\x00v\x00i\x00s\x00i\x00t\x00s' @ 501 : 1
+2024/11/21-15:40:40.937 c473 Compacting 1@0 + 1@1 files
+2024/11/21-15:40:40.942 c473 Generated table #25@0: 62 keys, 1938 bytes
+2024/11/21-15:40:40.942 c473 Compacted 1@0 + 1@1 files => 1938 bytes
+2024/11/21-15:40:40.950 c473 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/11/21-15:40:40.950 c473 Delete type=2 #24
+2024/11/21-15:40:40.951 c473 Manual compaction at level-0 from '\x00\x0a\x00\x00\xc8\x06\x00v\x00i\x00s\x00i\x00t\x00s' @ 501 : 1 .. '\x00\x0b\x00\x00\x00' @ 0 : 0; will stop at (end)

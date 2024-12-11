@@ -1,0 +1,15 @@
+2024/11/28-15:16:39.032 8dccc Reusing MANIFEST /home/mattia/.config/chromium/Default/WebStorage/2/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2024/11/28-15:16:39.033 8dccc Recovering log #18
+2024/11/28-15:16:39.034 8dccc Reusing old log /home/mattia/.config/chromium/Default/WebStorage/2/IndexedDB/indexeddb.leveldb/000018.log 
+2024/11/28-15:17:11.254 8dccd Level-0 table #23: started
+2024/11/28-15:17:11.261 8dccd Level-0 table #23: 110942 bytes OK
+2024/11/28-15:17:11.270 8dccd Delete type=0 #18
+2024/11/28-15:17:11.270 8dccd Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2024/11/28-15:17:11.270 8dccd Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x04\x01 \x03\x00P\xc8\x1927yB\x00\x01&\x002\x00b\x008\x00b\x00a\x002\x007\x00b\x00-\x001\x00a\x003\x00d\x00-\x004\x00d\x00d\x000\x00-\x008\x00d\x003\x005\x00-\x00a\x009\x002\x008\x00b\x007\x00a\x007\x002\x008\x00d\x00d\x00-\x002' @ 37711 : 1
+2024/11/28-15:17:11.270 8dccd Compacting 1@1 + 1@2 files
+2024/11/28-15:17:11.294 8dccd Generated table #24@1: 3099 keys, 1358511 bytes
+2024/11/28-15:17:11.294 8dccd Compacted 1@1 + 1@2 files => 1358511 bytes
+2024/11/28-15:17:11.302 8dccd compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/11/28-15:17:11.303 8dccd Delete type=2 #20
+2024/11/28-15:17:11.303 8dccd Delete type=2 #23
+2024/11/28-15:17:11.303 8dccd Manual compaction at level-1 from '\x00\x04\x01 \x03\x00P\xc8\x1927yB\x00\x01&\x002\x00b\x008\x00b\x00a\x002\x007\x00b\x00-\x001\x00a\x003\x00d\x00-\x004\x00d\x00d\x000\x00-\x008\x00d\x003\x005\x00-\x00a\x009\x002\x008\x00b\x007\x00a\x007\x002\x008\x00d\x00d\x00-\x002' @ 37711 : 1 .. (end); will stop at (end)

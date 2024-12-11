@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Lisää välilehti ryhmään",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Lisää välilehti uuteen ryhmään",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Lisää välilehtiä ryhmään",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Lisää välilehtiä uuteen ryhmään",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Osta minulle kahvia",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Vaihda asentoa",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Muuta pikakuvaketta",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Lähellä",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Sulje ryhmä",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Sulje Muut välilehdet",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Sulje alla olevat välilehdet",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompakti näkymä",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Kopioi",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Pysty välilehtien hallinta sivupaneelissa",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Pystysuuntaiset välilehdet",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Siirrä ryhmä uuteen ikkunaan",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Siirrä välilehti toiseen ikkunaan",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Siirrä välilehti uuteen ikkunaan",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Siirrä välilehdet toiseen ikkunaan",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Siirrä välilehdet uuteen ikkunaan",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Mykistä sivusto",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Mykistä sivustot",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Nimeä tämä ryhmä",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Uusi ryhmä",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Uusi välilehti alla",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Uusi välilehti ryhmässä",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Uusi ikkuna",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Kiinnitetyt välilehdet kuvakkeina",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Hintalaajennus",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Lataa uudelleen",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Poista ryhmästä",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Haku",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Näytä koko URL-osoite",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Lähetä bugi/ominaisuus",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ ja $count$ muu välilehti",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ ja $count$ muuta välilehteä",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Pura ryhmittely",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Poista sivuston mykistys",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Poista sivustojen mykistys",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Irrota kiinnitys",
+      "placeholders": {
+      }
+   }
+}

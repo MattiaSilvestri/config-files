@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "將選項卡新增至群組中",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "將選項卡新增至新群組",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "將選項卡新增至群組中",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "將選項卡新增至新群組",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "給我買杯咖啡",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "改變位置",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "更改快捷方式",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "關閉",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "封閉組",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "關閉其他選項卡",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "關閉下面的選項卡",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "緊湊視圖",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "複製",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "側面板中的垂直選項卡管理器",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - 垂直標籤",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "將群組移至新視窗",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "將選項卡移動到另一個窗口",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "將選項卡移至新視窗",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "將選項卡移至另一個視窗",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "將選項卡移至新視窗",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "靜音站點",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "靜音站點",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "命名該群組",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "新集團",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "下面的新標籤",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "群組中的新選項卡",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "新視窗",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "別針",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "將選項卡固定為圖標",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "費率延期",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "重新載入",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "從群組中刪除",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "搜尋",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "顯示完整網址",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "提交錯誤/功能",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ 和另外 $count$ 個標籤",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ 和另外 $count$ 個標籤",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "取消分組",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "取消靜音站點",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "取消站點靜音",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "取消固定",
+      "placeholders": {
+      }
+   }
+}

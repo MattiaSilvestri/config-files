@@ -1,0 +1,42 @@
+2024/11/27-10:19:01.155 8dccc Reusing MANIFEST /home/mattia/.config/chromium/Default/WebStorage/28/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2024/11/27-10:19:01.155 8dccc Recovering log #3
+2024/11/27-10:19:01.168 8dccc Reusing old log /home/mattia/.config/chromium/Default/WebStorage/28/IndexedDB/indexeddb.leveldb/000003.log 
+2024/11/27-10:19:01.340 8dccd Level-0 table #5: started
+2024/11/27-10:19:01.382 8dccd Level-0 table #5: 1696535 bytes OK
+2024/11/27-10:19:01.392 8dccd Delete type=0 #3
+2024/11/27-10:19:33.095 8dcce Level-0 table #7: started
+2024/11/27-10:19:33.131 8dcce Level-0 table #7: 1459307 bytes OK
+2024/11/27-10:19:33.141 8dcce Delete type=0 #4
+2024/11/27-10:20:04.846 8dccd Compacting 1@1 + 1@2 files
+2024/11/27-10:20:04.898 8dccd Generated table #8@1: 3170 keys, 1721669 bytes
+2024/11/27-10:20:04.898 8dccd Compacted 1@1 + 1@2 files => 1721669 bytes
+2024/11/27-10:20:04.907 8dccd compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/11/27-10:20:04.908 8dccd Delete type=2 #5
+2024/11/27-10:20:04.908 8dccd Delete type=2 #7
+2024/11/28-16:56:05.434 8dccd Level-0 table #10: started
+2024/11/28-16:56:05.472 8dccd Level-0 table #10: 1375141 bytes OK
+2024/11/28-16:56:05.482 8dccd Delete type=0 #6
+2024/12/02-12:32:13.841 8dccd Compacting 1@1 + 1@2 files
+2024/12/02-12:32:13.849 8dccd Level-0 table #13: started
+2024/12/02-12:32:13.856 8dccd Level-0 table #13: 166815 bytes OK
+2024/12/02-12:32:13.866 8dccd Delete type=0 #9
+2024/12/02-12:32:13.898 8dccd Generated table #11@1: 3332 keys, 1708876 bytes
+2024/12/02-12:32:13.898 8dccd Compacted 1@1 + 1@2 files => 1708876 bytes
+2024/12/02-12:32:13.907 8dccd compacted to: files[ 1 0 1 0 0 0 0 ]
+2024/12/02-12:32:13.908 8dccd Delete type=2 #8
+2024/12/02-12:32:13.908 8dccd Delete type=2 #10
+2024/12/02-12:32:13.909 8dccd Manual compaction at level-0 from (begin) .. (end); will stop at '\x00\x04\x03 \x03%\x06\x81\xf5(\xf8AA\x00\x01A\x00/\x00p\x00e\x00r\x00s\x00o\x00n\x00a\x00l\x00/\x00m\x00a\x00t\x00t\x00i\x00a\x00_\x00s\x00i\x00l\x00v\x00e\x00s\x00t\x00r\x00i\x00_\x00g\x00t\x00s\x00u\x00_\x00o\x00r\x00g\x00/\x00/\x00_\x00l\x00a\x00y\x00o\x00u\x00t\x00s\x00/\x001\x005\x00/\x00f\x00i\x00l\x00e\x00b\x00r\x00o\x00w\x00s\x00e\x00r\x00.\x00a\x00s\x00p\x00x' @ 38276 : 0
+2024/12/02-12:32:13.909 8dccd Compacting 1@0 + 0@1 files
+2024/12/02-12:32:13.915 8dccd Generated table #14@0: 407 keys, 12251 bytes
+2024/12/02-12:32:13.915 8dccd Compacted 1@0 + 0@1 files => 12251 bytes
+2024/12/02-12:32:13.924 8dccd compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/12/02-12:32:13.925 8dccd Delete type=2 #13
+2024/12/02-12:32:13.925 8dccd Manual compaction at level-0 from '\x00\x04\x03 \x03%\x06\x81\xf5(\xf8AA\x00\x01A\x00/\x00p\x00e\x00r\x00s\x00o\x00n\x00a\x00l\x00/\x00m\x00a\x00t\x00t\x00i\x00a\x00_\x00s\x00i\x00l\x00v\x00e\x00s\x00t\x00r\x00i\x00_\x00g\x00t\x00s\x00u\x00_\x00o\x00r\x00g\x00/\x00/\x00_\x00l\x00a\x00y\x00o\x00u\x00t\x00s\x00/\x001\x005\x00/\x00f\x00i\x00l\x00e\x00b\x00r\x00o\x00w\x00s\x00e\x00r\x00.\x00a\x00s\x00p\x00x' @ 38276 : 0 .. (end); will stop at (end)
+2024/12/02-12:32:13.925 8dccd Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x04\x03 \x03%\x06\x81\xf5(\xf8AA\x00\x01A\x00/\x00p\x00e\x00r\x00s\x00o\x00n\x00a\x00l\x00/\x00m\x00a\x00t\x00t\x00i\x00a\x00_\x00s\x00i\x00l\x00v\x00e\x00s\x00t\x00r\x00i\x00_\x00g\x00t\x00s\x00u\x00_\x00o\x00r\x00g\x00/\x00/\x00_\x00l\x00a\x00y\x00o\x00u\x00t\x00s\x00/\x001\x005\x00/\x00f\x00i\x00l\x00e\x00b\x00r\x00o\x00w\x00s\x00e\x00r\x00.\x00a\x00s\x00p\x00x' @ 38276 : 0
+2024/12/02-12:32:13.925 8dccd Compacting 1@1 + 1@2 files
+2024/12/02-12:32:13.952 8dccd Generated table #15@1: 3045 keys, 1403252 bytes
+2024/12/02-12:32:13.952 8dccd Compacted 1@1 + 1@2 files => 1403252 bytes
+2024/12/02-12:32:13.961 8dccd compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/12/02-12:32:13.962 8dccd Delete type=2 #11
+2024/12/02-12:32:13.962 8dccd Delete type=2 #14
+2024/12/02-12:32:13.962 8dccd Manual compaction at level-1 from '\x00\x04\x03 \x03%\x06\x81\xf5(\xf8AA\x00\x01A\x00/\x00p\x00e\x00r\x00s\x00o\x00n\x00a\x00l\x00/\x00m\x00a\x00t\x00t\x00i\x00a\x00_\x00s\x00i\x00l\x00v\x00e\x00s\x00t\x00r\x00i\x00_\x00g\x00t\x00s\x00u\x00_\x00o\x00r\x00g\x00/\x00/\x00_\x00l\x00a\x00y\x00o\x00u\x00t\x00s\x00/\x001\x005\x00/\x00f\x00i\x00l\x00e\x00b\x00r\x00o\x00w\x00s\x00e\x00r\x00.\x00a\x00s\x00p\x00x' @ 38276 : 0 .. (end); will stop at (end)

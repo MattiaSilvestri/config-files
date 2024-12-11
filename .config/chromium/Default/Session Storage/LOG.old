@@ -1,0 +1,17 @@
+2024/11/26-08:38:56.922 4 Reusing MANIFEST /home/mattia/.config/chromium/Default/Session Storage/MANIFEST-000001
+2024/11/26-08:38:56.924 4 Recovering log #75
+2024/11/26-08:38:56.925 4 Reusing old log /home/mattia/.config/chromium/Default/Session Storage/000075.log 
+2024/11/26-09:29:39.016 5 Level-0 table #79: started
+2024/11/26-09:29:39.019 5 Level-0 table #79: 27768 bytes OK
+2024/11/26-09:29:39.022 5 Delete type=0 #75
+2024/11/26-09:29:39.022 5 Compacting 4@0 + 1@1 files
+2024/11/26-09:29:39.028 5 Generated table #80@0: 2480 keys, 62728 bytes
+2024/11/26-09:29:39.028 5 Compacted 4@0 + 1@1 files => 62728 bytes
+2024/11/26-09:29:39.030 5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/11/26-09:29:39.031 5 Delete type=2 #67
+2024/11/26-09:29:39.031 5 Delete type=2 #70
+2024/11/26-09:29:39.031 5 Delete type=2 #73
+2024/11/26-09:29:39.031 5 Delete type=2 #76
+2024/11/26-09:29:39.031 5 Delete type=2 #79
+2024/11/26-16:46:33.720 a Level-0 table #82: started
+2024/11/26-16:46:33.733 a Level-0 table #82: 18757 bytes OK

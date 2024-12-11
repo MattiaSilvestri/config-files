@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "タブをグループに追加",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "新しいグループにタブを追加",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "タブをグループに追加する",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "新しいグループにタブを追加",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "コーヒーを買ってきて",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "位置を変更する",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "ショートカットを変更する",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "近い",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "近いグループ",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "他のタブを閉じる",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "以下のタブを閉じる",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "コンパクトビュー",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "重複",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "サイドパネルの垂直タブマネージャー",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - 垂直タブ",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "グループを新しいウィンドウに移動する",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "タブを別のウィンドウに移動",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "タブを新しいウィンドウに移動",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "タブを別のウィンドウに移動する",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "タブを新しいウィンドウに移動",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "ミュートサイト",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "サイトをミュートする",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "このグループに名前を付ける",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "新しいグループ",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "下の新しいタブ",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "グループ内の新しいタブ",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "新しいウィンドウ",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "ピン",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "アイコンとして固定されたタブ",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "料金延長",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "リロード",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "グループから削除",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "検索",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "完全な URL を表示",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "バグ/機能を送信する",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ と $count$ 個の他のタブ",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ とその他の $count$ 個のタブ",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "グループを解除する",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "サイトのミュートを解除する",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "サイトのミュートを解除する",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "固定を解除する",
+      "placeholders": {
+      }
+   }
+}

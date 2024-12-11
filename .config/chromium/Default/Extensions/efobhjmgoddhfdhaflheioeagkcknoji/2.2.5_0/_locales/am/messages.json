@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "ትርን ወደ ቡድን አክል",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "ትርን ወደ አዲስ ቡድን ያክሉ",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "ትሮችን ወደ ቡድን ያክሉ",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "ትሮችን ወደ አዲስ ቡድን ያክሉ",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "ቡና ግዛልኝ",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "ቦታን ይቀይሩ",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "አቋራጭ ቀይር",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "ገጠመ",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "ቡድን ዝጋ",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "ሌሎች ትሮችን ዝጋ",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "ከታች ያሉትን ትሮችን ዝጋ",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "የታመቀ እይታ",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "ማባዛት።",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "በጎን ፓነል ውስጥ ቀጥ ያለ የትር አስተዳዳሪ",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - አቀባዊ ትሮች",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "ቡድንን ወደ አዲስ መስኮት ያዙሩ",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "ትርን ወደ ሌላ መስኮት ይውሰዱ",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "ትርን ወደ አዲስ መስኮት ይውሰዱ",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "ትሮችን ወደ ሌላ መስኮት ውሰድ",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "ትሮችን ወደ አዲስ መስኮት ውሰድ",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "ጣቢያ ድምጸ-ከል አድርግ",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "ጣቢያዎችን ድምጸ-ከል አድርግ",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "ይህንን ቡድን ሰይሙ",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "አዲስ ቡድን",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "አዲስ ትር ከታች",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "አዲስ ትር በቡድን።",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "አዲስ መስኮት",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "ፒን",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "የተሰኩ ትሮች እንደ አዶዎች",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "የደረጃ ማራዘሚያ",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "እንደገና ጫን",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "ከቡድን አስወግድ",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "ፈልግ",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "ሙሉ ዩአርኤል አሳይ",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "ስህተት/ባህሪ አስገባ",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ እና $count$ ሌላ ትር",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ እና $count$ ሌሎች ትሮች",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "ከቡድን ውጣ",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "የጣቢያውን ድምጸ-ከል አንሳ",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "የጣቢያዎችን ድምጸ-ከል አንሳ",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "ንቀል",
+      "placeholders": {
+      }
+   }
+}

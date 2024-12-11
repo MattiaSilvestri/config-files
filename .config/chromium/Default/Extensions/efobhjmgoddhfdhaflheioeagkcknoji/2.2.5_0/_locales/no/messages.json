@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Legg til fane i gruppen",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Legg til fane i ny gruppe",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Legg til faner i gruppen",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Legg til faner i ny gruppe",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Kjøp meg en kaffe",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Endre posisjon",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Endre snarvei",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Lukke",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Tett gruppe",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Lukk andre faner",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Lukk fanene nedenfor",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompakt utsikt",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Kopiere",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikal fanebehandling i sidepanel",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vertikale faner",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Flytt gruppe til nytt vindu",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Flytt fanen til et annet vindu",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Flytt fane til nytt vindu",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Flytt faner til et annet vindu",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Flytt faner til nytt vindu",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Demp nettsted",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Demp nettsteder",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Gi denne gruppen et navn",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Ny gruppe",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Ny fane nedenfor",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Ny fane i gruppen",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nytt vindu",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Festede faner som ikoner",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Prisutvidelse",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Last inn på nytt",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Fjern fra gruppen",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Søk",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Vis fullstendig URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Send inn feil/funksjon",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ og $count$ annen fane",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ og $count$ andre faner",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Del grupperingen",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Slå på lyden for nettstedet",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Slå på ignorering av nettsteder",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Løsne",
+      "placeholders": {
+      }
+   }
+}

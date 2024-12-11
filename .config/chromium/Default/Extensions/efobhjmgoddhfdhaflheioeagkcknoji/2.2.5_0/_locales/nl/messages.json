@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Tabblad toevoegen aan groep",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Tabblad toevoegen aan nieuwe groep",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Voeg tabbladen toe aan de groep",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Tabbladen toevoegen aan nieuwe groep",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Koop een koffie voor mij",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Verander positie",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Snelkoppeling wijzigen",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Dichtbij",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Een hechte groep",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Sluit andere tabbladen",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Sluit tabbladen hieronder",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Compacte weergave",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicaat",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Verticaal tabbladbeheer in zijpaneel",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Verticale tabbladen",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Groep naar nieuw venster verplaatsen",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Verplaats het tabblad naar een ander venster",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Verplaats tabblad naar nieuw venster",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Verplaats tabbladen naar een ander venster",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Verplaats tabbladen naar een nieuw venster",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Site dempen",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Demp sites",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Geef deze groep een naam",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nieuwe groep",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nieuw tabblad hieronder",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nieuw tabblad in groep",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nieuw venster",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Vastgezette tabbladen als pictogrammen",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Tariefverlenging",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Herladen",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Verwijderen uit groep",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Zoekopdracht",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Volledige URL weergeven",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Bug/functie indienen",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ en $count$ ander tabblad",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ en $count$ andere tabbladen",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Degroeperen",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Demping van site opheffen",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Schakel sites uit",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Losmaken",
+      "placeholders": {
+      }
+   }
+}

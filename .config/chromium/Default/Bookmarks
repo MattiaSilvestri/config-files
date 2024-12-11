@@ -1,0 +1,284 @@
+{
+   "checksum": "24832952d7cbc78e7096dccf0b0693d9",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13376150018664267",
+               "date_last_used": "13376150091985927",
+               "guid": "5720cc0f-576d-43b2-947c-6de4cd9c2550",
+               "id": "5",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Jarvis Local",
+               "type": "url",
+               "url": "http://localhost:8000/"
+            }, {
+               "date_added": "13376758401430398",
+               "date_last_used": "0",
+               "guid": "45c4c76c-5bb9-4f58-bf55-25998080dcd9",
+               "id": "8",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Jarvis Staging",
+               "type": "url",
+               "url": "https://staging.jarvis.gtsu.org/"
+            } ],
+            "date_added": "13376150056081644",
+            "date_last_used": "0",
+            "date_modified": "13376758842798765",
+            "guid": "f67d2073-e9df-4a91-a8d3-4ef943b9e704",
+            "id": "6",
+            "name": "Jarvis",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13377189257526759",
+               "date_last_used": "13377190619679299",
+               "guid": "aeb20f7f-5566-4b88-9e90-5d34f1e3dc8e",
+               "id": "15",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Pictogrammers",
+               "type": "url",
+               "url": "https://pictogrammers.com/library/mdi/"
+            }, {
+               "date_added": "13377189268971065",
+               "date_last_used": "13377189282002612",
+               "guid": "952e29e6-1a00-4751-8d6a-cee18f2b3404",
+               "id": "16",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Font Awesome",
+               "type": "url",
+               "url": "https://fontawesome.com/"
+            }, {
+               "children": [ {
+                  "date_added": "13377189222246805",
+                  "date_last_used": "13377189347483607",
+                  "guid": "5440b9d1-61c5-438f-8a43-9f491fd726ac",
+                  "id": "13",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "Buttons",
+                  "type": "url",
+                  "url": "https://getbootstrap.com/docs/4.1/components/buttons/"
+               } ],
+               "date_added": "13377189377695228",
+               "date_last_used": "0",
+               "date_modified": "13377276171011735",
+               "guid": "3d59c756-b3ca-4b68-9fc6-9c0cbdb8c1e9",
+               "id": "17",
+               "name": "Bootstrap",
+               "type": "folder"
+            } ],
+            "date_added": "13377189248866654",
+            "date_last_used": "0",
+            "date_modified": "13377189268971065",
+            "guid": "a5293c94-f7af-4f4c-852d-382cc69b46ba",
+            "id": "14",
+            "name": "UI",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "children": [ {
+                  "date_added": "13377276171011735",
+                  "date_last_used": "0",
+                  "guid": "beed9a86-ed21-4619-9492-a4f6886ff5c9",
+                  "id": "18",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "ray-x/navigator.lua: Code analysis & navigation plugin for Neovim. Navigate codes like a breeze🎐 Exploring LSP and 🌲Treesitter symbols a piece of 🍰 Take control like a boss 🦍",
+                  "type": "url",
+                  "url": "https://github.com/ray-x/navigator.lua"
+               }, {
+                  "date_added": "13377276431615637",
+                  "date_last_used": "13377276671949413",
+                  "guid": "dcf214ae-3184-4db1-88ff-309a3410af6c",
+                  "id": "21",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "folke/snacks.nvim: 🍿 A collection of small QoL plugins for Neovim",
+                  "type": "url",
+                  "url": "https://github.com/folke/snacks.nvim"
+               }, {
+                  "date_added": "13377620696851429",
+                  "date_last_used": "0",
+                  "guid": "4498cc7c-1e20-4f38-b0c3-c109eecc80f6",
+                  "id": "27",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "ray-x/guihua.lua: A GUI library for Neovim plugin developers",
+                  "type": "url",
+                  "url": "https://github.com/ray-x/guihua.lua"
+               }, {
+                  "date_added": "13377626935609762",
+                  "date_last_used": "0",
+                  "guid": "ee1fd702-69c7-44b2-9299-7d9f4e9a865b",
+                  "id": "28",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "stevearc/conform.nvim: Lightweight yet powerful formatter plugin for Neovim",
+                  "type": "url",
+                  "url": "https://github.com/stevearc/conform.nvim"
+               }, {
+                  "date_added": "13377943412971665",
+                  "date_last_used": "0",
+                  "guid": "3b710ac7-e92e-4f92-adf3-15dae9d9bb20",
+                  "id": "29",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "petertriho/nvim-scrollbar: Extensible Neovim Scrollbar",
+                  "type": "url",
+                  "url": "https://github.com/petertriho/nvim-scrollbar"
+               }, {
+                  "date_added": "13377956311781474",
+                  "date_last_used": "0",
+                  "guid": "5b357dc7-0a76-4d01-8db9-ae8556940aed",
+                  "id": "31",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "AstroNvim",
+                  "type": "url",
+                  "url": "https://astronvim.com/"
+               } ],
+               "date_added": "13377276226781015",
+               "date_last_used": "0",
+               "date_modified": "13377956311781474",
+               "guid": "07050ec3-0bec-47b4-bb4f-f7ff38aafb6b",
+               "id": "20",
+               "name": "Neovim",
+               "type": "folder"
+            } ],
+            "date_added": "13377276226780821",
+            "date_last_used": "0",
+            "date_modified": "13377276226780821",
+            "guid": "4bd78653-844b-4738-8e87-3af49e0ba0b6",
+            "id": "19",
+            "name": "Repos",
+            "type": "folder"
+         }, {
+            "date_added": "13376758842798765",
+            "date_last_used": "13377172837081183",
+            "guid": "b7d7951c-56a8-4d01-880a-6c2c7e8fb1bb",
+            "id": "9",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Vaultwarden",
+            "type": "url",
+            "url": "https://vaultwarden.gtsu.org/#/vault"
+         }, {
+            "date_added": "13376758957981422",
+            "date_last_used": "0",
+            "guid": "a81ecb5a-fd38-4780-ac73-687d11a0970d",
+            "id": "10",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Gitlab",
+            "type": "url",
+            "url": "https://gitlab.gtsu.org/"
+         }, {
+            "date_added": "13377172903669814",
+            "date_last_used": "13377173011097071",
+            "guid": "f029aca4-b36b-4786-aecf-61788fdf2b5a",
+            "id": "12",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Sentry",
+            "type": "url",
+            "url": "https://gtsu.sentry.io/issues/?project=4507572618657792"
+         }, {
+            "children": [ {
+               "children": [ {
+                  "date_added": "13377620563621392",
+                  "date_last_used": "0",
+                  "guid": "f4418679-ed5e-441d-8c91-671e57cb72b5",
+                  "id": "22",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "FullCalendar - JavaScript Event Calendar",
+                  "type": "url",
+                  "url": "https://fullcalendar.io/"
+               } ],
+               "date_added": "13377620591715478",
+               "date_last_used": "0",
+               "date_modified": "13377620596727547",
+               "guid": "2ad9fcef-c391-4300-a70a-ffdc27429609",
+               "id": "24",
+               "name": "JS",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "date_added": "13377620596727547",
+                  "date_last_used": "0",
+                  "guid": "f61d968f-3585-4260-9a3b-2408b47bafcb",
+                  "id": "25",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "jazzband/django-ical: iCal feeds for Django based on Django's syndication feed framework.",
+                  "type": "url",
+                  "url": "https://github.com/jazzband/django-ical"
+               } ],
+               "date_added": "13377620612227280",
+               "date_last_used": "0",
+               "date_modified": "13377620696851429",
+               "guid": "4e7d690b-6426-49f5-85d6-12ca2038d3e5",
+               "id": "26",
+               "name": "Python",
+               "type": "folder"
+            } ],
+            "date_added": "13377620591715319",
+            "date_last_used": "0",
+            "date_modified": "13377620591715319",
+            "guid": "69ade725-6950-450c-88d9-2cbc857ecc48",
+            "id": "23",
+            "name": "Dev",
+            "type": "folder"
+         } ],
+         "date_added": "13376149991782989",
+         "date_last_used": "0",
+         "date_modified": "13377276431615637",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13376149991782991",
+         "date_last_used": "0",
+         "date_modified": "13376150018664267",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13376149991782996",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

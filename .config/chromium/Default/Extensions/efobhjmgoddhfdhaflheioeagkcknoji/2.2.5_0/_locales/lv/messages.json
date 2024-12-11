@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Pievienot grupai cilni",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Pievienot cilni jaunai grupai",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Pievienojiet grupai cilnes",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Pievienojiet cilnes jaunai grupai",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Nopērc man kafiju",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Mainiet pozīciju",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Mainīt saīsni",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Aizvērt",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Aizvērt grupu",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Aizveriet citas cilnes",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Aizveriet tālāk esošās cilnes",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompakts skats",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Dublikāts",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikālais ciļņu pārvaldnieks sānu panelī",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vertikālās cilnes",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Pārvietot grupu uz jaunu logu",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Pārvietot cilni uz citu logu",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Pārvietot cilni uz jaunu logu",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Pārvietojiet cilnes uz citu logu",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Pārvietot cilnes uz jaunu logu",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Izslēgt vietni",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Izslēgt vietnes",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Nosauciet šo grupu",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Jauna grupa",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Jauna cilne zemāk",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Jauna cilne grupā",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Jauns logs",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Piespraust",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Piespraustas cilnes kā ikonas",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Likmes pagarinājums",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Pārlādēt",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Noņemt no grupas",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Meklēt",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Rādīt pilnu URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Iesniedziet kļūdu/funkciju",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ un vēl $count$ cilne",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ un vēl $count$ cilnes",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Atgrupēt",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Ieslēgt vietnes skaņu",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Ieslēgt vietņu skaņu",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Atspraust",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "เพิ่มแท็บลงในกลุ่ม",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "เพิ่มแท็บไปยังกลุ่มใหม่",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "เพิ่มแท็บลงในกลุ่ม",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "เพิ่มแท็บไปยังกลุ่มใหม่",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "ซื้อกาแฟให้ฉันหน่อย",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "เปลี่ยนตำแหน่ง",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "เปลี่ยนทางลัด",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "ปิด",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "ปิดกลุ่ม",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "ปิดแท็บอื่นๆ",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "ปิดแท็บด้านล่าง",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "มุมมองที่กะทัดรัด",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "ทำซ้ำ",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "ตัวจัดการแท็บแนวตั้งในแผงด้านข้าง",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - แท็บแนวตั้ง",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "ย้ายกลุ่มไปที่หน้าต่างใหม่",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "ย้ายแท็บไปยังหน้าต่างอื่น",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "ย้ายแท็บไปที่หน้าต่างใหม่",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "ย้ายแท็บไปยังหน้าต่างอื่น",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "ย้ายแท็บไปที่หน้าต่างใหม่",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "ปิดเสียงไซต์",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "ปิดเสียงไซต์",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "ตั้งชื่อกลุ่มนี้",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "กลุ่มใหม่",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "แท็บใหม่ด้านล่าง",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "แท็บใหม่ในกลุ่ม",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "หน้าต่างใหม่",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "เข็มหมุด",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "ตรึงแท็บเป็นไอคอน",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "การขยายอัตรา",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "โหลดซ้ำ",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "ลบออกจากกลุ่ม",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "ค้นหา",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "แสดง URL แบบเต็ม",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "ส่งข้อบกพร่อง/คุณสมบัติ",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ และอีก $count$ แท็บ",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ และอีก $count$ แท็บ",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "ยกเลิกการจัดกลุ่ม",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "เปิดเสียงไซต์",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "เปิดเสียงไซต์",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "เลิกปักหมุด",
+      "placeholders": {
+      }
+   }
+}

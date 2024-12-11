@@ -1,0 +1,69 @@
+/* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
+/* pywal-wlogout */
+
+@define-color bg #1e1e2e;
+@define-color foreground #D8DEE9;
+
+window {
+  font-family: Fira Code Medium;
+  font-size: 16pt;
+  color: @foreground;
+  /* text */
+  background-color: rgba(24, 27, 32, 0.9);
+}
+
+button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  background-color: transparent;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s ease-in;
+  box-shadow: 0 0 10px 2px transparent;
+  border-radius: 36px;
+  margin: 10px;
+}
+
+button:focus {
+  background-size: 40%;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+  background-color: @bg;
+  color: transparent;
+  transition:
+    all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682),
+    box-shadow 0.5s ease-in;
+}
+
+button:hover {
+  background-size: 40%;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+  background-color: @bg;
+  color: transparent;
+  transition:
+    all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682),
+    box-shadow 0.5s ease-in;
+}
+
+#shutdown {
+  background-image: image(url("./icons/power.png"));
+}
+
+#logout {
+  background-image: image(url("./icons/logout.png"));
+}
+
+#reboot {
+  background-image: image(url("./icons/restart.png"));
+}
+
+#lock {
+  background-image: image(url("./icons/lock.png"));
+}
+
+#hibernate {
+  background-image: image(url("./icons/hibernate.png"));
+}
+
+#sleep {
+  background-image: image(url("./icons/sleep.png"));
+}

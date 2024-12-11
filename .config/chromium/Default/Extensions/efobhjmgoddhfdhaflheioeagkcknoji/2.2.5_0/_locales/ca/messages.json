@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Afegeix una pestanya al grup",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Afegeix una pestanya al grup nou",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Afegeix pestanyes al grup",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Afegeix pestanyes al grup nou",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Compra'm un cafè",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Canvia de posició",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Canvia la drecera",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Tancar",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Grup tancat",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Tanca les altres pestanyes",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Tanca les pestanyes a continuació",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Vista compacta",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicat",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Gestor de pestanyes verticals al tauler lateral",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Pestanyes verticals",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Mou el grup a una finestra nova",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Mou la pestanya a una altra finestra",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Mou la pestanya a la finestra nova",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Mou les pestanyes a una altra finestra",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Mou les pestanyes a la finestra nova",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Silenci del lloc",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Llocs silenciats",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Anomena aquest grup",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Grup Nou",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Pestanya nova a continuació",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Pestanya nova al grup",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Finestra nova",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Pestanyes fixades com a icones",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Ampliació de tarifes",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Torna a carregar",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Elimina del grup",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Cerca",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Mostra l'URL complet",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Envia error/funció",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ i $count$ altra pestanya",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ i $count$ altres pestanyes",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Desagrupar",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Activa el so del lloc",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Activa el so de llocs",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Desenganxa",
+      "placeholders": {
+      }
+   }
+}

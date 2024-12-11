@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "افزودن برگه به ​​گروه",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "افزودن برگه به ​​گروه جدید",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "اضافه کردن برگه ها به گروه",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "افزودن برگه ها به گروه جدید",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "برام قهوه بخر",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "تغییر موقعیت",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "تغییر میانبر",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "بستن",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "بستن گروه",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "سایر برگه ها را ببندید",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "زبانه های زیر را ببندید",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "نمای فشرده",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "تکراری",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "مدیر زبانه عمودی در پانل کناری",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - زبانه های عمودی",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "انتقال گروه به پنجره جدید",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "برگه را به پنجره دیگری منتقل کنید",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "برگه را به پنجره جدید منتقل کنید",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "برگه ها را به پنجره دیگری منتقل کنید",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "انتقال برگه ها به پنجره جدید",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "بی‌صدا کردن سایت",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "سایت ها را بی صدا کنید",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "نام این گروه",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "گروه جدید",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "برگه جدید در زیر",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "برگه جدید در گروه",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "پنجره جدید",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "سنجاق",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "برگه ها به عنوان نماد پین شده است",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "افزایش نرخ",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "بارگذاری مجدد",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "حذف از گروه",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "جستجو کنید",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "نمایش URL کامل",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "ارسال اشکال/ویژگی",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ و $count$ برگه دیگر",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ و $count$ برگه های دیگر",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "لغو گروه کردن",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "لغو نادیده گرفتن سایت",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "لغو نادیده گرفتن سایت ها",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "پین را بردارید",
+      "placeholders": {
+      }
+   }
+}

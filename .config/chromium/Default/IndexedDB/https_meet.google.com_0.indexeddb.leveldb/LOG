@@ -1,0 +1,6 @@
+2024/11/28-14:45:58.550 8dcce Creating DB /home/mattia/.config/chromium/Default/IndexedDB/https_meet.google.com_0.indexeddb.leveldb since it was missing.
+2024/11/28-14:45:58.563 8dcce Reusing MANIFEST /home/mattia/.config/chromium/Default/IndexedDB/https_meet.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/28-14:47:35.750 8dccd Level-0 table #5: started
+2024/11/28-14:47:35.756 8dccd Level-0 table #5: 3987 bytes OK
+2024/11/28-14:47:35.765 8dccd Delete type=0 #3
+2024/11/28-14:47:35.766 8dccd Manual compaction at level-0 from (begin) .. (end); will stop at (end)

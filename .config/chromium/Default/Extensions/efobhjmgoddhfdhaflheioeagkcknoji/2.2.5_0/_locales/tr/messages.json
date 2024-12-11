@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Gruba sekme ekle",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Sekmeyi Yeni Gruba Ekle",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Gruba sekme ekleyin",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Yeni Gruba Sekmeler Ekle",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Bana bir kahve al",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Konumu değiştir",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Kısayolu değiştir",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Kapalı",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Grubu kapat",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Diğer Sekmeleri Kapat",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Aşağıdaki Sekmeleri Kapat",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompakt görünüm",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Kopyalamak",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Yan paneldeki dikey sekme yöneticisi",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Dikey Sekmeler",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Grubu yeni pencereye taşı",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Sekmeyi Başka Bir Pencereye Taşı",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Sekmeyi Yeni Pencereye Taşı",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Sekmeleri Başka Bir Pencereye Taşı",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Sekmeleri Yeni Pencereye Taşı",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Siteyi Sessize Al",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Siteleri Sessize Al",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Bu Grubu Adlandırın",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Yeni Grup",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Aşağıda Yeni Sekme",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Grupta yeni sekme",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Yeni Pencere",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Sabitle",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Simgeler olarak sabitlenmiş sekmeler",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Oran uzantısı",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Yeniden yükle",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Gruptan Kaldır",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Aramak",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Tam URL'yi göster",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Hata/özellik gönder",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ ve $count$ diğer sekme",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ ve $count$ diğer sekme",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Grubu çöz",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Sitenin Sesini Aç",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Sitelerin Sesini Aç",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Sabitlemeyi kaldır",
+      "placeholders": {
+      }
+   }
+}

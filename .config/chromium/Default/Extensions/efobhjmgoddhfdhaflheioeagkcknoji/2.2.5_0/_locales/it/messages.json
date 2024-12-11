@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Aggiungi scheda al gruppo",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Aggiungi scheda al nuovo gruppo",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Aggiungi schede al gruppo",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Aggiungi schede al nuovo gruppo",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Offrimi un caffè",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Cambia posizione",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Cambia scorciatoia",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Vicino",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Gruppo stretto",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Chiudi altre schede",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Chiudi le schede qui sotto",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Vista compatta",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicato",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Gestione schede verticali nel pannello laterale",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Schede verticali",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Sposta il gruppo in una nuova finestra",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Sposta la scheda in un'altra finestra",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Sposta la scheda in una nuova finestra",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Sposta le schede in un'altra finestra",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Sposta le schede in una nuova finestra",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Sito muto",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Siti disattivati",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Assegna un nome a questo gruppo",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nuovo gruppo",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nuova scheda qui sotto",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nuova scheda nel gruppo",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nuova finestra",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Spillo",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Schede appuntate come icone",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Estensione tariffaria",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Ricaricare",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Rimuovi dal gruppo",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Ricerca",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Mostra l'URL completo",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Invia bug/funzionalità",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ e $count$ altra scheda",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ e $count$ altre schede",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Separa",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Riattiva sito",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Riattiva siti",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Sblocca",
+      "placeholders": {
+      }
+   }
+}

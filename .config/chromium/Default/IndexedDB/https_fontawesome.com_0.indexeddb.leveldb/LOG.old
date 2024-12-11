@@ -1,0 +1,15 @@
+2024/11/27-14:53:38.844 8dccc Reusing MANIFEST /home/mattia/.config/chromium/Default/IndexedDB/https_fontawesome.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/27-14:53:38.844 8dccc Recovering log #4
+2024/11/27-14:53:38.844 8dccc Reusing old log /home/mattia/.config/chromium/Default/IndexedDB/https_fontawesome.com_0.indexeddb.leveldb/000004.log 
+2024/11/27-14:54:34.376 8dccd Level-0 table #8: started
+2024/11/27-14:54:34.382 8dccd Level-0 table #8: 2329 bytes OK
+2024/11/27-14:54:34.391 8dccd Delete type=0 #4
+2024/11/27-14:54:34.391 8dccd Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2024/11/27-14:54:34.392 8dccd Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x01\x01\x02\x01\x05\x00s\x00t\x00a\x00t\x00e' @ 236 : 1
+2024/11/27-14:54:34.392 8dccd Compacting 1@1 + 1@2 files
+2024/11/27-14:54:34.397 8dccd Generated table #9@1: 54 keys, 1137 bytes
+2024/11/27-14:54:34.397 8dccd Compacted 1@1 + 1@2 files => 1137 bytes
+2024/11/27-14:54:34.406 8dccd compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/11/27-14:54:34.407 8dccd Delete type=2 #5
+2024/11/27-14:54:34.407 8dccd Delete type=2 #8
+2024/11/27-14:54:34.407 8dccd Manual compaction at level-1 from '\x00\x01\x01\x02\x01\x05\x00s\x00t\x00a\x00t\x00e' @ 236 : 1 .. (end); will stop at (end)

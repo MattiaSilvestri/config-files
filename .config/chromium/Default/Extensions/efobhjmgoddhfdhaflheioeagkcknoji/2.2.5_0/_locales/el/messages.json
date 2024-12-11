@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Προσθήκη καρτέλας στην ομάδα",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Προσθήκη καρτέλας στη νέα ομάδα",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Προσθήκη καρτελών στην ομάδα",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Προσθήκη καρτελών στη νέα ομάδα",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Αγόρασέ μου έναν καφέ",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Αλλαγή θέσης",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Αλλαγή συντόμευσης",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Κοντά",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Κλείσιμο ομάδας",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Κλείστε άλλες καρτέλες",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Κλείστε τις καρτέλες παρακάτω",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Συμπαγής όψη",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Αντίγραφο",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Διαχείριση κάθετης καρτέλας στο πλαϊνό πλαίσιο",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Κάθετες καρτέλες",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Μετακίνηση ομάδας σε νέο παράθυρο",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Μετακίνηση καρτέλας σε άλλο παράθυρο",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Μετακίνηση καρτέλας σε νέο παράθυρο",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Μετακίνηση καρτελών σε άλλο παράθυρο",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Μετακίνηση καρτελών σε νέο παράθυρο",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Σίγαση ιστότοπου",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Σίγαση τοποθεσιών",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Ονομάστε αυτήν την ομάδα",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Νέα Ομάδα",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Νέα καρτέλα παρακάτω",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Νέα καρτέλα στην ομάδα",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Νέο Παράθυρο",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Καρφίτσα",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Καρφιτσωμένες καρτέλες ως εικονίδια",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Επέκταση ποσοστού",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Γεμίζω πάλι",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Κατάργηση από την ομάδα",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Ερευνα",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Εμφάνιση πλήρους URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Υποβολή σφάλματος/χαρακτηριστικού",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ και $count$ άλλη καρτέλα",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ και $count$ άλλες καρτέλες",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Κατάργηση ομαδοποίησης",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Κατάργηση σίγασης ιστότοπου",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Κατάργηση σίγασης τοποθεσιών",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Ξεκαρφιτσώνω",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,36 @@
+2024/11/27-10:22:59.096 8dccc Reusing MANIFEST /home/mattia/.config/chromium/Default/IndexedDB/https_outlook.office365.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/27-10:22:59.097 8dccc Recovering log #38
+2024/11/27-10:22:59.097 8dccc Reusing old log /home/mattia/.config/chromium/Default/IndexedDB/https_outlook.office365.com_0.indexeddb.leveldb/000038.log 
+2024/11/27-10:22:59.097 8dccc Delete type=2 #37
+2024/11/27-10:22:59.112 8dccc Level-0 table #43: started
+2024/11/27-10:22:59.116 8dccc Level-0 table #43: 555 bytes OK
+2024/11/27-10:22:59.125 8dccc Delete type=0 #38
+2024/11/27-10:22:59.126 8dccc Manual compaction at level-0 from '\x00\x0d\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0e\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0d\x00\x00\x05' @ 277 : 1
+2024/11/27-10:22:59.126 8dccc Compacting 1@0 + 1@1 files
+2024/11/27-10:22:59.130 8dccc Generated table #44@0: 24 keys, 1099 bytes
+2024/11/27-10:22:59.130 8dccc Compacted 1@0 + 1@1 files => 1099 bytes
+2024/11/27-10:22:59.139 8dccc compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/11/27-10:22:59.140 8dccc Delete type=2 #43
+2024/11/27-10:22:59.140 8dccc Manual compaction at level-0 from '\x00\x0d\x00\x00\x05' @ 277 : 1 .. '\x00\x0e\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/11/27-10:22:59.740 8dccc Level-0 table #46: started
+2024/11/27-10:22:59.749 8dccc Level-0 table #46: 624 bytes OK
+2024/11/27-10:22:59.757 8dccc Delete type=2 #40
+2024/11/27-10:22:59.758 8dccc Delete type=0 #42
+2024/11/27-10:22:59.758 8dccc Manual compaction at level-0 from '\x00\x0e\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0f\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0f\x00\x00\x05' @ 299 : 1
+2024/11/27-10:22:59.758 8dccc Compacting 1@0 + 1@1 files
+2024/11/27-10:22:59.763 8dccc Generated table #47@0: 27 keys, 1097 bytes
+2024/11/27-10:22:59.763 8dccc Compacted 1@0 + 1@1 files => 1097 bytes
+2024/11/27-10:22:59.771 8dccc compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/11/27-10:22:59.772 8dccc Delete type=2 #46
+2024/11/27-10:22:59.772 8dcce Manual compaction at level-0 from '\x00\x0f\x00\x00\x05' @ 299 : 1 .. '\x00\x0f\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/11/27-10:22:59.773 8dccc Level-0 table #49: started
+2024/11/27-10:22:59.777 8dccc Level-0 table #49: 500 bytes OK
+2024/11/27-10:22:59.786 8dccc Delete type=2 #44
+2024/11/27-10:22:59.787 8dccc Delete type=0 #45
+2024/11/27-10:22:59.787 8dccc Manual compaction at level-0 from '\x00\x0f\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x10\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0f\x00\x00\x05' @ 325 : 0
+2024/11/27-10:22:59.787 8dccc Compacting 1@0 + 1@1 files
+2024/11/27-10:22:59.792 8dccc Generated table #50@0: 24 keys, 1099 bytes
+2024/11/27-10:22:59.792 8dccc Compacted 1@0 + 1@1 files => 1099 bytes
+2024/11/27-10:22:59.801 8dccc compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/11/27-10:22:59.801 8dccc Delete type=2 #49
+2024/11/27-10:22:59.802 8dccc Manual compaction at level-0 from '\x00\x0f\x00\x00\x05' @ 325 : 0 .. '\x00\x10\x00\x00\x00' @ 0 : 0; will stop at (end)

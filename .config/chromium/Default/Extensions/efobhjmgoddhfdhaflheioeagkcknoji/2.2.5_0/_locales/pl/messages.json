@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Dodaj kartę do grupy",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Dodaj kartę do nowej grupy",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Dodaj karty do grupy",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Dodaj karty do nowej grupy",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Kup mi kawę",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Zmień pozycję",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Zmień skrót",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Zamknąć",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Zamknij grupę",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Zamknij inne karty",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Zamknij karty poniżej",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompaktowy widok",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplikat",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Pionowy menedżer zakładek w panelu bocznym",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Zakładki pionowe",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Przenieś grupę do nowego okna",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Przenieś kartę do innego okna",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Przenieś kartę do nowego okna",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Przenieś karty do innego okna",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Przenieś karty do nowego okna",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Wycisz witrynę",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Wycisz witryny",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Nazwij tę grupę",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nowa grupa",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nowa zakładka poniżej",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nowa zakładka w grupie",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nowe okno",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Szpilka",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Przypięte karty jako ikony",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Przedłużenie stawki",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Przeładować",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Usuń z grupy",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Szukaj",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Pokaż pełny adres URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Prześlij błąd/funkcję",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ i $count$ inna karta",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "Inne karty: $title$ i $count$",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Rozgrupuj",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Wyłącz wyciszenie witryny",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Wyłącz wyciszenie witryn",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Odpiąć",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "গ্রুপে ট্যাব যোগ করুন",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "নতুন গ্রুপে ট্যাব যোগ করুন",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "গ্রুপে ট্যাব যোগ করুন",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "নতুন গ্রুপে ট্যাব যোগ করুন",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "আমাকে একটা কফি কিনে দাও",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "অবস্থান পরিবর্তন করুন",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "শর্টকাট পরিবর্তন করুন",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "বন্ধ",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "গ্রুপ বন্ধ করুন",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "অন্যান্য ট্যাব বন্ধ করুন",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "নীচের ট্যাব বন্ধ করুন",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "কমপ্যাক্ট ভিউ",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "ডুপ্লিকেট",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "পাশের প্যানেলে উল্লম্ব ট্যাব ম্যানেজার",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - উল্লম্ব ট্যাব",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "নতুন উইন্ডোতে গ্রুপ সরান",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "অন্য উইন্ডোতে ট্যাব সরান",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "নতুন উইন্ডোতে ট্যাব সরান",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "ট্যাবগুলিকে অন্য উইন্ডোতে সরান",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "নতুন উইন্ডোতে ট্যাবগুলি সরান",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "নিঃশব্দ সাইট",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "নিঃশব্দ সাইট",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "এই গ্রুপের নাম দিন",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "নতুন গ্রুপ",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "নিচে নতুন ট্যাব",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "গ্রুপে নতুন ট্যাব",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "নতুন উইন্ডো",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "পিন",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "আইকন হিসাবে ট্যাব পিন",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "হার এক্সটেনশন",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "পুনরায় লোড করুন",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "গ্রুপ থেকে সরান",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "অনুসন্ধান করুন",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "সম্পূর্ণ URL দেখান",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "বাগ/বৈশিষ্ট্য জমা দিন",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ এবং $count$টি অন্যান্য ট্যাব",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ এবং $count$টি অন্যান্য ট্যাব",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "আনগ্রুপ করুন",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "সাইট আনমিউট করুন",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "সাইটগুলো আনমিউট করুন",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "আনপিন করুন",
+      "placeholders": {
+      }
+   }
+}

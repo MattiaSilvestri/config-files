@@ -1,0 +1,105 @@
+{"value":"Preparing request to http://localhost:8000/inventory/api/v2/assets-attachments/","name":"Text","timestamp":1732544390717}
+{"value":"Current time is 2024-11-25T14:19:50.717Z","name":"Text","timestamp":1732544390717}
+{"value":"Enable automatic URL encoding","name":"Text","timestamp":1732544390717}
+{"value":"Using default HTTP version","name":"Text","timestamp":1732544390719}
+{"value":"Enable timeout of 30000ms","name":"Text","timestamp":1732544390719}
+{"value":"Enable SSL validation","name":"Text","timestamp":1732544390719}
+{"name":"Text","value":"  Trying 127.0.0.1:8000...\n","timestamp":1732544390721}
+{"name":"Text","value":"Connected to localhost (127.0.0.1) port 8000 (#0)\n","timestamp":1732544390721}
+{"name":"HeaderOut","value":"GET /inventory/api/v2/assets-attachments/ HTTP/1.1\r\nHost: localhost:8000\r\nUser-Agent: insomnia/10.1.1\r\nContent-Type: application/json\r\nAuthorization: Token 58a62e890157d52f382443e9b7f13fb11e24b602\r\nAccept: */*\r\n\r\n","timestamp":1732544390721}
+{"name":"Text","value":"Mark bundle as not supporting multiuse\n","timestamp":1732544391606}
+{"name":"HeaderIn","value":"HTTP/1.1 500 Internal Server Error\r\n","timestamp":1732544391606}
+{"name":"HeaderIn","value":"Content-Type: text/html; charset=utf-8\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"Server-Timing: TimerPanel_utime;dur=454.31799999999976;desc=\"User CPU time\", TimerPanel_stime;dur=270.025;desc=\"System CPU time\", TimerPanel_total;dur=724.3429999999997;desc=\"Total CPU time\", TimerPanel_total_time;dur=670.6333469992387;desc=\"Elapsed time\", SQLPanel_sql_time;dur=22.34211899485672;desc=\"SQL 5 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\"\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"Vary: Accept-Language, Cookie\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"Content-Language: en\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"X-Frame-Options: SAMEORIGIN\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"Content-Length: 1320061\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"X-Content-Type-Options: nosniff\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"Referrer-Policy: same-origin\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"Cross-Origin-Opener-Policy: same-origin\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"Server: daphne\r\n","timestamp":1732544391607}
+{"name":"HeaderIn","value":"\r\n","timestamp":1732544391607}
+{"name":"Text","value":"Received 15.3 KB chunk","timestamp":1732544391607}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391607}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391607}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391608}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391608}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391608}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391609}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391609}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391609}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391609}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391610}
+{"name":"Text","value":"Received 14.1 KB chunk","timestamp":1732544391610}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391610}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391610}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391610}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391611}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391611}
+{"name":"Text","value":"Received 12.6 KB chunk","timestamp":1732544391611}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391612}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391612}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391613}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391613}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391613}
+{"name":"Text","value":"Received 12.6 KB chunk","timestamp":1732544391613}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391613}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391614}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391614}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391614}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391614}
+{"name":"Text","value":"Received 12.6 KB chunk","timestamp":1732544391615}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391615}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391615}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391615}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391615}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391616}
+{"name":"Text","value":"Received 12.6 KB chunk","timestamp":1732544391616}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391616}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391616}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391617}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391617}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391617}
+{"name":"Text","value":"Received 12.6 KB chunk","timestamp":1732544391617}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391617}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391617}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391618}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391618}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391618}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391618}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391619}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391619}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391619}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391619}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391619}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391620}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391620}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391620}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391620}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391620}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391621}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391621}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391621}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391621}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391621}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391622}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391622}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391622}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391622}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391622}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391623}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391623}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391623}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391623}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391623}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391624}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391624}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391624}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391624}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391624}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391625}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391625}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732544391625}
+{"name":"Text","value":"Received 12.5 KB chunk","timestamp":1732544391625}
+{"name":"Text","value":"Connection #0 to host localhost left intact\n","timestamp":1732544391625}

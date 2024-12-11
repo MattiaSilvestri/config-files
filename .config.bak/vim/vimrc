@@ -1,0 +1,16 @@
+set number
+
+" Abbreviations
+" -------------
+autocmd FileType python iabbrev <buffer> iff if:<left>
+
+
+" Operator pending mappings
+" -------------------------
+
+" Inside parenthesis
+onoremap p i( 
+
+" Until 'return'
+onoremap b /return<cr>
+

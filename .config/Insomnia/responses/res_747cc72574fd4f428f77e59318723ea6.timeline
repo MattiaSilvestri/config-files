@@ -1,0 +1,30 @@
+{"value":"Preparing request to https://staging.jarvis.gtsu.org/inventory/api/v2/assets-documents/","name":"Text","timestamp":1732614035188}
+{"value":"Current time is 2024-11-26T09:40:35.188Z","name":"Text","timestamp":1732614035188}
+{"value":"Enable automatic URL encoding","name":"Text","timestamp":1732614035188}
+{"value":"Using default HTTP version","name":"Text","timestamp":1732614035189}
+{"value":"Enable timeout of 30000ms","name":"Text","timestamp":1732614035189}
+{"value":"Enable SSL validation","name":"Text","timestamp":1732614035189}
+{"name":"Text","value":"Found bundle for host staging.jarvis.gtsu.org: 0x6c00396ae80 [can multiplex]\n","timestamp":1732614035190}
+{"name":"Text","value":"Re-using existing connection! (#5) with host staging.jarvis.gtsu.org\n","timestamp":1732614035190}
+{"name":"Text","value":"Connected to staging.jarvis.gtsu.org (195.32.124.208) port 443 (#5)\n","timestamp":1732614035190}
+{"name":"Text","value":"Using Stream ID: 3 (easy handle 0x6c003e55600)\n","timestamp":1732614035190}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732614035190}
+{"name":"HeaderOut","value":"GET /inventory/api/v2/assets-documents/ HTTP/2\r\nHost: staging.jarvis.gtsu.org\r\nuser-agent: insomnia/10.1.1\r\ncontent-type: application/json\r\nauthorization: Token 58a62e890157d52f382443e9b7f13fb11e24b602\r\naccept: */*\r\n\r\n","timestamp":1732614035190}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"HTTP/2 200 \r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"server: openresty\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"date: Tue, 26 Nov 2024 09:40:37 GMT\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"content-type: application/json\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"content-length: 469\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"vary: Accept, Accept-Language, Cookie\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"allow: GET, POST, HEAD, OPTIONS\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"server-timing: TimerPanel_utime;dur=245.43299999999934;desc=\"User CPU time\", TimerPanel_stime;dur=88.41100000000002;desc=\"System CPU time\", TimerPanel_total;dur=333.84399999999937;desc=\"Total CPU time\", TimerPanel_total_time;dur=359.9687395617366;desc=\"Elapsed time\", SQLPanel_sql_time;dur=20.190744660794735;desc=\"SQL 7 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\"\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"content-language: en\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"x-frame-options: SAMEORIGIN\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"x-content-type-options: nosniff\r\n","timestamp":1732614037555}
+{"name":"HeaderIn","value":"referrer-policy: same-origin\r\n","timestamp":1732614037556}
+{"name":"HeaderIn","value":"cross-origin-opener-policy: same-origin\r\n","timestamp":1732614037556}
+{"name":"HeaderIn","value":"x-served-by: staging.jarvis.gtsu.org\r\n","timestamp":1732614037556}
+{"name":"HeaderIn","value":"\r\n","timestamp":1732614037556}
+{"name":"Text","value":"Received 469 B chunk","timestamp":1732614037556}
+{"name":"Text","value":"Connection #5 to host staging.jarvis.gtsu.org left intact\n","timestamp":1732614037556}

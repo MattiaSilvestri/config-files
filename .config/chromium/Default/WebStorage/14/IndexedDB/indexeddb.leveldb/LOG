@@ -1,0 +1,6 @@
+2024/11/18-12:37:51.108 10d48 Creating DB /home/mattia/.config/chromium/Default/WebStorage/14/IndexedDB/indexeddb.leveldb since it was missing.
+2024/11/18-12:37:51.122 10d48 Reusing MANIFEST /home/mattia/.config/chromium/Default/WebStorage/14/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2024/11/18-12:37:53.402 10d49 Level-0 table #5: started
+2024/11/18-12:37:53.407 10d49 Level-0 table #5: 480 bytes OK
+2024/11/18-12:37:53.417 10d49 Delete type=0 #3
+2024/11/18-12:37:53.417 10d49 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

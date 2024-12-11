@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "જૂથમાં ટેબ ઉમેરો",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "નવા જૂથમાં ટેબ ઉમેરો",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "જૂથમાં ટેબ ઉમેરો",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "નવા જૂથમાં ટૅબ્સ ઉમેરો",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "મને કોફી ખરીદો",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "સ્થિતિ બદલો",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "શોર્ટકટ બદલો",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "બંધ કરો",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "જૂથ બંધ કરો",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "અન્ય ટૅબ્સ બંધ કરો",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "નીચેની ટૅબ્સ બંધ કરો",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "કોમ્પેક્ટ દૃશ્ય",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "ડુપ્લિકેટ",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "સાઇડ પેનલમાં વર્ટિકલ ટેબ મેનેજર",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - વર્ટિકલ ટૅબ્સ",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "જૂથને નવી વિંડોમાં ખસેડો",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "ટેબને બીજી વિન્ડોમાં ખસેડો",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "ટેબને નવી વિન્ડોમાં ખસેડો",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "ટેબ્સને બીજી વિન્ડોમાં ખસેડો",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "ટૅબ્સને નવી વિંડોમાં ખસેડો",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "મ્યૂટ સાઇટ",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "મ્યૂટ સાઇટ્સ",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "આ જૂથને નામ આપો",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "નવું જૂથ",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "નીચે નવી ટેબ",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "જૂથમાં નવું ટેબ",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "નવી વિન્ડો",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "પિન",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "ચિહ્નો તરીકે પિન કરેલ ટેબ",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "રેટ એક્સ્ટેંશન",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "ફરીથી લોડ કરો",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "જૂથમાંથી દૂર કરો",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "શોધો",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "સંપૂર્ણ URL બતાવો",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "બગ/સુવિધા સબમિટ કરો",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ અને $count$ અન્ય ટેબ",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ અને $count$ અન્ય ટેબ",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "અનગ્રુપ કરો",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "સાઇટને અનમ્યૂટ કરો",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "સાઇટ્સને અનમ્યૂટ કરો",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "અનપિન કરો",
+      "placeholders": {
+      }
+   }
+}

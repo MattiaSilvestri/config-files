@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Přidat kartu do skupiny",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Přidat kartu do nové skupiny",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Přidat karty do skupiny",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Přidat karty do nové skupiny",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Kup mi kávu",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Změňte polohu",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Změnit zkratku",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Blízko",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Zavřít skupinu",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Zavřete další karty",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Zavřít karty níže",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompaktní pohled",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplikát",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikální správce karet na bočním panelu",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vertikální záložky",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Přesunout skupinu do nového okna",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Přesunout kartu do jiného okna",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Přesunout kartu do nového okna",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Přesunout karty do jiného okna",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Přesunout karty do nového okna",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Ztlumit web",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Ztlumit weby",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Pojmenujte tuto skupinu",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nová skupina",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nová karta níže",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nová karta ve skupině",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nové okno",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Kolík",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Připnuté karty jako ikony",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Rozšíření sazby",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Znovu načíst",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Odebrat ze skupiny",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Vyhledávání",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Zobrazit celou adresu URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Odeslat chybu/funkci",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ a $count$ další karta",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ a $count$ dalších karet",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Zrušit seskupení",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Zapnout zvuk webu",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Přestat ignorovat weby",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Odepnout",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Dodaj karticu grupi",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Dodaj karticu u novu grupu",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Dodajte kartice u grupu",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Dodajte kartice u novu grupu",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Časti me kavom",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Promijeni položaj",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Promjena prečaca",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Zatvoriti",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Zatvori grupu",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Zatvori ostale kartice",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Zatvori kartice u nastavku",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompaktan pogled",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplikat",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikalni upravitelj kartica na bočnoj ploči",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Okomite kartice",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Premjesti grupu u novi prozor",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Premjesti karticu u drugi prozor",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Premjesti karticu u novi prozor",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Premjesti kartice u drugi prozor",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Premjesti kartice u novi prozor",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Isključi zvuk stranice",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Isključi zvuk web-mjesta",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Imenujte ovu grupu",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nova grupa",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nova kartica u nastavku",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nova kartica u grupi",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Novi prozor",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Prikvačene kartice kao ikone",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Proširenje stope",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Ponovno učitaj",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Ukloni iz grupe",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Pretraživanje",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Prikaži cijeli URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Pošalji bug/značajku",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ i još $count$ kartica",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ i $count$ drugih kartica",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Razgrupiraj",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Uključi zvuk web stranice",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Uključi zvuk web-mjesta",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Otkvači",
+      "placeholders": {
+      }
+   }
+}

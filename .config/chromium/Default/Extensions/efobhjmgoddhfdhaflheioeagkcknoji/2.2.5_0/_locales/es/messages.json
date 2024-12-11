@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Agregar pestaña al grupo",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Agregar pestaña al nuevo grupo",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Agregar pestañas al grupo",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Agregar pestañas a un nuevo grupo",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Cómprame un café",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Cambiar posición",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Cambiar acceso directo",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Cerca",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Cerrar grupo",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Cerrar otras pestañas",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Cerrar pestañas a continuación",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Vista compacta",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicado",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Administrador de pestañas verticales en el panel lateral",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Pestañas verticales",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Mover grupo a nueva ventana",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Mover pestaña a otra ventana",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Mover pestaña a nueva ventana",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Mover pestañas a otra ventana",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Mover pestañas a una nueva ventana",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Silenciar sitio",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Silenciar sitios",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Nombra este grupo",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nuevo grupo",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nueva pestaña a continuación",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nueva pestaña en grupo",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nueva ventana",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Alfiler",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Pestañas fijadas como iconos",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Ampliación de tarifa",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Recargar",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Eliminar del grupo",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Buscar",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Mostrar URL completa",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Enviar error/característica",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ y $count$ otra pestaña",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ y $count$ otras pestañas",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Desagrupar",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Dejar de silenciar el sitio",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Dejar de silenciar sitios",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Desprender",
+      "placeholders": {
+      }
+   }
+}

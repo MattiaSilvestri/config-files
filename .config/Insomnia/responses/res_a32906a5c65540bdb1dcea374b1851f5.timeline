@@ -1,0 +1,78 @@
+{"value":"Preparing request to https://staging.jarvis.gtsu.org/inventory/api/v2/assets-documents-types/","name":"Text","timestamp":1732614571208}
+{"value":"Current time is 2024-11-26T09:49:31.208Z","name":"Text","timestamp":1732614571208}
+{"value":"Enable automatic URL encoding","name":"Text","timestamp":1732614571208}
+{"value":"Using default HTTP version","name":"Text","timestamp":1732614571209}
+{"value":"Enable timeout of 30000ms","name":"Text","timestamp":1732614571209}
+{"value":"Enable SSL validation","name":"Text","timestamp":1732614571209}
+{"name":"Text","value":"Too old connection (533 seconds), disconnect it\n","timestamp":1732614571210}
+{"name":"Text","value":"Connection 5 seems to be dead!\n","timestamp":1732614571210}
+{"name":"Text","value":"Closing connection 5\n","timestamp":1732614571210}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571210}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732614571210}
+{"name":"Text","value":"TLSv1.3 (OUT), TLS alert, close notify (256):\n","timestamp":1732614571210}
+{"name":"Text","value":"  Trying 195.32.124.208:443...\n","timestamp":1732614571214}
+{"name":"Text","value":"Connected to staging.jarvis.gtsu.org (195.32.124.208) port 443 (#6)\n","timestamp":1732614571215}
+{"name":"Text","value":"ALPN, offering h2\n","timestamp":1732614571216}
+{"name":"Text","value":"ALPN, offering http/1.1\n","timestamp":1732614571216}
+{"name":"Text","value":" CAfile: /etc/ssl/certs/ca-certificates.crt\n","timestamp":1732614571265}
+{"name":"Text","value":"TLSv1.0 (OUT), TLS header, Certificate Status (22):\n","timestamp":1732614571265}
+{"name":"Text","value":"TLSv1.3 (OUT), TLS handshake, Client hello (1):\n","timestamp":1732614571265}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Certificate Status (22):\n","timestamp":1732614571269}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Server hello (2):\n","timestamp":1732614571269}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Finished (20):\n","timestamp":1732614571269}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571269}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):\n","timestamp":1732614571269}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571269}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Certificate (11):\n","timestamp":1732614571269}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571271}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, CERT verify (15):\n","timestamp":1732614571271}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Finished (20):\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Finished (20):\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.3 (OUT), TLS handshake, Finished (20):\n","timestamp":1732614571272}
+{"name":"Text","value":"SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384\n","timestamp":1732614571272}
+{"name":"Text","value":"ALPN, server accepted to use h2\n","timestamp":1732614571272}
+{"name":"Text","value":"Server certificate:\n","timestamp":1732614571272}
+{"name":"Text","value":" subject: CN=staging.jarvis.gtsu.org\n","timestamp":1732614571272}
+{"name":"Text","value":" start date: Oct  7 08:14:20 2024 GMT\n","timestamp":1732614571272}
+{"name":"Text","value":" expire date: Jan  5 08:14:19 2025 GMT\n","timestamp":1732614571272}
+{"name":"Text","value":" subjectAltName: host \"staging.jarvis.gtsu.org\" matched cert's \"staging.jarvis.gtsu.org\"\n","timestamp":1732614571272}
+{"name":"Text","value":" issuer: C=US; O=Let's Encrypt; CN=E6\n","timestamp":1732614571272}
+{"name":"Text","value":" SSL certificate verify ok.\n","timestamp":1732614571272}
+{"name":"Text","value":"Using HTTP2, server supports multiplexing\n","timestamp":1732614571272}
+{"name":"Text","value":"Connection state changed (HTTP/2 confirmed)\n","timestamp":1732614571272}
+{"name":"Text","value":"Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732614571272}
+{"name":"Text","value":"Using Stream ID: 1 (easy handle 0x6c003e54000)\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732614571272}
+{"name":"HeaderOut","value":"GET /inventory/api/v2/assets-documents-types/ HTTP/2\r\nHost: staging.jarvis.gtsu.org\r\nuser-agent: insomnia/10.1.1\r\ncontent-type: application/json\r\nauthorization: Token 58a62e890157d52f382443e9b7f13fb11e24b602\r\naccept: */*\r\n\r\n","timestamp":1732614571272}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571273}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):\n","timestamp":1732614571273}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571273}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):\n","timestamp":1732614571273}
+{"name":"Text","value":"old SSL session ID is stale, removing\n","timestamp":1732614571273}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571273}
+{"name":"Text","value":"Connection state changed (MAX_CONCURRENT_STREAMS == 128)!\n","timestamp":1732614571273}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732614571273}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"HTTP/2 200 \r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"server: openresty\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"date: Tue, 26 Nov 2024 09:49:31 GMT\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"content-type: application/json\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"content-length: 52\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"vary: Accept, Accept-Language, Cookie\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"allow: GET, HEAD, OPTIONS\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"server-timing: TimerPanel_utime;dur=54.55699999999997;desc=\"User CPU time\", TimerPanel_stime;dur=4.933999999999994;desc=\"System CPU time\", TimerPanel_total;dur=59.49099999999996;desc=\"Total CPU time\", TimerPanel_total_time;dur=83.25020503252745;desc=\"Elapsed time\", SQLPanel_sql_time;dur=18.35759449750185;desc=\"SQL 4 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\"\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"content-language: en\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"x-frame-options: SAMEORIGIN\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"x-content-type-options: nosniff\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"referrer-policy: same-origin\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"cross-origin-opener-policy: same-origin\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"x-served-by: staging.jarvis.gtsu.org\r\n","timestamp":1732614571424}
+{"name":"HeaderIn","value":"\r\n","timestamp":1732614571424}
+{"name":"Text","value":"Received 52 B chunk","timestamp":1732614571424}
+{"name":"Text","value":"Connection #6 to host staging.jarvis.gtsu.org left intact\n","timestamp":1732614571424}

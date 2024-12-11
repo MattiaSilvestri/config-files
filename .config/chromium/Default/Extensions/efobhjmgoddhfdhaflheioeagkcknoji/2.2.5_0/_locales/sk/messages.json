@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Pridať kartu do skupiny",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Pridať kartu do novej skupiny",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Pridajte karty do skupiny",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Pridať karty do novej skupiny",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Kúp mi kávu",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Zmeňte polohu",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Zmeniť skratku",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Zavrieť",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Uzavretá skupina",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Zatvorte ďalšie karty",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Zavrieť karty nižšie",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompaktný pohľad",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicitné",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikálny správca kariet na bočnom paneli",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vertikálne záložky",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Presunúť skupinu do nového okna",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Presuňte kartu do iného okna",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Presunúť kartu do nového okna",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Presuňte karty do iného okna",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Presunúť karty do nového okna",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Stlmiť stránku",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Stlmiť stránky",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Pomenujte túto skupinu",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nová skupina",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nová karta nižšie",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nová karta v skupine",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nové okno",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Pripnuté karty ako ikony",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Rozšírenie sadzby",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Znovu načítať",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Odstrániť zo skupiny",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Hľadať",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Zobraziť celú adresu URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Odoslať chybu/funkciu",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ a $count$ ďalšia karta",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ a $count$ ďalších kariet",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Zrušiť zoskupenie",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Prestať ignorovať stránku",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Zrušiť ignorovanie stránok",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Odopnúť",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "הוסף כרטיסייה לקבוצה",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "הוסף כרטיסייה לקבוצה חדשה",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "הוסף כרטיסיות לקבוצה",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "הוסף כרטיסיות לקבוצה חדשה",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "תקנה לי קפה",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "שנה מיקום",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "שנה קיצור דרך",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "לִסְגוֹר",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "קבוצה קרובה",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "סגור כרטיסיות אחרות",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "סגור כרטיסיות למטה",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "תצוגה קומפקטית",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "לְשַׁכְפֵּל",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "מנהל כרטיסיות אנכי בלוח הצד",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - כרטיסיות אנכיות",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "העבר את הקבוצה לחלון חדש",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "העבר את הכרטיסייה לחלון אחר",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "העבר את הכרטיסייה לחלון חדש",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "העבר כרטיסיות לחלון אחר",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "העבר כרטיסיות לחלון חדש",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "השתק אתר",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "השתק אתרים",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "תן שם לקבוצה זו",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "קבוצה חדשה",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "כרטיסייה חדשה למטה",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "כרטיסייה חדשה בקבוצה",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "חלון חדש",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "פִּין",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "כרטיסיות מוצמדות כסמלים",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "הארכת תעריף",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "לִטעוֹן מִחָדָשׁ",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "הסר מהקבוצה",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "לְחַפֵּשׂ",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "הצג כתובת URL מלאה",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "שלח באג/תכונה",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ וכרטיסייה נוספת $count$",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ ו-$count$ כרטיסיות נוספות",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "בטל קבוצה",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "בטל את השתקת האתר",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "בטל השתקת אתרים",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "לְהוֹצִיא סִיכָּה",
+      "placeholders": {
+      }
+   }
+}

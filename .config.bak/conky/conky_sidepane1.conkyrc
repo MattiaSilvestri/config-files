@@ -1,0 +1,110 @@
+conky.config = {
+
+alignment = 'top_left',
+background = true,
+border_width = 2,
+cpu_avg_samples = 2,
+default_color = '#9BB6B2',
+default_outline_color = '#9BB6B2',
+default_shade_color = 'white',
+double_buffer = true,
+draw_borders = false,
+draw_graph_borders = true,
+draw_outline = false,
+draw_shades = false,
+extra_newline = false,
+font = 'URW Gothic Book:size=9',
+
+gap_x = 3,
+gap_y = 40,
+minimum_height = 5,
+minimum_width = 5, maximum_width = 600,
+
+net_avg_samples = 2,
+no_buffers = true,
+out_to_console = false,
+out_to_ncurses = false,
+out_to_stderr = false,
+out_to_x = true,
+own_window = true,
+own_window_class = 'Conky',
+own_window_type = 'normal',
+own_window_transparent = true,
+own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+show_graph_range = false,
+show_graph_scale = false,
+stippled_borders = 0,
+update_interval = 1.0,
+uppercase = false,
+use_spacer = 'none',
+use_xft = true,
+
+}
+
+
+conky.text = [[
+
+#$alignc${font Open Sans Light:size=40}${time %H:%M}
+${font DejaVu Sans Mono:size=2}${execi 130000 screenfetch -L -N | sed 's/^/\t/'|sed 's/ *$//'}
+${font Open Sans Light:size=9}${voffset -62}${offset 80}${time %d %b %Y }
+${voffset -15}${offset 80}${exec lsb_release -d | cut -f 3| tr "[:upper:]" "[:lower:]"}
+${voffset 0}${offset 80}${font Open Sans Light:size=9}Edition: ${font Open Sans Light:size=9}${execi 130000 awk -F= '/ID=/{printf $2" "} /RELEASE=/{printf $2" "} /NAME=/{print $2}' /etc/lsb-release}
+${voffset 0}${offset 80}${font Open Sans Light:size=9}Kernel: ${kernel}
+${voffset 0}${offset 80}${font Open Sans Light:size=9}Uptime: $uptime
+#
+
+${hr 1}
+
+${font Open Sans Light:size=9}CPU ${alignr}${cpu cpu0}%
+${cpubar cpu0 12,}
+
+${top name 1} $alignr ${top cpu 1}%
+${top name 2} $alignr ${top cpu 2}%
+${top name 3} $alignr ${top cpu 3}%
+${top name 4} $alignr ${top cpu 4}%
+${top name 5} $alignr ${top cpu 5}%
+
+${hr 1}
+
+#*${font Open Sans Light:size=9}T3MP ${alignr 3}${hwmon 0 temp 0}°C*/
+
+B4TT3RY: ${battery_percent BAT1}% ${alignr}${battery_bar 12,100 BAT1}
+
+${hr 1}
+
+${font Open Sans Light:size=9}R4M ${alignr 3}${mem}
+${membar 5,}
+${top_mem name 1} $alignr ${top_mem mem_res 1}
+${top_mem name 2} $alignr ${top_mem mem_res 2}
+${top_mem name 3} $alignr ${top_mem mem_res 3}
+${top_mem name 4} $alignr ${top_mem mem_res 4}
+${top_mem name 5} $alignr ${top_mem mem_res 5}
+
+${hr 1}
+
+${font Open Sans Light:size=9}D1SK ${alignr 3}${fs_size /home/fabien}
+${fs_bar /}
+${voffset 5}Used: ${fs_used /home/fabien}${alignr 3}Free:${fs_free /home/fabien}
+
+${hr 1}
+
+${font Open Sans Light:size=9}N3TW0RK$font${voffset -5}
+${downspeedgraph wlo1 wlo1 }
+Download${alignr 3}${downspeedf wlo1} kbps
+Upload${alignr 3}${upspeedf wlo1} kbps
+Local IP${alignr 3}${addr wlo1}
+Public IP${alignr 3}${execi 3600 curl ifconfig.me | tail }
+
+${hr 1}
+
+${font Open Sans Light:size=9}Install${alignr 3}pacman -S
+${font Open Sans Light:size=9}Force update ${alignr 3} pacman -Syy
+${font Open Sans Light:size=9}Upgrade ${alignr 3} pacman -Su
+${font Open Sans Light:size=9}Update+Upgrade ${alignr 3} pacman -Syu
+${font Open Sans Light:size=9}Search ${alignr 3} pacman -S
+${font Open Sans Light:size=9}Uninstall ${alignr 3} pacman -Rs
+${font Open Sans Light:size=9}Clean cache ${alignr 3} pacman -Ss
+
+Météo : ${alignr}${texeci 3600 curl -s 'http://wttr.in/YOURCITY'}
+]]

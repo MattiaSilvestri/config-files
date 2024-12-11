@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "ಗುಂಪಿಗೆ ಟ್ಯಾಬ್ ಸೇರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "ಹೊಸ ಗುಂಪಿಗೆ ಟ್ಯಾಬ್ ಸೇರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "ಗುಂಪಿಗೆ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಸೇರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "ಹೊಸ ಗುಂಪಿಗೆ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಸೇರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "ನನಗೆ ಕಾಫಿ ಖರೀದಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "ಸ್ಥಾನವನ್ನು ಬದಲಾಯಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "ಶಾರ್ಟ್‌ಕಟ್ ಬದಲಾಯಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "ಮುಚ್ಚಿ",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "ಗುಂಪು ಮುಚ್ಚಿ",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "ಇತರೆ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮುಚ್ಚಿ",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "ಕೆಳಗಿನ ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮುಚ್ಚಿ",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "ಕಾಂಪ್ಯಾಕ್ಟ್ ನೋಟ",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "ನಕಲು",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "ಸೈಡ್ ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ಲಂಬ ಟ್ಯಾಬ್ ಮ್ಯಾನೇಜರ್",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - ಲಂಬ ಟ್ಯಾಬ್ಗಳು",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "ಗುಂಪನ್ನು ಹೊಸ ವಿಂಡೋಗೆ ಸರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "ಟ್ಯಾಬ್ ಅನ್ನು ಮತ್ತೊಂದು ವಿಂಡೋಗೆ ಸರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "ಟ್ಯಾಬ್ ಅನ್ನು ಹೊಸ ವಿಂಡೋಗೆ ಸರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "ಟ್ಯಾಬ್‌ಗಳನ್ನು ಮತ್ತೊಂದು ವಿಂಡೋಗೆ ಸರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "ಟ್ಯಾಬ್‌ಗಳನ್ನು ಹೊಸ ವಿಂಡೋಗೆ ಸರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "ಸೈಟ್ ಅನ್ನು ಮ್ಯೂಟ್ ಮಾಡಿ",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "ಸೈಟ್‌ಗಳನ್ನು ಮ್ಯೂಟ್ ಮಾಡಿ",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "ಈ ಗುಂಪಿಗೆ ಹೆಸರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "ಹೊಸ ಗುಂಪು",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "ಕೆಳಗೆ ಹೊಸ ಟ್ಯಾಬ್",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "ಗುಂಪಿನಲ್ಲಿ ಹೊಸ ಟ್ಯಾಬ್",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "ಹೊಸ ವಿಂಡೋ",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "ಪಿನ್",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "ಐಕಾನ್‌ಗಳಾಗಿ ಪಿನ್ ಮಾಡಿದ ಟ್ಯಾಬ್‌ಗಳು",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "ದರ ವಿಸ್ತರಣೆ",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "ಮರುಲೋಡ್ ಮಾಡಿ",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "ಗುಂಪಿನಿಂದ ತೆಗೆದುಹಾಕಿ",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "ಹುಡುಕು",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "ಪೂರ್ಣ URL ತೋರಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "ದೋಷ/ವೈಶಿಷ್ಟ್ಯವನ್ನು ಸಲ್ಲಿಸಿ",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ ಮತ್ತು $count$ ಇತರ ಟ್ಯಾಬ್",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ ಮತ್ತು $count$ ಇತರ ಟ್ಯಾಬ್‌ಗಳು",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "ಗುಂಪು ಮಾಡಬೇಡಿ",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "ಅನ್‌ಮ್ಯೂಟ್ ಸೈಟ್",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "ಸೈಟ್‌ಗಳನ್ನು ಅನ್‌ಮ್ಯೂಟ್ ಮಾಡಿ",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "ಅನ್‌ಪಿನ್ ಮಾಡಿ",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,48 @@
+;;; init.lisp --- StumpWM demo configuration
+
+;; Copyright © 2020-2021 James McCabe
+
+;; Author: James McCabe <james.mccab3(at)gmail.com>
+;; URL: https://github.com/jamesmccabe/stumpwm-demo-config
+
+;; This is a basic StumpWM configuration for my demo video.
+
+
+(in-package :stumpwm)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Basic settings                                                          ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Run startup applications
+; (run-shell-command "sh ~/.xprofile")
+
+(setf *message-window-gravity* :center
+      *input-window-gravity* :center
+      *window-border-style* :thin
+      *message-window-padding* 10
+      *maxsize-border-width* 2
+      *normal-border-width* 2
+      *transient-border-width* 2
+      stumpwm::*float-window-border* 4
+      stumpwm::*float-window-title-height* 20
+      *mouse-focus-policy* :click)
+
+; Set super key as prefix
+; (run-shell-command "xmodmap -e 'clear mod4'" t)
+; (run-shell-command "xmodmap -e \'keycode 133 = F20\'" t)
+(set-prefix-key (kbd "C-z"))
+
+; Add  multiple groups by default
+(defvar *ce/workspaces* (list "1" "2" "3"))
+(stumpwm:grename (nth 0 *ce/workspaces*))
+(dolist (workspace (cdr *ce/workspaces*))
+  (stumpwm:gnewbg workspace))
+
+(defvar *move-to-keybinds* (list "!" "@" "#" "$" "%" "^" "&" "*" "("))
+(dotimes (y (length *ce/workspaces*))
+  (let ((workspace (write-to-string (+ y 1))))
+    (define-key *root-map* (kbd workspace) (concat "gselect " workspace))
+    (define-key *root-map* (kbd (nth y *move-to-keybinds*)) (concat "gmove-and-follow " workspace))))
+
+(setf (xlib:window-background (screen-root (current-screen))) #x47456d)

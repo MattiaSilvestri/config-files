@@ -1,0 +1,6 @@
+2024/11/27-08:53:03.063 8dccc Reusing MANIFEST /home/mattia/.config/chromium/Default/shared_proto_db/MANIFEST-000001
+2024/11/27-08:53:03.063 8dccc Recovering log #3
+2024/11/27-08:53:03.068 8dccc Reusing old log /home/mattia/.config/chromium/Default/shared_proto_db/000003.log 
+2024/11/27-08:55:03.070 8dccd Level-0 table #5: started
+2024/11/27-08:55:03.079 8dccd Level-0 table #5: 100053 bytes OK
+2024/11/27-08:55:03.096 8dccd Delete type=0 #3

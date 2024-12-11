@@ -1,0 +1,7 @@
+2024/11/27-08:53:03.749 8dccc Reusing MANIFEST /home/mattia/.config/chromium/Default/IndexedDB/https_gtsu.youtrack.cloud_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/27-08:53:03.750 8dccc Recovering log #3
+2024/11/27-08:53:03.750 8dccc Reusing old log /home/mattia/.config/chromium/Default/IndexedDB/https_gtsu.youtrack.cloud_0.indexeddb.leveldb/000003.log 
+2024/12/06-13:57:11.283 8dccd Level-0 table #5: started
+2024/12/06-13:57:11.290 8dccd Level-0 table #5: 32402 bytes OK
+2024/12/06-13:57:11.300 8dccd Delete type=0 #3
+2024/12/06-13:57:11.300 8dccd Manual compaction at level-0 from (begin) .. (end); will stop at (end)

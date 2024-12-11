@@ -1,0 +1,193 @@
+
+2022/09/02 (13:03:22) | ===> btop++ v.1.2.9
+2022/09/02 (13:03:22) | ERROR: Invalid RGB decimal value: "ba1a84"
+
+2022/09/05 (18:51:51) | ===> btop++ v.1.2.9
+2022/09/05 (18:51:51) | ERROR: Stall in Runner thread, restarting!
+
+2023/02/06 (11:54:03) | ===> btop++ v.1.2.13
+2023/02/06 (11:54:03) | ERROR: Stall in Runner thread, restarting!
+2023/02/06 (11:54:14) | ERROR: Stall in Runner thread, restarting!
+
+2023/02/07 (11:01:17) | ===> btop++ v.1.2.13
+2023/02/07 (11:01:17) | ERROR: Stall in Runner thread, restarting!
+2023/02/07 (11:01:27) | ERROR: Stall in Runner thread, restarting!
+
+2023/02/07 (15:09:56) | ===> btop++ v.1.2.13
+2023/02/07 (15:09:57) | ERROR: Stall in Runner thread, restarting!
+2023/02/07 (15:10:32) | ERROR: Stall in Runner thread, restarting!
+2023/02/07 (15:10:39) | ERROR: Stall in Runner thread, restarting!
+
+2023/02/22 (17:00:01) | ===> btop++ v.1.2.13
+2023/02/22 (17:00:01) | ERROR: Stall in Runner thread, restarting!
+
+2023/02/24 (15:28:37) | ===> btop++ v.1.2.13
+2023/02/24 (15:28:37) | ERROR: Stall in Runner thread, restarting!
+
+2023/02/24 (18:02:14) | ===> btop++ v.1.2.13
+2023/02/24 (18:02:14) | ERROR: Stall in Runner thread, restarting!
+
+2023/03/31 (10:11:08) | ===> btop++ v.1.2.13
+2023/03/31 (10:11:09) | ERROR: Stall in Runner thread, restarting!
+2023/03/31 (12:47:08) | ERROR: Stall in Runner thread, restarting!
+2023/03/31 (14:00:49) | ERROR: Stall in Runner thread, restarting!
+2023/03/31 (14:01:02) | ERROR: Stall in Runner thread, restarting!
+2023/03/31 (14:01:08) | ERROR: Stall in Runner thread, restarting!
+
+2023/04/09 (23:52:52) | ===> btop++ v.1.2.13
+2023/04/09 (23:52:52) | ERROR: Stall in Runner thread, restarting!
+2023/04/09 (23:52:57) | ERROR: Stall in Runner thread, restarting!
+2023/04/09 (23:53:02) | ERROR: Stall in Runner thread, restarting!
+
+2023/04/11 (14:55:56) | ===> btop++ v.1.2.13
+2023/04/11 (14:55:58) | ERROR: Stall in Runner thread, restarting!
+
+2023/04/20 (11:28:07) | ===> btop++ v.1.2.13
+2023/04/20 (11:28:07) | ERROR: Stall in Runner thread, restarting!
+2023/04/20 (12:02:44) | ERROR: Stall in Runner thread, restarting!
+
+2023/06/21 (14:23:37) | ===> btop++ v.1.2.13
+2023/06/21 (14:23:37) | ERROR: Stall in Runner thread, restarting!
+2023/06/21 (14:24:03) | ERROR: Stall in Runner thread, restarting!
+2023/06/21 (14:24:30) | ERROR: Stall in Runner thread, restarting!
+2023/06/21 (14:24:45) | ERROR: Stall in Runner thread, restarting!
+2023/06/21 (14:25:02) | ERROR: Stall in Runner thread, restarting!
+2023/06/21 (14:25:28) | ERROR: Stall in Runner thread, restarting!
+2023/06/21 (14:26:05) | ERROR: Stall in Runner thread, restarting!
+2023/06/21 (14:26:27) | WARNING: Failed to join _runner thread on exit!
+
+2024/10/04 (09:22:15) | ===> btop++ v.1.4.0
+2024/10/04 (09:22:15) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/04 (09:56:29) | ===> btop++ v.1.4.0
+2024/10/04 (09:56:29) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/07 (09:16:15) | ===> btop++ v.1.4.0
+2024/10/07 (09:16:15) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/12 (19:32:00) | ===> btop++ v.1.4.0
+2024/10/12 (19:32:00) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/12 (19:32:15) | ===> btop++ v.1.4.0
+2024/10/12 (19:32:15) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/13 (07:55:05) | ===> btop++ v.1.4.0
+2024/10/13 (07:55:05) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/13 (17:08:31) | ===> btop++ v.1.4.0
+2024/10/13 (17:08:31) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/15 (08:55:23) | ===> btop++ v.1.4.0
+2024/10/15 (08:55:23) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/21 (08:17:43) | ===> btop++ v.1.4.0
+2024/10/21 (08:17:43) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/21 (19:35:55) | ===> btop++ v.1.4.0
+2024/10/21 (19:35:55) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/22 (21:58:48) | ===> btop++ v.1.4.0
+2024/10/22 (21:58:48) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/23 (08:28:03) | ===> btop++ v.1.4.0
+2024/10/23 (08:28:03) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/23 (18:57:31) | ===> btop++ v.1.4.0
+2024/10/23 (18:57:31) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/25 (08:34:43) | ===> btop++ v.1.4.0
+2024/10/25 (08:34:43) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/27 (17:44:38) | ===> btop++ v.1.4.0
+2024/10/27 (17:44:38) | WARNING: Intel GPU: Failed to initialize PMU
+2024/10/28 (14:39:48) | ERROR: Stall in Runner thread, restarting!
+
+2024/10/28 (14:53:25) | ===> btop++ v.1.4.0
+2024/10/28 (14:53:25) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/29 (11:25:46) | ===> btop++ v.1.4.0
+2024/10/29 (11:25:46) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/10/30 (13:51:05) | ===> btop++ v.1.4.0
+2024/10/30 (13:51:05) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/11/04 (08:26:49) | ===> btop++ v.1.4.0
+2024/11/04 (08:26:49) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/11/05 (14:12:48) | ===> btop++ v.1.4.0
+2024/11/05 (14:12:48) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/11/08 (09:11:05) | ===> btop++ v.1.4.0
+2024/11/08 (09:11:05) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/11/09 (16:55:28) | ===> btop++ v.1.4.0
+2024/11/09 (16:55:28) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/11/11 (08:18:18) | ===> btop++ v.1.4.0
+2024/11/11 (08:18:18) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/11/11 (08:28:58) | ===> btop++ v.1.4.0
+2024/11/11 (08:28:58) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/11/12 (09:10:56) | ===> btop++ v.1.4.0
+2024/11/12 (09:10:56) | WARNING: Intel GPU: Failed to initialize PMU
+
+2024/11/15 (15:26:16) | ===> btop++ v.1.4.0
+2024/11/15 (15:26:16) | WARNING: NVML: Failed to get maximum GPU power draw, defaulting to 225W: Not Supported
+2024/11/15 (15:26:16) | WARNING: NVML: Failed to get maximum GPU temperature, defaulting to 110°C: Not Supported
+2024/11/15 (15:26:16) | WARNING: NVML: Failed to get GPU utilization: Not Supported
+2024/11/15 (15:26:16) | WARNING: NVML: Failed to get GPU clock speed: Not Supported
+2024/11/15 (15:26:16) | WARNING: NVML: Failed to get VRAM clock speed: Not Supported
+2024/11/15 (15:26:16) | WARNING: NVML: Failed to get PCIe TX throughput: Not Supported
+2024/11/15 (15:26:16) | WARNING: NVML: Failed to get GPU power usage: Not Supported
+2024/11/15 (15:26:16) | WARNING: NVML: Failed to get PCIe RX throughput: Not Supported
+
+2024/11/20 (16:40:20) | ===> btop++ v.1.4.0
+2024/11/20 (16:40:20) | WARNING: NVML: Failed to get maximum GPU power draw, defaulting to 225W: Not Supported
+2024/11/20 (16:40:20) | WARNING: NVML: Failed to get maximum GPU temperature, defaulting to 110°C: Not Supported
+2024/11/20 (16:40:20) | WARNING: NVML: Failed to get GPU utilization: Not Supported
+2024/11/20 (16:40:20) | WARNING: NVML: Failed to get GPU clock speed: Not Supported
+2024/11/20 (16:40:20) | WARNING: NVML: Failed to get VRAM clock speed: Not Supported
+2024/11/20 (16:40:20) | WARNING: NVML: Failed to get GPU power usage: Not Supported
+2024/11/20 (16:40:20) | WARNING: NVML: Failed to get PCIe TX throughput: Not Supported
+2024/11/20 (16:40:20) | WARNING: NVML: Failed to get PCIe RX throughput: Not Supported
+
+2024/11/20 (16:48:02) | ===> btop++ v.1.4.0
+2024/11/20 (16:48:02) | WARNING: NVML: Failed to get maximum GPU power draw, defaulting to 225W: Not Supported
+2024/11/20 (16:48:02) | WARNING: NVML: Failed to get maximum GPU temperature, defaulting to 110°C: Not Supported
+2024/11/20 (16:48:02) | WARNING: NVML: Failed to get GPU utilization: Not Supported
+2024/11/20 (16:48:02) | WARNING: NVML: Failed to get GPU clock speed: Not Supported
+2024/11/20 (16:48:02) | WARNING: NVML: Failed to get VRAM clock speed: Not Supported
+2024/11/20 (16:48:02) | WARNING: NVML: Failed to get GPU power usage: Not Supported
+2024/11/20 (16:48:02) | WARNING: NVML: Failed to get PCIe TX throughput: Not Supported
+2024/11/20 (16:48:02) | WARNING: NVML: Failed to get PCIe RX throughput: Not Supported
+
+2024/11/20 (16:55:16) | ===> btop++ v.1.4.0
+2024/11/20 (16:55:16) | WARNING: NVML: Failed to get maximum GPU power draw, defaulting to 225W: Not Supported
+2024/11/20 (16:55:16) | WARNING: NVML: Failed to get maximum GPU temperature, defaulting to 110°C: Not Supported
+2024/11/20 (16:55:16) | WARNING: NVML: Failed to get GPU utilization: Not Supported
+2024/11/20 (16:55:16) | WARNING: NVML: Failed to get GPU clock speed: Not Supported
+2024/11/20 (16:55:16) | WARNING: NVML: Failed to get VRAM clock speed: Not Supported
+2024/11/20 (16:55:16) | WARNING: NVML: Failed to get GPU power usage: Not Supported
+2024/11/20 (16:55:16) | WARNING: NVML: Failed to get PCIe TX throughput: Not Supported
+2024/11/20 (16:55:16) | WARNING: NVML: Failed to get PCIe RX throughput: Not Supported
+
+2024/11/22 (12:21:35) | ===> btop++ v.1.4.0
+2024/11/22 (12:21:35) | WARNING: NVML: Failed to get maximum GPU power draw, defaulting to 225W: Not Supported
+2024/11/22 (12:21:35) | WARNING: NVML: Failed to get maximum GPU temperature, defaulting to 110°C: Not Supported
+2024/11/22 (12:21:35) | WARNING: NVML: Failed to get GPU utilization: Not Supported
+2024/11/22 (12:21:35) | WARNING: NVML: Failed to get GPU clock speed: Not Supported
+2024/11/22 (12:21:35) | WARNING: NVML: Failed to get VRAM clock speed: Not Supported
+2024/11/22 (12:21:35) | WARNING: NVML: Failed to get GPU power usage: Not Supported
+2024/11/22 (12:21:35) | WARNING: NVML: Failed to get PCIe TX throughput: Not Supported
+2024/11/22 (12:21:35) | WARNING: NVML: Failed to get PCIe RX throughput: Not Supported
+
+2024/11/22 (12:23:09) | ===> btop++ v.1.4.0
+2024/11/22 (12:23:09) | WARNING: NVML: Failed to get maximum GPU power draw, defaulting to 225W: Not Supported
+2024/11/22 (12:23:09) | WARNING: NVML: Failed to get maximum GPU temperature, defaulting to 110°C: Not Supported
+2024/11/22 (12:23:09) | WARNING: NVML: Failed to get GPU utilization: Not Supported
+2024/11/22 (12:23:09) | WARNING: NVML: Failed to get GPU clock speed: Not Supported
+2024/11/22 (12:23:09) | WARNING: NVML: Failed to get VRAM clock speed: Not Supported
+2024/11/22 (12:23:09) | WARNING: NVML: Failed to get PCIe TX throughput: Not Supported
+2024/11/22 (12:23:09) | WARNING: NVML: Failed to get GPU power usage: Not Supported
+2024/11/22 (12:23:09) | WARNING: NVML: Failed to get PCIe RX throughput: Not Supported

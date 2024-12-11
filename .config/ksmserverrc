@@ -1,0 +1,10 @@
+[LegacySession: saved at previous logout]
+count=0
+
+[Session: saved at previous logout]
+clientId1=10148125109d5000173227278900000017410005
+count=1
+program1=/usr/lib/DiscoverNotifier
+restartCommand1=/usr/lib/DiscoverNotifier,-session,10148125109d5000173227278900000017410005_1732273862_282838
+restartStyleHint1=0
+userId1=mattia

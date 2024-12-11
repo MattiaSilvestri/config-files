@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Registerkarte zur Gruppe hinzufügen",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Tab zu neuer Gruppe hinzufügen",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Fügen Sie Registerkarten zur Gruppe hinzu",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Tabs zur neuen Gruppe hinzufügen",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Kauf mir einen Kaffee",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Position ändern",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Verknüpfung ändern",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Schließen",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Gruppe schließen",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Andere Tabs schließen",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Tabs unten schließen",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompaktansicht",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplikat",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikaler Tab-Manager im Seitenbereich",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vertikale Tabs",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Gruppe in neues Fenster verschieben",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Tab in ein anderes Fenster verschieben",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Tab in neues Fenster verschieben",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Verschieben Sie Tabs in ein anderes Fenster",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Tabs in neues Fenster verschieben",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Website stummschalten",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Websites stummschalten",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Benennen Sie diese Gruppe",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Neue Gruppe",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Neuer Tab unten",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Neuer Tab in der Gruppe",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Neues Fenster",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Stift",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Angeheftete Tabs als Symbole",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Tarifverlängerung",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Neu laden",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Aus Gruppe entfernen",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Suchen",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Vollständige URL anzeigen",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Fehler/Funktion einreichen",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ und $count$ andere Registerkarte",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ und $count$ weitere Tabs",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Gruppierung aufheben",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Stummschaltung der Website aufheben",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Stummschaltung für Websites aufheben",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Lösen",
+      "placeholders": {
+      }
+   }
+}

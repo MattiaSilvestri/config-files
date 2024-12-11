@@ -1,0 +1,18 @@
+[2024-11-26 10:28:40.488] [info]  Running version 10.1.1
+[2024-11-26 10:28:40.520] [error] [electron client protocol] FAILED to set default protocol 'insomnia://'
+[2024-11-26 10:28:40.549] [info]  [electron client protocol] the current executable is not the default protocol for 'insomnia://'
+[2024-11-26 10:28:40.621] [info]  [electron client protocol] the default application set for 'insomnia://' is 'insomnia.desktop
+'
+[2024-11-26 10:28:40.874] [info]  [fix] Running database repairs
+[2024-11-26 10:28:41.060] [info]  [db] Initialized DB at /home/mattia/.config/Insomnia/insomnia.$TYPE.db
+[2024-11-26 10:28:41.060] [info]  [db] Init responses DB
+[2024-11-26 10:28:41.060] [info]  [db] Init websocket-responses DB
+[2024-11-26 10:28:41.062] [info]  [localstorage] Initialized at /home/mattia/.config/Insomnia/localStorage
+[2024-11-26 10:28:41.104] [info]  [main] Loading file:///opt/insomnia/resources/app.asar/index.html
+[2024-11-26 10:28:41.120] [info]  [main] Registering the hidden window restarting handler
+[2024-11-26 10:28:41.121] [info]  [updater] Not supported on this platform linux
+[2024-11-26 10:28:42.683] [info]  [main] Window ready, handling command line arguments [ '/opt/insomnia/insomnia' ]
+[2024-11-26 10:28:42.685] [info]  [main] Check args and create windows []
+[2024-11-26 10:28:42.685] [info]  [main] Checking for newer version than  10.1.1
+[2024-11-26 10:28:42.852] [info]  [main] Found newer version
+[2024-11-26 10:28:42.855] [info]  [main] Backup found at: /home/mattia/.config/Insomnia/backups/10.1.1

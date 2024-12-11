@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "그룹에 탭 추가",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "새 그룹에 탭 추가",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "그룹에 탭 추가",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "새 그룹에 탭 추가",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "나에게 커피를 사다",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "위치 변경",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "바로가기 변경",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "닫다",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "그룹 닫기",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "다른 탭 닫기",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "아래 탭 닫기",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "컴팩트한 뷰",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "복제하다",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "측면 패널의 세로 탭 관리자",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - 수직 탭",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "그룹을 새 창으로 이동",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "탭을 다른 창으로 이동",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "탭을 새 창으로 이동",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "탭을 다른 창으로 이동",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "탭을 새 창으로 이동",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "음소거 사이트",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "음소거 사이트",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "이 그룹 이름 지정",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "새 그룹",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "아래 새 탭",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "그룹의 새 탭",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "새 창",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "핀",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "아이콘으로 고정된 탭",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "요금 연장",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "새로고침",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "그룹에서 제거",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "찾다",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "전체 URL 표시",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "버그/기능 제출",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ 외 $count$개 탭",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ 외 $count$개 탭",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "그룹 해제",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "사이트 음소거 해제",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "사이트 음소거 해제",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "고정 해제",
+      "placeholders": {
+      }
+   }
+}

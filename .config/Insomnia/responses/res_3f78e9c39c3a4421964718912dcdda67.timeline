@@ -1,0 +1,269 @@
+{"value":"Preparing request to https://staging.jarvis.gtsu.org/inventory/api/v2/assets-documents/","name":"Text","timestamp":1732613957550}
+{"value":"Current time is 2024-11-26T09:39:17.550Z","name":"Text","timestamp":1732613957550}
+{"value":"Enable automatic URL encoding","name":"Text","timestamp":1732613957550}
+{"value":"Using default HTTP version","name":"Text","timestamp":1732613957551}
+{"value":"Enable timeout of 30000ms","name":"Text","timestamp":1732613957551}
+{"value":"Enable SSL validation","name":"Text","timestamp":1732613957551}
+{"name":"Text","value":"  Trying 195.32.124.208:443...\n","timestamp":1732613957554}
+{"name":"Text","value":"Connected to staging.jarvis.gtsu.org (195.32.124.208) port 443 (#5)\n","timestamp":1732613957555}
+{"name":"Text","value":"ALPN, offering h2\n","timestamp":1732613957558}
+{"name":"Text","value":"ALPN, offering http/1.1\n","timestamp":1732613957558}
+{"name":"Text","value":" CAfile: /etc/ssl/certs/ca-certificates.crt\n","timestamp":1732613957601}
+{"name":"Text","value":"TLSv1.0 (OUT), TLS header, Certificate Status (22):\n","timestamp":1732613957601}
+{"name":"Text","value":"TLSv1.3 (OUT), TLS handshake, Client hello (1):\n","timestamp":1732613957601}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Certificate Status (22):\n","timestamp":1732613957605}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Server hello (2):\n","timestamp":1732613957605}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Finished (20):\n","timestamp":1732613957606}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957606}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):\n","timestamp":1732613957606}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957606}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Certificate (11):\n","timestamp":1732613957606}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957608}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, CERT verify (15):\n","timestamp":1732613957608}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957608}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Finished (20):\n","timestamp":1732613957608}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Finished (20):\n","timestamp":1732613957608}
+{"name":"Text","value":"TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):\n","timestamp":1732613957608}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732613957608}
+{"name":"Text","value":"TLSv1.3 (OUT), TLS handshake, Finished (20):\n","timestamp":1732613957609}
+{"name":"Text","value":"SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384\n","timestamp":1732613957609}
+{"name":"Text","value":"ALPN, server accepted to use h2\n","timestamp":1732613957609}
+{"name":"Text","value":"Server certificate:\n","timestamp":1732613957609}
+{"name":"Text","value":" subject: CN=staging.jarvis.gtsu.org\n","timestamp":1732613957609}
+{"name":"Text","value":" start date: Oct  7 08:14:20 2024 GMT\n","timestamp":1732613957609}
+{"name":"Text","value":" expire date: Jan  5 08:14:19 2025 GMT\n","timestamp":1732613957609}
+{"name":"Text","value":" subjectAltName: host \"staging.jarvis.gtsu.org\" matched cert's \"staging.jarvis.gtsu.org\"\n","timestamp":1732613957609}
+{"name":"Text","value":" issuer: C=US; O=Let's Encrypt; CN=E6\n","timestamp":1732613957609}
+{"name":"Text","value":" SSL certificate verify ok.\n","timestamp":1732613957609}
+{"name":"Text","value":"Using HTTP2, server supports multiplexing\n","timestamp":1732613957609}
+{"name":"Text","value":"Connection state changed (HTTP/2 confirmed)\n","timestamp":1732613957609}
+{"name":"Text","value":"Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0\n","timestamp":1732613957609}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732613957609}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732613957609}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732613957609}
+{"name":"Text","value":"Using Stream ID: 1 (easy handle 0x6c003e54000)\n","timestamp":1732613957609}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732613957609}
+{"name":"HeaderOut","value":"GET /inventory/api/v2/assets-documents/ HTTP/2\r\nHost: staging.jarvis.gtsu.org\r\nuser-agent: insomnia/10.1.1\r\ncontent-type: application/json\r\nauthorization: Token 58a62e890157d52f382443e9b7f13fb11e24b602\r\naccept: */*\r\n\r\n","timestamp":1732613957609}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957610}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):\n","timestamp":1732613957610}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957610}
+{"name":"Text","value":"TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):\n","timestamp":1732613957610}
+{"name":"Text","value":"old SSL session ID is stale, removing\n","timestamp":1732613957610}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957610}
+{"name":"Text","value":"Connection state changed (MAX_CONCURRENT_STREAMS == 128)!\n","timestamp":1732613957610}
+{"name":"Text","value":"TLSv1.2 (OUT), TLS header, Supplemental data (23):\n","timestamp":1732613957610}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"HTTP/2 404 \r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"server: openresty\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"date: Tue, 26 Nov 2024 09:39:17 GMT\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"content-type: text/html; charset=utf-8\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"content-length: 893964\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"server-timing: TimerPanel_utime;dur=80.26800000000023;desc=\"User CPU time\", TimerPanel_stime;dur=5.927000000000016;desc=\"System CPU time\", TimerPanel_total;dur=86.19500000000025;desc=\"Total CPU time\", TimerPanel_total_time;dur=85.79401019960642;desc=\"Elapsed time\", SQLPanel_sql_time;dur=0;desc=\"SQL 0 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\"\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"vary: Accept-Language, Cookie\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"content-language: en\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"x-frame-options: SAMEORIGIN\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"x-content-type-options: nosniff\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"referrer-policy: same-origin\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"cross-origin-opener-policy: same-origin\r\n","timestamp":1732613957762}
+{"name":"HeaderIn","value":"\r\n","timestamp":1732613957762}
+{"name":"Text","value":"Received 7.3 KB chunk","timestamp":1732613957762}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957762}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957762}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957762}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957763}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957763}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957763}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957763}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957763}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957763}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957763}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957763}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957763}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957763}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957763}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957764}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957764}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957764}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957764}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957764}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957764}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957764}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957764}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957764}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957764}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957764}
+{"name":"Text","value":"Received 18 B chunk","timestamp":1732613957764}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957764}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957764}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957764}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957765}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957765}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957765}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957765}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957765}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957765}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957765}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957765}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957765}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957766}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957766}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957766}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957766}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957766}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957766}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957766}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957766}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957766}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957766}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957766}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957766}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957766}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957766}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957766}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957767}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957767}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957768}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957768}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 36 B chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 16 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 12 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957769}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957769}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 12 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957770}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957770}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957771}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957771}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Received 8 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Received 4 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Received 5.7 KB chunk","timestamp":1732613957772}
+{"name":"Text","value":"TLSv1.2 (IN), TLS header, Supplemental data (23):\n","timestamp":1732613957772}
+{"name":"Text","value":"Connection #5 to host staging.jarvis.gtsu.org left intact\n","timestamp":1732613957772}

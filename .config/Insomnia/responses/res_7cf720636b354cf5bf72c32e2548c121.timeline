@@ -1,0 +1,25 @@
+{"value":"Preparing request to http://localhost:8000/inventory/api/v2/assets-schedulers/","name":"Text","timestamp":1731662959516}
+{"value":"Current time is 2024-11-15T09:29:19.516Z","name":"Text","timestamp":1731662959516}
+{"value":"Enable automatic URL encoding","name":"Text","timestamp":1731662959516}
+{"value":"Using default HTTP version","name":"Text","timestamp":1731662959519}
+{"value":"Enable timeout of 30000ms","name":"Text","timestamp":1731662959520}
+{"value":"Enable SSL validation","name":"Text","timestamp":1731662959520}
+{"name":"Text","value":"  Trying 127.0.0.1:8000...\n","timestamp":1731662959521}
+{"name":"Text","value":"Connected to localhost (127.0.0.1) port 8000 (#0)\n","timestamp":1731662959521}
+{"name":"HeaderOut","value":"GET /inventory/api/v2/assets-schedulers/ HTTP/1.1\r\nHost: localhost:8000\r\nUser-Agent: insomnia/10.1.1\r\nContent-Type: application/json\r\nAuthorization: Token 58a62e890157d52f382443e9b7f13fb11e24b602\r\nAccept: */*\r\n\r\n","timestamp":1731662959521}
+{"name":"Text","value":"Mark bundle as not supporting multiuse\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"HTTP/1.1 200 OK\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"Content-Type: application/json\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"Vary: Accept, Accept-Language, Cookie\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"Allow: GET, OPTIONS, HEAD\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"Server-Timing: TimerPanel_utime;dur=327.7639999999984;desc=\"User CPU time\", TimerPanel_stime;dur=15.076000000000533;desc=\"System CPU time\", TimerPanel_total;dur=342.83999999999895;desc=\"Total CPU time\", TimerPanel_total_time;dur=452.79743500032055;desc=\"Elapsed time\", SQLPanel_sql_time;dur=102.23277700242761;desc=\"SQL 73 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\"\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"Content-Language: en\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"X-Frame-Options: SAMEORIGIN\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"Content-Length: 13134\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"X-Content-Type-Options: nosniff\r\n","timestamp":1731662960105}
+{"name":"HeaderIn","value":"Referrer-Policy: same-origin\r\n","timestamp":1731662960106}
+{"name":"HeaderIn","value":"Cross-Origin-Opener-Policy: same-origin\r\n","timestamp":1731662960106}
+{"name":"HeaderIn","value":"Server: daphne\r\n","timestamp":1731662960106}
+{"name":"HeaderIn","value":"\r\n","timestamp":1731662960106}
+{"name":"Text","value":"Received 12.8 KB chunk","timestamp":1731662960106}
+{"name":"Text","value":"Connection #0 to host localhost left intact\n","timestamp":1731662960106}

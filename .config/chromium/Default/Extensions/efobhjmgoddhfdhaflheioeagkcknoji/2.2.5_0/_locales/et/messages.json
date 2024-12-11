@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Lisa vahekaart rühma",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Lisa vahekaart uude rühma",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Lisage rühma vahelehed",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Lisa vahekaarte uude rühma",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Osta mulle kohvi",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Muutke asendit",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Muuda otseteed",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Sule",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Sule grupp",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Sulgege muud vahelehed",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Sulgege allolevad vahelehed",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompaktne vaade",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplikaat",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikaalne vahelehtede haldur külgpaneelil",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vertikaalsed vahelehed",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Liiguta grupp uude aknasse",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Liiguta vahekaart teise aknasse",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Liiguta vahekaart uude aknasse",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Vahelehtede teisaldamine teise aknasse",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Vahelehtede teisaldamine uude aknasse",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Vaigista sait",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Vaigista saidid",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Nimetage see rühm",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Uus grupp",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Uus vahekaart allpool",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Uus vahekaart rühmas",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Uus aken",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Kinnitatud vahelehed ikoonidena",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Hinda pikendamine",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Laadi uuesti",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Eemalda grupist",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Otsi",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Kuva täielik URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Esitage viga/funktsioon",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ ja veel $count$ vahekaart",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ ja veel $count$ vahekaarti",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Lahutage rühmitamine",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Tühista saidi vaigistus",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Tühista saitide vaigistus",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Vabastage",
+      "placeholders": {
+      }
+   }
+}

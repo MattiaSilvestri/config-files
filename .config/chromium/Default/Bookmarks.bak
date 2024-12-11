@@ -1,0 +1,89 @@
+{
+   "checksum": "72de0d3c74f515e4fa0147af6c1a016c",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13376150018664267",
+               "date_last_used": "13376150091985927",
+               "guid": "5720cc0f-576d-43b2-947c-6de4cd9c2550",
+               "id": "5",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Jarvis Local",
+               "type": "url",
+               "url": "http://localhost:8000/"
+            }, {
+               "date_added": "13376758401430398",
+               "date_last_used": "0",
+               "guid": "45c4c76c-5bb9-4f58-bf55-25998080dcd9",
+               "id": "8",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Jarvis Staging",
+               "type": "url",
+               "url": "https://staging.jarvis.gtsu.org/"
+            } ],
+            "date_added": "13376150056081644",
+            "date_last_used": "0",
+            "date_modified": "13376758842798765",
+            "guid": "f67d2073-e9df-4a91-a8d3-4ef943b9e704",
+            "id": "6",
+            "name": "Jarvis",
+            "type": "folder"
+         }, {
+            "date_added": "13376758842798765",
+            "date_last_used": "0",
+            "guid": "b7d7951c-56a8-4d01-880a-6c2c7e8fb1bb",
+            "id": "9",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Vaultwarden",
+            "type": "url",
+            "url": "https://vaultwarden.gtsu.org/#/vault"
+         }, {
+            "date_added": "13376758957981422",
+            "date_last_used": "0",
+            "guid": "a81ecb5a-fd38-4780-ac73-687d11a0970d",
+            "id": "10",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Gitlab",
+            "type": "url",
+            "url": "https://gitlab.gtsu.org/"
+         } ],
+         "date_added": "13376149991782989",
+         "date_last_used": "0",
+         "date_modified": "13376758957981422",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13376149991782991",
+         "date_last_used": "0",
+         "date_modified": "13376150018664267",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13376149991782996",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

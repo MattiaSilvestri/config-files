@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Dodaj zavihek v skupino",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Dodaj zavihek v novo skupino",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Dodajte zavihke v skupino",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Dodajte zavihke v novo skupino",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Kupi mi kavo",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Spremenite položaj",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Spremeni bližnjico",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Zapri",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Zapri skupino",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Zaprite druge zavihke",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Zapri zavihke spodaj",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompakten pogled",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Dvojnik",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Navpični upravitelj zavihkov na stranski plošči",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Navpični zavihki",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Premakni skupino v novo okno",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Premakni zavihek v drugo okno",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Premakni zavihek v novo okno",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Premakni zavihke v drugo okno",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Premakni zavihke v novo okno",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Izklop zvoka spletnega mesta",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Izklop zvoka spletnih mest",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Poimenujte to skupino",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nova skupina",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nov zavihek spodaj",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nov zavihek v skupini",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Novo okno",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Pripeti zavihki kot ikone",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Razširitev stopnje",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Ponovno naloži",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Odstrani iz skupine",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Iskanje",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Prikaži celoten URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Predloži napako/funkcijo",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ in $count$ drug zavihek",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ in $count$ drugih zavihkov",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Razdruži",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Vklopi zvok mesta",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Vklopi zvok spletnih mest",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Odpni",
+      "placeholders": {
+      }
+   }
+}

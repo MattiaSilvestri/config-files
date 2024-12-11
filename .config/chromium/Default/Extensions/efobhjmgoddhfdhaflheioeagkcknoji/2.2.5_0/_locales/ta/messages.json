@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "குழுவில் தாவலைச் சேர்க்கவும்",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "புதிய குழுவில் தாவலைச் சேர்க்கவும்",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "குழுவில் தாவல்களைச் சேர்க்கவும்",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "புதிய குழுவில் தாவல்களைச் சேர்க்கவும்",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "எனக்கு ஒரு காபி வாங்கிக் கொடு",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "நிலையை மாற்றவும்",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "குறுக்குவழியை மாற்றவும்",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "மூடு",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "மூடு குழு",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "மற்ற தாவல்களை மூடு",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "கீழே உள்ள தாவல்களை மூடு",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "சிறிய பார்வை",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "நகல்",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "பக்க பேனலில் செங்குத்து தாவல் மேலாளர்",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - செங்குத்து தாவல்கள்",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "குழுவை புதிய சாளரத்திற்கு நகர்த்தவும்",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "தாவலை மற்றொரு சாளரத்திற்கு நகர்த்தவும்",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "தாவலை புதிய சாளரத்திற்கு நகர்த்தவும்",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "தாவல்களை மற்றொரு சாளரத்திற்கு நகர்த்தவும்",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "தாவல்களை புதிய சாளரத்திற்கு நகர்த்தவும்",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "தளத்தை முடக்கு",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "தளங்களை முடக்கு",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "இந்த குழுவிற்கு பெயரிடவும்",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "புதிய குழு",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "புதிய தாவல் கீழே",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "குழுவில் புதிய தாவல்",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "புதிய சாளரம்",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "பின்",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "ஐகான்களாகப் பின் செய்யப்பட்ட தாவல்கள்",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "விகித நீட்டிப்பு",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "மீண்டும் ஏற்றவும்",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "குழுவிலிருந்து நீக்கு",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "தேடு",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "முழு URL ஐக் காட்டு",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "பிழை/அம்சத்தை சமர்ப்பிக்கவும்",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ மற்றும் $count$ மற்ற தாவல்",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ மற்றும் $count$ பிற தாவல்கள்",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "குழுவிலக்கு",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "தளத்தை முடக்கு",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "தளங்களை முடக்கு",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "அன்பின்",
+      "placeholders": {
+      }
+   }
+}

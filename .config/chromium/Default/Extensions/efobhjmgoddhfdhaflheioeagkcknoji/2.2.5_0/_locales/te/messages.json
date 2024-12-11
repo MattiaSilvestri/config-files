@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "సమూహానికి ట్యాబ్‌ను జోడించండి",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "కొత్త సమూహానికి ట్యాబ్‌ని జోడించండి",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "సమూహానికి ట్యాబ్‌లను జోడించండి",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "కొత్త సమూహానికి ట్యాబ్‌లను జోడించండి",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "నాకు కాఫీ కొనండి",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "స్థానం మార్చండి",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "సత్వరమార్గాన్ని మార్చండి",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "మూసివేయి",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "సమూహాన్ని మూసివేయండి",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "ఇతర ట్యాబ్‌లను మూసివేయండి",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "దిగువ ట్యాబ్‌లను మూసివేయండి",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "కాంపాక్ట్ వీక్షణ",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "నకిలీ",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "సైడ్ ప్యానెల్‌లో నిలువు ట్యాబ్ మేనేజర్",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - నిలువు ట్యాబ్‌లు",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "సమూహాన్ని కొత్త విండోకు తరలించండి",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "ట్యాబ్‌ను మరొక విండోకు తరలించండి",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "ట్యాబ్‌ను కొత్త విండోకు తరలించండి",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "ట్యాబ్‌లను మరొక విండోకు తరలించండి",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "ట్యాబ్‌లను కొత్త విండోకు తరలించండి",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "సైట్‌ని మ్యూట్ చేయండి",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "సైట్‌లను మ్యూట్ చేయండి",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "ఈ గుంపుకు పేరు పెట్టండి",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "కొత్త గ్రూప్",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "దిగువన కొత్త ట్యాబ్",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "సమూహంలో కొత్త ట్యాబ్",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "కొత్త విండో",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "పిన్ చేయండి",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "ట్యాబ్‌లు చిహ్నాలుగా పిన్ చేయబడ్డాయి",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "రేటు పొడిగింపు",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "మళ్లీ లోడ్ చేయండి",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "సమూహం నుండి తీసివేయండి",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "శోధించండి",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "పూర్తి URLని చూపించు",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "బగ్/ఫీచర్‌ని సమర్పించండి",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ మరియు $count$ ఇతర ట్యాబ్",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ మరియు $count$ ఇతర ట్యాబ్‌లు",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "సమూహాన్ని తీసివేయండి",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "సైట్‌ని అన్‌మ్యూట్ చేయండి",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "సైట్‌లను అన్‌మ్యూట్ చేయండి",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "అన్‌పిన్ చేయండి",
+      "placeholders": {
+      }
+   }
+}

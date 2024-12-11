@@ -1,0 +1,4 @@
+[Mouse]
+X11LibInputXAccelProfileFlat=true
+XLbInptAccelProfileFlat=false
+cursorTheme=Catppuccin-Mocha-Light-Cursors

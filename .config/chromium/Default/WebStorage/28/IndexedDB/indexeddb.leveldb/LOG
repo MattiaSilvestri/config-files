@@ -1,0 +1,46 @@
+2024/12/02-12:33:01.524 8dccc Reusing MANIFEST /home/mattia/.config/chromium/Default/WebStorage/28/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2024/12/02-12:33:01.525 8dccc Recovering log #12
+2024/12/02-12:33:01.525 8dccc Reusing old log /home/mattia/.config/chromium/Default/WebStorage/28/IndexedDB/indexeddb.leveldb/000012.log 
+2024/12/02-12:33:12.654 8dcd8 Level-0 table #18: started
+2024/12/02-12:33:12.693 8dcd8 Level-0 table #18: 1341204 bytes OK
+2024/12/02-12:33:12.698 8dcd8 Delete type=0 #12
+2024/12/02-12:33:13.175 8dcce Compacting 1@1 + 1@2 files
+2024/12/02-12:33:13.224 8dcce Generated table #19@1: 3415 keys, 1507167 bytes
+2024/12/02-12:33:13.225 8dcce Compacted 1@1 + 1@2 files => 1507167 bytes
+2024/12/02-12:33:13.230 8dcce compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/12/02-12:33:13.230 8dcce Delete type=2 #15
+2024/12/02-12:33:13.230 8dcce Delete type=2 #18
+2024/12/02-12:34:18.839 8dcce Level-0 table #21: started
+2024/12/02-12:34:18.883 8dcce Level-0 table #21: 1441149 bytes OK
+2024/12/02-12:34:18.889 8dcce Delete type=0 #17
+2024/12/02-12:34:58.873 8dcce Compacting 1@1 + 1@2 files
+2024/12/02-12:34:58.924 8dcce Generated table #22@1: 3583 keys, 1485843 bytes
+2024/12/02-12:34:58.925 8dcce Compacted 1@1 + 1@2 files => 1485843 bytes
+2024/12/02-12:34:58.934 8dcce compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/12/02-12:35:28.474 8dcce Level-0 table #24: started
+2024/12/02-12:35:28.511 8dcce Level-0 table #24: 1390719 bytes OK
+2024/12/02-12:35:28.521 8dcce Delete type=2 #19
+2024/12/02-12:35:28.521 8dcce Delete type=0 #20
+2024/12/02-12:35:28.521 8dcce Delete type=2 #21
+2024/12/02-12:35:28.673 8dcce Compacting 1@1 + 1@2 files
+2024/12/02-12:35:28.743 8dcce Generated table #25@1: 3893 keys, 1597833 bytes
+2024/12/02-12:35:28.743 8dcce Compacted 1@1 + 1@2 files => 1597833 bytes
+2024/12/02-12:35:28.752 8dcce compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/12/02-12:35:28.753 8dcce Delete type=2 #22
+2024/12/02-12:35:28.753 8dcce Delete type=2 #24
+2024/12/02-12:35:42.447 8dccd Level-0 table #27: started
+2024/12/02-12:35:42.483 8dccd Level-0 table #27: 1363056 bytes OK
+2024/12/02-12:35:42.493 8dccd Delete type=0 #23
+2024/12/02-12:35:43.514 8dccd Compacting 1@1 + 1@2 files
+2024/12/02-12:35:43.569 8dccd Generated table #28@1: 4195 keys, 1688815 bytes
+2024/12/02-12:35:43.569 8dccd Compacted 1@1 + 1@2 files => 1688815 bytes
+2024/12/02-12:35:43.578 8dccd compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/12/02-12:36:28.860 8dcce Level-0 table #30: started
+2024/12/02-12:36:28.898 8dcce Level-0 table #30: 1352349 bytes OK
+2024/12/02-12:36:28.908 8dcce Delete type=2 #25
+2024/12/02-12:36:28.908 8dcce Delete type=0 #26
+2024/12/02-12:36:28.908 8dcce Delete type=2 #27
+2024/12/02-12:36:29.054 8dcce Compacting 1@1 + 1@2 files
+2024/12/02-12:36:29.116 8dcce Generated table #31@1: 4514 keys, 1735409 bytes
+2024/12/02-12:36:29.116 8dcce Compacted 1@1 + 1@2 files => 1735409 bytes
+2024/12/02-12:36:29.125 8dcce compacted to: files[ 0 0 1 0 0 0 0 ]

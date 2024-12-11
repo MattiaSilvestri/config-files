@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Добавете раздел към групата",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Добавяне на раздел към нова група",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Добавете раздели към групата",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Добавете раздели към нова група",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Купи ми кафе",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Променете позицията",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Промяна на прекия път",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "затвори",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Затворете групата",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Затваряне на други раздели",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Затваряне на разделите по-долу",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Компактен изглед",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Дубликат",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Мениджър на вертикални раздели в страничния панел",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Вертикални раздели",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Преместване на групата в нов прозорец",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Преместване на раздел в друг прозорец",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Преместване на раздела в нов прозорец",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Преместване на раздели в друг прозорец",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Преместване на раздели в нов прозорец",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Заглушаване на сайта",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Заглушаване на сайтове",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Име на тази група",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Нова група",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Нов раздел по-долу",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Нов раздел в групата",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Нов прозорец",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "ПИН",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Фиксирани раздели като икони",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Разширение на тарифата",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Презареди",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Премахване от групата",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Търсене",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Показване на пълния URL адрес",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Изпратете грешка/функция",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ и $count$ друг раздел",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ и $count$ други раздела",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Разгрупиране",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Включване на звука на сайта",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Включване на звука на сайтове",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Откачване",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Ongeza kichupo kwa kikundi",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Ongeza Kichupo kwa Kikundi Kipya",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Ongeza tabo kwenye kikundi",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Ongeza Tabo kwenye Kikundi Kipya",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Ninunulie kahawa",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Badilisha nafasi",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Badilisha njia ya mkato",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Funga",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Funga kikundi",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Funga Vichupo Vingine",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Funga Vichupo Hapa Chini",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Mwonekano thabiti",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Nakala",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Kidhibiti kichupo cha wima kwenye kidirisha cha pembeni",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vichupo Wima",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Hamisha kikundi kwenye dirisha jipya",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Hamisha Kichupo hadi Dirisha Jingine",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Hamisha Kichupo hadi Dirisha Jipya",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Hamisha Vichupo hadi Dirisha Jingine",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Hamisha Vichupo hadi Dirisha Jipya",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Nyamazisha Tovuti",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Nyamazisha Tovuti",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Taja Kikundi Hiki",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Kikundi Kipya",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Kichupo Kipya Chini",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Kichupo kipya kwenye kikundi",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Dirisha Jipya",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Bandika",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Vichupo vilivyobandikwa kama aikoni",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Ugani wa viwango",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Pakia upya",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Ondoa kwenye Kikundi",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Tafuta",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Onyesha URL kamili",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Wasilisha hitilafu/kipengele",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ na kichupo $count$ kingine",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ na vichupo vingine $count$",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Tenganisha kikundi",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Rejesha Sauti ya Tovuti",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Rejesha Sauti kwenye Tovuti",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Bandua",
+      "placeholders": {
+      }
+   }
+}

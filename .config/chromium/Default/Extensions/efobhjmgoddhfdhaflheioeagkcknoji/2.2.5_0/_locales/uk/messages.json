@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Додати вкладку до групи",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Додати вкладку до нової групи",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Додати вкладки до групи",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Додати вкладки до нової групи",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Купи мені кави",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Змінити позицію",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Змінити ярлик",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Закрити",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Закрита група",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Закрийте інші вкладки",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Закрити вкладки нижче",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Компактний вид",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "дублікат",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Менеджер вертикальних вкладок на бічній панелі",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Вертикальні вкладки",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Перемістити групу в нове вікно",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Перемістити вкладку в інше вікно",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Перемістити вкладку в нове вікно",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Перемістити вкладки в інше вікно",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Перемістити вкладки в нове вікно",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Вимкнути сайт",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Вимкнути сайти",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Назвіть цю групу",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Нова група",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Нова вкладка нижче",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Нова вкладка в групі",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Нове вікно",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Закріплені вкладки як значки",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Розширення ставок",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Перезавантажити",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Видалити з групи",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Пошук",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Показати повну URL-адресу",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Надіслати помилку/функцію",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ і ще $count$ вкладка",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ та $count$ інших вкладок",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Розгрупувати",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Увімкнути сайт",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Увімкнути звук сайтів",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Відкріпити",
+      "placeholders": {
+      }
+   }
+}

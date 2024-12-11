@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Pridėti skirtuką prie grupės",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Pridėti skirtuką prie naujos grupės",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Pridėkite skirtukus prie grupės",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Pridėti skirtukų prie naujos grupės",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Nupirk man kavos",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Keisti poziciją",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Pakeiskite spartųjį klavišą",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Uždaryti",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Uždaryti grupę",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Uždarykite kitus skirtukus",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Uždarykite toliau esančius skirtukus",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompaktiškas vaizdas",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Pasikartoti",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikali skirtukų tvarkyklė šoniniame skydelyje",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vertikalios skirtukai",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Perkelti grupę į naują langą",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Perkelti skirtuką į kitą langą",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Perkelti skirtuką į naują langą",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Perkelkite skirtukus į kitą langą",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Perkelti skirtukus į naują langą",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Nutildyti svetainę",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Nutildyti svetaines",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Pavadinkite šią grupę",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Nauja grupė",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Žemiau naujas skirtukas",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Naujas skirtukas grupėje",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Naujas langas",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Smeigtukas",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Prisegti skirtukai kaip piktogramos",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Kainos pratęsimas",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Įkelti iš naujo",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Pašalinti iš grupės",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Ieškoti",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Rodyti visą URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Pateikite klaidą / funkciją",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ ir dar $count$ skirtukas",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ ir dar $count$ skirtukai",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Išgrupuoti",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Įjungti svetainės garsą",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Įjungti svetainių garsą",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Atsegti",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Adicionar guia ao grupo",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Adicionar guia ao novo grupo",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Adicionar guias ao grupo",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Adicionar guias ao novo grupo",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Compre-me um café",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Mudar de posição",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Alterar atalho",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Fechar",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Fechar grupo",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Fechar outras guias",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Fechar guias abaixo",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Visualização compacta",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicado",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Gerenciador de guias verticais no painel lateral",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Guias verticais",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Mover grupo para nova janela",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Mover guia para outra janela",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Mover guia para nova janela",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Mover guias para outra janela",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Mover guias para uma nova janela",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Silenciar site",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Silenciar sites",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Nomeie este grupo",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Novo grupo",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Nova aba abaixo",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Nova aba no grupo",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nova janela",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Alfinete",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Guias fixadas como ícones",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Extensão de taxa",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Recarregar",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Remover do grupo",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Procurar",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Mostrar URL completo",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Enviar bug/recurso",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ e $count$ outra guia",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ e $count$ outras guias",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Desagrupar",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Ativar site mudo",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Ativar sites mudos",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Liberar",
+      "placeholders": {
+      }
+   }
+}

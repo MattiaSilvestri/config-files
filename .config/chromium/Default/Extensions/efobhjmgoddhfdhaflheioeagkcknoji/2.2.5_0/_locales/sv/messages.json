@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Lägg till flik i gruppen",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Lägg till flik till ny grupp",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Lägg till flikar i gruppen",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Lägg till flikar i ny grupp",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Köp en kaffe till mig",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Byt position",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Ändra genväg",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Nära",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Stäng grupp",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Stäng andra flikar",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Stäng flikarna nedan",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompakt vy",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicera",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertikal flikhanterare i sidopanelen",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Vertikala flikar",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Flytta grupp till nytt fönster",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Flytta flik till ett annat fönster",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Flytta flik till nytt fönster",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Flytta flikar till ett annat fönster",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Flytta flikar till nytt fönster",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Stäng av webbplats",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Stäng av webbplatser",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Namnge denna grupp",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Ny grupp",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Ny flik nedan",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Ny flik i gruppen",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nytt fönster",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Stift",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Fixade flikar som ikoner",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Prisförlängning",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Ladda om",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Ta bort från gruppen",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Söka",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Visa fullständig URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Skicka bugg/funktion",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ och $count$ annan flik",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ och $count$ andra flikar",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Dela upp gruppen",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Slå på ljudet på webbplatsen",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Slå på ljudet för webbplatser",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Lossa",
+      "placeholders": {
+      }
+   }
+}

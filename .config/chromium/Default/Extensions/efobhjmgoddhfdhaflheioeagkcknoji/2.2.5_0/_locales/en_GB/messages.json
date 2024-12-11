@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Add tab to group",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Add Tab to New Group",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Add tabs to group",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Add Tabs to New Group",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Buy me a coffee",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Change position",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Change shortcut",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Close",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Close group",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Close Other Tabs",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Close Tabs Below",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Compact view",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplicate",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Vertical tab manager in side panel",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Move group to new window",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Move Tab to Another Window",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Move Tab to New Window",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Move Tabs to Another Window",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Move Tabs to New Window",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Mute Site",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Mute Sites",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Name This Group",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "New Group",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "New Tab Below",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "New tab in group",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "New Window",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Pinned tabs as icons",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Rate extension",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Reload",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Remove from Group",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Search",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Show full URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Submit bug/feature",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ and $count$ other tab",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ and $count$ other tabs",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Ungroup",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Unmute Site",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Unmute Sites",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Unpin",
+      "placeholders": {
+      }
+   }
+}

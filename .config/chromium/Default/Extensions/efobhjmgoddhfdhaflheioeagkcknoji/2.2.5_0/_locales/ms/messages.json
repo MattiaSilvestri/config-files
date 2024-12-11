@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Tambahkan tab pada kumpulan",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Tambah Tab pada Kumpulan Baharu",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Tambahkan tab pada kumpulan",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Tambah Tab pada Kumpulan Baharu",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Belikan saya kopi",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Tukar kedudukan",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Tukar pintasan",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "tutup",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Tutup kumpulan",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Tutup Tab Lain",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Tutup Tab Di Bawah",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Pandangan padat",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Pendua",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Pengurus tab menegak dalam panel sisi",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Tab Menegak",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Alihkan kumpulan ke tetingkap baharu",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Alihkan Tab ke Tetingkap Lain",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Alihkan Tab ke Tetingkap Baharu",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Alihkan Tab ke Tetingkap Lain",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Alihkan Tab ke Tetingkap Baharu",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Redam Tapak",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Redam Tapak",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Namakan Kumpulan Ini",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Kumpulan Baru",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Tab Baharu Di Bawah",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Tab baharu dalam kumpulan",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Tingkap Baru",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Tab disematkan sebagai ikon",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Sambungan kadar",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Muat semula",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Alih keluar daripada Kumpulan",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Cari",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Tunjukkan URL penuh",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Hantar pepijat/ciri",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ dan $count$ tab lain",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ dan $count$ tab lain",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Nyahkumpulan",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Nyahredam Tapak",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Nyahredam Tapak",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Nyahsemat",
+      "placeholders": {
+      }
+   }
+}

@@ -1,0 +1,25 @@
+{
+  "author": "acct_b3f9d429ec49445e8a07396b3fee3170",
+  "authorAccount": {
+    "email": "mattiasilvestri27@gmail.com",
+    "firstName": "mattiasilvestri27@gmail.com",
+    "lastName": ""
+  },
+  "created": "2024-08-09T07:39:10.200701Z",
+  "description": "",
+  "id": "4a7058125795053b4f219a9797ba5bbb0715295f",
+  "name": "Initial Snapshot",
+  "parent": "0000000000000000000000000000000000000000",
+  "state": [
+    {
+      "blob": "4e6c395c718fca3d35dd04918b5ab8818933ddc9",
+      "key": "env_2b0a0b65e0dd4a56781a9574a83b8a40f27a0610",
+      "name": "Base Environment"
+    },
+    {
+      "blob": "c3e006e23f6d15e08c22e4e4c1d9d5370c801c0a",
+      "key": "wrk_375dd1d4ed044e868938bfc940ab4193",
+      "name": "Jarvis"
+    }
+  ]
+}

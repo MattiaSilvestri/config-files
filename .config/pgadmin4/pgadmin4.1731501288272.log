@@ -1,0 +1,75 @@
+pgAdmin Runtime Environment
+--------------------------------------------------------
+Python Path: "/usr/pgadmin4/venv/bin/python3"
+Runtime Config File: "/home/mattia/.config/pgadmin4/config.json"
+Webapp Path: "/usr/pgadmin4/web/pgAdmin4.py"
+pgAdmin Command: "/usr/pgadmin4/venv/bin/python3 -s /usr/pgadmin4/web/pgAdmin4.py"
+Environment: 
+  - HOME: /home/mattia
+  - LANG: en_US.UTF-8
+  - LOGNAME: mattia
+  - MAIL: /var/spool/mail/mattia
+  - PATH: /usr/local/bin:/usr/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+  - SHELL: /usr/bin/bash
+  - USER: mattia
+  - XDG_DATA_DIRS: /home/mattia/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+  - XDG_RUNTIME_DIR: /run/user/1000
+  - DBUS_SESSION_BUS_ADDRESS: unix:path=/run/user/1000/bus
+  - DEBUGINFOD_URLS: https://debuginfod.archlinux.org 
+  - DESKTOP_SESSION: gnome
+  - GDMSESSION: gnome
+  - GDM_LANG: en_US.UTF-8
+  - MOTD_SHOWN: pam
+  - PWD: /home/mattia
+  - SESSION_MANAGER: local/mattia-arch:@/tmp/.ICE-unix/1662,unix/mattia-arch:/tmp/.ICE-unix/1662
+  - SHLVL: 0
+  - USERNAME: mattia
+  - XDG_CURRENT_DESKTOP: GNOME
+  - XDG_MENU_PREFIX: gnome-
+  - XDG_SESSION_CLASS: user
+  - XDG_SESSION_DESKTOP: gnome
+  - XDG_SESSION_TYPE: wayland
+  - MANAGERPID: 1587
+  - INVOCATION_ID: 470eba85d4ae4e858f3efc586e1f00f7
+  - JOURNAL_STREAM: 9:11726
+  - SYSTEMD_EXEC_PID: 1685
+  - MEMORY_PRESSURE_WATCH: /sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure
+  - MEMORY_PRESSURE_WRITE: c29tZSAyMDAwMDAgMjAwMDAwMAA=
+  - GJS_DEBUG_OUTPUT: stderr
+  - GJS_DEBUG_TOPICS: JS ERROR;JS LOG
+  - GNOME_SETUP_DISPLAY: :1
+  - DISPLAY: :0
+  - XAUTHORITY: /run/user/1000/.mutter-Xwaylandauth.LZB9W2
+  - WAYLAND_DISPLAY: wayland-0
+  - GIO_LAUNCHED_DESKTOP_FILE: /usr/share/applications/pgadmin4.desktop
+  - GIO_LAUNCHED_DESKTOP_FILE_PID: 7301
+  - CHROME_DESKTOP: pgadmin4.desktop
+  - ORIGINAL_XDG_CURRENT_DESKTOP: GNOME
+  - ELECTRON_ENABLE_SECURITY_WARNINGS: false
+  - GDK_BACKEND: x11
+  - NO_AT_BRIDGE: 1
+  - PGADMIN_INT_PORT: 36237
+  - PGADMIN_INT_KEY: 724d22c5-4edb-4937-bf18-8dd67f3ccef6
+  - PGADMIN_SERVER_MODE: OFF
+--------------------------------------------------------
+
+Total spawn time to start the pgAdmin4 server: 0.008 Sec
+NOTE: Configuring authentication for DESKTOP mode.
+pgAdmin 4 - Application Initialisation
+
+======================================
+
+
+2024-11-13 13:35:03,195: WARNING	werkzeug:	Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+
+ * Serving Flask app 'pgadmin'
+ * Debug mode: off
+
+------------------------------------------
+Total time taken to ping pgAdmin4 server: 15.027 Sec
+------------------------------------------
+Total launch time of pgAdmin4: 15.121 Sec
+------------------------------------------
+Application Server URL: http://127.0.0.1:36237/?key=724d22c5-4edb-4937-bf18-8dd67f3ccef6
+2024-11-13 13:35:04,694: WARNING	pgadmin:	There are no saved passwords
+

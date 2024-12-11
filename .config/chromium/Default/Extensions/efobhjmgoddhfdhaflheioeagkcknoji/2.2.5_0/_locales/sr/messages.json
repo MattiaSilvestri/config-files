@@ -1,0 +1,207 @@
+{
+   "add_tab_to_group": {
+      "message": "Додајте картицу у групу",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Додај картицу у нову групу",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Додајте картице у групу",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Додајте картице у нову групу",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Купи ми кафу",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Промените позицију",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Промените пречицу",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Затвори",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Затвори групу",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Затворите друге картице",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Затворите картице испод",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Компактан поглед",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Дупликат",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Вертикални менаџер картица у бочном панелу",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Вертицал Табс",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Премести групу у нови прозор",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Премести картицу у други прозор",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Премести картицу у нови прозор",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Премести картице у други прозор",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Премести картице у нови прозор",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Муте Сите",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Муте Ситес",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Именујте ову групу",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Нова група",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Нова картица испод",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Нова картица у групи",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Нови прозор",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Пин",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Закачене картице као иконе",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Продужетак стопе",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Поново учитај",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Уклони из групе",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Тражи",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Прикажи пуну УРЛ адресу",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Пошаљите грешку/функцију",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "{титле} и још {цоунт} картица",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "{титле} и {цоунт} друге картице",
+      "placeholders": {
+      }
+   },
+   "ungroup": {
+      "message": "Разгрупиши",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Укључи звук сајта",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Укључи звук сајтова",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Отквачи",
+      "placeholders": {
+      }
+   }
+}

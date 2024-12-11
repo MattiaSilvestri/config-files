@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Lap hozzáadása a csoporthoz",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Tab hozzáadása új csoporthoz",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Lapok hozzáadása a csoporthoz",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Lapok hozzáadása új csoporthoz",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Vegyél nekem egy kávét",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Változtasd meg a pozíciót",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Parancsikon módosítása",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Közeli",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Csoport bezárása",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Zárja be az Egyéb lapokat",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Zárja be az alábbi lapokat",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompakt nézet",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Másolat",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Függőleges lapkezelő az oldalsó panelen",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Függőleges lapok",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Csoport áthelyezése új ablakba",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Lap áthelyezése másik ablakba",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Lap áthelyezése új ablakba",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Lapok áthelyezése másik ablakba",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Lapok áthelyezése új ablakba",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Webhely némítása",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Webhelyek némítása",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Nevezze el ezt a csoportot",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Új csoport",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Új lap lent",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Új lap a csoportban",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Új ablak",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Pin",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Rögzített lapok ikonként",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Díjhosszabbítás",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Újratöltés",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Eltávolítás a csoportból",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Keresés",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Teljes URL megjelenítése",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Hiba/funkció beküldése",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ és $count$ másik lap",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ és $count$ másik lap",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Csoportbontás feloldása",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Webhely némításának feloldása",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Webhelyek némításának feloldása",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Kibont",
+      "placeholders": {
+      }
+   }
+}

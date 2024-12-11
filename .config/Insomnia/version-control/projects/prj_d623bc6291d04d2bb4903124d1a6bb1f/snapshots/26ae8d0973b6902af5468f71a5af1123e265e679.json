@@ -1,0 +1,25 @@
+{
+  "author": "acct_b3f9d429ec49445e8a07396b3fee3170",
+  "authorAccount": {
+    "email": "mattiasilvestri27@gmail.com",
+    "firstName": "mattiasilvestri27@gmail.com",
+    "lastName": ""
+  },
+  "created": "2024-11-05T14:26:27.433517Z",
+  "description": "",
+  "id": "26ae8d0973b6902af5468f71a5af1123e265e679",
+  "name": "Initial Snapshot",
+  "parent": "0000000000000000000000000000000000000000",
+  "state": [
+    {
+      "blob": "7ea7cb9d002d1f919d05d3b41a4102ab297ca7a9",
+      "key": "env_71bc3a355cdc2092fbde7f16f208a35190609d56",
+      "name": "Base Environment"
+    },
+    {
+      "blob": "29ce86b82e03ff05c6a8a24379bbfa5e33fe5c8a",
+      "key": "wrk_f702f32cda27422eb66e056cdf5daf09",
+      "name": "JarvisSSH"
+    }
+  ]
+}

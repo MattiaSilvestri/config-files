@@ -1,0 +1,6 @@
+2024/11/28-14:11:55.470 8dccc Creating DB /home/mattia/.config/chromium/Default/IndexedDB/https_www.ilsole24ore.com_0.indexeddb.leveldb since it was missing.
+2024/11/28-14:11:55.485 8dccc Reusing MANIFEST /home/mattia/.config/chromium/Default/IndexedDB/https_www.ilsole24ore.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/11/28-14:12:06.162 8dccd Level-0 table #5: started
+2024/11/28-14:12:06.167 8dccd Level-0 table #5: 389 bytes OK
+2024/11/28-14:12:06.177 8dccd Delete type=0 #3
+2024/11/28-14:12:06.178 8dccd Manual compaction at level-0 from (begin) .. (end); will stop at (end)

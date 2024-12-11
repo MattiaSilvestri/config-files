@@ -1,0 +1,15 @@
+2024/12/06-12:00:23.955 8dccd Reusing MANIFEST /home/mattia/.config/chromium/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/12/06-12:00:23.958 8dccd Recovering log #19
+2024/12/06-12:00:23.973 8dccd Reusing old log /home/mattia/.config/chromium/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/000019.log 
+2024/12/06-12:00:58.499 8dccd Level-0 table #24: started
+2024/12/06-12:00:58.510 8dccd Level-0 table #24: 41422 bytes OK
+2024/12/06-12:00:58.520 8dccd Delete type=0 #19
+2024/12/06-12:00:58.521 8dccd Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2024/12/06-12:00:58.521 8dccd Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x02\x06\x02\x04\x01\x01\x01\x00-' @ 2188 : 1
+2024/12/06-12:00:58.523 8dccd Compacting 1@1 + 1@2 files
+2024/12/06-12:00:58.535 8dccd Generated table #25@1: 106 keys, 6821 bytes
+2024/12/06-12:00:58.536 8dccd Compacted 1@1 + 1@2 files => 6821 bytes
+2024/12/06-12:00:58.545 8dccd compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/12/06-12:00:58.546 8dccd Delete type=2 #21
+2024/12/06-12:00:58.546 8dccd Delete type=2 #24
+2024/12/06-12:00:58.550 8dcd9 Manual compaction at level-1 from '\x00\x02\x06\x02\x04\x01\x01\x01\x00-' @ 2188 : 1 .. (end); will stop at (end)

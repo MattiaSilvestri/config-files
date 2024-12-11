@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "ഗ്രൂപ്പിലേക്ക് ടാബ് ചേർക്കുക",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "പുതിയ ഗ്രൂപ്പിലേക്ക് ടാബ് ചേർക്കുക",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "ഗ്രൂപ്പിലേക്ക് ടാബുകൾ ചേർക്കുക",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "പുതിയ ഗ്രൂപ്പിലേക്ക് ടാബുകൾ ചേർക്കുക",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "എനിക്കൊരു കാപ്പി വാങ്ങിത്തരൂ",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "സ്ഥാനം മാറ്റുക",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "കുറുക്കുവഴി മാറ്റുക",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "അടയ്ക്കുക",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "ഗ്രൂപ്പ് അടയ്ക്കുക",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "മറ്റ് ടാബുകൾ അടയ്ക്കുക",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "താഴെയുള്ള ടാബുകൾ അടയ്ക്കുക",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "ഒതുക്കമുള്ള കാഴ്ച",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "ഡ്യൂപ്ലിക്കേറ്റ്",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "സൈഡ് പാനലിൽ ലംബ ടാബ് മാനേജർ",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - ലംബ ടാബുകൾ",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "ഗ്രൂപ്പിനെ പുതിയ വിൻഡോയിലേക്ക് നീക്കുക",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "ടാബ് മറ്റൊരു വിൻഡോയിലേക്ക് നീക്കുക",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "ടാബ് പുതിയ വിൻഡോയിലേക്ക് നീക്കുക",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "ടാബുകൾ മറ്റൊരു വിൻഡോയിലേക്ക് നീക്കുക",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "ടാബുകൾ പുതിയ വിൻഡോയിലേക്ക് നീക്കുക",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "സൈറ്റ് നിശബ്ദമാക്കുക",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "സൈറ്റുകൾ നിശബ്ദമാക്കുക",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "ഈ ഗ്രൂപ്പിന് പേര് നൽകുക",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "പുതിയ ഗ്രൂപ്പ്",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "പുതിയ ടാബ് ചുവടെ",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "ഗ്രൂപ്പിൽ പുതിയ ടാബ്",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "പുതിയ വിൻഡോ",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "പിൻ",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "ഐക്കണുകളായി പിൻ ചെയ്‌ത ടാബുകൾ",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "നിരക്ക് വിപുലീകരണം",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "വീണ്ടും ലോഡുചെയ്യുക",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "ഗ്രൂപ്പിൽ നിന്ന് നീക്കം ചെയ്യുക",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "തിരയുക",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "മുഴുവൻ URL കാണിക്കുക",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "ബഗ്/ഫീച്ചർ സമർപ്പിക്കുക",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ കൂടാതെ $count$ മറ്റ് ടാബുകളും",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ കൂടാതെ $count$ മറ്റ് ടാബുകളും",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "അൺഗ്രൂപ്പ് ചെയ്യുക",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "സൈറ്റ് അൺമ്യൂട്ട് ചെയ്യുക",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "സൈറ്റുകൾ അൺമ്യൂട്ട് ചെയ്യുക",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "അൺപിൻ ചെയ്യുക",
+      "placeholders": {
+      }
+   }
+}

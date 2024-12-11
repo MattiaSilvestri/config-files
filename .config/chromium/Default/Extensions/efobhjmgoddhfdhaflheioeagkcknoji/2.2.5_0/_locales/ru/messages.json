@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Добавить вкладку в группу",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Добавить вкладку в новую группу",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Добавить вкладки в группу",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Добавить вкладки в новую группу",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Купи мне кофе",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Изменить положение",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Изменить ярлык",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Закрывать",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Закрыть группу",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Закрыть другие вкладки",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Закрыть вкладки ниже",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Компактный вид",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Дублировать",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Вертикальный менеджер вкладок на боковой панели",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Вертикальные вкладки",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Переместить группу в новое окно",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Переместить вкладку в другое окно",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Переместить вкладку в новое окно",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Переместить вкладки в другое окно",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Переместить вкладки в новое окно",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Отключить сайт",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Отключить сайты",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Назовите эту группу",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Новая группа",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Новая вкладка ниже",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Новая вкладка в группе",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Новое окно",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Приколоть",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Закрепленные вкладки в виде значков",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Расширение тарифа",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Перезагрузить",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Удалить из группы",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Поиск",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Показать полный URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Сообщить об ошибке/функции",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ и ещё $count$ вкладка",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ и другие вкладки: $count$",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Разгруппировать",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Включить звук на сайте",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Включить звук на сайтах",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Открепить",
+      "placeholders": {
+      }
+   }
+}

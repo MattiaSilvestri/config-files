@@ -1,0 +1,11 @@
+{"value":"Preparing request to https://192.168.80.180/inventory/api/v2/assets-docuemnts/","name":"Text","timestamp":1732613476138}
+{"value":"Current time is 2024-11-26T09:31:16.138Z","name":"Text","timestamp":1732613476138}
+{"value":"Enable automatic URL encoding","name":"Text","timestamp":1732613476138}
+{"value":"Using default HTTP version","name":"Text","timestamp":1732613476139}
+{"value":"Enable timeout of 30000ms","name":"Text","timestamp":1732613476139}
+{"value":"Enable SSL validation","name":"Text","timestamp":1732613476139}
+{"name":"Text","value":"Hostname in DNS cache was stale, zapped\n","timestamp":1732613476140}
+{"name":"Text","value":"  Trying 192.168.80.180:443...\n","timestamp":1732613476140}
+{"name":"Text","value":"connect to 192.168.80.180 port 443 failed: Connection refused\n","timestamp":1732613476141}
+{"name":"Text","value":"Failed to connect to 192.168.80.180 port 443 after 0 ms: Connection refused\n","timestamp":1732613476141}
+{"name":"Text","value":"Closing connection 1\n","timestamp":1732613476141}

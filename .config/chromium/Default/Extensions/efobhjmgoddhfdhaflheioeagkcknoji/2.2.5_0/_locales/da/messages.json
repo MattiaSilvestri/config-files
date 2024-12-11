@@ -1,0 +1,219 @@
+{
+   "add_tab_to_group": {
+      "message": "Tilføj fane til gruppe",
+      "placeholders": {
+      }
+   },
+   "add_tab_to_new_group": {
+      "message": "Føj faneblad til ny gruppe",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_group": {
+      "message": "Føj faner til gruppen",
+      "placeholders": {
+      }
+   },
+   "add_tabs_to_new_group": {
+      "message": "Føj faner til ny gruppe",
+      "placeholders": {
+      }
+   },
+   "buy_me_coffee": {
+      "message": "Køb mig en kop kaffe",
+      "placeholders": {
+      }
+   },
+   "change_postition": {
+      "message": "Skift stilling",
+      "placeholders": {
+      }
+   },
+   "change_shortcut": {
+      "message": "Skift genvej",
+      "placeholders": {
+      }
+   },
+   "close": {
+      "message": "Tæt",
+      "placeholders": {
+      }
+   },
+   "close_group": {
+      "message": "Luk gruppe",
+      "placeholders": {
+      }
+   },
+   "close_other_tabs": {
+      "message": "Luk Andre faner",
+      "placeholders": {
+      }
+   },
+   "close_tabs_below": {
+      "message": "Luk faner nedenfor",
+      "placeholders": {
+      }
+   },
+   "compact_view": {
+      "message": "Kompakt udsigt",
+      "placeholders": {
+      }
+   },
+   "duplicate": {
+      "message": "Duplikere",
+      "placeholders": {
+      }
+   },
+   "ext_description": {
+      "message": "Lodret fanestyring i sidepanel",
+      "placeholders": {
+      }
+   },
+   "ext_name": {
+      "message": "Vertical Tabs - Lodrette faner",
+      "placeholders": {
+      }
+   },
+   "move_group_to_new_window": {
+      "message": "Flyt gruppe til nyt vindue",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_another_window": {
+      "message": "Flyt fanen til et andet vindue",
+      "placeholders": {
+      }
+   },
+   "move_tab_to_new_window": {
+      "message": "Flyt fanen til nyt vindue",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_another_window": {
+      "message": "Flyt faner til et andet vindue",
+      "placeholders": {
+      }
+   },
+   "move_tabs_to_new_window": {
+      "message": "Flyt faner til nyt vindue",
+      "placeholders": {
+      }
+   },
+   "mute_site": {
+      "message": "Mute Site",
+      "placeholders": {
+      }
+   },
+   "mute_sites": {
+      "message": "Slå websteder fra",
+      "placeholders": {
+      }
+   },
+   "name_this_group": {
+      "message": "Navngiv denne gruppe",
+      "placeholders": {
+      }
+   },
+   "new_group": {
+      "message": "Ny gruppe",
+      "placeholders": {
+      }
+   },
+   "new_tab_below": {
+      "message": "Ny fane nedenfor",
+      "placeholders": {
+      }
+   },
+   "new_tab_in_group": {
+      "message": "Ny fane i gruppen",
+      "placeholders": {
+      }
+   },
+   "new_window": {
+      "message": "Nyt vindue",
+      "placeholders": {
+      }
+   },
+   "pin": {
+      "message": "Stift",
+      "placeholders": {
+      }
+   },
+   "pinned_tabs_as_icons": {
+      "message": "Fastgjorte faner som ikoner",
+      "placeholders": {
+      }
+   },
+   "rate_extension": {
+      "message": "Prisudvidelse",
+      "placeholders": {
+      }
+   },
+   "reload": {
+      "message": "Genindlæs",
+      "placeholders": {
+      }
+   },
+   "remove_from_group": {
+      "message": "Fjern fra gruppe",
+      "placeholders": {
+      }
+   },
+   "search_placeholder": {
+      "message": "Søge",
+      "placeholders": {
+      }
+   },
+   "show_full_url": {
+      "message": "Vis den fulde URL",
+      "placeholders": {
+      }
+   },
+   "submit_bug_feature": {
+      "message": "Indsend fejl/funktion",
+      "placeholders": {
+      }
+   },
+   "tab_title_and_other_tab_count": {
+      "message": "$title$ og $count$ anden fane",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "tab_title_and_other_tabs_count": {
+      "message": "$title$ og $count$ andre faner",
+      "placeholders": {
+         "count": {
+            "content": "$2"
+         },
+         "title": {
+            "content": "$1"
+         }
+      }
+   },
+   "ungroup": {
+      "message": "Ophæv grupperingen",
+      "placeholders": {
+      }
+   },
+   "unmute_site": {
+      "message": "Slå lyden til på webstedet",
+      "placeholders": {
+      }
+   },
+   "unmute_sites": {
+      "message": "Slå lyden til for websteder",
+      "placeholders": {
+      }
+   },
+   "unpin": {
+      "message": "Frigør",
+      "placeholders": {
+      }
+   }
+}

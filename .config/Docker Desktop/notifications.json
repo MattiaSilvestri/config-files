@@ -1,0 +1,39 @@
+{
+	"notifications": [
+		{
+			"guid": "ad9d575d-4168-4d10-a353-e77bedf00af4",
+			"timestamp": 1731490839149,
+			"read": true,
+			"displayState": "background",
+			"notification": {
+				"message": "You must initialize pass before logging in to Docker Desktop",
+				"icon": "error",
+				"type": "action-result",
+				"operation": "user-log-in",
+				"title": "Unable to log in",
+				"actionText": "Learn how",
+				"action": {
+					"action": "open-credential-store-instructions",
+					"params": {}
+				}
+			}
+		},
+		{
+			"guid": "6a1f9a51-8aa7-4668-bd63-0828c4a76aa1",
+			"timestamp": 1732111201326,
+			"read": false,
+			"displayState": "background",
+			"notification": {
+				"ephemeral": false,
+				"icon": "sparkles",
+				"message": "Docker Desktop 4.36.0 has been installed. View what's new.",
+				"actionText": "View",
+				"action": {
+					"action": "view-notification-content"
+				},
+				"type": "update",
+				"fullContent": "# What's new in 4.36.0\n - WSL2 is now faster, more reliable, and has enhanced security\n- Enhance Container Isolation (ECI) has been improved to support images with wildcard tags\n- Admins can now:\n  - Allow any container to mount the Docker socket with ECI\n  - Enforce sign-in with macOS configuration profiles (Early Access)\n  - Enforce sign-in for more than one organization at a time (Early Access)\n  - Deploy Docker Desktop for Mac in bulk with the PKG installer (Early Access)\n  - Use Desktop Settings Management to manage and enforce defaults via admin.docker.com (Early Access)\n"
+			}
+		}
+	]
+}
