@@ -2,6 +2,7 @@
 return {
   "ray-x/navigator.lua",
   enabled = false,
+  lazy = false,
   requires = {
     { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
     { "neovim/nvim-lspconfig" },
@@ -49,6 +50,7 @@ return {
       },
     },
     mason = false, -- set to true if you would like use the lsp installed by williamboman/mason
+    keymaps = { { key = "<leader>lh", func = vim.lsp.buf.signature_help, desc = "Signature help" } },
     lsp = {
       enable = true, -- skip lsp setup, and only use treesitter in navigator.
       -- Use this if you are not using LSP servers, and only want to enable treesitter support.
@@ -90,7 +92,8 @@ return {
         },
       },
 
-      diagnostic_scrollbar_sign = { "▃", "▆", "█" }, -- experimental:  diagnostic status in scroll bar area; set to false to disable the diagnostic sign,
+      diagnostic_scrollbar_sign = false, -- experimental:  diagnostic status in scroll bar area; set to false to disable the diagnostic sign,
+      -- diagnostic_scrollbar_sign = { "▃", "▆", "█" }, -- experimental:  diagnostic status in scroll bar area; set to false to disable the diagnostic sign,
       --                for other style, set to {'╍', 'ﮆ'} or {'-', '='}
       diagnostic_virtual_text = false, -- show virtual for diagnostic message
       diagnostic_update_in_insert = false, -- update diagnostic message in insert mode
@@ -100,11 +103,14 @@ return {
         filetypes = { "typescript" }, -- disable javascript etc,
         -- set to {} to disable the lspclient for all filetypes
       },
-      ctags = {
-        cmd = "ctags",
-        tagfile = "tags",
-        options = "-R --exclude=.git --exclude=node_modules --exclude=test --exclude=vendor --excmd=number",
+      ruff_lsp = {
+        filetypes = {},
       },
+      -- ctags = {
+      --   cmd = "ctags",
+      --   tagfile = "tags",
+      --   options = "-R --exclude=.git --exclude=node_modules --exclude=test --exclude=vendor --excmd=number",
+      -- },
       -- the lsp setup can be a function, .e.g
       pylsp = {
         enabled = false,

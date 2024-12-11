@@ -34,6 +34,7 @@ return {
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
         -- textwidth = 88, -- sets vim.opt.textwidth
+        linespace = 3,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -90,10 +91,12 @@ return {
         ["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
         ["~"] = { "Vyp", desc = "Yank and pase to next line" },
         ["cw"] = { "ciw", desc = "Change word" },
-        ["<leader>gP"] = {
-          "<cmd>lua require('goto-preview').goto_preview_definition()<cr>",
-          desc = "Go to definition preview",
-        },
+        -- ["<leader>gP"] = {
+        --   "<cmd>lua require('goto-preview').goto_preview_definition()<cr>",
+        --   desc = "Go to definition preview",
+        -- },
+        ["<leader>xt"] = { "<cmd>TodoTelescope<cr>", desc = "List TODOs in telescope" },
+        ["<leader>xf"] = { "<cmd>TodoFzfLua<cr>", desc = "List TODOs in fzf" },
       },
       t = {
         -- setting a mapping to false will disable it
@@ -105,7 +108,8 @@ return {
       },
       v = {
         ["p"] = { '"0p', desc = "Normal paste" },
-        ["P"] = { '"*p', desc = "Normal paste from clipboard" },
+        -- ["P"] = { '"*p', desc = "Normal paste from clipboard" },
+        ["P"] = { "<nop>", desc = "Normal paste from clipboard" },
         ["<"] = { "<gv", desc = "Persistend indent left" },
         [">"] = { ">gv", desc = "Persistend indent right" },
         ["$"] = { "g_", desc = "Move to the last character of the line" },

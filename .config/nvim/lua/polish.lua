@@ -2,13 +2,90 @@
 -- things like custom filetypes. This just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
 
+vim.api.nvim_create_autocmd("UIEnter", {
+  group = vim.api.nvim_create_augroup("SetGUISettings", { clear = true }),
+  callback = function()
+    -- Options specifically targeted at Neovide
+    if vim.g.neovide then
+      vim.o.guifont = "Inconsolata Nerd Font Mono:h11.9:w0"
+      vim.g.neovide_paddinng_top = 20
+      vim.g.neovide_paddinng_bottom = 0
+      vim.g.neovide_paddinng_right = 0
+      vim.g.neovide_paddinng_left = 20
+      vim.g.neovide_floating_blur_amount_x = 2
+      vim.g.neovide_floating_blur_amount_y = 2
+      vim.g.neovide_floating_corener_radius = 0.3
+      vim.g.neovide_cursor_animation_length = 0
+      vim.g.neovide_cursor_vfx_mode = ""
+      vim.g.neovide_text_gamma = 1.3
+      vim.g.neovide_text_contrast = 0.3
+    end
+  end,
+})
+
+local luasnip = require "luasnip"
+local cmp = require "cmp"
+
+cmp.setup {
+
+  -- ... Your other configuration ...
+
+  mapping = {
+
+    -- ... Your other mappings ...
+    ["<CR>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        if luasnip.expandable() then
+          luasnip.expand()
+        else
+          cmp.confirm {
+            select = true,
+          }
+        end
+      else
+        fallback()
+      end
+    end),
+
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    -- ... Your other mappings ...
+  },
+
+  -- ... Your other configuration ...
+}
+
 vim.keymap.set("v", "<leader>y", require("osc52").copy_visual, { desc = "Copy to clipboard" })
 -- vim.keymap.set(
 --   "n",
 --   "<leader>gP",
---   require("goto-preview").goto_preview_definition
+--   require("navigator.definition").definition_preview,
 --   { desc = "Go to definition preview" }
 -- )
+vim.keymap.set(
+  "n",
+  "<leader>gP",
+  require("goto-preview").goto_preview_definition,
+  { desc = "Go to definition preview" }
+)
 --
 -- Set up custom filetypes
 vim.filetype.add {

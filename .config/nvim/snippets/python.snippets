@@ -1,0 +1,33 @@
+# Module Docstring
+snippet docs
+	"""
+	File: ${1:`vim_snippets#Filename('$1.py', 'foo.py')`}
+	Author: Mattia Silvestri
+	Email: mattia.silvestri@gtsu.org
+	Github: https://github.com/MattiaSilvestri
+	Description: ${0}
+	"""
+
+# New Class
+snippet cl
+	class ${1:ClassName}(${2:object}):
+		"""${3:docstring for $1}"""
+		def __init__(self, ${4:arg}):
+			${5:super($1, self).__init__()}
+			self.$4 = $4
+			${0}
+
+# === Django === #
+
+# Admin class
+snippet cl_admin
+	class ${1:ClassName}(admin.ModelAdmin):
+    	list_filter = ("${2:filter}",)
+    	search_fields = ("${3:search}",)
+    	autocomplete_fields = [
+        	"${4:autocomplete}",
+    	]
+    	formfield_overrides = {
+        	FormResponseField: {"widget": Textarea},
+    	}
+
