@@ -73,10 +73,6 @@ stored in `persp-save-dir'.")
       "Ensure a main workspace exists."
       (when persp-mode
         (let (persp-before-switch-functions)
-          ;; Try our best to hide the nil perspective.
-          (when (equal (car persp-names-cache) persp-nil-name)
-            (pop persp-names-cache))
-          ;; ...and create a *real* main workspace to fill this role.
           (unless (or (persp-get-by-name +workspaces-main)
                       ;; Start from 2 b/c persp-mode counts the nil workspace
                       (> (hash-table-count *persp-hash*) 2))
@@ -84,9 +80,10 @@ stored in `persp-save-dir'.")
           ;; HACK Fix #319: the warnings buffer gets swallowed when creating
           ;;      `+workspaces-main', so display it ourselves, if it exists.
           (when-let (warnings (get-buffer "*Warnings*"))
-            (save-excursion
-              (display-buffer-in-side-window
-               warnings '((window-height . shrink-window-if-larger-than-buffer))))))))
+            (unless (get-buffer-window warnings)
+              (save-excursion
+                (display-buffer-in-side-window
+                 warnings '((window-height . shrink-window-if-larger-than-buffer)))))))))
     (defun +workspaces-init-persp-mode-h ()
       (cond (persp-mode
              ;; `uniquify' breaks persp-mode. It renames old buffers, which causes
@@ -205,13 +202,6 @@ stored in `persp-save-dir'.")
             ("xe" counsel-projectile-switch-project-action-run-eshell "invoke eshell from project root")
             ("xt" counsel-projectile-switch-project-action-run-term "invoke term from project root")
             ("X" counsel-projectile-switch-project-action-org-capture "org-capture into project")))
-
-  (when (modulep! :completion ivy)
-    (after! ivy-rich
-      (cl-callf plist-put ivy-rich-display-transformers-list
-        '+workspace/switch-to
-        '(:columns ((ivy-rich-candidate (:width 50))
-                    (+workspace--ivy-rich-preview))))))
 
   (when (modulep! :completion helm)
     (after! helm-projectile

@@ -6,13 +6,13 @@
 (package! yard-mode :pin "de1701753a64544c3376b015805f3661136d8038")
 
 ;; REPL
-(package! inf-ruby :pin "03475ac1cca410ee63a523f5c63f859cfafe1aeb")
+(package! inf-ruby :pin "6399a3668224aa48423c54e81383f73e5e39439a")
 (when (modulep! :completion company)
   (package! company-inf-ruby :pin "fe3e4863bc971fbb81edad447efad5795ead1b17"))
 
 ;; Programming environment
 (package! rubocop :pin "f5fd18aa810c3d3269188cbbd731ddc09006f8f5")
-(package! robe :pin "912ae2ba1f467bd55b2da64bfec9db3f8a723916")
+(package! robe :pin "6bc8a07fc483407971de0966d367a11006b3ab80")
 
 ;; Project tools
 (package! bundler :pin "43efb6be4ed118b06d787ce7fbcffd68a31732a7")
@@ -20,7 +20,7 @@
 
 ;; Environment management
 (when (modulep! +rbenv)
-  (package! rbenv :pin "2ea1a5bdc1266caef1dd77700f2c8f42429b03f1"))
+  (package! rbenv :pin "4afe1dc6bd76efdbf2e54b58ea76a05837553575"))
 (when (modulep! +rvm)
   (package! rvm :pin "e1e83b5466c132c066142ac63729ba833c530c83"))
 (when (modulep! +chruby)
@@ -28,9 +28,14 @@
 
 ;; Testing frameworks
 (package! rspec-mode :pin "29df3d081c6a1cbdf840cd13d45ea1c100c5bbaa")
-(package! minitest :pin "ddd152c990a528ad09a696bfad23afa4330ea4d7")
+(package! minitest :pin "5999c45c047212cee15a2be67e78787776a79c35")
+
+;; Refactoring
+(package! ruby-json-to-hash :pin "383b22bb2e007289ac0dba146787d02ff99d4415")
 
 ;; Rails
 (when (modulep! +rails)
+  (package! rails-routes :pin "eab995a9297ca5bd9bd4f4c2737f2fecfc36def0")
+  (package! rails-i18n :pin "8e87e4e48e31902b8259ded28a208c2e7efea6e9")
   (package! projectile-rails :pin "701784df7befe17b861f1b53fe9cbc59d0b94b9f")
   (package! inflections :pin "55caa66a7cc6e0b1a76143fd40eff38416928941"))

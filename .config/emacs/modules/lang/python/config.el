@@ -104,6 +104,12 @@
                   (bound-and-true-p lsp--buffer-deferred)
                   (not (executable-find python-shell-interpreter t)))
         (anaconda-mode +1))))
+
+  (add-hook! 'eglot-server-initialized-hook
+    (defun +python-disable-anaconda-mode-h (&rest _)
+      "Ensure `anaconda-mode' doesn't interfere with `eglot'."
+      (when (bound-and-true-p anaconda-mode)
+        (anaconda-mode -1))))
   :config
   (set-company-backend! 'anaconda-mode '(company-anaconda))
   (set-lookup-handlers! 'anaconda-mode
@@ -128,7 +134,7 @@
     (add-hook 'anaconda-mode-hook #'evil-normalize-keymaps))
   (map! :localleader
         :map anaconda-mode-map
-        :prefix "g"
+        :prefix ("g" . "conda")
         "d" #'anaconda-mode-find-definitions
         "h" #'anaconda-mode-show-doc
         "a" #'anaconda-mode-find-assignments
@@ -142,10 +148,10 @@
   (map! :after python
         :map python-mode-map
         :localleader
-        (:prefix ("i" . "imports")
-          :desc "Insert missing imports" "i" #'pyimport-insert-missing
-          :desc "Remove unused imports"  "R" #'pyimport-remove-unused
-          :desc "Optimize imports"       "o" #'+python/optimize-imports)))
+        :prefix ("i" . "imports")
+        :desc "Insert missing imports" "i" #'pyimport-insert-missing
+        :desc "Remove unused imports"  "R" #'pyimport-remove-unused
+        :desc "Optimize imports"       "o" #'+python/optimize-imports))
 
 
 (use-package! py-isort
@@ -155,8 +161,8 @@
         :map python-mode-map
         :localleader
         (:prefix ("i" . "imports")
-          :desc "Sort imports"      "s" #'py-isort-buffer
-          :desc "Sort region"       "r" #'py-isort-region)))
+         :desc "Sort imports"      "s" #'py-isort-buffer
+         :desc "Sort region"       "r" #'py-isort-region)))
 
 (use-package! nose
   :commands nose-mode
@@ -170,7 +176,7 @@
 
   (map! :localleader
         :map nose-mode-map
-        :prefix "t"
+        :prefix ("t" . "test")
         "r" #'nosetests-again
         "a" #'nosetests-all
         "s" #'nosetests-one
@@ -190,8 +196,8 @@
         "a" #'python-pytest
         "f" #'python-pytest-file-dwim
         "F" #'python-pytest-file
-        "t" #'python-pytest-function-dwim
-        "T" #'python-pytest-function
+        "t" #'python-pytest-run-def-or-class-at-point-dwim
+        "T" #'python-pytest-run-def-or-class-at-point
         "r" #'python-pytest-repeat
         "p" #'python-pytest-dispatch))
 
@@ -214,7 +220,7 @@
       (:description . "Run Python script")))
   (map! :map python-mode-map
         :localleader
-        :prefix "e"
+        :prefix ("e" . "pipenv")
         :desc "activate"    "a" #'pipenv-activate
         :desc "deactivate"  "d" #'pipenv-deactivate
         :desc "install"     "i" #'pipenv-install
@@ -253,6 +259,26 @@
 (use-package! conda
   :when (modulep! +conda)
   :after python
+  :preface
+  ;; HACK: `conda-anaconda-home's initialization can throw an error if none of
+  ;;   `conda-home-candidates' exist, so unset it early.
+  ;; REVIEW: Fix this upstream.
+  (setq conda-anaconda-home (getenv "ANACONDA_HOME")
+        conda-home-candidates
+        (list "~/.anaconda"
+              "~/.anaconda3"
+              "~/.miniconda"
+              "~/.miniconda3"
+              "~/.miniforge3"
+              "~/anaconda3"
+              "~/miniconda3"
+              "~/miniforge3"
+              "~/opt/miniconda3"
+              "/usr/bin/anaconda3"
+              "/usr/local/anaconda3"
+              "/usr/local/miniconda3"
+              "/usr/local/Caskroom/miniconda/base"
+              "~/.conda"))
   :config
   ;; The location of your anaconda home will be guessed from a list of common
   ;; possibilities, starting with `conda-anaconda-home''s default value (which
@@ -261,21 +287,8 @@
   ;; If none of these work for you, `conda-anaconda-home' must be set
   ;; explicitly. Afterwards, run M-x `conda-env-activate' to switch between
   ;; environments
-  (or (cl-loop for dir in (list conda-anaconda-home
-                                "~/.anaconda"
-                                "~/.miniconda"
-                                "~/.miniconda3"
-                                "~/.miniforge3"
-                                "~/anaconda3"
-                                "~/miniconda3"
-                                "~/miniforge3"
-                                "~/opt/miniconda3"
-                                "/usr/bin/anaconda3"
-                                "/usr/local/anaconda3"
-                                "/usr/local/miniconda3"
-                                "/usr/local/Caskroom/miniconda/base"
-                                "~/.conda")
-               if (file-directory-p dir)
+  (or (cl-loop for dir in (cons conda-anaconda-home conda-home-candidates)
+               if (and dir (file-directory-p dir))
                return (setq conda-anaconda-home (expand-file-name dir)
                             conda-env-home-directory (expand-file-name dir)))
       (message "Cannot find Anaconda installation"))
@@ -310,8 +323,7 @@
 
 (use-package! flycheck-cython
   :when (modulep! +cython)
-  :when (and (modulep! :checkers syntax)
-             (not (modulep! :checkers syntax +flymake)))
+  :when (modulep! :checkers syntax -flymake)
   :after cython-mode)
 
 
@@ -336,16 +348,11 @@
 ;;
 ;;; LSP
 
-(eval-when! (and (modulep! +lsp)
-                 (not (modulep! :tools lsp +eglot)))
-
-  (use-package! lsp-python-ms
-    :unless (modulep! +pyright)
-    :after lsp-mode
-    :preface
-    (after! python
-      (setq lsp-python-ms-python-executable-cmd python-shell-interpreter)))
-
-  (use-package! lsp-pyright
-    :when (modulep! +pyright)
-    :after lsp-mode))
+(use-package! lsp-pyright
+  :when (modulep! +lsp)
+  :when (modulep! +pyright)
+  :when (modulep! :tools lsp -eglot)
+  :defer t
+  :init
+  (when (executable-find "basedpyright")
+    (setq lsp-pyright-langserver-command "basedpyright")))

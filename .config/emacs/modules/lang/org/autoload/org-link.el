@@ -157,12 +157,11 @@ exist, and `org-link' otherwise."
   (cl-destructuring-bind (&key category module flag)
       (+org-link--read-module-spec module-path)
     (when category
-      (let ((doom-modules-dirs (list doom-modules-dir)))
-        (if-let* ((path (doom-module-locate-path category module))
-                  (path (or (car (doom-glob path "README.org"))
-                            path)))
-            (find-file path)
-          (user-error "Can't find Doom module '%s'" module-path))))
+      (if-let* ((path (doom-module-locate-path (cons category module)))
+                (path (or (car (doom-glob path "README.org"))
+                          path)))
+          (find-file path)
+        (user-error "Can't find Doom module '%s'" module-path)))
     (when flag
       (goto-char (point-min))
       (when (and (re-search-forward "^\\*+ \\(?:TODO \\)?Module flags")
@@ -179,13 +178,13 @@ exist, and `org-link' otherwise."
     (cl-destructuring-bind (&key category module flag)
         (+org-link--read-module-spec module-path)
       (let ((overall-face
-             (if (and category (doom-module-locate-path category module))
+             (if (and category (doom-module-locate-path (cons category module)))
                  '((:underline nil) org-link org-block bold)
                '(shadow org-block bold)))
             (icon-face
              (cond
-              ((doom-module-p category module flag) 'success)
-              ((and category (doom-module-locate-path category module)) 'warning)
+              ((doom-module-active-p category module flag) 'success)
+              ((and category (doom-module-locate-path (cons category module))) 'warning)
               (t 'error))))
         (add-text-properties
          start end
@@ -294,9 +293,9 @@ exist, and `org-link' otherwise."
         (cl-destructuring-bind (&key category module flag)
             (+org-link--read-module-spec (org-element-property :path link))
           (cond
-           ((doom-module-p category module)
+           ((doom-module-active-p category module)
             (propertize "enabled" 'face 'success))
-           ((and category (doom-module-locate-path category module))
+           ((and category (doom-module-locate-path (cons category module)))
             (propertize "disabled" 'face 'error))
            (t (propertize "unknown" 'face '(bold error)))))))
       ("doom-executable"
@@ -316,16 +315,14 @@ exist, and `org-link' otherwise."
 (defun +org-image-file-data-fn (protocol link _description)
   "Intepret LINK as an image file path and return its data."
   (setq
-   link (expand-file-name
-         link (pcase protocol
-                ("download"
-                 (or (if (require 'org-download nil t) org-download-image-dir)
-                     (if (require 'org-attach)         org-attach-id-dir)
-                     default-directory))
-                ("attachment"
-                 (require 'org-attach)
-                 org-attach-id-dir)
-                (_ default-directory))))
+   link (pcase protocol
+          ("download"
+           (expand-file-name link (or (if (require 'org-download nil t) org-download-image-dir)
+               default-directory)))
+          ("attachment"
+           (require 'org-attach)
+           (org-attach-expand link))
+          (_ (expand-file-name link default-directory))))
   (when (and (file-exists-p link)
              (image-type-from-file-name link))
     (with-temp-buffer
@@ -412,6 +409,15 @@ exist, and `org-link' otherwise."
                    (org-link-unescape (match-string-no-properties 1)))))
       (delete-region (match-beginning 0) (match-end 0))
       (insert label))))
+
+;;;###autoload
+(defun +org/yank-link ()
+  "Copy the url at point to the clipboard.
+If on top of an Org link, will only copy the link component."
+  (interactive)
+  (let ((url (thing-at-point 'url)))
+    (kill-new (or url (user-error "No URL at point")))
+    (message "Copied link: %s" url)))
 
 ;;;###autoload
 (defun +org/play-gif-at-point ()

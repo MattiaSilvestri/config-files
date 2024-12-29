@@ -2,6 +2,10 @@
 
 ;;;###package proof-general
 (setq proof-splash-enable nil)
+;; REVIEW: Remove when ProofGeneral/PG#771 is fixed. Also see #8169.
+(require 'proof-site
+         (expand-file-name "generic/proof-site"
+                           (file-name-directory (locate-library "proof-general"))))
 
 
 ;;;###package coq
@@ -12,6 +16,10 @@
   ;; HACK Fix #2081: Doom continues comments on RET, but coq-mode doesn't have a
   ;;      sane `comment-line-break-function', so...
   comment-line-break-function nil)
+
+;; HACK: See #5823: indent detection is slow and inconclusive in coq-mode files,
+;;   and rarely helpful anyway, so I inhibit it.
+(add-to-list 'doom-detect-indentation-excluded-modes 'coq-mode)
 
 ;; We've replaced coq-mode abbrevs with yasnippet snippets (in the snippets
 ;; library included with Doom).

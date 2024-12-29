@@ -265,12 +265,12 @@ The point of this is to avoid Emacs locking up indexing massive file trees."
            (replace-regexp-in-string
             "[! |]" (lambda (substr)
                       (cond ((and (string= substr " ")
-                                  (not (modulep! +fuzzy)))
+                                  (modulep! -fuzzy))
                              "  ")
                             ((string= substr "|")
                              "\\\\\\\\|")
                             ((concat "\\\\" substr))))
-            (rxt-quote-pcre (doom-thing-at-point-or-region)))))
+            (doom-pcre-quote (doom-thing-at-point-or-region)))))
      directory args
      (or prompt
          (format "Search project [%s]: "

@@ -7,102 +7,27 @@
 ;;
 ;;; Code:
 
-(when noninteractive
-  ;; PERF: Deferring the GC in non-interactive sessions isn't as important, but
-  ;;   still yields a notable benefit. Still, avoid setting it to high here, as
-  ;;   runaway memory usage is a real risk in longer sessions.
-  (setq gc-cons-threshold 134217728  ; 128mb
-        ;; Backported from 29 (see emacs-mirror/emacs@73a384a98698)
-        gc-cons-percentage 1.0)
-
-  ;; REVIEW: Remove these later. The endpoints should be responsibile for
-  ;;   ensuring they exist. For now, they exist to quell file errors.
-  (mapc (doom-rpartial #'make-directory 'parents)
-        (list doom-local-dir
-              doom-data-dir
-              doom-cache-dir
-              doom-state-dir))
-
-  ;; HACK: Load `cl' and site files manually to prevent polluting logs and
-  ;;   stdout with deprecation and/or file load messages.
-  (let ((inhibit-message (not init-file-debug)))
-    (require 'cl nil t)
-    (unless site-run-file
-      (let ((site-run-file "site-start")
-            (tail load-path)
-            (lispdir (expand-file-name "../lisp" data-directory))
-            dir)
-        (while tail
-          (setq dir (car tail))
-          (let ((default-directory dir))
-            (load (expand-file-name "subdirs.el") t inhibit-message t))
-          (unless (string-prefix-p lispdir dir)
-            (let ((default-directory dir))
-              (load (expand-file-name "leim-list.el") t inhibit-message t)))
-          (setq tail (cdr tail)))
-        (load site-run-file t inhibit-message))))
-
-  (setq-default
-   ;; PERF: Don't generate superfluous files when writing temp buffers.
-   make-backup-files nil
-   ;; COMPAT: Stop user configuration from interfering with package management.
-   enable-dir-local-variables nil
-   ;; PERF: Reduce ambiguity, embrace specificity, enjoy predictability.
-   case-fold-search nil
-   ;; UX: Don't clog the user's trash with our CLI refuse.
-   delete-by-moving-to-trash nil)
-
-  ;; Load just the... bear necessities~
-  (require 'seq)
-  (require 'map)
-
-  ;; Suppress any possible coding system prompts during CLI sessions.
-  (set-language-environment "UTF-8")
-
-  ;; Load and set up our debugger first, so backtraces can be made more
-  ;; presentable and logged to file.
-  (doom-require 'doom-lib 'debug)
-  (if init-file-debug (doom-debug-mode +1))
-
-  ;; Then load the rest of Doom's libs eagerly, since autoloads may not be
-  ;; generated/loaded yet.
-  (doom-require 'doom-lib 'process)
-  (doom-require 'doom-lib 'system)
-  (doom-require 'doom-lib 'git)
-  (doom-require 'doom-lib 'plist)
-  (doom-require 'doom-lib 'files)
-  (doom-require 'doom-lib 'print)
-  (doom-require 'doom-lib 'autoloads)
-
-  ;; Ensure straight and core packages are ready to go for CLI commands.
-  (require 'doom-modules)
-  (require 'doom-packages)
-  (require 'doom-profiles)
-  ;; Last minute initialization at the end of loading this file.
-  (with-eval-after-load 'doom-cli
-    (doom-run-hooks 'doom-before-init-hook)))
-
-
-;;
-;;; Variables
-
 (defgroup doom-cli nil
   "Doom's command-line interface framework."
   :link '(url-link "https://doomemacs.org/cli")
   :group 'doom)
 
-(defvar doom-cli-load-path
-  (let ((paths (split-string (or (getenv "DOOMPATH") "") path-separator)))
-    (if (member "" paths)
-        (cl-substitute (doom-path (dir!) "cli/") "" paths :test #'equal)
-      paths))
+(defcustom doom-cli-load-path
+  (append (when-let ((doompath (getenv "DOOMPATH")))
+            (cl-loop for dir in (split-string doompath path-separator)
+                     collect (expand-file-name dir)))
+          (list (file-name-concat (dir!) "cli")))
   "A list of paths to search for autoloaded Doom CLIs.
 
 It is prefilled by the DOOMPATH envvar (a colon-separated list on Linux/macOS,
-semicolon otherwise). Empty entries in DOOMPATH are replaced with the
-$EMACSDIR/cli/.")
+semicolon otherwise)."
+  :type '(list directory)
+  :group 'doom-cli)
 
+
+;;
 ;;; CLI definition variables
+
 (defvar doom-cli-argument-types
   '(&args
     &cli
@@ -222,15 +147,19 @@ Recognizies the following properies:
     (:restart . doom-cli--exit-restart))
   "An alist of commands that `doom-cli--exit' recognizes.")
 
-(defvar doom-cli-pager (getenv "DOOMPAGER")
+(defcustom doom-cli-pager (getenv "DOOMPAGER")
   "The PAGER command to use.
 
-If nil, falls back to less.")
+If nil, falls back to less."
+  :type 'string
+  :group 'doom-cli)
 
-(defvar doom-cli-pager-ratio 1.0
+(defcustom doom-cli-pager-ratio 1.0
   "If output exceeds TTY height times this ratio, the pager is invoked.
 
-Only applies if (exit! :pager) or (exit! :pager?) are called.")
+Only applies if (exit! :pager) or (exit! :pager?) are called."
+  :type 'float
+  :group 'doom-cli)
 
 ;;; Logger settings
 (defvar doom-cli-log-file-format (expand-file-name "logs/cli.%s.%s.%s" doom-state-dir)
@@ -254,6 +183,14 @@ If set to nil, only display benchmark if a CLI explicitly requested with a
 non-nil :benchmark property.
 If set to `always', show the benchmark no matter what.")
 
+(defvar doom-cli-shell
+  (pcase (getenv "__DOOMSH")
+    ("ps1" 'pwsh)
+    (_ 'sh))
+  "What shell environment Doom has been started with.
+
+Can be `pwsh' if invoked via bin/doom.ps1, or `sh' in unix environments.")
+
 ;;; Internal variables
 (defvar doom-cli--context nil)
 (defvar doom-cli--exit-code 255)
@@ -263,6 +200,11 @@ If set to `always', show the benchmark no matter what.")
 
 ;;
 ;;; Custom hooks
+
+(defcustom doom-cli-initialize-hook ()
+  "TODO"
+  :type 'hook
+  :group 'doom-cli)
 
 (defcustom doom-cli-create-context-functions ()
   "A hook executed once a new context has been generated.
@@ -294,7 +236,6 @@ the return value of the executed CLI."
 ;;
 ;;; Errors
 
-(define-error 'doom-cli-error "There was an unexpected error" 'doom-error)
 (define-error 'doom-cli-definition-error "Invalid CLI definition" 'doom-cli-error)
 (define-error 'doom-cli-autoload-error "Failed to autoload deferred command" 'doom-cli-error)
 (define-error 'doom-cli-invalid-prefix-error "Prefix has no defined commands" 'doom-cli-error)
@@ -1041,18 +982,18 @@ considered as well."
       (print! (error "Last %d lines of straight's error log:")
               doom-cli-log-straight-error-lines)
       (print-group!
-       (print!
-        "%s" (string-join
-              (seq-subseq straight-error
-                          (max 0 (- (length straight-error)
-                                    doom-cli-log-straight-error-lines))
-                          (length straight-error))
-              "\n")))
+        (print!
+         "%s" (string-join
+               (seq-subseq straight-error
+                           (max 0 (- (length straight-error)
+                                     doom-cli-log-straight-error-lines))
+                           (length straight-error))
+               "\n")))
       (print! (warn "Wrote extended straight log to %s")
               (path (let ((coding-system-for-write 'utf-8-auto))
-                      (with-temp-file error-file
-                        (insert-buffer-substring (straight--process-buffer)))
-                      (set-file-modes error-file #o600)
+                      (with-file-modes #o600
+                        (with-temp-file error-file
+                          (insert-buffer-substring (straight--process-buffer))))
                       error-file))))
      ((eq type 'error)
       (let* ((generic? (eq (car data) 'error))
@@ -1062,30 +1003,30 @@ considered as well."
             (print! (error "There was an unexpected runtime error"))
           (print! (bold (error "There was a fatal initialization error"))))
         (print-group!
-         (print! "%s %s" (bold "Message:")
-                 (if generic?
-                     (error-message-string data)
-                   (get (car data) 'error-message)))
-         (unless generic?
-           (print! "%s %s" (bold "Details:")
-                   (let* ((print-level 4)
-                          (print-circle t)
-                          (print-escape-newlines t))
-                     (prin1-to-string (cdr data)))))
-         (when backtrace
-           (print! (bold "Backtrace:"))
-           (print-group!
-            (dolist (frame (seq-take backtrace doom-cli-log-backtrace-depth))
-              (print! "%s" (truncate (prin1-to-string
-                                      (cons (backtrace-frame-fun  frame)
-                                            (backtrace-frame-args frame)))
-                                     (- (doom-cli-context-width context)
-                                        doom-print-indent
-                                        1)
-                                     "..."))))
-           (when-let (backtrace-file (doom-backtrace-write-to-file backtrace error-file))
-             (print! (warn "Wrote extended backtrace to %s")
-                     (path backtrace-file))))))))
+          (print! "%s %s" (bold "Message:")
+                  (if generic?
+                      (error-message-string data)
+                    (get (car data) 'error-message)))
+          (unless generic?
+            (print! "%s %s" (bold "Details:")
+                    (let* ((print-level 4)
+                           (print-circle t)
+                           (print-escape-newlines t))
+                      (prin1-to-string (cdr data)))))
+          (when backtrace
+            (print! (bold "Backtrace:"))
+            (print-group!
+              (dolist (frame (seq-take backtrace doom-cli-log-backtrace-depth))
+                (print! "%s" (truncate (prin1-to-string
+                                        (cons (backtrace-frame-fun  frame)
+                                              (backtrace-frame-args frame)))
+                                       (- (doom-cli-context-width context)
+                                          doom-print-indent
+                                          1)
+                                       "..."))))
+            (when-let (backtrace-file (doom-backtrace-write-to-file backtrace error-file))
+              (print! (warn "Wrote extended backtrace to %s")
+                      (path backtrace-file))))))))
     (exit! 255)))
 
 (defmacro doom-cli-redirect-output (context &rest body)
@@ -1123,11 +1064,12 @@ See `doom-cli-log-file-format' for details."
     (let* ((buffer (doom-cli-context-stderr context))
            (file (doom-cli--output-file "log" context)))
       (when (> (buffer-size buffer) 0)
-        (make-directory (file-name-directory file) t)
-        (with-temp-file file
-          (insert-buffer-substring buffer)
-          (ansi-color-filter-region (point-min) (point-max)))
-        (set-file-modes file #o600)))))
+        (with-file-modes #o700
+          (make-directory (file-name-directory file) t))
+        (with-file-modes #o600
+          (with-temp-file file
+            (insert-buffer-substring buffer)
+            (ansi-color-filter-region (point-min) (point-max))))))))
 
 (defun doom-cli--output-benchmark-h (context)
   "Write this session's benchmark to stdout or stderr, depending.
@@ -1194,19 +1136,27 @@ Emacs' batch library lacks an implementation of the exec system call."
     (error "__DOOMSTEP envvar missing; extended `exit!' functionality will not work"))
   (let* ((pid  (doom-cli-context-pid context))
          (step (doom-cli-context-step context))
+         (shext (if (eq doom-cli-shell 'pwsh) "ps1" "sh"))
          (context-file (format (doom-path temporary-file-directory "doom.%s.%s.context") pid step))
-         (script-file  (format (doom-path temporary-file-directory "doom.%s.%s.sh") pid step))
+         (script-file  (format (doom-path temporary-file-directory "doom.%s.%s.%s") pid step shext))
          (command (if (listp args) (combine-and-quote-strings (remq nil args)) args))
          (persistent-files
           (combine-and-quote-strings (delq nil (list script-file context-file))))
          (persisted-env
-          (save-match-data
-            (cl-loop with initial-env = (get 'process-environment 'initial-value)
-                     for env in (seq-difference process-environment initial-env)
-                     if (string-match "^\\([a-zA-Z0-9_][^=]+\\)=\\(.+\\)$" env)
-                     collect (format "%s=%s"
-                                     (match-string 1 env)
-                                     (shell-quote-argument (match-string 2 env)))))))
+          (cl-remove-if-not
+           #'cdr (append
+                  `(("DOOMPROFILE" . ,(ignore-errors (doom-profile->id doom-profile)))
+                    ("EMACSDIR" . ,doom-emacs-dir)
+                    ("DOOMDIR" . ,doom-user-dir)
+                    ("DEBUG" . ,(if init-file-debug (number-to-string doom-log-level)))
+                    ("__DOOMPID" . ,(number-to-string (doom-cli-context-pid context)))
+                    ("__DOOMSTEP" . ,(number-to-string (doom-cli-context-step context)))
+                    ("__DOOMCONTEXT" . ,context-file))
+                  (save-match-data
+                    (cl-loop with initial-env = (get 'process-environment 'initial-value)
+                             for env in (seq-difference process-environment initial-env)
+                             if (string-match "^\\([a-zA-Z0-9_][^=]+\\)=\\(.+\\)$" env)
+                             collect (cons (match-string 1 env) (match-string 2 env))))))))
     (cl-incf (doom-cli-context-step context))
     (with-file-modes #o600
       (doom-log "restart: writing context to %s" context-file)
@@ -1227,25 +1177,37 @@ Emacs' batch library lacks an implementation of the exec system call."
                       newcontext))
       (doom-log "restart: writing post-script to %s" script-file)
       (doom-file-write
-       script-file `("#!/usr/bin/env sh\n"
-                     "trap _doomcleanup EXIT\n"
-                     "_doomcleanup() {\n  rm -f " ,persistent-files "\n}\n"
-                     "_doomrun() {\n  " ,command "\n}\n"
-                     ,(string-join persisted-env " \\\n")
-                     ,(cl-loop for (envvar . val)
-                               in `(("DOOMPROFILE" . ,(ignore-errors (doom-profile->id doom-profile)))
-                                    ("EMACSDIR" . ,doom-emacs-dir)
-                                    ("DOOMDIR" . ,doom-user-dir)
-                                    ("DEBUG" . ,(if init-file-debug "1"))
-                                    ("__DOOMSTEP" . ,(number-to-string (doom-cli-context-step context)))
-                                    ("__DOOMCONTEXT" . ,context-file))
-                               if val
-                               concat (format "%s=%s \\\n" envvar (shell-quote-argument val)))
-                     ,(format "PATH=\"%s%s$PATH\" \\\n"
-                              (doom-path doom-emacs-dir "bin")
-                              path-separator)
-                     "_doomrun \"$@\"\n")))
-    (doom-log "_doomrun: %s %s" (string-join persisted-env " ") command)
+       script-file
+       (pcase-exhaustive doom-cli-shell
+         (`sh `(,(if (featurep :system 'android)
+                     "#!/bin/sh\n"
+                   "#!/usr/bin/env sh\n")
+                "trap _doomcleanup EXIT\n"
+                "_doomcleanup() {\n  rm -f " ,persistent-files "\n}\n"
+                "_doomrun() {\n  " ,command "\n}\n"
+                ,(cl-loop for (var . val) in persisted-env
+                          if (<= (length val) 2048)  ; Prevent "Argument list too long" errors
+                          concat (format "%s=%s \\\n" var (shell-quote-argument val))
+                          else do (doom-log 1 "restart: wiscarding envvar %S for being too long (%d)" var (length val)))
+                ,(format "PATH=\"%s%s$PATH\" \\\n"
+                         (doom-path doom-emacs-dir "bin")
+                         path-separator)
+                "_doomrun \"$@\"\n"))
+         (`pwsh `("try {\n"
+                  ,(cl-loop for (var . val) in persisted-env
+                            concat (format "  $__%s = $env:%s; $env:%s = %S\n  "
+                                           var var var val))
+                  ,command
+                  "\n} finally {\n"
+                  ,(cl-loop for file in persistent-files
+                            concat (format "  Remove-Item -Path %S\n  " file))
+                  ,(cl-loop for (var . _) in persisted-env
+                            concat (format "  $env:%s = $__%s\n  " var var))
+                  "\n}")))))
+    (doom-log "_doomrun: %s %s"
+              (cl-loop for (var . val) in persisted-env
+                       concat (format "%s=%s \\\n" var (shell-quote-argument val)))
+              command)
     (doom-log "_doomcleanup: %s" persistent-files)
     ;; Error code 254 is special: it indicates to the caller that the
     ;; post-script should be executed after this session ends. It's up to
@@ -1341,7 +1303,11 @@ Arguments don't have to be switches either."
 
 ARGS are options passed to less. If DOOMPAGER is set, ARGS are ignored."
   (let ((pager (or doom-cli-pager (getenv "DOOMPAGER"))))
-    (cond ((null (or pager (executable-find "less")))
+    (cond ((eq doom-cli-shell 'pwsh)
+           ;; Pager isn't supported in powershell
+           (doom-cli--exit 0 context))
+
+          ((null (or pager (executable-find "less")))
            (user-error "No pager set or available")
            (doom-cli--exit 1 context))
 
@@ -1350,11 +1316,12 @@ ARGS are options passed to less. If DOOMPAGER is set, ARGS are ignored."
            (doom-cli--exit 0 context))
 
           ((let ((tmpfile (doom-cli--output-file 'output context))
-                 (coding-system-for-write 'utf-8-auto))
-             (make-directory (file-name-directory tmpfile) t)
-             (with-temp-file tmpfile
-               (insert-buffer-substring (doom-cli-context-stdout context)))
-             (set-file-modes tmpfile #o600)
+                 (coding-system-for-write 'utf-8))
+             (with-file-modes #o700
+               (make-directory (file-name-directory tmpfile) t))
+             (with-file-modes #o600
+               (with-temp-file tmpfile
+                 (insert-buffer-substring (doom-cli-context-stdout context))))
              (doom-cli--restart
               (format "%s <%s; rm -f%s %s"
                       (or pager
@@ -1372,16 +1339,18 @@ ARGS are options passed to less. If DOOMPAGER is set, ARGS are ignored."
 
 ARGS are options passed to less. If DOOMPAGER is set, ARGS are ignored."
   (doom-cli--exit
-   (let ((threshold (ceiling (* (doom-cli-context-height context)
-                                doom-cli-pager-ratio))))
-     (if (>= (let ((stdout (doom-cli-context-stdout context)))
-               (if (fboundp 'buffer-line-statistics)
-                   (car (buffer-line-statistics stdout))
-                 (with-current-buffer stdout
-                   (count-lines (point-min) (point-max)))))
-             threshold)
-         (cons :pager args)
-       0))
+   (if (eq doom-cli-shell 'pwsh)
+       0
+     (let ((threshold (ceiling (* (doom-cli-context-height context)
+                                  doom-cli-pager-ratio))))
+       (if (>= (let ((stdout (doom-cli-context-stdout context)))
+                 (if (fboundp 'buffer-line-statistics)
+                     (car (buffer-line-statistics stdout))
+                   (with-current-buffer stdout
+                     (count-lines (point-min) (point-max)))))
+               threshold)
+           (cons :pager args)
+         0)))
    context))
 
 ;; (defun doom-cli--exit-editor (args context))  ; TODO Launch $EDITOR
@@ -1722,7 +1691,7 @@ ignored.
        (cl-destructuring-bind
            (&whole plist &key
                    alias autoload _benchmark docs disable hide _group partial
-                   _prefix)
+                   _prefix _obsolete)
            (append (list ,@plist) doom-cli--group-plist)
          (unless disable
            (let* ((command  (doom-cli-command-normalize (backquote ,commandspec) plist))
@@ -1782,15 +1751,19 @@ See `defcli!' for information about COMMANDSPEC.
 TARGET is simply a command list.
 WHEN specifies what version this command was rendered obsolete."
   `(let ((ncommand (doom-cli-command-normalize (backquote ,target) doom-cli--group-plist)))
-     (defcli! ,commandspec (&context context &cli cli &rest args)
+     (defcli! ,commandspec (&context _context &cli cli &rest args)
        :docs (format "An obsolete alias for '%s'." (doom-cli-command-string ncommand))
+       :obsolete (cons ncommand ,when)
        :hide t
-       (print! (warn "'%s' was deprecated in %s")
-               (doom-cli-command-string cli)
-               ,when)
-       (print! (warn "It will eventually be removed; use '%s' instead.")
-               (doom-cli-command-string ncommand))
-       (call! ',target args))))
+       (let* ((obsolete (plist-get (doom-cli-plist cli) :obsolete))
+              (newcmd (car obsolete))
+              (when (cdr obsolete)))
+         (print! (warn "'%s' was deprecated in %s")
+                 (doom-cli-command-string cli)
+                 when)
+         (print! (warn "It will eventually be removed; use '%s' instead.")
+                 (doom-cli-command-string newcmd))
+         (call! ',target args)))))
 
 (defmacro defcli-stub! (commandspec &optional _argspec &rest body)
   "Define a stub CLI, which will throw an error if invoked.
@@ -1798,11 +1771,11 @@ WHEN specifies what version this command was rendered obsolete."
 Use this to define commands that will eventually be implemented, but haven't
 yet. They won't be included in command listings (by help documentation)."
   (declare (indent 2) (doc-string 3))
-  `(defcli! ,commandspec (&rest _)
+  `(defcli! ,commandspec (&cli cli &rest _)
      ,(concat "THIS COMMAND IS A STUB AND HAS NOT BEEN IMPLEMENTED YET."
               (if (stringp (car body)) (concat "\n\n" (pop body))))
      :hide t
-     (user-error "Command not implemented yet")))
+     (user-error "Command not implemented yet: %s" (doom-cli-command-string cli))))
 
 (defmacro defcli-autoload! (commandspec &optional path &rest plist)
   "Defer loading of PATHS until PREFIX is called."
@@ -1822,6 +1795,7 @@ yet. They won't be included in command listings (by help documentation)."
 
 (defmacro defcli-group! (&rest body)
   "Declare common properties for any CLI commands defined in BODY."
+  (declare (indent 1))
   (when (stringp (car body))
     (push :group body))
   `(let ((doom-cli--group-plist (copy-sequence doom-cli--group-plist)))
@@ -1869,7 +1843,7 @@ example:
     tall.
 
 See `doom-cli--restart' for implementation details."
-  (doom-cli--exit (flatten-list args) doom-cli--context))
+  (throw 'exit (flatten-list args)))
 
 (defun call! (&rest command)
   "A convenience wrapper around `doom-cli-call'.
@@ -1915,8 +1889,8 @@ Once done, this function kills Emacs gracefully and writes output to log files
 errors to `doom-cli-error-file')."
   (when doom-cli--context
     (error "Cannot nest `run!' calls"))
-  (doom-run-hooks 'doom-after-init-hook)
-  (doom-context-with 'cli
+  (run-hooks 'doom-cli-initialize-hook)
+  (with-doom-context 'run
     (let* ((args (flatten-list args))
            (context (make-doom-cli-context :prefix prefix :whole args))
            (doom-cli--context context)
@@ -1935,66 +1909,67 @@ errors to `doom-cli-error-file')."
                        (insert in "\n")
                      (ignore-errors (delete-char -1))))))
         (doom-cli--exit
-         (condition-case e
-             (let* ((args (cons (if (getenv "__DOOMDUMP") :dump prefix) args))
-                    (context (doom-cli-context-restore (getenv "__DOOMCONTEXT") context))
-                    (context (doom-cli-context-parse args context)))
-               (run-hook-with-args 'doom-cli-before-run-functions context)
-               (let ((result (doom-cli-context-execute context)))
-                 (run-hook-with-args 'doom-cli-after-run-functions context result))
-               0)
-           (doom-cli-wrong-number-of-arguments-error
-            (pcase-let ((`(,command ,flag ,args ,min ,max) (cdr e)))
-              (print! (red "Error: %S expected %s argument%s, but got %d")
-                      (or flag (doom-cli-command-string
-                                (if (keywordp (car command))
-                                    command
-                                  (cdr command))))
-                      (if (or (= min max)
-                              (= max most-positive-fixnum))
-                          min
-                        (format "%d-%d" min max))
-                      (if (or (= min 0) (> min 1)) "s" "")
-                      (length args))
-              (doom-cli-call `(:help "--synopsis" "--postamble" ,@(cdr (doom-cli--command context))) context e))
-            5)
-           (doom-cli-unrecognized-option-error
-            (print! (red "Error: unknown option %s") (cadr e))
-            (doom-cli-call `(:help "--synopsis" "--postamble" ,@(cdr (doom-cli--command context))) context e)
-            5)
-           (doom-cli-invalid-option-error
-            (pcase-let ((`(,types ,option ,value ,errors) (cdr e)))
-              (print! (red "Error: %s received invalid value %S")
-                      (string-join (doom-cli-option-switches option) "/")
-                      value)
-              (print! (bold "\nValidation errors:"))
-              (dolist (err errors) (print! (item "%s." (fill err)))))
-            (doom-cli-call `(:help "--postamble" ,@(cdr (doom-cli--command context))) context e)
-            5)
-           (doom-cli-command-not-found-error
-            (let* ((command (cdr e))
-                   (cli (doom-cli-get command)))
-              (cond ((null cli)
-                     (print! (red "Error: unrecognized command '%s'")
-                             (doom-cli-command-string (or (cdr command) command)))
-                     (doom-cli-call `(:help "--similar" "--postamble" ,@(cdr command)) context e))
-                    ((null (doom-cli-fn cli))
-                     (print! (red "Error: a subcommand is required"))
-                     (doom-cli-call `(:help "--subcommands" "--postamble" ,@(cdr command)) context e))))
-            4)
-           (doom-cli-invalid-prefix-error
-            (let ((prefix (cadr e)))
-              (print! (red "Error: `run!' called with invalid prefix %S") prefix)
-              (if-let (suggested (cl-loop for cli being the hash-value of doom-cli--table
-                                          unless (doom-cli-type cli)
-                                          return (car (doom-cli-command cli))))
-                  (print! "Did you mean %S?" suggested)
-                (print! "There are no commands defined under %S." prefix)))
-            4)
-           (user-error
-            (print! (red "Error: %s") (cadr e))
-            (print! "\nAborting...")
-            3))
+         (catch 'exit
+           (condition-case e
+               (let* ((args (cons (if (getenv "__DOOMDUMP") :dump prefix) args))
+                      (context (doom-cli-context-restore (getenv "__DOOMCONTEXT") context))
+                      (context (doom-cli-context-parse args context)))
+                 (run-hook-with-args 'doom-cli-before-run-functions context)
+                 (let ((result (doom-cli-context-execute context)))
+                   (run-hook-with-args 'doom-cli-after-run-functions context result))
+                 0)
+             (doom-cli-wrong-number-of-arguments-error
+              (pcase-let ((`(,command ,flag ,args ,min ,max) (cdr e)))
+                (print! (red "Error: %S expected %s argument%s, but got %d")
+                        (or flag (doom-cli-command-string
+                                  (if (keywordp (car command))
+                                      command
+                                    (cdr command))))
+                        (if (or (= min max)
+                                (= max most-positive-fixnum))
+                            min
+                          (format "%d-%d" min max))
+                        (if (or (= min 0) (> min 1)) "s" "")
+                        (length args))
+                (doom-cli-call `(:help "--synopsis" "--postamble" ,@(cdr (doom-cli--command context))) context e))
+              5)
+             (doom-cli-unrecognized-option-error
+              (print! (red "Error: unknown option %s") (cadr e))
+              (doom-cli-call `(:help "--synopsis" "--postamble" ,@(cdr (doom-cli--command context))) context e)
+              5)
+             (doom-cli-invalid-option-error
+              (pcase-let ((`(,types ,option ,value ,errors) (cdr e)))
+                (print! (red "Error: %s received invalid value %S")
+                        (string-join (doom-cli-option-switches option) "/")
+                        value)
+                (print! (bold "\nValidation errors:"))
+                (dolist (err errors) (print! (item "%s." (fill err)))))
+              (doom-cli-call `(:help "--postamble" ,@(cdr (doom-cli--command context))) context e)
+              5)
+             (doom-cli-command-not-found-error
+              (let* ((command (cdr e))
+                     (cli (doom-cli-get command)))
+                (cond ((null cli)
+                       (print! (red "Error: unrecognized command: %s")
+                               (doom-cli-command-string command))
+                       (doom-cli-call `(:help "--similar" "--postamble" ,@(cdr command)) context e))
+                      ((null (doom-cli-fn cli))
+                       (print! (red "Error: a subcommand is required"))
+                       (doom-cli-call `(:help "--subcommands" "--postamble" ,@(cdr command)) context e))))
+              4)
+             (doom-cli-invalid-prefix-error
+              (let ((prefix (cadr e)))
+                (print! (red "Error: `run!' called with invalid prefix %S") prefix)
+                (if-let (suggested (cl-loop for cli being the hash-value of doom-cli--table
+                                            unless (doom-cli-type cli)
+                                            return (car (doom-cli-command cli))))
+                    (print! "Did you mean %S?" suggested)
+                  (print! "There are no commands defined under %S." prefix)))
+              4)
+             (user-error
+              (print! (red "Error: %s") (cadr e))
+              (print! "\nAborting...")
+              3)))
          context)))))
 
 (defalias 'sh! #'doom-call-process)
@@ -2004,12 +1979,519 @@ errors to `doom-cli-error-file')."
 ;; TODO Make `git!' into a more sophisticated wrapper around git
 (defalias 'git! (doom-partial #'straight--process-run "git"))
 
+(defun get! (key) (doom-cli-context-get doom-cli--context key))
+
+(defun put! (key val) (doom-cli-context-put doom-cli--context key val))
 
 
 ;;
-;;; Predefined CLIs
+;;; doom-cli-help
+;;
+;; This file defines special commands that the Doom CLI will invoke when a
+;; command is passed with -?, --help, or --version. They can also be aliased to
+;; a sub-command to make more of its capabilities accessible to users, with:
+;;
+;;    (defcli-alias! (myscript (help h)) (:help))
+;;
+;; You can define your own command-specific help handlers, e.g.
+;;
+;;    (defcli! (:help myscript subcommand) () ...)
+;;
+;; And it will be invoked instead of the generic one.
+;;
+;;; Code:
 
-(load! "cli/meta")  ; :help, :version, and :dump
+(defun doom-cli-help (cli)
+  "Return an alist of documentation summarizing CLI (a `doom-cli')."
+  (let* ((rcli (doom-cli-get cli))
+         (docs (doom-cli-docs rcli)))
+    `((command     . ,(doom-cli-command-string cli))
+      (summary     . ,(or (cdr (assoc "SUMMARY" docs)) "[TODO]"))
+      (description . ,(or (cdr (assoc "MAIN" docs)) ""))
+      (synopsis    . ,(doom-cli-help--synopsis cli))
+      (arguments   . ,(doom-cli-help--arguments rcli))
+      (options     . ,(doom-cli-help--options rcli))
+      (commands    . ,(doom-cli-subcommands cli 1))
+      (sections    . ,(seq-filter #'cdr (cddr docs))))))
+
+(defun doom-cli-help-similar-commands (command &optional maxscore)
+  "Return N commands that are similar to COMMAND."
+  (seq-take-while
+   (fn! (>= (car %) (or maxscore 0.0)))
+   (seq-sort-by
+    #'car #'>
+    (cl-loop with prefix = (seq-find #'doom-cli-get (nreverse (doom-cli--command-expand command t)))
+             with input = (doom-cli-command-string (cdr (doom-cli--command command t)))
+             for command in (hash-table-keys doom-cli--table)
+             if (doom-cli-fn (doom-cli-get command))
+             if (equal prefix (seq-take command (length prefix)))
+             collect (cons (doom-cli-help--similarity
+                            input (doom-cli-command-string (cdr command)))
+                           command)))))
+
+(defun doom-cli-help--similarity (a b)
+  (- 1 (/ (float (doom-cli-help--string-distance a b))
+          (max (length a) (length b)))))
+
+(defun doom-cli-help--string-distance (a b)
+  "Calculate the Restricted Damerau-Levenshtein distance between A and B.
+This is also known as the Optimal String Alignment algorithm.
+
+It is assumed that A and B are both strings, and before processing both are
+converted to lowercase.
+
+This returns the minimum number of edits required to transform A
+to B, where each edit is a deletion, insertion, substitution, or
+transposition of a character, with the restriction that no
+substring is edited more than once."
+  (let ((a (downcase a))
+        (b (downcase b))
+        (alen (length a))
+        (blen (length b))
+        (start 0))
+    (when (> alen blen)
+      (let ((c a)
+            (clen alen))
+        (setq a b alen blen
+              b c blen clen)))
+    (while (and (< start (min alen blen))
+                (= (aref a start) (aref b start)))
+      (cl-incf start))
+    (cl-decf start)
+    (if (= (1+ start) alen)
+        (- blen start)
+      (let ((v0 (make-vector (- blen start) 0))
+            (v1 (make-vector (- blen start) 0))
+            (a_i (aref a (max 0 start)))
+            (current 0)
+            a_i-1 b_j b_j-1
+            left transition-next
+            above this-transition)
+        (dotimes (vi (length v0))
+          (aset v0 vi (1+ vi)))
+        (dolist (i (number-sequence (1+ start) (1- alen)))
+          (setq a_i-1 a_i
+                a_i (aref a i)
+                b_j (aref b (max 0 start))
+                left (- i start 1)
+                current (- i start)
+                transition-next 0)
+          (dolist (j (number-sequence (1+ start) (1- blen)))
+            (setq b_j-1 b_j
+                  b_j (aref b j)
+                  above current
+                  current left
+                  this-transition transition-next
+                  transition-next (aref v1 (- j start)))
+            (aset v1 (- j start) current)
+            (setq left (aref v0 (- j start)))
+            (unless (= a_i b_j)
+              ;; Minimum between substitution, deletion, and insertion
+              (setq current (min (1+ current) (1+ above) (1+ left)))
+              (when (and (> i (1+ start)) (> j (1+ start)) (= a_i b_j-1) (= a_i-1 b_j))
+                (setq current (min current (cl-incf this-transition)))))
+            (aset v0 (- j start) current)))
+        current))))
+
+;;; Help: printers
+;; TODO Parameterize optional args with `cl-defun'
+(defun doom-cli-help--print (cli context &optional manpage? noglobal?)
+  "Write CLI's documentation in a manpage-esque format to stdout."
+  (let-alist (doom-cli-help cli)
+    (let* ((alist
+            `(,@(if manpage?
+                    `((nil    . ,(let* ((title (cadr (member "--load" command-line-args)))
+                                        (width (floor (/ (- (doom-cli-context-width context)
+                                                            (length title))
+                                                         2.0))))
+                                   ;; FIXME Who am I fooling?
+                                   (format (format "%%-%ds%%s%%%ds" width width)
+                                           "DOOM(1)" title "DOOM(1)")))
+                      ("NAME" . ,(concat .command " - " .summary))
+                      ("SYNOPSIS" . ,(doom-cli-help--render-synopsis .synopsis nil t))
+                      ("DESCRIPTION" . ,.description))
+                  `((nil . ,(doom-cli-help--render-synopsis .synopsis "Usage: "))
+                    (nil . ,(string-join (seq-remove #'string-empty-p (list .summary .description))
+                                         "\n\n"))))
+              ("ARGUMENTS" . ,(doom-cli-help--render-arguments .arguments))
+              ("COMMANDS"
+               . ,(doom-cli-help--render-commands
+                   .commands :prefix (doom-cli-command cli) :grouped? t :docs? t))
+              ("OPTIONS"
+               . ,(doom-cli-help--render-options
+                   (if (or (not (doom-cli-fn cli)) noglobal?)
+                       `(,(assq 'local .options))
+                     .options)
+                   cli))))
+           (command (doom-cli-command cli)))
+      (letf! (defun printsection (section)
+               (print! "%s\n"
+                       (if (null section)
+                           (dark "TODO")
+                         (markup
+                          (format-spec
+                           section `((?p . ,(car command))
+                                     (?c . ,(doom-cli-command-string (cdr command))))
+                           'ignore)))))
+        (pcase-dolist (`(,label . ,contents) alist)
+          (when (and contents (not (string-blank-p contents)))
+            (when label
+              (print! (bold "%s%s") label (if manpage? "" ":")))
+            (print-group! :if label (printsection contents))))
+        (pcase-dolist (`(,label . ,contents) .sections)
+          (when (and contents (not (assoc label alist)))
+            (print! (bold "%s:") label)
+            (print-group! (printsection contents))))))))
+
+;;; Help: synopsis
+(defun doom-cli-help--synopsis (cli &optional all-options?)
+  (let* ((rcli (doom-cli-get cli))
+         (opts (doom-cli-help--options rcli))
+         (opts (mapcar #'car (if all-options? (mapcan #'cdr opts) (alist-get 'local opts))))
+         (opts (cl-loop for opt in opts
+                        for args = (cdar opt)
+                        for switches = (mapcar #'car opt)
+                        for multi? = (member "..." args)
+                        if args
+                        collect (format (if multi? "[%s %s]..." "[%s %s]")
+                                        (string-join switches "|")
+                                        (string-join (remove "..." args) "|"))
+                        else collect (format "[%s]" (string-join switches "|"))))
+         (args (doom-cli-arguments rcli))
+         (subcommands? (doom-cli-subcommands rcli 1 :predicate? t)))
+    `((command  . ,(doom-cli-command cli))
+      (options  ,@opts)
+      (required ,@(mapcar (fn! (upcase (format "`%s'" %))) (if subcommands? '(command) (alist-get '&required args))))
+      (optional ,@(mapcar (fn! (upcase (format "[`%s']" %)))(alist-get '&optional args)))
+      (rest     ,@(mapcar (fn! (upcase (format "[`%s'...]" %))) (if subcommands? '(args) (alist-get '&args args)))))))
+
+(defun doom-cli-help--render-synopsis (synopsis &optional prefix)
+  (let-alist synopsis
+    (let ((doom-print-indent 0)
+          (prefix (or prefix ""))
+          (command (doom-cli-command-string .command)))
+      (string-trim-right
+       (format! "%s\n\n"
+                (fill (concat (bold prefix)
+                              (format "%s " command)
+                              (markup
+                               (join (append .options
+                                             (and .options
+                                                  (or .required
+                                                      .optional
+                                                      .rest)
+                                                  (list (dark "[--]")))
+                                             .required
+                                             .optional
+                                             .rest))))
+                      80 (1+ (length (concat prefix command)))))))))
+
+;;; Help: arguments
+(defun doom-cli-help--arguments (cli &optional all?)
+  (doom-cli-help--parse-docs (doom-cli-find cli t) "ARGUMENTS"))
+
+(defun doom-cli-help--render-arguments (arguments)
+  (mapconcat (lambda (arg)
+               (format! "%-20s\n%s"
+                        (underscore (car arg))
+                        (indent (if (equal (cdr arg) "TODO")
+                                    (dark (cdr arg))
+                                  (cdr arg))
+                                doom-print-indent-increment)))
+             arguments
+             "\n"))
+
+;;; Help: commands
+(cl-defun doom-cli-help--render-commands (commands &key prefix grouped? docs? (inline? t))
+  (with-temp-buffer
+    (let* ((doom-print-indent 0)
+           (commands (seq-group-by (fn! (if grouped? (doom-cli-prop (doom-cli-get % t) :group)))
+                                   (nreverse commands)))
+           (toplevel (assq nil commands))
+           (rest (remove toplevel commands))
+           (drop (if prefix (length prefix) 0))
+           (minwidth
+            (apply
+             #'max (or (cl-loop for cmd in (apply #'append (mapcar #'cdr commands))
+                                for cmd = (seq-drop cmd drop)
+                                collect (length (doom-cli-command-string cmd)))
+                       (list 15))))
+           (ellipsis (doom-print--style 'dark " […]"))
+           (ellipsislen (- (length ellipsis) (if (eq doom-print-backend 'ansi) 2 4))))
+      (dolist (group (cons toplevel rest))
+        (let ((label (if (car-safe group) (cdr commands))))
+          (when label
+            (insert! ((bold "%s:") (car group)) "\n"))
+          (print-group! :if label
+            (dolist (command (cdr group))
+              (let* ((cli  (doom-cli-get command t))
+                     (rcli (doom-cli-get command))
+                     (summary (doom-cli-short-docs rcli))
+                     (subcommands? (doom-cli-subcommands cli 1 :predicate? t)))
+                (insert! ((format "%%-%ds%%s%%s"
+                                  (+ (- minwidth doom-print-indent)
+                                     doom-print-indent-increment
+                                     (if subcommands? ellipsislen 0)))
+                          (concat (doom-cli-command-string (seq-drop command drop))
+                                  (if subcommands? ellipsis))
+                          (if inline? " " "\n")
+                          (indent (if (and (doom-cli-alias cli)
+                                           (not (doom-cli-type rcli)))
+                                      (dark "-> %s" (doom-cli-command-string cli))
+                                    (when docs?
+                                      (if summary (markup summary) (dark "TODO"))))))
+                         "\n")))
+            (when (cdr rest)
+              (insert "\n")))))
+      (string-trim-right (buffer-string)))))
+
+;;; Help: options
+(defun doom-cli-help--options (cli &optional noformatting?)
+  "Return an alist summarizing CLI's options.
+
+The alist's CAR are lists of formatted switches plus their arguments, e.g.
+'((\"`--foo'\" \"`BAR'\") ...). Their CDR is their formatted documentation."
+  (let* ((docs (doom-cli-help--parse-docs (doom-cli-find cli t) "OPTIONS"))
+         (docs (mapcar (fn! (cons (split-string (car %) ", ")
+                                  (cdr %)))
+                       docs))
+         (strfmt (if noformatting? "%s" "`%s'"))
+         local-options
+         global-options
+         seen)
+    (dolist (neighbor (nreverse (doom-cli-find cli)))
+      (dolist (option (doom-cli-options neighbor))
+        (when-let* ((switches (cl-loop for sw in (doom-cli-option-switches option)
+                                       if (and (doom-cli-option-flag-p option)
+                                               (string-prefix-p "--" sw))
+                                       collect (format "--[no-]%s" (substring sw 2))
+                                       else collect sw))
+                    (switches (seq-difference switches seen)))
+          (dolist (switch switches) (push switch seen))
+          (push (cons (cl-loop for switch in switches
+                               if (doom-cli-option-arguments option)
+                               collect (cons (format strfmt switch)
+                                             (append (doom-cli-help--parse-args it noformatting?)
+                                                     (when (doom-cli-option-multiple-p option)
+                                                       (list "..."))))
+                               else collect (list (format strfmt switch)))
+                      (string-join
+                       (or (delq
+                            nil (cons (when-let (docs (doom-cli-option-docs option))
+                                        (concat docs "."))
+                                      (cl-loop for (flags . docs) in docs
+                                               unless (equal (seq-difference flags switches) flags)
+                                               collect docs)))
+                           '("TODO"))
+                       "\n\n"))
+                (if (equal (doom-cli-command neighbor)
+                           (doom-cli-command cli))
+                    local-options
+                  global-options)))))
+    `((local  . ,(nreverse local-options))
+      (global . ,(nreverse global-options)))))
+
+(defun doom-cli-help--render-options (options &optional cli)
+  (let ((doom-print-indent 0)
+        (local  (assq 'local options))
+        (global (assq 'global options)))
+    (when (or (cdr local) (cdr global))
+      (letf! (defun printopts (opts)
+               (pcase-dolist (`(,switches . ,docs) (cdr opts))
+                 (let (multiple?)
+                   (insert!
+                    ("%s%s\n%s"
+                     (mapconcat
+                      (fn! (when (member "..." (cdr %))
+                             (setq multiple? t))
+                           (string-trim-right
+                            (format "%s %s"
+                                    (doom-print--cli-markup (car %))
+                                    (doom-print--cli-markup
+                                     (string-join (remove "..." (cdr %)) "|")))))
+                      switches
+                      ", ")
+                     (if multiple? ", ..." "")
+                     (indent (fill (markup docs)) doom-print-indent-increment))
+                            "\n\n"))))
+        (with-temp-buffer
+          (if (null (cdr local))
+              (insert (if global "This command has no local options.\n" "") "\n")
+            (printopts local))
+          (when (cdr global)
+            (insert! ((bold "Global options:\n")))
+            (print-group! (printopts global)))
+          (string-trim-right (buffer-string)))))))
+
+;;; Help: internal
+(defun doom-cli-help--parse-args (args &optional noformatting?)
+  (cl-loop for arg in args
+           if (listp arg)
+           collect (string-join (doom-cli-help--parse-args arg noformatting?) "|")
+           else if (symbolp arg)
+           collect (format (if noformatting? "%s" "`%s'") (upcase (symbol-name arg)))
+           else collect arg))
+
+(defun doom-cli-help--parse-docs (cli-list section-name)
+  (cl-check-type section-name string)
+  (let (alist)
+    (dolist (cli cli-list (nreverse alist))
+      (when-let (section (cdr (assoc section-name (doom-cli-docs cli))))
+        (with-temp-buffer
+          (save-excursion (insert section))
+          (let ((lead (current-indentation))
+                (buffer (current-buffer)))
+            (while (not (eobp))
+              (let ((heading (string-trim (buffer-substring (point-at-bol) (point-at-eol))))
+                    (beg (point-at-bol 2))
+                    end)
+                (forward-line 1)
+                (while (and (not (eobp))
+                            (/= (current-indentation) lead)
+                            (forward-line 1)))
+                (setf (alist-get heading alist nil nil #'equal)
+                      (string-join
+                       (delq
+                        nil (list (alist-get heading alist nil nil #'equal)
+                                  (let ((end (point)))
+                                    (with-temp-buffer
+                                      (insert-buffer-substring buffer beg end)
+                                      (goto-char (point-min))
+                                      (indent-rigidly (point-min) (point-max) (- (current-indentation)))
+                                      (string-trim-right (buffer-string))))))
+                       "\n\n"))))))))))
+
+;;
+;;; Predefined CLIs (:help, :version, and :dump)
+
+(defvar doom-help-commands '("%p %c {-?,--help}")
+  "A list of help commands recognized for the running script.
+
+Recognizes %p (for the prefix) and %c (for the active command).")
+
+;; When __DOOMDUMP is set, doomscripts trigger this special handler.
+(defcli! (:root :dump)
+    ((pretty? ("--pretty") "Pretty print output")
+     &context context
+     &args commands)
+  "Dump metadata to stdout for other commands to read."
+  (let* ((prefix (doom-cli-context-prefix context))
+         (command (cons prefix commands)))
+    (funcall (if pretty? #'pp #'prin1)
+             (cond ((equal commands '("-")) (hash-table-values doom-cli--table))
+                   (commands (doom-cli-find command))
+                   ((doom-cli-find (list prefix)))))
+    (terpri)
+    ;; Kill manually so we don't save output to logs.
+    (let (kill-emacs) (kill-emacs 0))))
+
+(defcli! (:root :help)
+    ((localonly? ("-g" "--no-global") "Hide global options")
+     (manpage?   ("--manpage")   "Generate in manpage format")
+     (commands?  ("--commands")  "List all known commands")
+     &multiple
+     (sections   ("--synopsis" "--subcommands" "--similar" "--envvars"
+                  "--postamble")
+                 "Show only the specified sections.")
+     &context context
+     &args command)
+  "Show documentation for a Doom CLI command.
+
+OPTIONS:
+  --synopsis, --subcommands, --similar, --envvars, --postamble
+    TODO"
+  (doom-cli-load-all)
+  (when (doom-cli-context-error context)
+    (terpri))
+  (let* ((command (cons (doom-cli-context-prefix context) command))
+         (cli (doom-cli-get command t))
+         (rcli (doom-cli-get cli))
+         (fallbackcli (cl-loop with targets = (doom-cli--command-expand (butlast command) t)
+                               for cmd in (cons command targets)
+                               if (doom-cli-get cmd t)
+                               return it)))
+    (cond (commands?
+           (let ((cli (or cli (doom-cli-get (doom-cli-context-prefix context)))))
+             (print! "Commands under '%s':\n%s"
+                     (doom-cli-command-string cli)
+                     (indent (doom-cli-help--render-commands
+                              (or (doom-cli-subcommands cli)
+                                  (user-error "No commands found"))
+                              :prefix (doom-cli-command cli)
+                              :inline? t
+                              :docs? t)))))
+          ((null sections)
+           (if (null cli)
+               (signal 'doom-cli-command-not-found-error command)
+             (doom-cli-help--print cli context manpage? localonly?)
+             (exit! :pager?)))
+          ((dolist (section sections)
+             (unless (equal section (car sections)) (terpri))
+             (pcase section
+               ("--synopsis"
+                (print! "%s" (doom-cli-help--render-synopsis
+                              (doom-cli-help--synopsis cli)
+                              "Usage: ")))
+               ("--subcommands"
+                (print! "%s\n%s" (bold "Available commands:")
+                        (indent (doom-cli-help--render-commands
+                                 (doom-cli-subcommands rcli 1)
+                                 :prefix command
+                                 :grouped? t
+                                 :docs? t)
+                                doom-print-indent-increment)))
+               ("--similar"
+                (unless command
+                  (user-error "No command specified"))
+                (let ((similar (doom-cli-help-similar-commands command 0.4)))
+                  (print! "Similar commands:")
+                  (if (not similar)
+                      (print! (indent (warn "Can't find any!")))
+                    (dolist (command (seq-take similar 10))
+                      (print! (indent (item "(%d%%) %s"))
+                              (* (car command) 100)
+                              (doom-cli-command-string (cdr command)))))))
+               ("--envvars"
+                (let* ((key "ENVIRONMENT VARIABLES")
+                       (clis (if command (doom-cli-find command) (hash-table-values doom-cli--table)))
+                       (clis (seq-remove #'doom-cli-alias clis))
+                       (clis (seq-filter (fn! (cdr (assoc key (doom-cli-docs %)))) clis))
+                       (clis (seq-group-by #'doom-cli-command clis)))
+                  (print! "List of environment variables for %s:\n" command)
+                  (if (null clis)
+                      (print! (indent "None!"))
+                    (dolist (group clis)
+                      (print! (bold "%s%s:"
+                                    (doom-cli-command-string (car group))
+                                    (if (doom-cli-fn (doom-cli-get (car group)))
+                                        "" " *")))
+                      (dolist (cli (cdr group))
+                        (print! (indent "%s") (markup (cdr (assoc key (doom-cli-docs cli))))))))))
+               ("--postamble"
+                (print! "See %s for documentation."
+                        (join (cl-loop with spec =
+                                       `((?p . ,(doom-cli-context-prefix context))
+                                         (?c . ,(doom-cli-command-string (cdr (doom-cli-command (or cli fallbackcli))))))
+                                       for cmd in doom-help-commands
+                                       for formatted = (trim (format-spec cmd spec))
+                                       collect (replace-regexp-in-string
+                                                " +" " " (format "'%s'" formatted)))
+                              " or ")))))))))
+
+(defcli! (:root :version)
+    ((simple? ("--simple"))
+     &context context)
+  "Show installed versions of Doom, Doom modules, and Emacs."
+  (doom/version)
+  (unless simple?
+    (terpri)
+    (with-temp-buffer
+      (insert-file-contents (doom-path doom-emacs-dir "LICENSE"))
+      (re-search-forward "^Copyright (c) ")
+      (print! "%s\n" (trim (thing-at-point 'line t)))
+      (print! (p "Doom Emacs uses the MIT license and is provided without warranty "
+                 "of any kind. You may redistribute and modify copies if "
+                 "given proper attribution. See the LICENSE file for details.")))))
 
 (provide 'doom-cli)
 ;;; doom-cli.el ends here

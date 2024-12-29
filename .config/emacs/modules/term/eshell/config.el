@@ -226,13 +226,17 @@ Emacs versions < 29."
 
 (use-package! eshell-did-you-mean
   :after esh-mode ; Specifically esh-mode, not eshell
-  :config
-  (eshell-did-you-mean-setup)
-  ;; HACK There is a known issue with `eshell-did-you-mean' where it does not
-  ;;      work on first invocation, so we invoke it once manually by setting the
-  ;;      last command and then calling the output filter.
-  (setq eshell-last-command-name "catt")
-  (eshell-did-you-mean-output-filter "catt: command not found"))
+  :config (eshell-did-you-mean-setup)
+
+  ;; HACK: `pcomplete-completions' returns a function, but
+  ;;   `eshell-did-you-mean--get-all-commands' unconditionally expects it to
+  ;;   return a list of strings, causing wrong-type-arg errors in many cases.
+  ;;   `all-completions' handles all these cases.
+  (defadvice! +eshell--fix-eshell-did-you-mean-a (&rest _)
+    :override #'eshell-did-you-mean--get-all-commands
+    (unless eshell-did-you-mean--all-commands
+      (setq eshell-did-you-mean--all-commands
+            (all-completions "" (pcomplete-completions))))))
 
 
 (use-package eshell-syntax-highlighting
@@ -242,14 +246,7 @@ Emacs versions < 29."
 
 
 (use-package! fish-completion
-  :unless IS-WINDOWS
+  :unless (featurep :system 'windows)
   :hook (eshell-mode . fish-completion-mode)
-  :init (setq fish-completion-fallback-on-bash-p t)
-  :config
-  ;; HACK Even with `fish-completion-fallback-on-bash-p' non-nil,
-  ;;      `fish-completion--list-completions-with-desc' will throw an error if
-  ;;      fish isn't installed (and so, will fail to fall back to bash), so we
-  ;;      advise it to fail silently.
-  (defadvice! +eshell--fallback-to-bash-a (&rest _)
-    :before-until #'fish-completion--list-completions-with-desc
-    (unless (executable-find "fish") "")))
+  :init (setq fish-completion-fallback-on-bash-p t
+              fish-completion-inhibit-missing-fish-command-warning t))

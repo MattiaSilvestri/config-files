@@ -42,7 +42,15 @@ If no viewer is found, `latex-preview-pane-mode' is used.")
 ;;
 ;; Packages
 
-(add-to-list 'auto-mode-alist '("\\.tex\\'" . LaTeX-mode))
+;; HACK: Doom sets `custom-dont-initialize' during the early parts of its
+;;   startup process. This stops tex-site's setter on `TeX-modes' from
+;;   activating in `tex-site', which auctex loads *very early* from its
+;;   autoloads file. `tex-site's existence is hacky (more a historical artifact
+;;   and necessary evil, given its conflicts with the built in latex modes), so
+;;   I fix it as a one-off problem rather than a systemic one.
+(after! tex-site
+  (TeX-modes-set 'TeX-modes TeX-modes))
+
 
 (setq TeX-parse-self t ; parse on load
       TeX-auto-save t  ; parse on save
@@ -100,7 +108,8 @@ If no viewer is found, `latex-preview-pane-mode' is used.")
   ;; Hook LSP, if enabled.
   (when (modulep! +lsp)
     (add-hook! '(tex-mode-local-vars-hook
-                 latex-mode-local-vars-hook)
+                 latex-mode-local-vars-hook
+                 LaTeX-mode-local-vars-hook)
                :append #'lsp!))
   ;; Define a function to compile the project.
   (defun +latex/compile ()
@@ -119,7 +128,18 @@ If no viewer is found, `latex-preview-pane-mode' is used.")
         :desc "View"          "v" #'TeX-view
         :desc "Compile"       "c" #'+latex/compile
         :desc "Run all"       "a" #'TeX-command-run-all
-        :desc "Run a command" "m" #'TeX-command-master))
+        :desc "Run a command" "m" #'TeX-command-master)
+
+  ;; HACK: The standard LaTeXMk command uses `TeX-run-format', which doesn't
+  ;;   trigger `TeX-after-compilation-finished-functions', so swap it out for
+  ;;   `TeX-run-TeX', which does.
+  (defadvice! +latex--run-after-compilation-finished-functions-a (&rest args)
+    :after #'TeX-TeX-sentinel
+    (unless (TeX-error-report-has-errors-p)
+      (run-hook-with-args 'TeX-after-compilation-finished-functions
+                          (with-current-buffer TeX-command-buffer
+                            (expand-file-name
+                             (TeX-active-master (TeX-output-extension))))))))
 
 
 (use-package! tex-fold
@@ -127,6 +147,9 @@ If no viewer is found, `latex-preview-pane-mode' is used.")
   :hook (TeX-mode . +latex-TeX-fold-buffer-h)
   :hook (TeX-mode . TeX-fold-mode)
   :config
+  ;; Reveal folds when moving cursor into them. This saves us the trouble of
+  ;; having to whitelist all motion commands in `TeX-fold-auto-reveal-commands'.
+  (setq TeX-fold-auto-reveal t)
   (defun +latex-TeX-fold-buffer-h ()
     (run-with-idle-timer 0 nil 'TeX-fold-buffer))
   ;; Fold after all AUCTeX macro insertions.
@@ -182,19 +205,21 @@ Math faces should stay fixed by the mixed-pitch blacklist, this is mostly for
   (dolist (env '("itemize" "enumerate" "description"))
     (add-to-list 'LaTeX-indent-environment-list `(,env +latex-indent-item-fn)))
 
-  ;; Fix #1849: allow fill-paragraph in itemize/enumerate.
-  (defadvice! +latex--re-indent-itemize-and-enumerate-a (fn &rest args)
+  ;; Fix #1849: allow fill-paragraph in itemize/enumerate/description.
+  (defadvice! +latex--re-indent-itemize-and-enumerate-and-description-a (fn &rest args)
     :around #'LaTeX-fill-region-as-para-do
     (let ((LaTeX-indent-environment-list
            (append LaTeX-indent-environment-list
-                   '(("itemize"   +latex-indent-item-fn)
-                     ("enumerate" +latex-indent-item-fn)))))
+                   '(("itemize"     +latex-indent-item-fn)
+                     ("enumerate"   +latex-indent-item-fn)
+                     ("description" +latex-indent-item-fn)))))
       (apply fn args)))
-  (defadvice! +latex--dont-indent-itemize-and-enumerate-a (fn &rest args)
+  (defadvice! +latex--dont-indent-itemize-and-enumerate-and-description-a (fn &rest args)
     :around #'LaTeX-fill-region-as-paragraph
     (let ((LaTeX-indent-environment-list LaTeX-indent-environment-list))
       (delq! "itemize" LaTeX-indent-environment-list 'assoc)
       (delq! "enumerate" LaTeX-indent-environment-list 'assoc)
+      (delq! "description" LaTeX-indent-environment-list 'assoc)
       (apply fn args))))
 
 
@@ -246,19 +271,6 @@ Math faces should stay fixed by the mixed-pitch blacklist, this is mostly for
 (use-package! adaptive-wrap
   :hook (LaTeX-mode . adaptive-wrap-prefix-mode)
   :init (setq-default adaptive-wrap-extra-indent 0))
-
-
-(use-package! auctex-latexmk
-  :when (modulep! +latexmk)
-  :after latex
-  :init
-  ;; Pass the -pdf flag when TeX-PDF-mode is active.
-  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
-  ;; Set LatexMk as the default.
-  (setq-hook! LaTeX-mode TeX-command-default "LatexMk")
-  :config
-  ;; Add LatexMk as a TeX target.
-  (auctex-latexmk-setup))
 
 
 (use-package! evil-tex

@@ -323,25 +323,25 @@ on   = [ "f","f" ]
 run  = "plugin fg --args='fzf'"
 desc = "find file by filename"
 
-[[manager.prepend_keymap]]
-on = [ "u", "a" ]
-run = "plugin bookmarks-persistence --args=save"
-desc = "Save current position as a bookmark"
-
-[[manager.prepend_keymap]]
-on = [ "`"]
-run = "plugin bookmarks-persistence --args=jump"
-desc = "Jump to a bookmark"
-
-[[manager.prepend_keymap]]
-on = [ "u", "d" ]
-run = "plugin bookmarks-persistence --args=delete"
-desc = "Delete a bookmark"
-
-[[manager.prepend_keymap]]
-on = [ "u", "D" ]
-run = "plugin bookmarks-persistence --args=delete_all"
-desc = "Delete all bookmarks"
+# [[manager.prepend_keymap]]
+# on = [ "u", "a" ]
+# run = "plugin bookmarks-persistence --args=save"
+# desc = "Save current position as a bookmark"
+#
+# [[manager.prepend_keymap]]
+# on = [ "`"]
+# run = "plugin bookmarks-persistence --args=jump"
+# desc = "Jump to a bookmark"
+#
+# [[manager.prepend_keymap]]
+# on = [ "u", "d" ]
+# run = "plugin bookmarks-persistence --args=delete"
+# desc = "Delete a bookmark"
+#
+# [[manager.prepend_keymap]]
+# on = [ "u", "D" ]
+# run = "plugin bookmarks-persistence --args=delete_all"
+# desc = "Delete all bookmarks"
 
 [[manager.prepend_keymap]]
 on   = [ "<C-s>" ]
@@ -353,3 +353,43 @@ on  = [ "y" ]
 run = [ "yank", '''
 	shell --interactive 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
 ''' ]
+
+[[manager.prepend_keymap]]
+on = [ "u", "a" ]
+run = "plugin yamb --args=save"
+desc = "Add bookmark"
+
+[[manager.prepend_keymap]]
+on = [ "u", "g" ]
+run = "plugin yamb --args=jump_by_key"
+desc = "Jump bookmark by key"
+
+[[manager.prepend_keymap]]
+on = [ "u", "G" ]
+run = "plugin yamb --args=jump_by_fzf"
+desc = "Jump bookmark by fzf"
+
+[[manager.prepend_keymap]]
+on = [ "u", "d" ]
+run = "plugin yamb --args=delete_by_key"
+desc = "Delete bookmark by key"
+
+[[manager.prepend_keymap]]
+on = [ "u", "D" ]
+run = "plugin yamb --args=delete_by_fzf"
+desc = "Delete bookmark by fzf"
+
+[[manager.prepend_keymap]]
+on = [ "u", "A" ]
+run = "plugin yamb --args=delete_all"
+desc = "Delete all bookmarks"
+
+[[manager.prepend_keymap]]
+on = [ "u", "r" ]
+run = "plugin yamb --args=rename_by_key"
+desc = "Rename bookmark by key"
+
+[[manager.prepend_keymap]]
+on = [ "u", "R" ]
+run = "plugin yamb --args=rename_by_fzf"
+desc = "Rename bookmark by fzf"

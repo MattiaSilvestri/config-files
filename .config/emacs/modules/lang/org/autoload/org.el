@@ -272,12 +272,11 @@ If on a:
                 (org-element-property :end lineage))
              (org-open-at-point arg))))
 
+        ((guard (org-element-property :checkbox (org-element-lineage context '(item) t)))
+         (org-toggle-checkbox))
+
         (`paragraph
          (+org--toggle-inline-images-in-subtree))
-
-        ((guard (org-element-property :checkbox (org-element-lineage context '(item) t)))
-         (let ((match (and (org-at-item-checkbox-p) (match-string 1))))
-           (org-toggle-checkbox (if (equal match "[ ]") '(16)))))
 
         (_
          (if (or (org-in-regexp org-ts-regexp-both nil t)
@@ -334,6 +333,36 @@ see how ARG affects this command."
               (y-or-n-p "No active clock. Clock in on current item?"))
          (org-clock-in))
         ((org-clock-in-last arg))))
+
+;;;###autoload
+(defun +org/reformat-at-point ()
+  "Reformat the element at point.
+
+If in an org src block, invokes `+format/org-block' if the ':editor format'
+  module is enabled.
+If in an org table, realign the cells with `org-table-align'.
+Otherwise, falls back to `org-fill-paragraph' to reflow paragraphs."
+  (interactive)
+  (let ((element (org-element-at-point)))
+    (cond ((doom-region-active-p)
+           ;; TODO Perform additional formatting?
+           ;; (save-restriction
+           ;;   (narrow-to-region beg end)
+           ;;   (org-table-recalculate t)
+           ;;   (org-table-map-tables #'org-table-align)
+           ;;   (org-align-tags t)
+           ;;   (org-update-statistics-cookies t)
+           ;;   ...)
+           (if (modulep! :editor format)
+               (call-interactively #'+format/org-blocks-in-region)
+             (message ":editor format is disabled, skipping reformatting of org-blocks")))
+          ((org-in-src-block-p nil element)
+           (unless (modulep! :editor format)
+             (user-error ":editor format module is disabled, ignoring reformat..."))
+           (call-interactively #'+format/org-block))
+          ((org-at-table-p)
+           (save-excursion (org-table-align)))
+          ((call-interactively #'org-fill-paragraph)))))
 
 
 ;;; Folds
@@ -457,7 +486,8 @@ Made for `org-tab-first-hook'."
                            (evil-emacs-state-p))
                        (or (and (bound-and-true-p yas--tables)
                                 (gethash major-mode yas--tables))
-                           (progn (yas-reload-all) t))
+                           (with-memoization (get 'yas-reload-all 'reloaded)
+                             (always (yas-reload-all))))
                        (yas--templates-for-key-at-point))
                   (yas-expand)
                   t)
@@ -521,10 +551,3 @@ All my (performant) foldings needs are met between this and `org-show-subtree'
   (when org-occur-highlights
     (org-remove-occur-highlights)
     t))
-
-;;;###autoload
-(defun +org-enable-auto-update-cookies-h ()
-  "Update statistics cookies when saving or exiting insert mode (`evil-mode')."
-  (when (bound-and-true-p evil-local-mode)
-    (add-hook 'evil-insert-state-exit-hook #'org-update-parent-todo-statistics nil t))
-  (add-hook 'before-save-hook #'org-update-parent-todo-statistics nil t))

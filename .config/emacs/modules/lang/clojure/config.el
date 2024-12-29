@@ -10,6 +10,7 @@
 (defvar +clojure-load-clj-refactor-with-lsp nil
   "Whether or not to include clj-refactor along with clojure-lsp.")
 
+
 ;;
 ;;; Packages
 
@@ -79,6 +80,7 @@
         nrepl-log-messages nil
         cider-font-lock-dynamically '(macro core function var deprecated)
         cider-overlays-use-font-lock t
+        cider-print-options '(("length" 100))
         cider-prompt-for-symbol nil
         cider-repl-history-display-duplicates nil
         cider-repl-history-display-style 'one-line
@@ -88,7 +90,6 @@
         cider-repl-history-highlight-inserted-item t
         cider-repl-history-size 1000
         cider-repl-result-prefix ";; => "
-        cider-repl-print-length 100
         cider-repl-use-clojure-font-lock t
         cider-repl-use-pretty-printing t
         cider-repl-wrap-history nil
@@ -121,13 +122,35 @@
            (with-current-buffer nrepl-server-buffer
              (buffer-string)))))))
 
-  ;; When in cider-debug-mode, override evil keys to not interfere with debug keys
   (after! evil
-    (add-hook! cider--debug-mode
-      (defun +clojure--cider-setup-debug ()
-        "Setup cider debug to override evil keys cleanly"
-        (evil-make-overriding-map cider--debug-mode-map 'normal)
-        (evil-normalize-keymaps))))
+    (if (modulep! :editor evil +everywhere)
+        ;; Match evil-collection keybindings to debugging overlay
+        (after! (cider-debug evil-collection-cider)
+          (mapc
+           (lambda (replacement)
+             (let* ((from (car replacement))
+                    (to (cadr replacement))
+                    (item (assoc from cider-debug-prompt-commands)))
+               (when item
+                 ;; Position matters, hence the update-in-place
+                 (setf (car item) (car to))
+                 (setf (cdr item) (cdr to)))))
+           '((?h (?H "here" "Here"))
+             (?i (?I "in" "In"))
+             (?j (?J "inject" "inJect"))
+             (?l (?L "locals" "Locals"))))
+
+          ;; Prevent evil-snipe from overriding evil-collection
+          (add-hook! cider--debug-mode
+                     'turn-off-evil-snipe-mode
+                     'turn-off-evil-snipe-override-mode))
+
+      ;; When in cider-debug-mode, override evil keys to not interfere with debug keys
+      (add-hook! cider--debug-mode
+        (defun +clojure--cider-setup-debug ()
+          "Setup cider debug to override evil keys cleanly"
+          (evil-make-overriding-map cider--debug-mode-map 'normal)
+          (evil-normalize-keymaps)))))
 
   (when (modulep! :ui modeline +light)
     (defvar-local cider-modeline-icon nil)
@@ -259,7 +282,7 @@
 
 
 (use-package! clj-refactor
-  :when (or (not (modulep! +lsp))
+  :when (or (modulep! -lsp)
             +clojure-load-clj-refactor-with-lsp)
   :hook (clojure-mode . clj-refactor-mode)
   :config
@@ -272,9 +295,8 @@
 
 ;; clojure-lsp already uses clj-kondo under the hood
 (use-package! flycheck-clj-kondo
-  :when (and (modulep! :checkers syntax)
-             (not (modulep! :checkers syntax +flymake))
-             (not (modulep! +lsp)))
+  :when (modulep! -lsp)
+  :when (modulep! :checkers syntax -flymake)
   :after flycheck)
 
 

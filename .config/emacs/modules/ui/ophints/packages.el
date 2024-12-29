@@ -2,5 +2,5 @@
 ;;; ui/ophints/packages.el
 
 (if (modulep! :editor evil)
-    (package! evil-goggles :pin "0070c9d8447e1696f8713d0c13ff64ef0979d580")
-  (package! volatile-highlights :pin "fcf6e2778454ce514c189a7d1fe70e03ad81c325"))
+    (package! evil-goggles :pin "34ca276a85f615d2b45e714c9f8b5875bcb676f3")
+  (package! goggles :pin "142d788e16bf387608b51c8590c852940890f637"))

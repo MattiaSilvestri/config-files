@@ -1,5 +1,6 @@
 ;;; lang/ruby/config.el -*- lexical-binding: t; -*-
 
+;; DEPRECATED: Remove when projectile is replaced with project.el
 (after! projectile
   (add-to-list 'projectile-project-root-files "Gemfile"))
 
@@ -48,7 +49,7 @@
           (bound-and-true-p lsp--buffer-deferred)
           (robe-mode +1))))
   :config
-  (set-repl-handler! 'ruby-mode #'robe-start)
+  (set-repl-handler! 'ruby-mode #'+ruby-robe-repl-handler)
   (set-company-backend! 'ruby-mode 'company-robe 'company-dabbrev-code)
   (set-lookup-handlers! 'ruby-mode
     :definition #'robe-jump
@@ -88,6 +89,16 @@
         "F" #'rubocop-autocorrect-current-file
         "p" #'rubocop-check-project
         "P" #'rubocop-autocorrect-project))
+
+
+(use-package! ruby-json-to-hash
+  :defer t
+  :init
+  (map! :after ruby-mode
+        :map ruby-mode-map
+        :localleader
+        "J" #'ruby-json-to-hash-parse-json
+        "j" #'ruby-json-to-hash-toggle-let))
 
 
 ;;
@@ -181,6 +192,9 @@
         "v" #'minitest-verify))
 
 
+;;
+;;; Rails integration
+
 (use-package! projectile-rails
   :when (modulep! +rails)
   :hook ((ruby-mode inf-ruby-mode projectile-rails-server-mode) . projectile-rails-mode)
@@ -198,3 +212,29 @@
   (map! :localleader
         :map projectile-rails-mode-map
         "r" #'projectile-rails-command-map))
+
+(use-package! rails-routes
+  :when (modulep! +rails)
+  :defer t
+  :init
+  (map! :after ruby-mode
+        :map ruby-mode-map
+        "C-c o" #'rails-routes-insert
+        "C-c C-o" #'rails-routes-insert-no-cache
+        "C-c ! o" #'rails-routes-jump)
+  (map! :after web-mode
+        :map web-mode-map
+        "C-c o" #'rails-routes-insert
+        "C-c C-o" #'rails-routes-insert-no-cache
+        "C-c ! o" #'rails-routes-jump))
+
+(use-package! rails-i18n
+  :when (modulep! +rails)
+  :defer t
+  :init
+  (map! :after ruby-mode
+        :map ruby-mode-map
+        "C-c i" #'rails-i18n-insert-with-cache)
+  (map! :after web-mode
+        :map web-mode-map
+        "C-c i" #'rails-i18n-insert-with-cache))

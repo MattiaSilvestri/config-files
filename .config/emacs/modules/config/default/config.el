@@ -59,24 +59,20 @@
 (after! woman
   ;; The woman-manpath default value does not necessarily match man. If we have
   ;; man available but aren't using it for performance reasons, we can extract
-  ;; it's manpath.
-  (when (executable-find "man")
-    (setq woman-manpath
-          (split-string (cdr (doom-call-process "man" "--path"))
-                        path-separator t))))
-
-
-(use-package! drag-stuff
-  :defer t
-  :init
-  (map! "<M-up>"    #'drag-stuff-up
-        "<M-down>"  #'drag-stuff-down
-        "<M-left>"  #'drag-stuff-left
-        "<M-right>" #'drag-stuff-right))
+  ;; its manpath.
+  (when-let*
+      ((path (cond
+              ((executable-find "manpath")
+               (split-string (cdr (doom-call-process "manpath" "-q"))
+                             path-separator t))
+              ((executable-find "man")
+               (split-string (cdr (doom-call-process "man" "--path"))
+                             path-separator t)))))
+    (setq woman-manpath path)))
 
 
 ;;;###package tramp
-(unless IS-WINDOWS
+(unless (featurep :system 'windows)
   (setq tramp-default-method "ssh")) ; faster than the default scp
 
 
@@ -265,9 +261,9 @@
 (advice-add #'delete-backward-char :override #'+default--delete-backward-char-a)
 
 ;; HACK Makes `newline-and-indent' continue comments (and more reliably).
-;;      Consults `doom-point-in-comment-functions' to detect a commented region
-;;      and uses that mode's `comment-line-break-function' to continue comments.
-;;      If neither exists, it will fall back to the normal behavior of
+;;      Consults `doom-point-in-comment-p' to detect a commented region and uses
+;;      that mode's `comment-line-break-function' to continue comments.  If
+;;      neither exists, it will fall back to the normal behavior of
 ;;      `newline-and-indent'.
 ;;
 ;;      We use an advice here instead of a remapping because many modes define
@@ -276,9 +272,7 @@
 ;;      on a case by case basis.
 (defadvice! +default--newline-indent-and-continue-comments-a (&rest _)
   "A replacement for `newline-and-indent'.
-
-Continues comments if executed from a commented line. Consults
-`doom-point-in-comment-functions' to determine if in a comment."
+Continues comments if executed from a commented line."
   :before-until #'newline-and-indent
   (interactive "*")
   (when (and +default-want-RET-continue-comments
@@ -295,7 +289,7 @@ Continues comments if executed from a commented line. Consults
   (define-key tabulated-list-mode-map "q" #'quit-window))
 
 ;; OS specific fixes
-(when IS-MAC
+(when (featurep :system 'macos)
   ;; Fix MacOS shift+tab
   (define-key key-translation-map [S-iso-lefttab] [backtab])
   ;; Fix conventional OS keys in Emacs
@@ -381,8 +375,7 @@ Continues comments if executed from a commented line. Consults
   ;; replaces `apropos-documentation' b/c `apropos' covers this
   "d"    nil
   "db"   #'doom/report-bug
-  "dc"   #'doom/goto-private-config-file
-  "dC"   #'doom/goto-private-init-file
+  "dc"   #'doom/open-private-config
   "dd"   #'doom-debug-mode
   "df"   #'doom/help-faq
   "dh"   #'doom/help
@@ -392,7 +385,6 @@ Continues comments if executed from a commented line. Consults
   "dn"   #'doom/help-news
   "dN"   #'doom/help-search-news
   "dpc"  #'doom/help-package-config
-  "dpd"  #'doom/goto-private-packages-file
   "dph"  #'doom/help-package-homepage
   "dpp"  #'doom/help-packages
   "ds"   #'doom/help-search-headings
@@ -453,6 +445,76 @@ Continues comments if executed from a commented line. Consults
                          '(evil-ex-completion-map)))
       "C-s" command))
 
+  (map! :when (modulep! :completion corfu)
+        :after corfu
+        (:map corfu-map
+         [remap corfu-insert-separator] #'+corfu/smart-sep-toggle-escape
+         "C-S-s" #'+corfu/move-to-minibuffer
+         "C-p" #'corfu-previous
+         "C-n" #'corfu-next))
+  (let ((cmds-del
+         `(menu-item "Reset completion" corfu-reset
+           :filter ,(lambda (cmd)
+                      (when (and (>= corfu--index 0)
+                                 (eq corfu-preview-current 'insert))
+                        cmd))))
+        (cmds-ret
+         `(menu-item "Insert completion DWIM" corfu-insert
+           :filter ,(lambda (cmd)
+                      (pcase +corfu-want-ret-to-confirm
+                        ('nil (corfu-quit) nil)
+                        ('t (if (>= corfu--index 0) cmd))
+                        ('both (funcall-interactively cmd) nil)
+                        ('minibuffer
+                         (if (minibufferp nil t)
+                             (ignore (funcall-interactively cmd))  ; 'both' behavior
+                           (if (>= corfu--index 0) cmd)))  ; 't' behavior
+                        (_ cmd)))))
+        (cmds-tab
+         `(menu-item "Select next candidate or expand/traverse snippet" corfu-next
+           :filter (lambda (cmd)
+                     (cond
+                      ,@(when (modulep! :editor snippets)
+                          '(((and +corfu-want-tab-prefer-navigating-snippets
+                                  (memq (bound-and-true-p yas--active-field-overlay)
+                                        (overlays-in (1- (point)) (1+ (point)))))
+                             #'yas-next-field-or-maybe-expand)
+                            ((and +corfu-want-tab-prefer-expand-snippets
+                                  (yas-maybe-expand-abbrev-key-filter 'yas-expand))
+                             #'yas-expand)))
+                      ,@(when (modulep! :lang org)
+                          '(((and +corfu-want-tab-prefer-navigating-org-tables
+                                  (featurep 'org)
+                                  (org-at-table-p))
+                             #'org-table-next-field)))
+                      (t cmd)))))
+        (cmds-s-tab
+         `(menu-item "Select previous candidate or expand/traverse snippet"
+           corfu-previous
+           :filter (lambda (cmd)
+                     (cond
+                      ,@(when (modulep! :editor snippets)
+                          '(((and +corfu-want-tab-prefer-navigating-snippets
+                                  (memq (bound-and-true-p yas--active-field-overlay)
+                                        (overlays-in (1- (point)) (1+ (point)))))
+                             #'yas-prev-field)))
+                      ,@(when (modulep! :lang org)
+                          '(((and +corfu-want-tab-prefer-navigating-org-tables
+                                  (featurep 'org)
+                                  (org-at-table-p))
+                             #'org-table-previous-field)))
+                      (t cmd))))))
+    (map! :when (modulep! :completion corfu)
+          :map corfu-map
+          [backspace] cmds-del
+          "DEL" cmds-del
+          :gi [return] cmds-ret
+          :gi "RET" cmds-ret
+          "S-TAB" cmds-s-tab
+          [backtab] cmds-s-tab
+          :gi "TAB" cmds-tab
+          :gi [tab] cmds-tab))
+
   ;; Smarter C-a/C-e for both Emacs and Evil. C-a will jump to indentation.
   ;; Pressing it again will send you to the true bol. Same goes for C-e, except
   ;; it will ignore comments+trailing whitespace before jumping to eol.
@@ -482,7 +544,7 @@ Continues comments if executed from a commented line. Consults
         :gi "C-S-RET"       #'+default/newline-above
         :gn [C-S-return]    #'+default/newline-above
 
-        (:when IS-MAC
+        (:when (featurep :system 'macos)
          :gn "s-RET"        #'+default/newline-below
          :gn [s-return]     #'+default/newline-below
          :gn "S-s-RET"      #'+default/newline-above
@@ -492,6 +554,42 @@ Continues comments if executed from a commented line. Consults
 ;;
 ;;; Bootstrap configs
 
-(if (featurep 'evil)
-    (load! "+evil")
-  (load! "+emacs"))
+(cond
+ ((modulep! :editor evil)
+  (defun +default-disable-delete-selection-mode-h ()
+    (delete-selection-mode -1))
+  (add-hook 'evil-insert-state-entry-hook #'delete-selection-mode)
+  (add-hook 'evil-insert-state-exit-hook  #'+default-disable-delete-selection-mode-h)
+
+  ;; Make SPC u SPC u [...] possible (#747)
+  (map! :map universal-argument-map
+        :prefix doom-leader-key     "u" #'universal-argument-more
+        :prefix doom-leader-alt-key "u" #'universal-argument-more)
+
+  (when (modulep! +bindings)
+    (load! "+evil-bindings")))
+
+ (t
+  (add-hook 'doom-first-buffer-hook #'delete-selection-mode)
+  (setq shift-select-mode t)
+
+  (use-package! drag-stuff
+    :defer t
+    :init
+    (map! "<M-up>"    #'drag-stuff-up
+          "<M-down>"  #'drag-stuff-down
+          "<M-left>"  #'drag-stuff-left
+          "<M-right>" #'drag-stuff-right))
+
+  (use-package! expand-region
+    :commands (er/contract-region er/mark-symbol er/mark-word)
+    :config
+    (defadvice! doom--quit-expand-region-a (&rest _)
+      "Properly abort an expand-region region."
+      :before '(evil-escape doom/escape)
+      (when (memq last-command '(er/expand-region er/contract-region))
+        (er/contract-region 0))))
+
+  (when (modulep! +bindings)
+    (require 'projectile nil t) ; we need its keybinds immediately
+    (load! "+emacs-bindings"))))

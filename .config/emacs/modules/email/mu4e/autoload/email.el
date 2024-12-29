@@ -33,8 +33,11 @@ default/fallback account."
                     :enter-func
                     (lambda () (mu4e-message "Switched to %s" label))
                     :leave-func
-                    (lambda () (progn (setq +mu4e-personal-addresses nil)
-                                      (mu4e-clear-caches)))
+                    (lambda ()
+                      (setq +mu4e-personal-addresses nil)
+                      ;; REVIEW: `mu4e-clear-caches' was removed in 1.12.2, but
+                      ;;   may still be useful to users on older versions.
+                      (if (fboundp 'mu4e-clear-caches) (mu4e-clear-caches)))
                     :match-func
                     (lambda (msg)
                       (when msg
@@ -62,7 +65,7 @@ default/fallback account."
       ;; as otherwise you can accumulate empty workspaces
       (progn
         (unless (+workspace-buffer-list)
-          (+workspace-delete (+workspace-current-name)))
+          (+workspace-kill (+workspace-current-name)))
         (+workspace-switch +mu4e-workspace-name t))
     (setq +mu4e--old-wconf (current-window-configuration))
     (delete-other-windows)
@@ -278,7 +281,6 @@ attach a file, or select a folder to open dired in and select file attachments
 When otherwise called, open a dired buffer and enable `dired-mu4e-attach-ctrl-c-ctrl-c'."
   ;; TODO add ability to attach files (+dirs) as a single (named) archive
   (interactive "p")
-  (+mu4e-compose-org-msg-handle-toggle (/= 1 files-to-attach))
   (pcase major-mode
     ((or 'mu4e-compose-mode 'org-msg-edit-mode)
      (let ((mail-buffer (current-buffer))
@@ -362,7 +364,7 @@ When otherwise called, open a dired buffer and enable `dired-mu4e-attach-ctrl-c-
   ;; (prolusion-mail-hide)
   (cond
    ((and (modulep! :ui workspaces) (+workspace-exists-p +mu4e-workspace-name))
-    (+workspace/delete +mu4e-workspace-name))
+    (+workspace/kill +mu4e-workspace-name))
 
    (+mu4e--old-wconf
     (set-window-configuration +mu4e--old-wconf)

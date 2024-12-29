@@ -1,16 +1,11 @@
 ;;; editor/evil/config.el -*- lexical-binding: t; -*-
 
-(defvar +evil-repeat-keys (cons ";" ",")
-  "The keys to use for universal repeating motions.
-
-This is a cons cell whose CAR is the key for repeating a motion forward, and
-whose CDR is for repeating backward. They should both be `kbd'-able strings.
-
-Set this to `nil' to disable universal-repeating on these keys.")
-
 (defvar +evil-want-o/O-to-continue-comments t
   "If non-nil, the o/O keys will continue comment lines if the point is on a
 line with a linewise comment.")
+
+(defvar +evil-want-move-window-to-wrap-around nil
+  "If non-nil, `+evil/window-move-*' commands will wrap around.")
 
 (defvar +evil-preprocessor-regexp "^\\s-*#[a-zA-Z0-9_]"
   "The regexp used by `+evil/next-preproc-directive' and
@@ -154,23 +149,6 @@ directives. By default, this only recognizes C directives.")
   (defadvice! +evil--make-numbered-markers-global-a (char)
     :after-until #'evil-global-marker-p
     (and (>= char ?2) (<= char ?9)))
-
-  ;; REVIEW Fix #2493: dir-locals cannot target fundamental-mode when evil-mode
-  ;;        is active. See hlissner/doom-emacs#2493. Revert this if
-  ;;        emacs-evil/evil#1268 is resolved upstream.
-  (defadvice! +evil--fix-local-vars-a (&rest _)
-    :before #'turn-on-evil-mode
-    (when (eq major-mode 'fundamental-mode)
-      (hack-local-variables)))
-
-  ;; HACK Invoking helpful from evil-ex throws a "No recursive edit is in
-  ;;      progress" error because, between evil-ex and helpful,
-  ;;      `abort-recursive-edit' gets called one time too many.
-  (defadvice! +evil--fix-helpful-key-in-evil-ex-a (key-sequence)
-    :before #'helpful-key
-    (when (evil-ex-p)
-      (run-at-time 0.1 nil #'helpful-key key-sequence)
-      (abort-recursive-edit)))
 
   ;; Make J (evil-join) remove comment delimiters when joining lines.
   (advice-add #'evil-join :around #'+evil-join-a)
@@ -391,8 +369,7 @@ directives. By default, this only recognizes C directives.")
 ;;
 ;;; Keybinds
 
-;; Keybinds that have no Emacs+evil analogues (i.e. don't exist):
-;;   zu{q,w} - undo last marking
+;; TODO: zu{q,w} - undo last marking
 
 (map! :v  "@"     #'+evil:apply-macro
       :m  [C-i]   #'evil-jump-forward
@@ -470,17 +447,13 @@ directives. By default, this only recognizes C directives.")
        :nv "gd"  #'+lookup/definition
        :nv "gD"  #'+lookup/references
        :nv "gf"  #'+lookup/file
-       :nv "gI"  #'+lookup/implementations
-       :nv "gA"  #'+lookup/assignments)
+       :nv "gI"  #'+lookup/implementations)
       (:when (modulep! :tools eval)
        :nv "gr"  #'+eval:region
        :n  "gR"  #'+eval/buffer
        :v  "gR"  #'+eval:replace-region
        ;; Restore these keybinds, since the blacklisted/overwritten gr/gR will
        ;; undo them:
-       (:after helpful
-        :map helpful-mode-map
-        :n "gr" #'helpful-update)
        (:after compile
         :map (compilation-mode-map compilation-minor-mode-map)
         :n "gr" #'recompile)
@@ -556,6 +529,7 @@ directives. By default, this only recognizes C directives.")
       ;; evil-easymotion
       (:after evil-easymotion
        :m "gs" evilem-map
+       ;; TODO: Use named functions
        (:map evilem-map
         "a" (evilem-create #'evil-forward-arg)
         "A" (evilem-create #'evil-backward-arg)
@@ -584,15 +558,26 @@ directives. By default, this only recognizes C directives.")
       :v "gl" #'evil-lion-left
       :v "gL" #'evil-lion-right
 
-      ;; Omni-completion
-      (:when (modulep! :completion company)
-       (:prefix "C-x"
-        :i "C-l"    #'+company/whole-lines
-        :i "C-k"    #'+company/dict-or-keywords
-        :i "C-f"    #'company-files
-        :i "C-]"    #'company-etags
-        :i "s"      #'company-ispell
-        :i "C-s"    #'company-yasnippet
-        :i "C-o"    #'company-capf
-        :i "C-n"    #'+company/dabbrev
-        :i "C-p"    #'+company/dabbrev-code-previous)))
+      ;; Emulation of Vim's omni-completion keybinds
+      (:unless evil-disable-insert-state-bindings
+        (:prefix "C-x"
+          (:when (modulep! :completion company)
+           :i "C-l"  #'+company/whole-lines
+           :i "C-k"  #'+company/dict-or-keywords
+           :i "C-f"  #'company-files
+           :i "C-]"  #'company-etags
+           :i "s"    #'company-ispell
+           :i "C-s"  #'company-yasnippet
+           :i "C-o"  #'company-capf
+           :i "C-n"  #'+company/dabbrev
+           :i "C-p"  #'+company/dabbrev-code-previous)
+          (:when (modulep! :completion corfu)
+           :i "C-l"  #'cape-line
+           :i "C-k"  #'cape-keyword
+           :i "C-f"  #'cape-file
+           :i "C-]"  #'complete-tag
+           :i "s"    #'cape-dict
+           :i "C-s"  #'yasnippet-capf
+           :i "C-o"  #'completion-at-point
+           :i "C-n"  #'cape-dabbrev
+           :i "C-p"  #'+corfu/dabbrev-this-buffer))))

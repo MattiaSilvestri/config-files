@@ -64,18 +64,18 @@ error if NAME doesn't exist."
   (safe-persp-name (+workspace-current)))
 
 ;;;###autoload
+(defun +workspace-list-names ()
+  "Return the list of names of open workspaces."
+  (cl-remove persp-nil-name persp-names-cache :count 1))
+
+;;;###autoload
 (defun +workspace-list ()
   "Return a list of workspace structs (satisifes `+workspace-p')."
   ;; We don't use `hash-table-values' because it doesn't ensure order in older
   ;; versions of Emacs
-  (cl-loop for name in persp-names-cache
+  (cl-loop for name in (+workspace-list-names)
            if (gethash name *persp-hash*)
            collect it))
-
-;;;###autoload
-(defun +workspace-list-names ()
-  "Return the list of names of open workspaces."
-  persp-names-cache)
 
 ;;;###autoload
 (defun +workspace-buffer-list (&optional persp)
@@ -118,9 +118,27 @@ Returns t on success, nil otherwise."
   (unless (+workspace-exists-p name)
     (error "'%s' is an invalid workspace" name))
   (let ((fname (expand-file-name +workspaces-data-file persp-save-dir)))
-    (persp-save-to-file-by-names fname *persp-hash* (list name))
+    (persp-save-to-file-by-names fname *persp-hash* (list name) t)
     (and (member name (persp-list-persp-names-in-file fname))
          t)))
+
+;;;###autoload
+(defun +workspace-delete (workspace)
+  "Delete WORKSPACE from the saved workspaces in `persp-save-dir'.
+
+Return t if WORKSPACE was successfully deleted. Throws error if WORKSPACE is not
+found or wasn't saved with `+workspace-save'."
+  (let* ((fname (expand-file-name +workspaces-data-file persp-save-dir))
+         (workspace-name (if (stringp workspace) workspace (persp-name workspace)))
+         (workspace-names (persp-list-persp-names-in-file fname))
+         (workspace-idx (cl-position workspace-name workspace-names :test #'equal)))
+    (unless workspace-idx
+      (error "Couldn't find saved workspace '%s'" workspace-name))
+    (doom-file-write
+     fname (list (cl-remove-if (lambda (ws) (equal workspace-name (nth 1 ws)))
+                               (doom-file-read fname :by 'read)
+                               :count 1)))
+    (not (member name (persp-list-persp-names-in-file fname)))))
 
 ;;;###autoload
 (defun +workspace-new (name)
@@ -150,10 +168,10 @@ success, nil otherwise."
   (persp-rename new-name (+workspace-get name)))
 
 ;;;###autoload
-(defun +workspace-delete (workspace &optional inhibit-kill-p)
-  "Delete the workspace denoted by WORKSPACE, which can be the name of a perspective
-or its hash table. If INHIBIT-KILL-P is non-nil, don't kill this workspace's
-buffers."
+(defun +workspace-kill (workspace &optional inhibit-kill-p)
+  "Kill the workspace denoted by WORKSPACE, which can be the name of a
+perspective or its hash table. If INHIBIT-KILL-P is non-nil, don't kill this
+workspace's buffers."
   (unless (stringp workspace)
     (setq workspace (persp-name workspace)))
   (when (+workspace--protected-p workspace)
@@ -175,7 +193,7 @@ throws an error."
   (let ((old-name (+workspace-current-name)))
     (unless (equal old-name name)
       (setq +workspace--last
-            (or (and (not (string= old-name persp-nil-name))
+            (or (and (not (+workspace--protected-p old-name))
                      old-name)
                 +workspaces-main))
       (persp-frame-switch name))
@@ -231,14 +249,14 @@ workspace."
     ('error (+workspace-error ex t))))
 
 ;;;###autoload
-(defun +workspace/delete (name)
+(defun +workspace/kill (name)
   "Delete this workspace. If called with C-u, prompts you for the name of the
 workspace to delete."
   (interactive
    (let ((current-name (+workspace-current-name)))
      (list
       (if current-prefix-arg
-          (completing-read (format "Delete workspace (default: %s): " current-name)
+          (completing-read (format "Kill workspace (default: %s): " current-name)
                            (+workspace-list-names)
                            nil nil nil nil current-name)
         current-name))))
@@ -250,9 +268,9 @@ workspace to delete."
           (cond ((delq (selected-frame) (persp-frames-with-persp (get-frame-persp)))
                  (user-error "Can't close workspace, it's visible in another frame"))
                 ((not (equal (+workspace-current-name) name))
-                 (+workspace-delete name))
+                 (+workspace-kill name))
                 ((cdr workspaces)
-                 (+workspace-delete name)
+                 (+workspace-kill name)
                  (+workspace-switch
                   (if (+workspace-exists-p +workspace--last)
                       +workspace--last
@@ -262,10 +280,27 @@ workspace to delete."
                 (t
                  (+workspace-switch +workspaces-main t)
                  (unless (string= (car workspaces) +workspaces-main)
-                   (+workspace-delete name))
+                   (+workspace-kill name))
                  (doom/kill-all-buffers (doom-buffer-list))))
           (+workspace-message (format "Deleted '%s' workspace" name) 'success)))
     ('error (+workspace-error ex t))))
+
+;;;###autoload
+(defun +workspace/delete (name)
+  "Delete a saved workspace in `persp-save-dir'.
+
+Can only selete workspaces saved with `+workspace/save' or `+workspace-save'."
+  (interactive
+   (list
+    (completing-read "Delete saved workspace: "
+                     (cl-loop with wsfile = (doom-path persp-save-dir +workspaces-data-file)
+                              for p in (persp-list-persp-names-in-file wsfile)
+                              collect p))))
+  (and (condition-case-unless-debug ex
+           (or (+workspace-delete name)
+               (+workspace-error (format "Couldn't delete '%s' workspace" name)))
+         ('error (+workspace-error ex t)))
+       (+workspace-message (format "Deleted '%s' workspace" name) 'success)))
 
 ;;;###autoload
 (defun +workspace/kill-session (&optional interactive)
@@ -275,7 +310,7 @@ workspace to delete."
         (persps (length (+workspace-list-names)))
         (buffers 0))
     (let ((persp-autokill-buffer-on-remove t))
-      (unless (cl-every #'+workspace-delete (+workspace-list-names))
+      (unless (cl-every #'+workspace-kill (+workspace-list-names))
         (+workspace-error "Could not clear session")))
     (+workspace-switch +workspaces-main t)
     (setq buffers (doom/kill-all-buffers (buffer-list)))
@@ -318,12 +353,7 @@ workspace, otherwise the new workspace is blank."
 end of the workspace list."
   (interactive
    (list (or current-prefix-arg
-             (if (modulep! :completion ivy)
-                 (ivy-read "Switch to workspace: "
-                           (+workspace-list-names)
-                           :caller #'+workspace/switch-to
-                           :preselect (+workspace-current-name))
-               (completing-read "Switch to workspace: " (+workspace-list-names))))))
+             (completing-read "Switch to workspace: " (+workspace-list-names)))))
   (when (and (stringp index)
              (string-match-p "^[0-9]+$" index))
     (setq index (string-to-number index)))
@@ -368,7 +398,7 @@ end of the workspace list."
   "Cycle n workspaces to the right (default) or left."
   (interactive (list 1))
   (let ((current-name (+workspace-current-name)))
-    (if (equal current-name persp-nil-name)
+    (if (+workspace--protected-p current-name)
         (+workspace-switch +workspaces-main t)
       (condition-case-unless-debug ex
           (let* ((persps (+workspace-list-names))
@@ -406,7 +436,7 @@ the next."
                (let ((frame-persp (frame-parameter nil 'workspace)))
                  (if (string= frame-persp (+workspace-current-name))
                      (delete-frame)
-                   (+workspace/delete current-persp-name))))
+                   (+workspace/kill current-persp-name))))
 
               ((+workspace-error "Can't delete last workspace" t)))))))
 
@@ -416,9 +446,10 @@ the next."
   (interactive "p")
   (let* ((current-name (+workspace-current-name))
          (count (or count 1))
-         (index (- (cl-position current-name persp-names-cache :test #'equal)
+         (persps (+workspace-list-names))
+         (index (- (cl-position current-name persps :test #'equal)
                    count))
-         (names (remove current-name persp-names-cache)))
+         (names (remove current-name persps)))
     (unless names
       (user-error "Only one workspace"))
     (let ((index (min (max 0 index) (length names))))
@@ -495,7 +526,7 @@ created."
       (setq frame (selected-frame)))
     (let ((frame-persp (frame-parameter frame 'workspace)))
       (when (string= frame-persp (+workspace-current-name))
-        (+workspace/delete frame-persp)))))
+        (+workspace/kill frame-persp)))))
 
 ;;;###autoload
 (defun +workspaces-associate-frame-fn (frame &optional _new-frame-p)
@@ -545,7 +576,7 @@ This be hooked to `projectile-after-switch-project-hook'."
       (unwind-protect
           (if (and (not (null +workspaces-on-switch-project-behavior))
                    (or (eq +workspaces-on-switch-project-behavior t)
-                       (equal (safe-persp-name (get-current-persp)) persp-nil-name)
+                       (+workspace--protected-p (safe-persp-name (get-current-persp)))
                        (+workspace-buffer-list)))
               (let* ((persp
                       (let ((project-name (doom-project-name +workspaces--project-dir)))

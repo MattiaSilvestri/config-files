@@ -7,6 +7,7 @@
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
+(package! catppuccin-theme)
 (package! swiper)
 (package! ivy-rich)
 (package! all-the-icons)

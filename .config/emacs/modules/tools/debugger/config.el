@@ -20,6 +20,7 @@
   `(((:lang cc +lsp)         :after ccls        :require (dap-lldb dap-gdb-lldb))
     ((:lang elixir +lsp)     :after elixir-mode :require dap-elixir)
     ((:lang go +lsp)         :after go-mode     :require dap-dlv-go)
+    ((:lang gdscript +lsp)   :after gdscript-mode :require dap-gdscript)
     ((:lang java +lsp)       :after java-mode   :require lsp-java)
     ((:lang php +lsp)        :after php-mode    :require dap-php)
     ((:lang python +lsp)     :after python      :require dap-python)
@@ -27,7 +28,7 @@
     ((:lang rust +lsp)       :after rustic-mode :require (dap-lldb dap-cpptools))
     ((:lang javascript +lsp)
      :after (js2-mode typescript-mode)
-     :require (dap-node dap-chrome dap-firefox ,@(if IS-WINDOWS '(dap-edge)))))
+     :require (dap-node dap-chrome dap-firefox ,@(if (featurep :system 'windows) '(dap-edge)))))
   "TODO")
 
 
@@ -109,7 +110,8 @@
 
 
 (use-package! dap-mode
-  :when (and (modulep! +lsp) (not (modulep! :tools lsp +eglot)))
+  :when (modulep! +lsp)
+  :when (modulep! :tools lsp -eglot)
   :hook (dap-mode . dap-tooltip-mode)
   :init
   (setq dap-breakpoints-file (concat doom-data-dir "dap-breakpoints")
@@ -118,7 +120,7 @@
   :config
   (pcase-dolist (`((,category . ,modules) :after ,after :require ,libs)
                  +debugger--dap-alist)
-    (when (doom-module-p category (car modules) (cadr modules))
+    (when (doom-module-active-p category (car modules) (cadr modules))
       (dolist (lib (ensure-list after))
         (with-eval-after-load lib
           (mapc #'require (ensure-list libs))))))
@@ -155,6 +157,7 @@
 
 
 (use-package! dap-ui
-  :when (and (modulep! +lsp) (not (modulep! :tools lsp +eglot)))
+  :when (modulep! +lsp)
+  :when (modulep! :tools lsp -eglot)
   :hook (dap-mode . dap-ui-mode)
   :hook (dap-ui-mode . dap-ui-controls-mode))

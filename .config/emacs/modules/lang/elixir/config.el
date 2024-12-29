@@ -1,5 +1,6 @@
 ;;; lang/elixir/config.el -*- lexical-binding: t; -*-
 
+;; DEPRECATED: Remove when projectile is replaced with project.el
 (after! projectile
   (add-to-list 'projectile-project-root-files "mix.exs"))
 
@@ -51,8 +52,7 @@
 
 
 (use-package! flycheck-credo
-  :when (and (modulep! :checkers syntax)
-             (not (modulep! :checkers syntax +flymake)))
+  :when (modulep! :checkers syntax -flymake)
   :after elixir-mode
   :config (flycheck-credo-setup))
 

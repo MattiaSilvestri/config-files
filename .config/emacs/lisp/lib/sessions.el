@@ -67,12 +67,17 @@
 ;;; Commands
 
 ;;;###autoload
-(defun doom/quickload-session ()
-  "TODO"
-  (interactive)
-  (message "Restoring session...")
-  (doom-load-session)
-  (message "Session restored. Welcome back."))
+(defun doom/quickload-session (force)
+  "Load the last session saved.
+If the FORCE \\[universal-argument] is provided
+then no confirmation is asked."
+  (interactive "P")
+  (if (or force
+          (yes-or-no-p "This will wipe your current session, do you want to continue? "))
+      (progn (message "Restoring session...")
+             (doom-load-session)
+             (message "Session restored. Welcome back."))
+    (message "Session not restored.")))
 
 ;;;###autoload
 (defun doom/quicksave-session ()
@@ -150,3 +155,6 @@ switch."
              (when (boundp 'chemacs-current-emacs-profile)
                (list "--with-profile" chemacs-current-emacs-profile))
              (list "-l" tmpfile)))))
+
+(provide 'doom-lib '(sessions))
+;;; sessions.el ends here

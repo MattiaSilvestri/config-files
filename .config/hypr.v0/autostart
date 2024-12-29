@@ -1,0 +1,74 @@
+#!/usr/bin/bash
+
+# variables
+config=$HOME/.config/hypr
+scripts=$config/scripts
+
+# notification daemon
+# dunst &
+
+# waybar
+# $scripts/launch_waybar &
+$scripts/tools/dynamic &
+agsv1 &
+
+# wallpaper
+# $scripts/wall $config/wallpapers/cloud.png &
+# hyprpaper &
+
+# effects
+$scripts/rgb &
+
+# other
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+
+# Conky
+#killall -q conky
+#/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
+
+# Bluetooth manager
+blueberry-tray &
+
+# Blue-light filter
+wlsunset -t 3500 -T 6500 -S 8:00 -s 18:00 &
+
+#swayidle daemon and inhibitor
+# swayidle -w \
+#   timeout 600 'hyprlock' \
+#   before-sleep 'hyprlock' &
+
+# Hypridle and inhibitor
+hypridle &
+# caffeine &
+# wayland-pipewire-idle-inhibit -w &
+# wl-mpris-idle-inhibit &
+
+# Cliboard manager
+wl-paste --type text --watch cliphist store &
+wl-paste --type image --watch cliphist store &
+
+# nordvpn service
+systemctl start nordvpnd.service &
+
+# Megasync and pcloud
+sleep 5 && ~/AppImages/pcloud &
+
+# Automatic mounting
+udiskie &
+
+# Launch swww and wallpaper script
+# sleep 5 && swww init && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+sleep 5 && swww init & 
+waypaper-engine daemon &
+
+# Network manager
+nm-applet &
+
+# Set soruce volume
+pamixer --default-source --set-volume 30
+
+# Hyprland stuff
+hyprctl keyword general:layout "master" &
+hyprpm reload -n &
+

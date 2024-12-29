@@ -1,6 +1,10 @@
 ;;; editor/evil/init.el -*- lexical-binding: t; -*-
+;;;###if (modulep! +everywhere)
 
 (defvar evil-collection-key-blacklist)
+
+;; must be set before evil/evil-collection is loaded
+(defvar evil-want-keybinding nil)
 
 ;; We load evil-collection ourselves for these reasons:
 ;;
@@ -19,13 +23,9 @@
 ;;    disable modules, and to reduce the effort required to maintain our copy of
 ;;    `evil-collection-list' (now I can just copy it from time to time).
 
-(when (and (not noninteractive)
-           (not (doom-context-p 'reload))
-           (modulep! +everywhere))
+(unless (or noninteractive (doom-context-p 'reload))
 
-  (setq evil-collection-company-use-tng (modulep! :completion company +tng)
-        ;; must be set before evil/evil-collection is loaded
-        evil-want-keybinding nil)
+  (setq evil-collection-company-use-tng (modulep! :completion company +tng))
 
   (defvar +evil-collection-disabled-list
     '(anaconda-mode
@@ -42,6 +42,7 @@
       help
       image
       indent
+      kmacro
       kotlin-mode
       lispy
       outline
@@ -99,6 +100,7 @@ variable for an explanation of the defaults (in comments). See
       bm
       bookmark
       (buff-menu "buff-menu")
+      bufler
       calc
       calendar
       cider
@@ -110,10 +112,12 @@ variable for an explanation of the defaults (in comments). See
       consult
       corfu
       crdt
+      (csv "csv-mode")
       (custom cus-edit)
       cus-theme
-      daemons
+      dape
       dashboard
+      daemons
       deadgrep
       debbugs
       debug
@@ -127,6 +131,7 @@ variable for an explanation of the defaults (in comments). See
       distel
       doc-view
       docker
+      eat
       ebib
       ebuku
       edbi
@@ -170,6 +175,7 @@ variable for an explanation of the defaults (in comments). See
       helpful
       hg-histedit
       hungry-delete
+      hyrolo
       ibuffer
       (image image-mode)
       image-dired
@@ -181,6 +187,7 @@ variable for an explanation of the defaults (in comments). See
       info
       ivy
       js2-mode
+      ,@(if (>= emacs-major-version 30) '(kmacro))
       leetcode
       lispy
       lms
@@ -192,11 +199,13 @@ variable for an explanation of the defaults (in comments). See
       macrostep
       man
       (magit magit-repos magit-submodule)
+      magit-repos
       magit-section
       magit-todos
       markdown-mode
       monky
       mpc
+      mpdel
       mu4e
       mu4e-conversation
       neotree
@@ -269,6 +278,7 @@ variable for an explanation of the defaults (in comments). See
       wdired
       wgrep
       which-key
+      with-editor
       woman
       xref
       xwidget
@@ -333,6 +343,9 @@ and complains if a module is loaded too early (during startup)."
       (+evil-collection-init 'replace))
     (add-transient-hook! 'indent-rigidly
       (+evil-collection-init '(indent "indent")))
+    (when (>= emacs-major-version 30)
+      (add-transient-hook! 'kmacro-menu-mode
+        (+evil-collection-init 'kmacro)))
     (add-transient-hook! 'minibuffer-setup-hook
       (when evil-collection-setup-minibuffer
         (+evil-collection-init 'minibuffer)
