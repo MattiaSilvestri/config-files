@@ -10,6 +10,9 @@
 import = ["~/.config/alacritty/rice-colors.toml", "~/.config/alacritty/fonts.toml"]
 live_config_reload = true
 
+[env]
+term = "xterm-256color"
+
 [cursor]
 blink_interval = 550
 unfocused_hollow = false

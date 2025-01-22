@@ -41,6 +41,7 @@ return {
 
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
+  { "kevinhwang91/nvim-ufo", enabled = false },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
@@ -297,8 +298,13 @@ return {
     end,
   },
   {
+    "norcalli/nvim-colorizer.lua",
+    event = "User AstroFile",
+  },
+  {
     "NvChad/nvim-colorizer.lua",
     event = "User AstroFile",
+    enabled = false,
     init = require("colorizer").setup(),
     config = function()
       require("colorizer").setup {

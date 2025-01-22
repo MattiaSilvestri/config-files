@@ -52,11 +52,11 @@ keymap = [
 	{ on = [ "G" ],      run = "arrow 99999999",  desc = "Move cursor to the bottom" },
 
 	# Selection
-	{ on = [ "<Space>" ], run = [ "select --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
+	{ on = [ "<Space>" ], run = [ "toggle --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
 	{ on = [ "v" ],       run = "visual_mode",                        desc = "Enter visual mode (selection mode)" },
 	{ on = [ "V" ],       run = "visual_mode --unset",                desc = "Enter visual mode (unset mode)" },
-	{ on = [ "<C-a>" ],   run = "select_all --state=true",            desc = "Select all files" },
-	{ on = [ "<C-r>" ],   run = "select_all --state=none",            desc = "Inverse selection of all files" },
+	{ on = [ "<C-a>" ],   run = "toggle_all --state=true",            desc = "Select all files" },
+	{ on = [ "<C-r>" ],   run = "toggle_all --state=none",            desc = "Inverse selection of all files" },
 
 	# Operation
 	{ on = [ "o" ],         run = "open",                       desc = "Open the selected files" },
@@ -323,26 +323,6 @@ on   = [ "f","f" ]
 run  = "plugin fg --args='fzf'"
 desc = "find file by filename"
 
-# [[manager.prepend_keymap]]
-# on = [ "u", "a" ]
-# run = "plugin bookmarks-persistence --args=save"
-# desc = "Save current position as a bookmark"
-#
-# [[manager.prepend_keymap]]
-# on = [ "`"]
-# run = "plugin bookmarks-persistence --args=jump"
-# desc = "Jump to a bookmark"
-#
-# [[manager.prepend_keymap]]
-# on = [ "u", "d" ]
-# run = "plugin bookmarks-persistence --args=delete"
-# desc = "Delete a bookmark"
-#
-# [[manager.prepend_keymap]]
-# on = [ "u", "D" ]
-# run = "plugin bookmarks-persistence --args=delete_all"
-# desc = "Delete all bookmarks"
-
 [[manager.prepend_keymap]]
 on   = [ "<C-s>" ]
 run  = 'shell --interactive "$SHELL" --block '
@@ -393,3 +373,18 @@ desc = "Rename bookmark by key"
 on = [ "u", "R" ]
 run = "plugin yamb --args=rename_by_fzf"
 desc = "Rename bookmark by fzf"
+
+[[manager.prepend_keymap]]
+on   = "T"
+run  = "plugin max-preview"
+desc = "Maximize or restore preview"
+
+[[manager.prepend_keymap]]
+on   = "O"
+run  = "plugin open-with-cmd --args=block"
+desc = "Open with command in the terminal"
+
+# [[manager.prepend_keymap]]
+# on   = "O"
+# run  = "plugin open-with-cmd"
+# desc = "Open with command"

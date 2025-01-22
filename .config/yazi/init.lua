@@ -1,5 +1,6 @@
 ---@diagnostic disable: undefined-global
 require("full-border"):setup()
+require("git"):setup()
 
 -- Draw a full bar around window
 -- function Manager:render(area)
@@ -128,5 +129,5 @@ require("yamb"):setup({
 	keys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
 	-- Optional, the path of bookmarks
 	path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark")
-		or (os.getenv("HOME") .. "/.config/yazi/bookmark"),
+			or (os.getenv("HOME") .. "/.config/yazi/bookmark"),
 })

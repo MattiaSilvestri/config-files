@@ -34,6 +34,7 @@ return {
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
         guifont = "Inconsolata Nerd Font:h12:w0:#h-normal",
+        termguicolors = true,
         linespace = 3,
         -- textwidth = 88, -- sets vim.opt.textwidth
       },

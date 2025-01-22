@@ -60,7 +60,7 @@ udiskie &
 # Launch swww and wallpaper script
 # sleep 5 && swww-daemon && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
 sleep 5 && swww-daemon & 
-waypaper-engine daemon &
+sleep 5 && waypaper-engine daemon &
 
 # Network manager
 # nm-applet &
