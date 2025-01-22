@@ -6,12 +6,6 @@
 ---@type LazySpec
 return {
 
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
-
   -- == Examples of Overriding Plugins ==
 
   -- customize alpha options
@@ -79,27 +73,6 @@ return {
       )
     end,
   },
-  -- { "francoiscabrol/ranger.vim", cmd = "Ranger" },
-  {
-    "kelly-lin/ranger.nvim",
-    lazy = false,
-    config = function()
-      require("ranger-nvim").setup {
-        replace_netrw = true,
-        ui = {
-          border = "none",
-          height = 1,
-          width = 1,
-          x = 0.5,
-          y = 0.5,
-        },
-      }
-      vim.api.nvim_set_keymap("n", "<leader>sr", "", {
-        noremap = true,
-        callback = function() require("ranger-nvim").open(true) end,
-      })
-    end,
-  },
   { "rbgrouleff/bclose.vim", lazy = false },
   { "dyng/ctrlsf.vim", event = "User AstroFile" },
   { "mg979/vim-visual-multi", event = "User AstroFile" },
@@ -143,16 +116,6 @@ return {
         -- Configuration here, or leave empty to use defaults
       }
     end,
-  },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
   },
   {
     "lervag/vimtex",
@@ -419,6 +382,7 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
+    enabled = false,
     opts = {},
     config = function()
       require("lsp_signature").setup {

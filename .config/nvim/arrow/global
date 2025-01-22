@@ -10,3 +10,4 @@
 /home/mattia/.dotfiles/.config/nvim/lua/polish.lua
 /home/mattia/.local/share/nvim/lazy/AstroNvim/lua/astronvim/plugins/_astroui_status.lua
 /home/mattia/Projects/JarvisServer/jarvisui/training/models.py
+/home/mattia/Projects/JarvisServer/jarvisui/training/views.py

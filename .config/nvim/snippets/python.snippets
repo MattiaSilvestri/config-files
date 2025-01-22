@@ -19,7 +19,7 @@ snippet cl
 
 # === Django === #
 
-# Admin class
+# Admin
 snippet cl_admin
 	class ${1:ClassName}(admin.ModelAdmin):
     	list_filter = ("${2:filter}",)
@@ -31,3 +31,35 @@ snippet cl_admin
         	FormResponseField: {"widget": Textarea},
     	}
 
+
+# URLS
+snippet urlapi
+	router.register(
+    	r"${1:url_name}",
+    	api.${2:view_name},
+    	basename="${3:basename}",
+	)
+
+snippet urlgeneric
+	path(
+    	r"${1:url_name}",
+    	views.${2:view_name}.as_view(),
+    	name="${3:basename}",
+	)
+
+# Views
+snippet vue_apiread
+	class ${1:ClassName}(FiltersMixin, viewsets.ReadOnlyModelViewSet):
+    	queryset = ${2:ModelName}.objects.all()
+    	serializer_class = ${3:SerializerName}
+    	filter_backends = (filters.OrderingFilter,)
+    	ordering_fields = ("name",)
+    	filter_mappings = {
+        	"name": "name__icontains",
+    	}
+
+    	def filter_queryset(self, queryset):
+        	return queryset.filter(company=get_user_company(self.request.user))
+
+# Serializers
+snippet ser_simple
