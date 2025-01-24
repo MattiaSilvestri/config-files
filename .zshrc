@@ -289,6 +289,7 @@ export PATH="/home/mattia/.cargo/bin:$PATH"
 export PATH="/home/mattia/.local/bin:$PATH"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export QT_QPA_PLATFORM=wayland
+export DJANGO_SETTINGS_MODULE=jarvisui.settings.development
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -354,3 +355,9 @@ unset __conda_setup
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/bin/virtualenvwrapper.sh
+
+

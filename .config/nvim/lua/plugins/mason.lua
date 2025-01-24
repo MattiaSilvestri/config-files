@@ -18,7 +18,6 @@ return {
         "marksman",
         "html",
         -- "tsserver",
-        "r_language_server",
         -- "custom_elements_ls",
         -- "emmet_ls",
         "emmet_language_server",

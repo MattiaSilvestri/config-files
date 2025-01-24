@@ -1,14 +1,14 @@
 [font]
-size = 10.8
+size = 10
 
 builtin_box_drawing = true
 offset = { x = 0, y = 3 }
 
-# normal = { family = "SpaceMono Nerd Font", style = "Regular" } 
-# bold = { family = "SpaceMono Nerd Font", style = "Regular" }
-# italic = { family = "SpaceMono Nerd Font", style = "Italic" }
-# bold_italic = { family = "FiraCode Nerd Font", style = "Bold Italic" }
+# normal = { family = "JetBrainsMono Nerd Font"
+# bold = { family = "JetBrainsMono Nerd Font"
+# italic = { family = "JetBrainsMono Nerd Font"
+# bold_italic = { family = "JetBrainsMono Nerd Font"
 
-normal = { family = "FiraCode Nerd Font", style = "Regular" } 
-bold = { family = "FiraCode Nerd Font", style = "Regular" }
-italic = { family = "FiraCode Nerd Font", style = "Italic" }
+normal = { family = "FiraCode Nerd Font" }
+bold = { family = "FiraCode Nerd Font" }
+italic = { family = "FiraCode Nerd Font" }
