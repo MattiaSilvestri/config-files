@@ -22,8 +22,8 @@ getcolors
 ## Configurations -------------------------------#
 # Dual monitor setup
 # bspc wm --reorder-monitors HDMI-1 eDP-1 
-bspc monitor eDP-1 -d 1 2 3 4 5 
-bspc monitor HDMI-1 -d 6 7 8 9 10
+# bspc monitor eDP-1 -d 1 2 3 4 5 
+# bspc monitor HDMI-1 -d 6 7 8 9 10
 
 
 bspc config border_width 0
@@ -118,7 +118,7 @@ xsetroot -cursor_name left_ptr
 nitrogen --restore
 
 # Start mpd
-exec mpd &
+# exec mpd &
 
 # Caps to esc
 # setxkbmap -option "caps:swapescape"
@@ -131,30 +131,31 @@ killall -q nm-tray
 nm-tray &
 
 # Tap to click
-xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
+# xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
 
 # Megasync
-nz.mega.MEGAsync &
+# nz.mega.MEGAsync &
 
 # Redshift
-pgrep redshift-gtk || redshift-gtk &
+# pgrep redshift-gtk || redshift-gtk &
 
 # Window switcher
-killall -q alttab
-alttab -mk Control_L -sc 1 -d 1 &
+# killall -q alttab
+# alttab -mk Control_L -sc 1 -d 1 &
 
 # Conky
 killall -q conky
-/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
+# /home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
 
 # Bluetooth manager
 blueman-applet &
 
 # Start bspwm scripts
 bspcolors
-bspcomp
-bspbar
+picom
+# bspcomp
+# bspbar
 # bspfloat &
 
 # Issue Tracker (Don't Remove IT)
-issue_tracker.sh
+# issue_tracker.sh

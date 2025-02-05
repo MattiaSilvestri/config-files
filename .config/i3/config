@@ -95,7 +95,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+exec_always --no-startup-id $HOME/.config/i3/polybar/forest/launch.sh &
 exec_always --no-startup-id nitrogen --restore &
 exec_always --no-startup-id picom &
 exec_always --no-startup-id xfce4-power-manager &
@@ -113,7 +113,7 @@ exec_always --no-startup-id xfce4-power-manager &
 set $mod Mod4
 
 # kill focused window
-bindsym $Mod1+q kill
+bindsym Mod1+q kill
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -265,3 +265,4 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+x exec betterlockscreen -l

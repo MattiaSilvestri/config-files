@@ -1,23 +1,33 @@
+/* 
+
+  @author      : 00xWolf
+    GitHub    : @mmsaeed509
+    Developer : Mahmoud Mohamed
+  﫥  Copyright : Exodia OS
+
+ */
+
 @import "colors.rasi"
 
 * {
-    transparency:                   "real";
-    background-color:               @background;
-    text-color:                     @foreground;
-    font:            				"Iosevka 10";
+    background-color:       @background;
+    text-color:             @foreground;
+	font:				 	"Iosevka 10";
 }
 
-#window {
-	border:							1px;
-    border-radius:                  0px;
-    border-color:					@selected;
-    width:      					300px;
-    y-offset: 						-8%;
-    padding:    					20px;
+window {
+    width:      			350px;
+    padding:    			20px;
+    border:					2px;
+    border-radius:          10px;
+    border-color:           @selected;
+    location:               center;
+    x-offset:               0;
+    y-offset:               -4%;
 }
 
-#entry {
-    expand: 						true;
-    width: 							150px;
-    text-color:						@urgent;
+entry {
+    expand: 				true;
+    width: 					200px;
+    text-color:				@selected;
 }

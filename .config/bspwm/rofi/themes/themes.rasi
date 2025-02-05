@@ -1,146 +1,162 @@
+/* 
+
+  @author      : 00xWolf
+    GitHub    : @mmsaeed509
+    Developer : Mahmoud Mohamed
+  﫥  Copyright : Exodia OS
+
+ */
+
 configuration {
-    font:                           "Iosevka 10";
-    show-icons:                     false;
-	icon-theme: 					"Papirus";
-    display-drun: 					":";
-    drun-display-format:            "{name}";
-    threads:                        0;
-    scroll-method:                  0;
-    disable-history:                false;
-    fullscreen:                     false;
-	hide-scrollbar: 				true;
-	sidebar-mode: 					false;
+    show-icons:                 false;
+drun-display-format:        "{name}";
+disable-history:                true;
+sidebar-mode: 					false;
 }
 
+/*****----- Global Properties -----*****/
 @import "colors.rasi"
 
+* {
+    font:                        "JetBrainsMono Nerd Font Bold 10";
+}
+
+/*****----- Main Window -----*****/
 window {
-    transparency:                   "real";
-    background-color:               @background;
-    text-color:                     @foreground;
-	border:							1px;
-    border-radius:                  0px;
-    border-color:					@selected;
-    width:                          15%;
-    location:                       center;
-    anchor:                         center;
-    x-offset:                       0;
-    y-offset:                       0;
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       800px;
+    height:                      50%;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    border-radius:               3px;
+    // border:                      3px;
+    border-color:                @foreground;
+    cursor:                      "default";
+    background-color:            @background;
 }
 
-prompt {
-    enabled: 						true;
-	padding: 						4px 4px 6px 6px;
-	background-color: 				@background;
-	text-color: 					@foreground;
-}
-
-textbox-prompt-colon {
-	expand: 						false;
-	str: 							"";
-    background-color:               @background;
-    text-color:                     @urgent;
-    padding:                        5px 0px 0px 4px;
-	font:							"feather 10";
-}
-
-inputbar {
-	children: 						[ textbox-prompt-colon, prompt ];
-    background-color:               @background;
-    text-color:                     @foreground;
-    expand:                         false;
-    border:                  		0px 0px 1px 0px;
-    border-radius:                  0px;
-    border-color:                  	@selected;
-    margin:                         0px 0px 0px 0px;
-    padding:                        0px 0px 0px 0px;
-    position:                       center;
-}
-
-
-entry {
-    background-color:               @background;
-    text-color:                     @foreground;
-    placeholder-color:              @foreground;
-    expand:                         true;
-    horizontal-align:               0;
-    placeholder:                    "Search";
-    blink:                          true;
-    padding:                        4px 0px 0px 0px;
-}
-
-case-indicator {
-    background-color:               @background;
-    text-color:                     @foreground;
-    spacing:                        0;
-}
-
-
-listview {
-    background-color:               @background;
-    columns:                        1;
-    lines:							6;
-    spacing:                        5px;
-    cycle:                          true;
-    dynamic:                        true;
-    layout:                         vertical;
-}
-
+/*****----- Main Box -----*****/
 mainbox {
-    background-color:               @background;
-    children:                       [ inputbar, listview ];
-    spacing:                       	5px;
-    padding:                        5px 5px 5px 5px;
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listbox" ];
 }
 
+listbox {
+    spacing:                     7px;
+    padding:                     35px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     5px;
+    padding:                     100px;
+    background-color:            transparent;
+    background-image:            url("~/.config/bspwm/notify/JapaneseCity.png", width);
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      true;
+    str: " [19] Bspwm Themes Are Available In Exodia OS \n   Have fun with your favorite theme ";
+    padding:                     12px 15px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  @background;
+}
+entry {
+    enabled:                     true;
+    expand:                      false;
+    padding:                     12px 16px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  @background;
+    cursor:                      text;
+    placeholder:                 " Search \n     ";
+    placeholder-color:           inherit;
+}
+dummy {
+    expand:                      true;
+    background-color:            transparent;
+}
+
+
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     4;
+    lines:                       4;
+    cycle:                       false;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
 element {
-    background-color:               @background;
-    text-color:                     @foreground;
-    orientation:                    horizontal;
-	border:							0px;
-    border-radius:                  0px;
-    border-color:					@selected;
-    padding:                        5px 5px 5px 5px;
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     8px;
+    border-radius:               4px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
 }
-
-element-icon {
-    size:                           24px;
-    border:                         0px;
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  inherit;
 }
-
+element selected.normal {
+    background-image: linear-gradient(, , );
+    text-color:                  @background;
+}
 element-text {
-    expand:                         true;
-    horizontal-align:               0;
-    vertical-align:                 0;
-    margin:                         2px 0px 2px 2px;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 
-element selected {
-    background-color:               @selected;
-    text-color:                     @background;
-    border:                  		0px;
-    border-radius:                  0px;
-    border-color:                  	@selected;
+/*****----- Message -----*****/
+message {
+    background-color:            transparent;
 }
-
-element.active,
-element.selected.urgent {
-  background-color: @on;
-  text-color: @background;
-  border-color: @on;
+textbox {
+    padding:                     12px;
+    border-radius:               5px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
-
-element.selected.urgent {
-  border-color: @urgent;
-}
-
-element.urgent,
-element.selected.active {
-  background-color: @off;
-  text-color: @background;
-  border-color: @off;
-}
-
-element.selected.active {
-  border-color: @selected;
+error-message {
+    padding:                     12px;
+    border-radius:               5px;
+    background-color:            @background;
+    text-color:                  @foreground;
 }

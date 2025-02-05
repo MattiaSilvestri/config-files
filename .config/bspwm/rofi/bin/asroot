@@ -1,40 +1,54 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+#####################################
+#                                   #
+#  @author      : 00xWolf           #
+#    GitHub    : @mmsaeed509       #
+#    Developer : Mahmoud Mohamed   #
+#  﫥  Copyright : Exodia OS         #
+#                                   #
+#####################################
+
 
 DIR="$HOME/.config/bspwm"
 
 rofi_command="rofi -theme $DIR/rofi/themes/asroot.rasi"
 
-# Apps
-terminal=" Termite"
-files=" Pcmanfm"
-editor=" Geany"
-clifm=" Ranger"
-lpad=" Leafpad"
-vim=" Vim"
+# Apps #
+terminal=" Alacritty"
+files=" Thunar"
+editor=" Geany"
+clifm=" Ranger"
+lpad=" Leafpad"
+vim=" Vim"
+caja=" Caja"
 
-# Variable passed to rofi
-options="$terminal\n$files\n$editor\n$clifm\n$lpad\n$vim"
+# Variable passed to rofi #
+options="$terminal\n$files\n$editor\n$clifm\n$lpad\n$vim\n$caja"
 
-chosen="$(echo -e "$options" | $rofi_command -p "Run as root(#)" -dmenu -selected-row 0)"
+# Functions #
+chosen="$(echo -e "$options" | $rofi_command -p "Run Apps With Root Privileges" -dmenu -selected-row 0)"
 case $chosen in
     $terminal)
-        apps_as_root 'termite --class termite-float -c /root/.config/bspwm/termite/config'
+        apps_as_root 'alacritty --class alacritty-float,alacritty-float --config-file /root/.config/bspwm/alacritty/alacritty.yml'
         ;;
     $files)
-        apps_as_root 'dbus-run-session pcmanfm'
+        apps_as_root thunar
         ;;
     $editor)
         apps_as_root geany
         ;;
     $clifm)
-        apps_as_root 'termite --class termite-float -c /root/.config/bspwm/termite/config -e ranger'
+        apps_as_root 'alacritty --class alacritty-float,alacritty-float --config-file /root/.config/bspwm/alacritty/alacritty.yml -e ranger'
         ;;
     $lpad)
         apps_as_root leafpad
         ;;
     $vim)
-        apps_as_root 'termite --class termite-float -c /root/.config/bspwm/termite/config -e vim'
+        apps_as_root 'alacritty --class alacritty-float,alacritty-float --config-file /root/.config/bspwm/alacritty/alacritty.yml -e vim'
         ;;
+    $caja)
+        apps_as_root caja
+        ;;
+
 esac
-
-
