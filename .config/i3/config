@@ -1,138 +1,181 @@
-# i3 config file (v4)
+#
+#      _           _              ___  _  _    ___  ____
+#     | |_   _ ___| |_ _   _ ___ / _ \| || |  / _ \| ___|
+#  _  | | | | / __| __| | | / __| | | | || |_| | | |___ \
+# | |_| | |_| \__ \ |_| |_| \__ \ |_| |__   _| |_| |___) |
+#  \___/ \__,_|___/\__|\__,_|___/\___/   |_| _\___/|____/
+#  / ___|__ _| |_ _ __  _ __  _   _  ___ ___(_)_ __
+# | |   / _` | __| '_ \| '_ \| | | |/ __/ __| | '_ \
+# | |__| (_| | |_| |_) | |_) | |_| | (_| (__| | | | |
+#  \____\__,_|\__| .__/| .__/ \__,_|\___\___|_|_| |_|
+#                |_|   |_|
+#
 
-font pango:JetBrainsMono 14
 
-# -- Variables --
 
-# set mod to win key
-set $mod Mod4
+#
+#  _____ _
+# |_   _| |__   ___ _ __ ___   ___
+#   | | | '_ \ / _ \ '_ ` _ \ / _ \
+#   | | | | | |  __/ | | | | |  __/
+#   |_| |_| |_|\___|_| |_| |_|\___|
+#
 
-# set path to wallpaper
-# set $wallpaper /home/tone/Desktop/background.png
-exec --no-startup-id nitrogen --restore
-
-# use catppuccin palette
 set $rosewater #f5e0dc
-set $flamingo  #f2cdcd
-set $pink      #f5c2e7
-set $mauve     #cba6f7
-set $red       #f38ba8
-set $maroon    #eba0ac
-set $peach     #fab387
-set $green     #a6e3a1
-set $teal      #94e2d5
-set $sky       #89dceb
-set $sapphire  #74c7ec
-set $blue      #89b4fa
-set $lavender  #b4befe
-set $text      #cdd6f4
-set $subtext1  #bac2de
-set $subtext0  #a6adc8
-set $overlay2  #9399b2
-set $overlay1  #7f849c
-set $overlay0  #6c7086
-set $surface2  #585b70
-set $surface1  #45475a
-set $surface0  #313244
-set $base      #1e1e2e
-set $mantle    #181825
-set $crust     #11111b
+set $flamingo #f2cdcd
+set $pink #f5c2e7
+set $mauve #cba6f7
+set $red #f38ba8
+set $maroon #eba0ac
+set $peach #fab387
+set $yellow #f9e2af
+set $green #a6e3a1
+set $teal #94e2d5
+set $sky #89dceb
+set $sapphire #74c7ec
+set $blue #89b4fa
+set $lavender #b4befe
+set $text #cdd6f4
+set $subtext1 #bac2de
+set $subtext0 #a6adc8
+set $overlay2 #9399b2
+set $overlay1 #7f849c
+set $overlay0 #6c7086
+set $surface2 #585b70
+set $surface1 #45475a
+set $surface0 #313244
+set $base #1e1e2e
+set $mantle #181825
+set $crust #11111b
 
 # target                 title     bg    text   indicator  border
-client.focused           $surface0 $base $text  $surface0  $surface0
-client.focused_inactive  $surface1 $base $text  $surface1  $surface1
-client.unfocused         $surface1 $base $text  $surface1  $surface1
+client.focused           $lavender $base $text  $rosewater $base
+client.focused_inactive  $overlay0 $base $text  $rosewater $base
+client.unfocused         $overlay0 $base $text  $rosewater $base
 client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.placeholder       $overlay0 $base $text  $overlay0  $base
 client.background        $base
 
-# use pactl to adjust volume in pulseaudio
-set $refresh_i3status killall -SIGUSR1 i3status
 
-# define names for default workspaces for which we configure key bindings later on.
-# we use variables to avoid repeating the names in multiple places.
-set $ws0 "1"
-set $ws1 "2"
-set $ws2 "3"
-set $ws3 "4"
+# __        ___           _
+# \ \      / (_)_ __   __| | _____      _____
+#  \ \ /\ / /| | '_ \ / _` |/ _ \ \ /\ / / __|
+#   \ V  V / | | | | | (_| | (_) \ V  V /\__ \
+#    \_/\_/  |_|_| |_|\__,_|\___/ \_/\_/ |___/
+#
 
-for_window [class="Rofi" instance="rofi"] floating enable
+font pango:FiraCode Nerd Font 9
 
-# -- Exec --
+default_border pixel 0
+gaps inner 8px
+gaps outer 8px
+smart_gaps inverse_outer
 
-# start XDG autostart .desktop files using dex. see also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+for_window [class="org.gnome.FileRoller"] floating enable
+for_window [class="gnome-text-editor"] floating enable
+for_window [class="gnome-calculator"] floating enable
+for_window [class="gnome-calendar"] floating enable
+for_window [class="Totem"] floating enable
+for_window [class="loupe"] floating enable
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
+#for_window [class="org.gnome.Nautilus"] floating enable
+#for_window [class="pcmanfm"] floating enable
+#for_window [class="Nemo"] floating enable
 
-# exec --no-startup-id nm-applet
+#
+#     _         _            _             _
+#    / \  _   _| |_ ___  ___| |_ __ _ _ __| |_
+#   / _ \| | | | __/ _ \/ __| __/ _` | '__| __|
+#  / ___ \ |_| | || (_) \__ \ || (_| | |  | |_
+# /_/   \_\__,_|\__\___/|___/\__\__,_|_|   \__|
+#
 
-exec --no-startup-id greenclip daemon
-exec --no-startup-id xsettingsd
-exec --no-startup-id udiskie --no-notify
-exec --no-startup-id brightnessctl set 100%+ 
-exec --no-startup-id feh --bg-scale $wallpaper
-exec --no-startup-id xss-lock --transfer-sleep-lock -- sh /home/tone/.local/share/bin/lock.sh
-exec --no-startup-id systemd-inhibit --what=handle-power-key sleep infinity
-exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id picom 
-exec_always --no-startup-id ~/.fehbg 
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 
-# -- Bindings --
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+exec_always --no-startup-id nitrogen --restore &
+exec_always --no-startup-id picom &
+exec_always --no-startup-id xfce4-power-manager &
 
-# change vol
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#
+#  _  __          _     _           _
+# | |/ /___ _   _| |__ (_)_ __   __| |___
+# | ' // _ \ | | | '_ \| | '_ \ / _` / __|
+# | . \  __/ |_| | |_) | | | | | (_| \__ \
+# |_|\_\___|\__, |_.__/|_|_| |_|\__,_|___/
+#           |___/
+#
 
-# change brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
-
-floating_modifier $mod
-tiling_drag modifier titlebar
-
-# start a terminal
-bindsym $mod+Return exec alacritty
+# combination keybind
+set $mod Mod4
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $Mod1+q kill
 
-# rofi bindings
-bindsym Control+space exec rofi -show drun -normal-window
-bindsym $mod+Control+r exec rofi -show run -normal-window
-bindsym Mod1+Tab exec rofi -show window -normal-window
-bindsym $mod+v exec ~/.config/rofi/bin/clipboard
-bindsym XF86PowerOff exec ~/.config/rofi/bin/powermenu
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
-# screenshot bindings
-bindsym Print exec          xfce4-screenshooter -f -s ~/Pictures
-bindsym Shift+Print exec    xfce4-screenshooter -rc
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
+# start a apps
+bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+n exec --no-startup-id "flameshot gui"
+bindsym $mod+m exec --no-startup-id "flameshot screen"
+bindsym Ctrl+Shift+Escape exec --no-startup-id resources
+
+# start rofi (as a multi-use launcher)
+bindsym Shift+space exec "rofi -modi drun,run -show drun"
+bindsym $mod+o exec "rofi -modi ssh,run -show ssh"
+bindsym $mod+p exec "rofi -show calc -modi calc -no-show-match -no-sort"
+bindsym Mod1+Tab exec "rofi -modi window,run -show window"
+
+# change focus
+bindsym $mod+h focus left ; exec --no-startup-id ~/.config/i3/mouse_follow_focus.sh
+bindsym $mod+j focus down ; exec --no-startup-id ~/.config/i3/mouse_follow_focus.sh
+bindsym $mod+k focus up ; exec --no-startup-id ~/.config/i3/mouse_follow_focus.sh
+bindsym $mod+l focus right ; exec --no-startup-id ~/.config/i3/mouse_follow_focus.sh
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left; exec --no-startup-id ~/.config/i3/mouse_follow_focus.sh
+bindsym $mod+Down focus down; exec --no-startup-id ~/.config/i3/mouse_follow_focus.sh
+bindsym $mod+Up focus up; exec --no-startup-id ~/.config/i3/mouse_follow_focus.sh
+bindsym $mod+Right focus right; exec --no-startup-id ~/.config/i3/mouse_follow_focus.sh
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
-bindsym $mod+Shift+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout toggle all
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -147,56 +190,78 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h       resize shrink width 10 px or 10 ppt
+        bindsym j       resize grow height 10 px or 10 ppt
+        bindsym k         resize shrink height 10 px or 10 ppt
+        bindsym l      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 5 px or 0 ppt
+        bindsym Down        resize grow height 5 px or 0 ppt
+        bindsym Up          resize shrink height 5 px or 0 ppt
+        bindsym Right       resize grow width 5 px or 0 ppt
+
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws0
-bindsym $mod+2 workspace number $ws1
-bindsym $mod+3 workspace number $ws2
-bindsym $mod+4 workspace number $ws3
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym Ctrl+Mod1+l workspace next
+bindsym Ctrl+Mod1+h workspace prev
+bindsym Ctrl+Mod1+Right workspace next
+bindsym Ctrl+Mod1+Left workspace prev
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws0
-bindsym $mod+Shift+2 move container to workspace number $ws1
-bindsym $mod+Shift+3 move container to workspace number $ws2
-bindsym $mod+Shift+4 move container to workspace number $ws3
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-
 # exit i3 (logs you out of your X session)
-
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 50 px or 50 ppt
-        bindsym Down resize grow height 50 px or 50 ppt
-        bindsym Up resize shrink height 50 px or 50 ppt
-        bindsym Right resize grow width 50 px or 50 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-bindsym $mod+r mode "resize"
-
-# bar {
-    # position top
-    # status_command /usr/bin/bumblebee-status \
-        # -m battery nic datetime \
-        # -t powerline
-# }
-
-# -- Border --
-
-default_border pixel 0
-gaps inner 16
-gaps outer 16
-gaps top 74

@@ -277,18 +277,11 @@ ex ()
 
 # Startup
 # TERM=xterm-kitty
-. /home/mattia/.config/ranger/plugins/z/z.sh
 
-export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
 export PATH="$HOME/.emacs.d/bin:$PATH"
-export PATH="/usr/bin/site_perl:$PATH"
-export PATH="/usr/bin/vendor_perl:$PATH"
-export PATH="/usr/bin/core_perl:$PATH"
-export PATH="/home/mattia/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="/home/mattia/.cargo/bin:$PATH"
 export PATH="/home/mattia/.local/bin:$PATH"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-export QT_QPA_PLATFORM=wayland
 export DJANGO_SETTINGS_MODULE=jarvisui.settings.development
 
 export EDITOR=nvim
@@ -297,31 +290,6 @@ export VISUAL=nvim
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Joshuto integratrion
-function joshuto() {
-	ID="$$"
-	mkdir -p /tmp/$USER
-	OUTPUT_FILE="/tmp/$USER/joshuto-cwd-$ID"
-	env joshuto --output-file "$OUTPUT_FILE" $@
-	exit_code=$?
-
-	case "$exit_code" in
-		# regular exit
-		0)
-			;;
-		# output contains current directory
-		101)
-			JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
-			cd "$JOSHUTO_CWD"
-			;;
-		# output selected files
-		102)
-			;;
-		*)
-			echo "Exit code: $exit_code"
-			;;
-	esac
-}
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -334,17 +302,17 @@ function yy() {
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/mnt/Data/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/mnt/Data/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/mnt/Data/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/mnt/Data/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/mnt/Data/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/mnt/Data/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/mnt/Data/anaconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/mnt/Data/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 # zmodload zsh/zprof
 # zprof

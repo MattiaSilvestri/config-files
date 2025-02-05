@@ -5,6 +5,7 @@ keybinds {
     unbind "Ctrl h"
     unbind "Ctrl n"
     unbind "Ctrl j"
+    unbind "Ctrl u"
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
@@ -12,6 +13,7 @@ keybinds {
         unbind "Ctrl o"
         unbind "Ctrl n"
         unbind "Ctrl j"
+        unbind "Ctrl u"
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
@@ -46,15 +48,15 @@ keybinds {
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
     }
-    move {
-        bind "Ctrl u" { SwitchToMode "Normal"; }
-        bind "n" "Tab" { MovePane; }
-        bind "p" { MovePaneBackwards; }
-        bind "h" "Left" { MovePane "Left"; }
-        bind "j" "Down" { MovePane "Down"; }
-        bind "k" "Up" { MovePane "Up"; }
-        bind "l" "Right" { MovePane "Right"; }
-    }
+    // move {
+    //     bind "Ctrl '" { SwitchToMode "Normal"; }
+    //     bind "n" "Tab" { MovePane; }
+    //     bind "p" { MovePaneBackwards; }
+    //     bind "h" "Left" { MovePane "Left"; }
+    //     bind "j" "Down" { MovePane "Down"; }
+    //     bind "k" "Up" { MovePane "Up"; }
+    //     bind "l" "Right" { MovePane "Right"; }
+    // }
     tab {
         bind "Ctrl t" { SwitchToMode "Normal"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
@@ -156,6 +158,10 @@ keybinds {
         bind "K" { Resize "Decrease Up"; }
         bind "L" { Resize "Decrease Right"; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
+        bind "Shift h" "Left" { MovePane "Left"; }
+        bind "Shift j" "Down" { MovePane "Down"; }
+        bind "Shift k" "Up" { MovePane "Up"; }
+        bind "Shift l" "Right" { MovePane "Right"; }
     }
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
@@ -328,7 +334,7 @@ theme "catppuccin-mocha"
 // Examples:
 //
 // copy_command "xclip -selection clipboard" // x11
-copy_command "wl-copy"                    // wayland
+// copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
 
 // Choose the destination for copied text
