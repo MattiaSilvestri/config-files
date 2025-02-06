@@ -19,14 +19,15 @@ super + n
 	nmd
 
 # Rofi Menus
-super + x
-	sh /home/mattia/.config/rofi.mattia/bin/menu_powermenu
+# super + x
+# 	sh /home/mattia/.config/rofi.mattia/bin/menu_powermenu
 
 ctrl + alt + {s,n,t}
 	sh ~/.config/bspwm/rofi/bin/{screenshot,network,themes}
 
 shift + space
-	/home/mattia/.config/rofi/launchers/type-1/launcher.sh
+	rofi -modi drun,run -show drun
+	# /home/mattia/.config/rofi/launchers/type-1/launcher.sh
 	# rofi -theme "/home/mattia/.config/rofi_themes/rofi-breeze-theme/arc-dark.rasi" -combi-modi drun,run,ssh,file-browser -font 'hack 12' -show combi -icon-theme Flat-Remix-Teal-Dark -show-icons -no-default-config
 
 super + Tab
@@ -69,8 +70,8 @@ XF86Audio{Next,Prev,Play,Stop}
 ##---------- Bspwm ----------##
 
 # Lockscreen
-#ctrl + alt + l
-#    betterlockscreen -l
+super + x
+   betterlockscreen -l
 
 # Reload Keybindings
 super + Escape
@@ -91,6 +92,8 @@ ctrl + alt + Escape
 # Fullscreen or Monocle
 super + f
 	bspc node -t "~"{fullscreen,tiled}
+super + t
+	bspc node -t tiled
 # super + f
 # 	if bspc query -N -n focused.fullscreen > /dev/null; \
 # 		then bspc node next.local -f -t fullscreen; \
@@ -152,6 +155,12 @@ super + {_,shift + }{Left,Down,Up,Right}
 # Change focus to next window, including floating window
 alt + {_,shift + }Tab
 	bspc node -f {next, prev}.local.!hidden.window
+
+# Switch workspace
+ctrl + alt + {h,l}
+	bspc desktop -f {prev.local,next.local}
+ctrl + alt + {Left,Right}
+	bspc desktop -f {prev.local,next.local}
 
 # Switch to last opened workspace
 # super + {Tab,grave}

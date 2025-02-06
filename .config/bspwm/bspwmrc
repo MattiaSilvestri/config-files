@@ -22,7 +22,7 @@ getcolors
 ## Configurations -------------------------------#
 # Dual monitor setup
 # bspc wm --reorder-monitors HDMI-1 eDP-1 
-# bspc monitor eDP-1 -d 1 2 3 4 5 
+bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9 10
 # bspc monitor HDMI-1 -d 6 7 8 9 10
 
 
@@ -41,7 +41,7 @@ bspc config paddingless_monocle true
 bspc config single_monocle false
 bspc config focus_follows_pointer true
 bspc config pointer_follows_monitor true
-bspc config pointer_follows_focus false
+bspc config pointer_follows_focus true
 bspc config top_padding 33
 
 ## Window rules -------------------------------#
@@ -147,8 +147,12 @@ nm-tray &
 killall -q conky
 # /home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
 
+# Polybar
+sleep 5 && ~/.config/bspwm/polybar/forest/launch.sh
+
 # Bluetooth manager
 blueman-applet &
+
 
 # Start bspwm scripts
 bspcolors
