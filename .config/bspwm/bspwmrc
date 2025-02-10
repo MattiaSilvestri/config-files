@@ -36,7 +36,7 @@ bspc config active_border_color "$MAGENTA"
 bspc config presel_feedback_color "$GREEN"
 
 bspc config borderless_monocle true
-bspc config gapless_monocle true
+bspc config gapless_monocle false
 bspc config paddingless_monocle true
 bspc config single_monocle false
 bspc config focus_follows_pointer true
@@ -127,8 +127,8 @@ nitrogen --restore
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Network manager
-killall -q nm-tray
-nm-tray &
+killall -q nm-applet
+nm-applet &
 
 # Tap to click
 # xinput set-prop "SYNA7DB5:00 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
@@ -153,6 +153,8 @@ sleep 5 && ~/.config/bspwm/polybar/forest/launch.sh
 # Bluetooth manager
 blueman-applet &
 
+# pcloud
+~/Applications/pcloud &
 
 # Start bspwm scripts
 bspcolors

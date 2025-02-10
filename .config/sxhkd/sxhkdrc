@@ -58,10 +58,10 @@ XF86MonBrightness{Up,Down}
 	
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume}
-	volume{_up.sh,_down.sh}
+	volume{ --inc, --dec}
 
 XF86AudioMute
-	volume_mute.sh	
+	volume --toggle	
 	
 # Music control
 XF86Audio{Next,Prev,Play,Stop}

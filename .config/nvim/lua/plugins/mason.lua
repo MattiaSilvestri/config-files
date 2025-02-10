@@ -38,6 +38,7 @@ return {
         "clandg_check",
         "black",
         "eslint_d",
+        "djlint",
         -- "pylint",
         -- add more arguments for adding more null-ls sources
       })

@@ -53,23 +53,24 @@ bar_spacing = 1
 # For alsa 'source' will be the capture device.
 # For fifo 'source' will be the path to fifo-file.
 # For shmem 'source' will be /squeezelite-AA:BB:CC:DD:EE:FF where 'AA:BB:CC:DD:EE:FF' will be squeezelite's MAC address
-method = pulse
-source = auto
+method = pipewire
+# source = alsa:acp:Generic:0:capture
 
-method = alsa
-; source = alsa_output.pci-0000_00_1f.3.analog-stereo
-source = hw:Loopback,1
+# ; method = alsa
+# ; source = alsa_output.pci-0000_2f_00.4.analog-stereo
+# ; source = alsa_output.pci-0000_00_1f.3.analog-stereo
+# ; source = hw:Loopback,1
 
-method = fifo
-source = /tmp/mpd.fifo
-sample_rate = 44100
-sample_bits = 16
+# method = fifo
+# source = /tmp/mpd.fifo
+# sample_rate = 44100
+# sample_bits = 16
 
-; method = shmem
-; source = /squeezelite-AA:BB:CC:DD:EE:FF
+# ; method = shmem
+# ; source = /squeezelite-AA:BB:CC:DD:EE:FF
 
-method = portaudio
-source = auto
+# method = portaudio
+# source = auto
 
 
 [output]
@@ -116,8 +117,8 @@ method = ncurses
 # ncurses output method and a terminal that can change color definitions such as Gnome-terminal or rxvt.
 # if supported, ncurses mode will be forced on if user defined colors are used.
 # default is to keep current terminal color
-background = '#1e1e2e'
-foreground = '#89b4fa'
+background = '#181825'
+foreground = '#94e2d5'
 
 # Gradient mode, only hex defined colors (and thereby ncurses mode) are supported,
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
