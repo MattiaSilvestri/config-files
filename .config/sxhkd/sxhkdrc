@@ -22,8 +22,8 @@ super + n
 # super + x
 # 	sh /home/mattia/.config/rofi.mattia/bin/menu_powermenu
 
-ctrl + alt + {s,n,t}
-	sh ~/.config/bspwm/rofi/bin/{screenshot,network,themes}
+# ctrl + alt + {s,n,t}
+# 	sh ~/.config/bspwm/rofi/bin/{screenshot,network,themes}
 
 shift + space
 	rofi -modi drun,run -show drun
