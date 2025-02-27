@@ -66,5 +66,10 @@ return {
         }
       end,
     },
+    MatchParen = {
+      ctermbg = "none",
+      cterm = "red",
+      style = "underline",
+    },
   },
 }

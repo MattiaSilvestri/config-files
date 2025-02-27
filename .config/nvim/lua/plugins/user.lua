@@ -41,7 +41,7 @@ return {
 
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
-  { "kevinhwang91/nvim-ufo", enabled = false },
+  { "kevinhwang91/nvim-ufo", enabled = true },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
@@ -121,16 +121,6 @@ return {
     },
   },
   { "folke/trouble.nvim", cmd = { "Trouble", "TroubleToggle" } },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup {
-        -- Configuration here, or leave empty to use defaults
-      }
-    end,
-  },
   {
     "lervag/vimtex",
     event = "User AstroFile",
@@ -344,14 +334,20 @@ return {
     keys = {
       -- 👇 in this section, choose your own keymappings!
       {
+        "<leader>yz",
+        mode = { "n", "v" },
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
         "<leader>yy",
-        function() require("yazi").yazi() end,
+        "<cmd>Yazi toggle<cr>",
         desc = "Open the file manager",
       },
       {
         -- Open in the current working directory
         "<leader>yw",
-        function() require("yazi").yazi(nil, vim.fn.getcwd()) end,
+        "<cmd>Yazi cwd<cr>",
         desc = "Open the file manager in nvim's working directory",
       },
     },

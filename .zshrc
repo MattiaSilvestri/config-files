@@ -232,6 +232,9 @@ alias pl="git pull"
 alias rs="git reset"
 alias lg="lazygit"
 
+## Bump
+alias bum="bump-my-version bump patch"
+
 # Music
 alias music='tmux new-session -s $$ "tmux source-file ~/.ncmpcpp/tsession"'
 alias ncm="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"
@@ -240,6 +243,20 @@ alias ncm="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp-ueberzug"
 alias vi="nvim"
 alias vim="vim"
 alias nvi="NVIM_APPNAME=nvim-vanilla nvim"
+
+# django
+alias mg="python manage.py migrate"
+alias mm="python manage.py makemigrations"
+alias dj_run="python manage.py runserver 0:8000"
+alias dj_shell="python manage.py shell_plus"
+
+# DB management
+alias jarvisui_tfs="rainfrog \
+                    --driver postgres \
+                    --username jarvisui \
+                    --host localhost \
+                    --port 5432 \
+                    --database jarvisui_tfs"
 
 # Other
 alias disc="sudoedit /opt/discord/resources/build_info.json"

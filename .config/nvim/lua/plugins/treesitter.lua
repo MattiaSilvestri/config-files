@@ -13,4 +13,11 @@ return {
       -- add more arguments for adding more treesitter parsers
     })
   end,
+  config = function()
+    matchup = {
+      enable = true, -- mandatory, false will disable the whole extension
+      disable = {}, -- optional, list of language that will be disabled
+      -- [options]
+    }
+  end,
 }

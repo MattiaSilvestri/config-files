@@ -151,7 +151,7 @@ killall -q conky
 sleep 5 && ~/.config/bspwm/polybar/forest/launch.sh
 
 # Bluetooth manager
-blueman-applet &
+# blueman-applet &
 
 # pcloud
 ~/Applications/pcloud &

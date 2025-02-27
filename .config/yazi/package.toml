@@ -1,5 +1,37 @@
-[plugin]
-deps = [{ use = "yazi-rs/plugins#full-border", commit = "a3ee717" }, { use = "yazi-rs/plugins:full-border", rev = "71c4fc2" }, { use = "h-hg/yamb", rev = "108347b" }, { use = "yazi-rs/plugins:max-preview", rev = "71c4fc2" }, { use = "yazi-rs/plugins:git", rev = "71c4fc2" }, { use = "Ape/open-with-cmd", rev = "a80d1cf" }]
+[[plugin.deps]]
+use = "h-hg/yamb"
+rev = "108347b"
+hash = "faf1b817347b5b46c96039dab538694b"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:max-preview"
+rev = "71c4fc2"
+hash = "9bc26d10d2f6e2aa93b10905b1b76979"
+
+[[plugin.deps]]
+use = "Ape/open-with-cmd"
+rev = "a80d1cf"
+hash = "86e0312b01bc5762813c6c1d0517f073"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "beb586a"
+hash = "771f18427fb75fb19990ce602bb322f4"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "beb586a"
+hash = "ae9e1d0c6bfd68cdebc98cc684c22b45"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "f565c5a"
+hash = "15d0dbb4e9ba84eb1f2dbb8e9e249bf6"
+
+[[plugin.deps]]
+use = "AnirudhG07/rich-preview"
+rev = "2559e5f"
+hash = "c9a3d0731e7d7340e2c6d6126b1f3aa3"
 
 [flavor]
 deps = []
