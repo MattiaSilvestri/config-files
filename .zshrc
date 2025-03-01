@@ -354,3 +354,7 @@ unset __conda_setup
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export WORKON_HOME=$HOME/.virtualenvs
+export MSYS_HOME=/c/msys/1.0
+source /usr/bin/virtualenvwrapper.sh

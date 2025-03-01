@@ -75,6 +75,12 @@ return {
           },
         },
       },
+      vtsls = {
+        settings = {
+          filetypes = {}, -- disable javascript etc,
+          -- set to {} to disable the lspclient for all filetypes
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {

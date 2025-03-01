@@ -5,6 +5,7 @@ keybinds {
     unbind "Ctrl h"
     unbind "Ctrl n"
     unbind "Ctrl j"
+    unbind "Ctrl u"
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
@@ -12,6 +13,7 @@ keybinds {
         unbind "Ctrl o"
         unbind "Ctrl n"
         unbind "Ctrl j"
+        unbind "Ctrl u"
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
@@ -47,7 +49,7 @@ keybinds {
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
     }
     move {
-        bind "Ctrl u" { SwitchToMode "Normal"; }
+        bind "Ctrl '" { SwitchToMode "Normal"; }
         bind "n" "Tab" { MovePane; }
         bind "p" { MovePaneBackwards; }
         bind "h" "Left" { MovePane "Left"; }
@@ -151,10 +153,10 @@ keybinds {
         bind "j" "Down" { Resize "Increase Down"; }
         bind "k" "Up" { Resize "Increase Up"; }
         bind "l" "Right" { Resize "Increase Right"; }
-        bind "H" { Resize "Decrease Left"; }
-        bind "J" { Resize "Decrease Down"; }
-        bind "K" { Resize "Decrease Up"; }
-        bind "L" { Resize "Decrease Right"; }
+        bind "H" { MovePane "Left"; }
+        bind "J" { MovePane "Down"; }
+        bind "K" { MovePane "Up"; }
+        bind "L" { MovePane "Right"; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
     }
     shared_except "locked" {

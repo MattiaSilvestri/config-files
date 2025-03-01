@@ -1,0 +1,42 @@
+{
+  "bar.customModules.updates.pollingInterval": 1440000,
+  "theme.font.size": "1rem",
+  "theme.font.weight": 400,
+  "terminal": "alacritty",
+  "menus.transition": "crossfade",
+  "theme.bar.floating": false,
+  "theme.bar.outer_spacing": "0.3em",
+  "theme.bar.buttons.workspaces.enableBorder": false,
+  "bar.workspaces.showAllActive": false,
+  "bar.workspaces.show_icons": false,
+  "theme.bar.transparent": false,
+  "theme.bar.buttons.enableBorders": false,
+  "theme.font.name": "Cantarell",
+  "theme.font.label": "Cantarell",
+  "theme.bar.location": "top",
+  "theme.bar.border.location": "none",
+  "theme.bar.border.width": "0.3em",
+  "theme.bar.buttons.monochrome": false
+}
+
+{
+  "*": {
+    "left": [
+      "dashboard",
+      "workspaces",
+      "windowtitle"
+    ],
+    "middle": [
+      "media"
+    ],
+    "right": [
+      "volume",
+      "network",
+      "bluetooth",
+      "battery",
+      "clock",
+      "systray",
+      "notifications"
+    ]
+  }
+}

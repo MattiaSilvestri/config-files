@@ -70,5 +70,6 @@ pamixer --default-source --set-volume 30
 
 # Hyprland stuff
 # hyprctl keyword general:layout "master" &
+ags_end4 &
 hyprpm reload -n &
 
