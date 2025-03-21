@@ -87,7 +87,7 @@ return {
         ["<leader>sg"] = { "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep" },
         ["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
         ["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
-        ["<leader>a"] = { "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
+        ["<leader>a"] = { "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble" },
         ["gt"] = {
           function() require("astrocore.buffer").nav(vim.v.count1) end,
           desc = "Next buffer",

@@ -63,13 +63,13 @@ return {
           TelescopeResultsBorder = { fg = bg, bg = bg },
           TelescopeResultsNormal = { bg = bg },
           TelescopeResultsTitle = { fg = bg, bg = bg },
+          -- vim-matchup highlights
+          MatchParen = { bg = bg_alt }, -- Example customization
+          -- MatchWord = { fg = red, underline = false }, -- Example customization
+          MatchParenCur = { bg = "#282939", underline = false }, -- Example customization
+          -- MatchWordCur = { underline = false }, -- Example customization
         }
       end,
-    },
-    MatchParen = {
-      ctermbg = "none",
-      cterm = "red",
-      style = "underline",
     },
   },
 }

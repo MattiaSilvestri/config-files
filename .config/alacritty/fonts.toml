@@ -2,13 +2,23 @@
 size = 9
 
 builtin_box_drawing = true
-offset = { x = 0, y = 3 }
+offset = { x = 0, y = 2 }
 
-# normal = { family = "JetBrainsMono Nerd Font"
-# bold = { family = "JetBrainsMono Nerd Font"
-# italic = { family = "JetBrainsMono Nerd Font"
+# normal = { family = "CartographCF", style = "Regular" }
+# bold = { family = "CartographCF", style = "Regular"}
+# italic = { family = "CartographCF", style = "Regular"}
+
+# normal = { family = "Operator-caska" }
+# bold = { family = "Operator-caska"}
+# italic = { family = "Operator-caska"}
 # bold_italic = { family = "JetBrainsMono Nerd Font"
 
-normal = { family = "FiraCode Nerd Font" }
-bold = { family = "FiraCode Nerd Font" }
-italic = { family = "FiraCode Nerd Font" }
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+bold = { family = "FiraCode Nerd Font", style = "Regular" }
+italic = { family = "VictorMono Nerd Font", style = "Italic" }
+bold_italic = { family = "VictorMono Nerd Font", style = "Bold Italic" }
+
+# normal = { family = "FiraCode Nerd Font", style = "Regular" }
+# bold = { family = "Cascadia Code NF", style = "Regular" }
+# italic = { family = "Cascadia Code NF", style = "Light Italic" }
+# bold_italic = { family = "Cascadia Code NF", style = "Bold Italic" }

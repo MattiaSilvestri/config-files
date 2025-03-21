@@ -26,9 +26,13 @@ super + n
 # 	sh ~/.config/bspwm/rofi/bin/{screenshot,network,themes}
 
 shift + space
-	rofi -modi drun,run -show drun
+	~/.config/rofi/launchers/type-1/launcher.sh
+	# rofi -modi drun,run -show drun
 	# /home/mattia/.config/rofi/launchers/type-1/launcher.sh
 	# rofi -theme "/home/mattia/.config/rofi_themes/rofi-breeze-theme/arc-dark.rasi" -combi-modi drun,run,ssh,file-browser -font 'hack 12' -show combi -icon-theme Flat-Remix-Teal-Dark -show-icons -no-default-config
+
+alt + space
+	~/.config/rofi/powermenu/type-2/launcher.sh
 
 super + Tab
 	rofi -theme "/home/mattia/.config/rofi_themes/rofi-breeze-theme/arc-dark.rasi" -show window -window-thumbnail -font 'hack 12' -icon-theme Flat-Remix-Teal-Dark -show-icons -no-default-config
