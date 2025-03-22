@@ -1,5 +1,5 @@
 [font]
-size = 10.8
+size = 10.5
 
 builtin_box_drawing = true
 offset = { x = 0, y = 3 }
@@ -9,6 +9,7 @@ offset = { x = 0, y = 3 }
 # italic = { family = "SpaceMono Nerd Font", style = "Italic" }
 # bold_italic = { family = "FiraCode Nerd Font", style = "Bold Italic" }
 
-normal = { family = "FiraCode Nerd Font", style = "Regular" } 
+normal = { family = "FiraCode Nerd Font", style = "Light" } 
 bold = { family = "FiraCode Nerd Font", style = "Regular" }
-italic = { family = "FiraCode Nerd Font", style = "Italic" }
+italic = { family = "VictorMono Nerd Font", style = "Italic" }
+bold_italic = { family = "VictorMono Nerd Font", style = "Bold Italic" }

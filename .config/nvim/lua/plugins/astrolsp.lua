@@ -81,6 +81,16 @@ return {
           -- set to {} to disable the lspclient for all filetypes
         },
       },
+      volar = {
+        init_options = {
+          format_on_save = false,
+        },
+      },
+      tailwindcss = {
+        init_options = {
+          format_on_save = false,
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {

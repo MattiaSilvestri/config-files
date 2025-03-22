@@ -36,6 +36,8 @@ return {
         guifont = "Inconsolata Nerd Font:h12:w0:#h-normal",
         termguicolors = true,
         linespace = 3,
+        conceallevel = 2,
+        concealcursor = "",
         -- textwidth = 88, -- sets vim.opt.textwidth
       },
       g = { -- vim.g.<key>
