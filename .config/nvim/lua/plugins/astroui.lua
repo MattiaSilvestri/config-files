@@ -48,6 +48,9 @@ return {
         local bg_alt = get_hlgroup("Visual").bg
         local green = get_hlgroup("String").fg
         local red = get_hlgroup("Error").fg
+        local mantle = "#11111b"
+        local base = "#1e1e2e"
+        local surface0 = "#313244"
         -- return a table of highlights for telescope based on
         -- colors gotten from highlight groups
         return {
@@ -63,11 +66,22 @@ return {
           TelescopeResultsBorder = { fg = bg, bg = bg },
           TelescopeResultsNormal = { bg = bg },
           TelescopeResultsTitle = { fg = bg, bg = bg },
-          -- vim-matchup highlights
+
+          -- vim-matchup highlights --
           MatchParen = { bg = bg_alt }, -- Example customization
           -- MatchWord = { fg = red, underline = false }, -- Example customization
           MatchParenCur = { bg = "#282939", underline = false }, -- Example customization
           -- MatchWordCur = { underline = false }, -- Example customization
+
+          -- Blink.cmp highlights --
+          BlinkCmpMenu = { bg = mantle },
+          BlinkCmpMenuBorder = { bg = mantle },
+          BlinkCmpMenuSelection = { bg = surface0 },
+          BlinkCmpScrollBarThumb = { bg = surface0 },
+          BlinkCmpScrollBarGutter = { bg = mantle },
+          BlinkCmpSource = { bg = mantle },
+          BlinkCmpLabelDetail = { bg = mantle },
+          BlinkCmpLabelDescription = { bg = mantle },
         }
       end,
     },

@@ -5,6 +5,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    bigfile = { enabled = true },
     words = {
       ---@field enabled? boolean
       enabled = true,
@@ -23,8 +24,8 @@ return {
     toggle = {
       enabled = true,
     },
-  },
-  keys = {
-    { "<leader>gg", function() Snacks.lazygit.open() end, desc = "LazyGit" },
+    explorer = {
+      enabled = true,
+    },
   },
 }

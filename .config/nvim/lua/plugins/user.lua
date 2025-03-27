@@ -11,7 +11,7 @@ return {
   "andweeb/presence.nvim",
   {
     "ray-x/lsp_signature.nvim",
-    event = "BufRead",
+    event = "InsertEnter",
     config = function() require("lsp_signature").setup() end,
   },
 
@@ -42,6 +42,7 @@ return {
   -- You can disable default plugins as follows:
   { "max397574/better-escape.nvim", enabled = false },
   { "kevinhwang91/nvim-ufo", enabled = true },
+  { "rcarriga/cmp-dap", enabled = false },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
@@ -83,33 +84,12 @@ return {
       )
     end,
   },
-  -- { "francoiscabrol/ranger.vim", cmd = "Ranger" },
-  {
-    "kelly-lin/ranger.nvim",
-    lazy = false,
-    config = function()
-      require("ranger-nvim").setup {
-        replace_netrw = true,
-        ui = {
-          border = "none",
-          height = 1,
-          width = 1,
-          x = 0.5,
-          y = 0.5,
-        },
-      }
-      vim.api.nvim_set_keymap("n", "<leader>sr", "", {
-        noremap = true,
-        callback = function() require("ranger-nvim").open(true) end,
-      })
-    end,
-  },
   { "rbgrouleff/bclose.vim", lazy = false },
   { "dyng/ctrlsf.vim", event = "User AstroFile" },
   { "mg979/vim-visual-multi", event = "User AstroFile" },
   -- { "tpope/vim-surround" },
   { "ixru/nvim-markdown", event = "User AstroFile" },
-  { "christoomey/vim-tmux-navigator", lazy = false },
+  { "christoomey/vim-tmux-navigator", enabled = false, lazy = false },
   { "kevinhwang91/rnvimr", cmd = "RnvimrToggle" },
   {
     "folke/todo-comments.nvim",

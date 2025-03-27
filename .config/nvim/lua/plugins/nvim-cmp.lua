@@ -1,5 +1,6 @@
 return { -- override nvim-cmp plugin
   "hrsh7th/nvim-cmp",
+  enabled = false,
   -- override the options table that is used in the `require("cmp").setup()` call
   opts = function(_, opts)
     -- opts parameter is the default options table
