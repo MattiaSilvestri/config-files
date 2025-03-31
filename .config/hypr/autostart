@@ -31,7 +31,7 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 blueberry-tray &
 
 # Blue-light filter
-wlsunset -t 3500 -T 6500 -S 8:00 -s 18:00 &
+wlsunset -t 3500 -T 6500 -S 8:00 -s 20:00 &
 
 #swayidle daemon and inhibitor
 # swayidle -w \

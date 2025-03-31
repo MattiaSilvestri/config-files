@@ -47,6 +47,9 @@ return {
         local fg, bg = normal.fg, normal.bg
         local bg_alt = get_hlgroup("Visual").bg
         local green = get_hlgroup("String").fg
+        local mantle = "#11111b"
+        local base = "#1e1e2e"
+        local surface0 = "#313244"
         local red = get_hlgroup("Error").fg
         -- return a table of highlights for telescope based on
         -- colors gotten from highlight groups
@@ -62,6 +65,16 @@ return {
           TelescopePromptTitle = { fg = bg, bg = red },
           TelescopeResultsBorder = { fg = bg, bg = bg },
           TelescopeResultsNormal = { bg = bg },
+
+          -- Blink.cmp highlights --
+          BlinkCmpMenu = { bg = mantle },
+          BlinkCmpMenuBorder = { bg = mantle },
+          BlinkCmpMenuSelection = { bg = surface0 },
+          BlinkCmpScrollBarThumb = { bg = surface0 },
+          BlinkCmpScrollBarGutter = { bg = mantle },
+          BlinkCmpSource = { bg = mantle },
+          BlinkCmpLabelDetail = { bg = mantle },
+          BlinkCmpLabelDescription = { bg = mantle },
           TelescopeResultsTitle = { fg = bg, bg = bg },
         }
       end,

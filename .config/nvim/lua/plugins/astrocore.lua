@@ -106,6 +106,7 @@ return {
         ["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
         ["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
         ["~"] = { "Vyp", desc = "Yank and pase to next line" },
+        ["<leader>e"] = { function() require("snacks.explorer").open() end, desc = "Open snacks explorer" },
         -- ["<leader>r"] = { "<cmd>Ranger<cr>", desc = "Open Ranger file manager" },
       },
       t = {
