@@ -11,32 +11,35 @@ return {
   "andweeb/presence.nvim",
   {
     "ray-x/lsp_signature.nvim",
+    enabled = false,
     event = "InsertEnter",
     config = function() require("lsp_signature").setup() end,
   },
 
   -- == Examples of Overriding Plugins ==
 
-  -- customize alpha options
+  -- customize dashboard options
   {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
-      return opts
-    end,
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          header = table.concat({
+            " █████  ███████ ████████ ██████   ██████ ",
+            "██   ██ ██         ██    ██   ██ ██    ██",
+            "███████ ███████    ██    ██████  ██    ██",
+            "██   ██      ██    ██    ██   ██ ██    ██",
+            "██   ██ ███████    ██    ██   ██  ██████ ",
+            "",
+            "███    ██ ██    ██ ██ ███    ███",
+            "████   ██ ██    ██ ██ ████  ████",
+            "██ ██  ██ ██    ██ ██ ██ ████ ██",
+            "██  ██ ██  ██  ██  ██ ██  ██  ██",
+            "██   ████   ████   ██ ██      ██",
+          }, "\n"),
+        },
+      },
+    },
   },
 
   -- You can disable default plugins as follows:
@@ -264,29 +267,6 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     event = "User AstroFile",
-  },
-  {
-    "NvChad/nvim-colorizer.lua",
-    event = "User AstroFile",
-    enabled = false,
-    init = require("colorizer").setup(),
-    config = function()
-      require("colorizer").setup {
-        filetypes = { "*" },
-        user_default_options = {
-          RGB = true,
-          RRGGBB = true,
-          names = false,
-          RRGGBBAA = true,
-          AARRGGBB = true,
-          rgb_fn = true,
-          hsl_fn = true,
-          css = true,
-          css_fn = true,
-          mode = "background",
-        },
-      }
-    end,
   },
   {
     "otavioschwanck/arrow.nvim",
