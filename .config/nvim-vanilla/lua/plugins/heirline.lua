@@ -181,11 +181,104 @@ return {
 			{ provider = "%<" } -- this means that the statusline is cut here when there's not enough space
 		)
 
+		local FileType = {
+			provider = function()
+				return string.upper(vim.bo.filetype)
+			end,
+			hl = { fg = utils.get_highlight("Type").fg, bold = true },
+		}
+
+		local FileSize = {
+			provider = function()
+				-- stackoverflow, compute human readable file size
+				local suffix = { "b", "k", "M", "G", "T", "P", "E" }
+				local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
+				fsize = (fsize < 0 and 0) or fsize
+				if fsize < 1024 then
+					return fsize .. suffix[1]
+				end
+				local i = math.floor((math.log(fsize) / math.log(1024)))
+				return string.format("%.2g%s", fsize / math.pow(1024, i), suffix[i + 1])
+			end,
+		}
+
+		local FileLastModified = {
+			-- did you know? Vim is full of functions!
+			provider = function()
+				local ftime = vim.fn.getftime(vim.api.nvim_buf_get_name(0))
+				return (ftime > 0) and os.date("%c", ftime)
+			end,
+		}
+
+		local Ruler = {
+			-- %l = current line number
+			-- %L = number of lines in the buffer
+			-- %c = column number
+			-- %P = percentage through file of displayed window
+			provider = "%7(%l/%3L%):%2c %P",
+		}
+
+		local ScrollBar = {
+			static = {
+				sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" },
+				-- Another variant, because the more choice the better.
+				-- sbar = { "🭶", "🭷", "🭸", "🭹", "🭺", "🭻" },
+			},
+			provider = function(self)
+				local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+				local lines = vim.api.nvim_buf_line_count(0)
+				local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+				return string.rep(self.sbar[i], 2)
+			end,
+			hl = { fg = colors.blue, bg = colors.bright_bg },
+		}
+
+		local LSPActive = {
+			condition = conditions.lsp_attached,
+			update = { "LspAttach", "LspDetach" },
+
+			-- You can keep it simple,
+			-- provider = " [LSP]",
+
+			-- Or complicate things a bit and get the servers names
+			provider = function()
+				local names = {}
+				for i, server in pairs(vim.lsp.get_clients({ bufnr = 0 })) do
+					table.insert(names, server.name)
+				end
+				return " [" .. table.concat(names, " ") .. "]"
+			end,
+			hl = { fg = "green", bold = true },
+		}
+
+		local Align = { provider = "%=" }
+		local Space = { provider = " " }
+
 		opts.statusline = { -- statusline
 			colors = colors,
 			hl = { fg = "fg", bg = "bg" },
 			ViMode,
+			Space,
 			FileNameBlock,
+			Space,
+			-- Git,
+			Space,
+			-- Diagnostics,
+			Align,
+			-- Navic,
+			-- DAPMessages,
+			Align,
+			LSPActive,
+			Space,
+			-- LSPMessages,
+			Space,
+			-- UltTest,
+			Space,
+			FileType,
+			Space,
+			Ruler,
+			Space,
+			ScrollBar,
 		}
 	end,
 }

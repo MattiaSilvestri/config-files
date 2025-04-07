@@ -4,7 +4,9 @@ return {
 		expandtab = true,
 		relativenumber = true, -- sets vim.opt.relativenumber
 		number = true, -- sets vim.opt.number
-		wrap = false, -- sets vim.opt.wrap
+		wrap = false, -- LIne wrawpping
+		laststatus = 3, -- Statusline spans all splits
+		cursorline = true, -- Enable highlighting of the current line
 	},
 	g = {},
 }

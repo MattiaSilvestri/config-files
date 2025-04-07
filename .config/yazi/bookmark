@@ -1,4 +1,5 @@
 share	/usr/share/	s
+nvim	/home/mattia/.config/nvim/	n
 MindDump	/mnt/Data/Notes/Obsidian/MindDump/	o
 .local	/home/mattia/.local/	l
 hypr	/home/mattia/.config/hypr/	h
