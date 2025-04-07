@@ -3,9 +3,14 @@ vim.cmd([[
 let mapleader = " "
 ]])
 
+-- Load custom highlight groups first so they can be used in other files
+require("config.highlights")
+
+-- Load lazy packages
 require("config.lazy")
-local options = require("config.options")
-local mappings = require("config.mappings") -- Load your mappings
+
+local options = require("config.options") -- Load options
+local mappings = require("config.mappings") -- Load mappings
 
 -- Set colorscheme --
 vim.cmd.colorscheme(options.colorscheme)

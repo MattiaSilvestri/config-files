@@ -1,10 +1,18 @@
 --- @type LazySpec
 return {
 	"rebelot/heirline.nvim",
+	dependencies = { "Zeioth/heirline-components.nvim" },
 	opts = function(_, opts)
+		-- Setup components
+		local components = require("heirline-components.all")
+		local status = require("heirline-components.all").component
+		components.init.subscribe_to_events()
+
 		local conditions = require("heirline.conditions")
 		local utils = require("heirline.utils")
+		local catppuccin = require("catppuccin.palettes").get_palette("mocha")
 		local colors = {
+			status_bg = catppuccin.mantle,
 			bright_bg = utils.get_highlight("Folded").bg,
 			bright_fg = utils.get_highlight("Folded").fg,
 			red = utils.get_highlight("DiagnosticError").fg,
@@ -174,6 +182,7 @@ return {
 		}
 
 		FileNameBlock = utils.insert(
+			{ provider = " " }, -- this means that the statusline is cut here when there's not enough space
 			FileNameBlock,
 			FileIcon,
 			utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
@@ -251,23 +260,74 @@ return {
 			hl = { fg = "green", bold = true },
 		}
 
+		local Diagnostics = {
+
+			condition = conditions.has_diagnostics,
+
+			static = {
+				error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
+				warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
+				info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
+				hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
+			},
+
+			init = function(self)
+				self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+				self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+				self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+				self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+			end,
+
+			update = { "DiagnosticChanged", "BufEnter" },
+
+			{
+				provider = " ",
+			},
+			{
+				provider = function(self)
+					-- 0 is just another output, we can decide to print it or not!
+					return self.errors > 0 and (self.error_icon .. self.errors .. " ")
+				end,
+				hl = { fg = colors.diag_error },
+			},
+			{
+				provider = function(self)
+					return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
+				end,
+				hl = { fg = colors.diag_warn },
+			},
+			{
+				provider = function(self)
+					return self.info > 0 and (self.info_icon .. self.info .. " ")
+				end,
+				hl = { fg = colors.diag_info },
+			},
+			{
+				provider = function(self)
+					return self.hints > 0 and (self.hint_icon .. self.hints)
+				end,
+				hl = { fg = colors.diag_hint },
+			},
+			{
+				provider = " ",
+			},
+		}
+
 		local Align = { provider = "%=" }
 		local Space = { provider = " " }
 
 		opts.statusline = { -- statusline
 			colors = colors,
-			hl = { fg = "fg", bg = "bg" },
-			ViMode,
-			Space,
+			hl = { fg = "fg", bg = colors.status_bg },
+			status.mode(),
+			status.git_branch(),
+			status.file_info(),
+			status.git_diff(),
+			Diagnostics,
 			FileNameBlock,
-			Space,
-			-- Git,
-			Space,
-			-- Diagnostics,
 			Align,
 			-- Navic,
 			-- DAPMessages,
-			Align,
 			LSPActive,
 			Space,
 			-- LSPMessages,
@@ -279,6 +339,7 @@ return {
 			Ruler,
 			Space,
 			ScrollBar,
+			status.mode({ surround = { separator = "right" } }),
 		}
 	end,
 }
