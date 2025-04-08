@@ -1,17 +1,15 @@
+-- Load custom highlight groups and diagnostics first so they can be used in other files
+require("config.highlights")
+require("config.diagnostics")
+-- Load lazy packages
+require("config.lazy")
+local options = require("config.options") -- Load options
+local mappings = require("config.mappings") -- Load mappings
+
 -- Some vimscript options --
 vim.cmd([[
 let mapleader = " "
 ]])
-
--- Load custom highlight groups and diagnostics first so they can be used in other files
-require("config.highlights")
-require("config.diagnostics")
-
--- Load lazy packages
-require("config.lazy")
-
-local options = require("config.options") -- Load options
-local mappings = require("config.mappings") -- Load mappings
 
 -- Set colorscheme --
 vim.cmd.colorscheme(options.colorscheme)
@@ -32,12 +30,16 @@ end
 
 -- MAPPINGS --
 -- Set keymaps from config/mappings.lua
-
+local wk = require("which-key")
 for mode, mode_mappings in pairs(mappings) do
 	for key, map in pairs(mode_mappings) do
 		local cmd = map[1] -- First value is the command/action
-		local desc = map[2] -- Second value is optional description
+		local desc = map.desc -- Second value is optional description
 
-		vim.keymap.set(mode, key, cmd, { desc = desc, noremap = true, silent = true })
+		if cmd then
+			vim.keymap.set(mode, key, cmd, { desc = desc, noremap = true, silent = true })
+		elseif desc then
+			wk.add({ key, group = desc }, { mode = mode })
+		end
 	end
 end
