@@ -3,8 +3,9 @@ vim.cmd([[
 let mapleader = " "
 ]])
 
--- Load custom highlight groups first so they can be used in other files
+-- Load custom highlight groups and diagnostics first so they can be used in other files
 require("config.highlights")
+require("config.diagnostics")
 
 -- Load lazy packages
 require("config.lazy")
