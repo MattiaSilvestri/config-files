@@ -1,5 +1,6 @@
 --- @type LazySpec
 return {
+	{ "tiagovla/scope.nvim", config = true },
 	{
 		"romgrk/barbar.nvim",
 		enabled = false,
