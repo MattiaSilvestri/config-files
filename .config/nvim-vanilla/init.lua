@@ -1,8 +1,8 @@
 -- Load custom highlight groups and diagnostics first so they can be used in other files
-require("config.highlights")
 require("config.diagnostics")
 -- Load lazy packages
 require("config.lazy")
+local highlights = require("config.highlights")
 local options = require("config.options") -- Load options
 local mappings = require("config.mappings") -- Load mappings
 
@@ -13,6 +13,11 @@ let mapleader = " "
 
 -- Set colorscheme --
 vim.cmd.colorscheme(options.colorscheme)
+
+-- HIGHLIGHTS --
+for group, color in pairs(highlights) do
+	vim.api.nvim_set_hl(0, group, color)
+end
 
 -- OPTIONS --
 -- Read vim options (:set)

@@ -30,6 +30,7 @@ end
 return {
 	n = {
 		-- Telescope --
+		["<Leader>f"] = { function() vim.tbl_get(sections, "f") end, desc = sections.f.desc, },
 		["<leader>ff"] = { function() telescope.find_files() end, desc = "Find files", },
 		["<leader>sg"] = { function() telescope.live_grep() end, desc = "Live grep", },
 		["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
@@ -43,11 +44,15 @@ return {
 		["H"] = { function() vim.cmd.bprev() end, desc = "Previous buffer", },
 		["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab", },
 		["[o"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab", },
+		["<leader>c"] = {function () Snacks.bufdelete() end, desc = "Close buffer",},
+
+		-- File manager --
+		["<leader>yy"] = { "<cmd>Yazi toggle<cr>", desc = "Toggle yazi", },
+		["<leader>yz"] = { "<cmd>Yazi<cr>", desc = "Toggle yazi at current file", },
 
 		-- Git --
 		["<Leader>g"] = { function() vim.tbl_get(sections, "g") end, desc = sections.g.desc, },
 		["<leader>gg"] = { function() Snacks.lazygit.open() end, desc = "LazyGit", },
-		["gl"] = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
 
 		-- Lists --
 		["<Leader>x"] = { function() vim.tbl_get(sections, "x") end, desc = sections.x.desc, },
@@ -63,6 +68,14 @@ return {
 		["]L"] = { vim.cmd.llast, desc = "End loclist" },
 		["[L"] = { vim.cmd.lfirst, desc = "Beginning loclist" },
 
+		-- Packages --
+		["<Leader>p"] = { function() vim.tbl_get(sections, "p") end, desc = sections.p.desc, },
+		["<Leader>pi"] = { function() require("lazy").install() end, desc = "Plugins Install", },
+		["<Leader>ps"] = { function() require("lazy").home() end, desc = "Plugins Status", },
+		["<Leader>pS"] = { function() require("lazy").sync() end, desc = "Plugins Sync", },
+		["<Leader>pu"] = { function() require("lazy").check() end, desc = "Plugins Check Updates", },
+		["<Leader>pU"] = { function() require("lazy").update() end, desc = "Plugins Update", },
+
 		-- Pane navigation --
 		["<C-H>"] = { "<C-w>h", desc = "Move to left split" },
 		["<C-J>"] = { "<C-w>j", desc = "Move to below split" },
@@ -73,13 +86,12 @@ return {
 		["<C-Left>"] = { "<Cmd>vertical resize -2<CR>", desc = "Resize split left" },
 		["<C-Right>"] = { "<Cmd>vertical resize +2<CR>", desc = "Resize split right" },
 
-		-- Packages --
-		["<Leader>p"] = { function() vim.tbl_get(sections, "p") end, desc = sections.p.desc, },
-		["<Leader>pi"] = { function() require("lazy").install() end, desc = "Plugins Install", },
-		["<Leader>ps"] = { function() require("lazy").home() end, desc = "Plugins Status", },
-		["<Leader>pS"] = { function() require("lazy").sync() end, desc = "Plugins Sync", },
-		["<Leader>pu"] = { function() require("lazy").check() end, desc = "Plugins Check Updates", },
-		["<Leader>pU"] = { function() require("lazy").update() end, desc = "Plugins Update", },
+		-- Session managment --
+		["<Leader>S"] = { function() vim.tbl_get(sections, "S") end, desc = sections.S.desc, },
+		["<leader>Sl"] = { function() require("nvim-possession").list() end, desc = "📌 list sessions", },
+		["<leader>Sn"] = { function() require("nvim-possession").new() end, desc = "📌 create new session", },
+		["<leader>Su"] = { function() require("nvim-possession").update() end, desc = "📌 update current session", },
+		["<leader>Sd"] = { function() require("nvim-possession").delete() end, desc = "📌 delete selected session", },
 
 		-- Terminal --
 		["<Leader>t"] = { function() vim.tbl_get(sections, "t") end, desc = sections.t.desc, },
@@ -89,6 +101,7 @@ return {
 		["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
 
 		-- General --
+		["gl"] = { function() vim.diagnostic.open_float(nil, {scope = "line"}) end, desc = "Hover diagnostics" },
 		["U"] = { "<cmd>redo<cr>", desc = "Redo" },
 		["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
 		["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },

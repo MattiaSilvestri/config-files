@@ -2,7 +2,7 @@
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 	virtual_lines = false,
 	-- virtual_text = {
 	-- 	prefix = "●",
@@ -15,5 +15,13 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.INFO] = signs.Info,
 			[vim.diagnostic.severity.HINT] = signs.Hint,
 		},
+	},
+	float = {
+		border = "rounded",
+		header = "",
+		source = true,
+		prefix = function(_, i, total)
+			return tostring(i) .. "/" .. tostring(total) .. " ", "DiagnosticPrefix"
+		end,
 	},
 })

@@ -7,7 +7,7 @@ return {
 		wrap = false, -- LIne wrawpping
 		laststatus = 3, -- Statusline spans all splits
 		cursorline = true, -- Enable highlighting of the current line
-		clipboard = "unnamedplus", -- allows neovim to access the system clipboard
+		clipboard = "unnamedplus", -- Allows neovim to access the system clipboard
 	},
 	g = {},
 }
