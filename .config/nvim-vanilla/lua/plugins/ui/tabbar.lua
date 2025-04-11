@@ -42,6 +42,9 @@ return {
 						separator = true,
 					},
 				},
+				-- indicator = {
+				-- 	style = "underline",
+				-- },
 			},
 		},
 	},

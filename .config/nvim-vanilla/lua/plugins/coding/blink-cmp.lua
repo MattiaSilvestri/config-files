@@ -129,7 +129,7 @@ return {
 				list = { selection = { preselect = false, auto_insert = true } },
 				documentation = { auto_show = true, window = { border = "rounded" }, auto_show_delay_ms = 50 },
 				menu = {
-					border = nil,
+					border = "rounded",
 					draw = {
 						components = {
 							kind_icon = {
