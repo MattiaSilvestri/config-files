@@ -11,9 +11,6 @@ return {
 		delete_check_events = "TextChanged",
 		region_check_events = "CursorMoved",
 	},
-	-- specs = {
-	-- 	{ "Saghen/blink.cmp", optional = true, opts = { snippets = { preset = "luasnip" } } },
-	-- },
 	init = function()
 		require("luasnip.loaders.from_snipmate").lazy_load()
 		require("luasnip.loaders.from_vscode").lazy_load()

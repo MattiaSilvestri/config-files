@@ -1,3 +1,10 @@
+-- local orig_open_win = vim.api.nvim_open_win
+-- vim.api.nvim_open_win = function(...)
+-- 	print("Floating window opened with config:")
+-- 	print(vim.inspect(select(3, ...)))
+-- 	return orig_open_win(...)
+-- end
+
 -- Load custom highlight groups and diagnostics first so they can be used in other files
 require("config.diagnostics")
 -- Load lazy packages

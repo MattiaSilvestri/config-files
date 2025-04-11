@@ -58,7 +58,6 @@ return {
 		-- build = "cargo +nightly build --release",
 		-- optional: provides snippets for the snippet source
 		dependencies = {
-			{ "rafamadriz/friendly-snippets" },
 			{ "L3MON4D3/LuaSnip", version = "v2.*", optional = true },
 			{
 				"saghen/blink.compat",
@@ -130,7 +129,7 @@ return {
 				list = { selection = { preselect = false, auto_insert = true } },
 				documentation = { auto_show = true, window = { border = "rounded" }, auto_show_delay_ms = 50 },
 				menu = {
-					border = "rounded",
+					border = nil,
 					draw = {
 						components = {
 							kind_icon = {
