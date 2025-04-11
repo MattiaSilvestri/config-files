@@ -42,7 +42,12 @@ for mode, mode_mappings in pairs(mappings) do
 		local desc = map.desc -- Second value is optional description
 
 		if cmd then
-			vim.keymap.set(mode, key, cmd, { desc = desc, noremap = true, silent = true })
+			vim.keymap.set(
+				mode,
+				key,
+				cmd,
+				{ desc = desc, noremap = not (map.remap == true), silent = true, expr = map.expr or false }
+			)
 		elseif desc then
 			wk.add({ key, group = desc }, { mode = mode })
 		end

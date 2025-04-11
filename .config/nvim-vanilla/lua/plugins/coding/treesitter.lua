@@ -7,7 +7,7 @@ return {
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "javascript", "html" },
+				ensure_installed = { "c", "lua", "vim", "vimdoc", "javascript", "html", "htmldjango", "python", "css" },
 				-- Install parsers synchronously (only applied to `ensure_installed`)
 				sync_install = false,
 

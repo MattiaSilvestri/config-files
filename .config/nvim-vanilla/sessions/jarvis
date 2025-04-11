@@ -13,15 +13,78 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +37 ~/Projects/JarvisServer/jarvisui/jarvisui/urls.py
-badd +2 ~/Projects/JarvisServer/jarvisui/mobile/serializers.py
-badd +13 ~/Projects/JarvisServer/jarvisui/mobile/api/v1/api.py
-badd +4 jarvisui/mobile/api/v2/serializers.py
-badd +7 ~/Projects/JarvisServer/jarvisui/mobile/api/v1/serializers.py
-badd +17 ~/Projects/JarvisServer/jarvisui/mobile/api/v2/api.py
+badd +423 jarvisui/configuration/views.py
+badd +4 ~/Projects/JarvisServer/jarvisui/configuration/templates/abstract/columns/scheduler_assignee.html
+badd +1 jarvisui/configuration/tables.py
+badd +2 ~/Projects/JarvisServer/jarvisui/configuration/migrations/0002_auto_20241126_1540.py
 argglobal
 %argdel
-edit ~/Projects/JarvisServer/jarvisui/jarvisui/urls.py
+tabnew +setlocal\ bufhidden=wipe
+tabrewind
+edit jarvisui/front/urls.py
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+argglobal
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("jarvisui/front/urls.py", ":p")) | buffer jarvisui/front/urls.py | else | edit jarvisui/front/urls.py | endif
+if &buftype ==# 'terminal'
+  silent file jarvisui/front/urls.py
+endif
+balt jarvisui/configuration/views.py
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
+tabnext
+edit ~/Projects/JarvisServer/jarvisui/configuration/templates/abstract/columns/scheduler_assignee.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,7 +103,7 @@ set winminwidth=0
 set winwidth=1
 wincmd =
 argglobal
-balt ~/Projects/JarvisServer/jarvisui/mobile/serializers.py
+balt ~/Projects/JarvisServer/jarvisui/configuration/migrations/0002_auto_20241126_1540.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -51,38 +114,38 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 37 - ((30 * winheight(0) + 30) / 61)
+let s:l = 4 - ((3 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 37
-normal! 011|
-wincmd w
-argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/mobile/serializers.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/mobile/serializers.py | else | edit ~/Projects/JarvisServer/jarvisui/mobile/serializers.py | endif
-if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/mobile/serializers.py
-endif
-balt jarvisui/mobile/api/v2/serializers.py
-setlocal foldmethod=manual
-setlocal foldexpr=0
-setlocal foldmarker={{{,}}}
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldenable
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 30) / 61)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 7
+keepjumps 4
 normal! 0
 wincmd w
+argglobal
+if bufexists(fnamemodify("jarvisui/configuration/tables.py", ":p")) | buffer jarvisui/configuration/tables.py | else | edit jarvisui/configuration/tables.py | endif
+if &buftype ==# 'terminal'
+  silent file jarvisui/configuration/tables.py
+endif
+balt jarvisui/configuration/views.py
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 42 - ((0 * winheight(0) + 30) / 61)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 42
+normal! 015|
+wincmd w
 wincmd =
-tabnext 1
+tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -97,6 +160,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

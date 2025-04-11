@@ -10,7 +10,26 @@ return {
 	},
 	opts = {
 		defaults = {
+			border = true,
 			layout_strategy = "horizontal",
+			layout_config = {
+				horizontal = {
+					height = 0.8,
+					width = 0.8,
+					preview_width = 0.5,
+				},
+				vertical = {
+					height = 0.99,
+					width = 0.99,
+					preview_height = 0.5,
+				},
+				cursor = {
+					height = 0.8,
+					width = 0.8,
+					preview_height = 0.5,
+					preview_width = 0.5,
+				},
+			},
 			mappings = {
 				i = {
 					["<C-j>"] = actions.move_selection_next,

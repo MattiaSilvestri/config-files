@@ -28,23 +28,36 @@ end
 
 -- stylua: ignore
 return {
+	x = {
+		["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", remap = true, desc = "Toggle comment" },
+	},
 	n = {
 		-- Telescope --
-		["<Leader>f"] = { function() vim.tbl_get(sections, "f") end, desc = sections.f.desc, },
+		["<leader>f"] = { function() vim.tbl_get(sections, "f") end, desc = sections.f.desc, },
 		["<leader>ff"] = { function() telescope.find_files() end, desc = "Find files", },
 		["<leader>sg"] = { function() telescope.live_grep() end, desc = "Live grep", },
 		["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
+		["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
 
 		-- Snacks --
 		["<leader>e"] = { function() Snacks.explorer.open() end, desc = "Snacks Explorer", },
 
 		-- Buffers and tabs --
-		["<Leader>b"] = { function() vim.tbl_get(sections, "b") end, desc = sections.b.desc, },
+		["<leader>b"] = { function() vim.tbl_get(sections, "b") end, desc = sections.b.desc, },
+		["<leader>bb"] = {"<Cmd>BufferLinePick<CR>", desc = "Pick buffer",},
+		["<leader>bd"] = {"<Cmd>BufferLinePickClose<CR>", desc = "Pick to close buffer",},
 		["L"] = { function() vim.cmd.bnext() end, desc = "Next buffer", },
 		["H"] = { function() vim.cmd.bprev() end, desc = "Previous buffer", },
 		["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab", },
 		["[o"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab", },
 		["<leader>c"] = {function () Snacks.bufdelete() end, desc = "Close buffer",},
+
+		-- Editor --
+		["<leader>/"] = { function ()
+        return vim.v.count == 0
+            and '<Plug>(comment_toggle_linewise_current)'
+            or '<Plug>(comment_toggle_linewise_count)'
+		end, desc = "Toggle comment line", remap = true, expr = true },
 
 		-- File manager --
 		["<leader>yy"] = { "<cmd>Yazi toggle<cr>", desc = "Toggle yazi", },
@@ -55,9 +68,9 @@ return {
 		["<leader>gg"] = { function() Snacks.lazygit.open() end, desc = "LazyGit", },
 
 		-- Lists --
-		["<Leader>x"] = { function() vim.tbl_get(sections, "x") end, desc = sections.x.desc, },
-		["<Leader>xq"] = { "<Cmd>copen<CR>", desc = "Quickfix List" },
-		["<Leader>xl"] = { "<Cmd>lopen<CR>", desc = "Location List" },
+		["<leader>x"] = { function() vim.tbl_get(sections, "x") end, desc = sections.x.desc, },
+		["<leader>xq"] = { "<Cmd>copen<CR>", desc = "Quickfix List" },
+		["<leader>xl"] = { "<Cmd>lopen<CR>", desc = "Location List" },
 		["]q"] = { vim.cmd.cnext, desc = "Next quickfix" },
 		["[q"] = { vim.cmd.cprev, desc = "Previous quickfix" },
 		["]Q"] = { vim.cmd.clast, desc = "End quickfix" },
@@ -68,13 +81,20 @@ return {
 		["]L"] = { vim.cmd.llast, desc = "End loclist" },
 		["[L"] = { vim.cmd.lfirst, desc = "Beginning loclist" },
 
+		-- LSP --
+		["gd"] = { function() telescope.lsp_definitions() end, desc = "Go to definition", },
+		["<leader>lR"] = { function() telescope.lsp_references() end, desc = "See references", },
+		["<leader>ls"] = { function() Snacks.picker.lsp_symbols() end, desc = "Search symbols in buffer", },
+		["<leader>lS"] = { function() Snacks.picker.lsp_workspace_symbols() end, desc = "Search symbols in workspace", },
+
+
 		-- Packages --
-		["<Leader>p"] = { function() vim.tbl_get(sections, "p") end, desc = sections.p.desc, },
-		["<Leader>pi"] = { function() require("lazy").install() end, desc = "Plugins Install", },
-		["<Leader>ps"] = { function() require("lazy").home() end, desc = "Plugins Status", },
-		["<Leader>pS"] = { function() require("lazy").sync() end, desc = "Plugins Sync", },
-		["<Leader>pu"] = { function() require("lazy").check() end, desc = "Plugins Check Updates", },
-		["<Leader>pU"] = { function() require("lazy").update() end, desc = "Plugins Update", },
+		["<leader>p"] = { function() vim.tbl_get(sections, "p") end, desc = sections.p.desc, },
+		["<leader>pi"] = { function() require("lazy").install() end, desc = "Plugins Install", },
+		["<leader>ps"] = { function() require("lazy").home() end, desc = "Plugins Status", },
+		["<leader>pS"] = { function() require("lazy").sync() end, desc = "Plugins Sync", },
+		["<leader>pu"] = { function() require("lazy").check() end, desc = "Plugins Check Updates", },
+		["<leader>pU"] = { function() require("lazy").update() end, desc = "Plugins Update", },
 
 		-- Pane navigation --
 		["<C-H>"] = { "<C-w>h", desc = "Move to left split" },
@@ -87,14 +107,14 @@ return {
 		["<C-Right>"] = { "<Cmd>vertical resize +2<CR>", desc = "Resize split right" },
 
 		-- Session managment --
-		["<Leader>S"] = { function() vim.tbl_get(sections, "S") end, desc = sections.S.desc, },
+		["<leader>S"] = { function() vim.tbl_get(sections, "S") end, desc = sections.S.desc, },
 		["<leader>Sl"] = { function() require("nvim-possession").list() end, desc = "📌 list sessions", },
 		["<leader>Sn"] = { function() require("nvim-possession").new() end, desc = "📌 create new session", },
 		["<leader>Su"] = { function() require("nvim-possession").update() end, desc = "📌 update current session", },
 		["<leader>Sd"] = { function() require("nvim-possession").delete() end, desc = "📌 delete selected session", },
 
 		-- Terminal --
-		["<Leader>t"] = { function() vim.tbl_get(sections, "t") end, desc = sections.t.desc, },
+		["<leader>t"] = { function() vim.tbl_get(sections, "t") end, desc = sections.t.desc, },
 		["tf"] = { '<Cmd>execute v:count . "ToggleTerm direction=float"<CR>', desc = "Toggle terminal float" },
 		["th"] = { '<Cmd>execute v:count . "ToggleTerm direction=horizontal"<CR>', desc = "Toggle terminal horizontal" },
 		["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
@@ -110,12 +130,18 @@ return {
 		["~"] = { "Vyp", desc = "Yank and pase to next line" },
 	},
 
+  v = {
+    ["p"] = { '"0p', desc = "Normal paste" },
+    ["P"] = { '"*p', desc = "Normal paste from clipboard" },
+    ["<"] = { "<gv", desc = "Persistend indent left" },
+    [">"] = { ">gv", desc = "Persistend indent right" },
+  },
+
 	t = {
 		-- Improved Terminal Navigation
 		["<C-H>"] = { term_nav "h", desc = "Terminal left window navigation" },
 		["<C-J>"] = { term_nav "j", desc = "Terminal down window navigation" },
 		["<C-K>"] = { term_nav "k", desc = "Terminal up window navigation" },
 		["<C-L>"] = { term_nav "l", desc = "Terminal right window navigation" },
-	}
-
+	},
 }

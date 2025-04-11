@@ -1,6 +1,14 @@
 --- @type LazySPec
 return {
 	{ "williamboman/mason.nvim", config = true },
+	{ "WhoIsSethDaniel/mason-tool-installer.nvim", config = true },
+	{
+		"nvimtools/none-ls.nvim",
+		dependencies = {
+			"nvimtools/none-ls-extras.nvim",
+		},
+		config = true,
+	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
@@ -10,14 +18,36 @@ return {
 	},
 	{
 		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile", "VimEnter" },
 		dependencies = {
 			"williamboman/mason.nvim",
 			"nvimtools/none-ls.nvim",
 		},
-		config = true,
-		opts = {
-			ensure_installed = { "prettier", "stylua", "black" },
-		},
+		config = function()
+			require("mason").setup()
+			require("mason-null-ls").setup({
+				ensure_installed = {
+					"prettier",
+					"stylua",
+					"black",
+					"djlint",
+					"luasnip",
+				},
+				methods = {
+					diagnostics = true,
+					formatting = true,
+					code_actions = true,
+					completion = true,
+					hover = true,
+				},
+				automatic_installation = false,
+				handlers = {},
+			})
+			require("null-ls").setup({
+				sources = {
+					-- require("null-ls").builtins.completion.luasnip,
+				},
+			})
+		end,
 	},
 }

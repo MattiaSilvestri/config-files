@@ -54,10 +54,12 @@ return {
 	},
 	{
 		"saghen/blink.cmp",
+		enabled = true,
 		-- build = "cargo +nightly build --release",
 		-- optional: provides snippets for the snippet source
 		dependencies = {
-			"rafamadriz/friendly-snippets",
+			{ "rafamadriz/friendly-snippets" },
+			{ "L3MON4D3/LuaSnip", version = "v2.*", optional = true },
 			{
 				"saghen/blink.compat",
 				optional = true, -- make optional so it's only enabled if any extras need it
@@ -69,15 +71,6 @@ return {
 				optional = true,
 				opts = {
 					integrations = { blink_cmp = true },
-				},
-			},
-			{
-				"saghen/blink.cmp",
-				optional = true,
-				opts = {
-					snippets = {
-						preset = "luasnip",
-					},
 				},
 			},
 		},
@@ -92,6 +85,7 @@ return {
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
+			snippets = { preset = "luasnip" },
 			-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
 			-- 'super-tab' for mappings similar to vscode (tab to accept)
 			-- 'enter' for enter to accept
@@ -127,7 +121,7 @@ return {
 			appearance = {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
-				nerd_font_variant = "normal",
+				nerd_font_variant = "mono",
 			},
 
 			-- (Default) Only show the documentation popup when manually triggered
@@ -141,9 +135,6 @@ return {
 						components = {
 							kind_icon = {
 								text = function(ctx)
-									if not ctx.label or ctx.label == "" then
-										return "" -- Skip rendering icon if label is empty
-									end
 									local icon = ctx.kind_icon
 									if vim.tbl_contains({ "Path" }, ctx.source_name) then
 										local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
