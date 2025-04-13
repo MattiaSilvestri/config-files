@@ -3,6 +3,7 @@
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
+	enabled = true,
 	priority = 1000,
 	opts = {
 		blink_cmp = true,

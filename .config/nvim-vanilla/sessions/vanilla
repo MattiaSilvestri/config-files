@@ -14,17 +14,20 @@ else
   set shortmess=aoO
 endif
 badd +1 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/blink-cmp.lua
-badd +1 ~/.dotfiles/.config/nvim-vanilla/init.lua
+badd +32 ~/.dotfiles/.config/nvim-vanilla/init.lua
+badd +2 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua
+badd +2 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/buffers.lua
+badd +359 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua
+badd +1 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/noice.lua
+badd +30 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/tabbar.lua
+badd +6 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/themes.lua
+badd +62 ~/.local/share/nvim/lazy/AstroNvim/lua/astronvim/plugins/heirline.lua
+badd +233 ~/.local/share/nvim/lazy/astroui/lua/astroui/config.lua
+badd +12 ~/.dotfiles/.config/nvim-vanilla/lua/config/options.lua
+badd +21 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/sessions.lua
 argglobal
 %argdel
-edit ~/.dotfiles/.config/nvim-vanilla/init.lua
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
+edit ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua
 argglobal
 balt ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/blink-cmp.lua
 setlocal foldmethod=manual
@@ -37,11 +40,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 32) / 64)
+let s:l = 351 - ((53 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 351
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -50,8 +53,6 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

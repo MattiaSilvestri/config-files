@@ -1,6 +1,7 @@
 --- @type LazySpec
 return {
 	"rebelot/heirline.nvim",
+	enabled = true,
 	dependencies = { "Zeioth/heirline-components.nvim" },
 	opts = function(_, opts)
 		-- Setup components
@@ -343,6 +344,16 @@ return {
 			Space,
 			ScrollBar,
 			status.mode({ surround = { separator = "right" } }),
+		}
+		opts.opts = {
+			disable_winbar_cb = function(args)
+				return conditions.buffer_matches({
+					buftype = { "nofile", "prompt", "help", "quickfix", "terminal", "nowrite" },
+					filetype = { "^git.*", "fugitive", "Trouble", "dashboard", "blink" },
+				}, args.buf)
+				-- if the callback returns true, the winbar will be disabled for that window
+				-- the args parameter corresponds to the table argument passed to autocommand callbacks. :h nvim_lua_create_autocmd()
+			end,
 		}
 	end,
 }
