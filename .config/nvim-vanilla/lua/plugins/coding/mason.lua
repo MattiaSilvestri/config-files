@@ -12,7 +12,16 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
-			ensure_installed = { "lua_ls", "pyright" },
+			ensure_installed = {
+				"lua_ls",
+				"pyright",
+				"emmet_ls",
+				"eslint",
+				"tailwindcss",
+				"volar",
+				"ts_ls",
+				"vuels",
+			},
 			automatic_installation = true,
 		},
 	},
@@ -27,7 +36,8 @@ return {
 			require("mason").setup()
 			require("mason-null-ls").setup({
 				ensure_installed = {
-					"prettier",
+					-- "prettier",
+					"prettierd",
 					"stylua",
 					"black",
 					"djlint",

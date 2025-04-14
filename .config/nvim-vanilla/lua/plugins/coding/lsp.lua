@@ -18,6 +18,30 @@ return {
 
 			lsp.pyright.setup({ capabilities = capabilities })
 			lsp.lua_ls.setup({ capabilities = capabilities })
+			lsp.emmet_ls.setup({ capabilities = capabilities })
+			lsp.eslint.setup({ capabilities = capabilities })
+			lsp.tailwindcss.setup({ capabilities = capabilities })
+			lsp.volar.setup({
+				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+				capabilities = capabilities,
+			})
+			lsp.ts_ls.setup({
+				capabilities = capabilities,
+				init_options = {
+					plugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+							languages = { "javascript", "typescript", "vue" },
+						},
+					},
+				},
+				filetypes = {
+					"javascript",
+					"typescript",
+					"vue",
+				},
+			})
 		end,
 	},
 }

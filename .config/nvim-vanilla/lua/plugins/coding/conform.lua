@@ -9,7 +9,7 @@ return {
 		-- formatters_by_ft = {
 		-- 	python = { "black" },
 		-- 	htmldjango = { "djlint" },
-		-- 	vue = { "prettierd" },
+		-- vue = { "prettierd" },
 		-- 	lua = { "stylua" },
 		-- },
 		default_format_opts = {
