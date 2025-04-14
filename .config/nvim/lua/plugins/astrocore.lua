@@ -33,7 +33,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
-        guifont = "Inconsolata Nerd Font:h12:w0:#h-normal",
+        guifont = "Inconsolata Nerd Font:h11:w0:#h-normal",
         termguicolors = true,
         linespace = 3,
         conceallevel = 2,

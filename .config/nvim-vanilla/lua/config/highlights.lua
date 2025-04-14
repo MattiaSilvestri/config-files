@@ -5,10 +5,11 @@ local bg_alt = theme.mantle
 local fg = theme.text
 local green = theme.green
 local red = theme.red
+local highlight = theme.surface1
 
 return {
 	-- MatchParen --
-	MatchParen = { bg = theme.base },
+	MatchParen = { bg = highlight },
 	MatchParenCur = { bg = "#282939", underline = false },
 
 	-- Blink.cmp --

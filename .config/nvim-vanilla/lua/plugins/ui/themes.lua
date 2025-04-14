@@ -12,10 +12,10 @@ return {
 			blink_cmp = true,
 		},
 		color_overrides = {
-			mocha = {
-				base = "#181825",
-				mantle = "#11111b",
-			},
+			-- mocha = {
+			-- 	base = "#181825",
+			-- 	mantle = "#11111b",
+			-- },
 		},
 	},
 }

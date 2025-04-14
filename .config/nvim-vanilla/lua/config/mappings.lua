@@ -108,9 +108,9 @@ return {
 
 		-- Session managment --
 		["<leader>S"] = { function() vim.tbl_get(sections, "S") end, desc = sections.S.desc, },
-		["<leader>Sl"] = { function() require("nvim-possession").list() end, desc = "📌 list sessions", },
+		["<leader>Sf"] = { function() require("nvim-possession").list() end, desc = "📌 list sessions", },
 		["<leader>Sn"] = { function() require("nvim-possession").new() end, desc = "📌 create new session", },
-		["<leader>Su"] = { function() require("nvim-possession").update() end, desc = "📌 update current session", },
+		["<leader>Ss"] = { function() require("nvim-possession").update() end, desc = "📌 update current session", },
 		["<leader>Sd"] = { function() require("nvim-possession").delete() end, desc = "📌 delete selected session", },
 
 		-- Terminal --

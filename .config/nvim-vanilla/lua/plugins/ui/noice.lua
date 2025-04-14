@@ -12,6 +12,11 @@ return {
 		messages = {
 			enabled = true,
 		},
+		lsp = {
+			signature = {
+				auto_open = { enabled = false },
+			},
+		},
 	},
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

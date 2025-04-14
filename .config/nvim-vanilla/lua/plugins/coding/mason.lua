@@ -21,6 +21,7 @@ return {
 				"volar",
 				"ts_ls",
 				"vuels",
+				"html",
 			},
 			automatic_installation = true,
 		},

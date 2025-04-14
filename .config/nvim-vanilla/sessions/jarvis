@@ -14,14 +14,13 @@ else
   set shortmess=aoO
 endif
 badd +423 jarvisui/configuration/views.py
-badd +1 jarvisui/configuration/tables.py
-badd +1 ~/Projects/JarvisServer/jarvisui/inventory/models.py
-badd +367 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
+badd +235 ~/Projects/JarvisServer/jarvisui/templates/base_print.html
+badd +0 jarvisui/configuration/tables.py
 argglobal
 %argdel
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ~/Projects/JarvisServer/jarvisui/inventory/models.py
+edit ~/Projects/JarvisServer/jarvisui/configuration/abstract/models/checklists.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -38,7 +37,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 141 + 140) / 281)
 argglobal
 setlocal foldmethod=manual
 setlocal foldexpr=0
@@ -50,19 +50,18 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 100 - ((22 * winheight(0) + 30) / 61)
+let s:l = 31 - ((30 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 100
-normal! 076|
+keepjumps 31
+normal! 05|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/inventory/forms.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/inventory/forms.py | else | edit ~/Projects/JarvisServer/jarvisui/inventory/forms.py | endif
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/inventory/tables.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/inventory/tables.py | else | edit ~/Projects/JarvisServer/jarvisui/inventory/tables.py | endif
 if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/inventory/forms.py
+  silent file ~/Projects/JarvisServer/jarvisui/inventory/tables.py
 endif
-balt jarvisui/configuration/views.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -73,17 +72,17 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 367 - ((35 * winheight(0) + 30) / 61)
+let s:l = 189 - ((30 * winheight(0) + 31) / 62)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 367
-normal! 035|
+keepjumps 189
+normal! 032|
 wincmd w
-2wincmd w
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 141 + 140) / 281)
 tabnext
-edit jarvisui/configuration/tables.py
+edit ~/Projects/JarvisServer/jarvisui/templates/base_print.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -112,12 +111,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 31) / 62)
+let s:l = 235 - ((38 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
+keepjumps 235
+normal! 015|
 wincmd w
 argglobal
 if bufexists(fnamemodify("jarvisui/configuration/tables.py", ":p")) | buffer jarvisui/configuration/tables.py | else | edit jarvisui/configuration/tables.py | endif
@@ -135,15 +134,15 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 42 - ((0 * winheight(0) + 31) / 62)
+let s:l = 68 - ((26 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 42
-normal! 015|
+keepjumps 68
+normal! 05|
 wincmd w
 wincmd =
-tabnext 1
+tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

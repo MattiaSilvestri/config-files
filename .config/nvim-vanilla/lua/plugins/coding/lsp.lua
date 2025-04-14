@@ -21,6 +21,7 @@ return {
 			lsp.emmet_ls.setup({ capabilities = capabilities })
 			lsp.eslint.setup({ capabilities = capabilities })
 			lsp.tailwindcss.setup({ capabilities = capabilities })
+			lsp.html.setup({ capabilities = capabilities })
 			lsp.volar.setup({
 				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 				capabilities = capabilities,
