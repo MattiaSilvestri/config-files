@@ -47,7 +47,7 @@ return {
 		local cmp = require("cmp")
 		local defaults = require("cmp.config.default")()
 		local auto_select = true
-		return {
+		local options = {
 			auto_brackets = {}, -- configure any filetype to auto add brackets
 			completion = {
 				completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
@@ -68,8 +68,8 @@ return {
 				{ name = "lazydev" },
 				{ name = "nvim_lsp" },
 				{ name = "path" },
-			}, {
 				{ name = "buffer" },
+				{ name = "html-css" },
 			}),
 			experimental = {
 				-- only show ghost text when we show ai completions
@@ -79,6 +79,10 @@ return {
 			},
 			sorting = defaults.sorting,
 		}
+		options = vim.tbl_deep_extend("force", options, require("nvchad.cmp"))
+		require("cmp").setup(options)
+
+		return options
 	end,
 	-- main = "lazyvim.util.cmp",
 }

@@ -3,7 +3,7 @@ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
 	opts = {
-		preset = "modern",
+		preset = "classic",
 		delay = 500,
 		icons = {
 			breadcrumb = "»", -- symbol used in the command line area that shows your active key combo

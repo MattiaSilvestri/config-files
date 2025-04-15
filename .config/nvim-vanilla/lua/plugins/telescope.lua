@@ -11,7 +11,7 @@ return {
 	opts = {
 		defaults = {
 			border = true,
-			layout_strategy = "horizontal",
+			layout_strategy = "cursor",
 			layout_config = {
 				horizontal = {
 					height = 0.8,

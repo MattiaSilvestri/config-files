@@ -121,6 +121,7 @@ return {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
 				nerd_font_variant = "mono",
+				use_nvim_cmp_as_default = true,
 			},
 
 			-- (Default) Only show the documentation popup when manually triggered
@@ -174,6 +175,12 @@ return {
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
+				providers = {
+					["html-css"] = {
+						name = "html-css",
+						module = "blink.compat.source",
+					},
+				},
 			},
 
 			-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

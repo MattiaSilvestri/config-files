@@ -4,14 +4,14 @@ return {
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
 		"nvchad/ui",
-		enabled = false,
+		enabled = true,
 		config = function()
 			require("nvchad")
 		end,
 	},
 	{
 		"nvchad/base46",
-		enabled = false,
+		enabled = true,
 		lazy = true,
 		build = function()
 			require("base46").load_all_highlights()

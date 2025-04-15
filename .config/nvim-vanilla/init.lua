@@ -1,13 +1,14 @@
 -- Load custom highlight groups and diagnostics first so they can be used in other files
 require("config.diagnostics")
--- vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46_cache/"
+vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46_cache/"
 
 -- Load lazy packages
 require("config.lazy")
 
 -- Nvui stuff --
--- dofile(vim.g.base46_cache .. "defaults")
--- dofile(vim.g.base46_cache .. "statusline")
+for _, v in ipairs(vim.fn.readdir(vim.g.base46_cache)) do
+	dofile(vim.g.base46_cache .. v)
+end
 
 local highlights = require("config.highlights")
 local options = require("config.options") -- Load options

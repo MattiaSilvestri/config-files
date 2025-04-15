@@ -5,22 +5,22 @@ local bg_alt = theme.mantle
 local fg = theme.text
 local green = theme.green
 local red = theme.red
-local highlight = theme.surface1
+local highlight = theme.surface0
 
 return {
 	-- MatchParen --
 	MatchParen = { bg = highlight },
-	MatchParenCur = { bg = "#282939", underline = false },
+	MatchParenCur = { bg = highlight, underline = false },
 
 	-- Blink.cmp --
-	BlinkCmpMenu = { bg = theme.mantle },
-	BlinkCmpMenuBorder = { bg = theme.mantle },
+	BlinkCmpMenu = { bg = bg },
+	BlinkCmpMenuBorder = { bg = bg },
 	BlinkCmpMenuSelection = { bg = theme.surface0 },
 	BlinkCmpScrollBarThumb = { bg = theme.surface0 },
-	BlinkCmpScrollBarGutter = { bg = theme.mantle },
-	BlinkCmpSource = { bg = theme.mantle },
-	BlinkCmpLabelDetail = { bg = theme.mantle },
-	BlinkCmpLabelDescription = { bg = theme.mantle },
+	BlinkCmpScrollBarGutter = { bg = bg },
+	BlinkCmpSource = { bg = bg },
+	BlinkCmpLabelDetail = { bg = bg },
+	BlinkCmpLabelDescription = { bg = bg },
 
 	-- Telescope --
 	TelescopeBorder = { fg = bg_alt, bg = bg },
