@@ -1,14 +1,14 @@
--- local orig_open_win = vim.api.nvim_open_win
--- vim.api.nvim_open_win = function(...)
--- 	print("Floating window opened with config:")
--- 	print(vim.inspect(select(3, ...)))
--- 	return orig_open_win(...)
--- end
-
 -- Load custom highlight groups and diagnostics first so they can be used in other files
 require("config.diagnostics")
+-- vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46_cache/"
+
 -- Load lazy packages
 require("config.lazy")
+
+-- Nvui stuff --
+-- dofile(vim.g.base46_cache .. "defaults")
+-- dofile(vim.g.base46_cache .. "statusline")
+
 local highlights = require("config.highlights")
 local options = require("config.options") -- Load options
 local mappings = require("config.mappings") -- Load mappings

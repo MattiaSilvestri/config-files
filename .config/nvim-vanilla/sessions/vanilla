@@ -13,18 +13,18 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 ~/.dotfiles/.config/nvim-vanilla/init.lua
-badd +2 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua
+badd +1 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/blink-cmp.lua
+badd +32 ~/.dotfiles/.config/nvim-vanilla/init.lua
+badd +23 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua
 badd +2 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/buffers.lua
-badd +1 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/noice.lua
-badd +30 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/tabbar.lua
-badd +6 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/themes.lua
-badd +62 ~/.local/share/nvim/lazy/AstroNvim/lua/astronvim/plugins/heirline.lua
-badd +233 ~/.local/share/nvim/lazy/astroui/lua/astroui/config.lua
-badd +1 ~/.dotfiles/.config/nvim-vanilla/lua/config/options.lua
+badd +349 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua
+badd +18 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/themes.lua
+badd +59 ~/.local/share/nvim/lazy/AstroNvim/lua/astronvim/plugins/heirline.lua
+badd +236 ~/.local/share/nvim/lazy/astroui/lua/astroui/config.lua
+badd +47 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
 argglobal
 %argdel
-edit ~/.dotfiles/.config/nvim-vanilla/lua/config/options.lua
+edit ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -53,19 +53,19 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 32) / 64)
+let s:l = 47 - ((43 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 47
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/.dotfiles/.config/nvim-vanilla/init.lua", ":p")) | buffer ~/.dotfiles/.config/nvim-vanilla/init.lua | else | edit ~/.dotfiles/.config/nvim-vanilla/init.lua | endif
+if bufexists(fnamemodify("~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua", ":p")) | buffer ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua | else | edit ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua | endif
 if &buftype ==# 'terminal'
-  silent file ~/.dotfiles/.config/nvim-vanilla/init.lua
+  silent file ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua
 endif
-balt ~/.dotfiles/.config/nvim-vanilla/lua/config/options.lua
+balt ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -76,11 +76,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 32) / 64)
+let s:l = 23 - ((21 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 23
 normal! 0
 wincmd w
 2wincmd w
