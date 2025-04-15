@@ -5,7 +5,7 @@ M.base46 = {
 }
 
 M.ui = {
-	statusline = { enabled = true, theme = "minimal" },
+	statusline = { enabled = false, theme = "minimal" },
 	cmp = {
 		style = "flat_dark",
 		format_colors = {

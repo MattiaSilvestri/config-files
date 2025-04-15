@@ -1,7 +1,7 @@
 --- @type LazySpec
 return {
 	"rebelot/heirline.nvim",
-	enabled = false,
+	enabled = true,
 	dependencies = { "Zeioth/heirline-components.nvim" },
 	opts = function(_, opts)
 		-- Setup components

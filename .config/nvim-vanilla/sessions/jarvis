@@ -15,15 +15,16 @@ else
 endif
 badd +417 jarvisui/configuration/views.py
 badd +11 ~/Projects/JarvisServer/jarvisui/inventory/tables.py
-badd +59 ~/Projects/JarvisServer/jarvisui/mobile/filters.py
+badd +28 ~/Projects/JarvisServer/jarvisui/mobile/filters.py
 badd +32 ~/Projects/JarvisServer/jarvisui/front/templates/front/settings.html
-badd +7 ~/Projects/JarvisServer/jarvisui/front/templates/front/company_update_wizard.html
-badd +24 ~/Projects/JarvisServer/jarvisui/front/templates/front/company_form.html
+badd +217 ~/Projects/JarvisServer/jarvisui/mobile/views.py
+badd +47 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
+badd +448 ~/Projects/JarvisServer/jarvisui/inventory/views.py
 argglobal
 %argdel
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ~/Projects/JarvisServer/jarvisui/front/templates/front/company_form.html
+edit ~/Projects/JarvisServer/jarvisui/inventory/views.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -42,7 +43,7 @@ set winminwidth=0
 set winwidth=1
 wincmd =
 argglobal
-balt ~/Projects/JarvisServer/jarvisui/front/templates/front/company_update_wizard.html
+balt ~/Projects/JarvisServer/jarvisui/inventory/filters.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -53,12 +54,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 24 - ((23 * winheight(0) + 30) / 61)
+let s:l = 448 - ((35 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 24
-normal! 012|
+keepjumps 448
+normal! 07|
 wincmd w
 argglobal
 if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/mobile/filters.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/mobile/filters.py | else | edit ~/Projects/JarvisServer/jarvisui/mobile/filters.py | endif
@@ -76,11 +77,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 60 - ((27 * winheight(0) + 30) / 61)
+let s:l = 29 - ((28 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 60
+keepjumps 29
 normal! 0
 wincmd w
 wincmd =
@@ -114,7 +115,7 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 424 - ((30 * winheight(0) + 31) / 62)
+let s:l = 424 - ((31 * winheight(0) + 33) / 66)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -136,7 +137,7 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 424 - ((30 * winheight(0) + 31) / 62)
+let s:l = 424 - ((31 * winheight(0) + 33) / 66)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
