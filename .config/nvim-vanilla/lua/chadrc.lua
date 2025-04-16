@@ -12,6 +12,7 @@ M.ui = {
 	statusline = {
 		enabled = true,
 		theme = "minimal",
+		order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "cursor" },
 	},
 	cmp = {
 		style = "default",

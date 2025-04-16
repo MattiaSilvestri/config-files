@@ -1,7 +1,7 @@
 --- @type LazySpec
 return {
 	"rebelot/heirline.nvim",
-	enabled = false,
+	enabled = true,
 	dependencies = { "Zeioth/heirline-components.nvim" },
 	opts = function(_, opts)
 		-- Setup components
@@ -187,7 +187,7 @@ return {
 			FileIcon,
 			utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
 			FileFlags,
-			{ provider = "%<" } -- this means that the statusline is cut here when there's not enough space
+			{ provider = "%<" }                   -- this means that the statusline is cut here when there's not enough space
 		)
 
 		local FileType = {
@@ -320,31 +320,31 @@ return {
 			status.breadcrumbs(),
 		}
 
-		opts.statusline = { -- statusline
-			colors = colors,
-			hl = { fg = "fg", bg = colors.status_bg },
-			status.mode(),
-			status.git_branch(),
-			status.file_info(),
-			status.git_diff(),
-			status.diagnostics(),
-			FileNameBlock,
-			status.fill(),
-			status.cmd_info(),
-			Align,
-			-- Navic,
-			-- DAPMessages,
-			status.virtual_env(),
-			status.lsp(),
-			-- LSPMessages,
-			status.treesitter(),
-			-- UltTest,
-			Space,
-			Ruler,
-			Space,
-			ScrollBar,
-			status.mode({ surround = { separator = "right" } }),
-		}
+		-- opts.statusline = { -- statusline
+		-- 	colors = colors,
+		-- 	hl = { fg = "fg", bg = colors.status_bg },
+		-- 	status.mode(),
+		-- 	status.git_branch(),
+		-- 	status.file_info(),
+		-- 	status.git_diff(),
+		-- 	status.diagnostics(),
+		-- 	FileNameBlock,
+		-- 	status.fill(),
+		-- 	status.cmd_info(),
+		-- 	Align,
+		-- 	-- Navic,
+		-- 	-- DAPMessages,
+		-- 	status.virtual_env(),
+		-- 	status.lsp(),
+		-- 	-- LSPMessages,
+		-- 	status.treesitter(),
+		-- 	-- UltTest,
+		-- 	Space,
+		-- 	Ruler,
+		-- 	Space,
+		-- 	ScrollBar,
+		-- 	status.mode({ surround = { separator = "right" } }),
+		-- }
 		opts.opts = {
 			disable_winbar_cb = function(args)
 				return conditions.buffer_matches({

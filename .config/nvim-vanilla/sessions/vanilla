@@ -13,18 +13,27 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 neo-tree\ filesystem\ \[1]
 badd +1 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/blink-cmp.lua
 badd +3 ~/.dotfiles/.config/nvim-vanilla/init.lua
 badd +16 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/themes.lua
 badd +47 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
-badd +19 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/nvui.lua
-badd +8 ~/.dotfiles/.config/nvim-vanilla/lua/chadrc.lua
-badd +2 ~/.dotfiles/.config/nvim-vanilla/lua/config/options.lua
+badd +9 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/nvui.lua
+badd +10 ~/.dotfiles/.config/nvim-vanilla/lua/chadrc.lua
+badd +3 ~/.dotfiles/.config/nvim-vanilla/lua/config/options.lua
 badd +1 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/tabbar.lua
+badd +359 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua
 argglobal
 %argdel
-edit neo-tree\ filesystem\ \[1]
+edit ~/.dotfiles/.config/nvim-vanilla/lua/config/options.lua
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
@@ -32,10 +41,12 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
 argglobal
-balt ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/tabbar.lua
+balt ~/.dotfiles/.config/nvim-vanilla/lua/chadrc.lua
 setlocal foldmethod=manual
-setlocal foldexpr=0
+setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
 setlocal foldlevel=0
@@ -44,12 +55,38 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 32) / 64)
+let s:l = 3 - ((2 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 3
+normal! 09|
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua", ":p")) | buffer ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua | else | edit ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua | endif
+if &buftype ==# 'terminal'
+  silent file ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua
+endif
+balt ~/.dotfiles/.config/nvim-vanilla/lua/chadrc.lua
+setlocal foldmethod=manual
+setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 264 - ((28 * winheight(0) + 30) / 61)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 264
 normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
