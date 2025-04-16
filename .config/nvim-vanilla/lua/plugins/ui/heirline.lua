@@ -1,7 +1,7 @@
 --- @type LazySpec
 return {
 	"rebelot/heirline.nvim",
-	enabled = true,
+	enabled = false,
 	dependencies = { "Zeioth/heirline-components.nvim" },
 	opts = function(_, opts)
 		-- Setup components
@@ -239,7 +239,7 @@ return {
 				local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
 				return string.rep(self.sbar[i], 2)
 			end,
-			hl = { fg = colors.blue, bg = colors.bright_bg },
+			hl = { fg = colors.blue, bg = colors.status_bg },
 		}
 
 		local LSPActive = {

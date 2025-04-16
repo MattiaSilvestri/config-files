@@ -6,6 +6,7 @@ local fg = theme.text
 local green = theme.green
 local red = theme.red
 local highlight = theme.surface0
+local line = theme.surface1
 
 return {
 	-- MatchParen --
@@ -14,9 +15,9 @@ return {
 
 	-- Blink.cmp --
 	BlinkCmpMenu = { bg = bg },
-	BlinkCmpMenuBorder = { bg = bg },
+	BlinkCmpMenuBorder = { fg = line, bg = bg },
 	BlinkCmpMenuSelection = { bg = theme.surface0 },
-	BlinkCmpScrollBarThumb = { bg = theme.surface0 },
+	BlinkCmpScrollBarThumb = { bg = line },
 	BlinkCmpScrollBarGutter = { bg = bg },
 	BlinkCmpSource = { bg = bg },
 	BlinkCmpLabelDetail = { bg = bg },

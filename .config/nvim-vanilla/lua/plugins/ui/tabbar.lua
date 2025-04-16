@@ -41,6 +41,11 @@ return {
 						text = "󰙅  File Explorer",
 						separator = true,
 					},
+					{
+						filetype = "NvimTree",
+						text = "󰙅  File Explorer",
+						separator = true,
+					},
 				},
 				-- indicator = {
 				-- 	style = "underline",

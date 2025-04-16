@@ -1,17 +1,25 @@
 local M = {}
 
+-- Import components
+-- local components = require("heirline-components.all")
+-- local status = require("heirline-components.all").component
+
 M.base46 = {
 	theme = "catppuccin",
 }
 
 M.ui = {
-	statusline = { enabled = false, theme = "minimal" },
+	statusline = {
+		enabled = true,
+		theme = "minimal",
+	},
 	cmp = {
-		style = "flat_dark",
+		style = "default",
 		format_colors = {
 			tailwind = false,
 		},
 	},
+	telescope = { style = "borderless" }, -- borderless / bordered
 	tabufline = {
 		enabled = false,
 		lazyload = true,
@@ -45,7 +53,7 @@ M.ui = {
 		},
 	},
 
-	lsp = { signature = true },
+	lsp = { signature = false },
 }
 
 return M

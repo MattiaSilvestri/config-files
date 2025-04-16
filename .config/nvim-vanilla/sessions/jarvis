@@ -15,16 +15,17 @@ else
 endif
 badd +417 jarvisui/configuration/views.py
 badd +11 ~/Projects/JarvisServer/jarvisui/inventory/tables.py
-badd +28 ~/Projects/JarvisServer/jarvisui/mobile/filters.py
+badd +203 ~/Projects/JarvisServer/jarvisui/mobile/filters.py
 badd +32 ~/Projects/JarvisServer/jarvisui/front/templates/front/settings.html
-badd +217 ~/Projects/JarvisServer/jarvisui/mobile/views.py
-badd +47 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
-badd +448 ~/Projects/JarvisServer/jarvisui/inventory/views.py
+badd +2 ~/Projects/JarvisServer/jarvisui/mobile/views.py
+badd +363 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
+badd +68 ~/Projects/JarvisServer/jarvisui/inventory/views.py
+badd +27 ~/Projects/JarvisServer/jarvisui/core/filters/views.py
 argglobal
 %argdel
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ~/Projects/JarvisServer/jarvisui/inventory/views.py
+edit ~/Projects/JarvisServer/jarvisui/mobile/filters.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -41,9 +42,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 280)
+exe 'vert 2resize ' . ((&columns * 139 + 140) / 280)
 argglobal
-balt ~/Projects/JarvisServer/jarvisui/inventory/filters.py
+balt ~/Projects/JarvisServer/jarvisui/mobile/views.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -54,37 +56,39 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 448 - ((35 * winheight(0) + 32) / 65)
+let s:l = 207 - ((48 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 448
-normal! 07|
-wincmd w
-argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/mobile/filters.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/mobile/filters.py | else | edit ~/Projects/JarvisServer/jarvisui/mobile/filters.py | endif
-if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/mobile/filters.py
-endif
-balt ~/Projects/JarvisServer/jarvisui/inventory/tables.py
-setlocal foldmethod=manual
-setlocal foldexpr=0
-setlocal foldmarker={{{,}}}
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldenable
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 29 - ((28 * winheight(0) + 32) / 65)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 29
+keepjumps 207
 normal! 0
 wincmd w
-wincmd =
+argglobal
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/inventory/views.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/inventory/views.py | else | edit ~/Projects/JarvisServer/jarvisui/inventory/views.py | endif
+if &buftype ==# 'terminal'
+  silent file ~/Projects/JarvisServer/jarvisui/inventory/views.py
+endif
+balt ~/Projects/JarvisServer/jarvisui/core/filters/views.py
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 68 - ((2 * winheight(0) + 32) / 65)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 68
+normal! 0
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 280)
+exe 'vert 2resize ' . ((&columns * 139 + 140) / 280)
 tabnext
 edit jarvisui/configuration/views.py
 let s:save_splitbelow = &splitbelow
@@ -103,7 +107,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 280)
+exe 'vert 2resize ' . ((&columns * 139 + 140) / 280)
 argglobal
 setlocal foldmethod=manual
 setlocal foldexpr=0
@@ -144,7 +149,8 @@ normal! zt
 keepjumps 424
 normal! 0
 wincmd w
-wincmd =
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 280)
+exe 'vert 2resize ' . ((&columns * 139 + 140) / 280)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
