@@ -46,6 +46,11 @@ return {
 						text = "󰙅  File Explorer",
 						separator = true,
 					},
+					{
+						filetype = "neo-tree",
+						text = "󰙅  File Explorer",
+						separator = true,
+					},
 				},
 				-- indicator = {
 				-- 	style = "underline",

@@ -13,25 +13,29 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +417 jarvisui/configuration/views.py
-badd +11 ~/Projects/JarvisServer/jarvisui/inventory/tables.py
-badd +203 ~/Projects/JarvisServer/jarvisui/mobile/filters.py
-badd +32 ~/Projects/JarvisServer/jarvisui/front/templates/front/settings.html
-badd +2 ~/Projects/JarvisServer/jarvisui/mobile/views.py
-badd +363 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
-badd +68 ~/Projects/JarvisServer/jarvisui/inventory/views.py
-badd +27 ~/Projects/JarvisServer/jarvisui/core/filters/views.py
+badd +387 ~/Projects/JarvisServer/jarvisui/mobile/filters.py
+badd +1181 ~/Projects/JarvisServer/jarvisui/mobile/views.py
+badd +382 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
+badd +78 ~/Projects/JarvisServer/jarvisui/inventory/views.py
+badd +35 ~/Projects/JarvisServer/jarvisui/core/filters/views.py
+badd +554 ~/Projects/JarvisServer/jarvisui/contacts/views.py
+badd +23 ~/Projects/JarvisServer/jarvisui/contacts/filters.py
+badd +415 ~/Projects/JarvisServer/jarvisui/alert/views.py
 argglobal
 %argdel
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ~/Projects/JarvisServer/jarvisui/mobile/filters.py
+edit ~/Projects/JarvisServer/jarvisui/alert/views.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
 1wincmd h
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -43,9 +47,12 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 140 + 140) / 280)
+exe '2resize ' . ((&lines * 33 + 34) / 68)
 exe 'vert 2resize ' . ((&columns * 139 + 140) / 280)
+exe '3resize ' . ((&lines * 31 + 34) / 68)
+exe 'vert 3resize ' . ((&columns * 139 + 140) / 280)
 argglobal
-balt ~/Projects/JarvisServer/jarvisui/mobile/views.py
+balt ~/Projects/JarvisServer/jarvisui/contacts/views.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -56,19 +63,19 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 207 - ((48 * winheight(0) + 32) / 65)
+let s:l = 415 - ((31 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 207
+keepjumps 415
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/inventory/views.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/inventory/views.py | else | edit ~/Projects/JarvisServer/jarvisui/inventory/views.py | endif
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/mobile/filters.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/mobile/filters.py | else | edit ~/Projects/JarvisServer/jarvisui/mobile/filters.py | endif
 if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/inventory/views.py
+  silent file ~/Projects/JarvisServer/jarvisui/mobile/filters.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/core/filters/views.py
+balt ~/Projects/JarvisServer/jarvisui/contacts/filters.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -79,18 +86,43 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 68 - ((2 * winheight(0) + 32) / 65)
+let s:l = 387 - ((13 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 68
+keepjumps 387
+normal! 017|
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/mobile/filters.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/mobile/filters.py | else | edit ~/Projects/JarvisServer/jarvisui/mobile/filters.py | endif
+if &buftype ==# 'terminal'
+  silent file ~/Projects/JarvisServer/jarvisui/mobile/filters.py
+endif
+balt ~/Projects/JarvisServer/jarvisui/contacts/filters.py
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 418 - ((23 * winheight(0) + 15) / 30)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 418
 normal! 0
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 140 + 140) / 280)
+exe '2resize ' . ((&lines * 33 + 34) / 68)
 exe 'vert 2resize ' . ((&columns * 139 + 140) / 280)
+exe '3resize ' . ((&lines * 31 + 34) / 68)
+exe 'vert 3resize ' . ((&columns * 139 + 140) / 280)
 tabnext
-edit jarvisui/configuration/views.py
+edit ~/Projects/JarvisServer/jarvisui/core/filters/views.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -120,17 +152,17 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 424 - ((31 * winheight(0) + 33) / 66)
+let s:l = 35 - ((34 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 424
+keepjumps 35
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("jarvisui/configuration/views.py", ":p")) | buffer jarvisui/configuration/views.py | else | edit jarvisui/configuration/views.py | endif
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/core/filters/views.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/core/filters/views.py | else | edit ~/Projects/JarvisServer/jarvisui/core/filters/views.py | endif
 if &buftype ==# 'terminal'
-  silent file jarvisui/configuration/views.py
+  silent file ~/Projects/JarvisServer/jarvisui/core/filters/views.py
 endif
 setlocal foldmethod=manual
 setlocal foldexpr=0
@@ -142,11 +174,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 424 - ((31 * winheight(0) + 33) / 66)
+let s:l = 35 - ((34 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 424
+keepjumps 35
 normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 140 + 140) / 280)

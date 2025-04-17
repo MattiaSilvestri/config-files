@@ -12,9 +12,39 @@ return {
 		messages = {
 			enabled = true,
 		},
+		presets = {
+			lsp_doc_border = true,
+		},
 		lsp = {
+			message = {
+				-- Messages shown by lsp servers
+				enabled = true,
+				view = "notify",
+				opts = {},
+			},
 			signature = {
+				enabled = false,
 				auto_open = { enabled = false },
+			},
+			override = {
+				-- override the default lsp markdown formatter with Noice
+				["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+				-- override the lsp markdown formatter with Noice
+				["vim.lsp.util.stylize_markdown"] = false,
+				-- override cmp documentation with Noice (needs the other options to work)
+				["cmp.entry.get_documentation"] = false,
+			},
+		},
+		views = {
+			cmdline_popup = {
+				border = {
+					style = "none",
+					padding = { 1, 2 },
+				},
+				filter_options = {},
+				win_options = {
+					winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+				},
 			},
 		},
 	},

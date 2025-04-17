@@ -36,4 +36,8 @@ return {
 	TelescopeResultsBorder = { fg = bg, bg = bg },
 	TelescopeResultsNormal = { bg = bg },
 	TelescopeResultsTitle = { fg = bg, bg = bg },
+
+	-- Neotree --
+	NeoTreeNormal = { bg = bg_alt },
+	NeoTreeNormalNC = { bg = bg_alt },
 }

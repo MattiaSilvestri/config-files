@@ -1,6 +1,7 @@
 -- Import modules
 local telescope = require("telescope.builtin")
 local Snacks = require("snacks")
+local telescope_utils = require("utils.telescope_utils")
 
 local sections = {
 	f = { desc = "Find" },
@@ -39,29 +40,33 @@ return {
 		["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
 		["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
 
-		-- Snacks --
-		["<leader>e"] = { function() Snacks.explorer.open() end, desc = "Snacks Explorer", },
-
 		-- Buffers and tabs --
 		["<leader>b"] = { function() vim.tbl_get(sections, "b") end, desc = sections.b.desc, },
-		["<leader>bb"] = {"<Cmd>BufferLinePick<CR>", desc = "Pick buffer",},
-		["<leader>bd"] = {"<Cmd>BufferLinePickClose<CR>", desc = "Pick to close buffer",},
+		["<leader>bb"] = { "<Cmd>BufferLinePick<CR>", desc = "Pick buffer", },
+		["<leader>bd"] = { "<Cmd>BufferLinePickClose<CR>", desc = "Pick to close buffer", },
 		["L"] = { function() vim.cmd.bnext() end, desc = "Next buffer", },
 		["H"] = { function() vim.cmd.bprev() end, desc = "Previous buffer", },
 		["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab", },
 		["[o"] = { function() vim.cmd.tabprevious() end, desc = "Previous tab", },
-		["<leader>c"] = {function () Snacks.bufdelete() end, desc = "Close buffer",},
+		["<leader>c"] = { function() Snacks.bufdelete.delete() end, desc = "Close buffer", },
 
 		-- Editor --
-		["<leader>/"] = { function ()
-        return vim.v.count == 0
-            and '<Plug>(comment_toggle_linewise_current)'
-            or '<Plug>(comment_toggle_linewise_count)'
-		end, desc = "Toggle comment line", remap = true, expr = true },
+		["<leader>/"] = {
+			function()
+				return vim.v.count == 0
+						and '<Plug>(comment_toggle_linewise_current)'
+						or '<Plug>(comment_toggle_linewise_count)'
+			end,
+			desc = "Toggle comment line",
+			remap = true,
+			expr = true
+		},
 
-		-- File manager --
+		-- File explorer --
 		["<leader>yy"] = { "<cmd>Yazi toggle<cr>", desc = "Toggle yazi", },
 		["<leader>yz"] = { "<cmd>Yazi<cr>", desc = "Toggle yazi at current file", },
+		["<leader>E"] = { function() Snacks.explorer.open() end, desc = "Snacks Explorer", },
+		["<leader>e"] = { "<Cmd>Neotree toggle<CR>", desc = "Snacks Explorer", },
 
 		-- Git --
 		["<Leader>g"] = { function() vim.tbl_get(sections, "g") end, desc = sections.g.desc, },
@@ -83,9 +88,11 @@ return {
 
 		-- LSP --
 		["gd"] = { function() telescope.lsp_definitions() end, desc = "Go to definition", },
+		["gD"] = { function() telescope_utils.open_definition_in_window() end, desc = "Go to definition", },
 		["<leader>lR"] = { function() telescope.lsp_references() end, desc = "See references", },
 		["<leader>ls"] = { function() Snacks.picker.lsp_symbols() end, desc = "Search symbols in buffer", },
 		["<leader>lS"] = { function() Snacks.picker.lsp_workspace_symbols() end, desc = "Search symbols in workspace", },
+		["K"] = { function() vim.lsp.buf.hover() end, desc = "Hover symbol", },
 
 
 		-- Packages --
@@ -121,7 +128,7 @@ return {
 		["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
 
 		-- General --
-		["gl"] = { function() vim.diagnostic.open_float(nil, {scope = "line"}) end, desc = "Hover diagnostics" },
+		["gl"] = { function() vim.diagnostic.open_float(nil, { scope = "line" }) end, desc = "Hover diagnostics" },
 		["U"] = { "<cmd>redo<cr>", desc = "Redo" },
 		["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
 		["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
@@ -130,12 +137,12 @@ return {
 		["~"] = { "Vyp", desc = "Yank and pase to next line" },
 	},
 
-  v = {
-    ["p"] = { '"0p', desc = "Normal paste" },
-    ["P"] = { '"*p', desc = "Normal paste from clipboard" },
-    ["<"] = { "<gv", desc = "Persistend indent left" },
-    [">"] = { ">gv", desc = "Persistend indent right" },
-  },
+	v = {
+		["p"] = { '"0p', desc = "Normal paste" },
+		["P"] = { '"*p', desc = "Normal paste from clipboard" },
+		["<"] = { "<gv", desc = "Persistend indent left" },
+		[">"] = { ">gv", desc = "Persistend indent right" },
+	},
 
 	t = {
 		-- Improved Terminal Navigation
