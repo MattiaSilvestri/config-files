@@ -7,7 +7,9 @@ return {
 		-- Setup components
 		local components = require("heirline-components.all")
 		local status = require("heirline-components.all").component
+		local heirline = require("heirline")
 		components.init.subscribe_to_events()
+		heirline.load_colors(components.hl.get_colors())
 
 		local conditions = require("heirline.conditions")
 		local utils = require("heirline.utils")
@@ -187,7 +189,7 @@ return {
 			FileIcon,
 			utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
 			FileFlags,
-			{ provider = "%<" }                   -- this means that the statusline is cut here when there's not enough space
+			{ provider = "%<" } -- this means that the statusline is cut here when there's not enough space
 		)
 
 		local FileType = {
@@ -259,7 +261,6 @@ return {
 			end,
 			hl = { fg = "green", bold = true },
 		}
-
 		-- local Diagnostics = {
 		--
 		-- 	condition = conditions.has_diagnostics,
@@ -316,6 +317,8 @@ return {
 		local Align = { provider = "%=" }
 		local Space = { provider = " " }
 
+		local Git = status.git_branch({ hl = { fg = "fg", bg = colors.status_bg } })
+
 		opts.winbar = {
 			status.breadcrumbs(),
 		}
@@ -324,7 +327,8 @@ return {
 		-- 	colors = colors,
 		-- 	hl = { fg = "fg", bg = colors.status_bg },
 		-- 	status.mode(),
-		-- 	status.git_branch(),
+		-- 	status.git_branch({ hl = { fg = "fg", bg = colors.status_bg } }),
+		-- 	Git,
 		-- 	status.file_info(),
 		-- 	status.git_diff(),
 		-- 	status.diagnostics(),

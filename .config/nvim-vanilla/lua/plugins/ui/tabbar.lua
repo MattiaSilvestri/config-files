@@ -1,5 +1,6 @@
 --- @type LazySpec
 local theme = require("catppuccin.palettes").get_palette("mocha")
+local bg = "#232232"
 
 return {
 	{ "tiagovla/scope.nvim", config = true },
@@ -33,7 +34,33 @@ return {
 		after = "catppuccin",
 		config = true,
 		opts = {
-			highlights = require("catppuccin.groups.integrations.bufferline").get(),
+			highlights = require("catppuccin.groups.integrations.bufferline").get({
+				custom = {
+					all = {
+						fill = { bg = bg },
+						tab = { bg = bg },
+						background = { bg = bg },
+						buffer_visible = { bg = bg },
+						close_button = { bg = bg },
+						close_button_visible = { bg = bg },
+						close_button_selected = { bg = theme.base },
+						modified_selected = { bg = theme.base },
+						modified_visible = { bg = bg },
+						modified = { bg = bg },
+						indicator_visible = { bg = bg },
+						offset_separator = { bg = bg },
+						tab_separator = { bg = bg },
+						separator = { bg = bg },
+						separator_selected = { bg = bg },
+						separator_visible = { bg = bg },
+						duplicate_visible = { bg = bg },
+						duplicate = { bg = bg },
+					},
+					mocha = {
+						-- background = { bg = theme.base },
+					},
+				},
+			}),
 			options = {
 				offsets = {
 					{

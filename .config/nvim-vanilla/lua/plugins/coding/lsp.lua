@@ -16,7 +16,13 @@ return {
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			local lsp = require("lspconfig")
 
-			lsp.pyright.setup({ capabilities = capabilities })
+			lsp.pyright.setup({
+				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					-- Disable the *built-in* LSP popup
+					client.handlers["textDocument/signatureHelp"] = function() end
+				end,
+			})
 			lsp.lua_ls.setup({ capabilities = capabilities })
 			lsp.emmet_ls.setup({ capabilities = capabilities })
 			lsp.eslint.setup({ capabilities = capabilities })

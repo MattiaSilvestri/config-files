@@ -16,7 +16,7 @@ return {
 	-- Blink.cmp --
 	BlinkCmpMenu = { bg = bg },
 	BlinkCmpMenuBorder = { fg = line, bg = bg },
-	BlinkCmpMenuSelection = { bg = theme.surface0 },
+	BlinkCmpMenuSelection = { fg = bg, bg = theme.teal },
 	BlinkCmpScrollBarThumb = { bg = line },
 	BlinkCmpScrollBarGutter = { bg = bg },
 	BlinkCmpSource = { bg = bg },
