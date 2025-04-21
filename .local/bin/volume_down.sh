@@ -15,4 +15,4 @@ volume="$(pamixer --get-volume)"
 # -i "$icon_name" -h int:value:"$volume" "Volume: ${volume}%"
 
 # Play the volume changed sound
-canberra-gtk-play -i audio-volume-change -d "changeVolume"
+# canberra-gtk-play -i audio-volume-change -d "changeVolume"
