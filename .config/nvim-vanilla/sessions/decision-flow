@@ -13,15 +13,36 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +6 ~/Git/decision-flow/webapp/src/App.vue
-badd +1 ~/Git/decision-flow/webapp/src/main.js
-badd +8 ~/Git/decision-flow/webapp/src/router.js
-badd +8 ~/Git/decision-flow/webapp/src/assets/styles/buttons.css
+badd +34 ~/Git/decision-flow/webapp/src/App.vue
+badd +2 ~/Git/decision-flow/webapp/src/assets/style.css
+badd +9 ~/Git/decision-flow/webapp/src/assets/styles/buttons.css
+badd +17 ~/Git/decision-flow/webapp/src/components/BaseButton.vue
+badd +17 ~/Git/decision-flow/webapp/src/components/BaseIconText.vue
+badd +2 ~/Git/decision-flow/webapp/src/data/routes.js
+badd +19 ~/Git/decision-flow/webapp/src/components/BaseDiscreteSlider.vue
+badd +57 src/layouts/SidePanel.vue
 argglobal
 %argdel
-edit ~/Git/decision-flow/webapp/src/assets/styles/buttons.css
+edit src/layouts/SidePanel.vue
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+wincmd =
 argglobal
-balt ~/Git/decision-flow/webapp/src/router.js
+balt ~/Git/decision-flow/webapp/src/App.vue
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -32,12 +53,38 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 8 - ((7 * winheight(0) + 30) / 61)
+let s:l = 58 - ((16 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 8
-normal! 03|
+keepjumps 58
+normal! 014|
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/Git/decision-flow/webapp/src/components/BaseIconText.vue", ":p")) | buffer ~/Git/decision-flow/webapp/src/components/BaseIconText.vue | else | edit ~/Git/decision-flow/webapp/src/components/BaseIconText.vue | endif
+if &buftype ==# 'terminal'
+  silent file ~/Git/decision-flow/webapp/src/components/BaseIconText.vue
+endif
+balt ~/Git/decision-flow/webapp/src/data/routes.js
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 17 - ((16 * winheight(0) + 17) / 34)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 17
+normal! 0
+wincmd w
+2wincmd w
+wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -45,6 +92,8 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

@@ -28,8 +28,36 @@ return {
 			lsp.eslint.setup({ capabilities = capabilities })
 			lsp.tailwindcss.setup({ capabilities = capabilities })
 			lsp.html.setup({ capabilities = capabilities })
+			lsp.cssls.setup({ capabilities = capabilities })
+			lsp.css_variables.setup({ capabilities = capabilities })
 			lsp.volar.setup({
-				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+				init_options = {
+					vue = {
+						hybridMode = true,
+					},
+				},
+				settings = {
+					typescript = {
+						inlayHints = {
+							enumMemberValues = {
+								enabled = true,
+							},
+							functionLikeReturnTypes = {
+								enabled = true,
+							},
+							propertyDeclarationTypes = {
+								enabled = true,
+							},
+							parameterTypes = {
+								enabled = true,
+								suppressWhenArgumentMatchesName = true,
+							},
+							variableTypes = {
+								enabled = true,
+							},
+						},
+					},
+				},
 				capabilities = capabilities,
 			})
 			lsp.ts_ls.setup({
@@ -38,15 +66,28 @@ return {
 					plugins = {
 						{
 							name = "@vue/typescript-plugin",
-							location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-							languages = { "javascript", "typescript", "vue" },
+							location = vim.fn.stdpath("data")
+								.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+							languages = { "vue" },
 						},
 					},
 				},
-				filetypes = {
-					"javascript",
-					"typescript",
-					"vue",
+				settings = {
+					typescript = {
+						tsserver = {
+							useSyntaxServer = false,
+						},
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
+					},
 				},
 			})
 		end,

@@ -1,6 +1,7 @@
 --- @type LazySpec
 local theme = require("catppuccin.palettes").get_palette("mocha")
-local bg = "#232232"
+-- local bg = "#232232"
+local bg = theme.mantle
 
 return {
 	{ "tiagovla/scope.nvim", config = true },

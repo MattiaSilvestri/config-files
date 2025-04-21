@@ -22,6 +22,8 @@ return {
 				"ts_ls",
 				"vuels",
 				"html",
+				"cssls",
+				"css_variables",
 			},
 			automatic_installation = true,
 		},
