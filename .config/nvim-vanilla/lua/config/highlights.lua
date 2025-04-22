@@ -40,4 +40,11 @@ return {
 	-- Neotree --
 	NeoTreeNormal = { bg = bg_alt },
 	NeoTreeNormalNC = { bg = bg_alt },
+
+	-- Noice --
+	NoiceCmdlinePopup = { bg = bg },
+	NoiceCmdlinePopupTitle = { bg = bg },
+	NoiceCmdlinePopupBorder = { fg = line, bg = bg },
+	NoiceCmdlinePrompt = { bg = bg },
+	NoicePopup = { bg = bg },
 }

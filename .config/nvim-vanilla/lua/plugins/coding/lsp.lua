@@ -23,6 +23,7 @@ return {
 					client.handlers["textDocument/signatureHelp"] = function() end
 				end,
 			})
+			-- lsp.ruff.setup({ capabilities = capabilities })
 			lsp.lua_ls.setup({ capabilities = capabilities })
 			lsp.emmet_ls.setup({ capabilities = capabilities })
 			lsp.eslint.setup({ capabilities = capabilities })

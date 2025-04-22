@@ -12,6 +12,7 @@ return {
 		shiftwidth = 0,
 		softtabstop = 0,
 		copyindent = true,
+		fillchars = { eob = " " },
 	},
 	g = {},
 }

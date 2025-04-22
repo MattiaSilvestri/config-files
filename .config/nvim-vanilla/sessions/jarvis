@@ -13,16 +13,19 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +381 ~/Projects/JarvisServer/jarvisui/mobile/filters.py
-badd +3 ~/Projects/JarvisServer/jarvisui/configuration/views.py
-badd +35 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/asset_list.html
-badd +902 ~/Projects/JarvisServer/jarvisui/inventory/views.py
-badd +95 ~/Projects/JarvisServer/jarvisui/inventory/models.py
+badd +31 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
+badd +1 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetdocument_list.html
+badd +43 ~/Projects/JarvisServer/jarvisui/mobile/templates/mobile/activity_list.html
+badd +51 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/asset_list.html
+badd +67 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetschedulerall_list.html
+badd +27 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetscheduler_list.html
+badd +79 ~/Projects/JarvisServer/jarvisui/mobile/templates/mobile/attachment_list.html
+badd +618 ~/Projects/JarvisServer/jarvisui/mobile/views.py
 argglobal
 %argdel
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit ~/Projects/JarvisServer/jarvisui/inventory/models.py
+edit ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -43,7 +46,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe '2resize ' . ((&lines * 34 + 34) / 68)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+exe '3resize ' . ((&lines * 31 + 34) / 68)
+exe 'vert 3resize ' . ((&columns * 139 + 139) / 279)
 argglobal
 setlocal foldmethod=manual
 setlocal foldexpr=0
@@ -55,11 +62,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 95 - ((32 * winheight(0) + 32) / 64)
+let s:l = 31 - ((30 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 95
+keepjumps 31
 normal! 0
 wincmd w
 argglobal
@@ -67,7 +74,6 @@ if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/configuration/views.p
 if &buftype ==# 'terminal'
   silent file ~/Projects/JarvisServer/jarvisui/configuration/views.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/asset_list.html
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -78,19 +84,18 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 18 - ((17 * winheight(0) + 17) / 34)
+let s:l = 19 - ((18 * winheight(0) + 16) / 33)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 18
-normal! 015|
+keepjumps 19
+normal! 0
 wincmd w
 argglobal
 if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/mobile/filters.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/mobile/filters.py | else | edit ~/Projects/JarvisServer/jarvisui/mobile/filters.py | endif
 if &buftype ==# 'terminal'
   silent file ~/Projects/JarvisServer/jarvisui/mobile/filters.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/configuration/views.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -101,16 +106,20 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 418 - ((28 * winheight(0) + 14) / 28)
+let s:l = 418 - ((29 * winheight(0) + 15) / 30)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 418
 normal! 0
 wincmd w
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe '2resize ' . ((&lines * 34 + 34) / 68)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+exe '3resize ' . ((&lines * 31 + 34) / 68)
+exe 'vert 3resize ' . ((&columns * 139 + 139) / 279)
 tabnext
-edit ~/Projects/JarvisServer/jarvisui/templates/toolbar/search_form.html
+edit ~/Projects/JarvisServer/jarvisui/mobile/templates/mobile/attachment_list.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -127,8 +136,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
 argglobal
+balt ~/Projects/JarvisServer/jarvisui/mobile/templates/mobile/activity_list.html
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -139,38 +150,39 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 5 - ((4 * winheight(0) + 32) / 65)
+let s:l = 79 - ((22 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5
+keepjumps 79
+normal! 014|
+wincmd w
+argglobal
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/mobile/views.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/mobile/views.py | else | edit ~/Projects/JarvisServer/jarvisui/mobile/views.py | endif
+if &buftype ==# 'terminal'
+  silent file ~/Projects/JarvisServer/jarvisui/mobile/views.py
+endif
+balt ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetschedulerall_list.html
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 605 - ((19 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 605
 normal! 0
 wincmd w
-argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetchecklist_list.html", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetchecklist_list.html | else | edit ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetchecklist_list.html | endif
-if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetchecklist_list.html
-endif
-balt ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/asset_list.html
-setlocal foldmethod=manual
-setlocal foldexpr=0
-setlocal foldmarker={{{,}}}
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldenable
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 30 - ((29 * winheight(0) + 32) / 65)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 30
-normal! 046|
-wincmd w
-wincmd =
-tabnext 1
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

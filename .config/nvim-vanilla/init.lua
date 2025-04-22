@@ -28,12 +28,14 @@ for group, color in pairs(highlights) do
 end
 
 -- OPTIONS --
+
 -- Read vim options (:set)
 if options.opt then
 	for k, v in pairs(options.opt) do
 		vim.opt[k] = v
 	end
 end
+
 -- Global options
 if options.g then
 	for k, v in pairs(options.g) do
