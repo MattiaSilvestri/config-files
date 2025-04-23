@@ -20,7 +20,7 @@ badd +33 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetsch
 badd +34 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetscheduler_list.html
 badd +26 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetchecklist_list.html
 badd +22 ~/Projects/JarvisServer/jarvisui/planning/templates/planning/actionplan_list.html
-badd +6 ~/Projects/JarvisServer/jarvisui/front/forms.py
+badd +15 ~/Projects/JarvisServer/jarvisui/front/forms.py
 badd +104 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
 badd +369 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
 argglobal
@@ -55,11 +55,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 6 - ((5 * winheight(0) + 32) / 64)
+let s:l = 15 - ((14 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
+keepjumps 15
 normal! 024|
 wincmd w
 argglobal

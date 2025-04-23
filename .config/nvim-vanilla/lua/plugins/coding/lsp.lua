@@ -30,10 +30,10 @@ return {
 						},
 					},
 				},
-				on_attach = function(client, bufnr)
-					-- Disable the *built-in* LSP popup
-					client.handlers["textDocument/signatureHelp"] = function() end
-				end,
+				-- on_attach = function(client, bufnr)
+				-- 	-- Disable the *built-in* LSP popup
+				-- 	client.handlers["textDocument/signatureHelp"] = function() end
+				-- end,
 			})
 			lsp.ruff.setup({
 				capabilities = capabilities,
