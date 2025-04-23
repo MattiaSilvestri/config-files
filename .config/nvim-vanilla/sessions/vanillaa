@@ -16,19 +16,19 @@ endif
 badd +172 lua/plugins/coding/blink-cmp.lua
 badd +56 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/nvim-cmp.lua
 badd +100 ~/Temp/config-files/.config/nvim-vanilla/lua/chadrc.lua
-badd +26 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
+badd +21 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
 badd +38 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/editor/explorer.lua
 badd +89 ~/Temp/config-files/.config/nvim-vanilla/lua/config/mappings.lua
-badd +36 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/ui/noice.lua
-badd +21 ~/Temp/config-files/.config/nvim-vanilla/lua/utils/telescope_utils.lua
+badd +29 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/ui/noice.lua
 badd +351 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/ui/heirline.lua
-badd +9 ~/Temp/config-files/.config/nvim-vanilla/lua/config/highlights.lua
-badd +25 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/sessions.lua
-badd +13 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/formatters.lua
+badd +50 ~/Temp/config-files/.config/nvim-vanilla/lua/config/highlights.lua
+badd +27 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/sessions.lua
 badd +18 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/mason.lua
+badd +59 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/ui/tabbar.lua
+badd +14 ~/Temp/config-files/.config/nvim-vanilla/lua/config/options.lua
 argglobal
 %argdel
-edit ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/mason.lua
+edit lua/plugins/coding/blink-cmp.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -45,9 +45,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 189 + 189) / 378)
+exe 'vert 2resize ' . ((&columns * 188 + 189) / 378)
 argglobal
-balt ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/formatters.lua
+balt ~/Temp/config-files/.config/nvim-vanilla/lua/config/highlights.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -58,19 +59,19 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 18 - ((16 * winheight(0) + 32) / 64)
+let s:l = 172 - ((38 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 18
-normal! 015|
+keepjumps 172
+normal! 0
 wincmd w
 argglobal
 if bufexists(fnamemodify("~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/lsp.lua", ":p")) | buffer ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/lsp.lua | else | edit ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/lsp.lua | endif
 if &buftype ==# 'terminal'
   silent file ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
 endif
-balt ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/formatters.lua
+balt ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/editor/explorer.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -81,14 +82,15 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 26 - ((25 * winheight(0) + 32) / 64)
+let s:l = 22 - ((21 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 26
-normal! 053|
+keepjumps 22
+normal! 0
 wincmd w
-wincmd =
+exe 'vert 1resize ' . ((&columns * 189 + 189) / 378)
+exe 'vert 2resize ' . ((&columns * 188 + 189) / 378)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -25,6 +25,7 @@ return {
 			signature = {
 				enabled = false,
 				auto_open = { enabled = false },
+				view = "popup",
 			},
 			override = {
 				-- override the default lsp markdown formatter with Noice

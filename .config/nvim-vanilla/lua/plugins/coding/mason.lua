@@ -49,7 +49,7 @@ return {
 				},
 				methods = {
 					diagnostics = true,
-					formatting = true,
+					formatting = false,
 					code_actions = true,
 					completion = true,
 					hover = true,

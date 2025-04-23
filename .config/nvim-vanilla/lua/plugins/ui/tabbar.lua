@@ -56,6 +56,9 @@ return {
 						separator_visible = { bg = bg },
 						duplicate_visible = { bg = bg },
 						duplicate = { bg = bg },
+						pick_selected = { bg = bg, italic = true, bold = true },
+						pick_visible = { bg = bg, italic = true, bold = true },
+						pick = { bg = bg, italic = true, bold = true },
 					},
 					mocha = {
 						-- background = { bg = theme.base },

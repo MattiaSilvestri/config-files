@@ -6,12 +6,12 @@ return {
 	enabled = true,
 	event = "BufEnter",
 	opts = {
-		-- formatters_by_ft = {
-		-- 	python = { "black" },
-		-- 	htmldjango = { "djlint" },
-		-- vue = { "prettierd" },
-		-- 	lua = { "stylua" },
-		-- },
+		formatters_by_ft = {
+			python = { "ruff" },
+			htmldjango = { "djlint" },
+			vue = { "prettierd" },
+			lua = { "stylua" },
+		},
 		default_format_opts = {
 			lsp_format = "fallback",
 		},

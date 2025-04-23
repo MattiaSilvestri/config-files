@@ -47,4 +47,5 @@ return {
 	NoiceCmdlinePopupBorder = { fg = line, bg = bg },
 	NoiceCmdlinePrompt = { bg = bg },
 	NoicePopup = { bg = bg },
+	NoicePopupBorder = { fg = line, bg = bg },
 }
