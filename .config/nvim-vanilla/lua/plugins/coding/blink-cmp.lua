@@ -169,7 +169,7 @@ return {
 				},
 			},
 
-			signature = { enabled = false, window = { border = "single" } },
+			signature = { enabled = false, window = { border = "single", show_documentation = true } },
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
