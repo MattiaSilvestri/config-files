@@ -13,19 +13,12 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +21 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
-badd +20 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetdocument_list.html
-badd +32 jarvisui/inventory/templates/inventory/asset_list.html
-badd +30 jarvisui/inventory/templates/inventory/assetschedulerall_list.html
-badd +24 jarvisui/inventory/templates/inventory/assetscheduler_list.html
-badd +26 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/assetchecklist_list.html
-badd +22 ~/Projects/JarvisServer/jarvisui/planning/templates/planning/actionplan_list.html
-badd +534 ~/Projects/JarvisServer/jarvisui/front/forms.py
-badd +97 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
-badd +6 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
+badd +1 ~/Projects/JarvisServer/jarvisui/front/forms.py
+badd +22 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
+badd +114 ~/Projects/JarvisServer/jarvisui/front/views.py
 argglobal
 %argdel
-edit ~/Projects/JarvisServer/jarvisui/inventory/filters.py
+edit ~/Projects/JarvisServer/jarvisui/front/forms.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -42,7 +35,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
 argglobal
 setlocal foldmethod=manual
 setlocal foldexpr=0
@@ -54,11 +48,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 6 - ((5 * winheight(0) + 32) / 64)
+let s:l = 520 - ((19 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
+keepjumps 520
 normal! 0
 wincmd w
 argglobal
@@ -66,7 +60,7 @@ if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/inventory/filters.py"
 if &buftype ==# 'terminal'
   silent file ~/Projects/JarvisServer/jarvisui/inventory/filters.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/inventory/forms.py
+balt ~/Projects/JarvisServer/jarvisui/front/views.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -77,14 +71,16 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 31 - ((30 * winheight(0) + 32) / 64)
+let s:l = 22 - ((21 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 31
-normal! 032|
+keepjumps 22
+normal! 0
 wincmd w
-wincmd =
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

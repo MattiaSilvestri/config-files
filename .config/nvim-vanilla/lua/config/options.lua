@@ -1,5 +1,5 @@
 return {
-	colorscheme = "nvchad",
+	colorscheme = "catppuccin",
 	opt = {
 		expandtab = true,
 		relativenumber = true, -- sets vim.opt.relativenumber

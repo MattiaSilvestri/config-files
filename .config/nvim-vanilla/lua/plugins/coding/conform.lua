@@ -7,7 +7,7 @@ return {
 	event = "BufEnter",
 	opts = {
 		formatters_by_ft = {
-			python = { "ruff" },
+			python = { "black" },
 			htmldjango = { "djlint" },
 			vue = { "prettierd" },
 			lua = { "stylua" },

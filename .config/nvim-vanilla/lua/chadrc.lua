@@ -7,13 +7,11 @@ local stbufnr = function()
 	return vim.api.nvim_get_current_buf()
 end
 
-M.base46 = {
-	theme = "catppuccin",
-}
+M.base46 = { theme = "catppuccin" }
 
 M.ui = {
 	statusline = {
-		enabled = true,
+		enabled = false,
 		theme = "minimal",
 		order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "all_lsp", "cwd", "cursor" },
 		modules = {
