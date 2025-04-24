@@ -13,12 +13,18 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 ~/Projects/JarvisServer/jarvisui/front/forms.py
+badd +492 ~/Projects/JarvisServer/jarvisui/front/forms.py
 badd +22 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
-badd +114 ~/Projects/JarvisServer/jarvisui/front/views.py
+badd +1 ~/Projects/JarvisServer/jarvisui/front/views.py
+badd +213 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
+badd +49 ~/Projects/JarvisServer/jarvisui/front/urls.py
+badd +87 ~/Projects/JarvisServer/jarvisui/inventory/views.py
+badd +69 ~/Projects/JarvisServer/jarvisui/front/tables.py
+badd +18 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
+badd +20 ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
 argglobal
 %argdel
-edit ~/Projects/JarvisServer/jarvisui/front/forms.py
+edit ~/Projects/JarvisServer/jarvisui/front/views.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -35,9 +41,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
-exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+wincmd =
 argglobal
+balt ~/Projects/JarvisServer/jarvisui/inventory/forms.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -48,19 +54,19 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 520 - ((19 * winheight(0) + 32) / 64)
+let s:l = 237 - ((35 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 520
-normal! 0
+keepjumps 237
+normal! 05|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/inventory/filters.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/inventory/filters.py | else | edit ~/Projects/JarvisServer/jarvisui/inventory/filters.py | endif
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html | else | edit ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html | endif
 if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/inventory/filters.py
+  silent file ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
 endif
-balt ~/Projects/JarvisServer/jarvisui/front/views.py
+balt ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -71,16 +77,15 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 22 - ((21 * winheight(0) + 32) / 64)
+let s:l = 20 - ((19 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 22
-normal! 0
+keepjumps 20
+normal! 08|
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
-exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -7,8 +7,14 @@ local green = theme.green
 local red = theme.red
 local highlight = theme.surface0
 local line = theme.surface1
+local cursorline = "#252434"
+local visual = "#252434"
 
 return {
+	-- Neovim builtin --
+	CursorLine = { bg = cursorline },
+	Visual = { bg = highlight },
+
 	-- MatchParen --
 	MatchParen = { bg = highlight },
 	MatchParenCur = { bg = highlight, underline = false },

@@ -17,8 +17,9 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "VeryLazy",
-		requires = "nvim-lua/plenary.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "BufEnter",
+		opts = {},
 		keys = {
 			{ "<leader>sa", "<cmd>TodoTelescope<cr>", desc = "List TODOs" },
 		},
