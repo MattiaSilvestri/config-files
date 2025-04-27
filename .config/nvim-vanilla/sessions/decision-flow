@@ -15,12 +15,13 @@ else
 endif
 badd +34 ~/Git/decision-flow/webapp/src/App.vue
 badd +2 ~/Git/decision-flow/webapp/src/assets/style.css
-badd +9 ~/Git/decision-flow/webapp/src/assets/styles/buttons.css
+badd +8 ~/Git/decision-flow/webapp/src/assets/styles/buttons.css
 badd +17 ~/Git/decision-flow/webapp/src/components/BaseButton.vue
-badd +17 ~/Git/decision-flow/webapp/src/components/BaseIconText.vue
+badd +18 ~/Git/decision-flow/webapp/src/components/BaseIconText.vue
 badd +2 ~/Git/decision-flow/webapp/src/data/routes.js
 badd +19 ~/Git/decision-flow/webapp/src/components/BaseDiscreteSlider.vue
-badd +57 src/layouts/SidePanel.vue
+badd +66 src/layouts/SidePanel.vue
+badd +19 src/components/BaseContentSquare.vue
 argglobal
 %argdel
 edit src/layouts/SidePanel.vue
@@ -40,9 +41,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
 argglobal
-balt ~/Git/decision-flow/webapp/src/App.vue
+balt ~/Git/decision-flow/webapp/src/components/BaseDiscreteSlider.vue
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -53,19 +55,19 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 58 - ((16 * winheight(0) + 17) / 34)
+let s:l = 66 - ((31 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 58
-normal! 014|
+keepjumps 66
+normal! 0
 wincmd w
 argglobal
 if bufexists(fnamemodify("~/Git/decision-flow/webapp/src/components/BaseIconText.vue", ":p")) | buffer ~/Git/decision-flow/webapp/src/components/BaseIconText.vue | else | edit ~/Git/decision-flow/webapp/src/components/BaseIconText.vue | endif
 if &buftype ==# 'terminal'
   silent file ~/Git/decision-flow/webapp/src/components/BaseIconText.vue
 endif
-balt ~/Git/decision-flow/webapp/src/data/routes.js
+balt ~/Git/decision-flow/webapp/src/components/BaseButton.vue
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -76,15 +78,15 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 17 - ((16 * winheight(0) + 17) / 34)
+let s:l = 18 - ((17 * winheight(0) + 24) / 48)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
-normal! 0
+keepjumps 18
+normal! 09|
 wincmd w
-2wincmd w
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

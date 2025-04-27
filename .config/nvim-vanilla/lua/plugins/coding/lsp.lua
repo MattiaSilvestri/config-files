@@ -19,31 +19,36 @@ return {
 			capabilities =
 				vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 
-			lsp.pyright.setup({
-				capabilities = vim.tbl_deep_extend("force", capabilities, {}),
-				settings = {
-					pyright = {
-						-- Using Ruff's import organizer
-						disableOrganizeImports = true,
-					},
-					python = {
-						analysis = {
-							-- Ignore all files for analysis to exclusively use Ruff for linting
-							ignore = { "*" },
-						},
-					},
-				},
-				-- on_attach = function(client, bufnr)
-				-- 	-- Disable the *built-in* LSP popup
-				-- 	client.handlers["textDocument/signatureHelp"] = function() end
-				-- end,
-			})
-			lsp.ruff.setup({
-				capabilities = vim.tbl_deep_extend("force", capabilities, {}),
-				init_options = {
-					settings = {},
-				},
-			})
+			-- lsp.pyright.setup({
+			-- 	capabilities = vim.tbl_deep_extend("force", capabilities, {}),
+			-- 	settings = {
+			-- 		pyright = {
+			-- 			-- Using Ruff's import organizer
+			-- 			disableOrganizeImports = true,
+			-- 		},
+			-- 		python = {
+			-- 			analysis = {
+			-- 				-- Ignore all files for analysis to exclusively use Ruff for linting
+			-- 				ignore = { "*" },
+			-- 			},
+			-- 		},
+			-- 	},
+			-- 	-- on_attach = function(client, bufnr)
+			-- 	-- 	-- Disable the *built-in* LSP popup
+			-- 	-- 	client.handlers["textDocument/signatureHelp"] = function() end
+			-- 	-- end,
+			-- })
+			-- lsp.ruff.setup({
+			-- 	capabilities = vim.tbl_deep_extend("force", capabilities, {}),
+			-- 	init_options = {
+			-- 		settings = {
+			-- 			lint = {
+			-- 				enable = false,
+			-- 				preview = true,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 			lsp.lua_ls.setup({ capabilities = capabilities })
 			lsp.emmet_ls.setup({ capabilities = capabilities })
 			lsp.eslint.setup({ capabilities = capabilities })

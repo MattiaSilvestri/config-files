@@ -1,3 +1,8 @@
+-- Some vimscript options --
+vim.cmd([[
+let mapleader = " "
+]])
+
 -- Load custom highlight groups and diagnostics first so they can be used in other files
 require("config.diagnostics")
 vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46_cache/"
@@ -13,11 +18,6 @@ end
 local highlights = require("config.highlights")
 local options = require("config.options") -- Load options
 local mappings = require("config.mappings") -- Load mappings
-
--- Some vimscript options --
-vim.cmd([[
-let mapleader = " "
-]])
 
 -- Set colorscheme --
 vim.cmd.colorscheme(options.colorscheme)
@@ -64,20 +64,29 @@ for mode, mode_mappings in pairs(mappings) do
 	end
 end
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client == nil then
-			return
-		end
-		if client.name == "ruff" then
-			-- Disable hover in favor of Pyright
-			client.server_capabilities.hoverProvider = false
-		end
-	end,
-	desc = "LSP: Disable hover capability from Ruff",
-})
+-- LSP --
+-- Read LSP configs
+local lsp = require("config.lsp")
+
+for server, config in pairs(lsp) do
+	vim.lsp.enable(server)
+	vim.lsp.config[server] = config
+end
+
+-- vim.api.nvim_create_autocmd("LspAttach", {
+-- 	group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+-- 	callback = function(args)
+-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+-- 		if client == nil then
+-- 			return
+-- 		end
+-- 		if client.name == "ruff" then
+-- 			-- Disable hover in favor of Pyright
+-- 			client.server_capabilities.hoverProvider = false
+-- 		end
+-- 	end,
+-- 	desc = "LSP: Disable hover capability from Ruff",
+-- })
 
 -- vim.api.nvim_create_autocmd("LspAttach", {
 -- 	group = vim.api.nvim_create_augroup("lsp_attach_disable_pyright_signature", { clear = true }),
@@ -88,7 +97,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- 		end
 -- 		if client.name == "pyright" then
 -- 			-- Disable hover in favor of Pyright
--- 			client.server_capabilities.signatureHelpProvider = false
+-- 			client.server_capabilities.publishDiagnosticsProvider = false
 -- 		end
 -- 	end,
 -- 	desc = "LSP: Disable signature capability from Pyright",

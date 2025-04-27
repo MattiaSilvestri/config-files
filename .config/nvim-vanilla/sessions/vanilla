@@ -18,12 +18,12 @@ badd +16 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/themes.lua
 badd +8 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/tabbar.lua
 badd +1 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/heirline.lua
 badd +45 ~/.dotfiles/.config/nvim-vanilla/lua/config/mappings.lua
-badd +26 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua
-badd +7 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/noice.lua
-badd +32 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
+badd +21 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua
+badd +16 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/noice.lua
+badd +25 ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
 argglobal
 %argdel
-edit ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/mason.lua
+edit ~/.dotfiles/.config/nvim-vanilla/lua/plugins/coding/lsp.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,12 +40,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 104 + 105) / 210)
-exe 'vert 2resize ' . ((&columns * 105 + 105) / 210)
+wincmd =
 argglobal
-balt ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/tabbar.lua
+balt ~/.dotfiles/.config/nvim-vanilla/lua/plugins/ui/noice.lua
 setlocal foldmethod=manual
-setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
+setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
 setlocal foldlevel=0
@@ -54,11 +53,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 21 - ((20 * winheight(0) + 22) / 44)
+let s:l = 12 - ((11 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 21
+keepjumps 12
 normal! 0
 wincmd w
 argglobal
@@ -77,15 +76,15 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 32 - ((9 * winheight(0) + 22) / 44)
+let s:l = 25 - ((24 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 32
+keepjumps 25
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 104 + 105) / 210)
-exe 'vert 2resize ' . ((&columns * 105 + 105) / 210)
+2wincmd w
+wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
