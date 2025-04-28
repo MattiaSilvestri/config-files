@@ -44,6 +44,7 @@ return {
 					"prettierd",
 					"stylua",
 					"black",
+					"isort",
 					"djlint",
 					"luasnip",
 				},

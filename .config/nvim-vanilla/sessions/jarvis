@@ -13,18 +13,20 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +492 ~/Projects/JarvisServer/jarvisui/front/forms.py
-badd +22 ~/Projects/JarvisServer/jarvisui/inventory/filters.py
-badd +1 ~/Projects/JarvisServer/jarvisui/front/views.py
-badd +213 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
-badd +49 ~/Projects/JarvisServer/jarvisui/front/urls.py
-badd +87 ~/Projects/JarvisServer/jarvisui/inventory/views.py
-badd +69 ~/Projects/JarvisServer/jarvisui/front/tables.py
-badd +18 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
-badd +20 ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
+badd +82 ~/Projects/JarvisServer/jarvisui/front/urls.py
+badd +26 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
+badd +25 ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
+badd +144 ~/Projects/JarvisServer/jarvisui/front/templates/front/settings.html
+badd +16 ~/Projects/JarvisServer/jarvisui/front/templates/front/userdevices_list.html
+badd +106 jarvisui/templates/partials/topbar.html
+badd +70 ~/Projects/JarvisServer/jarvisui/system/views.py
+badd +32 ~/Projects/JarvisServer/jarvisui/system/urls.py
+badd +1 jarvisui/system/templates/system/communication_list.html
+badd +3 ~/Projects/JarvisServer/jarvisui/templates/base.html
+badd +11 ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py
 argglobal
 %argdel
-edit ~/Projects/JarvisServer/jarvisui/front/views.py
+edit jarvisui/templates/partials/topbar.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -43,7 +45,6 @@ set winminwidth=0
 set winwidth=1
 wincmd =
 argglobal
-balt ~/Projects/JarvisServer/jarvisui/inventory/forms.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -54,19 +55,19 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 237 - ((35 * winheight(0) + 32) / 64)
+let s:l = 106 - ((42 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 237
-normal! 05|
+keepjumps 106
+normal! 026|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html | else | edit ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html | endif
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py | else | edit ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py | endif
 if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
+  silent file ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
+balt ~/Projects/JarvisServer/jarvisui/templates/base.html
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -77,12 +78,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 20 - ((19 * winheight(0) + 32) / 64)
+let s:l = 11 - ((10 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 20
-normal! 08|
+keepjumps 11
+normal! 0
 wincmd w
 2wincmd w
 wincmd =
@@ -101,7 +102,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

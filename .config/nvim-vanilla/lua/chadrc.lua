@@ -11,7 +11,7 @@ M.base46 = { theme = "catppuccin" }
 
 M.ui = {
 	statusline = {
-		enabled = false,
+		enabled = true,
 		theme = "minimal",
 		order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "all_lsp", "cwd", "cursor" },
 		modules = {
