@@ -18,13 +18,12 @@ badd +26 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category
 badd +25 ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
 badd +144 ~/Projects/JarvisServer/jarvisui/front/templates/front/settings.html
 badd +16 ~/Projects/JarvisServer/jarvisui/front/templates/front/userdevices_list.html
-badd +106 jarvisui/templates/partials/topbar.html
-badd +70 ~/Projects/JarvisServer/jarvisui/system/views.py
+badd +3 jarvisui/templates/partials/topbar.html
+badd +56 ~/Projects/JarvisServer/jarvisui/system/views.py
 badd +32 ~/Projects/JarvisServer/jarvisui/system/urls.py
 badd +1 jarvisui/system/templates/system/communication_list.html
-badd +3 ~/Projects/JarvisServer/jarvisui/templates/base.html
-badd +1 ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py
-badd +1 ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py
+badd +9 ~/Projects/JarvisServer/jarvisui/templates/base.html
+badd +11 ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py
 argglobal
 %argdel
 edit jarvisui/templates/partials/topbar.html
@@ -44,9 +43,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 67 + 67) / 135)
-exe 'vert 2resize ' . ((&columns * 67 + 67) / 135)
+wincmd =
 argglobal
+balt ~/Projects/JarvisServer/jarvisui/system/views.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -54,14 +53,72 @@ setlocal foldignore=#
 setlocal foldlevel=0
 setlocal foldminlines=1
 setlocal foldnestmax=20
-setlocal foldenable
+setlocal nofoldenable
 silent! normal! zE
+17,19fold
+16,19fold
+22,24fold
+21,24fold
+15,25fold
+30,33fold
+29,34fold
+28,35fold
+27,36fold
+41,42fold
+40,43fold
+47,50fold
+54,56fold
+53,57fold
+46,59fold
+61,63fold
+60,64fold
+45,65fold
+67,68fold
+72,79fold
+71,80fold
+70,81fold
+85,87fold
+84,88fold
+83,89fold
+95,98fold
+92,99fold
+91,100fold
+104,106fold
+103,107fold
+102,108fold
+121,123fold
+120,123fold
+119,124fold
+126,128fold
+125,128fold
+118,129fold
+133,134fold
+135,136fold
+132,137fold
+111,138fold
+110,139fold
+144,145fold
+148,150fold
+152,155fold
+147,156fold
+159,162fold
+165,167fold
+170,173fold
+141,174fold
+39,175fold
+38,176fold
+179,182fold
+178,183fold
+14,184fold
+13,185fold
+188,189fold
+191,192fold
 let &fdl = &fdl
-let s:l = 106 - ((30 * winheight(0) + 22) / 44)
+let s:l = 2 - ((1 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 106
+keepjumps 2
 normal! 0
 wincmd w
 argglobal
@@ -69,27 +126,28 @@ if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/front/templatetags/to
 if &buftype ==# 'terminal'
   silent file ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py
+balt ~/Projects/JarvisServer/jarvisui/templates/base.html
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
-setlocal foldlevel=0
+setlocal foldlevel=99
 setlocal foldminlines=1
 setlocal foldnestmax=20
-setlocal foldenable
+setlocal nofoldenable
 silent! normal! zE
+9,10fold
+8,11fold
 let &fdl = &fdl
-let s:l = 12 - ((11 * winheight(0) + 22) / 44)
+let s:l = 11 - ((10 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
+keepjumps 11
 normal! 0
 wincmd w
 2wincmd w
-exe 'vert 1resize ' . ((&columns * 67 + 67) / 135)
-exe 'vert 2resize ' . ((&columns * 67 + 67) / 135)
+wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -105,6 +163,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

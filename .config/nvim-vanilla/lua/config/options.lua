@@ -13,16 +13,16 @@ return {
 		softtabstop = 0,
 		copyindent = true,
 		fillchars = { eob = " " },
-		timeoutlen = 100,
+		timeoutlen = 0,
 	},
 	o = {
-		fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:",
+		-- fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:",
 		foldcolumn = "1", -- '0' is not bad
 		foldlevel = 99, -- Using ufo provider need a large value, feel free to decrease the value
 		foldlevelstart = 99,
 		foldenable = false,
-		foldexpr = "v:lua.vim.lsp.foldexpr()",
-		foldmethod = "expr",
+		-- foldexpr = "v:lua.vim.lsp.foldexpr()",
+		-- foldmethod = "expr",
 	},
 	g = {},
 }

@@ -18,14 +18,13 @@ badd +6 ~/Temp/config-files/.config/nvim-vanilla/lua/chadrc.lua
 badd +47 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/mason.lua
 badd +10 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/coding/conform.lua
 badd +72 ~/.config/nvim/lua/plugins/astrolsp.lua
-badd +22 ~/Temp/config-files/.config/nvim-vanilla/lua/config/options.lua
-badd +15 ~/Temp/config-files/.config/nvim-vanilla/lua/config/lsp.lua
-badd +1 ~/Temp/config-files/.config/nvim-vanilla/lua/config/mappings.lua
-badd +35 ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/editor/folding.lua
-badd +39 init.lua
+badd +19 ~/Temp/config-files/.config/nvim-vanilla/lua/config/options.lua
+badd +1 ~/Temp/config-files/.config/nvim-vanilla/lua/config/lsp.lua
+badd +66 ~/Temp/config-files/.config/nvim-vanilla/lua/config/mappings.lua
+badd +15 init.lua
 argglobal
 %argdel
-edit init.lua
+edit ~/Temp/config-files/.config/nvim-vanilla/lua/config/lsp.lua
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -45,52 +44,20 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 125 + 125) / 250)
 exe 'vert 2resize ' . ((&columns * 124 + 125) / 250)
 argglobal
-balt ~/Temp/config-files/.config/nvim-vanilla/lua/plugins/editor/folding.lua
-setlocal foldmethod=manual
+balt ~/Temp/config-files/.config/nvim-vanilla/lua/config/mappings.lua
+setlocal foldmethod=expr
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
-setlocal foldlevel=0
+setlocal foldlevel=99
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal nofoldenable
-silent! normal! zE
-2,4fold
-14,16fold
-26,28fold
-34,36fold
-33,37fold
-40,42fold
-39,43fold
-47,49fold
-46,50fold
-61,66fold
-60,69fold
-56,70fold
-55,71fold
-77,80fold
-let &fdl = &fdl
-33
-normal! zo
-33
-normal! zc
-39
-normal! zo
-39
-normal! zc
-46
-normal! zo
-46
-normal! zc
-55
-normal! zo
-55
-normal! zc
-let s:l = 39 - ((38 * winheight(0) + 32) / 64)
+let s:l = 8 - ((7 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 39
+keepjumps 8
 normal! 0
 wincmd w
 argglobal
@@ -99,25 +66,20 @@ if &buftype ==# 'terminal'
   silent file ~/Temp/config-files/.config/nvim-vanilla/lua/config/options.lua
 endif
 balt ~/Temp/config-files/.config/nvim-vanilla/lua/config/lsp.lua
-setlocal foldmethod=manual
+setlocal foldmethod=expr
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
-setlocal foldlevel=0
+setlocal foldlevel=99
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal nofoldenable
-silent! normal! zE
-3,17fold
-18,25fold
-1,27fold
-let &fdl = &fdl
-let s:l = 22 - ((21 * winheight(0) + 32) / 64)
+let s:l = 19 - ((18 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 22
-normal! 022|
+keepjumps 19
+normal! 018|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 125 + 125) / 250)
