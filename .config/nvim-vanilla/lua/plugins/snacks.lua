@@ -6,6 +6,7 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
+		bufdelete = { enabled = true },
 		dashboard = { enabled = false },
 		explorer = {
 			enabled = true,

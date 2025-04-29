@@ -23,7 +23,8 @@ badd +70 ~/Projects/JarvisServer/jarvisui/system/views.py
 badd +32 ~/Projects/JarvisServer/jarvisui/system/urls.py
 badd +1 jarvisui/system/templates/system/communication_list.html
 badd +3 ~/Projects/JarvisServer/jarvisui/templates/base.html
-badd +11 ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py
+badd +1 ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py
+badd +1 ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py
 argglobal
 %argdel
 edit jarvisui/templates/partials/topbar.html
@@ -43,7 +44,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 67 + 67) / 135)
+exe 'vert 2resize ' . ((&columns * 67 + 67) / 135)
 argglobal
 setlocal foldmethod=manual
 setlocal foldexpr=0
@@ -55,19 +57,19 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 106 - ((42 * winheight(0) + 32) / 64)
+let s:l = 106 - ((30 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 106
-normal! 026|
+normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py | else | edit ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py | endif
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py | else | edit ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py | endif
 if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py
+  silent file ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/templates/base.html
+balt ~/Projects/JarvisServer/jarvisui/front/templatetags/communications.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -78,15 +80,16 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 11 - ((10 * winheight(0) + 32) / 64)
+let s:l = 12 - ((11 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 11
+keepjumps 12
 normal! 0
 wincmd w
 2wincmd w
-wincmd =
+exe 'vert 1resize ' . ((&columns * 67 + 67) / 135)
+exe 'vert 2resize ' . ((&columns * 67 + 67) / 135)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

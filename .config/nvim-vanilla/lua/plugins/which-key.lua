@@ -2,9 +2,10 @@
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
+	enabled = true,
 	opts = {
 		preset = "classic",
-		delay = 500,
+		delay = 300,
 		icons = {
 			breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
 			separator = "➜", -- symbol used between a key and it's label

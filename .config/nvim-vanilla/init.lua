@@ -36,6 +36,12 @@ if options.opt then
 	end
 end
 
+if options.o then
+	for k, v in pairs(options.o) do
+		vim.o[k] = v
+	end
+end
+
 -- Global options
 if options.g then
 	for k, v in pairs(options.g) do
