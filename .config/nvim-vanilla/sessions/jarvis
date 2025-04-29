@@ -13,17 +13,11 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +82 ~/Projects/JarvisServer/jarvisui/front/urls.py
+badd +53 ~/Projects/JarvisServer/jarvisui/front/urls.py
 badd +26 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
 badd +25 ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
-badd +144 ~/Projects/JarvisServer/jarvisui/front/templates/front/settings.html
 badd +16 ~/Projects/JarvisServer/jarvisui/front/templates/front/userdevices_list.html
-badd +3 jarvisui/templates/partials/topbar.html
-badd +56 ~/Projects/JarvisServer/jarvisui/system/views.py
-badd +32 ~/Projects/JarvisServer/jarvisui/system/urls.py
-badd +1 jarvisui/system/templates/system/communication_list.html
-badd +9 ~/Projects/JarvisServer/jarvisui/templates/base.html
-badd +11 ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py
+badd +76 jarvisui/templates/partials/topbar.html
 argglobal
 %argdel
 edit jarvisui/templates/partials/topbar.html
@@ -45,15 +39,14 @@ set winminwidth=0
 set winwidth=1
 wincmd =
 argglobal
-balt ~/Projects/JarvisServer/jarvisui/system/views.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
-setlocal foldlevel=0
+setlocal foldlevel=10
 setlocal foldminlines=1
 setlocal foldnestmax=20
-setlocal nofoldenable
+setlocal foldenable
 silent! normal! zE
 17,19fold
 16,19fold
@@ -80,73 +73,131 @@ silent! normal! zE
 85,87fold
 84,88fold
 83,89fold
-95,98fold
-92,99fold
-91,100fold
-104,106fold
-103,107fold
-102,108fold
-121,123fold
-120,123fold
-119,124fold
-126,128fold
-125,128fold
-118,129fold
-133,134fold
-135,136fold
-132,137fold
-111,138fold
-110,139fold
-144,145fold
-148,150fold
-152,155fold
-147,156fold
-159,162fold
-165,167fold
-170,173fold
-141,174fold
-39,175fold
-38,176fold
-179,182fold
-178,183fold
-14,184fold
-13,185fold
-188,189fold
-191,192fold
+99,101fold
+98,103fold
+93,104fold
+92,105fold
+91,106fold
+110,112fold
+109,113fold
+108,114fold
+127,129fold
+126,129fold
+125,130fold
+132,134fold
+131,134fold
+124,135fold
+139,140fold
+141,142fold
+138,143fold
+117,144fold
+116,145fold
+150,151fold
+154,156fold
+158,161fold
+153,162fold
+165,168fold
+171,173fold
+176,179fold
+147,180fold
+39,181fold
+38,182fold
+185,188fold
+184,189fold
+14,190fold
+13,191fold
+194,195fold
+197,198fold
 let &fdl = &fdl
-let s:l = 2 - ((1 * winheight(0) + 32) / 64)
+let s:l = 76 - ((16 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
+keepjumps 76
 normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py | else | edit ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py | endif
+if bufexists(fnamemodify("jarvisui/templates/partials/topbar.html", ":p")) | buffer jarvisui/templates/partials/topbar.html | else | edit jarvisui/templates/partials/topbar.html | endif
 if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/front/templatetags/topbar.py
+  silent file jarvisui/templates/partials/topbar.html
 endif
-balt ~/Projects/JarvisServer/jarvisui/templates/base.html
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
-setlocal foldlevel=99
+setlocal foldlevel=10
 setlocal foldminlines=1
 setlocal foldnestmax=20
-setlocal nofoldenable
+setlocal foldenable
 silent! normal! zE
-9,10fold
-8,11fold
+17,19fold
+16,19fold
+22,24fold
+21,24fold
+15,25fold
+30,33fold
+29,34fold
+28,35fold
+27,36fold
+41,42fold
+40,43fold
+47,50fold
+54,56fold
+53,57fold
+46,59fold
+61,63fold
+60,64fold
+45,65fold
+67,68fold
+72,79fold
+71,80fold
+70,81fold
+85,87fold
+84,88fold
+83,89fold
+99,101fold
+98,103fold
+93,104fold
+92,105fold
+91,106fold
+110,112fold
+109,113fold
+108,114fold
+127,129fold
+126,129fold
+125,130fold
+132,134fold
+131,134fold
+124,135fold
+139,140fold
+141,142fold
+138,143fold
+117,144fold
+116,145fold
+150,151fold
+154,156fold
+158,161fold
+153,162fold
+165,168fold
+171,173fold
+176,179fold
+147,180fold
+39,181fold
+38,182fold
+185,188fold
+184,189fold
+14,190fold
+13,191fold
+194,195fold
+197,198fold
 let &fdl = &fdl
-let s:l = 11 - ((10 * winheight(0) + 32) / 64)
+let s:l = 75 - ((15 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 11
-normal! 0
+keepjumps 75
+normal! 061|
 wincmd w
-2wincmd w
 wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

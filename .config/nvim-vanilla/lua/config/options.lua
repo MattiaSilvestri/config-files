@@ -13,7 +13,7 @@ return {
 		softtabstop = 0,
 		copyindent = true,
 		fillchars = { eob = " " },
-		timeoutlen = 0,
+		timeoutlen = 100,
 	},
 	o = {
 		-- fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:",
