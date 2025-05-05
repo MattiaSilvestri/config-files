@@ -15,14 +15,17 @@ else
 endif
 badd +53 ~/Projects/JarvisServer/jarvisui/front/urls.py
 badd +1008 ~/Projects/JarvisServer/jarvisui/inventory/views.py
-badd +104 jarvisui/inventory/filters.py
+badd +81 jarvisui/inventory/filters.py
 badd +364 ~/Projects/JarvisServer/jarvisui/inventory/models.py
-badd +301 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
-badd +473 ~/Projects/JarvisServer/jarvisui/configuration/views.py
+badd +304 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
+badd +439 ~/Projects/JarvisServer/jarvisui/configuration/views.py
 badd +194 ~/Projects/JarvisServer/jarvisui/inventory/tables.py
+badd +83 ~/Projects/JarvisServer/jarvisui/system/views.py
+badd +32 ~/Projects/JarvisServer/jarvisui/system/tables.py
+badd +45 ~/Projects/JarvisServer/jarvisui/contacts/templates/contacts/companygroup_list.html
 argglobal
 %argdel
-edit jarvisui/inventory/filters.py
+edit ~/Projects/JarvisServer/jarvisui/contacts/templates/contacts/companygroup_list.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -39,10 +42,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
-exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+wincmd =
 argglobal
-balt ~/Projects/JarvisServer/jarvisui/inventory/tables.py
+balt ~/Projects/JarvisServer/jarvisui/inventory/forms.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -52,165 +54,32 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
-4,5fold
-17,18fold
-22,23fold
-28,32fold
-34,35fold
-27,36fold
-41,42fold
-39,44fold
-49,50fold
-54,55fold
-52,56fold
-47,58fold
-62,64fold
-72,73fold
-69,74fold
-66,76fold
-79,80fold
-82,83fold
-85,86fold
-97,99fold
-101,103fold
-106,108fold
-95,109fold
-89,113fold
-26,113fold
-117,118fold
-122,123fold
-120,125fold
-128,129fold
-140,142fold
-137,143fold
-132,147fold
-116,147fold
-152,156fold
-151,157fold
-163,164fold
-161,165fold
-176,177fold
-174,178fold
-180,182fold
-173,183fold
-168,187fold
-150,187fold
-192,196fold
-198,199fold
-191,200fold
-204,205fold
-209,210fold
-207,211fold
-203,213fold
-216,217fold
-220,224fold
-227,231fold
-238,239fold
-243,244fold
-241,245fold
-236,247fold
-250,254fold
-259,260fold
-257,263fold
-268,269fold
-273,274fold
-271,275fold
-266,278fold
-281,286fold
-293,294fold
-292,295fold
-289,297fold
-302,304fold
-301,305fold
-300,307fold
-310,311fold
-309,312fold
-314,315fold
-317,318fold
-324,325fold
-322,327fold
-330,331fold
-320,333fold
-344,345fold
-347,349fold
-351,353fold
-355,358fold
-361,363fold
-360,364fold
-343,366fold
-369,370fold
-372,373fold
-375,377fold
-368,378fold
-342,379fold
-341,380fold
-336,384fold
-190,384fold
-389,393fold
-388,395fold
-399,400fold
-404,405fold
-402,406fold
-398,408fold
-410,414fold
-417,421fold
-424,428fold
-431,435fold
-440,441fold
-445,446fold
-443,447fold
-438,449fold
-452,456fold
-461,462fold
-459,465fold
-470,471fold
-475,476fold
-473,477fold
-468,480fold
-483,488fold
-495,496fold
-494,497fold
-491,499fold
-504,506fold
-503,507fold
-502,509fold
-511,512fold
-514,515fold
-517,518fold
-524,525fold
-522,527fold
-530,531fold
-520,533fold
-544,545fold
-547,549fold
-551,553fold
-555,557fold
-559,562fold
-565,567fold
-564,568fold
-543,570fold
-573,574fold
-576,577fold
-579,581fold
-572,582fold
-542,583fold
-541,584fold
-536,588fold
-387,588fold
+9,10fold
+12,14fold
+18,20fold
+17,21fold
+26,27fold
+32,33fold
+31,34fold
+30,35fold
+37,38fold
+25,39fold
+42,43fold
+24,44fold
 let &fdl = &fdl
-let s:l = 104 - ((39 * winheight(0) + 32) / 64)
+let s:l = 44 - ((43 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 104
-normal! 014|
+keepjumps 44
+normal! 07|
 wincmd w
 argglobal
-if bufexists(fnamemodify("jarvisui/inventory/filters.py", ":p")) | buffer jarvisui/inventory/filters.py | else | edit jarvisui/inventory/filters.py | endif
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/system/tables.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/system/tables.py | else | edit ~/Projects/JarvisServer/jarvisui/system/tables.py | endif
 if &buftype ==# 'terminal'
-  silent file jarvisui/inventory/filters.py
+  silent file ~/Projects/JarvisServer/jarvisui/system/tables.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/inventory/models.py
+balt ~/Projects/JarvisServer/jarvisui/contacts/templates/contacts/companygroup_list.html
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -220,159 +89,28 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
-4,5fold
-17,18fold
-22,23fold
-28,32fold
-34,35fold
-27,36fold
-41,42fold
-39,44fold
-49,50fold
-54,55fold
-52,56fold
-47,58fold
-62,64fold
-72,73fold
-69,74fold
-66,76fold
-79,80fold
-82,83fold
-85,86fold
-106,108fold
-95,109fold
-89,113fold
-26,113fold
-117,118fold
-122,123fold
-120,125fold
-128,129fold
-140,142fold
-137,143fold
-132,147fold
-116,147fold
-152,156fold
-151,157fold
-163,164fold
-161,165fold
-176,177fold
-174,178fold
-180,182fold
-173,183fold
-168,187fold
-150,187fold
-192,196fold
-198,199fold
-191,200fold
-204,205fold
-209,210fold
-207,211fold
-203,213fold
-216,217fold
-220,224fold
-227,231fold
-238,239fold
-243,244fold
-241,245fold
-236,247fold
-250,254fold
-259,260fold
-257,263fold
-268,269fold
-273,274fold
-271,275fold
-266,278fold
-281,286fold
-293,294fold
-292,295fold
-289,297fold
-302,304fold
-301,305fold
-300,307fold
-310,311fold
-309,312fold
-314,315fold
-317,318fold
-324,325fold
-322,327fold
-330,331fold
-320,333fold
-344,345fold
-347,349fold
-351,353fold
-355,358fold
-361,363fold
-360,364fold
-343,366fold
-369,370fold
-372,373fold
-375,377fold
-368,378fold
-342,379fold
-341,380fold
-336,384fold
-190,384fold
-389,393fold
-388,395fold
-399,400fold
-404,405fold
-402,406fold
-398,408fold
-410,414fold
-417,421fold
-424,428fold
-431,435fold
-440,441fold
-445,446fold
-443,447fold
-438,449fold
-452,456fold
-461,462fold
-459,465fold
-470,471fold
-475,476fold
-473,477fold
-468,480fold
-483,488fold
-495,496fold
-494,497fold
-491,499fold
-504,506fold
-503,507fold
-502,509fold
-511,512fold
-514,515fold
-517,518fold
-524,525fold
-522,527fold
-530,531fold
-520,533fold
-544,545fold
-547,549fold
-551,553fold
-555,557fold
-559,562fold
-565,567fold
-564,568fold
-543,570fold
-573,574fold
-576,577fold
-579,581fold
-572,582fold
-542,583fold
-541,584fold
-536,588fold
-387,588fold
+12,13fold
+21,27fold
+18,29fold
+10,29fold
+33,34fold
+41,46fold
+39,48fold
+32,48fold
+53,54fold
+56,59fold
+65,68fold
+51,68fold
 let &fdl = &fdl
-let s:l = 216 - ((26 * winheight(0) + 32) / 64)
+let s:l = 32 - ((22 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 216
-normal! 048|
+keepjumps 32
+normal! 031|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
-exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+2wincmd w
+wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
