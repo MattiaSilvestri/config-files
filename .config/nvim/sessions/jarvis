@@ -14,16 +14,15 @@ else
   set shortmess=aoO
 endif
 badd +53 ~/Projects/JarvisServer/jarvisui/front/urls.py
-badd +26 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
-badd +25 ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
-badd +16 ~/Projects/JarvisServer/jarvisui/front/templates/front/userdevices_list.html
-badd +168 ~/Projects/JarvisServer/jarvisui/inventory/views.py
-badd +66 jarvisui/inventory/filters.py
-badd +145 ~/Projects/JarvisServer/jarvisui/inventory/models.py
-badd +311 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
+badd +1008 ~/Projects/JarvisServer/jarvisui/inventory/views.py
+badd +104 jarvisui/inventory/filters.py
+badd +364 ~/Projects/JarvisServer/jarvisui/inventory/models.py
+badd +301 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
+badd +473 ~/Projects/JarvisServer/jarvisui/configuration/views.py
+badd +194 ~/Projects/JarvisServer/jarvisui/inventory/tables.py
 argglobal
 %argdel
-edit ~/Projects/JarvisServer/jarvisui/inventory/views.py
+edit jarvisui/inventory/filters.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -40,311 +39,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
 argglobal
-balt jarvisui/inventory/filters.py
-setlocal foldmethod=manual
-setlocal foldexpr=0
-setlocal foldmarker={{{,}}}
-setlocal foldignore=#
-setlocal foldlevel=99
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldenable
-silent! normal! zE
-16,19fold
-23,28fold
-30,37fold
-39,47fold
-50,59fold
-65,66fold
-69,74fold
-82,83fold
-81,84fold
-86,87fold
-92,94fold
-91,95fold
-89,97fold
-105,106fold
-103,107fold
-100,108fold
-99,109fold
-75,109fold
-112,113fold
-124,125fold
-122,126fold
-121,127fold
-129,130fold
-134,135fold
-132,136fold
-143,152fold
-142,153fold
-141,154fold
-138,155fold
-157,160fold
-114,160fold
-163,164fold
-173,174fold
-171,175fold
-177,178fold
-183,184fold
-181,185fold
-180,186fold
-165,186fold
-189,190fold
-197,198fold
-191,198fold
-211,212fold
-205,214fold
-201,214fold
-221,222fold
-227,228fold
-226,229fold
-224,231fold
-217,231fold
-237,238fold
-244,246fold
-249,250fold
-239,250fold
-253,254fold
-262,263fold
-255,263fold
-266,267fold
-274,275fold
-280,281fold
-278,282fold
-277,283fold
-268,283fold
-286,287fold
-294,295fold
-288,295fold
-299,300fold
-307,308fold
-301,308fold
-318,319fold
-317,320fold
-323,325fold
-322,326fold
-328,329fold
-340,341fold
-343,346fold
-334,347fold
-332,347fold
-331,349fold
-311,349fold
-352,353fold
-361,362fold
-365,367fold
-364,368fold
-354,368fold
-371,372fold
-379,380fold
-383,384fold
-386,388fold
-382,389fold
-373,389fold
-392,393fold
-400,401fold
-394,401fold
-409,410fold
-421,422fold
-423,426fold
-408,429fold
-404,429fold
-433,438fold
-449,450fold
-452,457fold
-465,466fold
-463,467fold
-460,468fold
-459,469fold
-439,469fold
-473,478fold
-489,490fold
-498,499fold
-496,500fold
-493,501fold
-492,502fold
-479,502fold
-505,509fold
-518,519fold
-527,528fold
-526,530fold
-521,531fold
-510,531fold
-535,536fold
-546,547fold
-545,548fold
-550,551fold
-556,557fold
-554,558fold
-553,559fold
-537,559fold
-562,563fold
-571,572fold
-570,573fold
-578,579fold
-576,580fold
-575,581fold
-584,586fold
-583,587fold
-591,594fold
-590,595fold
-597,599fold
-564,599fold
-602,603fold
-611,612fold
-610,613fold
-618,619fold
-616,620fold
-615,621fold
-623,626fold
-604,626fold
-629,630fold
-639,640fold
-637,641fold
-636,642fold
-631,642fold
-648,649fold
-658,659fold
-657,660fold
-662,663fold
-666,668fold
-665,669fold
-650,669fold
-672,673fold
-683,684fold
-681,685fold
-680,686fold
-689,690fold
-688,691fold
-693,694fold
-697,699fold
-696,700fold
-703,705fold
-713,715fold
-712,716fold
-711,717fold
-709,717fold
-702,718fold
-724,728fold
-720,732fold
-674,732fold
-740,741fold
-739,742fold
-744,745fold
-750,751fold
-749,752fold
-747,754fold
-735,754fold
-763,764fold
-773,774fold
-772,775fold
-777,778fold
-781,783fold
-780,784fold
-765,784fold
-787,788fold
-796,797fold
-795,798fold
-800,801fold
-804,806fold
-803,807fold
-812,813fold
-810,814fold
-809,815fold
-818,821fold
-817,822fold
-824,827fold
-789,827fold
-830,831fold
-839,840fold
-838,841fold
-843,844fold
-847,849fold
-846,850fold
-855,856fold
-853,857fold
-852,858fold
-860,863fold
-832,863fold
-866,870fold
-877,878fold
-876,879fold
-881,882fold
-887,888fold
-885,889fold
-884,890fold
-871,890fold
-898,899fold
-911,912fold
-915,916fold
-914,917fold
-919,920fold
-923,925fold
-922,926fold
-900,926fold
-929,930fold
-938,939fold
-937,940fold
-942,943fold
-946,948fold
-945,949fold
-954,955fold
-952,956fold
-951,957fold
-960,962fold
-959,963fold
-967,972fold
-965,973fold
-975,978fold
-931,978fold
-981,982fold
-990,991fold
-989,992fold
-995,997fold
-994,998fold
-1000,1001fold
-1006,1007fold
-1004,1008fold
-1003,1009fold
-1012,1014fold
-1011,1015fold
-1017,1019fold
-983,1019fold
-1022,1023fold
-1030,1031fold
-1029,1032fold
-1034,1035fold
-1040,1041fold
-1038,1042fold
-1037,1043fold
-1024,1043fold
-1049,1050fold
-1053,1055fold
-1052,1057fold
-1062,1066fold
-1061,1067fold
-1059,1068fold
-1051,1068fold
-1071,1072fold
-1076,1077fold
-1074,1078fold
-1073,1078fold
-let &fdl = &fdl
-let s:l = 168 - ((32 * winheight(0) + 32) / 64)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 168
-normal! 0
-wincmd w
-argglobal
-if bufexists(fnamemodify("jarvisui/inventory/filters.py", ":p")) | buffer jarvisui/inventory/filters.py | else | edit jarvisui/inventory/filters.py | endif
-if &buftype ==# 'terminal'
-  silent file jarvisui/inventory/filters.py
-endif
-balt ~/Projects/JarvisServer/jarvisui/front/templates/front/userdevices_list.html
+balt ~/Projects/JarvisServer/jarvisui/inventory/tables.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -355,156 +53,326 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 4,5fold
-16,17fold
-21,22fold
-27,31fold
-26,32fold
-37,38fold
-35,40fold
-45,46fold
-50,51fold
-48,52fold
-43,54fold
-58,60fold
-65,67fold
-62,68fold
-71,72fold
-74,75fold
-77,78fold
-94,96fold
-87,97fold
-81,101fold
-25,101fold
-105,106fold
-110,111fold
-108,113fold
-116,117fold
-128,130fold
-125,131fold
-120,135fold
-104,135fold
-140,144fold
-139,145fold
-151,152fold
-149,153fold
-164,165fold
-162,166fold
-168,170fold
-161,171fold
-156,175fold
-138,175fold
-180,184fold
-179,185fold
-189,190fold
-194,195fold
+17,18fold
+22,23fold
+28,32fold
+34,35fold
+27,36fold
+41,42fold
+39,44fold
+49,50fold
+54,55fold
+52,56fold
+47,58fold
+62,64fold
+72,73fold
+69,74fold
+66,76fold
+79,80fold
+82,83fold
+85,86fold
+97,99fold
+101,103fold
+106,108fold
+95,109fold
+89,113fold
+26,113fold
+117,118fold
+122,123fold
+120,125fold
+128,129fold
+140,142fold
+137,143fold
+132,147fold
+116,147fold
+152,156fold
+151,157fold
+163,164fold
+161,165fold
+176,177fold
+174,178fold
+180,182fold
+173,183fold
+168,187fold
+150,187fold
 192,196fold
-188,198fold
-201,202fold
-205,209fold
-212,216fold
-223,224fold
-228,229fold
-226,230fold
-221,232fold
-235,239fold
-244,245fold
-242,248fold
-253,254fold
-258,259fold
-256,260fold
-251,263fold
-266,271fold
-278,279fold
-277,280fold
-274,282fold
-287,289fold
-286,290fold
-285,292fold
-295,296fold
-294,297fold
-299,300fold
-302,303fold
-309,310fold
-307,312fold
-315,316fold
-305,318fold
-329,330fold
-332,334fold
-336,338fold
-340,343fold
-346,348fold
-345,349fold
-328,351fold
-354,355fold
-357,358fold
-360,362fold
-353,363fold
-327,364fold
-326,365fold
-321,369fold
-178,369fold
-374,378fold
-373,379fold
-383,384fold
-388,389fold
-386,390fold
-382,392fold
-394,398fold
-401,405fold
-410,411fold
-415,416fold
-413,417fold
-408,419fold
-422,426fold
-431,432fold
-429,435fold
+198,199fold
+191,200fold
+204,205fold
+209,210fold
+207,211fold
+203,213fold
+216,217fold
+220,224fold
+227,231fold
+238,239fold
+243,244fold
+241,245fold
+236,247fold
+250,254fold
+259,260fold
+257,263fold
+268,269fold
+273,274fold
+271,275fold
+266,278fold
+281,286fold
+293,294fold
+292,295fold
+289,297fold
+302,304fold
+301,305fold
+300,307fold
+310,311fold
+309,312fold
+314,315fold
+317,318fold
+324,325fold
+322,327fold
+330,331fold
+320,333fold
+344,345fold
+347,349fold
+351,353fold
+355,358fold
+361,363fold
+360,364fold
+343,366fold
+369,370fold
+372,373fold
+375,377fold
+368,378fold
+342,379fold
+341,380fold
+336,384fold
+190,384fold
+389,393fold
+388,395fold
+399,400fold
+404,405fold
+402,406fold
+398,408fold
+410,414fold
+417,421fold
+424,428fold
+431,435fold
 440,441fold
 445,446fold
 443,447fold
-438,450fold
-453,458fold
-465,466fold
-464,467fold
-461,469fold
-474,476fold
+438,449fold
+452,456fold
+461,462fold
+459,465fold
+470,471fold
+475,476fold
 473,477fold
-472,479fold
-481,482fold
-484,485fold
-487,488fold
-494,495fold
-492,497fold
-500,501fold
-490,503fold
+468,480fold
+483,488fold
+495,496fold
+494,497fold
+491,499fold
+504,506fold
+503,507fold
+502,509fold
+511,512fold
 514,515fold
-517,519fold
-521,523fold
-525,528fold
-531,533fold
-530,534fold
-513,536fold
-539,540fold
-542,543fold
-545,547fold
-538,548fold
-512,549fold
-511,550fold
-506,554fold
-372,554fold
+517,518fold
+524,525fold
+522,527fold
+530,531fold
+520,533fold
+544,545fold
+547,549fold
+551,553fold
+555,557fold
+559,562fold
+565,567fold
+564,568fold
+543,570fold
+573,574fold
+576,577fold
+579,581fold
+572,582fold
+542,583fold
+541,584fold
+536,588fold
+387,588fold
 let &fdl = &fdl
-25
-normal! zo
-62
-normal! zo
-let s:l = 66 - ((19 * winheight(0) + 32) / 64)
+let s:l = 104 - ((39 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 66
-normal! 0
+keepjumps 104
+normal! 014|
 wincmd w
-2wincmd w
-wincmd =
+argglobal
+if bufexists(fnamemodify("jarvisui/inventory/filters.py", ":p")) | buffer jarvisui/inventory/filters.py | else | edit jarvisui/inventory/filters.py | endif
+if &buftype ==# 'terminal'
+  silent file jarvisui/inventory/filters.py
+endif
+balt ~/Projects/JarvisServer/jarvisui/inventory/models.py
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+4,5fold
+17,18fold
+22,23fold
+28,32fold
+34,35fold
+27,36fold
+41,42fold
+39,44fold
+49,50fold
+54,55fold
+52,56fold
+47,58fold
+62,64fold
+72,73fold
+69,74fold
+66,76fold
+79,80fold
+82,83fold
+85,86fold
+106,108fold
+95,109fold
+89,113fold
+26,113fold
+117,118fold
+122,123fold
+120,125fold
+128,129fold
+140,142fold
+137,143fold
+132,147fold
+116,147fold
+152,156fold
+151,157fold
+163,164fold
+161,165fold
+176,177fold
+174,178fold
+180,182fold
+173,183fold
+168,187fold
+150,187fold
+192,196fold
+198,199fold
+191,200fold
+204,205fold
+209,210fold
+207,211fold
+203,213fold
+216,217fold
+220,224fold
+227,231fold
+238,239fold
+243,244fold
+241,245fold
+236,247fold
+250,254fold
+259,260fold
+257,263fold
+268,269fold
+273,274fold
+271,275fold
+266,278fold
+281,286fold
+293,294fold
+292,295fold
+289,297fold
+302,304fold
+301,305fold
+300,307fold
+310,311fold
+309,312fold
+314,315fold
+317,318fold
+324,325fold
+322,327fold
+330,331fold
+320,333fold
+344,345fold
+347,349fold
+351,353fold
+355,358fold
+361,363fold
+360,364fold
+343,366fold
+369,370fold
+372,373fold
+375,377fold
+368,378fold
+342,379fold
+341,380fold
+336,384fold
+190,384fold
+389,393fold
+388,395fold
+399,400fold
+404,405fold
+402,406fold
+398,408fold
+410,414fold
+417,421fold
+424,428fold
+431,435fold
+440,441fold
+445,446fold
+443,447fold
+438,449fold
+452,456fold
+461,462fold
+459,465fold
+470,471fold
+475,476fold
+473,477fold
+468,480fold
+483,488fold
+495,496fold
+494,497fold
+491,499fold
+504,506fold
+503,507fold
+502,509fold
+511,512fold
+514,515fold
+517,518fold
+524,525fold
+522,527fold
+530,531fold
+520,533fold
+544,545fold
+547,549fold
+551,553fold
+555,557fold
+559,562fold
+565,567fold
+564,568fold
+543,570fold
+573,574fold
+576,577fold
+579,581fold
+572,582fold
+542,583fold
+541,584fold
+536,588fold
+387,588fold
+let &fdl = &fdl
+let s:l = 216 - ((26 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 216
+normal! 048|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
