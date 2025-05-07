@@ -13,18 +13,12 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +34 ~/Git/decision-flow/webapp/src/App.vue
-badd +2 ~/Git/decision-flow/webapp/src/assets/style.css
-badd +8 ~/Git/decision-flow/webapp/src/assets/styles/buttons.css
-badd +17 ~/Git/decision-flow/webapp/src/components/BaseButton.vue
+badd +10 src/layouts/SidePanel.vue
 badd +18 ~/Git/decision-flow/webapp/src/components/BaseIconText.vue
-badd +2 ~/Git/decision-flow/webapp/src/data/routes.js
-badd +19 ~/Git/decision-flow/webapp/src/components/BaseDiscreteSlider.vue
-badd +66 src/layouts/SidePanel.vue
-badd +19 src/components/BaseContentSquare.vue
+badd +1 ~/Git/decision-flow/webapp/src/main.js
 argglobal
 %argdel
-edit src/layouts/SidePanel.vue
+edit ~/Git/decision-flow/webapp/src/main.js
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -41,25 +35,26 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
-exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
 argglobal
-balt ~/Git/decision-flow/webapp/src/components/BaseDiscreteSlider.vue
+balt ~/Git/decision-flow/webapp/src/components/BaseIconText.vue
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
-setlocal foldlevel=0
+setlocal foldlevel=99
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
+1,5fold
 let &fdl = &fdl
-let s:l = 66 - ((31 * winheight(0) + 24) / 48)
+let s:l = 1 - ((0 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 66
+keepjumps 1
 normal! 0
 wincmd w
 argglobal
@@ -67,26 +62,32 @@ if bufexists(fnamemodify("~/Git/decision-flow/webapp/src/components/BaseIconText
 if &buftype ==# 'terminal'
   silent file ~/Git/decision-flow/webapp/src/components/BaseIconText.vue
 endif
-balt ~/Git/decision-flow/webapp/src/components/BaseButton.vue
+balt src/layouts/SidePanel.vue
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
-setlocal foldlevel=0
+setlocal foldlevel=4
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
+2,9fold
+1,10fold
+23,24fold
+15,25fold
+14,26fold
+13,27fold
 let &fdl = &fdl
-let s:l = 18 - ((17 * winheight(0) + 24) / 48)
+let s:l = 18 - ((17 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 18
 normal! 09|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 139 + 139) / 279)
-exe 'vert 2resize ' . ((&columns * 139 + 139) / 279)
+exe 'vert 1resize ' . ((&columns * 140 + 140) / 281)
+exe 'vert 2resize ' . ((&columns * 140 + 140) / 281)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

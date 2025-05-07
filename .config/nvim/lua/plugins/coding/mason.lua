@@ -17,7 +17,6 @@ return {
 				"pyright",
 				"ruff",
 				"emmet_ls",
-				"eslint",
 				"tailwindcss",
 				"volar",
 				"ts_ls",
@@ -47,6 +46,7 @@ return {
 					"isort",
 					"djlint",
 					"luasnip",
+					"eslint_d",
 				},
 				methods = {
 					diagnostics = true,
