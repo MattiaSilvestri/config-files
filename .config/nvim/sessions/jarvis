@@ -13,19 +13,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +53 ~/Projects/JarvisServer/jarvisui/front/urls.py
-badd +1008 ~/Projects/JarvisServer/jarvisui/inventory/views.py
-badd +81 jarvisui/inventory/filters.py
-badd +364 ~/Projects/JarvisServer/jarvisui/inventory/models.py
-badd +304 ~/Projects/JarvisServer/jarvisui/inventory/forms.py
-badd +439 ~/Projects/JarvisServer/jarvisui/configuration/views.py
-badd +194 ~/Projects/JarvisServer/jarvisui/inventory/tables.py
-badd +83 ~/Projects/JarvisServer/jarvisui/system/views.py
-badd +32 ~/Projects/JarvisServer/jarvisui/system/tables.py
-badd +45 ~/Projects/JarvisServer/jarvisui/contacts/templates/contacts/companygroup_list.html
+badd +2 ~/Projects/JarvisServer/database/anonymizer.sql
+badd +176 ~/Projects/JarvisServer/jarvisui/core/management/commands/anonymize.py
+badd +491 jarvisui/contacts/models.py
+badd +89 jarvisui/planning/models.py
 argglobal
 %argdel
-edit ~/Projects/JarvisServer/jarvisui/contacts/templates/contacts/companygroup_list.html
+edit jarvisui/contacts/models.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -44,7 +38,7 @@ set winminwidth=0
 set winwidth=1
 wincmd =
 argglobal
-balt ~/Projects/JarvisServer/jarvisui/inventory/forms.py
+balt ~/Projects/JarvisServer/jarvisui/core/management/commands/anonymize.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -54,32 +48,203 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
-9,10fold
-12,14fold
-18,20fold
-17,21fold
-26,27fold
-32,33fold
-31,34fold
-30,35fold
-37,38fold
-25,39fold
-42,43fold
-24,44fold
+6,7fold
+34,35fold
+38,44fold
+52,54fold
+56,57fold
+47,57fold
+63,64fold
+66,69fold
+72,73fold
+75,76fold
+60,76fold
+79,81fold
+87,88fold
+90,91fold
+95,96fold
+98,104fold
+106,111fold
+113,117fold
+119,125fold
+128,129fold
+131,132fold
+136,139fold
+146,147fold
+141,149fold
+152,153fold
+151,154fold
+156,158fold
+84,158fold
+162,163fold
+165,170fold
+175,179fold
+182,186fold
+188,192fold
+194,196fold
+211,212fold
+214,215fold
+218,221fold
+226,227fold
+225,228fold
+232,234fold
+231,235fold
+237,240fold
+236,241fold
+230,241fold
+243,248fold
+250,251fold
+161,251fold
+255,256fold
+262,266fold
+268,272fold
+275,276fold
+280,282fold
+279,283fold
+285,290fold
+292,293fold
+254,293fold
+297,300fold
+302,305fold
+307,310fold
+317,318fold
+319,320fold
+313,322fold
+324,325fold
+327,328fold
+296,328fold
+332,333fold
+335,336fold
+341,342fold
+345,347fold
+349,351fold
+354,360fold
+363,369fold
+372,378fold
+382,383fold
+385,388fold
+389,390fold
+381,392fold
+394,395fold
+399,400fold
+398,401fold
+403,404fold
+406,407fold
+397,407fold
+331,407fold
+411,412fold
+414,415fold
+418,419fold
+410,419fold
+423,424fold
+429,430fold
+434,437fold
+439,442fold
+444,447fold
+451,454fold
+456,459fold
+461,464fold
+468,471fold
+473,476fold
+478,481fold
+485,488fold
+490,491fold
+494,496fold
+499,500fold
+498,502fold
+504,506fold
+508,512fold
+514,515fold
+517,518fold
+521,522fold
+520,523fold
+422,523fold
+528,529fold
+531,532fold
+535,536fold
+526,537fold
+541,542fold
+547,548fold
+551,552fold
+550,556fold
+559,560fold
+558,564fold
+566,568fold
+571,575fold
+578,579fold
+586,587fold
+585,590fold
+594,595fold
+598,599fold
+597,602fold
+596,603fold
+605,606fold
+604,607fold
+609,610fold
+608,611fold
+613,614fold
+612,615fold
+619,622fold
+624,626fold
+617,627fold
+584,628fold
+631,632fold
+630,632fold
+634,639fold
+581,640fold
+540,640fold
+644,649fold
+652,653fold
+659,660fold
+662,663fold
+665,670fold
+672,677fold
+679,684fold
+686,691fold
+693,698fold
+700,703fold
+707,711fold
+714,719fold
+721,727fold
+729,734fold
+736,737fold
+740,746fold
+749,750fold
+751,752fold
+753,754fold
+755,756fold
+757,758fold
+748,759fold
+762,764fold
+761,765fold
+643,765fold
+769,770fold
+775,776fold
+778,779fold
+768,779fold
+782,788fold
+796,797fold
+795,798fold
+805,806fold
+809,810fold
+804,810fold
+817,818fold
+820,821fold
+816,822fold
 let &fdl = &fdl
-let s:l = 44 - ((43 * winheight(0) + 32) / 64)
+let s:l = 491 - ((42 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 44
-normal! 07|
+keepjumps 491
+normal! 020|
 wincmd w
 argglobal
-if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/system/tables.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/system/tables.py | else | edit ~/Projects/JarvisServer/jarvisui/system/tables.py | endif
+if bufexists(fnamemodify("jarvisui/planning/models.py", ":p")) | buffer jarvisui/planning/models.py | else | edit jarvisui/planning/models.py | endif
 if &buftype ==# 'terminal'
-  silent file ~/Projects/JarvisServer/jarvisui/system/tables.py
+  silent file jarvisui/planning/models.py
 endif
-balt ~/Projects/JarvisServer/jarvisui/contacts/templates/contacts/companygroup_list.html
+balt jarvisui/contacts/models.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -89,27 +254,41 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
-12,13fold
-21,27fold
-18,29fold
-10,29fold
-33,34fold
-41,46fold
-39,48fold
-32,48fold
-53,54fold
-56,59fold
-65,68fold
-51,68fold
+16,17fold
+20,21fold
+23,24fold
+29,30fold
+32,33fold
+15,33fold
+37,38fold
+41,42fold
+45,46fold
+48,49fold
+51,52fold
+57,60fold
+63,64fold
+67,68fold
+70,71fold
+36,71fold
+75,76fold
+78,79fold
+81,82fold
+85,86fold
+94,111fold
+93,112fold
+92,113fold
+89,114fold
+117,118fold
+120,121fold
+74,121fold
 let &fdl = &fdl
-let s:l = 32 - ((22 * winheight(0) + 32) / 64)
+let s:l = 91 - ((64 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 32
-normal! 031|
+keepjumps 91
+normal! 05|
 wincmd w
-2wincmd w
 wincmd =
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

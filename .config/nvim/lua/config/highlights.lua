@@ -28,6 +28,7 @@ return {
 	BlinkCmpSource = { bg = bg },
 	BlinkCmpLabelDetail = { bg = bg },
 	BlinkCmpLabelDescription = { bg = bg },
+	BlinkCmpSignatureHelpActiveParameter = { bg = line },
 
 	-- Telescope --
 	TelescopeBorder = { fg = bg_alt, bg = bg },

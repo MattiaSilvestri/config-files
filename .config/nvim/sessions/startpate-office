@@ -3,7 +3,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/Temp/config-files/.config/nvim
+cd ~/Temp/a-startpage
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
@@ -13,23 +13,17 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +17 init.lua
-badd +8 ~/Temp/config-files/.config/nvim/lua/config/options.lua
-badd +126 ~/Temp/config-files/.config/nvim/lua/config/mappings.lua
-badd +29 ~/Temp/config-files/.config/nvim/lua/config/lazy.lua
-badd +2 ~/Temp/config-files/.config/nvim/lua/plugins/coding/lsp.lua
-badd +12 ~/Temp/config-files/.config/nvim/lua/config/lsp.lua
-badd +92 ~/Temp/config-files/.config/nvim/lua/chadrc.lua
-badd +34 ~/.local/share/nvim/lazy/ui/lua/nvchad/lsp/signature.lua
-badd +81 ~/.local/share/nvim/lazy/ui/lua/nvconfig.lua
+badd +23 ~/Temp/a-startpage/index.html
+badd +53 ~/Temp/a-startpage/src/components/buttons.js
+badd +7 ~/Temp/a-startpage/src/common/components.js
+badd +79 ~/Temp/a-startpage/src/css/style.css
 argglobal
 %argdel
-$argadd init.lua
-edit ~/Temp/config-files/.config/nvim/lua/chadrc.lua
+edit ~/Temp/a-startpage/src/components/buttons.js
 argglobal
-balt ~/.local/share/nvim/lazy/ui/lua/nvchad/lsp/signature.lua
+balt ~/Temp/a-startpage/src/common/components.js
 setlocal foldmethod=manual
-setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
+setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
 setlocal foldignore=#
 setlocal foldlevel=99
@@ -38,12 +32,12 @@ setlocal foldnestmax=20
 setlocal nofoldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 92 - ((22 * winheight(0) + 30) / 61)
+let s:l = 53 - ((33 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 92
-normal! 04|
+keepjumps 53
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
