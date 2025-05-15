@@ -36,6 +36,7 @@ return {
 		-- Telescope --
 		["<leader>f"] = { function() vim.tbl_get(sections, "f") end, desc = sections.f.desc, },
 		["<leader>ff"] = { function() telescope.find_files() end, desc = "Find files", },
+		["<leader>fc"] = { function() telescope.find_files {cwd=vim.fn.stdpath("config")} end, desc = "Find config files", },
 		["<leader>sg"] = { function() telescope.live_grep() end, desc = "Live grep", },
 		["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
 		["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
@@ -88,11 +89,13 @@ return {
 		["[L"] = { vim.cmd.lfirst, desc = "Beginning loclist" },
 
 		-- LSP --
-		["gd"] = { function() telescope.lsp_definitions() end, desc = "Go to definition", },
-		["gD"] = { function() telescope_utils.open_definition_in_window() end, desc = "Go to definition", },
+		["<Leader>l"] = { function() vim.tbl_get(sections, "l") end, desc = sections.l.desc, },
 		["<leader>lR"] = { function() telescope.lsp_references() end, desc = "See references", },
 		["<leader>ls"] = { function() Snacks.picker.lsp_symbols() end, desc = "Search symbols in buffer", },
 		["<leader>lS"] = { function() Snacks.picker.lsp_workspace_symbols() end, desc = "Search symbols in workspace", },
+		["<leader>lr"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol", },
+		["gd"] = { function() telescope.lsp_definitions() end, desc = "Go to definition", },
+		["gD"] = { function() telescope_utils.open_definition_in_window() end, desc = "Go to definition", },
 		["K"] = { function() vim.lsp.buf.hover() end, desc = "Hover symbol", },
 
 

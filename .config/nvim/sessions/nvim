@@ -13,21 +13,38 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +17 init.lua
-badd +8 ~/Temp/config-files/.config/nvim/lua/config/options.lua
-badd +126 ~/Temp/config-files/.config/nvim/lua/config/mappings.lua
-badd +29 ~/Temp/config-files/.config/nvim/lua/config/lazy.lua
-badd +2 ~/Temp/config-files/.config/nvim/lua/plugins/coding/lsp.lua
-badd +12 ~/Temp/config-files/.config/nvim/lua/config/lsp.lua
-badd +92 ~/Temp/config-files/.config/nvim/lua/chadrc.lua
-badd +34 ~/.local/share/nvim/lazy/ui/lua/nvchad/lsp/signature.lua
+badd +26 init.lua
+badd +2 ~/Temp/config-files/.config/nvim/lua/chadrc.lua
 badd +81 ~/.local/share/nvim/lazy/ui/lua/nvconfig.lua
+badd +173 ~/Temp/config-files/.config/nvim/lua/plugins/coding/blink-cmp.lua
+badd +2 ~/.local/share/nvim.bak/lazy/AstroNvim/lua/astronvim/plugins/_astrolsp_mappings.lua
+badd +40 lua/config/mappings.lua
+badd +44 ~/Temp/config-files/.config/nvim/lua/config/highlights.lua
+badd +18 lua/plugins/sessions.lua
 argglobal
 %argdel
 $argadd init.lua
-edit ~/Temp/config-files/.config/nvim/lua/chadrc.lua
+edit lua/plugins/sessions.lua
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 183 + 188) / 376)
+exe 'vert 2resize ' . ((&columns * 192 + 188) / 376)
 argglobal
-balt ~/.local/share/nvim/lazy/ui/lua/nvchad/lsp/signature.lua
+balt ~/Temp/config-files/.config/nvim/lua/config/highlights.lua
 setlocal foldmethod=manual
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -38,12 +55,39 @@ setlocal foldnestmax=20
 setlocal nofoldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 92 - ((22 * winheight(0) + 30) / 61)
+let s:l = 18 - ((17 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 92
-normal! 04|
+keepjumps 18
+normal! 08|
+wincmd w
+argglobal
+if bufexists(fnamemodify("lua/config/mappings.lua", ":p")) | buffer lua/config/mappings.lua | else | edit lua/config/mappings.lua | endif
+if &buftype ==# 'terminal'
+  silent file lua/config/mappings.lua
+endif
+balt ~/Temp/config-files/.config/nvim/lua/config/highlights.lua
+setlocal foldmethod=manual
+setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal nofoldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 40 - ((31 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 40
+normal! 0
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 183 + 188) / 376)
+exe 'vert 2resize ' . ((&columns * 192 + 188) / 376)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -51,6 +95,8 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

@@ -13,13 +13,15 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +2 ~/Projects/JarvisServer/database/anonymizer.sql
-badd +176 ~/Projects/JarvisServer/jarvisui/core/management/commands/anonymize.py
-badd +491 jarvisui/contacts/models.py
-badd +89 jarvisui/planning/models.py
+badd +38 ~/Projects/JarvisServer/database/anonymizer.sql
+badd +73 ~/Projects/JarvisServer/jarvisui/core/management/commands/anonymize.py
+badd +24 jarvisui/contacts/models.py
+badd +53 jarvisui/planning/models.py
+badd +0 ~/Projects/JarvisServer/jarvisui/training/views.py
+badd +2 ~/Projects/JarvisServer/jarvisui/inventory/views.py
 argglobal
 %argdel
-edit jarvisui/contacts/models.py
+edit ~/Projects/JarvisServer/jarvisui/inventory/views.py
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -36,7 +38,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 278)
+exe 'vert 2resize ' . ((&columns * 138 + 139) / 278)
 argglobal
 balt ~/Projects/JarvisServer/jarvisui/core/management/commands/anonymize.py
 setlocal foldmethod=manual
@@ -48,203 +51,301 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
-6,7fold
-34,35fold
-38,44fold
-52,54fold
-56,57fold
-47,57fold
-63,64fold
-66,69fold
-72,73fold
-75,76fold
-60,76fold
-79,81fold
-87,88fold
-90,91fold
-95,96fold
-98,104fold
-106,111fold
-113,117fold
-119,125fold
-128,129fold
-131,132fold
-136,139fold
-146,147fold
-141,149fold
-152,153fold
-151,154fold
-156,158fold
-84,158fold
-162,163fold
-165,170fold
-175,179fold
-182,186fold
-188,192fold
-194,196fold
-211,212fold
-214,215fold
-218,221fold
-226,227fold
-225,228fold
-232,234fold
-231,235fold
-237,240fold
-236,241fold
-230,241fold
-243,248fold
-250,251fold
-161,251fold
-255,256fold
-262,266fold
-268,272fold
-275,276fold
-280,282fold
-279,283fold
-285,290fold
-292,293fold
-254,293fold
-297,300fold
-302,305fold
-307,310fold
-317,318fold
-319,320fold
-313,322fold
-324,325fold
-327,328fold
-296,328fold
-332,333fold
-335,336fold
-341,342fold
-345,347fold
-349,351fold
-354,360fold
-363,369fold
-372,378fold
-382,383fold
-385,388fold
-389,390fold
-381,392fold
-394,395fold
-399,400fold
-398,401fold
-403,404fold
-406,407fold
-397,407fold
-331,407fold
-411,412fold
-414,415fold
-418,419fold
-410,419fold
-423,424fold
-429,430fold
-434,437fold
-439,442fold
-444,447fold
-451,454fold
-456,459fold
-461,464fold
-468,471fold
-473,476fold
-478,481fold
-485,488fold
-490,491fold
-494,496fold
-499,500fold
-498,502fold
-504,506fold
-508,512fold
-514,515fold
-517,518fold
-521,522fold
-520,523fold
-422,523fold
-528,529fold
-531,532fold
-535,536fold
-526,537fold
-541,542fold
-547,548fold
-551,552fold
-550,556fold
-559,560fold
-558,564fold
-566,568fold
-571,575fold
-578,579fold
-586,587fold
-585,590fold
-594,595fold
-598,599fold
-597,602fold
-596,603fold
-605,606fold
-604,607fold
-609,610fold
-608,611fold
-613,614fold
-612,615fold
-619,622fold
-624,626fold
-617,627fold
-584,628fold
-631,632fold
-630,632fold
-634,639fold
-581,640fold
-540,640fold
-644,649fold
-652,653fold
-659,660fold
-662,663fold
-665,670fold
-672,677fold
-679,684fold
-686,691fold
-693,698fold
-700,703fold
-707,711fold
-714,719fold
-721,727fold
-729,734fold
-736,737fold
-740,746fold
-749,750fold
-751,752fold
-753,754fold
-755,756fold
-757,758fold
-748,759fold
-762,764fold
-761,765fold
-643,765fold
-769,770fold
-775,776fold
-778,779fold
-768,779fold
-782,788fold
-796,797fold
-795,798fold
-805,806fold
-809,810fold
-804,810fold
-817,818fold
-820,821fold
-816,822fold
+sil! 13,14fold
+sil! 18,20fold
+sil! 21,24fold
+sil! 25,27fold
+sil! 29,33fold
+sil! 38,39fold
+sil! 42,47fold
+sil! 55,56fold
+sil! 54,57fold
+sil! 59,60fold
+sil! 65,67fold
+sil! 64,68fold
+sil! 62,70fold
+sil! 78,79fold
+sil! 76,80fold
+sil! 73,81fold
+sil! 72,82fold
+sil! 48,82fold
+sil! 85,86fold
+sil! 97,98fold
+sil! 95,99fold
+sil! 94,100fold
+sil! 102,103fold
+sil! 107,108fold
+sil! 105,109fold
+sil! 116,125fold
+sil! 115,126fold
+sil! 114,127fold
+sil! 111,128fold
+sil! 130,133fold
+sil! 87,133fold
+sil! 136,137fold
+sil! 146,147fold
+sil! 144,148fold
+sil! 150,151fold
+sil! 156,157fold
+sil! 154,158fold
+sil! 153,159fold
+sil! 138,159fold
+sil! 162,163fold
+sil! 170,171fold
+sil! 164,171fold
+sil! 183,184fold
+sil! 177,186fold
+sil! 174,186fold
+sil! 193,194fold
+sil! 199,200fold
+sil! 198,201fold
+sil! 196,203fold
+sil! 189,203fold
+sil! 209,210fold
+sil! 216,218fold
+sil! 221,222fold
+sil! 211,222fold
+sil! 225,226fold
+sil! 234,235fold
+sil! 227,235fold
+sil! 238,239fold
+sil! 246,247fold
+sil! 252,253fold
+sil! 250,254fold
+sil! 249,255fold
+sil! 240,255fold
+sil! 258,259fold
+sil! 266,267fold
+sil! 260,267fold
+sil! 271,272fold
+sil! 279,280fold
+sil! 273,280fold
+sil! 290,291fold
+sil! 289,292fold
+sil! 295,297fold
+sil! 294,298fold
+sil! 300,301fold
+sil! 312,313fold
+sil! 315,318fold
+sil! 306,319fold
+sil! 304,319fold
+sil! 303,321fold
+sil! 283,321fold
+sil! 324,325fold
+sil! 333,334fold
+sil! 337,339fold
+sil! 336,340fold
+sil! 326,340fold
+sil! 343,344fold
+sil! 351,352fold
+sil! 355,356fold
+sil! 358,360fold
+sil! 354,361fold
+sil! 345,361fold
+sil! 364,365fold
+sil! 372,373fold
+sil! 366,373fold
+sil! 381,382fold
+sil! 393,394fold
+sil! 395,398fold
+sil! 380,401fold
+sil! 376,401fold
+sil! 405,410fold
+sil! 421,422fold
+sil! 424,429fold
+sil! 437,438fold
+sil! 435,439fold
+sil! 432,440fold
+sil! 431,441fold
+sil! 411,441fold
+sil! 445,450fold
+sil! 461,462fold
+sil! 470,471fold
+sil! 468,472fold
+sil! 465,473fold
+sil! 464,474fold
+sil! 451,474fold
+sil! 477,481fold
+sil! 490,491fold
+sil! 499,500fold
+sil! 498,502fold
+sil! 493,503fold
+sil! 482,503fold
+sil! 507,508fold
+sil! 517,518fold
+sil! 516,519fold
+sil! 521,522fold
+sil! 527,528fold
+sil! 525,529fold
+sil! 524,530fold
+sil! 509,530fold
+sil! 533,534fold
+sil! 542,543fold
+sil! 541,544fold
+sil! 549,550fold
+sil! 547,551fold
+sil! 546,552fold
+sil! 555,557fold
+sil! 554,558fold
+sil! 562,565fold
+sil! 561,566fold
+sil! 568,570fold
+sil! 535,570fold
+sil! 573,574fold
+sil! 582,583fold
+sil! 581,584fold
+sil! 589,590fold
+sil! 587,591fold
+sil! 586,592fold
+sil! 594,597fold
+sil! 575,597fold
+sil! 600,601fold
+sil! 610,611fold
+sil! 608,612fold
+sil! 607,613fold
+sil! 602,613fold
+sil! 619,620fold
+sil! 629,630fold
+sil! 628,631fold
+sil! 633,634fold
+sil! 637,639fold
+sil! 636,640fold
+sil! 621,640fold
+sil! 643,644fold
+sil! 654,655fold
+sil! 652,656fold
+sil! 651,657fold
+sil! 660,661fold
+sil! 659,662fold
+sil! 664,665fold
+sil! 668,670fold
+sil! 667,671fold
+sil! 674,676fold
+sil! 684,686fold
+sil! 683,687fold
+sil! 682,688fold
+sil! 680,688fold
+sil! 673,689fold
+sil! 695,699fold
+sil! 691,703fold
+sil! 645,703fold
+sil! 711,712fold
+sil! 710,713fold
+sil! 715,716fold
+sil! 721,722fold
+sil! 720,723fold
+sil! 718,725fold
+sil! 706,725fold
+sil! 734,735fold
+sil! 744,745fold
+sil! 743,746fold
+sil! 748,749fold
+sil! 752,754fold
+sil! 751,755fold
+sil! 736,755fold
+sil! 758,759fold
+sil! 767,768fold
+sil! 766,769fold
+sil! 771,772fold
+sil! 775,777fold
+sil! 774,778fold
+sil! 783,784fold
+sil! 781,785fold
+sil! 780,786fold
+sil! 789,792fold
+sil! 788,793fold
+sil! 795,798fold
+sil! 760,798fold
+sil! 801,802fold
+sil! 810,811fold
+sil! 809,812fold
+sil! 814,815fold
+sil! 818,820fold
+sil! 817,821fold
+sil! 826,827fold
+sil! 824,828fold
+sil! 823,829fold
+sil! 831,834fold
+sil! 803,834fold
+sil! 837,841fold
+sil! 848,849fold
+sil! 847,850fold
+sil! 852,853fold
+sil! 858,859fold
+sil! 856,860fold
+sil! 855,861fold
+sil! 842,861fold
+sil! 869,870fold
+sil! 882,883fold
+sil! 886,887fold
+sil! 885,888fold
+sil! 890,891fold
+sil! 894,896fold
+sil! 893,897fold
+sil! 871,897fold
+sil! 900,901fold
+sil! 909,910fold
+sil! 908,911fold
+sil! 913,914fold
+sil! 917,919fold
+sil! 916,920fold
+sil! 925,926fold
+sil! 923,927fold
+sil! 922,928fold
+sil! 931,933fold
+sil! 930,934fold
+sil! 938,943fold
+sil! 936,944fold
+sil! 946,949fold
+sil! 902,949fold
+sil! 952,953fold
+sil! 961,962fold
+sil! 960,963fold
+sil! 966,968fold
+sil! 965,969fold
+sil! 971,972fold
+sil! 977,978fold
+sil! 975,979fold
+sil! 974,980fold
+sil! 983,985fold
+sil! 982,986fold
+sil! 988,990fold
+sil! 954,990fold
+sil! 993,994fold
+sil! 1001,1002fold
+sil! 1000,1003fold
+sil! 1005,1006fold
+sil! 1011,1012fold
+sil! 1009,1013fold
+sil! 1008,1014fold
+sil! 995,1014fold
+sil! 1020,1021fold
+sil! 1024,1026fold
+sil! 1023,1028fold
+sil! 1033,1034fold
+sil! 1032,1035fold
+sil! 1037,1041fold
+sil! 1036,1042fold
+sil! 1030,1043fold
+sil! 1022,1043fold
+sil! 1046,1047fold
+sil! 1051,1052fold
+sil! 1049,1053fold
+sil! 1048,1053fold
 let &fdl = &fdl
-let s:l = 491 - ((42 * winheight(0) + 32) / 64)
+let s:l = 2 - ((1 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 491
-normal! 020|
+keepjumps 2
+normal! 0
 wincmd w
 argglobal
-if bufexists(fnamemodify("jarvisui/planning/models.py", ":p")) | buffer jarvisui/planning/models.py | else | edit jarvisui/planning/models.py | endif
+if bufexists(fnamemodify("~/Projects/JarvisServer/jarvisui/training/views.py", ":p")) | buffer ~/Projects/JarvisServer/jarvisui/training/views.py | else | edit ~/Projects/JarvisServer/jarvisui/training/views.py | endif
 if &buftype ==# 'terminal'
-  silent file jarvisui/planning/models.py
+  silent file ~/Projects/JarvisServer/jarvisui/training/views.py
 endif
-balt jarvisui/contacts/models.py
+balt jarvisui/planning/models.py
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -254,42 +355,169 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
-16,17fold
-20,21fold
-23,24fold
-29,30fold
-32,33fold
-15,33fold
-37,38fold
-41,42fold
-45,46fold
-48,49fold
-51,52fold
-57,60fold
-63,64fold
-67,68fold
-70,71fold
-36,71fold
-75,76fold
-78,79fold
-81,82fold
-85,86fold
-94,111fold
-93,112fold
-92,113fold
-89,114fold
-117,118fold
-120,121fold
-74,121fold
+sil! 12,16fold
+sil! 22,27fold
+sil! 33,44fold
+sil! 46,48fold
+sil! 53,56fold
+sil! 59,60fold
+sil! 67,68fold
+sil! 74,75fold
+sil! 73,76fold
+sil! 72,77fold
+sil! 70,79fold
+sil! 61,79fold
+sil! 82,83fold
+sil! 91,93fold
+sil! 90,94fold
+sil! 96,97fold
+sil! 84,97fold
+sil! 100,101fold
+sil! 109,111fold
+sil! 108,112fold
+sil! 114,115fold
+sil! 102,115fold
+sil! 118,119fold
+sil! 125,126fold
+sil! 120,126fold
+sil! 129,130fold
+sil! 140,141fold
+sil! 139,142fold
+sil! 131,142fold
+sil! 145,150fold
+sil! 159,160fold
+sil! 158,161fold
+sil! 166,168fold
+sil! 164,169fold
+sil! 163,170fold
+sil! 151,170fold
+sil! 173,178fold
+sil! 187,188fold
+sil! 186,189fold
+sil! 194,196fold
+sil! 192,197fold
+sil! 191,198fold
+sil! 179,198fold
+sil! 201,206fold
+sil! 213,214fold
+sil! 212,215fold
+sil! 220,221fold
+sil! 218,222fold
+sil! 217,223fold
+sil! 207,223fold
+sil! 226,227fold
+sil! 236,239fold
+sil! 235,240fold
+sil! 243,245fold
+sil! 242,246fold
+sil! 228,246fold
+sil! 249,254fold
+sil! 262,265fold
+sil! 261,266fold
+sil! 271,273fold
+sil! 269,274fold
+sil! 268,275fold
+sil! 280,281fold
+sil! 282,283fold
+sil! 284,285fold
+sil! 286,287fold
+sil! 288,289fold
+sil! 290,291fold
+sil! 292,293fold
+sil! 294,295fold
+sil! 279,295fold
+sil! 277,296fold
+sil! 299,301fold
+sil! 298,302fold
+sil! 304,306fold
+sil! 255,306fold
+sil! 309,314fold
+sil! 322,325fold
+sil! 321,326fold
+sil! 331,334fold
+sil! 329,335fold
+sil! 328,336fold
+sil! 341,342fold
+sil! 343,344fold
+sil! 345,346fold
+sil! 347,348fold
+sil! 349,350fold
+sil! 351,352fold
+sil! 353,354fold
+sil! 355,356fold
+sil! 340,356fold
+sil! 338,357fold
+sil! 360,362fold
+sil! 359,363fold
+sil! 365,367fold
+sil! 315,367fold
+sil! 370,375fold
+sil! 382,385fold
+sil! 381,386fold
+sil! 391,393fold
+sil! 389,394fold
+sil! 388,395fold
+sil! 376,395fold
+sil! 398,399fold
+sil! 408,411fold
+sil! 407,412fold
+sil! 421,422fold
+sil! 419,423fold
+sil! 424,425fold
+sil! 418,425fold
+sil! 414,427fold
+sil! 400,427fold
+sil! 430,435fold
+sil! 444,447fold
+sil! 443,448fold
+sil! 453,454fold
+sil! 451,455fold
+sil! 450,456fold
+sil! 459,462fold
+sil! 458,463fold
+sil! 465,468fold
+sil! 436,468fold
+sil! 471,476fold
+sil! 485,488fold
+sil! 484,489fold
+sil! 494,496fold
+sil! 492,497fold
+sil! 491,498fold
+sil! 477,498fold
+sil! 501,506fold
+sil! 513,516fold
+sil! 512,517fold
+sil! 522,523fold
+sil! 520,524fold
+sil! 519,525fold
+sil! 527,528fold
+sil! 507,528fold
+sil! 531,536fold
+sil! 547,551fold
+sil! 554,555fold
+sil! 556,559fold
+sil! 560,566fold
+sil! 570,571fold
+sil! 573,574fold
+sil! 578,579fold
+sil! 575,580fold
+sil! 581,591fold
+sil! 593,594fold
+sil! 595,596fold
+sil! 572,596fold
+sil! 553,596fold
+sil! 544,597fold
+sil! 537,597fold
 let &fdl = &fdl
-let s:l = 91 - ((64 * winheight(0) + 32) / 64)
+let s:l = 597 - ((61 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 91
-normal! 05|
+keepjumps 597
+normal! 053|
 wincmd w
-wincmd =
+exe 'vert 1resize ' . ((&columns * 139 + 139) / 278)
+exe 'vert 2resize ' . ((&columns * 138 + 139) / 278)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

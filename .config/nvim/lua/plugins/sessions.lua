@@ -13,7 +13,7 @@ return {
 	config = function()
 		require("nvim-possession").setup({
 			sessions = {
-				sessions_path = vim.fn.stdpath("config") .. "/sessions/",
+				sessions_path = vim.fn.stdpath("data") .. "/sessions/",
 			},
 			autoload = false,
 			autoswitch = {
