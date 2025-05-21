@@ -13,11 +13,11 @@ return {
 		softtabstop = 0,
 		copyindent = true,
 		fillchars = { eob = " " },
-		timeoutlen = 50,
+		timeoutlen = 100,
 	},
 	o = {
 		-- fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:",
-		foldcolumn = "1", -- '0' is not bad
+		foldcolumn = "0", -- '0' is not bad
 		foldlevel = 99, -- Using ufo provider need a large value, feel free to decrease the value
 		foldlevelstart = 99,
 		foldenable = false,
