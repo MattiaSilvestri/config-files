@@ -1,6 +1,6 @@
 --- @type LazySPec
 return {
-	{ "williamboman/mason.nvim", config = true },
+	{ "williamboman/mason.nvim",                   config = true },
 	{ "WhoIsSethDaniel/mason-tool-installer.nvim", config = true },
 	{
 		"nvimtools/none-ls.nvim",
@@ -18,7 +18,7 @@ return {
 				"ruff",
 				"emmet_ls",
 				"tailwindcss",
-				"volar",
+				"vue_ls",
 				"ts_ls",
 				"vuels",
 				"html",

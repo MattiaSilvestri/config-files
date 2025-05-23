@@ -55,7 +55,7 @@ return {
 	["html"] = { capabilities = capabilities },
 	["cssls"] = { capabilities = capabilities },
 	["css_variables"] = { capabilities = capabilities },
-	["volar"] = {
+	["vue_ls"] = {
 		capabilities = capabilities,
 		init_options = {
 			vue = {
@@ -93,7 +93,7 @@ return {
 					{
 						name = "@vue/typescript-plugin",
 						location = vim.fn.stdpath("data")
-							.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+								.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
 						languages = { "vue" },
 					},
 				},
