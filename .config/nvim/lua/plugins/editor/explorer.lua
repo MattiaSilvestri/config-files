@@ -40,6 +40,10 @@ return {
 					["h"] = "close_node",
 				},
 			},
+			source_selector = {
+				winbar = true,
+				statusline = false,
+			},
 			default_component_configs = {
 				icon = {
 					folder_closed = "",
@@ -61,10 +65,24 @@ return {
 					default = "*",
 					highlight = "NeoTreeFileIcon",
 				},
+				indent = {
+					indent_size = 2,
+					padding = 1, -- extra padding on left hand side
+					-- indent guides
+					with_markers = true,
+					indent_marker = "│",
+					last_indent_marker = "└",
+					highlight = "NeoTreeIndentMarker",
+					-- expander config, needed for nesting files
+					with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+					expander_collapsed = "",
+					expander_expanded = "",
+					expander_highlight = "NeoTreeExpander",
+				},
 			},
 			filesystem = {
 				follow_current_file = {
-					enabled = true, -- This will find and focus the file in the active buffer every time
+					enabled = true,     -- This will find and focus the file in the active buffer every time
 					--               -- the current file is changed while the tree is open.
 					leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 				},

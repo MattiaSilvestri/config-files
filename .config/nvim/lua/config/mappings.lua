@@ -15,6 +15,7 @@ local sections = {
 	S = { desc = "Session" },
 	t = { desc = "Terminal" },
 	x = { desc = "Quickfix/Lists" },
+	n = { desc = "File Explorer" },
 }
 
 local function term_nav(dir)
@@ -36,7 +37,7 @@ return {
 		-- Telescope --
 		["<leader>f"] = { function() vim.tbl_get(sections, "f") end, desc = sections.f.desc, },
 		["<leader>ff"] = { function() telescope.find_files() end, desc = "Find files", },
-		["<leader>fc"] = { function() telescope.find_files {cwd=vim.fn.stdpath("config")} end, desc = "Find config files", },
+		["<leader>fc"] = { function() telescope.find_files { cwd = vim.fn.stdpath("config") } end, desc = "Find config files", },
 		["<leader>sg"] = { function() telescope.live_grep() end, desc = "Live grep", },
 		["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
 		["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
@@ -46,6 +47,8 @@ return {
 		["<leader>b"] = { function() vim.tbl_get(sections, "b") end, desc = sections.b.desc, },
 		["<leader>bb"] = { "<Cmd>BufferLinePick<CR>", desc = "Pick buffer", },
 		["<leader>bd"] = { "<Cmd>BufferLinePickClose<CR>", desc = "Pick to close buffer", },
+		["<leader>bL"] = { "<Cmd>BufferLineMoveNext<CR>", desc = "Move buffer right", },
+		["<leader>bH"] = { "<Cmd>BufferLineMovePrev<CR>", desc = "Move buffer left", },
 		["L"] = { function() vim.cmd.bnext() end, desc = "Next buffer", },
 		["H"] = { function() vim.cmd.bprev() end, desc = "Previous buffer", },
 		["]o"] = { function() vim.cmd.tabnext() end, desc = "Next tab", },
@@ -65,10 +68,15 @@ return {
 		},
 
 		-- File explorer --
+		["<leader>n"] = { function() vim.tbl_get(sections, "n") end, desc = sections.n.desc, },
 		["<leader>yy"] = { "<cmd>Yazi toggle<cr>", desc = "Toggle yazi", },
 		["<leader>yz"] = { "<cmd>Yazi<cr>", desc = "Toggle yazi at current file", },
-		["<leader>E"] = { function() Snacks.explorer.open() end, desc = "Snacks Explorer", },
-		["<leader>e"] = { "<Cmd>Neotree toggle<CR>", desc = "Snacks Explorer", },
+		-- ["<leader>E"] = { function() Snacks.explorer.open() end, desc = "Snacks Explorer", },
+		["<leader>o"] = { "<Cmd>Neotree focus left<CR>", desc = "Focus neotree", },
+		["<leader>E"] = { "<Cmd>Neotree focus float toggle<CR>", desc = "Toggle neotree float", },
+		["<leader>e"] = { "<Cmd>Neotree focus filesystem left toggle<CR>", desc = "Focus neotree", },
+		["<leader>nb"] = { "<Cmd>Neotree focus buffers left toggle<CR>", desc = "Focus buffers list", },
+		["<leader>ng"] = { "<Cmd>Neotree focus git_status left toggle<CR>", desc = "Focus git status", },
 
 		-- Git --
 		["<Leader>g"] = { function() vim.tbl_get(sections, "g") end, desc = sections.g.desc, },
