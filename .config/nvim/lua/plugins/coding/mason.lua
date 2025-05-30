@@ -24,6 +24,7 @@ return {
 				"html",
 				"cssls",
 				"css_variables",
+				"jsonls",
 			},
 			automatic_installation = true,
 		},

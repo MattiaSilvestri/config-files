@@ -117,4 +117,5 @@ return {
 			},
 		},
 	},
+	["jsonls"] = { capabilities = capabilities },
 }
