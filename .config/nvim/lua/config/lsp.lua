@@ -118,4 +118,5 @@ return {
 		},
 	},
 	["jsonls"] = { capabilities = capabilities },
+	["django_template_lsp"] = { capabilities = capabilities },
 }

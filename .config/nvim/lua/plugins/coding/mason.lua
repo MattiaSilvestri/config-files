@@ -48,6 +48,7 @@ return {
 					"djlint",
 					"luasnip",
 					"eslint_d",
+					"django_template_lsp",
 				},
 				methods = {
 					diagnostics = true,
