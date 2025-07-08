@@ -5,7 +5,7 @@ local actions = require("telescope.actions")
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
+		-- tag = "0.1.8",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"jonarrien/telescope-cmdline.nvim",
@@ -60,33 +60,25 @@ return {
 					},
 				},
 			},
-		},
-		config = function(_, opts)
-			require("telescope").setup(opts)
-			require("telescope").load_extension("cmdline")
-			require("telescope").load_extension("live_grep_args")
-
-			local lga_actions = require("telescope-live-grep-args.actions")
-
-			-- Now override or patch mappings inside the extension
-			require("telescope").extensions.live_grep_args = {
+			live_grep_args = {
 				auto_quoting = true, -- enable/disable auto-quoting
 				-- define mappings, e.g.
 				mappings = {     -- extend mappings
 					i = {
-						["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
-						["<C-i>"] = require("telescope-live-grep-args.actions").quote_prompt({
-							postfix = " --iglob ",
-						}),
-						-- freeze the current list and start a fuzzy search in the frozen list
-						["<C-space>"] = require("telescope-live-grep-args.actions").to_fuzzy_refine,
+						["<C-j>"] = actions.move_selection_next,
+						["<C-k>"] = actions.move_selection_previous,
 					},
 				},
 				-- ... also accepts theme settings, for example:
 				-- theme = "dropdown", -- use dropdown theme
 				-- theme = { }, -- use own theme spec
 				-- layout_config = { mirror=true }, -- mirror preview pane
-			}
+			},
+		},
+		config = function(_, opts)
+			require("telescope").setup(opts)
+			require("telescope").load_extension("cmdline")
+			require("telescope").load_extension("live_grep_args")
 		end,
 	},
 }

@@ -41,6 +41,7 @@ return {
 		["<leader>sg"] = { function() telescope.live_grep() end, desc = "Live grep", },
 		["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
 		["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
+		["<leader>fg"] = { function() require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Telescope live grep args", },
 		["<leader><leader>"] = { "<cmd>Telescope cmdline<cr>", desc = "Telescope cmdline", },
 
 		-- Buffers and tabs --
