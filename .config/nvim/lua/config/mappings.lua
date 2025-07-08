@@ -41,7 +41,7 @@ return {
 		["<leader>sg"] = { function() telescope.live_grep() end, desc = "Live grep", },
 		["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
 		["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
-		["<leader><leader>"] = { "<cmd>Telescope cmdline<cr>", desc = "Telescope find buffer", },
+		["<leader><leader>"] = { "<cmd>Telescope cmdline<cr>", desc = "Telescope cmdline", },
 
 		-- Buffers and tabs --
 		["<leader>b"] = { function() vim.tbl_get(sections, "b") end, desc = sections.b.desc, },

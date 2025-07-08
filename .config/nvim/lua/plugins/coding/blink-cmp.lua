@@ -1,56 +1,65 @@
 --- @type LazySpec
 return {
+	-- {
+	-- 	"onsails/lspkind.nvim",
+	-- 	opts = {
+	-- 		-- DEPRECATED (use mode instead): enables text annotations
+	-- 		--
+	-- 		-- default: true
+	-- 		-- with_text = true,
+	--
+	-- 		-- defines how annotations are shown
+	-- 		-- default: symbol
+	-- 		-- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+	-- 		mode = "symbol_text",
+	--
+	-- 		-- default symbol map
+	-- 		-- can be either 'default' (requires nerd-fonts font) or
+	-- 		-- 'codicons' for codicon preset (requires vscode-codicons font)
+	-- 		--
+	-- 		-- default: 'default'
+	-- 		preset = "codicons",
+	--
+	-- 		-- override preset symbols
+	-- 		--
+	-- 		-- default: {}
+	-- 		symbol_map = {
+	-- 			Text = "󰉿",
+	-- 			Method = "󰆧",
+	-- 			Function = "󰊕",
+	-- 			Constructor = "",
+	-- 			Field = "󰜢",
+	-- 			Variable = "󰀫",
+	-- 			Class = "󰠱",
+	-- 			Interface = "",
+	-- 			Module = "",
+	-- 			Property = "󰜢",
+	-- 			Unit = "󰑭",
+	-- 			Value = "󰎠",
+	-- 			Enum = "",
+	-- 			Keyword = "󰌋",
+	-- 			Snippet = "",
+	-- 			Color = "󰏘",
+	-- 			File = "󰈙",
+	-- 			Reference = "󰈇",
+	-- 			Folder = "󰉋",
+	-- 			EnumMember = "",
+	-- 			Constant = "󰏿",
+	-- 			Struct = "󰙅",
+	-- 			Event = "",
+	-- 			Operator = "󰆕",
+	-- 			TypeParameter = "",
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"onsails/lspkind.nvim",
-		opts = {
-			-- DEPRECATED (use mode instead): enables text annotations
-			--
-			-- default: true
-			-- with_text = true,
-
-			-- defines how annotations are shown
-			-- default: symbol
-			-- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-			mode = "symbol_text",
-
-			-- default symbol map
-			-- can be either 'default' (requires nerd-fonts font) or
-			-- 'codicons' for codicon preset (requires vscode-codicons font)
-			--
-			-- default: 'default'
-			preset = "codicons",
-
-			-- override preset symbols
-			--
-			-- default: {}
-			symbol_map = {
-				Text = "󰉿",
-				Method = "󰆧",
-				Function = "󰊕",
-				Constructor = "",
-				Field = "󰜢",
-				Variable = "󰀫",
-				Class = "󰠱",
-				Interface = "",
-				Module = "",
-				Property = "󰜢",
-				Unit = "󰑭",
-				Value = "󰎠",
-				Enum = "",
-				Keyword = "󰌋",
-				Snippet = "",
-				Color = "󰏘",
-				File = "󰈙",
-				Reference = "󰈇",
-				Folder = "󰉋",
-				EnumMember = "",
-				Constant = "󰏿",
-				Struct = "󰙅",
-				Event = "",
-				Operator = "󰆕",
-				TypeParameter = "",
-			},
-		},
+		"saghen/blink.compat",
+		-- use v2.* for blink.cmp v1.*
+		version = "2.*",
+		-- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+		lazy = true,
+		-- make sure to set opts so that lazy.nvim calls blink.compat's setup
+		opts = {},
 	},
 	{
 		"saghen/blink.cmp",
@@ -58,10 +67,11 @@ return {
 		-- build = "cargo +nightly build --release",
 		-- optional: provides snippets for the snippet source
 		dependencies = {
-			{ "L3MON4D3/LuaSnip", version = "v2.*", optional = true },
+			{ "L3MON4D3/LuaSnip",       version = "v2.*", optional = true },
+			{ "Jezda1337/nvim-html-css" },
 			{
 				"saghen/blink.compat",
-				optional = true, -- make optional so it's only enabled if any extras need it
+				optional = false, -- make optional so it's only enabled if any extras need it
 				opts = {},
 				version = not vim.g.lazyvim_blink_main and "*",
 			},
@@ -121,7 +131,34 @@ return {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
 				nerd_font_variant = "mono",
-				use_nvim_cmp_as_default = true,
+				use_nvim_cmp_as_default = false,
+				kind_icons = {
+					Text = "󰉿",
+					Method = "󰆧",
+					Function = "󰊕",
+					Constructor = "",
+					Field = "󰜢",
+					Variable = "󰀫",
+					Class = "󰠱",
+					Interface = "",
+					Module = "",
+					Property = "󰜢",
+					Unit = "󰑭",
+					Value = "󰎠",
+					Enum = "",
+					Keyword = "󰌋",
+					Snippet = "",
+					Color = "󰏘",
+					File = "󰈙",
+					Reference = "󰈇",
+					Folder = "󰉋",
+					EnumMember = "",
+					Constant = "󰏿",
+					Struct = "󰙅",
+					Event = "",
+					Operator = "󰆕",
+					TypeParameter = "",
+				},
 			},
 
 			-- (Default) Only show the documentation popup when manually triggered
@@ -134,22 +171,22 @@ return {
 					draw = {
 						components = {
 							kind_icon = {
-								text = function(ctx)
-									local icon = ctx.kind_icon
-									if vim.tbl_contains({ "Path" }, ctx.source_name) then
-										local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
-										if dev_icon then
-											icon = dev_icon
-										end
-									else
-										icon = require("lspkind").symbolic(ctx.kind, {
-											mode = "symbol",
-										})
-									end
-
-									return icon .. ctx.icon_gap
-								end,
-
+								-- text = function(ctx)
+								-- 	local icon = ctx.kind_icon
+								-- 	if vim.tbl_contains({ "Path" }, ctx.source_name) then
+								-- 		local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+								-- 		if dev_icon then
+								-- 			icon = dev_icon
+								-- 		end
+								-- 	else
+								-- 		icon = require("lspkind").symbolic(ctx.kind, {
+								-- 			mode = "symbol",
+								-- 		})
+								-- 	end
+								--
+								-- 	return icon .. ctx.icon_gap
+								-- end,
+								--
 								-- Optionally, use the highlight groups from nvim-web-devicons
 								-- You can also add the same function for `kind.highlight` if you want to
 								-- keep the highlight groups in sync with the icons.
@@ -174,7 +211,10 @@ return {
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { "lazydev", "lsp", "path", "snippets", "buffer", "html-css" },
+				per_filetype = {
+					htmldjango = { "html-css", "lsp", "path", "snippets", "buffer" },
+				},
 				providers = {
 					["html-css"] = {
 						name = "html-css",

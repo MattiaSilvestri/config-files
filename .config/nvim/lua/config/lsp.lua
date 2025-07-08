@@ -118,5 +118,14 @@ return {
 		},
 	},
 	["jsonls"] = { capabilities = capabilities },
-	["django_template_lsp"] = { capabilities = capabilities },
+	["django_template_lsp"] = {
+		capabilities = capabilities,
+		cmd = { "djlsp" },
+		filetypes = { "html", "htmldjango" },
+		init_options = {
+			django_settings_module = "jarvisui.jarvsiui.settings.base",
+			docker_compose_file = "docker-compose.dev.yml",
+			docker_compose_service = "django",
+		},
+	},
 }
