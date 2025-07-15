@@ -1,6 +1,7 @@
 share	/usr/share/	s
 MindDump	/mnt/Data/Notes/Obsidian/MindDump/	o
 .local	/home/mattia/.local/	l
+JarvisServer	/home/mattia/Projects/JarvisServer/	j
 hypr	/home/mattia/.config/hypr/	h
 .dotfiles	/home/mattia/.dotfiles/.config/	q
 Desktop	/home/mattia/Desktop/	d

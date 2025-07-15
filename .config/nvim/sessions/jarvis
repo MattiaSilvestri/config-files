@@ -1,0 +1,220 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/Projects/JarvisServer
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+let s:shortmess_save = &shortmess
+if &shortmess =~ 'A'
+  set shortmess=aoOA
+else
+  set shortmess=aoO
+endif
+badd +53 ~/Projects/JarvisServer/jarvisui/front/urls.py
+badd +26 ~/Projects/JarvisServer/jarvisui/inventory/templates/inventory/category_list.html
+badd +25 ~/Projects/JarvisServer/jarvisui/front/templates/front/userauditlog_list.html
+badd +16 ~/Projects/JarvisServer/jarvisui/front/templates/front/userdevices_list.html
+badd +76 jarvisui/templates/partials/topbar.html
+argglobal
+%argdel
+edit jarvisui/templates/partials/topbar.html
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+wincmd =
+argglobal
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=10
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+17,19fold
+16,19fold
+22,24fold
+21,24fold
+15,25fold
+30,33fold
+29,34fold
+28,35fold
+27,36fold
+41,42fold
+40,43fold
+47,50fold
+54,56fold
+53,57fold
+46,59fold
+61,63fold
+60,64fold
+45,65fold
+67,68fold
+72,79fold
+71,80fold
+70,81fold
+85,87fold
+84,88fold
+83,89fold
+99,101fold
+98,103fold
+93,104fold
+92,105fold
+91,106fold
+110,112fold
+109,113fold
+108,114fold
+127,129fold
+126,129fold
+125,130fold
+132,134fold
+131,134fold
+124,135fold
+139,140fold
+141,142fold
+138,143fold
+117,144fold
+116,145fold
+150,151fold
+154,156fold
+158,161fold
+153,162fold
+165,168fold
+171,173fold
+176,179fold
+147,180fold
+39,181fold
+38,182fold
+185,188fold
+184,189fold
+14,190fold
+13,191fold
+194,195fold
+197,198fold
+let &fdl = &fdl
+let s:l = 76 - ((16 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 76
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("jarvisui/templates/partials/topbar.html", ":p")) | buffer jarvisui/templates/partials/topbar.html | else | edit jarvisui/templates/partials/topbar.html | endif
+if &buftype ==# 'terminal'
+  silent file jarvisui/templates/partials/topbar.html
+endif
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=10
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+17,19fold
+16,19fold
+22,24fold
+21,24fold
+15,25fold
+30,33fold
+29,34fold
+28,35fold
+27,36fold
+41,42fold
+40,43fold
+47,50fold
+54,56fold
+53,57fold
+46,59fold
+61,63fold
+60,64fold
+45,65fold
+67,68fold
+72,79fold
+71,80fold
+70,81fold
+85,87fold
+84,88fold
+83,89fold
+99,101fold
+98,103fold
+93,104fold
+92,105fold
+91,106fold
+110,112fold
+109,113fold
+108,114fold
+127,129fold
+126,129fold
+125,130fold
+132,134fold
+131,134fold
+124,135fold
+139,140fold
+141,142fold
+138,143fold
+117,144fold
+116,145fold
+150,151fold
+154,156fold
+158,161fold
+153,162fold
+165,168fold
+171,173fold
+176,179fold
+147,180fold
+39,181fold
+38,182fold
+185,188fold
+184,189fold
+14,190fold
+13,191fold
+194,195fold
+197,198fold
+let &fdl = &fdl
+let s:l = 75 - ((15 * winheight(0) + 32) / 64)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 75
+normal! 061|
+wincmd w
+wincmd =
+tabnext 1
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20
+let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+nohlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

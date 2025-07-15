@@ -247,8 +247,8 @@ alias nvi="NVIM_APPNAME=nvim-vanilla nvim"
 # django
 alias mg="python manage.py migrate"
 alias mm="python manage.py makemigrations"
-alias dj_run="python manage.py runserver 0:8000"
-alias dj_shell="python manage.py shell_plus"
+alias dj-run="uv run jarvisui/manage.py runserver 0:8000"
+alias dj-shell="uv run jarvisui/manage.py shell_plus"
 
 # DB management
 alias jarvisui_tfs="rainfrog \
@@ -341,8 +341,9 @@ function yy() {
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/bin/virtualenvwrapper.sh
+# export WORKON_HOME=$HOME/.virtualenvs
+# export PROJECT_HOME=$HOME/Devel
+# source /usr/bin/virtualenvwrapper.sh
 
 
+eval "$(uv generate-shell-completion zsh)"

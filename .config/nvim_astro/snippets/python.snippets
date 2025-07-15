@@ -1,0 +1,83 @@
+# Module Docstring
+snippet docs
+	"""
+	File: ${1:`vim_snippets#Filename('$1.py', 'foo.py')`}
+	Author: Mattia Silvestri
+	Email: mattia.silvestri@gtsu.org
+	Github: https://github.com/MattiaSilvestri
+	Description: ${0}
+	"""
+
+# New Class
+snippet cl
+	class ${1:ClassName}(${2:object}):
+		"""${3:docstring for $1}"""
+		def __init__(self, ${4:arg}):
+			${5:super($1, self).__init__()}
+			self.$4 = $4
+			${0}
+
+# === Django === #
+
+# Admin
+snippet cl_admin
+	class ${1:ClassName}(admin.ModelAdmin):
+    	list_filter = ("${2:filter}",)
+    	search_fields = ("${3:search}",)
+    	autocomplete_fields = [
+        	"${4:autocomplete}",
+    	]
+    	formfield_overrides = {
+        	FormResponseField: {"widget": Textarea},
+    	}
+
+snippet tmp_admin
+	import autocomplete_all as admin
+	from django.contrib import admin as django_admin
+	from django.forms import Textarea
+
+	from core.fields import FormField, FormResponseField
+	from ${1:appname}.models import ()
+
+
+	class ${2:ClassNameAdmin}(admin.ModelAdmin):
+    	list_filter = ("${3:filter}",)
+    	search_fields = ("${4:search}",)
+    	autocomplete_fields = [
+        	"${5:autocomplete}",
+    	]
+    	formfield_overrides = {
+        	FormResponseField: {"widget": Textarea},
+    	}
+
+	admin.site.register(${6:ClassName}, $2)
+
+
+# URLS
+snippet urlapi
+	router.register(
+    	r"${1:url_name}",
+    	api.${2:view_name},
+    	basename="${3:basename}",
+	)
+
+snippet urlgeneric
+	path(
+    	r"${1:url_name}",
+    	views.${2:view_name}.as_view(),
+    	name="${3:basename}",
+	)
+
+# Views
+snippet vue_apiread
+	class ${1:ClassName}(FiltersMixin, viewsets.ReadOnlyModelViewSet):
+    	queryset = ${2:ModelName}.objects.all()
+    	serializer_class = ${3:SerializerName}
+    	filter_backends = (filters.OrderingFilter,)
+    	ordering_fields = ("name",)
+    	filter_mappings = {
+        	"name": "name__icontains",
+    	}
+
+    	def filter_queryset(self, queryset):
+        	return queryset.filter(company=get_user_company(self.request.user))

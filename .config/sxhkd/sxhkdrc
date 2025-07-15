@@ -1,6 +1,6 @@
 ##---------- Keybindings for bspwm ----------##
 
-# Terminal (termite)
+# Terminal
 super + Return
 	alacritty 
 
@@ -105,7 +105,7 @@ super + t
 # 	fi
 
 # Split horizontal, vertical or cancel
-super + {a,s,q}
+super + {s,a,q}
 	bspc node -p {east,south,cancel}
 
 # Preselect the ratio
