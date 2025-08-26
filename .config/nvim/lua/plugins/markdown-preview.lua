@@ -20,7 +20,7 @@ return {
 		-- vim.g.mkdp_open_to_the_world = 1
 		-- vim.g.mkdp_open_ip = "127.0.0.1"
 		-- vim.g.mkdp_port = 8001
-		vim.g.mkdp_browser = "firefox"
+		vim.g.mkdp_browser = "microsoft-edge-stable"
 		vim.g.mkdp_echo_preview_url = 1
 		vim.g.mkdp_auto_close = 0
 		vim.g.mkdp_auto_start = 1

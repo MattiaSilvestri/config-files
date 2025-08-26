@@ -116,7 +116,7 @@ return {
 		["<leader>pu"] = { function() require("lazy").check() end, desc = "Plugins Check Updates", },
 		["<leader>pU"] = { function() require("lazy").update() end, desc = "Plugins Update", },
 
-		-- Pane navigation --
+		-- Window management --
 		["<C-H>"] = { "<C-w>h", desc = "Move to left split" },
 		["<C-J>"] = { "<C-w>j", desc = "Move to below split" },
 		["<C-K>"] = { "<C-w>k", desc = "Move to above split" },
@@ -125,6 +125,7 @@ return {
 		["<C-Down>"] = { "<Cmd>resize +2<CR>", desc = "Resize split down" },
 		["<C-Left>"] = { "<Cmd>vertical resize -2<CR>", desc = "Resize split left" },
 		["<C-Right>"] = { "<Cmd>vertical resize +2<CR>", desc = "Resize split right" },
+		["<leader>z"] = { "<Cmd>Maximize<CR>", desc = "Toggle maximizie current window" },
 
 		-- Session managment --
 		["<leader>S"] = { function() vim.tbl_get(sections, "S") end, desc = sections.S.desc, },

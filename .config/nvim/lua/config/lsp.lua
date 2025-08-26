@@ -128,4 +128,10 @@ return {
 			docker_compose_service = "django",
 		},
 	},
+	-- ["jinja_lsp"] = {
+	-- 	enabled = false,
+	-- 	capabilities = capabilities,
+	-- 	cmd = { "jinja-lsp" },
+	-- 	filetypes = { "html", "htmldjango" },
+	-- },
 }

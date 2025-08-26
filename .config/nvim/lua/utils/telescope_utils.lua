@@ -22,7 +22,14 @@ local function open_definition_in_window()
 				require("telescope.actions").close(prompt_bufnr)
 				-- Open location in the picked window
 				vim.api.nvim_set_current_win(picked_window)
-				vim.lsp.util.jump_to_location(entry.value)
+				local location = {
+					uri = "file://" .. entry.filename,
+					range = {
+						start = { line = entry.lnum - 1, character = entry.col },
+						["end"] = { line = entry.lnum - 1, character = entry.col },
+					},
+				}
+				vim.lsp.util.show_document(location, "utf-16", { focus = true })
 			end)
 			return true
 		end,
