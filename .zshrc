@@ -245,10 +245,12 @@ alias vim="vim"
 alias nvi="NVIM_APPNAME=nvim-vanilla nvim"
 
 # django
-alias mg="python manage.py migrate"
-alias mm="python manage.py makemigrations"
-alias dj-run="uv run jarvisui/manage.py runserver 0:8000"
-alias dj-shell="uv run jarvisui/manage.py shell_plus"
+alias djrun="uv run --env-file .env jarvisui/manage.py runserver 0:8000"
+alias djshell="uv run --env-file .env jarvisui/manage.py shell_plus"
+alias djmg="uv run --env-file .env jarvisui/manage.py migrate"
+alias djmm="uv run --env-file .env jarvisui/manage.py makemigrations"
+alias djmmsg="uv run --env-file .env jarvisui/manage.py make_messages"
+alias djcmsg="uv run --env-file .env jarvisui/manage.py compile_messages"
 
 # DB management
 alias jarvisui_tfs="rainfrog \
@@ -257,6 +259,9 @@ alias jarvisui_tfs="rainfrog \
                     --host localhost \
                     --port 5432 \
                     --database jarvisui_tfs"
+
+# Apps with env vars
+# alias ghostty="GDK_DEBUG=gl-disable-gles ghostty"
 
 # Other
 alias disc="sudoedit /opt/discord/resources/build_info.json"
@@ -300,6 +305,7 @@ export PATH="/home/mattia/.cargo/bin:$PATH"
 export PATH="/home/mattia/.local/bin:$PATH"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export DJANGO_SETTINGS_MODULE=jarvisui.settings.development
+export GDK_BACKEND=x11
 
 export EDITOR=nvim
 export VISUAL=nvim

@@ -1,4 +1,5 @@
 share	/usr/share/	s
+sessions	/home/mattia/.local/share/nvim/sessions/jarvis	0
 MindDump	/mnt/Data/Notes/Obsidian/MindDump/	o
 .local	/home/mattia/.local/	l
 JarvisServer	/home/mattia/Projects/JarvisServer/	j

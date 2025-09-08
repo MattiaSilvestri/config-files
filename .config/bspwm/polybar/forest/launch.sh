@@ -11,7 +11,7 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bar
-polybar -q main -c "$DIR"/config.ini &
-# MONITOR=eDP-1 polybar -q main -c "$DIR"/config_eDP-1.ini &
-# MONITOR=HDMI-1 polybar -q main -c "$DIR"/config_HDMI.ini &
+# polybar -q main -c "$DIR"/config.ini &
+MONITOR=HDMI-0 polybar -q main -c "$DIR"/config_HDMI-0.ini &
+MONITOR=DVI-D-0 polybar -q main -c "$DIR"/config_DVI-D-0.ini &
 

@@ -2,14 +2,14 @@
 
 # variables
 config=$HOME/.config/hypr
-scripts=$config/scripts
+# scripts=$config/scripts
 
 # notification daemon
 # dunst &
 
 # waybar
 # $scripts/launch_waybar &
-$scripts/tools/dynamic &
+# $scripts/tools/dynamic &
 # agsv1 &
 
 # wallpaper
@@ -17,7 +17,7 @@ $scripts/tools/dynamic &
 # hyprpaper &
 
 # effects
-$scripts/rgb &
+# $scripts/rgb &
 
 # other
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -31,7 +31,7 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 blueberry-tray &
 
 # Blue-light filter
-wlsunset -t 3500 -T 6500 -S 8:00 -s 18:00 &
+wlsunset -t 3500 -T 6500 -S 8:00 -s 20:00 &
 
 #swayidle daemon and inhibitor
 # swayidle -w \
@@ -58,9 +58,9 @@ sleep 5 && ~/AppImages/pcloud &
 udiskie &
 
 # Launch swww and wallpaper script
-# sleep 5 && swww-daemon && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
-sleep 5 && swww-daemon & 
-sleep 5 && waypaper-engine daemon &
+sleep 5 && swww-daemon && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+# sleep 5 && swww-daemon & 
+# sleep 5 && waypaper-engine daemon &
 
 # Network manager
 # nm-applet &
@@ -70,5 +70,6 @@ pamixer --default-source --set-volume 30
 
 # Hyprland stuff
 # hyprctl keyword general:layout "master" &
+# ags_end4 &
 hyprpm reload -n &
 
