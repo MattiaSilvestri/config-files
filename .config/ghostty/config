@@ -52,7 +52,7 @@ window-padding-y = 7
 window-padding-balance = true
 
 # Colors
-background = #1e1e2e
+background = #1E1D2D
 theme = catppuccin-mocha
 
 # Fonts
