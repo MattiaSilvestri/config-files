@@ -11,7 +11,7 @@ return {
 				view = "cmdline_popup",
 			},
 			messages = {
-				enabled = true,
+				enabled = false,
 			},
 			presets = {
 				lsp_doc_border = true,

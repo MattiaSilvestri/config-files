@@ -2,7 +2,7 @@
 
 # Terminal (termite)
 super + Return
-	kitty 
+	ghostty 
 
 # Floating terminal
 super + shift + Return
@@ -216,7 +216,7 @@ super + o
 # alt + shift + {a,s}
 # 	dir={west,east}; \
 # 	bspc node -s "$dir" --follow \
- # 	    || bspc node -m "$dir" --follow
+#  	    || bspc node -m "$dir" --follow
 
 super + shift + {a,s}
 	dir={west,east}; \

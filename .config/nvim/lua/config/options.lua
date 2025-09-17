@@ -6,6 +6,7 @@ return {
 		number = true,           -- sets vim.opt.number
 		wrap = false,            -- LIne wrawpping
 		laststatus = 3,          -- Statusline spans all splits
+		cmdheight = 0,
 		cursorline = true,       -- Enable highlighting of the current line
 		clipboard = "unnamedplus", -- Allows neovim to access the system clipboard
 		tabstop = 2,
