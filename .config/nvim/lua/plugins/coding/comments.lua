@@ -21,7 +21,8 @@ return {
 		event = "BufEnter",
 		opts = {},
 		keys = {
-			{ "<leader>sa", "<cmd>TodoTelescope<cr>", desc = "List TODOs" },
+			{ "<leader>xt", "<cmd>TodoTelescope<cr>",               desc = "List TODOs" },
+			{ "<leader>xn", "<cmd>TodoTelescope keywords=NOTE<cr>", desc = "List NOTEs" },
 		},
 	},
 }
