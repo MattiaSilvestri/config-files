@@ -1,0 +1,62 @@
+#!/bin/bash
+#
+# Smart directional resize for Hyprland
+# Usage: smart-resize.sh left|right|up|down
+
+direction=$1
+step=30   # how many pixels to grow/shrink each time
+
+# Get window geometry from hyprctl
+win=$(hyprctl activewindow -j)
+if [ -z "$win" ]; then
+  exit 1
+fi
+
+x=$(echo "$win" | jq '.at[0]')
+y=$(echo "$win" | jq '.at[1]')
+w=$(echo "$win" | jq '.size[0]')
+h=$(echo "$win" | jq '.size[1]')
+
+# Get monitor width/height (for orientation check)
+mon=$(hyprctl monitors -j | jq '.[] | select(.focused==true)')
+mw=$(echo "$mon" | jq '.width')
+mh=$(echo "$mon" | jq '.height')
+
+case $direction in
+  left)
+    if [ "$x" -gt $((mw / 2)) ]; then
+      # right half → grow left
+      hyprctl dispatch resizeactive -$step 0
+    else
+      # left half → grow right
+      hyprctl dispatch resizeactive $step 0
+    fi
+    ;;
+  right)
+    if [ "$x" -gt $((mw / 2)) ]; then
+      # right half → grow right
+      hyprctl dispatch resizeactive $step 0
+    else
+      # left half → grow left
+      hyprctl dispatch resizeactive -$step 0
+    fi
+    ;;
+  up)
+    if [ "$y" -gt $((mh / 2)) ]; then
+      # bottom half → grow up
+      hyprctl dispatch resizeactive 0 -$step
+    else
+      # top half → grow down
+      hyprctl dispatch resizeactive 0 $step
+    fi
+    ;;
+  down)
+    if [ "$y" -gt $((mh / 2)) ]; then
+      # bottom half → grow down
+      hyprctl dispatch resizeactive 0 $step
+    else
+      # top half → grow up
+      hyprctl dispatch resizeactive 0 -$step
+    fi
+    ;;
+esac
