@@ -1,37 +1,37 @@
 [[plugin.deps]]
-use = "h-hg/yamb"
-rev = "108347b"
-hash = "faf1b817347b5b46c96039dab538694b"
-
-[[plugin.deps]]
-use = "yazi-rs/plugins:max-preview"
-rev = "71c4fc2"
-hash = "9bc26d10d2f6e2aa93b10905b1b76979"
-
-[[plugin.deps]]
 use = "Ape/open-with-cmd"
 rev = "a80d1cf"
 hash = "86e0312b01bc5762813c6c1d0517f073"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:git"
-rev = "beb586a"
-hash = "771f18427fb75fb19990ce602bb322f4"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "beb586a"
-hash = "ae9e1d0c6bfd68cdebc98cc684c22b45"
+rev = "d1c8baa"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
-use = "boydaihungst/mediainfo"
-rev = "f565c5a"
-hash = "15d0dbb4e9ba84eb1f2dbb8e9e249bf6"
+use = "yazi-rs/plugins:git"
+rev = "d1c8baa"
+hash = "3cce60031b27cbce80b50f68ca319c0a"
+
+[[plugin.deps]]
+use = "stelcodes/bunny"
+rev = "7137a44"
+hash = "58bfa473bcac8574400e573787954512"
 
 [[plugin.deps]]
 use = "AnirudhG07/rich-preview"
-rev = "2559e5f"
-hash = "c9a3d0731e7d7340e2c6d6126b1f3aa3"
+rev = "843c3fa"
+hash = "b4040931f0d2f9670ddb4923e55cd881"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "2093ab7"
+hash = "16a10359fc2a3cd8cc8bcfbe00f744d3"
 
 [flavor]
 deps = []

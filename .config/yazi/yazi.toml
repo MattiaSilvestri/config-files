@@ -2,7 +2,7 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
-[manager]
+[mgr]
 ratio          = [ 1, 4, 3 ]
 sort_by        = "alphabetical"
 sort_sensitive = false
@@ -117,7 +117,10 @@ prepend_previewers = [
 	{ mime = "application/x-7z-compressed", run = "ouch" },
 	{ mime = "application/x-rar",           run = "ouch" },
 	{ mime = "application/x-xz",            run = "ouch" },
-  { mime = "{audio,video,image}/*", run = "mediainfo"},
+ # Replace magick, image, video with mediainfo
+	{ mime = "{audio,video,image}/*", run = "mediainfo"},
+	{ mime = "application/subrip", run = "mediainfo" },
+	{ mime = "application/postscript", run = "mediainfo" },
   { name = "*.csv", run = "rich-preview"}, # for csv files
   { name = "*.md", run = "rich-preview" }, # for markdown (.md) files
   { name = "*.rst", run = "rich-preview"}, # for restructured text (.rst) files
