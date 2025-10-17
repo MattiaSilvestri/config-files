@@ -38,13 +38,55 @@
       "audio": [
         "pavucontrol"
       ]
+    },
+    "battery": {
+      "warnLevels": [
+        {
+          "level": 20,
+          "title": "Low battery",
+          "message": "You might want to plug in a charger",
+          "icon": "battery_android_frame_2"
+        },
+        {
+          "level": 10,
+          "title": "Did you see the previous message?",
+          "message": "You should probably plug in a charger <b>now</b>",
+          "icon": "battery_android_frame_1"
+        },
+        {
+          "level": 5,
+          "title": "Critical battery level",
+          "message": "PLUG THE CHARGER RIGHT NOW!!",
+          "icon": "battery_android_alert",
+          "critical": true
+        }
+      ],
+      "criticalLevel": 3
+    },
+    "idle": {
+      "inhibitWhenAudio": true,
+      "timeouts": [
+        {
+          "timeout": 180,
+          "idleAction": ""
+        },
+        {
+          "timeout": 300,
+          "idleAction": "",
+          "returnAction": ""
+        },
+        {
+          "timeout": 600,
+          "idleAction": ""
+        }
+      ]
     }
   },
   "background": {
     "desktopClock": {
       "enabled": false
     },
-    "enabled": false,
+    "enabled": true,
     "visualiser": {
       "enabled": false,
       "autoHide": true,
@@ -104,7 +146,7 @@
     "showOnHover": true,
     "status": {
       "showAudio": true,
-      "showBattery": true,
+      "showBattery": false,
       "showBluetooth": true,
       "showKbLayout": false,
       "showMicrophone": false,
@@ -119,7 +161,7 @@
     "workspaces": {
       "activeIndicator": true,
       "activeLabel": "󰮯",
-      "activeTrail": true,
+      "activeTrail": false,
       "label": "",
       "occupiedBg": false,
       "occupiedLabel": "󰮯",
@@ -278,10 +320,10 @@
       {
         "name": "Sleep",
         "icon": "bedtime",
-        "description": "Suspend",
+        "description": "Suspend then hibernate",
         "command": [
           "systemctl",
-          "suspend"
+          "suspend-then-hibernate"
         ],
         "enabled": true,
         "dangerous": false
@@ -304,12 +346,12 @@
     "hiddenApps": []
   },
   "lock": {
-    "recolourLogo": true
+    "recolourLogo": false
   },
   "notifs": {
-    "actionOnClick": false,
+    "actionOnClick": true,
     "clearThreshold": 0.3,
-    "defaultExpireTimeout": 5000,
+    "defaultExpireTimeout": 3000,
     "expandThreshold": 20,
     "expire": true
   },
@@ -342,6 +384,7 @@
   },
   "session": {
     "dragThreshold": 30,
+    "enabled": true,
     "vimKeybinds": false,
     "commands": {
       "logout": [
@@ -353,7 +396,7 @@
         "systemctl",
         "poweroff"
       ],
-      "suspend": [
+      "hibernate": [
         "systemctl",
         "suspend"
       ],
@@ -363,7 +406,22 @@
       ]
     }
   },
-  "utilities": {
+  "sidebar": {
+    "dragThreshold": 80,
     "enabled": true
+  },
+  "utilities": {
+    "enabled": true,
+    "maxToasts": 4,
+    "toasts": {
+      "audioInputChanged": true,
+      "audioOutputChanged": true,
+      "capsLockChanged": true,
+      "chargingChanged": true,
+      "configLoaded": true,
+      "dndChanged": true,
+      "gameModeChanged": true,
+      "numLockChanged": true
+    }
   }
 }
