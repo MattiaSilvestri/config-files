@@ -45,7 +45,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -244,9 +244,10 @@ prefer-no-csd
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "bash" "-c" "~/.config/niri/launch_waybar &"
-spawn-at-startup "bash" "-c" "sleep 5 && swww-daemon &"
-spawn-at-startup "bash" "-c" "~/.local/bin/wallpaper ~/.config/wallpapers/ &"
+// spawn-at-startup "bash" "-c" "~/.config/niri/launch_waybar &"
+// spawn-at-startup "bash" "-c" "sleep 5 && swww-daemon &"
+// spawn-at-startup "bash" "-c" "~/.local/bin/wallpaper ~/.config/wallpapers/ &"
+spawn-at-startup "bash" "-c" "qs -c noctalia-shell"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -289,7 +290,7 @@ animations {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 window-rule {
-    geometry-corner-radius 7
+    geometry-corner-radius 10
     clip-to-geometry true
 }
 
@@ -418,8 +419,8 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
+    Alt+Ctrl+j              { focus-workspace-down; }
+    Alt+Ctrl+k              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }

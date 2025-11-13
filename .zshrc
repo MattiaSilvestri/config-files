@@ -2,9 +2,12 @@ nitch
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
+export PATH="/home/mattia/.local/bin:$PATH"
+eval "$(oh-my-posh init zsh --config /home/mattia/.cache/oh-my-posh/themes/multiverse-neon.omp.json)"
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -19,7 +22,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -42,7 +45,7 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Keybindings
 bindkey -e
@@ -286,41 +289,41 @@ export PATH="/usr/bin/vendor_perl:$PATH"
 export PATH="/usr/bin/core_perl:$PATH"
 export PATH="/home/mattia/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="/home/mattia/.cargo/bin:$PATH"
-export PATH="/home/mattia/.local/bin:$PATH"
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export QT_QPA_PLATFORM=wayland
+export DJANGO_SETTINGS_MODULE=jarvisui.settings.development
 
 export EDITOR=nvim
 export VISUAL=nvim
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Joshuto integratrion
-function joshuto() {
-	ID="$$"
-	mkdir -p /tmp/$USER
-	OUTPUT_FILE="/tmp/$USER/joshuto-cwd-$ID"
-	env joshuto --output-file "$OUTPUT_FILE" $@
-	exit_code=$?
-
-	case "$exit_code" in
-		# regular exit
-		0)
-			;;
-		# output contains current directory
-		101)
-			JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
-			cd "$JOSHUTO_CWD"
-			;;
-		# output selected files
-		102)
-			;;
-		*)
-			echo "Exit code: $exit_code"
-			;;
-	esac
-}
+# function joshuto() {
+# 	ID="$$"
+# 	mkdir -p /tmp/$USER
+# 	OUTPUT_FILE="/tmp/$USER/joshuto-cwd-$ID"
+# 	env joshuto --output-file "$OUTPUT_FILE" $@
+# 	exit_code=$?
+#
+# 	case "$exit_code" in
+# 		# regular exit
+# 		0)
+# 			;;
+# 		# output contains current directory
+# 		101)
+# 			JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
+# 			cd "$JOSHUTO_CWD"
+# 			;;
+# 		# output selected files
+# 		102)
+# 			;;
+# 		*)
+# 			echo "Exit code: $exit_code"
+# 			;;
+# 	esac
+# }
 
 function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -358,3 +361,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export WORKON_HOME=$HOME/.virtualenvs
 export MSYS_HOME=/c/msys/1.0
 source /usr/bin/virtualenvwrapper.sh
+

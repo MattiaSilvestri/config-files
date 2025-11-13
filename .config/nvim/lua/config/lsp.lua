@@ -1,5 +1,6 @@
 -- Get capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+local util = require("lspconfig.util")
 
 capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
 capabilities = vim.tbl_deep_extend(
@@ -60,6 +61,19 @@ return {
 		init_options = {
 			vue = {
 				hybridMode = true,
+			},
+			typescript = {
+				tsdk = (function()
+					-- Find project root (package.json or .git)
+					local root = util.root_pattern("package.json", ".git")(vim.fn.expand("%:p"))
+					if root then
+						local tsdk = root .. "/node_modules/typescript/lib"
+						if vim.fn.isdirectory(tsdk) == 1 then
+							return tsdk
+						end
+					end
+					return nil -- fall back to Volar’s bundled TS
+				end)(),
 			},
 		},
 		settings = {

@@ -4,8 +4,12 @@
 config=$HOME/.config/hypr
 scripts=$config/scripts
 
-# notification daemon
-# dunst &
+# Bar, wallpaper
+~/.config/hypr/hyprland/scripts/start_geoclue_agent.sh &
+qs -c ii &
+
+# Input method
+fcitx5 &
 
 # waybar
 # $scripts/launch_waybar &
@@ -21,11 +25,18 @@ $scripts/rgb &
 
 # other
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+sleep 1 && dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+gnome-keyring-daemon --start --components=secrets &
+# /usr/lib/polkit-kde-authentication-agent-1 || /usr/libexec/polkit-kde-authentication-agent-1  || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || /usr/libexec/polkit-gnome-authentication-agent-1 
+dbus-update-activation-environment --all
 
-# Conky
-#killall -q conky
-#/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
+# Audio
+easyeffects --gapplication-service &
+
+# Clipboard: history
+# exec-once = wl-paste --watch cliphist store &
+wl-paste --type text --watch bash -c 'cliphist store && qs -c $qsConfig ipc call cliphistService update' &
+wl-paste --type image --watch bash -c 'cliphist store && qs -c $qsConfig ipc call cliphistService update' &
 
 # Bluetooth manager
 blueberry-tray &
@@ -51,25 +62,25 @@ wl-paste --type image --watch cliphist store &
 # nordvpn service
 systemctl start nordvpnd.service &
 
-# Megasync and pcloud
-sleep 5 && ~/AppImages/pcloud &
+# Nextcloud and pcloud
+sleep 5 && ~/Applications/pcloud &
 
 # Automatic mounting
-udiskie &
-
-# Launch swww and wallpaper script
-# sleep 5 && swww-daemon && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
-sleep 5 && swww-daemon & 
-sleep 5 && waypaper-engine daemon &
-
-# Network manager
-# nm-applet &
+nohup udiskie --tray &
 
 # Set soruce volume
 pamixer --default-source --set-volume 30
 
 # Hyprland stuff
 # hyprctl keyword general:layout "master" &
-ags_end4 &
+# ags_end4 &
 hyprpm reload -n &
 
+# Launch swww and wallpaper script
+sleep 5 && swww-daemon & 
+sleep 5 && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+# sleep 5 && swww-daemon & 
+# sleep 5 && waypaper-engine daemon &
+
+# Network manager
+# nm-applet &

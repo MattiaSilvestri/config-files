@@ -35,7 +35,7 @@ return {
 		after = "catppuccin",
 		config = true,
 		opts = {
-			highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
+			highlights = require("catppuccin.special.bufferline").get_theme({
 				custom = {
 					all = {
 						fill = { bg = bg },
