@@ -7,7 +7,7 @@ nitch
 # fi
 
 export PATH="/home/mattia/.local/bin:$PATH"
-eval "$(oh-my-posh init zsh --config /home/mattia/.cache/oh-my-posh/themes/multiverse-neon.omp.json)"
+eval "$(oh-my-posh init zsh --config /home/mattia/.config/oh-my-posh/themes/tokyonight_surya.omp.json)"
 
 
 # Set the directory we want to store zinit and plugins

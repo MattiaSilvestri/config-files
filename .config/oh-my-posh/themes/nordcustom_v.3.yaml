@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+palette:
+    nord-0: '#2E3440'
+    nord-1: '#3B4252'
+    nord-2: '#434C5E'
+    nord-3: '#4C566A'
+    nord-4: '#D8DEE9'
+    nord-5: '#E5E9F0'
+    nord-6: '#ECEFF4'
+    nord-7: '#8FBCBB'
+    nord-8: '#88C0D0'
+    nord-9: '#81A1C1'
+    nord-10: '#5E81AC'
+    nord-11: '#BF616A'
+    nord-12: '#D08770'
+    nord-13: '#EBCB8B'
+    nord-14: '#A3BE8C'
+    nord-15: '#B48EAD'
+blocks:
+    - type: prompt
+      alignment: left
+      segments:
+        - properties:
+            cache_duration: none
+          template: " ╭─<#BF616A>[<#88C0D0>\U000F0536</> </>{{ if .SSHSession }} {{ end }}{{ .UserName }}@{{ .HostName }}<#BF616A>]</> "
+          foreground: p:nord-13
+          type: session
+          style: plain
+        - properties:
+            cache_duration: none
+            playing_icon: "\U000F04C7 "
+          template: '{{ .Icon }}{{ if ne .Status "stopped" }}{{ .Artist }} - {{ .Track }}{{ end }}'
+          foreground: p:nord-14
+          type: spotify
+          style: plain
+        - properties:
+            cache_duration: none
+            folder_icon: 
+            folder_separator_icon: ' / '
+            home_icon: "\U000F02DC"
+            max_depth: 2
+            style: agnoster_short
+          foreground: p:nord-15
+          type: path
+          style: plain
+        - properties:
+            always_enabled: true
+            cache_duration: none
+          template: " {{ if gt .Code 0 }}✘ {{ else }}\U000F0E1E {{ end }}{{ if eq ( gt .Code 0 ) .Segments.Path.Writable}} {{ end }}"
+          foreground: p:nord-14
+          type: status
+          style: plain
+          foreground_templates:
+            - '{{ if gt .Code 0 }}red{{ end }}'
+    - type: prompt
+      alignment: right
+      segments:
+        - properties:
+            branch_icon: ' '
+            cache_duration: none
+            fetch_stash_count: true
+            fetch_status: true
+            fetch_upstream_icon: true
+            fetch_worktree_count: true
+          template: "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \U000F0193 {{ .StashCount }}{{ end }}"
+          foreground: p:nord-13
+          type: git
+          style: plain
+        - properties:
+            cache_duration: none
+            time_format: Mon | 15:04
+          template: ' {{ .CurrentDate | date .Format }} '
+          foreground: p:nord-7
+          type: time
+          style: plain
+        - properties:
+            cache_duration: none
+            charged_icon: "\U000F0084"
+            charging_icon: "\U000F0084"
+            discharging_icon: "\U000F0079"
+          template: " {{ .Percentage}}\U000F03F0 {{.Templates }} </>"
+          foreground: p:nord-12
+          templates_logic: first_match
+          type: battery
+          style: plain
+          background_templates:
+            - '{{if eq "Charging" .State.String }}p:green{{end}}'
+            - '{{if eq "Discharging" .State.String}}p:orange{{end}}'
+          templates:
+            - "{{if eq \"Discharging\" .State.String}}{{if lt .Percentage 11}}\U000F007A{{else if lt .Percentage 21}}\U000F007B{{else if lt .Percentage 31}}\U000F007C{{else if lt .Percentage 41}}\U000F007D{{else if lt .Percentage 51}}\U000F007E{{else if lt .Percentage 61}}\U000F007E{{else if lt .Percentage 71}}\U000F0080{{else if lt .Percentage 81}}\U000F0081{{else if lt .Percentage 91}}\U000F0082{{else}}\U000F0079{{end}}{{end}}"
+            - "{{if eq \"Charging\" .State.String}}{{ if lt .Percentage 21}}\U000F0086{{else if lt .Percentage 31}}\U000F0087{{else if lt .Percentage 41}}\U000F0088{{else if lt .Percentage 61}}\U000F0089{{else if lt .Percentage 81}}\U000F008A{{else if lt .Percentage 91}}\U000F008B{{else}}\U000F0084{{end}}{{end}}"
+    - type: prompt
+      alignment: left
+      segments:
+        - properties:
+            cache_duration: none
+          template: " <#EBCB8B>╰─</><#A3BE8C>\U000F0B6F</><#EBCB8B>\U000F0B6F</><#D08770>\U000F0B6F</> \U000F0142 "
+          foreground: p:nord-8
+          type: text
+          style: plain
+      newline: true
+version: 3
