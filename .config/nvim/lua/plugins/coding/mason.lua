@@ -1,6 +1,6 @@
 --- @type LazySPec
 return {
-	{ "williamboman/mason.nvim",                   config = true },
+	{ "williamboman/mason.nvim", config = true },
 	{ "WhoIsSethDaniel/mason-tool-installer.nvim", config = true },
 	{
 		"nvimtools/none-ls.nvim",
@@ -14,7 +14,8 @@ return {
 		opts = {
 			ensure_installed = {
 				"lua_ls",
-				"pyright",
+				-- "pyright",
+				"basedpyright",
 				"ruff",
 				"emmet_ls",
 				"tailwindcss",
@@ -48,7 +49,7 @@ return {
 					"djlint",
 					"luasnip",
 					"eslint_d",
-					"django_template_lsp",
+					-- "django_template_lsp",
 				},
 				methods = {
 					diagnostics = true,

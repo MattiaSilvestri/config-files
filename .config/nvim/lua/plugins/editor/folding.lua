@@ -32,11 +32,12 @@ return {
 		"kevinhwang91/nvim-ufo",
 		dependencies = { "kevinhwang91/promise-async" },
 		event = "VeryLazy",
-		enabled = false,
+		enabled = true,
+		config = true,
 		opts = {
-			-- provider_selector = function(bufnr, filetype, buftype)
-			-- 	return { "treesitter", "indent" }
-			-- end,
+			provider_selector = function(bufnr, filetype, buftype)
+				return { "treesitter", "indent" }
+			end,
 			fold_virt_text_handler = handler,
 			close_fold_kinds_for_ft = { default = { default = {} } }, -- prevent auto-fold
 		},

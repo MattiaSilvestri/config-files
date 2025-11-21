@@ -15,21 +15,49 @@ vim.lsp.buf.signature_help = {
 }
 
 return {
-	["pyright"] = {
+	-- ["pyright"] = {
+	-- 	capabilities = vim.tbl_deep_extend("force", capabilities, {}),
+	-- 	-- on_attach = function(client, bufnr)
+	-- 	-- 	client.server_capabilities.publishDiagnosticsProvider = false
+	-- 	-- end,
+	-- 	settings = {
+	-- 		pyright = {
+	-- 			-- Using Ruff's import organizer
+	-- 			disableOrganizeImports = true,
+	-- 		},
+	-- 		python = {
+	-- 			analysis = {
+	-- 				typeCheckingMode = "basic",
+	-- 				autoSearchPaths = true,
+	-- 				useLibraryCodeForTypes = true,
+	-- 				-- 	-- Ignore all files for analysis to exclusively use Ruff for linting
+	-- 				-- 	ignore = { "*" },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	-- on_attach = function(client, bufnr)
+	-- 	-- 	-- Disable the *built-in* LSP popup
+	-- 	-- 	client.handlers["textDocument/signatureHelp"] = function() end
+	-- 	-- end,
+	-- },
+	["basedpyright"] = {
 		capabilities = vim.tbl_deep_extend("force", capabilities, {}),
 		-- on_attach = function(client, bufnr)
 		-- 	client.server_capabilities.publishDiagnosticsProvider = false
 		-- end,
 		settings = {
-			pyright = {
+			basedpyright = {
 				-- Using Ruff's import organizer
 				disableOrganizeImports = true,
 			},
 			python = {
-				-- analysis = {
-				-- 	-- Ignore all files for analysis to exclusively use Ruff for linting
-				-- 	ignore = { "*" },
-				-- },
+				analysis = {
+					typeCheckingMode = "basic",
+					autoSearchPaths = true,
+					useLibraryCodeForTypes = true,
+					-- 	-- Ignore all files for analysis to exclusively use Ruff for linting
+					-- 	ignore = { "*" },
+				},
 			},
 		},
 		-- on_attach = function(client, bufnr)
@@ -107,7 +135,7 @@ return {
 					{
 						name = "@vue/typescript-plugin",
 						location = vim.fn.stdpath("data")
-								.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+							.. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
 						languages = { "vue" },
 					},
 				},
@@ -133,8 +161,9 @@ return {
 	},
 	["jsonls"] = { capabilities = capabilities },
 	["django_template_lsp"] = {
+		enabled = true,
 		capabilities = capabilities,
-		cmd = { "djlsp" },
+		cmd = { "/home/mattia/.local/bin/djlsp" },
 		filetypes = { "html", "htmldjango" },
 		init_options = {
 			django_settings_module = "jarvisui.jarvsiui.settings.base",

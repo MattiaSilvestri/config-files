@@ -67,6 +67,8 @@ return {
 			remap = true,
 			expr = true
 		},
+		["zR"] = { function() require('ufo').openAllFolds() end, desc = "Open all folds", },
+		["zM"] = { function() require('ufo').closeAllFolds() end, desc = "Close all folds", },
 
 		-- File explorer --
 		["<leader>n"] = { function() vim.tbl_get(sections, "n") end, desc = sections.n.desc, },

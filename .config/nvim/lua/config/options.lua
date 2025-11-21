@@ -18,13 +18,13 @@ return {
 		guifont = "FiraCode Nerd Font:h9:w0:#h-normal",
 	},
 	o = {
-		fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:",
-		foldcolumn = "0", -- '0' is not bad
-		foldlevel = 99, -- Using ufo provider need a large value, feel free to decrease the value
+		-- fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:",
+		foldcolumn = "0",
+		foldenable = true,
+		-- foldexpr = "nvim_treesitter#foldexpr()",
+		foldlevel = 99,
 		foldlevelstart = 99,
-		foldenable = false,
-		foldexpr = "v:lua.vim.lsp.foldexpr()",
-		foldmethod = "expr",
+		foldmethod = "manual",
 	},
 	g = {
 		neovide_padding_top = 6,
