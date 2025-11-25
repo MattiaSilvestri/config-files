@@ -46,7 +46,7 @@
             "fetch_status": true,
             "branch_icon": "\ue725 "
           },
-          "template": "{{ if or (.Working.Changed) (.Staging.Changed) }}<p:terminal-red>({{ .HEAD }})</>{{ else }}<p:terminal-blue>({{ .HEAD }})</>{{ end }}{{ if gt .Ahead 0 }} <p:terminal-blue>↑{{ .Ahead }}</>{{ end }}{{ if gt .Behind 0 }} <p:celeste-blue>↓{{ .Behind }}</>{{ end }}{{ if gt .Staging.Added 0 }} <p:pistachio-green>+{{ .Staging.Added }}</>{{ end }}{{ if gt .Staging.Deleted 0 }} <p:terminal-red>-{{ .Staging.Deleted }}</>{{ end }}{{ if gt .Working.Added 0 }} <p:pistachio-green>+{{ .Working.Added }}</>{{ end }}{{ if gt .Working.Modified 0 }} <p:terminal-yellow>~{{ .Working.Modified }}</>{{ end }}{{ if gt .Working.Deleted 0 }} <p:terminal-red>-{{ .Working.Deleted }}</>{{ end }}{{ if gt .Working.Untracked 0 }} <p:terminal-magenta>?{{ .Working.Untracked }}</>{{ end }}"
+          "template": "{{ if or (.Working.Changed) (.Staging.Changed) }}<p:terminal-red>({{ .HEAD }})</>{{ else }}<p:light-sky-blue>({{ .HEAD }})</>{{ end }}{{ if gt .Ahead 0 }} <p:terminal-blue>↑{{ .Ahead }}</>{{ end }}{{ if gt .Behind 0 }} <p:celeste-blue>↓{{ .Behind }}</>{{ end }}{{ if gt .Staging.Added 0 }} <p:pistachio-green>+{{ .Staging.Added }}</>{{ end }}{{ if gt .Staging.Deleted 0 }} <p:terminal-red>-{{ .Staging.Deleted }}</>{{ end }}{{ if gt .Working.Added 0 }} <p:pistachio-green>+{{ .Working.Added }}</>{{ end }}{{ if gt .Working.Modified 0 }} <p:terminal-yellow>~{{ .Working.Modified }}</>{{ end }}{{ if gt .Working.Deleted 0 }} <p:terminal-red>-{{ .Working.Deleted }}</>{{ end }}{{ if gt .Working.Untracked 0 }} <p:terminal-magenta>?{{ .Working.Untracked }}</>{{ end }}"
         },
         {
           "type": "status",

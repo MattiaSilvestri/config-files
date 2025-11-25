@@ -5,7 +5,8 @@ config=$HOME/.config/hypr
 # scripts=$config/scripts
 
 # Quickshell
-caelestia shell -d
+# caelestia shell -d
+qs -c noctalia-shell &
 
 # notification daemon
 # dunst &
@@ -61,8 +62,8 @@ sleep 5 && ~/Applications/pcloud &
 udiskie &
 
 # Launch swww and wallpaper script
-sleep 5 && swww-daemon &
-sleep 5 && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+# sleep 5 && swww-daemon &
+# sleep 5 && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
 # sleep 5 && swww-daemon & 
 # sleep 5 && waypaper-engine daemon &
 
