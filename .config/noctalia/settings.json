@@ -101,6 +101,10 @@
                     "showUnreadBadge": true
                 },
                 {
+                    "displayMode": "onhover",
+                    "id": "WiFi"
+                },
+                {
                     "diskPath": "/",
                     "id": "SystemMonitor",
                     "showCpuTemp": true,
