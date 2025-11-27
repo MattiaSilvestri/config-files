@@ -37,7 +37,8 @@ input {
         // natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
-        // scroll-method "no-scroll"
+        scroll-method "on-button-down"
+        scroll-button 274
     }
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
@@ -54,43 +55,43 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "eDP-1" {
-    // Uncomment this line to disable this output.
-    // off
-
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@59.997"
-
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 1
-
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    position x=1280 y=0
-}
+// output "DVI-D-0" {
+//     // Uncomment this line to disable this output.
+//     // off
+//
+//     // Resolution and, optionally, refresh rate of the output.
+//     // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
+//     // If the refresh rate is omitted, niri will pick the highest refresh rate
+//     // for the resolution.
+//     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
+//     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+//     mode "1920x1080@59.997"
+//
+//     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+//     scale 1
+//
+//     // Transform allows to rotate the output counter-clockwise, valid values are:
+//     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+//     transform "normal"
+//
+//     // Position of the output in the global coordinate space.
+//     // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
+//     // The cursor can only move between directly adjacent outputs.
+//     // Output scale and rotation has to be taken into account for positioning:
+//     // outputs are sized in logical, or scaled, pixels.
+//     // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+//     // so to put another output directly adjacent to it on the right, set its x to 1920.
+//     // If the position is unset or results in an overlap, the output is instead placed
+//     // automatically.
+//     position x=1280 y=0
+// }
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 7
+    gaps 10
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -225,7 +226,7 @@ layout {
     struts {
         // left 64
         // right 64
-        // top 64
+        top 3
         // bottom 64
     }
     tab-indicator {
@@ -233,7 +234,37 @@ layout {
         gap 2
         length total-proportion=0.4
         position "left"
-        place-within-column
+        // place-within-column
+    }
+}
+
+overview {
+    backdrop-color "#11111b"
+}
+
+recent-windows {
+    // off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#303446ff"
+        urgent-color "#ff9999ff"
+        padding 20
+        corner-radius 10
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
     }
 }
 
@@ -247,7 +278,7 @@ prefer-no-csd
 // spawn-at-startup "bash" "-c" "~/.config/niri/launch_waybar &"
 // spawn-at-startup "bash" "-c" "sleep 5 && swww-daemon &"
 // spawn-at-startup "bash" "-c" "~/.local/bin/wallpaper ~/.config/wallpapers/ &"
-spawn-at-startup "bash" "-c" "qs -c noctalia-shell"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -290,10 +321,9 @@ animations {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 window-rule {
-    geometry-corner-radius 10
+    geometry-corner-radius 7
     clip-to-geometry true
 }
-
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -304,6 +334,24 @@ window-rule {
     default-column-width {}
     geometry-corner-radius 7
     clip-to-geometry true
+}
+window-rule {
+    match app-id="org.signal.Signal"
+    open-floating true
+}
+window-rule {
+    match app-id="org.telegram.desktop"
+    open-floating true
+}
+
+window-rule {
+    match app-id="Xdg-desktop-portal-gtk"
+    open-floating true
+}
+
+window-rule {
+    match title="Picture-in-Picture"
+    open-floating true
 }
 
 // Example: block out two password managers from screen capture.
@@ -333,10 +381,29 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
+    // --- //
+
+    // Session controls //
+    Mod+X { spawn "hyprlock"; }
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Mod+Shift+E { quit; }
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    Mod+Shift+P { power-off-monitors; }
+
+    // --- //
+
+    // Noctalia //
+
+    Ctrl+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+Escape { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Ctrl+Alt+Delete { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Ctrl+Space { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    XF86AudioPlay { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return { spawn "ghostty"; }
+    Mod+Return { spawn "kitty"; }
     Mod+D { spawn "fuzzel"; }
-    Super+Alt+L { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -344,24 +411,24 @@ binds {
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     Alt+Q { close-window; }
 
-    Mod+O repeat=false { toggle-overview; }
+    Mod+Tab repeat=false { toggle-overview; }
 
     // Move focus
-    Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
-    Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    Mod+Left  { focus-column-or-monitor-left; }
+    Mod+Down  { focus-window-or-monitor-down; }
+    Mod+Up    { focus-window-or-monitor-up; }
+    Mod+Right { focus-column-or-monitor-right; }
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+J     { focus-window-or-monitor-down; }
+    Mod+K     { focus-window-or-monitor-up; }
+    Mod+L     { focus-column-or-monitor-right; }
 
     // Usually scrolling up and down with Shift in applications results in
     // horizontal scrolling; these binds replicate that.
@@ -386,8 +453,8 @@ binds {
     // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
     // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
+    Mod+semicolon { focus-column-first; }
+    Mod+apostrophe { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
@@ -415,25 +482,19 @@ binds {
 
     // And you can also move a whole workspace to another monitor:
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
-    // ...
 
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Alt+Ctrl+j              { focus-workspace-down; }
-    Alt+Ctrl+k              { focus-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
+    Ctrl+Alt+Down              { focus-workspace-down; }
+    Ctrl+Alt+Up              { focus-workspace-up; }
+    Ctrl+Alt+J              { focus-workspace-down; }
+    Ctrl+Alt+K              { focus-workspace-up; }
+    Shift+Alt+J { move-column-to-workspace-down; }
+    Shift+Alt+K   { move-column-to-workspace-up; }
+    Shift+Alt+Down         { move-column-to-workspace-down; }
+    Shift+Alt+Up         { move-column-to-workspace-up; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
     // ...
-
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
 
     // You can bind mouse wheel scroll ticks using the following syntax.
     // These binds will change direction based on the natural-scroll setting.
@@ -522,7 +583,7 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
+    Mod+Alt+Space       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
@@ -542,10 +603,4 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E { quit; }
-
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
 }
