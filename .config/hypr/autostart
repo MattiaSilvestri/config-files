@@ -6,7 +6,8 @@ scripts=$config/scripts
 
 # Bar, wallpaper
 ~/.config/hypr/hyprland/scripts/start_geoclue_agent.sh &
-qs -c ii &
+# qs -c ii &
+qs -c noctalia-shell &
 
 # Input method
 fcitx5 &
@@ -77,8 +78,8 @@ pamixer --default-source --set-volume 30
 hyprpm reload -n &
 
 # Launch swww and wallpaper script
-sleep 5 && swww-daemon & 
-sleep 5 && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+# sleep 5 && swww-daemon & 
+# sleep 5 && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
 # sleep 5 && swww-daemon & 
 # sleep 5 && waypaper-engine daemon &
 
