@@ -238,6 +238,36 @@ layout {
     }
 }
 
+overview {
+    backdrop-color "#11111b"
+}
+
+recent-windows {
+    // off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#303446ff"
+        urgent-color "#ff9999ff"
+        padding 20
+        corner-radius 10
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
 prefer-no-csd
 
 // Add lines like this to spawn processes at startup.
@@ -367,8 +397,9 @@ binds {
 
     Ctrl+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Mod+Escape { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Alt+Escape { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Ctrl+Alt+Delete { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+Ctrl+Space { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    XF86AudioPlay { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "kitty"; }
@@ -387,7 +418,7 @@ binds {
 
     Alt+Q { close-window; }
 
-    Mod+O repeat=false { toggle-overview; }
+    Mod+Tab repeat=false { toggle-overview; }
 
     // Move focus
     Mod+Left  { focus-column-or-monitor-left; }
