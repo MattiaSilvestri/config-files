@@ -20,7 +20,7 @@
         "preferredPlayer": "",
         "visualizerQuality": "high",
         "visualizerType": "wave",
-        "volumeOverdrive": false,
+        "volumeOverdrive": true,
         "volumeStep": 5
     },
     "bar": {
