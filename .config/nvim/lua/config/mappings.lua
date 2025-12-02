@@ -2,6 +2,14 @@
 local telescope = require("telescope.builtin")
 local Snacks = require("snacks")
 local telescope_utils = require("utils.telescope_utils")
+local grug = require("grug-far")
+local fzf = require("fzf-lua")
+
+local telescope_border = {
+	border = "rounded",
+	width = 0.9,
+	height = 0.85,
+}
 
 local sections = {
 	f = { desc = "Find" },
@@ -34,7 +42,7 @@ return {
 		["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", remap = true, desc = "Toggle comment" },
 	},
 	n = {
-		-- Telescope --
+		-- Telescope and file search --
 		["<leader>f"] = { function() vim.tbl_get(sections, "f") end, desc = sections.f.desc, },
 		["<leader>ff"] = { function() telescope.find_files() end, desc = "Find files", },
 		["<leader>fc"] = { function() telescope.find_files { cwd = vim.fn.stdpath("config") } end, desc = "Find config files", },
@@ -43,6 +51,18 @@ return {
 		["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
 		["<leader>fg"] = { function() require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Telescope live grep args", },
 		["<leader><leader>"] = { "<cmd>Telescope cmdline<cr>", desc = "Telescope cmdline", },
+		["<leader>fr"] = {
+			function()
+				grug.toggle_instance({
+					instanceName = "far",
+					staticTitle = "Find and Replace",
+					windowCreationCommand =
+					"botright split",
+					transient = true
+				})
+			end,
+			desc = "Find and replace",
+		},
 
 		-- Buffers and tabs --
 		["<leader>b"] = { function() vim.tbl_get(sections, "b") end, desc = sections.b.desc, },
@@ -158,6 +178,19 @@ return {
 		["P"] = { '"*p', desc = "Normal paste from clipboard" },
 		["<"] = { "<gv", desc = "Persistend indent left" },
 		[">"] = { ">gv", desc = "Persistend indent right" },
+		["<leader>fr"] = {
+			function()
+				grug.toggle_instance({
+					instanceName = "far",
+					staticTitle = "Find and Replace",
+					visualSelectionUsage = 'operate-within-range',
+					windowCreationCommand = "botright split",
+					transient = true
+				})
+			end,
+			desc = "Find and replace in current selection",
+		},
+		["<leader>ss"] = { function() fzf.blines() end, desc = "Visual selection or word" },
 	},
 
 	t = {
