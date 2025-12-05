@@ -3,14 +3,14 @@
         "customLaunchPrefix": "",
         "customLaunchPrefixEnabled": false,
         "enableClipPreview": true,
-        "enableClipboardHistory": false,
+        "enableClipboardHistory": true,
         "pinnedExecs": [
         ],
         "position": "center",
         "sortByMostUsed": true,
         "terminalCommand": "xterm -e",
         "useApp2Unit": false,
-        "viewMode": "list"
+        "viewMode": "grid"
     },
     "audio": {
         "cavaFrameRate": 30,
@@ -19,7 +19,7 @@
         ],
         "preferredPlayer": "",
         "visualizerQuality": "high",
-        "visualizerType": "wave",
+        "visualizerType": "mirrored",
         "volumeOverdrive": false,
         "volumeStep": 5
     },
@@ -372,7 +372,7 @@
         "fontDefault": "Roboto Light",
         "fontDefaultScale": 1.02,
         "fontFixed": "Cascadia Mono NF Light",
-        "fontFixedScale": 1.1400000000000001,
+        "fontFixedScale": 1.07,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "settingsPanelAttachToBar": false,

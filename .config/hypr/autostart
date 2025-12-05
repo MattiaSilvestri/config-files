@@ -6,7 +6,8 @@ config=$HOME/.config/hypr
 
 # Quickshell
 # caelestia shell -d
-qs -c noctalia-shell &
+# qs -c noctalia-shell &
+dms run --daemon
 
 # notification daemon
 # dunst &
