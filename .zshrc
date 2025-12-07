@@ -291,6 +291,7 @@ export PATH="/home/mattia/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export PATH="/home/mattia/.cargo/bin:$PATH"
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=gtk3
 export DJANGO_SETTINGS_MODULE=jarvisui.settings.development
 
 export EDITOR=nvim

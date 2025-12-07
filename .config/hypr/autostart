@@ -7,7 +7,8 @@ scripts=$config/scripts
 # Bar, wallpaper
 ~/.config/hypr/hyprland/scripts/start_geoclue_agent.sh &
 # qs -c ii &
-qs -c noctalia-shell &
+# qs -c noctalia-shell &
+dms run --daemon &
 
 # Input method
 fcitx5 &

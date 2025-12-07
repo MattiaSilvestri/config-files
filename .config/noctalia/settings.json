@@ -105,6 +105,11 @@
                     "id": "WiFi"
                 },
                 {
+                    "displayMode": "onhover",
+                    "id": "Battery",
+                    "warningThreshold": 30
+                },
+                {
                     "diskPath": "/",
                     "id": "SystemMonitor",
                     "showCpuTemp": true,
