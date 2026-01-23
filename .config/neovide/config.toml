@@ -1,3 +1,18 @@
 [font]
-normal = [] # Will use the bundled Fira Code Nerd Font by default
-size = 11.0
+size = 11
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "Light" 
+
+[font.italic]
+family = "VictorMono Nerd Font"
+style = "Italic"
+
+[font.bold]
+family = "CaskaydiaCove Nerd Font"
+style = "Regular"
+
+[font.bold_italic]
+family = "VictorMono Nerd Font"
+style = "Bold Italic"

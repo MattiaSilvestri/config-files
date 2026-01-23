@@ -308,7 +308,7 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/home/mattia/.cargo/bin:$PATH"
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export DJANGO_SETTINGS_MODULE=jarvisui.settings.development
-export GDK_BACKEND=x11
+# export GDK_BACKEND=x11
 
 export EDITOR=nvim
 export VISUAL=nvim
