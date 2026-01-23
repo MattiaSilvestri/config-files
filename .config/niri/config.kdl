@@ -14,7 +14,7 @@ input {
 
             // For example:
             layout "it(us)"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            options "caps:escape"
         }
     }
 
@@ -226,7 +226,7 @@ layout {
     struts {
         // left 64
         // right 64
-        top 3
+        // top 3
         // bottom 64
     }
     tab-indicator {
@@ -281,11 +281,11 @@ prefer-no-csd
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
-// spawn-at-startup "alacritty" "-e" "fish"
-// spawn-at-startup "bash" "-c" "~/.config/niri/launch_waybar &"
-// spawn-at-startup "bash" "-c" "sleep 5 && swww-daemon &"
-// spawn-at-startup "bash" "-c" "~/.local/bin/wallpaper ~/.config/wallpapers/ &"
-spawn-at-startup "qs" "-c" "noctalia-shell"
+// spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "dms" "run" "--daemon"
+spawn-at-startup "~/Applications/pcloud"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -402,11 +402,21 @@ binds {
 
     // Noctalia //
 
-    Ctrl+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+Escape { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Ctrl+Alt+Delete { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-    Mod+Ctrl+Space { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    XF86AudioPlay { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    // Ctrl+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    // Mod+Escape { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    // Ctrl+Alt+Delete { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    // Mod+Ctrl+Space { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    // XF86AudioPlay { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+
+    // DANK SHELL //
+    Ctrl+Space { spawn-sh "dms ipc call spotlight toggle"; }
+    Mod+Escape { spawn-sh "dms ipc call control-center toggle"; }
+    Ctrl+Alt+Delete { spawn-sh "dms ipc call powermenu toggle"; }
+    Ctrl+Alt+Space { spawn-sh "dms ipc call lock lock"; }
+    Mod+Ctrl+Space { spawn-sh "dms ipc call mpris playPause"; }
+    XF86AudioPlay { spawn-sh "dms ipc call mpris playPause"; }
+    XF86MonBrightnessUp    allow-when-locked=true { spawn-sh "dms ipc call brightness increment 5 ''"; }
+    XF86MonBrightnessDown  allow-when-locked=true { spawn-sh "dms ipc call brightness decrement 5 ''"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "kitty"; }
@@ -418,10 +428,10 @@ binds {
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
-    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AudioRaiseVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+    XF86AudioLowerVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
+    XF86AudioMute          allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute       allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     Alt+Q { close-window; }
 
@@ -474,14 +484,14 @@ binds {
     Mod+Ctrl+K     { focus-monitor-up; }
     Mod+Ctrl+L     { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
