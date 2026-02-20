@@ -2,6 +2,7 @@
 return {
 	{
 		"otavioschwanck/arrow.nvim",
+		enabled = false,
 		lazy = false,
 		opts = {
 			save_path = function()
