@@ -107,7 +107,7 @@ return {
 		["<leader>yz"] = { "<cmd>Yazi<cr>", desc = "Toggle yazi at current file", },
 		-- ["<leader>E"] = { function() Snacks.explorer.open() end, desc = "Snacks Explorer", },
 		["<leader>o"] = { "<Cmd>Neotree focus left<CR>", desc = "Focus neotree", },
-		["<leader>E"] = { "<Cmd>Neotree focus float toggle<CR>", desc = "Toggle neotree float", },
+		["<leader>E"] = { "<Cmd>Neotree focus filesystem float toggle<CR>", desc = "Toggle neotree float", },
 		["<leader>e"] = { "<Cmd>Neotree focus filesystem left toggle<CR>", desc = "Focus neotree", },
 		["<leader>nb"] = { "<Cmd>Neotree focus buffers left toggle<CR>", desc = "Focus buffers list", },
 		["<leader>ng"] = { "<Cmd>Neotree focus git_status left toggle<CR>", desc = "Focus git status", },
