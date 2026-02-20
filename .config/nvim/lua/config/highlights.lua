@@ -10,11 +10,16 @@ local line = theme.surface1
 local muted = theme.overlay0
 local cursorline = "#252434"
 local visual = "#252434"
+local float_fg = "#89B4FA"
 
 return {
 	-- Neovim builtin --
 	CursorLine = { bg = cursorline },
 	Visual = { bg = highlight },
+	FloatBorder = {
+		fg = float_fg,
+		bg = bg_alt,
+	},
 
 	-- MatchParen --
 	MatchParen = { bg = highlight },
@@ -58,5 +63,7 @@ return {
 	NoicePopupBorder = { fg = line, bg = bg },
 
 	--- Snacks ---
-	SnacksPickerDir = { fg = line },
+	SnacksPickerDir = { fg = muted },
+	SnacksPicker = { bg = bg },
+	SnacksPickerBorder = { bg = bg, fg = float_fg },
 }
