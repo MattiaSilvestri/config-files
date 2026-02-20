@@ -7,6 +7,7 @@ local green = theme.green
 local red = theme.red
 local highlight = theme.surface0
 local line = theme.surface1
+local muted = theme.overlay0
 local cursorline = "#252434"
 local visual = "#252434"
 
@@ -55,4 +56,7 @@ return {
 	NoiceCmdlinePrompt = { bg = bg },
 	NoicePopup = { bg = bg },
 	NoicePopupBorder = { fg = line, bg = bg },
+
+	--- Snacks ---
+	SnacksPickerDir = { fg = line },
 }

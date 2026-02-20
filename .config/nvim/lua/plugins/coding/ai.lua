@@ -63,4 +63,5 @@ return {
 			})
 		end,
 	},
+	{ "rhart92/codex.nvim" },
 }

@@ -121,7 +121,7 @@ return {
 		},
 		indent = { enabled = true },
 		input = { enabled = true },
-		picker = { enabled = true },
+		-- picker = require("plugins.editor.picker"),
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },

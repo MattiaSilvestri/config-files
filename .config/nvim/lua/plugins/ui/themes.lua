@@ -5,12 +5,20 @@ return {
 	name = "catppuccin",
 	enabled = true,
 	priority = 1000,
+
 	opts = {
-		blink_cmp = true,
 		term_colors = true,
-		integrations = {
-			blink_cmp = true,
+		flavour = "mocha",
+		blink_cmp = {
+			style = "bordered",
 		},
+		snacks = {
+			enabled = true,
+			indent_scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+		},
+		-- integrations = {
+		-- 	blink_cmp = true,
+		-- },
 		color_overrides = {
 			mocha = {
 				-- 	base = "#181825",

@@ -37,6 +37,8 @@ return {
 					i = {
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
+						["<C-p>"] = actions.cycle_history_prev,
+						["<C-n>"] = actions.cycle_history_next,
 					},
 				},
 			},
@@ -63,7 +65,7 @@ return {
 			live_grep_args = {
 				auto_quoting = true, -- enable/disable auto-quoting
 				-- define mappings, e.g.
-				mappings = {     -- extend mappings
+				mappings = { -- extend mappings
 					i = {
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,

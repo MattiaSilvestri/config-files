@@ -13,6 +13,7 @@ local telescope_border = {
 
 local sections = {
 	f = { desc = "Find" },
+	s = { desc = "Search" },
 	p = { desc = "Packages" },
 	l = { desc = "Language Tools" },
 	u = { desc = "UI/UX" },
@@ -44,11 +45,20 @@ return {
 	n = {
 		-- Telescope and file search --
 		["<leader>f"] = { function() vim.tbl_get(sections, "f") end, desc = sections.f.desc, },
-		["<leader>ff"] = { function() telescope.find_files() end, desc = "Find files", },
+		["<leader>s"] = { function() vim.tbl_get(sections, "s") end, desc = sections.s.desc, },
+		-- ["<leader>ff"] = { function() telescope.find_files() end, desc = "Find files", },
 		["<leader>fc"] = { function() telescope.find_files { cwd = vim.fn.stdpath("config") } end, desc = "Find config files", },
-		["<leader>sg"] = { function() telescope.live_grep() end, desc = "Live grep", },
-		["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
-		["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
+		-- ["<leader>sg"] = { function() telescope.live_grep() end, desc = "Live grep", },
+		-- ["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
+		-- ["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
+		-- ["<leader>sr"] = { function() telescope.resume() end, desc = "Telescope resume", },
+		["<leader>ss"] = { function() Snacks.picker.lines() end, desc = "Snacks fuzzy find", },
+		["<leader>sg"] = { function() Snacks.picker.grep() end, desc = "Live grep", },
+		["<leader>fb"] = { function() Snacks.picker.buffers() end, desc = "Snacks find buffer", },
+		["<leader>sr"] = { function() Snacks.picker.resume() end, desc = "Snacks resume", },
+		["<leader>s/"] = { function() Snacks.picker.search_history() end, desc = "Snacks search history", },
+		["<leader>ff"] = { function() Snacks.picker.smart() end, desc = "Find files", },
+		["<leader>fh"] = { function() Snacks.picker.highlights() end, desc = "Picker highlights", },
 		["<leader>fg"] = { function() require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Telescope live grep args", },
 		["<leader><leader>"] = { "<cmd>Telescope cmdline<cr>", desc = "Telescope cmdline", },
 		["<leader>fr"] = {
@@ -104,6 +114,8 @@ return {
 		-- Git --
 		["<Leader>g"] = { function() vim.tbl_get(sections, "g") end, desc = sections.g.desc, },
 		["<leader>gg"] = { function() Snacks.lazygit.open() end, desc = "LazyGit", },
+		["<leader>gd"] = { "<Cmd>CodeDiff history %<CR>", desc = "CodeDiff current file history", },
+		["<leader>gq"] = { "<Cmd>DiffviewClose<CR>", desc = "DiffView close", },
 
 		-- Lists --
 		["<leader>x"] = { function() vim.tbl_get(sections, "x") end, desc = sections.x.desc, },
@@ -128,6 +140,9 @@ return {
 		["gd"] = { function() telescope.lsp_definitions() end, desc = "Go to definition", },
 		["gD"] = { function() telescope_utils.open_definition_in_window() end, desc = "Go to definition", },
 		["K"] = { function() vim.lsp.buf.hover() end, desc = "Hover symbol", },
+
+		-- AI --
+		["<leader>lc"] = { function() require("codex").toggle() end, desc = "Codex toggle", },
 
 
 		-- Packages --
@@ -171,6 +186,7 @@ return {
 		["<leader>a"] = { "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble" },
 		["-"] = { "^", desc = "Move to first non-blank character of the line" },
 		["~"] = { "Vyp", desc = "Yank and pase to next line" },
+		["<leader>."] = { "<cmd>noh<cr>", desc = "noh" },
 	},
 
 	v = {
@@ -191,6 +207,11 @@ return {
 			desc = "Find and replace in current selection",
 		},
 		["<leader>ss"] = { function() fzf.blines() end, desc = "Visual selection or word" },
+		--- Git ---
+		["<leader>gl"] = { "<Cmd>'<,'>DiffviewFileHistory<CR>", desc = "DiffView current line history", },
+
+		--- AI ---
+		["<leader>lc"] = { function() require("codex").actions.send_selection() end, desc = "Codex send selection", },
 	},
 
 	t = {
