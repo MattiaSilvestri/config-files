@@ -4,6 +4,7 @@ local Snacks = require("snacks")
 local telescope_utils = require("utils.telescope_utils")
 local grug = require("grug-far")
 local fzf = require("fzf-lua")
+local neogit = require("neogit")
 
 local telescope_border = {
 	border = "rounded",
@@ -114,6 +115,7 @@ return {
 		-- Git --
 		["<Leader>g"] = { function() vim.tbl_get(sections, "g") end, desc = sections.g.desc, },
 		["<leader>gg"] = { function() Snacks.lazygit.open() end, desc = "LazyGit", },
+		["<leader>gn"] = { function() neogit.open({ kind = "floating" }) end, desc = "Neogit", },
 		["<leader>gd"] = { "<Cmd>CodeDiff history %<CR>", desc = "CodeDiff current file history", },
 		["<leader>gq"] = { "<Cmd>DiffviewClose<CR>", desc = "DiffView close", },
 
