@@ -1,13 +1,14 @@
 -- Define colors --
-local theme = require("catppuccin.palettes").get_palette("mocha")
-local bg = theme.base
-local bg_alt = theme.mantle
-local fg = theme.text
-local green = theme.green
-local red = theme.red
-local highlight = theme.surface0
-local line = theme.surface1
-local muted = theme.overlay0
+local catppuccin = require("catppuccin.palettes").get_palette("mocha")
+local base46 = dofile(vim.g.base46_cache .. "colors")
+local bg = base46.black
+local bg_alt = catppuccin.mantle
+local fg = catppuccin.text
+local green = catppuccin.green
+local red = catppuccin.red
+local highlight = catppuccin.surface0
+local line = catppuccin.surface1
+local muted = catppuccin.overlay0
 local cursorline = "#252434"
 local visual = "#252434"
 local float_fg = "#89B4FA"
@@ -28,7 +29,7 @@ return {
 	-- Blink.cmp --
 	BlinkCmpMenu = { bg = bg },
 	BlinkCmpMenuBorder = { fg = line, bg = bg },
-	BlinkCmpMenuSelection = { fg = bg, bg = theme.teal },
+	BlinkCmpMenuSelection = { fg = bg, bg = catppuccin.teal },
 	BlinkCmpScrollBarThumb = { bg = line },
 	BlinkCmpScrollBarGutter = { bg = bg },
 	BlinkCmpSource = { bg = bg },

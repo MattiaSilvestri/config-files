@@ -8,7 +8,7 @@ local stbufnr = function()
 end
 
 M = {
-	base46 = { theme = "catppuccin" },
+	base46 = { theme = "catppuccin", integrations = { "telescope", "blink" } },
 
 	ui = {
 		statusline = {
