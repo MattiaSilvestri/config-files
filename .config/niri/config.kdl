@@ -436,6 +436,8 @@ binds {
     XF86AudioPlay { spawn-sh "dms ipc call mpris playPause"; }
     XF86AudioNext { spawn-sh "dms ipc call mpris next"; }
     XF86AudioPrev { spawn-sh "dms ipc call mpris previous"; }
+    XF86MonBrightnessUp { spawn-sh "dms ipc call brightness increment 5 '' "; }
+    XF86MonBrightnessDown { spawn-sh "dms ipc call brightness decrement 5 '' "; }
 
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
