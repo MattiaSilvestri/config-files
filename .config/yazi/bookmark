@@ -1,9 +1,0 @@
-share	/usr/share/	s
-nvim	/home/mattia/.config/nvim/	n
-MindDump	/mnt/Data/Notes/Obsidian/MindDump/	o
-.local	/home/mattia/.local/	l
-hypr	/home/mattia/.config/hypr/	h
-.dotfiles	/home/mattia/.dotfiles/.config/	q
-Desktop	/home/mattia/Desktop/	d
-Data	/mnt/Data/	x
-.config	/home/mattia/.config/	c

@@ -4,6 +4,6 @@
 // ! PLACE YOUR CUSTOM CONFIGURATION ELSEWHERE !
 
 cursor {
-    xcursor-theme "Bibata-Original-Ice"
+    xcursor-theme "Catppuccin-Mocha-Light-Cursors"
     xcursor-size 24
 }
