@@ -44,7 +44,7 @@ return {
 		["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", remap = true, desc = "Toggle comment" },
 	},
 	n = {
-		-- Telescope and file search --
+		-- Pickers --
 		["<leader>f"] = { function() vim.tbl_get(sections, "f") end, desc = sections.f.desc, },
 		["<leader>s"] = { function() vim.tbl_get(sections, "s") end, desc = sections.s.desc, },
 		-- ["<leader>ff"] = { function() telescope.find_files() end, desc = "Find files", },
@@ -53,13 +53,19 @@ return {
 		-- ["<leader>ss"] = { function() telescope.current_buffer_fuzzy_find() end, desc = "Telescope fuzzy find", },
 		-- ["<leader>fb"] = { function() telescope.buffers() end, desc = "Telescope find buffer", },
 		-- ["<leader>sr"] = { function() telescope.resume() end, desc = "Telescope resume", },
-		["<leader>ss"] = { function() Snacks.picker.lines() end, desc = "Snacks fuzzy find", },
-		["<leader>sg"] = { function() Snacks.picker.grep() end, desc = "Live grep", },
-		["<leader>fb"] = { function() Snacks.picker.buffers() end, desc = "Snacks find buffer", },
-		["<leader>sr"] = { function() Snacks.picker.resume() end, desc = "Snacks resume", },
-		["<leader>s/"] = { function() Snacks.picker.search_history() end, desc = "Snacks search history", },
+		["<leader>ss"] = { function() Snacks.picker.lines() end, desc = "Picker fuzzy find", },
+		["<leader>sg"] = { function() Snacks.picker.grep() end, desc = "Picker live grep", },
+		["<leader>fb"] = { function() Snacks.picker.buffers() end, desc = "Picker find buffer", },
+		["<leader>sr"] = { function() Snacks.picker.resume() end, desc = "Picker resume", },
+		["<leader>s/"] = { function() Snacks.picker.search_history() end, desc = "Picker search history", },
 		["<leader>ff"] = { function() Snacks.picker.smart() end, desc = "Find files", },
 		["<leader>fh"] = { function() Snacks.picker.highlights() end, desc = "Picker highlights", },
+		["<leader>sc"] = { function() Snacks.picker.cliphist() end, desc = "Picker cliphist", },
+		["<leader>sl"] = { function() Snacks.picker.lazy() end, desc = "Picker Lazy", },
+		["<leader>sn"] = { function() Snacks.picker.notifications() end, desc = "Picker notifications", },
+		["<leader>fp"] = { function() Snacks.picker.pickers() end, desc = "Picker find pickers", },
+		["<leader>fR"] = { function() Snacks.picker.recent() end, desc = "Picker find recent files", },
+		["<leader>su"] = { function() Snacks.picker.undo() end, desc = "Picker search undo", },
 		["<leader>fg"] = { function() require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Telescope live grep args", },
 		["<leader><leader>"] = { "<cmd>Telescope cmdline<cr>", desc = "Telescope cmdline", },
 		["<leader>fr"] = {
@@ -135,9 +141,10 @@ return {
 
 		-- LSP --
 		["<Leader>l"] = { function() vim.tbl_get(sections, "l") end, desc = sections.l.desc, },
-		["<leader>lR"] = { function() telescope.lsp_references() end, desc = "See references", },
+		["<leader>lR"] = { function() Snacks.picker.lsp_references() end, desc = "See references", },
 		["<leader>ls"] = { function() Snacks.picker.lsp_symbols() end, desc = "Search symbols in buffer", },
 		["<leader>lS"] = { function() Snacks.picker.lsp_workspace_symbols() end, desc = "Search symbols in workspace", },
+		["<leader>lt"] = { function() Snacks.picker.treesitter() end, desc = "View treesitter symbols", },
 		["<leader>lr"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol", },
 		["gd"] = { function() telescope.lsp_definitions() end, desc = "Go to definition", },
 		["gD"] = { function() telescope_utils.open_definition_in_window() end, desc = "Go to definition", },
@@ -180,6 +187,15 @@ return {
 		["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
 		["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
 
+		-- Surround --
+		["<leader>ys"] = { "<Plug>(nvim-surround-normal)", desc = "Surround normal" },
+		["<leader>ya$"] = { "<Plug>(nvim-surround-normal_cur)", desc = "Surround normal cur" },
+		["<leader>yS"] = { "<Plug>(nvim-surround-normal_line)", desc = "Surround normal line" },
+		["<leader>SS"] = { "<Plug>(nvim-surround-normal_cur_line)", desc = "Surround normal cur line" },
+		["<leader>yds"] = { "<Plug>(nvim-surround-delete)", desc = "Surround delete" },
+		["<leader>ycs"] = { "<Plug>(nvim-surround-change)", desc = "Surround change" },
+		["<leader>ycS"] = { "<Plug>(nvim-surround-change_line)", desc = "Surround change line" },
+
 		-- General --
 		["gl"] = { function() vim.diagnostic.open_float(nil, { scope = "line" }) end, desc = "Hover diagnostics" },
 		["U"] = { "<cmd>redo<cr>", desc = "Redo" },
@@ -214,6 +230,10 @@ return {
 
 		--- AI ---
 		["<leader>lc"] = { function() require("codex").actions.send_selection() end, desc = "Codex send selection", },
+
+		-- Surround --
+		["S"] = { "<Plug>(nvim-surround-visual)", desc = "Surround visual" },
+		["gS"] = { "<Plug>(nvim-surround-visual)", desc = "Surround visual_line" },
 	},
 
 	t = {
