@@ -19,7 +19,7 @@ return {
 	Visual = { bg = highlight },
 	FloatBorder = {
 		fg = float_fg,
-		bg = bg_alt,
+		bg = bg,
 	},
 
 	-- MatchParen --

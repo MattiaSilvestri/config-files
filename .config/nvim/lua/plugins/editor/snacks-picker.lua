@@ -77,7 +77,7 @@ return {
 				-- so this can have a performance impact for large lists and increase memory usage
 				cwd_bonus = false, -- give bonus for matching files in the cwd
 				frecency = false, -- frecency bonus
-				history_bonus = true, -- give more weight to chronological order
+				history_bonus = false, -- give more weight to chronological order
 			},
 			sort = {
 				-- default sort is by score, text length and index

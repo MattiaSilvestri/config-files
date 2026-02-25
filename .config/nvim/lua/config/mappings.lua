@@ -55,6 +55,8 @@ return {
 		-- ["<leader>sr"] = { function() telescope.resume() end, desc = "Telescope resume", },
 		["<leader>ss"] = { function() Snacks.picker.lines() end, desc = "Picker fuzzy find", },
 		["<leader>sg"] = { function() Snacks.picker.grep() end, desc = "Picker live grep", },
+		["<leader>sf"] = { function() Snacks.picker.grep({ cwd = vim.fn.input("Folder: ", "", "dir") }) end, desc = "Picker search word in folder", },
+		["<leader>se"] = { function() Snacks.picker.grep({ args = { "-g", "*." .. vim.fn.input("Filetype: ") } }) end, desc = "Picker search word in filetype", },
 		["<leader>fb"] = { function() Snacks.picker.buffers() end, desc = "Picker find buffer", },
 		["<leader>sr"] = { function() Snacks.picker.resume() end, desc = "Picker resume", },
 		["<leader>s/"] = { function() Snacks.picker.search_history() end, desc = "Picker search history", },
@@ -66,7 +68,10 @@ return {
 		["<leader>fp"] = { function() Snacks.picker.pickers() end, desc = "Picker find pickers", },
 		["<leader>fR"] = { function() Snacks.picker.recent() end, desc = "Picker find recent files", },
 		["<leader>su"] = { function() Snacks.picker.undo() end, desc = "Picker search undo", },
-		["<leader>fg"] = { function() require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Telescope live grep args", },
+		["<leader>sq"] = { function() Snacks.picker.qflist() end, desc = "Picker search quickfix", },
+		["<leader>sw"] = { function() Snacks.picker.grep_word() end, desc = "Picker search word", },
+		["<leader>fg"] = { function() fzf.live_grep_glob() end, desc = "Live grep glob", },
+		-- ["<leader>fg"] = { function() require("telescope").extensions.live_grep_args.live_grep_args() end, desc = "Telescope live grep args", },
 		["<leader><leader>"] = { "<cmd>Telescope cmdline<cr>", desc = "Telescope cmdline", },
 		["<leader>fr"] = {
 			function()
