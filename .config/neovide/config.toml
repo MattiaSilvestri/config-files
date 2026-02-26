@@ -2,7 +2,7 @@
 size = 11
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font"
 style = "Light" 
 
 [font.italic]
@@ -10,7 +10,7 @@ family = "VictorMono Nerd Font"
 style = "Italic"
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font"
 style = "Regular"
 
 [font.bold_italic]

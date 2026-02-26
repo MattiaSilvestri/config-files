@@ -1,0 +1,7 @@
+[metadata]
+name = "journalctl"
+description = "Browse systemd journal log identifiers and their logs"
+requirements = ["journalctl"]
+
+[source]
+command = "journalctl --boot=0 | sort -f"
