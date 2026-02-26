@@ -1,4 +1,5 @@
 --- @type LazySpec
+local base46 = dofile(vim.g.base46_cache .. "colors")
 
 return {
 	"catppuccin/nvim",
@@ -21,7 +22,7 @@ return {
 		-- },
 		color_overrides = {
 			mocha = {
-				-- 	base = "#181825",
+				base = base46.black,
 				-- 	mantle = "#11111b",
 				-- rosewater = "#f5e0dc",
 				-- flamingo = "#f2cdcd",

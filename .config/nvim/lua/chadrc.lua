@@ -50,10 +50,31 @@ M = {
 
 				file_path = function()
 					local icon = "󰈚"
-					local path = vim.api.nvim_buf_get_name(stbufnr())
+					local bufnr = stbufnr()
+					local path = vim.api.nvim_buf_get_name(bufnr)
+					local relpath = "Empty"
 
-					-- Get relative path from current working dir
-					local relpath = (path == "" and "Empty") or vim.fn.fnamemodify(path, ":~:.")
+					if path ~= "" then
+						local root
+						local clients = vim.lsp.get_clients({ bufnr = bufnr })
+						for _, client in ipairs(clients) do
+							local client_root = client.config and client.config.root_dir
+							if client_root and path:sub(1, #client_root) == client_root then
+								root = client_root
+								break
+							end
+						end
+
+						root = root or (vim.fs and vim.fs.root and vim.fs.root(path, { ".git" })) or vim.fn.getcwd()
+						root = vim.fs.normalize(root)
+						path = vim.fs.normalize(path)
+
+						if root ~= "" and path:sub(1, #root) == root then
+							relpath = path:sub(#root + 2)
+						else
+							relpath = vim.fn.fnamemodify(path, ":~:.")
+						end
+					end
 
 					if relpath ~= "Empty" then
 						local devicons_present, devicons = pcall(require, "nvim-web-devicons")
@@ -65,24 +86,6 @@ M = {
 					end
 
 					return { icon, relpath }
-				end,
-
-				filetype = function()
-					local ft = vim.bo.filetype or ""
-					if ft == "" then
-						return "No Filetype"
-					end
-
-					local icon = "" -- default generic file icon
-					local devicons_present, devicons = pcall(require, "nvim-web-devicons")
-					if devicons_present then
-						local filename = vim.api.nvim_buf_get_name(0)
-						local _, ext = filename:match("(.+)%.(.+)$")
-						local ft_icon = devicons.get_icon(filename, ext, { default = true })
-						icon = ft_icon or icon
-					end
-
-					return icon .. " " .. ft
 				end,
 			},
 		},
