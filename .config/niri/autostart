@@ -1,0 +1,40 @@
+#!/usr/bin/bash
+
+# other
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+sleep 1 && dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+gnome-keyring-daemon --start --components=secrets &
+# /usr/lib/polkit-kde-authentication-agent-1 || /usr/libexec/polkit-kde-authentication-agent-1  || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || /usr/libexec/polkit-gnome-authentication-agent-1 
+dbus-update-activation-environment --all
+
+# Audio
+easyeffects --gapplication-service &
+
+# Clipboard: history
+
+# Bluetooth manager
+blueberry-tray &
+
+# Blue-light filter
+wlsunset -t 3500 -T 6500 -S 8:00 -s 20:00 &
+
+# Hypridle and inhibitor
+# caffeine &
+# wayland-pipewire-idle-inhibit -w &
+# wl-mpris-idle-inhibit &
+
+# Cliboard manager
+# wl-paste --type text --watch cliphist store &
+# wl-paste --type image --watch cliphist store &
+
+# nordvpn service
+# systemctl start nordvpnd.service &
+
+# Nextcloud and pcloud
+sleep 5 && ~/Applications/pCloud_6a26a6692f88115da498f04eead1d143.AppImage &
+
+# Automatic mounting
+nohup udiskie --tray &
+
+# Set soruce volume
+pamixer --default-source --set-volume 30 &

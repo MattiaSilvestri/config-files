@@ -58,6 +58,7 @@ return {
 	{
 		"ydkulks/cursor-dark.nvim",
 		lazy = false,
+		enabled = false,
 		priority = 1000,
 		config = function()
 			-- vim.cmd.colorscheme("cursor-dark-midnight")

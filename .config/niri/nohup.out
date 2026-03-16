@@ -1,0 +1,8 @@
+
+(udiskie:15063): libayatana-appindicator-WARNING **: 14:33:36.400: libayatana-appindicator is deprecated. Please use libayatana-appindicator-glib in newly written code.
+Gdk-Message: 14:35:13.385: Error reading events from display: Broken pipe
+
+(udiskie:18897): libayatana-appindicator-WARNING **: 14:37:19.824: libayatana-appindicator is deprecated. Please use libayatana-appindicator-glib in newly written code.
+
+(udiskie:18897): Gtk-CRITICAL **: 14:39:53.121: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+Gdk-Message: 14:39:53.230: Error reading events from display: Broken pipe
