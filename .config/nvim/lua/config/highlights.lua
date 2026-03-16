@@ -2,14 +2,14 @@
 local catppuccin = require("catppuccin.palettes").get_palette("mocha")
 local base46 = dofile(vim.g.base46_cache .. "colors")
 local bg = base46.black
-local bg_alt = catppuccin.mantle
-local fg = catppuccin.text
-local green = catppuccin.green
-local red = catppuccin.red
-local highlight = catppuccin.surface0
-local line = catppuccin.surface1
-local muted = catppuccin.overlay0
-local cursorline = "#252434"
+local bg_alt = base46.darker_black -- catppuccin.mantle
+local fg = base46.white -- catppuccin.text
+local green = base46.green -- catppuccin.green
+local red = base46.red -- catppuccin.red
+local highlight = base46.one_bg2 -- catppuccin.surface0
+local line = base46.line -- catppuccin.surface1
+local muted = base46.light_grey -- catppuccin.overlay0
+local cursorline = base46.black2 -- "#252434"
 local visual = "#252434"
 local float_fg = "#89B4FA"
 
