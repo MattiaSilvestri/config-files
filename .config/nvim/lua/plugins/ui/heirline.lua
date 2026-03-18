@@ -350,6 +350,9 @@ return {
 		-- }
 		opts.opts = {
 			disable_winbar_cb = function(args)
+				if not args or not args.buf or not vim.api.nvim_buf_is_valid(args.buf) then
+					return true
+				end
 				return conditions.buffer_matches({
 					buftype = { "nofile", "prompt", "help", "quickfix", "terminal", "nowrite" },
 					filetype = { "^git.*", "fugitive", "Trouble", "dashboard", "blink" },

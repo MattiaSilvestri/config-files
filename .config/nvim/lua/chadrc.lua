@@ -14,7 +14,18 @@ M = {
 		statusline = {
 			enabled = true,
 			theme = "minimal",
-			order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "all_lsp", "cwd", "cursor" },
+			order = {
+				"mode",
+				"file_path",
+				"git",
+				"%=",
+				"lsp_msg",
+				"%=",
+				"diagnostics",
+				"all_lsp",
+				"venv",
+				"cursor",
+			},
 			modules = {
 				all_lsp = function()
 					local buf_clients = vim.lsp.get_clients({ bufnr = stbufnr() })
@@ -55,24 +66,9 @@ M = {
 					local relpath = "Empty"
 
 					if path ~= "" then
-						local root
-						local clients = vim.lsp.get_clients({ bufnr = bufnr })
-						for _, client in ipairs(clients) do
-							local client_root = client.config and client.config.root_dir
-							if client_root and path:sub(1, #client_root) == client_root then
-								root = client_root
-								break
-							end
-						end
-
-						root = root or (vim.fs and vim.fs.root and vim.fs.root(path, { ".git" })) or vim.fn.getcwd()
-						root = vim.fs.normalize(root)
-						path = vim.fs.normalize(path)
-
-						if root ~= "" and path:sub(1, #root) == root then
-							relpath = path:sub(#root + 2)
-						else
-							relpath = vim.fn.fnamemodify(path, ":~:.")
+						relpath = vim.fn.fnamemodify(path, ":.")
+						if relpath == "" then
+							relpath = vim.fn.fnamemodify(path, ":t")
 						end
 					end
 
@@ -85,7 +81,78 @@ M = {
 						end
 					end
 
-					return { icon, relpath }
+					if relpath ~= "Empty" and vim.o.columns < 120 then
+						relpath = vim.fn.pathshorten(relpath)
+					end
+
+					relpath = relpath:gsub("%%", "%%%%")
+
+					local config = require("nvconfig").ui.statusline
+					local utils = require("nvchad.stl.utils")
+					local sep_style = config.separator_style
+					sep_style = (sep_style ~= "round" and sep_style ~= "block") and "block" or sep_style
+					local sep_icons = utils.separators
+					local separators = (type(sep_style) == "table" and sep_style) or sep_icons[sep_style]
+					local sep_l = separators.left
+					local sep_r = "%#St_sep_r#" .. separators.right .. " %#ST_EmptySpace#"
+
+					return "%#St_file_sep#"
+							.. sep_l
+							.. "%#St_file_bg#"
+							.. icon
+							.. " "
+							.. "%#St_file_txt# "
+							.. relpath
+							.. sep_r
+				end,
+
+				venv = function()
+					local venv = vim.env.UV_VENV or vim.env.VIRTUAL_ENV
+					if not venv or venv == "" then
+						return ""
+					end
+
+					local function read_prompt(venv_path)
+						local cfg = venv_path .. "/pyvenv.cfg"
+						if vim.fn.filereadable(cfg) ~= 1 then
+							return nil
+						end
+						for _, line in ipairs(vim.fn.readfile(cfg)) do
+							local prompt = line:match("^prompt%s*=%s*(.+)$")
+							if prompt and prompt ~= "" then
+								prompt = prompt:gsub("^%((.*)%)$", "%1")
+								prompt = prompt:gsub("^%[(.*)%]$", "%1")
+								return prompt
+							end
+						end
+						return nil
+					end
+
+					local name = vim.fn.fnamemodify(venv, ":t")
+					local cfg_prompt = read_prompt(venv)
+					if cfg_prompt and cfg_prompt ~= "" then
+						name = cfg_prompt
+					elseif name == ".venv" or name == "venv" or name == ".env" then
+						name = vim.fn.fnamemodify(venv, ":h:t")
+					end
+					if name == "" then
+						return ""
+					end
+
+					name = name:gsub("%%", "%%%%")
+					name = name:gsub("^%((.*)%)$", "%1")
+					name = name:gsub("^%[(.*)%]$", "%1")
+
+					local config = require("nvconfig").ui.statusline
+					local utils = require("nvchad.stl.utils")
+					local sep_style = config.separator_style
+					sep_style = (sep_style ~= "round" and sep_style ~= "block") and "block" or sep_style
+					local sep_icons = utils.separators
+					local separators = (type(sep_style) == "table" and sep_style) or sep_icons[sep_style]
+					local sep_l = separators.left
+					local sep_r = "%#St_sep_r#" .. separators.right .. " %#ST_EmptySpace#"
+
+					return "%#St_cwd_sep#" .. sep_l .. "%#St_cwd_bg#" .. " " .. "%#St_cwd_txt# " .. name .. sep_r
 				end,
 			},
 		},

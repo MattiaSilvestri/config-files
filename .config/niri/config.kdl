@@ -22,7 +22,7 @@ input {
 
             // For example:
             layout "it(us)"
-            options "caps:escape"
+            options "caps:swapescape"
         }
     }
 
@@ -298,6 +298,7 @@ prefer-no-csd
 // spawn-at-startup "bash" "-c" "~/.local/bin/wallpaper ~/.config/wallpapers/ &"
 // spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "dms" "run" "--daemon"
+spawn-at-startup "niri-sidebar" "listen"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -380,6 +381,12 @@ window-rule {
     default-window-height { proportion 0.8; }
 }
 
+window-rule {
+    match is-floating=true
+    min-width 100
+    min-height 100
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -440,10 +447,11 @@ binds {
     XF86MonBrightnessDown { spawn-sh "dms ipc call brightness decrement 5 '' "; }
 
 
-    // Suggested binds for running programs: terminal, app launcher, screen locker.
+    // Suggested binds for running applications: terminal, app launcher, screen locker.
     Mod+Return { spawn "kitty"; }
     Mod+D { spawn "fuzzel"; }
     Mod+P { spawn "hyprpicker"; }
+    Mod+Grave { spawn "pamac-manager"; }
 
     // Screenshots
     Print { screenshot; }
@@ -474,8 +482,7 @@ binds {
     Mod+H     { focus-column-or-monitor-left; }
     Mod+J     { focus-window-or-monitor-down; }
     Mod+K     { focus-window-or-monitor-up; }
-    Mod+L     { focus-column-or-monitor-right; }
-    Mod+S     { switch-focus-between-floating-and-tiling; }
+    Mod+L     { focus-column-or-monitor-right; } // Mod+S     { switch-focus-between-floating-and-tiling; }
 
     // Usually scrolling up and down with Shift in applications results in
     // horizontal scrolling; these binds replicate that.
@@ -645,6 +652,17 @@ binds {
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     Mod+Space       { switch-layout "next"; }
     Mod+Shift+Space { switch-layout "prev"; }
-}
+    
+    // Toggle the focused window into/out of the sidebar
+    Mod+S { spawn-sh "niri-sidebar toggle-window"; }
 
+    // Toggle sidebar visibility (hide/show)
+    Mod+Shift+S { spawn-sh "niri-sidebar toggle-visibility"; }
+
+    // Flip the order of the sidebar
+    Mod+Ctrl+S { spawn-sh "niri-sidebar flip"; }
+
+    // Force reorder (useful if something gets misaligned manually)
+    Mod+Alt+R { spawn-sh "niri-sidebar reorder"; }
+}
 include "dms/cursor.kdl"
