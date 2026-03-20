@@ -10,6 +10,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"jonarrien/telescope-cmdline.nvim",
 			"nvim-telescope/telescope-live-grep-args.nvim",
+			"benfowler/telescope-luasnip.nvim",
 		},
 		opts = {
 			defaults = {

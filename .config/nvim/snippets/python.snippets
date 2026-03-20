@@ -85,3 +85,28 @@ snippet vue_apiread
 
     	def filter_queryset(self, queryset):
         	return queryset.filter(company=get_user_company(self.request.user))
+
+# Forms
+snippet form
+	class ${1:ClassName}(forms.ModelForm):
+			class Meta:
+					model = ${2:ModelName}
+					fields = (
+							"${3:field}",)
+					widgets = {
+							${2:ModelName}.qualifications_upon_completion.field.name: autocomplete.ModelSelect2Multiple(
+									url="configuration:qualification-autocomplete",
+									attrs={"data-theme": "bootstrap-5"},
+							),
+					}
+
+			def __init__(self, company, *args, **kwargs):
+					super().__init__(*args, **kwargs)
+					self.helper = FormHelper()
+					self.helper.layout = Layout(
+							FormActions(
+									FormSubmitButton(),
+							),
+							Row(
+							),
+					)

@@ -24,6 +24,7 @@ M = {
 				"diagnostics",
 				"all_lsp",
 				"venv",
+				"cwd",
 				"cursor",
 			},
 			modules = {
