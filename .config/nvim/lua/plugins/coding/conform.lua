@@ -11,6 +11,8 @@ return {
 			htmldjango = { "djlint" },
 			vue = { "prettierd" },
 			lua = { "stylua" },
+			yaml = { "prettierd" },
+			yml = { "prettierd" },
 		},
 		default_format_opts = {
 			lsp_format = "last",

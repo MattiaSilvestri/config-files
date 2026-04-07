@@ -26,6 +26,8 @@ return {
 				"cssls",
 				"css_variables",
 				"jsonls",
+				"clangd",
+				"yamlls",
 			},
 			automatic_installation = true,
 		},

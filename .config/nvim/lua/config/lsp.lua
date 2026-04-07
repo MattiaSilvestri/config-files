@@ -84,6 +84,8 @@ return {
 	["html"] = { capabilities = capabilities },
 	["cssls"] = { capabilities = capabilities },
 	["css_variables"] = { capabilities = capabilities },
+	["clangd"] = { capabilities = capabilities },
+	["yamlls"] = { capabilities = capabilities },
 	["vue_ls"] = {
 		capabilities = capabilities,
 		init_options = {

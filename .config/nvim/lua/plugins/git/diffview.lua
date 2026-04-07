@@ -1,5 +1,5 @@
 --- @type LazySpec
 return {
-  "sindrets/diffview.nvim",
-  event = "User AstroFile",
+	"sindrets/diffview.nvim",
+	cmd = "DiffviewOpen",
 }

@@ -436,6 +436,8 @@ binds {
     // Dank shell //
     Ctrl+Space { spawn-sh "dms ipc call spotlight toggle"; }
     Mod+Escape { spawn-sh "dms ipc call control-center toggle"; }
+    Ctrl+Alt+O { spawn-sh "dms ipc call dash toggle overview"; }
+    Ctrl+Alt+M { spawn-sh "dms ipc call dash toggle media"; }
     Ctrl+Alt+Delete { spawn-sh "dms ipc call powermenu toggle"; }
     Ctrl+Alt+Space { spawn-sh "dms ipc call lock lock"; }
     Ctrl+Alt+C { spawn-sh "dms ipc call clipboard toggle"; }
