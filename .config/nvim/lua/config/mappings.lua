@@ -267,7 +267,7 @@ return {
 			end,
 			desc = "Find files (selection)",
 		},
-		["<leader>ss"] = {
+		["<leader>sl"] = {
 			function()
 				local text = vim_utils.get_current_selection()
 				copy_selection_to_registers(text)
@@ -275,6 +275,7 @@ return {
 			end,
 			desc = "Picker lines (selection)",
 		},
+		["<leader>ss"] = { function() fzf.blines() end, desc = "Visual selection or word" },
 		--- Git ---
 		["<leader>gl"] = { "<Cmd>'<,'>DiffviewFileHistory<CR>", desc = "DiffView current line history", },
 
