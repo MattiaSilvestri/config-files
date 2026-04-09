@@ -5,6 +5,34 @@ local telescope_utils = require("utils.telescope_utils")
 local grug = require("grug-far")
 local fzf = require("fzf-lua")
 local neogit = require("neogit")
+local vim_utils = require("utils.vim_utils")
+
+local function get_visual_selection()
+	local start_pos = vim.api.nvim_buf_get_mark(0, "<")
+	local end_pos = vim.api.nvim_buf_get_mark(0, ">")
+	local start_row = start_pos[1] - 1
+	local start_col = start_pos[2]
+	local end_row = end_pos[1] - 1
+	local end_col = end_pos[2]
+
+	if end_row < start_row or (end_row == start_row and end_col < start_col) then
+		start_row, end_row = end_row, start_row
+		start_col, end_col = end_col, start_col
+	end
+
+	-- nvim_buf_get_text end_col is exclusive
+	end_col = end_col + 1
+	local lines = vim.api.nvim_buf_get_text(0, start_row, start_col, end_row, end_col, {})
+	return table.concat(lines, "\n")
+end
+
+local function copy_selection_to_registers(text)
+	vim.fn.setreg('"', text)
+	if vim.fn.has("clipboard") == 1 then
+		vim.fn.setreg("+", text)
+		vim.fn.setreg("*", text)
+	end
+end
 
 local telescope_border = {
 	border = "rounded",
@@ -231,7 +259,22 @@ return {
 			end,
 			desc = "Find and replace in current selection",
 		},
-		["<leader>ss"] = { function() fzf.blines() end, desc = "Visual selection or word" },
+		["<leader>ff"] = {
+			function()
+				local text = vim_utils.get_current_selection()
+				copy_selection_to_registers(text)
+				Snacks.picker.smart({ pattern = text })
+			end,
+			desc = "Find files (selection)",
+		},
+		["<leader>ss"] = {
+			function()
+				local text = vim_utils.get_current_selection()
+				copy_selection_to_registers(text)
+				Snacks.picker.lines({ pattern = text })
+			end,
+			desc = "Picker lines (selection)",
+		},
 		--- Git ---
 		["<leader>gl"] = { "<Cmd>'<,'>DiffviewFileHistory<CR>", desc = "DiffView current line history", },
 
