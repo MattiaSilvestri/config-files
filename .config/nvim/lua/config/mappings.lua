@@ -181,6 +181,7 @@ return {
 		["<leader>lS"] = { function() Snacks.picker.lsp_workspace_symbols() end, desc = "Search symbols in workspace", },
 		["<leader>lt"] = { function() Snacks.picker.treesitter() end, desc = "View treesitter symbols", },
 		["<leader>lr"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol", },
+		["<leader>la"] = { function() vim.lsp.buf.code_action() end, desc = "Code actions", },
 		["gd"] = { function() telescope.lsp_definitions() end, desc = "Go to definition", },
 		["gD"] = { function() telescope_utils.open_definition_in_window() end, desc = "Go to definition", },
 		["K"] = { function() vim.lsp.buf.hover() end, desc = "Hover symbol", },
