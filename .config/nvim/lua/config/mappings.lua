@@ -70,6 +70,9 @@ end
 return {
 	x = {
 		["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", remap = true, desc = "Toggle comment" },
+		["<C-a>"] = { function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode…", },
+		["<C-x>"] = { function() require("opencode").select() end, desc = "Execute opencode action…", },
+		["go"] = { function() return require("opencode").operator("@this ") end, desc = "Add range to opencode", expr = true, },
 	},
 	n = {
 		-- Pickers --
@@ -188,6 +191,15 @@ return {
 
 		-- AI --
 		["<leader>lc"] = { function() require("codex").toggle() end, desc = "Codex toggle", },
+		["<C-a>"] = { function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode…", },
+		["<C-x>"] = { function() require("opencode").select() end, desc = "Execute opencode action…", },
+		["<C-.>"] = { function() require("opencode").toggle() end, desc = "Toggle opencode", },
+		["go"] = { function() return require("opencode").operator("@this ") end, desc = "Add range to opencode", expr = true, },
+		["goo"] = { function() return require("opencode").operator("@this ") .. "_" end, desc = "Add line to opencode", expr = true, },
+		["<S-C-u>"] = { function() require("opencode").command("session.half.page.up") end, desc = "Scroll opencode up", },
+		["<S-C-d>"] = { function() require("opencode").command("session.half.page.down") end, desc = "Scroll opencode down", },
+		["+"] = { "<C-a>", desc = "Increment under cursor", },
+		["-"] = { "<C-x>", desc = "Decrement under cursor", },
 
 
 		-- Packages --
@@ -238,7 +250,6 @@ return {
 		["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
 		["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
 		["<leader>a"] = { "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble" },
-		["-"] = { "^", desc = "Move to first non-blank character of the line" },
 		["~"] = { "Vyp", desc = "Yank and pase to next line" },
 		["<leader>."] = { "<cmd>noh<cr>", desc = "noh" },
 	},
@@ -294,5 +305,6 @@ return {
 		["<C-J>"] = { term_nav "j", desc = "Terminal down window navigation" },
 		["<C-K>"] = { term_nav "k", desc = "Terminal up window navigation" },
 		["<C-L>"] = { term_nav "l", desc = "Terminal right window navigation" },
+		["<C-.>"] = { function() require("opencode").toggle() end, desc = "Toggle opencode", },
 	},
 }
