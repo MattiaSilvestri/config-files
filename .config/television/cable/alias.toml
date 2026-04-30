@@ -8,7 +8,8 @@ command = "$SHELL -ic 'alias'"
 output = "{split:=:0}"
 
 [preview]
-command = "$SHELL -ic 'alias' | grep -E '^(alias )?{split:=:0}='"
+# command = "$SHELL -ic 'alias' | grep -E '^(alias )?{split:=:0}='"
+command = "echo {}"
 
 [ui.preview_panel]
 size = 30

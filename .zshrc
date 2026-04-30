@@ -227,6 +227,9 @@ alias fm="ranger"
 # Joshuto
 alias jm="joshuto"
 
+# elio
+alias el="/home/mattia/Temp/elio/target/release/elio"
+
 # Git 
 alias s="git status"
 alias a="git add"
@@ -235,6 +238,7 @@ alias p="git push"
 alias pl="git pull"
 alias rs="git reset"
 alias lg="lazygit"
+alias lt="lazytailscale"
 
 ## Bump
 alias bum="bump-my-version bump patch"
@@ -249,6 +253,7 @@ alias vim="vim"
 alias nvi="NVIM_APPNAME=nvim-vanilla nvim"
 
 # django
+alias djuv="uv run --env-file .env jarvisui/manage.py"
 alias djrun="uv run --env-file .env jarvisui/manage.py runserver 0:8000"
 alias djshell="uv run --env-file .env jarvisui/manage.py shell_plus"
 alias djmg="uv run --env-file .env jarvisui/manage.py migrate"
@@ -306,6 +311,7 @@ ex ()
 
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/home/mattia/.cargo/bin:$PATH"
+export PATH="/home/mattia/go/bin:$PATH"
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export DJANGO_SETTINGS_MODULE=jarvisui.settings.development
 # export GDK_BACKEND=x11

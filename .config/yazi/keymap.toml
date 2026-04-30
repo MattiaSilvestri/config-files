@@ -395,6 +395,10 @@ on   = "O"
 run  = "plugin open-with-cmd block"
 desc = "Open with command in the terminal"
 
+[[mgr.prepend_keymap]]
+on  = "<C-n>"
+run = "shell -- dragon-drop -x -i -T %h"
+
 # [[manager.prepend_keymap]]
 # on   = "O"
 # run  = "plugin open-with-cmd"

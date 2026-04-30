@@ -60,11 +60,11 @@ syntect_theme = ""
 # : Tabs {{{
 
 [tabs]
-active   = { bg = "blue", bold = true }
-inactive = { fg = "blue", bg = "gray" }
+active   = { fg = "black", bg = "blue", bold = true }
+inactive = { fg = "black", bg = "gray" }
 
 # Separator
-sep_inner = { open = "", close = "" }
+sep_inner = { open = "", close = "" }
 sep_outer = { open = "", close = "" }
 
 # : }}}
@@ -101,7 +101,7 @@ padding = { open = "", close = "" }
 # : Status bar {{{
 
 [status]
-overall   = {}
+overall   = { fg = "black" }
 sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
 
