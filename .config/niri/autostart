@@ -31,10 +31,13 @@ wlsunset -t 3500 -T 6500 -S 8:00 -s 20:00 &
 # systemctl start nordvpnd.service &
 
 # Nextcloud and pcloud
-sleep 5 && ~/Applications/pCloud_6a26a6692f88115da498f04eead1d143.AppImage &
+sleep 5 && ~/Applications/pCloud.AppImage &
 
 # Automatic mounting
 sleep 5 && nohup udiskie --tray &
 
 # Set soruce volume
 pamixer --default-source --set-volume 30 &
+
+# Dolphon menu
+XDG_MENU_PREFIX=arch- kbuildsycoca6 &
