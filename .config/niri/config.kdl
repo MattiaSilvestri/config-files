@@ -9,9 +9,12 @@
 
 environment {
     // Set a variable like this:
-    // QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORM "wayland"
+    XDG_SESSION_TYPE "wayland"
     QT_QPA_PLATFORMTHEME "qt6ct"
-    GDK_BACKEND "wayland"
+    // GDK_BACKEND "wayland"
+    // XDG_CURRENT_DESKTOP "gnome"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
 
@@ -424,6 +427,12 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+    Alt+Q { close-window; }
+    Mod+Tab repeat=false { toggle-overview; }
+    Mod+E { spawn "miri" "action" "set-focused-workspace-mode" "scroll"; }
+    Mod+M { spawn "miri" "action" "set-focused-workspace-mode" "master"; }
+    Mod+Shift+Home { spawn "miri" "override" "move-column-to-first"; }                // { move-column-to-first; }
+    Mod+Shift+End { spawn "miri" "override" "move-column-to-last"; }
 
     // --- //
 
@@ -442,6 +451,7 @@ binds {
     Ctrl+Alt+Delete { spawn-sh "dms ipc call powermenu toggle"; }
     Ctrl+Alt+Space { spawn-sh "dms ipc call lock lock"; }
     Ctrl+Alt+C { spawn-sh "dms ipc call clipboard toggle"; }
+    Ctrl+Alt+P { spawn-sh "dms ipc call notepad toggle"; }
     Mod+Ctrl+Space { spawn-sh "dms ipc call mpris playPause"; }
     XF86AudioPlay { spawn-sh "dms ipc call mpris playPause"; }
     XF86AudioNext { spawn-sh "dms ipc call mpris next"; }
@@ -472,10 +482,6 @@ binds {
     XF86AudioLowerVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
     XF86AudioMute          allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute       allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-
-    Alt+Q { close-window; }
-
-    Mod+Tab repeat=false { toggle-overview; }
 
     // Move focus
     Mod+Left  { focus-column-or-monitor-left; }

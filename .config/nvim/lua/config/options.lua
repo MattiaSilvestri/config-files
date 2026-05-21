@@ -17,6 +17,8 @@ return {
 		timeoutlen = 100,
 		linespace = 3,
 		sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions,globals",
+		textwidth = 100,
+		formatoptions = "tqcr",
 		-- guifont = "CaskaydiaCove Nerd Font:h11:w0:#h-normal",
 	},
 	o = {

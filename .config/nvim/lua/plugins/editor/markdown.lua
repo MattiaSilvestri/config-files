@@ -3,13 +3,13 @@ return {
 		"OXY2DEV/markview.nvim",
 		enabled = false,
 		lazy = false,
-		ft = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
+		ft = { "markdown", "rmd", "norg", "org", "vimwiki", "Avante" },
 		-- For blink.cmp's completion source
 		dependencies = {
 			"saghen/blink.cmp",
 		},
 		opts = {
-			filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
+			filetypes = { "markdown", "rmd", "norg", "org", "vimwiki", "Avante" },
 			buf_ignore = {},
 			max_length = 99999,
 		},
