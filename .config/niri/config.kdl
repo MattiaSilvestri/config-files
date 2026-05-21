@@ -453,6 +453,7 @@ binds {
     Ctrl+Alt+C { spawn-sh "dms ipc call clipboard toggle"; }
     Ctrl+Alt+P { spawn-sh "dms ipc call notepad toggle"; }
     Mod+Ctrl+Space { spawn-sh "dms ipc call mpris playPause"; }
+    Mod+P { spawn-sh "dms color pick -a"; }
     XF86AudioPlay { spawn-sh "dms ipc call mpris playPause"; }
     XF86AudioNext { spawn-sh "dms ipc call mpris next"; }
     XF86AudioPrev { spawn-sh "dms ipc call mpris previous"; }
@@ -463,7 +464,6 @@ binds {
     // Suggested binds for running applications: terminal, app launcher, screen locker.
     Mod+Return { spawn "kitty"; }
     Mod+D { spawn "fuzzel"; }
-    Mod+P { spawn "hyprpicker"; }
     Mod+Grave { spawn "pamac-manager"; }
 
     // Screenshots
