@@ -80,10 +80,10 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
-		gaps_in = 5,
-		gaps_out = 20,
+		gaps_in = 10,
+		gaps_out = 10,
 
-		border_size = 2,
+		border_size = 0,
 
 		col = {
 			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
@@ -96,7 +96,7 @@ hl.config({
 		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
 		allow_tearing = false,
 
-		layout = "dwindle",
+		layout = "scrolling",
 	},
 
 	decoration = {
