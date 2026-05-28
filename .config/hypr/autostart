@@ -2,20 +2,19 @@
 
 # variables
 config=$HOME/.config/hypr
-scripts=$config/scripts
+# scripts=$config/scripts
 
-# Bar, wallpaper
-~/.config/hypr/hyprland/scripts/start_geoclue_agent.sh &
-# qs -c ii &
+# Quickshell
+# caelestia shell -d
 # qs -c noctalia-shell &
-dms run --daemon &
+noctalia --daemon
 
-# Input method
-fcitx5 &
+# notification daemon
+# dunst &
 
 # waybar
 # $scripts/launch_waybar &
-$scripts/tools/dynamic &
+# $scripts/tools/dynamic &
 # agsv1 &
 
 # wallpaper
@@ -23,22 +22,15 @@ $scripts/tools/dynamic &
 # hyprpaper &
 
 # effects
-$scripts/rgb &
+# $scripts/rgb &
 
 # other
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-sleep 1 && dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
-gnome-keyring-daemon --start --components=secrets &
-# /usr/lib/polkit-kde-authentication-agent-1 || /usr/libexec/polkit-kde-authentication-agent-1  || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || /usr/libexec/polkit-gnome-authentication-agent-1 
-dbus-update-activation-environment --all
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 
-# Audio
-easyeffects --gapplication-service &
-
-# Clipboard: history
-# exec-once = wl-paste --watch cliphist store &
-wl-paste --type text --watch bash -c 'cliphist store && qs -c $qsConfig ipc call cliphistService update' &
-wl-paste --type image --watch bash -c 'cliphist store && qs -c $qsConfig ipc call cliphistService update' &
+# Conky
+#killall -q conky
+#/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
 
 # Bluetooth manager
 blueberry-tray &
@@ -64,11 +56,20 @@ wl-paste --type image --watch cliphist store &
 # nordvpn service
 systemctl start nordvpnd.service &
 
-# Nextcloud and pcloud
+# Megasync and pcloud
 sleep 5 && ~/Applications/pcloud &
 
 # Automatic mounting
-nohup udiskie --tray &
+udiskie &
+
+# Launch swww and wallpaper script
+# sleep 5 && swww-daemon &
+# sleep 5 && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
+# sleep 5 && swww-daemon & 
+# sleep 5 && waypaper-engine daemon &
+
+# Network manager
+# nm-applet &
 
 # Set soruce volume
 pamixer --default-source --set-volume 30
@@ -78,11 +79,3 @@ pamixer --default-source --set-volume 30
 # ags_end4 &
 hyprpm reload -n &
 
-# Launch swww and wallpaper script
-# sleep 5 && swww-daemon & 
-# sleep 5 && ~/.local/bin/wallpaper ~/.config/wallpapers/ &
-# sleep 5 && swww-daemon & 
-# sleep 5 && waypaper-engine daemon &
-
-# Network manager
-# nm-applet &

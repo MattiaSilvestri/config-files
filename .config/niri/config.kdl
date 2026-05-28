@@ -103,6 +103,7 @@ input {
 layout {
     // Set gaps around windows in logical pixels.
     gaps 10
+    background-color "transparent"
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -320,25 +321,64 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // Animation settings.
 // The wiki explains how to configure individual animations:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
-animations {
-    // Uncomment to turn off all animations.
-    // off
+// animations {
+//     // Uncomment to turn off all animations.
+//     // off
+//
+//     // Slow down all animations by this factor. Values below 1 speed them up instead.
+//     // slowdown 3.0
+//     window-open {
+//         spring damping-ratio=0.8 stiffness=500 epsilon=0.00001
+//     }
+//     window-close {
+//         spring damping-ratio=0.8 stiffness=500 epsilon=0.00001
+//     }
+//     
+//     horizontal-view-movement {
+//         spring damping-ratio=0.8 stiffness=500 epsilon=0.00001
+//     }
+//     workspace-switch {
+//         spring damping-ratio=0.8 stiffness=500 epsilon=0.00001
+//     }
+// }
 
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+animations {
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
     window-open {
-        spring damping-ratio=0.8 stiffness=500 epsilon=0.00001
+        duration-ms 150
+        curve "ease-out-expo"
     }
     window-close {
-        spring damping-ratio=0.8 stiffness=500 epsilon=0.00001
+        duration-ms 150
+        curve "ease-out-quad"
     }
-    
     horizontal-view-movement {
-        spring damping-ratio=0.8 stiffness=500 epsilon=0.00001
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
     }
-    workspace-switch {
-        spring damping-ratio=0.8 stiffness=500 epsilon=0.00001
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
     }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+    }
+}
+
+layer-rule {
+    // Find the right namespace by running niri msg layers.
+    match namespace="^quickshell$"
+    place-within-backdrop true
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -421,7 +461,7 @@ binds {
     // --- //
 
     // Session controls //
-    Mod+X { spawn "hyprlock"; }
+    Shift+Alt+Space { spawn "hyprlock"; }
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
     // Powers off the monitors. To turn them back on, do any input like
@@ -449,7 +489,7 @@ binds {
     Ctrl+Alt+O { spawn-sh "dms ipc call dash toggle overview"; }
     Ctrl+Alt+M { spawn-sh "dms ipc call dash toggle media"; }
     Ctrl+Alt+Delete { spawn-sh "dms ipc call powermenu toggle"; }
-    Ctrl+Alt+Space { spawn-sh "dms ipc call lock lock"; }
+    Mod+X { spawn-sh "dms ipc call lock lock"; }
     Ctrl+Alt+C { spawn-sh "dms ipc call clipboard toggle"; }
     Ctrl+Alt+P { spawn-sh "dms ipc call notepad toggle"; }
     Mod+Ctrl+Space { spawn-sh "dms ipc call mpris playPause"; }
