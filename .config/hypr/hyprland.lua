@@ -1,24 +1,18 @@
--- This is an example Hyprland Lua config file.
--- Refer to the wiki for more information.
--- https://wiki.hypr.land/Configuring/Start/
-
--- Please note not all available settings / options are set here.
--- For a full list, see the wiki
-
--- You can (and should!!) split this configuration into multiple files
--- Create your files separately and then require them like this:
--- require("myColors")
-
+-- Ensure correct path to the split-monitor-workspaces lua files
+-- package.path = package.path .. ";/plugins/split-monitor-workspaces/lua/split-monitor-workspaces.lua"
+local plugins = require(".config.plugins")
+-- package.path = package.path .. ";plugins/split-monitor-workspaces/lua/split-monitor-workspaces.lua"
+local smw = require("split-monitor-workspaces")
 ------------------
 ---- MONITORS ----
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-	output = "",
-	mode = "preferred",
-	position = "auto",
-	scale = "auto",
+	output = "eDP-1",
+	mode = "1920x1080@60",
+	position = "0x0",
+	scale = "1",
 })
 
 ---------------------
@@ -125,57 +119,22 @@ hl.config({
 	animations = {
 		enabled = true,
 	},
-})
 
--- Default springs
-hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
-hl.curve("spring_window", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-hl.curve("spring_open", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-hl.curve("spring_workspace", { type = "spring", mass = 1.2, stiffness = 30, dampening = 10 })
-hl.curve("spring_special", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-
--- Bezier curves
-hl.curve("md3_decel", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1 } } })
-hl.curve("md3_accel", { type = "bezier", points = { { 0.3, 0 }, { 0.8, 0.15 } } })
-hl.curve("menu_decel", { type = "bezier", points = { { 0.1, 1 }, { 0, 1 } } })
-hl.curve("menu_accel", { type = "bezier", points = { { 0.38, 0.04 }, { 1, 0.07 } } })
-
--- Spring Curves
-hl.curve("spring_menu", { type = "spring", mass = 1, stiffness = 80, dampening = 14 })
-hl.curve("spring_window", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-hl.curve("spring_open", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-hl.curve("spring_workspace", { type = "spring", mass = 1.2, stiffness = 30, dampening = 10 })
-hl.curve("spring_special", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-
--- Window animations
-hl.animation({ leaf = "windows", enabled = true, speed = 1, spring = "spring_window" })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 1, spring = "spring_open", style = "popin 40%" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 3, bezier = "md3_accel", style = "popin 60%" })
-
--- Border animations (disabled)
-hl.animation({ leaf = "border", enabled = false })
-hl.animation({ leaf = "borderangle", enabled = false })
-
--- Fade
-hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "md3_decel" })
-
--- Zoom cursor
-hl.animation({ leaf = "zoomFactor", enabled = true, speed = 6, bezier = "md3_decel" })
-
--- Layer animations
-hl.animation({ leaf = "layersIn", enabled = true, speed = 3, spring = "spring_menu", style = "slide" })
-hl.animation({ leaf = "layersOut", enabled = true, speed = 1.6, bezier = "menu_accel", style = "slide" })
-hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 2, bezier = "menu_decel" })
-hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.6, bezier = "menu_accel" })
-
--- Workspace animations
-hl.animation({ leaf = "workspaces", enabled = true, speed = 1, spring = "spring_workspace", style = "slide" })
-hl.animation({
-	leaf = "specialWorkspace",
-	enabled = true,
-	speed = 1,
-	spring = "spring_special",
-	style = "slidefadevert 40%",
+	group = {
+		col = {
+			border_active = 0x00888888,
+			border_inactive = 0x00888888,
+		},
+		groupbar = {
+			enabled = true,
+			render_titles = false,
+			gradients = false,
+			col = {
+				active = 0x8c40a02b,
+				inactive = 0x8cbac2de,
+			},
+		},
+	},
 })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -258,9 +217,56 @@ hl.gesture({
 
 -- Example per-device config
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.5,
+
+-- Default springs
+hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+hl.curve("spring_window", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
+hl.curve("spring_open", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
+hl.curve("spring_workspace", { type = "spring", mass = 1.2, stiffness = 30, dampening = 10 })
+hl.curve("spring_special", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
+
+-- Bezier curves
+hl.curve("md3_decel", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1 } } })
+hl.curve("md3_accel", { type = "bezier", points = { { 0.3, 0 }, { 0.8, 0.15 } } })
+hl.curve("menu_decel", { type = "bezier", points = { { 0.1, 1 }, { 0, 1 } } })
+hl.curve("menu_accel", { type = "bezier", points = { { 0.38, 0.04 }, { 1, 0.07 } } })
+
+-- Spring Curves
+hl.curve("spring_menu", { type = "spring", mass = 1, stiffness = 80, dampening = 14 })
+hl.curve("spring_window", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
+hl.curve("spring_open", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
+hl.curve("spring_workspace", { type = "spring", mass = 1.2, stiffness = 30, dampening = 10 })
+hl.curve("spring_special", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
+
+-- Window animations
+hl.animation({ leaf = "windows", enabled = true, speed = 1, spring = "spring_window" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 1, spring = "spring_open", style = "popin 40%" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 3, bezier = "md3_accel", style = "popin 60%" })
+
+-- Border animations (disabled)
+hl.animation({ leaf = "border", enabled = false })
+hl.animation({ leaf = "borderangle", enabled = false })
+
+-- Fade
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "md3_decel" })
+
+-- Zoom cursor
+hl.animation({ leaf = "zoomFactor", enabled = true, speed = 6, bezier = "md3_decel" })
+
+-- Layer animations
+hl.animation({ leaf = "layersIn", enabled = true, speed = 3, spring = "spring_menu", style = "slide" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = 1.6, bezier = "menu_accel", style = "slide" })
+hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 2, bezier = "menu_decel" })
+hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.6, bezier = "menu_accel" })
+
+-- Workspace animations
+hl.animation({ leaf = "workspaces", enabled = true, speed = 1, spring = "spring_workspace", style = "slide" })
+hl.animation({
+	leaf = "specialWorkspace",
+	enabled = true,
+	speed = 1,
+	spring = "spring_special",
+	style = "slidefadevert 40%",
 })
 
 ---------------------
@@ -299,21 +305,33 @@ hl.bind(mainMod .. " + SHIFT + l", hl.dsp.window.move({ direction = "right", gro
 hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ direction = "up", group_aware = true }))
 hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "down", group_aware = true }))
 
+-- Workspaces using split-monitor-workspaces
+local smw = plugins.smw
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, 10 do
+for i = 1, smw.get_amount_of_workspaces() do
 	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	hl.bind(mainMod .. " + " .. key, smw.workspace(tostring(i)))
+	hl.bind(mainMod .. " + SHIFT + " .. key, smw.move_to_workspace_silent(tostring(i)))
 end
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+-- Scroll through existing workspaces with mainMod + scroll (using split-monitor-workspaces)
+hl.bind(mainMod .. " + mouse_down", smw.cycle_workspaces("next"))
+hl.bind(mainMod .. " + mouse_up", smw.cycle_workspaces("prev"))
+
+-- Additional cycling keybinds for convenience
+hl.bind(mainMod .. " + TAB", smw.cycle_workspaces("next"))
+hl.bind(mainMod .. " + SHIFT + TAB", smw.cycle_workspaces("prev"))
+
+-- Additional split-monitor-workspaces bindings
+hl.bind(mainMod .. " + E", smw.workspace("empty")) -- Switch to first empty workspace
+hl.bind(mainMod .. " + SHIFT + E", smw.move_to_workspace("empty")) -- Move window to first empty workspace
+hl.bind(mainMod .. " + SHIFT + G", smw.grab_rogue_windows()) -- Move orphaned windows to current workspace
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })

@@ -1,0 +1,1 @@
+/home/mattia/.dotfiles/.config/hypr/plugins/split-monitor-workspaces/lua/split-monitor-workspaces.lua
