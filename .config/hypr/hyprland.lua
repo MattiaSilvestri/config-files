@@ -34,7 +34,7 @@ local menu = "noctalia msg panel-toggle launcher"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-	hl.exec_cmd("./autostart")
+	hl.exec_cmd("~/.config/hypr/autostart")
 end)
 
 -------------------------------
@@ -74,7 +74,7 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
-		gaps_in = 10,
+		gaps_in = 5,
 		gaps_out = 10,
 
 		border_size = 0,
@@ -260,7 +260,7 @@ hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 2, bezier = "menu_
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.6, bezier = "menu_accel" })
 
 -- Workspace animations
-hl.animation({ leaf = "workspaces", enabled = true, speed = 1, spring = "spring_workspace", style = "slide" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 1, spring = "spring_workspace", style = "slidevert" })
 hl.animation({
 	leaf = "specialWorkspace",
 	enabled = true,
@@ -305,37 +305,9 @@ hl.bind(mainMod .. " + SHIFT + l", hl.dsp.window.move({ direction = "right", gro
 hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ direction = "up", group_aware = true }))
 hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "down", group_aware = true }))
 
--- Workspaces using split-monitor-workspaces
-local smw = plugins.smw
-
--- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, smw.get_amount_of_workspaces() do
-	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, smw.workspace(tostring(i)))
-	hl.bind(mainMod .. " + SHIFT + " .. key, smw.move_to_workspace_silent(tostring(i)))
-end
-
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
-
--- Scroll through existing workspaces with mainMod + scroll (using split-monitor-workspaces)
-hl.bind(mainMod .. " + mouse_down", smw.cycle_workspaces("next"))
-hl.bind(mainMod .. " + mouse_up", smw.cycle_workspaces("prev"))
-
--- Additional cycling keybinds for convenience
-hl.bind(mainMod .. " + TAB", smw.cycle_workspaces("next"))
-hl.bind(mainMod .. " + SHIFT + TAB", smw.cycle_workspaces("prev"))
-
--- Additional split-monitor-workspaces bindings
-hl.bind(mainMod .. " + E", smw.workspace("empty")) -- Switch to first empty workspace
-hl.bind(mainMod .. " + SHIFT + E", smw.move_to_workspace("empty")) -- Move window to first empty workspace
-hl.bind(mainMod .. " + SHIFT + G", smw.grab_rogue_windows()) -- Move orphaned windows to current workspace
-
--- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+-- Srolling
+hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("consume_or_expel next"))
+hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.layout("consume_or_expel prev"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -370,11 +342,41 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
+-- Workspaces using split-monitor-workspaces
+local smw = plugins.smw
 
--- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+-- Switch workspaces with mainMod + [0-9]
+-- Move active window to a workspace with mainMod + SHIFT + [0-9]
+for i = 1, smw.get_amount_of_workspaces() do
+	local key = i % 10 -- 10 maps to key 0
+	hl.bind(mainMod .. " + " .. key, smw.workspace(tostring(i)))
+	hl.bind(mainMod .. " + SHIFT + " .. key, smw.move_to_workspace_silent(tostring(i)))
+end
 
--- Example window rules that are useful
+-- Example special workspace (scratchpad)
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+
+-- Additional cycling keybinds for convenience
+hl.bind("CTRL + ALT + J", smw.cycle_workspaces("next"))
+hl.bind("CTRL + ALT + K", smw.cycle_workspaces("prev"))
+hl.bind("CTRL + ALT + Down", smw.cycle_workspaces("next"))
+hl.bind("CTRL + ALT + Up", smw.cycle_workspaces("prev"))
+
+-- Additional split-monitor-workspaces bindings
+hl.bind(mainMod .. " + E", smw.workspace("empty")) -- Switch to first empty workspace
+hl.bind(mainMod .. " + SHIFT + E", smw.move_to_workspace("empty")) -- Move window to first empty workspace
+hl.bind(mainMod .. " + SHIFT + G", smw.grab_rogue_windows()) -- Move orphaned windows to current workspace
+
+-- Move/resize windows with mainMod + LMB/RMB and dragging
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+hl.bind(mainMod .. "+ ALT + H", hl.dsp.focus({ monitor = "l" }))
+hl.bind(mainMod .. "+ ALT + L", hl.dsp.focus({ monitor = "r" }))
+
+hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(mainMod .. "+ SHIFT	 + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 local suppressMaximizeRule = hl.window_rule({
 	-- Ignore maximize requests from all apps. You'll probably like this.
@@ -400,14 +402,6 @@ hl.window_rule({
 	no_focus = true,
 })
 
--- Layer rules also return a handle.
--- local overlayLayerRule = hl.layer_rule({
---     name  = "no-anim-overlay",
---     match = { namespace = "^my-overlay$" },
---     no_anim = true,
--- })
--- overlayLayerRule:set_enabled(false)
-
 -- Hyprland-run windowrule
 hl.window_rule({
 	name = "move-hyprland-run",
@@ -416,3 +410,23 @@ hl.window_rule({
 	move = "20 monitor_h-120",
 	float = true,
 })
+
+hl.bind("SHIFT + Space", function()
+	local layouts = { "scrolling", "dwindle", "master", "monocle" }
+	local workspace = hl.get_active_workspace()
+	local next_layout = "dwindle"
+
+	if not workspace then
+		return
+	end
+
+	for i = 1, #layouts do
+		if layouts[i] == workspace.tiled_layout then
+			local next_layout_idx = (i % #layouts) + 1
+			next_layout = layouts[next_layout_idx]
+			break
+		end
+	end
+
+	hl.workspace_rule({ workspace = workspace.name, layout = next_layout })
+end)
