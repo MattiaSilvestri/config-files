@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # variables
-config=$HOME/.config/hypr
+# config=$HOME/.config/hypr
 # scripts=$config/scripts
 
 # Quickshell
@@ -33,7 +33,7 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #/home/mattia/.dotfiles/.config/bspwm/conky/conky.sh &
 
 # Bluetooth manager
-blueberry-tray &
+# blueberry-tray &
 
 # Blue-light filter
 wlsunset -t 3500 -T 6500 -S 8:00 -s 20:00 &
@@ -44,7 +44,7 @@ wlsunset -t 3500 -T 6500 -S 8:00 -s 20:00 &
 #   before-sleep 'hyprlock' &
 
 # Hypridle and inhibitor
-hypridle &
+# hypridle &
 # caffeine &
 # wayland-pipewire-idle-inhibit -w &
 # wl-mpris-idle-inhibit &
@@ -56,7 +56,7 @@ wl-paste --type image --watch cliphist store &
 # nordvpn service
 systemctl start nordvpnd.service &
 
-# Megasync and pcloud
+# pcloud
 sleep 5 && ~/Applications/pcloud &
 
 # Automatic mounting
