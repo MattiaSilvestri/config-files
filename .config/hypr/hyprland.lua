@@ -5,6 +5,7 @@ local plugins = require(".config.plugins")
 local smw = require("split-monitor-workspaces")
 
 require("config.general")
+require("config.mappings")
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -35,8 +36,11 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+-- hl.env("LIBVA_DRIVER_NAME", "nvidia")
+-- hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+hl.env("QT_QPA_PLATFORM", "wayland")
+hl.env("QT_QPA_PLATFORM_THEME", "qt6ct")
+hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 
 -----------------------
@@ -98,6 +102,7 @@ hl.config({
 hl.config({
 	scrolling = {
 		fullscreen_on_one_column = true,
+		explicit_column_widths = "0.333, 0.5, 0.667, 1.0",
 	},
 })
 
@@ -132,12 +137,6 @@ hl.config({
 			natural_scroll = false,
 		},
 	},
-})
-
-hl.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace",
 })
 
 -- Example per-device config
@@ -253,7 +252,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 hl.bind(mainMod .. "+ ALT + H", hl.dsp.focus({ monitor = "l" }))
 hl.bind(mainMod .. "+ ALT + L", hl.dsp.focus({ monitor = "r" }))
 
-hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(mainMod .. "+ F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. "+ SHIFT	 + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 
 local suppressMaximizeRule = hl.window_rule({
@@ -308,49 +307,3 @@ hl.bind("SHIFT + Space", function()
 
 	hl.workspace_rule({ workspace = workspace.name, layout = next_layout })
 end)
-
-hl.plugin.hymission.gesture({
-	fingers = 4,
-	direction = "vertical",
-	action = "toggle",
-	args = "forceall",
-})
-
-hl.plugin.hymission.gesture({
-	fingers = 4,
-	direction = "vertical",
-	action = "toggle",
-	recommand = true,
-})
-
-hl.plugin.hymission.gesture({
-	fingers = 4,
-	direction = "vertical",
-	action = "open",
-	scope = "onlycurrentworkspace",
-})
-
-hl.plugin.hymission.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "scroll",
-	mode = "layout",
-})
-
--- Native alternative:
--- hl.gesture({ fingers = 3, direction = "horizontal", action = "scroll_move" })
-
-hl.plugin.hymission.gesture({
-	fingers = 3,
-	direction = "vertical",
-	action = "workspace",
-})
-
-hl.bind("SUPER + TAB", hl.plugin.hymission.toggle)
-hl.bind("SUPER + A", function()
-	hl.plugin.hymission.toggle("forceall")
-end)
-hl.bind("SUPER + S", function()
-	hl.plugin.hymission.open("onlycurrentworkspace")
-end)
-hl.bind("SUPER + Escape", hl.plugin.hymission.close)
