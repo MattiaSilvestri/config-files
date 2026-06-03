@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
 # variables
-config=$HOME/.config/hypr
+# config=$HOME/.config/hypr
 # scripts=$config/scripts
 
 # Quickshell
 # caelestia shell -d
 # qs -c noctalia-shell &
-noctalia --daemon
+dms run --daemon &
 
 # notification daemon
 # dunst &
@@ -60,7 +60,7 @@ systemctl start nordvpnd.service &
 sleep 5 && ~/Applications/pcloud &
 
 # Automatic mounting
-udiskie &
+sleep 5 && nohup udiskie --tray &
 
 # Launch swww and wallpaper script
 # sleep 5 && swww-daemon &
