@@ -39,7 +39,14 @@ hl.bind(
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("dms ipc call mpris next"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("dms ipc call mpris playPause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("dms ipc call mpris previous"), { locked = true })
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("dms ipc call mpris next"), { locked = true })
 
+-- Session
+hl.bind(mainMod .. "+ X", hl.dsp.exec_cmd("dms ipc call lock lock"), { locked = true })
+
+------------------
+----  WINDOWS  ----
+------------------
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
@@ -118,7 +125,8 @@ hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("consume_or_expel next"))
 hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.layout("consume_or_expel prev"))
 hl.bind(mainMod .. " + R", hl.dsp.layout("colresize +conf"))
 
-hl.bind("SUPER + P", function()
+-- HYPEREXPO
+hl.bind("SUPER + O", function()
 	hl.plugin.hyprexpo.expo("toggle")
 end)
 
