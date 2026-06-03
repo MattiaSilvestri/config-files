@@ -74,6 +74,11 @@ hl.config({
 			},
 		},
 	},
+
+	binds = {
+		window_direction_monitor_fallback = false,
+		movefocus_cycles_fullscreen = true,
+	},
 })
 
 ---------------
