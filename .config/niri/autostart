@@ -40,4 +40,5 @@ sleep 5 && nohup udiskie --tray &
 pamixer --default-source --set-volume 30 &
 
 # Dolphon menu
-XDG_MENU_PREFIX=arch- kbuildsycoca6 &
+export XDG_MENU_PREFIX=arch- kbuildsycoca6 &
+
