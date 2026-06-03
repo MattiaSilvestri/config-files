@@ -19,6 +19,10 @@ hl.bind("CTRL + SHIFT + l", hl.dsp.window.move({ monitor = "r" }))
 hl.bind("CTRL + SHIFT + Left", hl.dsp.window.move({ monitor = "l" }))
 hl.bind("CTRL + SHIFT + Right", hl.dsp.window.move({ monitor = "r" }))
 
+hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
+hl.bind("ALT + TAB", hl.dsp.group.next())
+hl.bind("ALT + SHIFT + TAB", hl.dsp.group.prev())
+
 -------------------
 ---- HYMISION ----
 ------------------

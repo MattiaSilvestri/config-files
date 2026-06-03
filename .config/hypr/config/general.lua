@@ -94,12 +94,9 @@ hl.config({
 		kb_rules = "",
 
 		follow_mouse = 2,
-
 		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
-		touchpad = {
-			natural_scroll = false,
-		},
+		scroll_method = "on_button_down",
+		scroll_button = 274,
 	},
 })
 
