@@ -1,4 +1,24 @@
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+
+hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
+
+hl.bind(mainMod .. " + SHIFT + h", hl.dsp.window.move({ direction = "left", group_aware = true }))
+hl.bind(mainMod .. " + SHIFT + l", hl.dsp.window.move({ direction = "right", group_aware = true }))
+hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ direction = "up", group_aware = true }))
+hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "down", group_aware = true }))
+
+hl.bind("CTRL + SHIFT + h", hl.dsp.window.move({ monitor = "l" }))
+hl.bind("CTRL + SHIFT + l", hl.dsp.window.move({ monitor = "r" }))
+hl.bind("CTRL + SHIFT + Left", hl.dsp.window.move({ monitor = "l" }))
+hl.bind("CTRL + SHIFT + Right", hl.dsp.window.move({ monitor = "r" }))
+
 -------------------
 ---- HYMISION ----
 ------------------
@@ -50,44 +70,6 @@ end)
 hl.bind("SUPER + Escape", hl.plugin.hymission.close)
 
 -- SCROLLING --
--- local function layout_bind(bind_table)
--- 	return function()
--- 		local workspace = hl.get_active_special_workspace() or hl.get_active_workspace()
---
--- 		if not workspace then
--- 			return
--- 		end
---
--- 		local layout = workspace.tiled_layout
---
--- 		if bind_table[layout] then
--- 			hl.dispatch(bind_table[layout])
--- 		end
--- 	end
--- end
---
--- hl.bind(
--- 	"SUPER + H",
--- 	layout_bind({
--- 		scrolling = hl.dsp.layout("focus left"),
--- 		dwindle = hl.dsp.focus({ direction = "left" }),
--- 		monocle = hl.dsp.focus({ direction = "left" }),
--- 		master = hl.dsp.focus({ direction = "left" }),
--- 	})
--- )
---
--- hl.bind(
--- 	"SUPER + L",
--- 	layout_bind({
--- 		scrolling = hl.dsp.layout("focus right"),
--- 		dwindle = hl.dsp.focus({ direction = "right" }),
--- 		monocle = hl.dsp.focus({ direction = "right" }),
--- 		master = hl.dsp.focus({ direction = "right" }),
--- 	})
--- )
-
 hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("consume_or_expel next"))
 hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.layout("consume_or_expel prev"))
 hl.bind(mainMod .. " + R", hl.dsp.layout("colresize +conf"))
--- hl.bind(mainMod .. " + L", hl.dsp.layout("move +col"))
--- hl.bind(mainMod .. " + H", hl.dsp.layout("move -col"))
