@@ -8,6 +8,7 @@
 # caelestia shell -d
 # qs -c noctalia-shell &
 dms run --daemon &
+# noctalia --daemon &
 
 # notification daemon
 # dunst &
