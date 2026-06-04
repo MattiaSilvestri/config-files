@@ -1,6 +1,6 @@
 [global]
 # Default mode for new workspaces: "master" or "scroll"
-default_workspace_mode = "master"
+default_workspace_mode = "scroll"
 
 # Settings for the master layout mode
 [master]
