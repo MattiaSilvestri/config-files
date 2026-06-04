@@ -24,25 +24,35 @@ hl.bind(
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
 	{ locked = true, repeating = true }
 )
-hl.bind(
-	"XF86MonBrightnessUp",
-	hl.dsp.exec_cmd("dms ipc call brightness increment 5 '' "),
-	{ locked = true, repeating = true }
-)
+-- hl.bind(
+-- 	"XF86MonBrightnessUp",
+-- 	hl.dsp.exec_cmd("dms ipc call brightness increment 5 '' "),
+-- 	{ locked = true, repeating = true }
+-- )
+-- hl.bind(
+-- 	"XF86MonBrightnessDown",
+-- 	hl.dsp.exec_cmd("dms ipc call brightness decrement 5 '' "),
+-- 	{ locked = true, repeating = true }
+-- )
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("noctalia msg brightness-up * 5%"), { locked = true, repeating = true })
 hl.bind(
 	"XF86MonBrightnessDown",
-	hl.dsp.exec_cmd("dms ipc call brightness decrement 5 '' "),
+	hl.dsp.exec_cmd("noctalia msg brightness-down * 5%"),
 	{ locked = true, repeating = true }
 )
 
 -- Requires playerctl
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("dms ipc call mpris next"), { locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("dms ipc call mpris playPause"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("dms ipc call mpris previous"), { locked = true })
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("dms ipc call mpris next"), { locked = true })
+-- hl.bind("XF86AudioNext", hl.dsp.exec_cmd("dms ipc call mpris next"), { locked = true })
+-- hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("dms ipc call mpris playPause"), { locked = true })
+-- hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("dms ipc call mpris previous"), { locked = true })
+-- hl.bind("XF86AudioNext", hl.dsp.exec_cmd("dms ipc call mpris next"), { locked = true })
+
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("noctalia msg media next"), { locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("noctalia msg media toggle"), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("noctalia msg media previous"), { locked = true })
 
 -- Session
-hl.bind(mainMod .. "+ X", hl.dsp.exec_cmd("dms ipc call lock lock"), { locked = true })
+hl.bind(mainMod .. "+ X", hl.dsp.exec_cmd("hyprlock"), { locked = true })
 
 ------------------
 ----  WINDOWS  ----

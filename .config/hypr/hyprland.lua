@@ -13,7 +13,8 @@ require("config.mappings")
 -- Set programs that you use
 local terminal = "kitty"
 local fileManager = "dolphin"
-local menu = "dms ipc call spotlight toggle"
+-- local menu = "dms ipc call spotlight toggle"
+local menu = "noctalia msg panel-toggle launcher"
 
 -------------------
 ---- AUTOSTART ----
