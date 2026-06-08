@@ -231,5 +231,3 @@ hl.bind("SHIFT + Space", function()
 
 	hl.workspace_rule({ workspace = workspace.name, layout = next_layout })
 end)
-
-require("dms.cursor")
