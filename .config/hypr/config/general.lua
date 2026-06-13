@@ -74,6 +74,30 @@ hl.config({
 			},
 		},
 	},
+
+	binds = {
+		window_direction_monitor_fallback = false,
+		movefocus_cycles_fullscreen = true,
+	},
+})
+
+---------------
+---- INPUT ----
+---------------
+
+hl.config({
+	input = {
+		kb_layout = "it",
+		kb_variant = "us",
+		kb_model = "",
+		kb_options = "caps:swapescape",
+		kb_rules = "",
+
+		follow_mouse = 2,
+		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+		scroll_method = "on_button_down",
+		scroll_button = 274,
+	},
 })
 
 -- Bezier curves
@@ -83,11 +107,11 @@ hl.curve("menu_decel", { type = "bezier", points = { { 0.1, 1 }, { 0, 1 } } })
 hl.curve("menu_accel", { type = "bezier", points = { { 0.38, 0.04 }, { 1, 0.07 } } })
 
 -- Spring Curves
-hl.curve("spring_menu", { type = "spring", mass = 1, stiffness = 80, dampening = 14 })
-hl.curve("spring_window", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-hl.curve("spring_open", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-hl.curve("spring_workspace", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
-hl.curve("spring_special", { type = "spring", mass = 1, stiffness = 30, dampening = 8 })
+hl.curve("spring_menu", { type = "spring", mass = 1, stiffness = 300, dampening = 25 })
+hl.curve("spring_window", { type = "spring", mass = 1, stiffness = 300, dampening = 25 })
+hl.curve("spring_open", { type = "spring", mass = 1, stiffness = 300, dampening = 25 })
+hl.curve("spring_workspace", { type = "spring", mass = 1, stiffness = 300, dampening = 25 })
+hl.curve("spring_special", { type = "spring", mass = 1, stiffness = 300, dampening = 25 })
 
 -- Window animations
 hl.animation({ leaf = "windows", enabled = true, speed = 1, spring = "spring_window" })
@@ -105,10 +129,10 @@ hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "md3_decel" })
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 6, bezier = "md3_decel" })
 
 -- Layer animations
-hl.animation({ leaf = "layersIn", enabled = true, speed = 1.6, spring = "spring_menu", style = "fade" })
-hl.animation({ leaf = "layersOut", enabled = true, speed = 1.6, bezier = "menu_accel", style = "fade" })
-hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 2, bezier = "menu_decel" })
-hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.6, bezier = "menu_accel" })
+hl.animation({ leaf = "layersIn", enabled = true, speed = 1, spring = "spring_menu", style = "fade" })
+hl.animation({ leaf = "layersOut", enabled = true, speed = 1, bezier = "menu_accel", style = "fade" })
+hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1, bezier = "menu_decel" })
+hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1, bezier = "menu_accel" })
 
 -- Workspace animations
 hl.animation({ leaf = "workspaces", enabled = true, speed = 1, spring = "spring_workspace", style = "slidevert" })

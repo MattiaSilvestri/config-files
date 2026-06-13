@@ -13,7 +13,8 @@ require("config.mappings")
 -- Set programs that you use
 local terminal = "kitty"
 local fileManager = "dolphin"
-local menu = "noctalia msg panel-toggle launcher"
+local menu = "dms ipc call spotlight toggle"
+-- local menu = "noctalia msg panel-toggle launcher"
 
 -------------------
 ---- AUTOSTART ----
@@ -103,6 +104,7 @@ hl.config({
 	scrolling = {
 		fullscreen_on_one_column = true,
 		explicit_column_widths = "0.333, 0.5, 0.667, 1.0",
+		follow_focus = true,
 	},
 })
 
@@ -116,31 +118,6 @@ hl.config({
 		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
 	},
 })
-
----------------
----- INPUT ----
----------------
-
-hl.config({
-	input = {
-		kb_layout = "it",
-		kb_variant = "us",
-		kb_model = "",
-		kb_options = "caps:swapescape",
-		kb_rules = "",
-
-		follow_mouse = 1,
-
-		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
-		touchpad = {
-			natural_scroll = false,
-		},
-	},
-})
-
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 
 ---------------------
 ---- KEYBINDINGS ----
@@ -158,63 +135,10 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("CTRL + SPACE", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+-- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
-
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
-hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
-
-hl.bind(mainMod .. " + SHIFT + h", hl.dsp.window.move({ direction = "left", group_aware = true }))
-hl.bind(mainMod .. " + SHIFT + l", hl.dsp.window.move({ direction = "right", group_aware = true }))
-hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ direction = "up", group_aware = true }))
-hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "down", group_aware = true }))
-
--- Srolling
-hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("consume_or_expel next"))
-hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.layout("consume_or_expel prev"))
-
--- Laptop multimedia keys for volume and LCD brightness
-hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
-)
-hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ locked = true, repeating = true }
-)
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("noctalia msg brightness-up all 5"), { locked = true, repeating = true })
-hl.bind(
-	"XF86MonBrightnessDown",
-	hl.dsp.exec_cmd("noctalia msg brightness-down all 5"),
-	{ locked = true, repeating = true }
-)
-
--- Requires playerctl
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -227,7 +151,7 @@ local smw = plugins.smw
 for i = 1, smw.get_amount_of_workspaces() do
 	local key = i % 10 -- 10 maps to key 0
 	hl.bind(mainMod .. " + " .. key, smw.workspace(tostring(i)))
-	hl.bind(mainMod .. " + SHIFT + " .. key, smw.move_to_workspace_silent(tostring(i)))
+	hl.bind("ALT + SHIFT + " .. key, smw.move_to_workspace(tostring(i)))
 end
 
 -- Example special workspace (scratchpad)
@@ -307,3 +231,21 @@ hl.bind("SHIFT + Space", function()
 
 	hl.workspace_rule({ workspace = workspace.name, layout = next_layout })
 end)
+
+-- OVERVIEW
+if hl.plugin and hl.plugin.scrolloverview then
+	hl.plugin.scrolloverview.configure({
+		gesture_distance = 300, -- how far is the "max" for the gesture
+		scale = 0.5, -- preferred overview scale
+		workspace_gap = 100,
+		wallpaper = 0, -- 0: global only, 1: per-workspace only, 2: both
+		blur = false, -- blur only the main overview wallpaper
+
+		shadow = {
+			enabled = false,
+			range = 50,
+			render_power = 3,
+			color = 0xee1a1a1a,
+		},
+	})
+end
