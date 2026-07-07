@@ -249,7 +249,7 @@ return {
 		["U"] = { "<cmd>redo<cr>", desc = "Redo" },
 		["<leader>st"] = { "<cmd>put =strftime('%c')<cr>kJ", desc = "Insert current date and time" },
 		["<leader>sd"] = { "<cmd>cd %:h<cr>", desc = "Move workdir to current file" },
-		["<leader>a"] = { "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble" },
+		["<leader>b"] = { "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble" },
 		["~"] = { "Vyp", desc = "Yank and pase to next line" },
 		["<leader>."] = { "<cmd>noh<cr>", desc = "noh" },
 	},

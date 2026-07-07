@@ -8,7 +8,20 @@ local stbufnr = function()
 end
 
 M = {
-	base46 = { theme = "catppuccin", integrations = { "telescope", "blink" } },
+	base46 = {
+		theme = "catppuccin",
+		changed_themes = {
+			catppuccin = {
+				base_30 = {
+					-- black = "#191919", --  nvim bg
+				},
+				base_16 = {
+					-- base00 = "#191919",
+				},
+			},
+		},
+		integrations = { "telescope", "blink" },
+	},
 
 	ui = {
 		statusline = {
@@ -98,13 +111,13 @@ M = {
 					local sep_r = "%#St_sep_r#" .. separators.right .. " %#ST_EmptySpace#"
 
 					return "%#St_file_sep#"
-							.. sep_l
-							.. "%#St_file_bg#"
-							.. icon
-							.. " "
-							.. "%#St_file_txt# "
-							.. relpath
-							.. sep_r
+						.. sep_l
+						.. "%#St_file_bg#"
+						.. icon
+						.. " "
+						.. "%#St_file_txt# "
+						.. relpath
+						.. sep_r
 				end,
 
 				venv = function()
