@@ -104,7 +104,74 @@ return {
 	{
 		"coder/claudecode.nvim",
 		dependencies = { "folke/snacks.nvim" },
-		config = true,
+		opts = {
+			-- Server Configuration
+			port_range = { min = 10000, max = 65535 },
+			auto_start = true,
+			log_level = "info", -- "trace", "debug", "info", "warn", "error"
+			terminal_cmd = nil, -- Custom terminal command (default: "claude")
+			-- For local installations: "~/.claude/local/claude"
+			-- For native binary: use output from 'which claude'
+
+			-- Send/Focus Behavior
+			-- When true, successful sends focus the in-editor Claude terminal if already
+			-- connected. NOTE: this only works for in-editor providers (snacks/native);
+			-- it has no effect with provider = "none"/"external" (Claude runs outside
+			-- Neovim). For those, hook the `User ClaudeCodeSendComplete` event (see Events).
+			focus_after_send = false,
+
+			-- Selection Tracking
+			track_selection = true,
+			visual_demotion_delay_ms = 50,
+
+			-- Terminal Configuration
+			terminal = {
+				split_side = "right", -- "left" or "right"
+				split_width_percentage = 0.30,
+				-- Optional: shrink (or widen) the terminal while a diff is open. Defaults to
+				-- split_width_percentage when unset, preserving today's behavior.
+				diff_split_width_percentage = nil, -- e.g. 0.20 to give diffs more room
+				provider = "auto", -- "auto", "snacks", "native", "external", "none", or custom provider table
+				auto_close = true,
+				-- Auto-enter insert/terminal mode whenever the Claude terminal window gains
+				-- focus. Set to false to stay in Normal mode and preserve your scroll position
+				-- when switching back to the terminal (e.g. via <C-w>l); press `i` to type.
+				-- Note: false also opens the terminal in Normal mode (it gates start-insert too).
+				auto_insert = true,
+				snacks_win_opts = {}, -- Opts to pass to `Snacks.terminal.open()` - see Floating Window section below
+				-- Work around a Neovim core bug (< 0.12.2) that fragments large pastes into
+				-- the terminal, making Cmd+V appear to truncate ([#161]). true | false | "auto"
+				-- ("auto", the default, enables it only on affected Neovim versions).
+				fix_streamed_paste = "auto",
+
+				-- Provider-specific options
+				provider_opts = {
+					-- Command for external terminal provider. Can be:
+					-- 1. String with %s placeholder: "alacritty -e %s" (backward compatible)
+					-- 2. String with two %s placeholders: "alacritty --working-directory %s -e %s" (cwd, command)
+					-- 3. Function returning command: function(cmd, env) return "alacritty -e " .. cmd end
+					external_terminal_cmd = nil,
+				},
+			},
+
+			-- Diff Integration
+			diff_opts = {
+				layout = "horizontal", -- "vertical" (default), "horizontal", or "unified"
+				-- "unified": VS Code-style unified diff in a single buffer with deleted
+				--   (red/strikethrough) and added (green) lines interleaved. Requires
+				--   Neovim >= 0.9.0. Highlight groups are customizable: ClaudeCodeInlineDiffAdd,
+				--   ClaudeCodeInlineDiffDelete, ClaudeCodeInlineDiffAddSign, ClaudeCodeInlineDiffDeleteSign.
+				open_in_new_tab = false,
+				keep_terminal_focus = false, -- If true, moves focus back to terminal after diff opens
+				hide_terminal_in_new_tab = false,
+				auto_resize_terminal = true, -- Let the plugin manage the terminal width across the diff lifecycle; set false to own it via the User autocmds below
+				-- on_new_file_reject = "keep_empty", -- "keep_empty" or "close_window"
+
+				-- Legacy aliases (still supported):
+				-- vertical_split = true,
+				-- open_in_current_tab = true,
+			},
+		},
 		-- `cmd` lets lazy.nvim create command stubs that load the plugin on first use,
 		-- so `:ClaudeCode` and friends work on a fresh start. Without it, a keys-only
 		-- spec defers loading until a <leader>a* mapping is pressed and the commands
