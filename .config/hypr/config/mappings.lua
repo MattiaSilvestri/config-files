@@ -1,4 +1,5 @@
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local menu = "dms ipc call spotlight toggle"
 
 ------------------
 ----  SHELL  ----
@@ -80,6 +81,30 @@ hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
 hl.bind("ALT + TAB", hl.dsp.group.next())
 hl.bind("ALT + SHIFT + TAB", hl.dsp.group.prev())
 
+hl.bind(mainMod .. " + ALT + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind("CTRL + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind("CTRL + ALT + DELETE", hl.dsp.exec_cmd("dms ipc call powermenu toggle"))
+
+hl.bind("ALT + SHIFT + Space", function()
+	local layouts = { "scrolling", "dwindle", "master", "monocle" }
+	local workspace = hl.get_active_workspace()
+	local next_layout = "dwindle"
+
+	if not workspace then
+		return
+	end
+
+	for i = 1, #layouts do
+		if layouts[i] == workspace.tiled_layout then
+			local next_layout_idx = (i % #layouts) + 1
+			next_layout = layouts[next_layout_idx]
+			break
+		end
+	end
+
+	hl.workspace_rule({ workspace = workspace.name, layout = next_layout })
+end)
+
 -------------------
 ---- HYMISSION ----
 ------------------
@@ -160,3 +185,29 @@ hl.define_submap("hyprexpo", function()
 		hl.plugin.hyprexpo.expo("cancel")
 	end)
 end)
+
+--- OVERVIEW
+-- hl.config({
+-- 	plugin = {
+-- 		scrolloverview = {
+-- 			gesture_distance = 300, -- how far is the "max" for the gesture
+-- 			scale = 0.5, -- preferred overview scale
+-- 			workspace_gap = 100,
+-- 			wallpaper = 0, -- 0: global only, 1: per-workspace only, 2: both
+-- 			blur = false, -- blur only the main overview wallpaper
+--
+-- 			shadow = {
+-- 				enabled = false,
+-- 				range = 50,
+-- 				render_power = 3,
+-- 				color = 0xee1a1a1a,
+-- 			},
+-- 		},
+-- 	},
+-- })
+
+-- hl.bind("SUPER + o", function()
+-- 	if hl.plugin and hl.plugin.scrolloverview then
+-- 		hl.plugin.scrolloverview.overview("toggle")
+-- 	end
+-- end)

@@ -6,6 +6,7 @@ local smw = require("split-monitor-workspaces")
 
 require("config.general")
 require("config.mappings")
+require("config.plugins")
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -13,7 +14,6 @@ require("config.mappings")
 -- Set programs that you use
 local terminal = "kitty"
 local fileManager = "dolphin"
-local menu = "dms ipc call spotlight toggle"
 -- local menu = "noctalia msg panel-toggle launcher"
 
 -------------------
@@ -135,8 +135,6 @@ hl.bind(
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.window.float({ action = "toggle" }))
-hl.bind("CTRL + SPACE", hl.dsp.exec_cmd(menu))
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
@@ -212,25 +210,19 @@ hl.window_rule({
 	float = true,
 })
 
-hl.bind("SHIFT + Space", function()
-	local layouts = { "scrolling", "dwindle", "master", "monocle" }
-	local workspace = hl.get_active_workspace()
-	local next_layout = "dwindle"
-
-	if not workspace then
-		return
-	end
-
-	for i = 1, #layouts do
-		if layouts[i] == workspace.tiled_layout then
-			local next_layout_idx = (i % #layouts) + 1
-			next_layout = layouts[next_layout_idx]
-			break
-		end
-	end
-
-	hl.workspace_rule({ workspace = workspace.name, layout = next_layout })
-end)
+hl.config({
+	plugin = {
+		hymission = {
+			outer_padding_top = 92,
+			layout_engine = "grid",
+			niri_mode = 0,
+			switch_release_key = "Super_L",
+			workspace_strip_anchor = "left",
+			switch_toggle_auto_next = 1,
+			toggle_switch_mode = 1,
+		},
+	},
+})
 
 require("dms.cursor")
 
