@@ -4,6 +4,6 @@
 // ! PLACE YOUR CUSTOM CONFIGURATION ELSEWHERE !
 
 cursor {
-    xcursor-theme "catppuccin-mocha-light-cursors"
-    xcursor-size 20
+    xcursor-theme "default"
+    xcursor-size 24
 }

@@ -1,0 +1,488 @@
+// Zed keymap
+//
+// Ported from the NvChad/AstroNvim-style Neovim config at
+// ~/Temp/config-files/.config/nvim (mapleader = " ").
+// Zed's vim mode already reproduces vanilla Vim motions, text objects,
+// surround (ys/cs/ds/S), gcc/gc comments, zR/zM folds, etc. out of the box,
+// so this file focuses on the custom `<leader>`-based bindings from
+// lua/config/mappings.lua, translated to the closest native Zed action.
+//
+// Not everything has a 1:1 equivalent (Telescope/Snacks pickers, Yazi,
+// nvim-possession sessions, lazygit/neogit, toggleterm directions, the
+// opencode/codex plugins, grug-far, etc.) — those are approximated with the
+// closest built-in Zed feature, or skipped with a comment explaining why.
+//
+// See: https://zed.dev/docs/key-bindings and https://zed.dev/docs/vim
+[
+  // ---------------------------------------------------------------------
+  // Window / split navigation: <C-h/j/k/l> in nvim (mappings.lua ~L214)
+  // ---------------------------------------------------------------------
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      // <C-Up/Down/Left/Right> resize split (mappings.lua ~L218)
+      "ctrl-up": "vim::ResizePaneUp",
+      "ctrl-down": "vim::ResizePaneDown",
+      "ctrl-left": "vim::ResizePaneLeft",
+      "ctrl-right": "vim::ResizePaneRight",
+      // <leader>z Maximize current window -> Zed's native pane zoom
+      "space z": "workspace::ToggleZoom"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Ctrl-e / Ctrl-y: scroll 5 lines at a time instead of 1. These reuse
+  // vim's own count-prefix mechanism (typing "5" then the key) rather than
+  // a made-up parameter, since vim::LineDown/LineUp don't take one. Per
+  // Zed's docs, a SendKeystrokes sequence that re-triggers its own binding
+  // resolves to the next-highest-precedence definition (the real
+  // vim::LineDown/LineUp), so this can't recurse infinitely.
+  // ---------------------------------------------------------------------
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-e": ["workspace::SendKeystrokes", "5 ctrl-e"],
+      "ctrl-y": ["workspace::SendKeystrokes", "5 ctrl-y"]
+    }
+  },
+  {
+    // Same 5-line scroll while an autocomplete popup is open.
+    "context": "showing_completions",
+    "bindings": {
+      "ctrl-e": ["workspace::SendKeystrokes", "5 ctrl-e"],
+      "ctrl-y": ["workspace::SendKeystrokes", "5 ctrl-y"]
+    }
+  },
+  {
+    // Same hjkl navigation, but reachable from docks/panels (terminal,
+    // project panel, agent panel...), mirroring nvim's term_nav() helper
+    // that falls back to <C-w> movement outside of a floating terminal.
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Ctrl-j / Ctrl-k as extra up/down keys everywhere a menu, picker or
+  // autocomplete/code-action popup is open (in addition to the arrows).
+  // Three separate contexts are needed because Zed uses different actions
+  // for generic menus vs. the editor's completion/code-action popup vs.
+  // the LSP signature-help popup. All of these are naturally excluded from
+  // the "VimControl && !menu" pane-nav bindings above (they match "menu"),
+  // so there's no conflict with Ctrl-hjkl split navigation.
+  // ---------------------------------------------------------------------
+  {
+    // Command palette, file finder, pickers, dropdown context menus, etc.
+    "context": "menu",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
+    }
+  },
+  {
+    // While typing a query into a picker's filter input.
+    "context": "Picker > Editor",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
+    }
+  },
+  {
+    // Autocomplete suggestions / code actions popup in the editor.
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious"
+    }
+  },
+  {
+    // LSP signature help popup.
+    "context": "Editor && showing_signature_help && !showing_completions",
+    "bindings": {
+      "ctrl-j": "editor::SignatureHelpNext",
+      "ctrl-k": "editor::SignatureHelpPrevious"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Accept the AI edit prediction (ghost text) with Ctrl-L, in addition to
+  // the defaults (Tab / Alt-Tab / Alt-L). "edit_prediction" is only true
+  // while a suggestion is actually showing, and this context sits at the
+  // same tree depth as the "VimControl && !menu" / "Dock" Ctrl-L pane-nav
+  // bindings above — since this block is defined later in the file, it
+  // wins that tie only when a prediction is visible. The rest of the time
+  // Ctrl-L still falls through to pane-right navigation / Select Line as
+  // before.
+  // ---------------------------------------------------------------------
+  // {
+  //   "context": "Editor && edit_prediction",
+  //   "bindings": {
+  //     "ctrl-l": "editor::AcceptEditPrediction"
+  //   }
+  // },
+
+  // ---------------------------------------------------------------------
+  // Buffers / tabs: H/L cycle buffers, <leader>b*, ]o/[o (mappings.lua ~L122)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      // H/L: next/previous buffer (overrides vim's WindowTop/WindowBottom,
+      // exactly like the nvim config does)
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      // ]o / [o: nvim tabpages -> map to Zed panes (closest analogue)
+      "] o": "workspace::ActivateNextPane",
+      "[ o": "workspace::ActivatePreviousPane",
+      // <leader>bb / <leader>bd: pick a buffer (tab switcher lets you
+      // close the selected item with ctrl-backspace)
+      "space b b": "tab_switcher::Toggle",
+      "space b d": "tab_switcher::Toggle",
+      // <leader>bL / <leader>bH: move buffer right/left
+      "space b shift-l": "pane::SwapItemRight",
+      "space b shift-h": "pane::SwapItemLeft",
+      // <leader>c: close buffer
+      "space c": ["pane::CloseActiveItem", { "close_pinned": false }],
+      // U: redo (nvim overrides vim's default "undo line" with redo)
+      "shift-u": "vim::Redo",
+      // <leader>b (bare) was reused in the nvim config for Trouble diagnostics
+      // (shadows the "space b b"/"space b d" chords above, just like in nvim)
+      "space b": "diagnostics::Deploy"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Pickers / Find: <leader>f*, <leader>s*, <leader><leader>
+  // (mappings.lua ~L78-119)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space space": "command_palette::Toggle", // <leader><leader> cmdline
+      "space f f": "file_finder::Toggle",        // <leader>ff find files
+      "space f b": "tab_switcher::Toggle",       // <leader>fb find buffer
+      "space f r": ["pane::DeploySearch", { "replace_enabled": true }], // <leader>fr find & replace
+      "space f g": "pane::DeploySearch",         // <leader>fg live grep glob
+      "space s s": "buffer_search::Deploy",       // <leader>ss fuzzy find in buffer
+      "space s g": "pane::DeploySearch",          // <leader>sg live grep (project)
+      "space s f": "pane::DeploySearch",          // <leader>sf grep in folder (use filters)
+      "space s r": "workspace::ReopenLastPicker", // <leader>sr resume last picker
+      "space s q": "diagnostics::Deploy",         // <leader>sq quickfix/diagnostics
+      "space s u": "editor::UndoSelection",       // <leader>su closest: undo selection
+      "space s w": "vim::MoveToNext"              // <leader>sw search word under cursor
+    }
+  },
+  {
+    // Also allow the most useful pickers to work with no editor focused
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space space": "command_palette::Toggle"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // File explorer / panels: <leader>e, <leader>o, <leader>n*, <leader>y*
+  // (mappings.lua ~L149-157)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      // ToggleFocus only opens+focuses (or unfocuses) the panel, it never
+      // hides it. The block below adds a real show/hide toggle.
+      "space e": "project_panel::ToggleFocus", // <leader>e / <leader>E focus explorer
+      "space o": "project_panel::ToggleFocus", // <leader>o focus neotree
+      "space n b": "tab_switcher::Toggle",     // <leader>nb buffers list
+      "space n g": "git_panel::ToggleFocus",   // <leader>ng git status
+      "space y y": "project_panel::ToggleFocus", // <leader>yy yazi toggle (closest: project panel)
+      "space y z": "pane::RevealInProjectPanel" // <leader>yz yazi at current file
+    }
+  },
+  {
+    // When the project panel is the dock's active/visible panel, the same
+    // keys close it instead — giving <leader>e / <leader>o a real
+    // "toggle sidebar visibility" behavior (open+focus <-> closed).
+    "context": "vim_mode == normal && !menu && left_dock == ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+      "space o": "workspace::ToggleLeftDock"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Git: <leader>g* (mappings.lua ~L160-164)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space g g": "git_panel::ToggleFocus", // <leader>gg lazygit -> git panel
+      "space g n": "git_panel::ToggleFocus", // <leader>gn neogit -> git panel
+      "space g d": "git::Diff",              // <leader>gd current file diff/history
+      "space g q": "pane::CloseActiveItem"   // <leader>gq close diff view
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Lists: <leader>x*, ]q/[q, ]Q/[Q, ]l/[l, ]L/[L (mappings.lua ~L167-178)
+  // Zed's diagnostics list plays the role of vim's quickfix/loclist here.
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space x q": "diagnostics::Deploy",
+      "space x l": "diagnostics::Deploy",
+      "] q": "editor::GoToDiagnostic",
+      "[ q": "editor::GoToPreviousDiagnostic",
+      "] l": "editor::GoToDiagnostic",
+      "[ l": "editor::GoToPreviousDiagnostic"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // LSP: <leader>l* (mappings.lua ~L181-190). Most already match Zed's
+  // vim-mode defaults 1:1 (gd, K, g s, g S, g ., c d) — these just add the
+  // <leader>l equivalents for muscle memory.
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space l shift-r": "editor::FindAllReferences", // <leader>lR references
+      "space l s": "outline::Toggle",                 // <leader>ls symbols in buffer
+      "space l shift-s": "project_symbols::Toggle",   // <leader>lS symbols in workspace
+      "space l t": "outline::Toggle",                 // <leader>lt treesitter symbols
+      "space l r": "editor::Rename",                  // <leader>lr rename
+      "space l a": "editor::ToggleCodeActions",       // <leader>la code actions
+      // gD: nvim opens the definition in a new window/split
+      "g shift-d": "editor::GoToDefinitionSplit",
+      // gl: nvim's vim.diagnostic.open_float({ scope = "line" }) -> Zed's
+      // hover popover already shows diagnostics for the symbol/position
+      // under the cursor alongside LSP hover info, so it's the closest
+      // equivalent (same action as the default "g h" / "K" hover keys).
+      // Note: this overrides vim mode's default "g l" (add a cursor on the
+      // next occurrence of the word under the cursor / vim::SelectNext) —
+      // that multi-cursor shortcut has no other default binding, so it's
+      // only reachable via the command palette after this change.
+      "g l": "editor::Hover"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // AI (opencode/codex plugins in nvim) -> Zed's built-in Agent panel /
+  // inline assistant are the closest native equivalents.
+  // (mappings.lua ~L193-200, ~L73-75 in visual mode)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "ctrl-a": "assistant::InlineAssist", // ask AI inline (was vim increment)
+      "ctrl-.": "agent::ToggleFocus",      // toggle agent panel
+      "space l o": "agent::ToggleOptionsMenu",
+      // Increment/decrement moved off ctrl-a, same as the nvim config does
+      "+": "vim::Increment",
+      "-": "vim::Decrement"
+    }
+  },
+  {
+    "context": "vim_mode == visual && !menu",
+    "bindings": {
+      "ctrl-a": "assistant::InlineAssist",
+      "ctrl-x": "assistant::InlineAssist"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-.": "agent::ToggleFocus"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Claude Code (coder/claudecode.nvim, <leader>a* in ai.lua). Zed already
+  // has `claude-acp` registered as a native ACP agent (settings.json ->
+  // agent_servers.claude-acp), so instead of a plain terminal running the
+  // `claude` CLI, this uses Zed's real Agent Panel/thread UI as the
+  // substitute for nvim's Claude terminal split — it gives the same
+  // "send context from editor to Claude" capability (and more: inline
+  // diff review) that a bare terminal pane can't provide on its own.
+  //
+  // | nvim (<leader>a*)         | Zed equivalent                          |
+  // |----------------------------|-----------------------------------------|
+  // | ac  Toggle Claude terminal | space a c  -> open+focus, or close if   |
+  // |                            |              already the active panel  |
+  // | af  Focus Claude           | space a f  -> agent::ToggleFocus        |
+  // | ar  Resume (picker)        | space a r  -> focus panel + thread      |
+  // |                            |              switcher                  |
+  // | aC  Continue (last thread) | space a shift-c -> agent::ToggleFocus   |
+  // |                            |    (Zed threads already persist, so     |
+  // |                            |    "continue" == just reopening one)    |
+  // | am  Select model           | space a m  -> focus panel + model       |
+  // |                            |              selector                  |
+  // | ab  Add current buffer     | space a b  -> agent::AddSelectionToThread|
+  // |                            |    (adds whole file when no selection) |
+  // | as  Send selection (visual)| space a s  (visual mode) -> same action |
+  // | aa  Accept diff            | space a a  -> agent::Keep               |
+  // | ad  Deny diff              | space a d  -> agent::Reject             |
+  // Not ported: `ClaudeCodeTreeAdd` (add a file from the project panel
+  // without opening it) has no equivalent keyboard action in Zed.
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      // <leader>ac: open+focus the Agent Panel (like <leader>af below).
+      "space a c": "agent::ToggleFocus",
+      "space a f": "agent::ToggleFocus",
+      "space a shift-c": "agent::ToggleFocus",
+      "space a r": ["workspace::SendKeystrokes", "ctrl-? ctrl-tab"],
+      "space a m": ["workspace::SendKeystrokes", "ctrl-? ctrl-alt-/"],
+      "space a b": "agent::AddSelectionToThread",
+      // Bonus (no nvim equivalent): explicitly pick which agent/backend
+      // (e.g. "New Claude Code Thread") to start a new thread with.
+      "space a n": "agent::ToggleNewThreadMenu"
+    }
+  },
+  {
+    // True show/hide toggle for <leader>ac: closes the dock outright once
+    // the Agent Panel is already the active right-dock panel, instead of
+    // just unfocusing it (same trick used for the project/git panels
+    // above). Defined after the block above so it wins the tie whenever
+    // the Agent Panel is the visible right-dock panel; otherwise "space a
+    // c" falls back to the plain open+focus behavior.
+    "context": "vim_mode == normal && !menu && right_dock == AgentPanel",
+    "bindings": {
+      "space a c": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    // <leader>aa / <leader>ad: accept or deny the diff Claude is proposing,
+    // only while a review diff is actually showing in the editor.
+    "context": "vim_mode == normal && !menu && editor_agent_diff",
+    "bindings": {
+      "space a a": "agent::Keep",
+      "space a d": "agent::Reject",
+      "space a shift-a": "agent::KeepAll",
+      "space a shift-d": "agent::RejectAll"
+    }
+  },
+  {
+    // <leader>as in visual mode: send the current selection to Claude.
+    "context": "vim_mode == visual && !menu",
+    "bindings": {
+      "space a s": "agent::AddSelectionToThread"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Packages (lazy.nvim in nvim) -> Zed extensions (closest equivalent)
+  // (mappings.lua ~L206-211)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space p i": "zed::Extensions",
+      "space p s": "zed::Extensions",
+      "space p shift-s": "zed::Extensions",
+      "space p u": "zed::Extensions",
+      "space p shift-u": "zed::Extensions"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Sessions (nvim-possession) -> Zed's recent projects picker
+  // (mappings.lua ~L225-229)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space shift-s f": "projects::OpenRecent"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Terminal toggling (toggleterm) -> Zed's single terminal dock
+  // (mappings.lua ~L233-236)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "t f": "terminal_panel::Toggle",
+      "t h": "terminal_panel::Toggle",
+      "t v": "workspace::NewTerminal"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Visual mode extras: persistent indent (< / > reselect), comment toggle,
+  // and AI selection helpers (mappings.lua ~L257-300)
+  // ---------------------------------------------------------------------
+  {
+    "context": "vim_mode == visual && !menu",
+    "bindings": {
+      "<": ["workspace::SendKeystrokes", "< g v"], // Persistent indent left
+      ">": ["workspace::SendKeystrokes", "> g v"], // Persistent indent right
+      "space f r": "buffer_search::DeployReplace",
+      "space f f": "buffer_search::Deploy",
+      "space s l": "buffer_search::Deploy",
+      "space g l": "git::Diff"
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Comment toggle: <leader>/ (mappings.lua ~L72, ~L135-144). Zed vim mode
+  // already binds gcc/gc for this, this just adds the <leader>/ alias.
+  // ---------------------------------------------------------------------
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space /": ["editor::ToggleComments", { "advance_downwards": false }]
+    }
+  },
+
+  // ---------------------------------------------------------------------
+  // Restore common non-vim shortcuts that vim mode steals by default
+  // (ctrl-v paste, ctrl-c copy, etc.) — recommended in Zed's own vim docs.
+  // Included here because the nvim config leans heavily on system clipboard.
+  // ---------------------------------------------------------------------
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "ctrl-f": "buffer_search::Deploy",
+      "ctrl-c": "editor::Copy",
+      "ctrl-v": "editor::Paste",
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-b": [
+        "vim::Literal",
+        [
+          "ctrl-b",
+          "\u0002"
+        ]
+      ]
+    }
+  },
+  {
+    "context": "Terminal",
+    "unbind": {
+      "ctrl-b": [
+        "terminal::SendKeystroke",
+        "ctrl-b"
+      ]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-b": "vim::PageUp"
+    }
+  }
+]
