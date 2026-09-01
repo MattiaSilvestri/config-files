@@ -488,7 +488,7 @@ binds {
     Ctrl+Alt+M { spawn-sh "dms ipc call dash toggle media"; }
     Ctrl+Alt+Delete { spawn-sh "dms ipc call powermenu toggle"; }
     Mod+X { spawn-sh "dms ipc call lock lock"; }
-    Ctrl+Alt+C { spawn-sh "dms ipc call clipboardPlus toggle"; }
+    Ctrl+Alt+C { spawn-sh "dms ipc call clipboard toggle"; }
     Ctrl+Alt+P { spawn-sh "dms ipc call notepad toggle"; }
     Mod+Ctrl+Space { spawn-sh "dms ipc call mpris playPause"; }
     Mod+P { spawn-sh "dms color pick -a"; }
@@ -715,4 +715,4 @@ binds {
 include "dms/cursor.kdl"
 include "dms/binds.kdl"
 
-include "~/.config/caffyne-shell/config/niri.kdl"
+// include "~/.config/caffyne-shell/config/niri.kdl"
