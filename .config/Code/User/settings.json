@@ -1,0 +1,653 @@
+{
+    "editor.hideCursorInOverviewRuler": true,
+    // zed: "current_line_highlight": "all"
+    "editor.renderLineHighlight": "all",
+    "editor.overviewRulerBorder": false,
+    "editor.scrollbar.verticalScrollbarSize": 8,
+    // zed: "scrollbar": { "show": "auto", "axes": { "horizontal": false } }
+    "editor.scrollbar.vertical": "auto",
+    "editor.scrollbar.horizontal": "hidden",
+    // zed: "buffer_font_size": 13, "buffer_line_height": { "custom": 1.5 }
+    "editor.fontSize": 13,
+    "editor.lineHeight": 1.5,
+    "editor.lineNumbers": "relative",
+    "editor.fontLigatures": true,
+    "editor.smoothScrolling": true,
+    "editor.mouseWheelScrollSensitivity": 0.4,
+    "editor.cursorSmoothCaretAnimation": "off",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.suggest.preview": true,
+    "editor.rulers": [120],
+    "keyboard.dispatch": "keyCode",
+    // zed: "telemetry": { "metrics": false }
+    "telemetry.telemetryLevel": "off",
+    // zed: "file_types": { "Django": ["**/templates/**/*.html"] }
+    "files.associations": {
+        "**/templates/**/*.html": "django-html"
+    },
+    "terminal.integrated.minimumContrastRatio": 1,
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.fontFamily": "'CaskaydiaCove Nerd Font'",
+    "terminal.integrated.lineHeight": 1.3,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    // zed: "icon_theme": "Catppuccin Mocha"
+    "workbench.iconTheme": "catppuccin-mocha",
+    // zed: project_panel / outline_panel / git_panel / collaboration_panel "dock": "left"
+    "workbench.sideBar.location": "left",
+    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle": "custom",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "editor.minimap.enabled": false,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#1e1e2e",
+        "editor.background": "#1e1e2e",
+        "tab.activeBackground": "#1e1e2e",
+        "tab.inactiveBackground": "#1e1e2e",
+        "tab.unfocusedInactiveBackground": "#1e1e2e",
+        "statusBar.background": "#1e1e2e",
+        "panel.background": "#1e1e2e",
+        "sideBar.background": "#1e1e2e",
+        "breadcrumb.background": "#1e1e2e",
+        "editorGroupHeader.tabsBackground": "#1e1e2e",
+        "editorOverviewRuler.background": "#1e1e2e",
+        "editor.lineHighlightBackground": "#31324473",
+
+        // === Flat UI (Crust) ===
+        // "activityBar.background": "#181926",
+        // "sideBar.background": "#181926",
+        // "editorPane.background": "#181926",
+        // "panel.background": "#181926",
+        // "statusBar.background": "#181926",
+        // "titleBar.activeBackground": "#181926",
+        // "titleBar.inactiveBackground": "#181926",
+        // "list.hoverBackground": "#181926",
+        // "list.activeSelectionBackground": "#181926",
+        // "dropdown.background": "#181926",
+        // "input.background": "#181926",
+
+        // // Editor background
+        // "editor.background": "#181926",
+
+        // // Keep foregrounds readable (you can tweak these too)
+        // "foreground": "#cad3f5",
+        // "sideBar.foreground": "#cad3f5",
+        // "activityBar.foreground": "#cad3f5",
+
+        // // === Tab Bar & Tabs ===
+        // // Tab bar area (behind tabs)
+        // "editorGroupHeader.tabsBackground": "#181926",
+        // // Background for active tab
+        // "tab.activeBackground": "#1e2030",
+        // "tab.activeForeground": "#cad3f5",
+        // // Inactive tabs take the flat UI color
+        // "tab.inactiveBackground": "#181926",
+        // "tab.inactiveForeground": "#8087a2",
+        // "tab.hoverBackground": "#181926",
+
+        // // Optional: border/indicator for active tab
+        // "tab.activeBorderTop": "#8bd5ca",
+
+        // // === Optional extras to keep things cohesive ===
+        // "activityBarBadge.background": "#8bd5ca",
+        // "activityBarBadge.foreground": "#181926",
+
+        // // === Breadcrumbs (force Crust) ===
+        // "breadcrumb.background": "#181926",
+        // "breadcrumb.foreground": "#cad3f5",
+        // "breadcrumb.focusForeground": "#cad3f5",
+        // "breadcrumb.activeSelectionForeground": "#cad3f5",
+
+        // // === Line numbers / gutter (force Crust) ===
+        // "editorGutter.background": "#181926",
+        // "editorLineNumber.background": "#181926",
+        // "editorLineNumber.foreground": "#8087a2",
+        // "editorLineNumber.activeForeground": "#cad3f5",
+    },
+    "vim.easymotion": true,
+    // zed: "vim": { "toggle_relative_line_numbers": true }
+    // (relative numbers in normal mode, absolute while inserting)
+    "vim.smartRelativeLine": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.textwidth": 120,
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "vim.insertModeKeyBindings": [
+    ],
+    "vim.normalModeKeyBindings": [
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<C-h>"],
+            "commands": ["workbench.action.focusLeftGroup"],
+            "silent": true
+        },
+        {
+            "before": ["<C-l>"],
+            "commands": ["workbench.action.focusRightGroup"],
+            "silent": true
+        },
+        {
+            "before": ["L"],
+            "commands": ["workbench.action.nextEditor"],
+            "silent": true
+        },
+        {
+            "before": ["H"],
+            "commands": ["workbench.action.previousEditor"],
+            "silent": true
+        },
+        {
+        "before": ["<C-n>"],
+        "commands": [":nohl"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["lineBreakInsert"],
+            "silent": true
+        },
+        {
+            "before": ["<leader>", "c"],
+            "commands": [":bdelete"]
+        },
+        {
+            "before": ["<leader>", "l", "s"],
+            "commands": ["workbench.action.gotoSymbol"]
+        },
+        {
+            "before": ["<leader>", "l", "S"],
+            "commands": ["workbench.action.showAllSymbols"]
+        },
+        {
+            "before": ["<leader>", "s", "s"],
+            "commands": ["periscope.searchCurrentFile"]
+        },
+        {
+            "before": ["<leader>", "s", "g"],
+            "commands": ["periscope.search"]
+        },
+        {
+            "before": ["<leader>", "f", "b"],
+            "commands": ["periscope.searchBuffers"]
+        },
+        {
+            "before": ["<leader>", "f", "f"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["g", "l"],
+            "commands": ["editor.action.showHover"]
+        },
+        {
+            "before": ["<leader>", "g", "g"],
+            "commands": ["lazygit-vscode.toggle"]
+        },
+        {
+            "before": ["<leader>", "e"],
+            "commands": ["workbench.view.explorer"]
+        },
+        {
+            "before": ["z", "A"],
+            "commands": ["editor.unfoldRecursively"]
+        },
+
+        // --- Additions replicating the rest of the nvim config ---
+
+        // LSP (mappings.lua <leader>l*, gD)
+        {
+            "before": ["g", "D"],
+            "commands": ["editor.action.revealDefinitionAside"]
+        },
+        {
+            "before": ["<leader>", "l", "r"],
+            "commands": ["editor.action.rename"]
+        },
+        {
+            "before": ["<leader>", "l", "a"],
+            "commands": ["editor.action.quickFix"]
+        },
+        {
+            "before": ["<leader>", "l", "R"],
+            "commands": ["editor.action.goToReferences"]
+        },
+
+        // Lists / diagnostics (mappings.lua <leader>x*, ]q/[q, ]l/[l)
+        // Note: bare <leader>b is intentionally reused here for the
+        // diagnostics/Trouble equivalent, same as in the nvim config,
+        // shadowing the <leader>bb/<leader>bd/<leader>bL/<leader>bH
+        // sequences below (VSCodeVim waits for further keys just like
+        // real vim's leader timeout).
+        {
+            "before": ["<leader>", "b"],
+            "commands": ["workbench.actions.view.problems"]
+        },
+        {
+            "before": ["<leader>", "x", "q"],
+            "commands": ["workbench.actions.view.problems"]
+        },
+        {
+            "before": ["<leader>", "x", "l"],
+            "commands": ["workbench.actions.view.problems"]
+        },
+        {
+            "before": ["]", "q"],
+            "commands": ["editor.action.marker.nextInFiles"]
+        },
+        {
+            "before": ["[", "q"],
+            "commands": ["editor.action.marker.prevInFiles"]
+        },
+        {
+            "before": ["]", "l"],
+            "commands": ["editor.action.marker.nextInFiles"]
+        },
+        {
+            "before": ["[", "l"],
+            "commands": ["editor.action.marker.prevInFiles"]
+        },
+
+        // Buffers/tabs (mappings.lua <leader>b*, ]o/[o)
+        {
+            "before": ["<leader>", "b", "b"],
+            "commands": ["workbench.action.showAllEditors"]
+        },
+        {
+            "before": ["<leader>", "b", "d"],
+            "commands": ["workbench.action.showAllEditors"]
+        },
+        {
+            "before": ["<leader>", "b", "L"],
+            "commands": ["workbench.action.moveEditorRightInGroup"]
+        },
+        {
+            "before": ["<leader>", "b", "H"],
+            "commands": ["workbench.action.moveEditorLeftInGroup"]
+        },
+        {
+            "before": ["]", "o"],
+            "commands": ["workbench.action.focusNextGroup"]
+        },
+        {
+            "before": ["[", "o"],
+            "commands": ["workbench.action.focusPreviousGroup"]
+        },
+
+        // Window management (mappings.lua <leader>z)
+        {
+            "before": ["<leader>", "z"],
+            "commands": ["workbench.action.toggleMaximizeEditorGroup"]
+        },
+
+        // File explorer / yazi (mappings.lua <leader>yy/<leader>yz)
+        {
+            "before": ["<leader>", "y", "y"],
+            "commands": ["yazi-vscode.toggle"]
+        },
+        {
+            "before": ["<leader>", "y", "z"],
+            "commands": ["yazi-vscode.toggle"]
+        },
+
+        // Git (mappings.lua <leader>gn/<leader>gd)
+        {
+            "before": ["<leader>", "g", "n"],
+            "commands": ["workbench.view.scm"]
+        },
+        {
+            "before": ["<leader>", "g", "d"],
+            "commands": ["gitlens.showQuickFileHistory"]
+        },
+
+        // Find and replace (mappings.lua <leader>fr)
+        {
+            "before": ["<leader>", "f", "r"],
+            "commands": ["editor.action.startFindReplaceAction"]
+        },
+
+        // Packages -> Extensions view (mappings.lua <leader>p*)
+        {
+            "before": ["<leader>", "p", "s"],
+            "commands": ["workbench.view.extensions"]
+        },
+
+        // Sessions -> Open Recent (mappings.lua <leader>Sf)
+        {
+            "before": ["<leader>", "S", "f"],
+            "commands": ["workbench.action.openRecent"]
+        },
+
+        // General (mappings.lua U = redo, <leader>. = noh)
+        {
+            "before": ["U"],
+            "commands": ["redo"]
+        },
+        {
+            "before": ["<leader>", "."],
+            "commands": [":nohl"]
+        },
+
+        // Claude Code (coder/claudecode.nvim <leader>a* -> claude-vscode.*
+        // extension commands). "as" (send selection) lives in
+        // vim.visualModeKeyBindings below. No VSCode equivalent found for
+        // <leader>am (select model) or <leader>aC (continue last thread).
+        {
+            "before": ["<leader>", "a", "c"],
+            "commands": ["claude-vscode.sidebar.open"]
+        },
+        {
+            "before": ["<leader>", "a", "f"],
+            "commands": ["claude-vscode.focus"]
+        },
+        {
+            "before": ["<leader>", "a", "r"],
+            "commands": ["claude-vscode.reopenClosedSession"]
+        },
+        {
+            "before": ["<leader>", "a", "b"],
+            "commands": ["claude-vscode.insertAtMention"]
+        },
+        {
+            "before": ["<leader>", "a", "a"],
+            "commands": ["claude-vscode.acceptProposedDiff"]
+        },
+        {
+            "before": ["<leader>", "a", "d"],
+            "commands": ["claude-vscode.rejectProposedDiff"]
+        },
+        {
+            "before": ["<leader>", "a", "t"],
+            "commands": ["claude-vscode.terminal.open"]
+        },
+
+        // ==================================================================
+        // Gaps filled in from ~/.config/zed/keymap.json (same nvim origin)
+        // ==================================================================
+
+        // <leader><leader> -> cmdline / command palette
+        // (zed: "space space": command_palette::Toggle)
+        {
+            "before": ["<leader>", "<leader>"],
+            "commands": ["workbench.action.showCommands"]
+        },
+
+        // Pickers (zed: space f g / s f / s r / s q / s w)
+        {
+            "before": ["<leader>", "f", "g"],
+            "commands": ["periscope.search"]
+        },
+        {
+            "before": ["<leader>", "s", "f"],
+            "commands": ["workbench.action.findInFiles"]
+        },
+        {
+            "before": ["<leader>", "s", "r"],
+            "commands": ["periscope.resumeSearch"]
+        },
+        {
+            "before": ["<leader>", "s", "q"],
+            "commands": ["workbench.actions.view.problems"]
+        },
+        {
+            // search word under cursor
+            "before": ["<leader>", "s", "w"],
+            "after": ["*"]
+        },
+
+        // Explorer / panels (zed: space o, space n b, space n g)
+        {
+            "before": ["<leader>", "o"],
+            "commands": ["workbench.view.explorer"]
+        },
+        {
+            "before": ["<leader>", "n", "b"],
+            "commands": ["workbench.action.showAllEditors"]
+        },
+        {
+            "before": ["<leader>", "n", "g"],
+            "commands": ["workbench.view.scm"]
+        },
+
+        // Git (zed: space g q closes the diff view)
+        {
+            "before": ["<leader>", "g", "q"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+
+        // LSP (zed: space l t treesitter/document symbols)
+        {
+            "before": ["<leader>", "l", "t"],
+            "commands": ["workbench.action.gotoSymbol"]
+        },
+
+        // Packages -> Extensions view (zed: space p i/S/u/U)
+        {
+            "before": ["<leader>", "p", "i"],
+            "commands": ["workbench.view.extensions"]
+        },
+        {
+            "before": ["<leader>", "p", "S"],
+            "commands": ["workbench.view.extensions"]
+        },
+        {
+            "before": ["<leader>", "p", "u"],
+            "commands": ["workbench.view.extensions"]
+        },
+        {
+            "before": ["<leader>", "p", "U"],
+            "commands": ["workbench.view.extensions"]
+        },
+
+        // Terminal toggling (zed: t f / t h / t v)
+        {
+            "before": ["t", "f"],
+            "commands": ["workbench.action.terminal.toggleTerminal"]
+        },
+        {
+            "before": ["t", "h"],
+            "commands": ["workbench.action.terminal.toggleTerminal"]
+        },
+        {
+            "before": ["t", "v"],
+            "commands": ["workbench.action.terminal.new"]
+        },
+
+        // Comment toggle alias (zed: "space /" -> editor::ToggleComments)
+        {
+            "before": ["<leader>", "/"],
+            "commands": ["editor.action.commentLine"]
+        },
+
+        // Scroll 5 lines at a time with <C-e>/<C-y> (zed sends "5 ctrl-e")
+        {
+            "before": ["<C-e>"],
+            "after": ["5", "<C-e>"]
+        },
+        {
+            "before": ["<C-y>"],
+            "after": ["5", "<C-y>"]
+        },
+
+        // <C-a> is taken by the AI assistant, so increment/decrement move to
+        // +/- (zed: "+": vim::Increment, "-": vim::Decrement)
+        {
+            "before": ["+"],
+            "after": ["<C-a>"]
+        },
+        {
+            "before": ["-"],
+            "after": ["<C-x>"]
+        },
+
+        // Claude: new thread / continue last (zed: space a n / space a C).
+        // No VS Code command exists for zed's "select model" (space a m).
+        {
+            "before": ["<leader>", "a", "n"],
+            "commands": ["claude-vscode.newConversation"]
+        },
+        {
+            "before": ["<leader>", "a", "C"],
+            "commands": ["claude-vscode.editor.openLast"]
+        }
+    ],
+        "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+        {
+            "before": ["<leader>", "a", "s"],
+            "commands": ["claude-vscode.insertAtMention"]
+        },
+        {
+            "before": ["<leader>", "f", "r"],
+            "commands": ["editor.action.startFindReplaceAction"]
+        },
+
+        // Gaps from zed keymap.json (visual mode block)
+        {
+            // zed: "space /" comment toggle, also in visual mode
+            "before": ["<leader>", "/"],
+            "commands": ["editor.action.commentLine"]
+        },
+        {
+            // zed: "space f f" / "space s l" -> buffer_search::Deploy
+            "before": ["<leader>", "f", "f"],
+            "commands": ["actions.find"]
+        },
+        {
+            "before": ["<leader>", "s", "l"],
+            "commands": ["actions.find"]
+        },
+        {
+            // zed: "space g l" -> git::Diff
+            "before": ["<leader>", "g", "l"],
+            "commands": ["gitlens.showQuickFileHistory"]
+        },
+    ],
+    "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim-code/init.lua",
+    "surround.custom": {
+        "\"": {
+            "label": "\"",
+            // label must be unique
+            "snippet": "\"$TM_SELECTED_TEXT\"", // <-- snippet goes here.
+            "description": "",
+            "disabled": false,
+            "languageIds": ["*"]
+        },
+        "'": {
+            "label": "'",
+            // label must be unique
+            "snippet": "'$TM_SELECTED_TEXT'", // <-- snippet goes here.
+            "description": "",
+            "disabled": false,
+            "languageIds": ["*"]
+        },
+        "()": {
+            "label": "()",
+            // label must be unique
+            "snippet": "($TM_SELECTED_TEXT)", // <-- snippet goes here.
+            "description": "",
+            "disabled": false,
+            "languageIds": ["*"]
+        },
+        "[]": {
+            "label": "[]",
+            // label must be unique
+            "snippet": "[$TM_SELECTED_TEXT]", // <-- snippet goes here.
+            "description": "",
+            "disabled": false,
+            "languageIds": ["*"]
+        },
+        "{}": {
+            "label": "{}",
+            // label must be unique
+            "snippet": "{$TM_SELECTED_TEXT}", // <-- snippet goes here.
+            "description": "",
+            "disabled": false,
+            "languageIds": ["*"]
+        },
+    },
+    // zed: languages.Python -> format_on_save "on", formatter ruff,
+    //      preferred_line_length 88
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.rulers": [88],
+        "editor.wordWrapColumn": 88
+    },
+        "[html][django-html][handlebars][hbs][mustache][jinja][jinja-html][nj][njk][nunjucks][twig]": {
+        "editor.defaultFormatter": "monosans.djlint"
+    },
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "standard",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "vscode_custom_css.imports": [
+        "file:///home/mattia/.vscode/custom.css"
+    ],
+    // ------------------------------------------------------------------
+    // zed: global_lsp_settings.semantic_token_rules — TODO/FIXME/... comment
+    // keyword highlighting. VS Code has no equivalent semantic-token rule
+    // system, so this is reproduced with wayou.vscode-todo-highlight using
+    // the exact same colors. (Purely additive decorations — the color theme
+    // itself is untouched.)
+    // ------------------------------------------------------------------
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": true,
+    "todohighlight.defaultStyle": {
+        "fontWeight": "bold",
+        "isWholeLine": false
+    },
+    "todohighlight.keywords": [
+        { "text": "TODO",       "color": "#FF8C00", "backgroundColor": "#2B1700", "overviewRulerColor": "#FF8C00" },
+        { "text": "FIXME",      "color": "#FF2D55", "backgroundColor": "#2B0011", "overviewRulerColor": "#FF2D55" },
+        { "text": "HACK",       "color": "#FFD60A", "backgroundColor": "#272100", "overviewRulerColor": "#FFD60A" },
+        { "text": "NOTE",       "color": "#0A84FF", "backgroundColor": "#001B2B", "overviewRulerColor": "#0A84FF" },
+        { "text": "INFO",       "color": "#0A84FF", "backgroundColor": "#001B2B", "overviewRulerColor": "#0A84FF" },
+        { "text": "WARN",       "color": "#FF9F0A", "backgroundColor": "#271B00", "overviewRulerColor": "#FF9F0A" },
+        { "text": "WARNING",    "color": "#FF9F0A", "backgroundColor": "#271B00", "overviewRulerColor": "#FF9F0A" },
+        { "text": "BUG",        "color": "#FF453A", "backgroundColor": "#2B0A00", "overviewRulerColor": "#FF453A" },
+        { "text": "XXX",        "color": "#BF5AF2", "backgroundColor": "#1B0029", "overviewRulerColor": "#BF5AF2" },
+        { "text": "DEPRECATED", "color": "#98989D", "backgroundColor": "#1A1A1A", "overviewRulerColor": "#98989D" }
+    ],
+    "workbench.activityBar.location": "hidden",
+    "claudeCode.preferredLocation": "sidebar",
+    "chat.useHooks": true,
+    "github.copilot.chat.otel.dbSpanExporter.enabled": true,
+    "gitai.blameMode": "all",
+    "gitai.enableCheckpointLogging": true,
+    "gitlens.graph.details.location": "auto",
+    "gitlens.views.scm.grouped.views": {
+        "commits": true,
+        "branches": true,
+        "remotes": true,
+        "stashes": true,
+        "tags": true,
+        "worktrees": true,
+        "contributors": true,
+        "fileHistory": false,
+        "repositories": true,
+        "searchAndCompare": false,
+        "launchpad": true
+    },
+    "chat.viewSessions.orientation": "stacked"
+}

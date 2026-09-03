@@ -410,3 +410,6 @@ _zb_path_append "$ZEROBREW_BIN"
 _zb_path_append "$ZEROBREW_PREFIX/bin"
 
 # <<< zerobrew <<<
+
+# Added by git-ai installer on Wed Sep  2 10:27:18 2026
+export PATH="/home/mattia/.git-ai/bin:$PATH"
