@@ -1,0 +1,34 @@
+.config/Code/User/chatLanguageModels.json
+  h_0d917a3c486688 1
+.config/Code/User/keybindings.json
+  h_0d917a3c486688 1-699
+.config/Code/User/settings.json
+  h_0d917a3c486688 1-653
+.config/hypr/config/general.lua
+  h_0d917a3c486688 96
+.config/hypr/dms/colors.lua
+  h_0d917a3c486688 7,13,20
+.config/hypr/hyprland.lua
+  h_0d917a3c486688 241-246
+.config/hypr/hyprland/colors.conf
+  h_0d917a3c486688 2-3,7,20-21,26-28,32
+.config/hypr/hyprlock/colors.conf
+  h_0d917a3c486688 4-7,12
+.local/bin/claude
+  h_0d917a3c486688 1
+.local/bin/git-ai
+  h_0d917a3c486688 1
+.zshrc
+  h_0d917a3c486688 413-415
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "3ca3077e9699e6ce0177cb600ab058fa37d65b55",
+  "prompts": {},
+  "humans": {
+    "h_0d917a3c486688": {
+      "author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}
