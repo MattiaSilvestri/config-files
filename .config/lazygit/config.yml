@@ -1,0 +1,32 @@
+os:
+  edit: "nvim {{filename}}"
+
+git:
+  # These two are argv-split by lazygit (str.ToArgv), NOT run in a shell:
+  # no pipes, no $(...), no quoting tricks. Hence the helper script.
+  # It prefixes every commit that has a refs/notes/ai-context note with "*".
+  branchLogCmd: sh /home/mattia/.config/lazygit/ai-context-log.sh {{branchName}}
+  allBranchesLogCmds:
+    - sh /home/mattia/.config/lazygit/ai-context-log.sh --all
+    # rotate with the all-branches-log key to read the note bodies inline
+    - git log --graph --all --color=always --abbrev-commit --decorate --date=relative --notes=ai-context --pretty=medium
+
+keybinding:
+  commits:
+    # free up "c" (default: setFixupMessage) for the custom command below
+    setFixupMessage: <disabled>
+
+customCommands:
+  # context accepts a comma-separated list; SelectedCommit resolves to the
+  # right commit in whichever of these contexts is focused (unlike the
+  # deprecated SelectedLocalCommit, which is always the commits panel).
+  # - commits:       the commits panel
+  # - subCommits:    branches/tags/remotes panel -> Enter on a branch
+  # - reflogCommits: the reflog panel
+  - key: "c"
+    context: "commits, subCommits, reflogCommits"
+    description: "Show ai-context note"
+    command: >-
+      git notes --ref=ai-context show {{.SelectedCommit.Hash}}
+      2>/dev/null || echo "No ai-context note for {{.SelectedCommit.Hash}}"
+    output: popup
