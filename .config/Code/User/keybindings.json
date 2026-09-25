@@ -696,4 +696,14 @@
         "command": "workbench.action.navigateRight",
         "when": "terminalFocus"
     },
+    {
+        "key": "ctrl+shift+]",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+[",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    }
 ]

@@ -592,7 +592,11 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.rulers": [88],
-        "editor.wordWrapColumn": 88
+        "editor.wordWrapColumn": 88,
+        "editor.codeActionsOnSave": {
+            // "source.organizeImports": "explicit",
+            "source.fixAll": "explicit",
+    },
     },
         "[html][django-html][handlebars][hbs][mustache][jinja][jinja-html][nj][njk][nunjucks][twig]": {
         "editor.defaultFormatter": "monosans.djlint"
