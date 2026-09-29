@@ -431,6 +431,12 @@ window-rule {
     min-height 100
 }
 
+window-rule {
+    match app-id="bitwarden" title="Bitwarden"
+    open-floating true
+}
+
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
