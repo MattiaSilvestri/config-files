@@ -1,0 +1,16 @@
+.config/niri/config.kdl
+  h_0d917a3c486688 434-439
+.config/nvim/lazy-lock.json
+  h_0d917a3c486688 9,16,22-23,25,35,41,43,56,66,68,72-73,75,84,90,92,96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "b63ba758efcac604a1f393c33c3b97f800ab3bf8",
+  "prompts": {},
+  "humans": {
+    "h_0d917a3c486688": {
+      "author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}
