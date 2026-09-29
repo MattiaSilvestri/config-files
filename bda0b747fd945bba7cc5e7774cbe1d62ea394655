@@ -1,0 +1,22 @@
+.config/Code/User/keybindings.json
+  h_0d917a3c486688 699-708
+.config/Code/User/settings.json
+  h_0d917a3c486688 595-599
+.config/hypr/dms/colors.lua
+  h_0d917a3c486688 7,13,20
+.local/bin/claude
+  h_0d917a3c486688 1
+.local/bin/claude-cowork
+  h_0d917a3c486688 1-2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "bda0b747fd945bba7cc5e7774cbe1d62ea394655",
+  "prompts": {},
+  "humans": {
+    "h_0d917a3c486688": {
+      "author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}

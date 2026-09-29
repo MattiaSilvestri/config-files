@@ -1,0 +1,16 @@
+.config/lazygit/ai-context-log.sh
+  h_0d917a3c486688 1-26
+.config/lazygit/config.yml
+  h_0d917a3c486688 1-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "6c9db2567eb4d5d4a5edf5c0127d43a5d92b705e",
+  "prompts": {},
+  "humans": {
+    "h_0d917a3c486688": {
+      "author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}
