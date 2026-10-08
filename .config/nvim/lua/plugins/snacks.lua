@@ -7,6 +7,7 @@ return {
 	opts = {
 		bigfile = { enabled = true },
 		bufdelete = { enabled = true },
+		terminal = { enabled = true },
 		dashboard = {
 			enabled = true,
 			---@class snacks.dashboard.Config

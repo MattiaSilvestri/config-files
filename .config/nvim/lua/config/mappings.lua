@@ -234,6 +234,7 @@ return {
 		["th"] = { '<Cmd>execute v:count . "ToggleTerm direction=horizontal"<CR>', desc = "Toggle terminal horizontal" },
 		["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
 		["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
+		-- ["<C-b>"] = { function() Snacks.terminal.focus() end, desc = "Focus snacks terminal" },
 
 		-- Surround --
 		["<leader>ys"] = { "<Plug>(nvim-surround-normal)", desc = "Surround normal" },
@@ -305,6 +306,7 @@ return {
 		["<C-J>"] = { term_nav "j", desc = "Terminal down window navigation" },
 		["<C-K>"] = { term_nav "k", desc = "Terminal up window navigation" },
 		["<C-L>"] = { term_nav "l", desc = "Terminal right window navigation" },
-		["<C-.>"] = { function() require("opencode").toggle() end, desc = "Toggle opencode", },
+		-- ["<C-.>"] = { function() require("opencode").toggle() end, desc = "Toggle opencode", },
+		-- ["<C-b>"] = { function() Snacks.terminal.focus() end, desc = "Focus snacks terminal" },
 	},
 }
