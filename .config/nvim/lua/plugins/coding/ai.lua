@@ -138,7 +138,23 @@ return {
 				-- when switching back to the terminal (e.g. via <C-w>l); press `i` to type.
 				-- Note: false also opens the terminal in Normal mode (it gates start-insert too).
 				auto_insert = true,
-				snacks_win_opts = {}, -- Opts to pass to `Snacks.terminal.open()` - see Floating Window section below
+				snacks_win_opts = {
+					position = "right",
+					width = 0.30,
+					height = 1,
+					border = "rounded",
+					keys = {
+						-- Multiple ways to hide from terminal mode
+						claude_hide_ctrl = {
+							"<C-,>",
+							function(self)
+								self:hide()
+							end,
+							mode = "t",
+							desc = "Hide (Ctrl+,)",
+						},
+					},
+				}, -- Opts to pass to `Snacks.terminal.open()` - see Floating Window section below
 				-- Work around a Neovim core bug (< 0.12.2) that fragments large pastes into
 				-- the terminal, making Cmd+V appear to truncate ([#161]). true | false | "auto"
 				-- ("auto", the default, enables it only on affected Neovim versions).
@@ -195,6 +211,7 @@ return {
 		keys = {
 			{ "<leader>a", nil, desc = "AI/Claude Code" },
 			{ "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+			{ "<C-,>", "<cmd>ClaudeCode<cr>", desc = "Claude Code (Ctrl+,)", mode = { "n", "x" } },
 			{ "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
 			{ "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
 			{ "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
