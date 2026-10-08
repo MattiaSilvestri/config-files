@@ -1,0 +1,18 @@
+.config/nvim/lua/config/mappings.lua
+  h_0d917a3c486688 237,309-310
+.config/nvim/lua/plugins/coding/ai.lua
+  h_0d917a3c486688 149,214
+.config/nvim/lua/plugins/snacks.lua
+  h_0d917a3c486688 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "43167088d26c8a840d757bba0f3490de81bd4ddf",
+  "prompts": {},
+  "humans": {
+    "h_0d917a3c486688": {
+      "author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}
