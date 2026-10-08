@@ -146,7 +146,7 @@ return {
 					keys = {
 						-- Multiple ways to hide from terminal mode
 						claude_hide_ctrl = {
-							"<C-b>",
+							"<C-,>",
 							function(self)
 								self:hide()
 							end,
@@ -211,7 +211,7 @@ return {
 		keys = {
 			{ "<leader>a", nil, desc = "AI/Claude Code" },
 			{ "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-			{ "<C-b>", "<cmd>ClaudeCode<cr>", desc = "Claude Code (Ctrl+,)", mode = { "n", "x" } },
+			{ "<C-,>", "<cmd>ClaudeCode<cr>", desc = "Claude Code (Ctrl+,)", mode = { "n", "x" } },
 			{ "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
 			{ "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
 			{ "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
