@@ -44,13 +44,13 @@
         "activityBar.background": "#1e1e2e",
         "editor.background": "#1e1e2e",
         "tab.activeBackground": "#1e1e2e",
-        "tab.inactiveBackground": "#1e1e2e",
-        "tab.unfocusedInactiveBackground": "#1e1e2e",
-        "statusBar.background": "#1e1e2e",
+        "tab.inactiveBackground": "#181825",
+        "tab.unfocusedInactiveBackground": "#181825",
+        "statusBar.background": "#11111B",
         "panel.background": "#1e1e2e",
         "sideBar.background": "#1e1e2e",
         "breadcrumb.background": "#1e1e2e",
-        "editorGroupHeader.tabsBackground": "#1e1e2e",
+        "editorGroupHeader.tabsBackground": "#181825",
         "editorOverviewRuler.background": "#1e1e2e",
         "editor.lineHighlightBackground": "#31324473",
 
@@ -653,5 +653,6 @@
         "searchAndCompare": false,
         "launchpad": true
     },
-    "chat.viewSessions.orientation": "stacked"
+    "chat.viewSessions.orientation": "stacked",
+    "quarto.render.renderOnSave": true
 }
