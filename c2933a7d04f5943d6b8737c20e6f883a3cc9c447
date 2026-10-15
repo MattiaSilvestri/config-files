@@ -1,0 +1,14 @@
+.config/nvim/lua/plugins/coding/ai.lua
+  h_0d917a3c486688 149,214
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c2933a7d04f5943d6b8737c20e6f883a3cc9c447",
+  "prompts": {},
+  "humans": {
+    "h_0d917a3c486688": {
+      "author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}

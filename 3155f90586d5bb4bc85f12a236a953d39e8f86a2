@@ -1,0 +1,20 @@
+.config/nvim/lazy-lock.json
+  h_0d917a3c486688 23,44,84,96
+.config/nvim/lua/config/mappings.lua
+  h_0d917a3c486688 69-144,313-324
+.config/nvim/lua/plugins/snacks.lua
+  h_0d917a3c486688 12-21
+.config/nvim/lua/utils/snacks_tabterm.lua
+  h_0d917a3c486688 1-232
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3155f90586d5bb4bc85f12a236a953d39e8f86a2",
+  "prompts": {},
+  "humans": {
+    "h_0d917a3c486688": {
+      "author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}
