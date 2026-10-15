@@ -1,0 +1,20 @@
+.config/Code/User/settings.json
+  s_d73d3dc26f1669::t_e867b0bf042118 49
+  s_d73d3dc26f1669::t_4ab0a1c1d82dcd 47-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dbdacb79f82c65d019b1b6f550cd4324ce64fef5",
+  "prompts": {},
+  "sessions": {
+    "s_d73d3dc26f1669": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b2b4e5fa-1a86-40eb-805f-be1d65fe9072",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}
