@@ -70,7 +70,7 @@ end
 return {
 	x = {
 		["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", remap = true, desc = "Toggle comment" },
-		["<C-a>"] = { function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode…", },
+		-- ["<C-a>"] = { function() require("opencode").ask("@this: ", { submit = true }) end, desc = "Ask opencode…", },
 		["<C-x>"] = { function() require("opencode").select() end, desc = "Execute opencode action…", },
 		["go"] = { function() return require("opencode").operator("@this ") end, desc = "Add range to opencode", expr = true, },
 	},
@@ -234,6 +234,7 @@ return {
 		["th"] = { '<Cmd>execute v:count . "ToggleTerm direction=horizontal"<CR>', desc = "Toggle terminal horizontal" },
 		["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
 		["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
+		["<leader>to"] = { function() Snacks.terminal.open() end, desc = "Select terminal" },
 		-- ["<C-b>"] = { function() Snacks.terminal.focus() end, desc = "Focus snacks terminal" },
 
 		-- Surround --

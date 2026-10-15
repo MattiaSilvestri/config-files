@@ -302,7 +302,7 @@ prefer-no-csd
 // spawn-at-startup "bash" "-c" "sleep 5 && swww-daemon &"
 // spawn-at-startup "bash" "-c" "~/.local/bin/wallpaper ~/.config/wallpapers/ &"
 // spawn-at-startup "qs" "-c" "noctalia-shell"
-spawn-at-startup "dms" "run" "--daemon"
+// spawn-at-startup "dms" "run" "--daemon"
 spawn-at-startup "niri-sidebar" "listen"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.

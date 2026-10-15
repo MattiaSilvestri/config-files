@@ -67,7 +67,7 @@ return {
 		-- build = "cargo +nightly build --release",
 		-- optional: provides snippets for the snippet source
 		dependencies = {
-			{ "L3MON4D3/LuaSnip",       version = "v2.*", optional = true },
+			{ "L3MON4D3/LuaSnip", version = "v2.*", optional = true },
 			{ "Jezda1337/nvim-html-css" },
 			{
 				"saghen/blink.compat",
@@ -214,6 +214,7 @@ return {
 				default = { "lazydev", "lsp", "path", "snippets", "buffer", "html-css" },
 				per_filetype = {
 					htmldjango = { "html-css", "lsp", "path", "snippets", "buffer" },
+					codecompanion = { "codecompanion" },
 				},
 				providers = {
 					["html-css"] = {
