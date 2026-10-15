@@ -163,6 +163,7 @@ keybinds {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl x" { Quit; }
         bind "Alt n" { NewPane; }
+        bind "Alt z" { ToggleFocusFullscreen; }
         bind "Alt i" { MoveTab "Left"; }
         bind "Alt o" { MoveTab "Right"; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
