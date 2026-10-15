@@ -66,6 +66,82 @@ local function term_nav(dir)
 	end
 end
 
+-- Per-direction window options for Snacks terminals (mirrors ToggleTerm's float/horizontal/vertical)
+local snacks_term_win = {
+	float = { position = "float", width = 0.85, height = 0.8, border = "rounded" },
+	bottom = { position = "bottom", height = 0.3 },
+	right = { position = "right", width = 0.4 },
+}
+
+-- Window options for terminal `id`: labels show the custom name (`b:term_name`, see
+-- `utils.snacks_tabterm.rename`) and fall back to the shell title
+local function snacks_term_win_opts(position, id)
+	local win = vim.deepcopy(snacks_term_win[position])
+	if position == "float" then
+		win.title = " Terminal " .. id .. " "
+		win.title_pos = "center"
+	else
+		win.wo = { winbar = id .. ": %{get(b:, 'term_name', get(b:, 'term_title', ''))}" }
+	end
+	return win
+end
+
+-- Toggle terminal number `v:count1` in the given direction, like `:<count>ToggleTerm direction=...`.
+-- The position is part of `env` so each direction gets its own terminal for a given count.
+local function snacks_term_toggle(position)
+	return function()
+		local win = snacks_term_win_opts(position, vim.v.count1)
+		Snacks.terminal.toggle(nil, { env = { SNACKS_TERM_POSITION = position }, win = win })
+	end
+end
+
+-- Open a new terminal stacked next to the visible ones in the same panel (`stack = true`).
+-- Uses the first free count, so it can later be toggled with `<count><leader>th` / `<count><leader>tv`.
+local function snacks_term_stack(position)
+	return function()
+		local used = {}
+		for _, term in ipairs(Snacks.terminal.list()) do
+			local info = vim.b[term.buf].snacks_terminal
+			if info and term.opts.position == position then
+				used[info.id] = true
+			end
+		end
+		local count = 1
+		while used[count] do
+			count = count + 1
+		end
+		Snacks.terminal.toggle(nil, {
+			count = count,
+			env = { SNACKS_TERM_POSITION = position },
+			win = snacks_term_win_opts(position, count),
+		})
+	end
+end
+
+-- Pick among open Snacks terminals, like `:TermSelect`
+local function snacks_term_select()
+	local terms = Snacks.terminal.list()
+	if #terms == 0 then
+		Snacks.notify.warn("No open terminals")
+		return
+	end
+	table.sort(terms, function(a, b)
+		return (vim.b[a.buf].snacks_terminal or {}).id < (vim.b[b.buf].snacks_terminal or {}).id
+	end)
+	vim.ui.select(terms, {
+		prompt = "Terminals",
+		format_item = function(term)
+			local info = vim.b[term.buf].snacks_terminal or {}
+			local name = vim.b[term.buf].term_name or vim.b[term.buf].term_title or ""
+			return ("%s: %s [%s]"):format(info.id or "?", name, term.opts.position)
+		end,
+	}, function(term)
+		if term then
+			term:show():focus()
+		end
+	end)
+end
+
 -- stylua: ignore
 return {
 	x = {
@@ -234,7 +310,18 @@ return {
 		["th"] = { '<Cmd>execute v:count . "ToggleTerm direction=horizontal"<CR>', desc = "Toggle terminal horizontal" },
 		["tv"] = { '<Cmd>execute v:count . "ToggleTerm direction=vertical"<CR>', desc = "Toggle terminal vertical" },
 		["<leader>ts"] = { "<Cmd>TermSelect<CR>", desc = "Select terminal" },
-		["<leader>to"] = { function() Snacks.terminal.open() end, desc = "Select terminal" },
+		["<leader>tf"] = { snacks_term_toggle("float"), desc = "Toggle Snacks terminal float" },
+		["<leader>th"] = { snacks_term_toggle("bottom"), desc = "Toggle Snacks terminal horizontal" },
+		["<leader>tv"] = { snacks_term_toggle("right"), desc = "Toggle Snacks terminal vertical" },
+		["<leader>tn"] = { snacks_term_stack("bottom"), desc = "New stacked Snacks terminal (bottom)" },
+		["<leader>tN"] = { snacks_term_stack("right"), desc = "New stacked Snacks terminal (right)" },
+		["<leader>tt"] = { snacks_term_select, desc = "Select Snacks terminal" },
+		["<leader>tT"] = { function() require("utils.snacks_tabterm").toggle("bottom") end, desc = "Toggle tabbed terminal panel (horizontal)" },
+		["<leader>ta"] = { function() require("utils.snacks_tabterm").new("bottom") end, desc = "New terminal tab (horizontal)" },
+		["<leader>tV"] = { function() require("utils.snacks_tabterm").toggle("right") end, desc = "Toggle tabbed terminal panel (vertical)" },
+		["<leader>tr"] = { function() require("utils.snacks_tabterm").rename() end, desc = "Rename current terminal" },
+		["<leader>tA"] = { function() require("utils.snacks_tabterm").new("right") end, desc = "New terminal tab (vertical)" },
+		["<leader>to"] = { function() Snacks.terminal.open() end, desc = "Open new Snacks terminal" },
 		-- ["<C-b>"] = { function() Snacks.terminal.focus() end, desc = "Focus snacks terminal" },
 
 		-- Surround --
