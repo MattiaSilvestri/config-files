@@ -304,6 +304,7 @@ prefer-no-csd
 // spawn-at-startup "qs" "-c" "noctalia-shell"
 // spawn-at-startup "dms" "run" "--daemon"
 spawn-at-startup "niri-sidebar" "listen"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/mattia/.config/wallpapers/a_group_of_pink_flowers.png"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -378,6 +379,11 @@ animations {
 layer-rule {
     // Find the right namespace by running niri msg layers.
     match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^wallpaper$"
     place-within-backdrop true
 }
 
