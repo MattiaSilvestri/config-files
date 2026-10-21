@@ -304,7 +304,6 @@ prefer-no-csd
 // spawn-at-startup "qs" "-c" "noctalia-shell"
 // spawn-at-startup "dms" "run" "--daemon"
 spawn-at-startup "niri-sidebar" "listen"
-spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/mattia/.config/wallpapers/a_group_of_pink_flowers.png"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -382,11 +381,6 @@ layer-rule {
     place-within-backdrop true
 }
 
-layer-rule {
-    match namespace="^wallpaper$"
-    place-within-backdrop true
-}
-
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
@@ -436,12 +430,6 @@ window-rule {
     min-width 100
     min-height 100
 }
-
-window-rule {
-    match app-id="bitwarden" title="Bitwarden"
-    open-floating true
-}
-
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
@@ -726,5 +714,3 @@ binds {
 }
 include "dms/cursor.kdl"
 include "dms/binds.kdl"
-
-// include "~/.config/caffyne-shell/config/niri.kdl"
