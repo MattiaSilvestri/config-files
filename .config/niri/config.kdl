@@ -509,6 +509,13 @@ binds {
     XF86AudioPrev { spawn-sh "dms ipc call mpris previous"; }
     XF86MonBrightnessUp { spawn-sh "dms ipc call brightness increment 5 '' "; }
     XF86MonBrightnessDown { spawn-sh "dms ipc call brightness decrement 5 '' "; }
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume   allow-when-locked=true { spawn "dms ipc call audio increment 5"; }
+    XF86AudioLowerVolume   allow-when-locked=true { spawn "dms ipc call audio decrement 5"; }
+    XF86AudioMute          allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute       allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
 
 
     // Suggested binds for running applications: terminal, app launcher, screen locker.
@@ -525,13 +532,6 @@ binds {
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
-
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
-    XF86AudioLowerVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
-    XF86AudioMute          allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute       allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     // Move focus
     Mod+Left  { focus-column-or-monitor-left; }

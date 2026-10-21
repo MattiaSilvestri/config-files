@@ -230,7 +230,7 @@
       :ensure t
       :defer t
       :custom
-      (org-roam-directory (file-truename "/mnt/Data/MEGA/Notes/Roam"))
+      (org-roam-directory (file-truename "/mnt/Data/Notes/Roam"))
       :bind (("C-c n l" . org-roam-buffer-toggle)
              ("C-c n f" . org-roam-node-find)
              ("C-c n g" . org-roam-graph)
