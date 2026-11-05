@@ -237,6 +237,7 @@ alias c="git commit"
 alias p="git push"
 alias pl="git pull"
 alias rs="git reset"
+alias wt="git worktree"
 alias lg="lazygit"
 alias lt="lazytailscale"
 
