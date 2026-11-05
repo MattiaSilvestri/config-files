@@ -1,0 +1,25 @@
+.config/cava/shaders/orion_circle.frag
+  s_44b9d8d29865ef::t_81fceba051628b 1-129
+.config/cava/shaders/orion_circle_rotate.frag
+  s_44b9d8d29865ef::t_9a0b37ac3e73c0 1-145
+.config/cava/shaders/orion_saturn_core.frag
+  s_44b9d8d29865ef::t_f5c8e781931d72 1-153
+.config/cava/shaders/orion_saturn_subring.frag
+  s_44b9d8d29865ef::t_75addad537bc7d 1-154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "af8353bf89e1a8452620952bea47bbbd91c2f871",
+  "prompts": {},
+  "sessions": {
+    "s_44b9d8d29865ef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bff2424-953d-4633-876b-54d4c35d3c7d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}
