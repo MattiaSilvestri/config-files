@@ -238,6 +238,8 @@ return {
 		["<leader>gn"] = { function() neogit.open({ kind = "floating" }) end, desc = "Neogit", },
 		["<leader>gd"] = { "<Cmd>CodeDiff history %<CR>", desc = "CodeDiff current file history", },
 		["<leader>gq"] = { "<Cmd>DiffviewClose<CR>", desc = "DiffView close", },
+		["<leader>gw"] = { function() require("utils.git_worktree").pick() end, desc = "Switch worktree (session)", },
+		["<leader>gW"] = { function() require("utils.git_worktree").create() end, desc = "New worktree (session)", },
 
 		-- Lists --
 		["<leader>x"] = { function() vim.tbl_get(sections, "x") end, desc = sections.x.desc, },

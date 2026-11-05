@@ -28,6 +28,7 @@ return {
 					vim.cmd([[ScopeLoadState]]) -- Scope.nvim loading
 				end,
 			})
+			require("utils.git_worktree") -- registers :Worktree
 		end,
 	},
 	{
