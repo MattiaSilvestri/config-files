@@ -1,0 +1,16 @@
+.config/nvim/lua/config/lsp.lua
+  h_0d917a3c486688 134,136-141,144-156
+.config/zellij/config.kdl
+  h_0d917a3c486688 166
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "75b80a258f012a2f6b6cd146528d46a38c2ee0a7",
+  "prompts": {},
+  "humans": {
+    "h_0d917a3c486688": {
+      "author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.config/nvim/lua/plugins/coding/treesitter.lua
+  s_3c2d980d9d09d1::t_031b605e624e29 13-14,17-18
+.config/niri/config.kdl
+  s_1394e3772692b7::t_508c38a28321cd 385-389
+  s_1394e3772692b7::t_8ee3faa668baef 307
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2cb804d9bc3510f04a0c422242d685ecd827f9e3",
+  "prompts": {},
+  "sessions": {
+    "s_1394e3772692b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "08ec1288-e9ee-4372-be01-7bca56e9b62a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    },
+    "s_3c2d980d9d09d1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eac9f1b2-cb3b-46f6-b2c3-fc367d2f91fe",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Mattia Silvetri <mattiasilvestri27@gmail.com>"
+    }
+  }
+}
